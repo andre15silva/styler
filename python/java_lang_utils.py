@@ -8,6 +8,7 @@ import intervals as I
 import collections
 import sys
 import os
+from functools import reduce
 
 def gen_ugly(file_path, output_dir, modification_number = (1,0,0,0,0)):
     insertions_sample_size_space = modification_number[0]
@@ -187,7 +188,12 @@ def tokenize_with_white_space(file_path):
 
     tokens = tokenizer.tokenize(file_content, parse_comments=True)
     tokens = [ t for t in tokens]
+    def create_and_append(d, x):
+        d.setdefault(x.position[0], []).append(x)
+        return d
+    tokens_by_line = reduce(create_and_append, tokens, {})
     deletions_spots = list()
+
     for index in range(0, len(tokens)-1):
         tokens_position = tokens[index].position;
         next_token_position = tokens[index+1].position;
@@ -198,12 +204,15 @@ def tokenize_with_white_space(file_path):
             if ( end_of_token[0] == next_token_position[0] ):
                 deletions_spots.append(( 0, next_token_position[1] - end_of_token[1]))
             else:
-                deletions_spots.append(( next_token_position[0] - end_of_token[0] - tokens[index].value.count('\n'), next_token_position[1] - 1))
+                first_token_pos = tokens_by_line[tokens_position[0]][0].position
+                white_space = ( next_token_position[0] - end_of_token[0] - tokens[index].value.count('\n'), next_token_position[1] - first_token_pos[1])
+                print(tokens[index], white_space)
+                deletions_spots.append(white_space)
     deletions_spots.append((0,1))
     # rewritten = "".join([str(t[1].value) + "\n"*t[0][0] + " "*t[0][1] for t in zip(deletions_spots, tokens)]);
 
     # return rewritten
-    return deletions_spots, tokens
+    return deletions_spots, tokens, tokens_by_line
 
 def get_char_pos_from_lines(file_path, from_line, to_line=-1):
     if to_line == -1:
