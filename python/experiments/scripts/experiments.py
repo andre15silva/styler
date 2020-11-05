@@ -236,7 +236,7 @@ def exp_stats(projects):
         for tool in tools_plus_styler_protocols_and_all
     }
     # json_pp(repaired_error_types_count_relative)
-    keys = list(repaired_error_types_count['out_of'].keys())
+    keys = sorted(list(repaired_error_types_count['out_of'].keys()))
     # result = {project:{tool:len(repair) for tool, repair in p_results.items()} for project, p_results in result.items()}
     # result['total'] = { key:sum([e[key] for e in result.values()]) for key in keys }
     #json_pp(total)
@@ -259,7 +259,7 @@ def exp_stats(projects):
     return repaired_error_types_count
 
 @logger.catch
-def json_report(project_name):
+def json_report(project_name, report_for_website=False):
     logger.debug(f'Project {project_name}')
 
     experiment_dir = get_experiment_dir_of_project(project_name)
@@ -284,23 +284,86 @@ def json_report(project_name):
         for tool in tools_plus_styler_protocols
     }
 
-    report = {
-        get_file_id(file_path):{
-            'information':information,
-            'results': {
-                tool:None
-                for tool in tools_plus_styler_protocols
-            }
-        }
-        for file_path, information in errored_result.items()
-    }
+    report = []
+    for file_path, information in errored_result.items():
+        file_id = get_file_id(file_path)
+        original_file_path = glob.glob(f'{errored_dir}/{file_id}/*.java')[0]
+        metadata_file_path = f'{errored_dir}/{file_id}/metadata.json'
 
-    for tool, result in tools_results.items():
-        if result is not None and result['checkstyle_results'] is not None:
-            for file_path, information in result['checkstyle_results'].items():
-                file_id = get_file_id(file_path)
-                if file_id in report:
-                    report[file_id]['results'][tool] = information['errors']
+        repair = {}
+        repair['error_id'] = file_id
+        repair['information'] = information
+
+        errored_file = open_file(original_file_path)
+        errored_file_lines = errored_file.split('\n')
+
+        metadata_file = open_json(metadata_file_path)
+        errored_line_number = int(metadata_file['errors'][0]['line'])
+
+        from_line = max(errored_line_number - 3, 0)
+        to_line = min(errored_line_number + 3, len(errored_file_lines) - 1)
+        errored_source_code = '\n'.join(errored_file_lines[from_line:to_line])
+
+        repair['source_code'] = errored_source_code
+
+        tools = []
+        repaired_by = []
+        not_repaired_by = []
+        for tool in tools_plus_styler_protocols:
+            tool_ = {}
+            tool_['tool'] = tool
+            tool_['errors'] = None
+            tool_['diff'] = None
+
+            for tool2, result in tools_results.items():
+                if tool2 == tool:
+                    if result is not None and result['checkstyle_results'] is not None:
+                        for file_path2, information2 in result['checkstyle_results'].items():
+                            file_id2 = get_file_id(file_path2)
+                            if file_id2 == file_id:
+                                tool_['errors'] = information2['errors']
+                                tool_path = glob.glob(f'{experiment_dir}/{tool}/{file_id}/*.java')[0]
+                                diff = compute_diff(original_file_path, tool_path)
+                                tool_['diff'] = diff
+                                tool_['diff_size'] = compute_diff_size(original_file_path, tool_path)
+                                if len(information2['errors']) == 0:
+                                    repaired_by.append(tool)
+                                else:
+                                    not_repaired_by.append(tool)
+
+            tools.append(tool_)
+        repair['results'] = tools
+
+        if report_for_website:
+            website_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../', 'docs', 'data')
+
+            json_file = open_json(os.path.join(website_data_dir, 'all.json'))
+            if json_file is None:
+                json_file = []
+            error = {}
+            error['project_name'] = project_name
+            error['error_id'] = file_id
+            if len(repair['information']['errors']) == 0:
+                print(f'ERROR not reproduced: {file_id}')
+                print(metadata_file['errors'][0]['source'])
+                error['error_type'] = 'null'
+                error['error_message'] = 'null'
+            else:
+                error['error_type'] = repair['information']['errors'][0]['source']
+                error['error_message'] = repair['information']['errors'][0]['message']
+                if repair['information']['errors'][0]['source'] != metadata_file['errors'][0]['source']:
+                    print(f'file {file_id} Expected:')
+                    print(metadata_file['errors'][0]['source'])
+                    print('Got:')
+                    print(repair['information']['errors'][0]['source'])
+            error['repaired_by'] = repaired_by
+            error['not_repaired_by'] = not_repaired_by
+            json_file.append(error)
+            save_json(website_data_dir, 'all.json', json_file)
+
+            save_json(website_data_dir, f'{project_name}-{file_id}.json', repair)
+
+        report.append(repair)
 
     save_json(experiment_dir, 'report.json', report)
 
@@ -334,11 +397,12 @@ def merge_reports(experiments):
             all_reports[experiment] = report
     experiment_results = list(all_reports.keys())
     logger.debug(f'Merging the results from {len(experiment_results)} reports ({", ".join(experiment_results)})')
-    merged_report = {}
+    merged_report = []
     file_count = 0
-    for experiment, report in all_reports.items():
-        for file_id, res in report.items():
-            merged_report[file_count] = res
+    for project, report in all_reports.items():
+        for error in report:
+            error['project_name'] = project
+            merged_report.append(error)
             file_count += 1
     save_json(get_experiment_dir(), 'report.json', merged_report)
 
@@ -355,9 +419,10 @@ def main(args):
         exp(args[2:])
     elif len(args) >= 2 and args[1] == 'report':
         for project_name in args[2:]:
-            json_report(project_name)
+            json_report(project_name, report_for_website=True)
     elif len(args) >= 2 and args[1] == 'merge-reports':
-        experiments = list_folders(get_experiment_dir())
+        #experiments = list_folders(get_experiment_dir())
+        experiments = args[2:]
         logger.debug(f'Found {len(experiments)} experiments ({", ".join(experiments)})')
         merge_reports(experiments)
     elif len(args) >= 2 and args[1] == 'styler-protocols':

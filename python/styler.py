@@ -47,7 +47,7 @@ def run_preprocess(project, protocol):
 
     return output
 
-def run_train(project, protocol, global_attention, layers, rnn_size, word_vec_size, gpu=True):
+def run_train(project, protocol, global_attention, layers, rnn_size, word_vec_size, save_checkpoint_steps=20000, gpu=True):
     preprocessed_dir = get_preprocessed_dir_by_protocol(project, protocol)
     model_dir = get_model_dir(project)
 
@@ -68,7 +68,7 @@ def run_train(project, protocol, global_attention, layers, rnn_size, word_vec_si
         '-adagrad_accumulator_init 0.1',
         '-bridge',
         '-train_steps 20000',
-        '-save_checkpoint_steps 20000',
+        f'-save_checkpoint_steps {save_checkpoint_steps}',
         f'-save_model {model_dir}/{protocol}-{global_attention}-{layers}-{rnn_size}-{word_vec_size}-model'
     ]
     if gpu:
@@ -219,10 +219,22 @@ def repair_files(dir_repaired_files_by_protocol, dir_files_to_repair, model_name
             for error_id, error in enumerate(tokenize_errors(file_path, open_json(metadata_path)['errors'])):
                 tokenized_errors, info = error
                 for proposal_id, translation in enumerate(translate(tokenized_errors)):
+                    if '<unk>' in translation or '<s>' in translation:
+                        continue
                     de_tokenized_translation = de_tokenize(file_path, info, translation, only_formatting=only_formatting)
                     folder = f'{target}/batch_{proposal_id}/{int(folder_id) + error_id * number_of_files}'
                     create_dir(folder)
                     save_file(folder, file_path.split('/')[-1], de_tokenized_translation)
+                tmp_dir = get_tmp_dir(model_name)
+
+                shutil.copy(
+                    os.path.join(tmp_dir, 'input.txt'),
+                    os.path.join(target, f'input-{folder_id}.txt')
+                )
+                shutil.copy(
+                    os.path.join(tmp_dir, 'output.txt'),
+                    os.path.join(target, f'output-{folder_id}.txt')
+                )
 
         move_parse_exception_files(target, waste)
     checkstyle_result, number_of_errors = checkstyle.check(checkstyle_rules, target, checkstyle_jar, only_targeted=True)
@@ -422,8 +434,9 @@ def main(args):
         layers = args[5]
         rnn_size = args[6]
         word_vec_size = args[7]
-        gpu = args[8]
-        run_train(project_name, protocol, global_attention, layers, rnn_size, word_vec_size, gpu)
+        save_checkpoint_steps = args[8]
+        gpu = args[9]
+        run_train(project_name, protocol, global_attention, layers, rnn_size, word_vec_size, save_checkpoint_steps, gpu)
 
         time_elapsed = datetime.now() - start_time
         logger.debug('Time elapsed (hh:mm:ss.ms) {}'.format(time_elapsed))

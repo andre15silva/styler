@@ -2,46 +2,62 @@ from core import *
 from javalang import tokenizer as javalang_tokenizer
 from token_utils import *
 
-def tokenize_with_white_space(file_content, relative=True, new_line_at_the_end_of_file=True):
+import copy
+
+def tokenize_with_white_space(file_content, relative=True):
     """
     Tokenize the java source code
     :param file_content: the java source code
     :return: (whitespace, tokens)
     """
-    position_last_line = 1;
+    indentation_last_line = 1
+    file_content_lines = file_content.split('\n')
     tokens = javalang_tokenizer.tokenize(file_content, parse_comments=True)
     tokens = [ t for t in tokens]
     whitespace = list()
     for index in range(0, len(tokens)-1):
-        tokens_position = tokens[index].position;
-        next_token_position = tokens[index+1].position;
+        tokens_position = tokens[index].position
+        next_token_position = tokens[index+1].position
         end_of_token = (tokens_position[0], tokens_position[1] + len(tokens[index].value))
         if end_of_token == next_token_position:
-            whitespace.append((0,0))
+            whitespace.append((0,0,'None'))
         else :
             if ( end_of_token[0] == next_token_position[0] ):
                 # same line
-                whitespace.append(( 0, next_token_position[1] - end_of_token[1]))
+                if file_content_lines[tokens_position[0]-1] is not '':
+                    if len(file_content_lines[tokens_position[0]-1]) > end_of_token[1] and file_content_lines[tokens_position[0]-1][end_of_token[1]] == '\t':
+                        space_type = 'TB'
+                    else:
+                        space_type = 'SP'
+                else:
+                    space_type = 'None'
+                whitespace.append(( 0, next_token_position[1] - end_of_token[1], space_type))
             else:
                 # new line
-                if relative:
-                    whitespace.append(( next_token_position[0] - end_of_token[0] - tokens[index].value.count('\n'), next_token_position[1] - position_last_line))
-                    position_last_line = next_token_position[1]
+                new_line = file_content_lines[next_token_position[0]-1]
+                if new_line is not '':
+                    if new_line[get_line_indent(new_line) - 1] == '\t':
+                        space_type = 'TB'
+                    else:
+                        space_type = 'SP'
                 else:
-                    whitespace.append(( next_token_position[0] - end_of_token[0] - tokens[index].value.count('\n'), next_token_position[1] - 1))
-    if new_line_at_the_end_of_file:
-        whitespace.append((1,0))
-    else:
-        if file_content[-1] == '\n':
-            if file_content[-2] == '\n':
-                whitespace.append((2,0))
-            else:
-                whitespace.append((1,0))
-        else:
-            whitespace.append((0,0))
-    # rewritten = reformat(whitespace, tokens)
-    # print(rewritten)
-    # return rewritten
+                    space_type = 'None'
+                if relative:
+                    spaces = next_token_position[1] - indentation_last_line
+                    whitespace.append(( next_token_position[0] - end_of_token[0] - tokens[index].value.count('\n'), spaces, space_type))
+                    indentation_last_line = next_token_position[1]
+                else:
+                    whitespace.append(( next_token_position[0] - end_of_token[0] - tokens[index].value.count('\n'), next_token_position[1] - 1, space_type))
+    
+    count_line_break = 0
+    for index in range(len(file_content)-1, 0):
+        if file_content[index] == '\n':
+            count_line_break += 1
+        elif file_content[index] != ' ' and file_content[index] != '\t':
+            break
+
+    whitespace.append((count_line_break, 0, 'None'))
+
     return whitespace, tokens
 
 def tokenize_file_to_repair(file_path, error):
@@ -81,25 +97,40 @@ def tokenize_file_to_repair(file_path, error):
 
     # print(error)
 
-    if 'column' in error and error['type'] != 'OneStatementPerLine':
+    if 'column' in error:
         errored_token_index = -1
-        around = 10
-        for token, index in zip(tokens,range(len(tokens))):
-            if token.position[0] <= int(error['line']) and token.position[1] <= int(error['column']):
-                errored_token_index = index
+        around = 1
+        column = int(error['column'])
+
+        if column <= tokens[token_line_start].position[1]:
+            errored_token_index = token_line_start
+        elif column >= tokens[token_line_end - 1].position[1]:
+            errored_token_index = token_line_end - 1
+        else:
+            index = token_line_start
+            for token in tokens[token_line_start:token_line_end]:
+                if token.position[1] <= column:
+                    errored_token_index = index
+                index += 1
+
+        # for token, space, index in zip(tokens, spaces,range(len(tokens))):
+        #     print(token, token.position[0], token.position[1], int(error['line']), int(error['column']))
+        #     print(space)
+        #     if token.position[0] <= int(error['line']) and token.position[1] <= int(error['column']):
+        #         errored_token_index = index
         from_token = max(0, errored_token_index - around)
-        to_token = min(len(tokens), errored_token_index + 1 + around)
+        to_token = min(len(tokens), errored_token_index + around)
     else:
-        around = 2
-        around_after = 13
+        around = 1
+        around_after = 1
         errored_token_index = -1
         if token_line_start != -1:
             from_token = max(start, token_line_start - around)
             to_token = min(end, token_line_end + around_after + 1)
         else:
             errored_token_index = -1
-            around = 2
-            around_after = 18
+            around = 1
+            around_after = 1
             for token, index in zip(tokens,range(len(tokens))):
                 if token.position[0] < int(error['line']):
                     errored_token_index = index
@@ -156,10 +187,10 @@ def tokenize_errored_file_model2(file, file_orig, error):
     return tokens_errored, tokens_correct, tokens_errored_in_tag, info
 
 def de_tokenize(errored_source, error_info, new_tokens, tabulations, only_formatting=False):
-    whitespace, tokens = tokenize_with_white_space(errored_source)
+    errored_whitespace, tokens = tokenize_with_white_space(errored_source)
+    whitespace = copy.deepcopy(errored_whitespace)
     from_token = error_info['from_token']
     to_token = error_info['to_token']
-
 
     if only_formatting:
         new_white_space_tokens = new_tokens
@@ -174,13 +205,14 @@ def de_tokenize(errored_source, error_info, new_tokens, tabulations, only_format
     for index in range(min(to_token - from_token, len(new_white_space))):
         whitespace[from_token + index] = new_white_space[index]
 
-    result = reformat(whitespace, tokens, tabulations=tabulations)
+    result = reformat(whitespace, errored_whitespace, tokens)
+    return result
 
-    if 'error' in error_info:
-        line = int(error_info['error']['line'])
-        return mix_sources(errored_source, result, line-1, to_line=line+1) #result
-    else:
-        return mix_sources(errored_source, result, tokens[from_token].position[0], to_line=tokens[to_token].position[0]) #result
+    #if 'error' in error_info:
+    #    line = int(error_info['error']['line'])
+    #    return mix_sources(errored_source, result, line-1, to_line=line+1) #result
+    #else:
+    #    return mix_sources(errored_source, result, tokens[from_token].position[0], to_line=tokens[to_token].position[0]) #result
     # return mix_sources(errored_source, result, tokens[from_token].position[0], to_line=tokens[to_token].position[0])
 
 def mix_files_v2(file_A_path, file_B_path, output_file, from_line, to_line=-1):
@@ -293,26 +325,35 @@ def mix_files(file_A_path, file_B_path, output_file, from_line, to_line=-1):
     return output_file
 
 
-def reformat(whitespace, tokens, tabulations=False, relative=True):
+def reformat(whitespace, errored_whitespace, tokens, relative=True):
     """
     Given the sequence of whitespaces and javat token reformat the java source code
     :return: the java source code
     """
     result = ''
     position = 0
-    for ws, t in zip(whitespace, tokens):
+    position_errored = 0
+    isFirstLineBreakChanged = True
+    positionBasedOnFirstLineBreakChanged = -1
+    for ws, ews, t in zip(whitespace, errored_whitespace, tokens):
+        if ws[2] == 'TB':
+            space = "\t"
+        else:
+            space = " "
         if ws[0] > 0:
             if relative:
-                position = max(position + ws[1], 0)
-                if tabulations:
-                    result += str(t.value) + "\n" * ws[0] + "\t" * position
+                position_errored = max(position_errored + ews[1], 0)
+                if ws[0] == ews[0] and ws[1] == ews[1]:
+                    position = max(position + ws[1], 0)
+                    result += str(t.value) + "\n" * ws[0] + space * position_errored
                 else:
-                    result += str(t.value) + "\n" * ws[0] + " " * position
+                    if isFirstLineBreakChanged:
+                        positionBasedOnFirstLineBreakChanged = max(position + ws[1], 0)
+                    else:
+                        positionBasedOnFirstLineBreakChanged = max(positionBasedOnFirstLineBreakChanged + ws[1], 0)
+                    result += str(t.value) + "\n" * ws[0] + space * positionBasedOnFirstLineBreakChanged
             else:
-                if tabulations:
-                    result += str(t.value) + "\n" * ws[0] + "\t" * ws[1]
-                else:
-                    result += str(t.value) + "\n" * ws[0] + " " * ws[1]
+                result += str(t.value) + "\n" * ws[0] + space * ws[1]
         else:
             result += str(t.value) + " " * ws[1]
     return result
@@ -338,6 +379,13 @@ def get_char_pos_from_lines(file_path, from_line, to_line=-1):
 
 
 if __name__ == "__main__":
+    if sys.argv[1] == 'tokenize_file_to_repair':
+        path = sys.argv[2]
+        error = open_json(os.path.join(os.path.dirname(path), 'metadata.json'))
+        error = error['errors'][0]
+        error['type'] = checkstyle_source_to_error_type(error['source'])
+        tokens_errored, info = tokenize_file_to_repair(path, error)
+        print(tokens_errored)
     if (sys.argv[1] == "char_pos"):
         print(get_char_pos_from_lines(sys.argv[2], int(sys.argv[3])))
     elif (sys.argv[1] == "tokenize_ws"):
@@ -349,23 +397,22 @@ if __name__ == "__main__":
 
 
 class TokenizedSource:
-    def __init__(self, white_spaces, tokens, tabulation=False, relative=True):
+    def __init__(self, white_spaces, tokens, relative=True):
         self.tokens = tokens
+        self.original_whitespace = copy.deepcopy(white_spaces)
         self.white_spaces = white_spaces
-        self.tabulation = tabulation
         self.relative = relative
 
     def reformat(self):
-        return reformat(self.white_spaces, self.tokens, tabulations=self.tabulation, relative=self.relative)
+        return reformat(self.white_spaces, self.original_whitespace, self.tokens, relative=self.relative)
 
     def enumerate_3_grams(self):
         return enumerate(zip(self.tokens, self.white_spaces, self.tokens[1:]))
 
 class Tokenizer:
-    def __init__(self, tabulation=False, relative=True):
-        self.tabulation = tabulation
+    def __init__(self, relative=True):
         self.relative = relative
 
     def tokenize(self, source):
         white_spaces, tokens = tokenize_with_white_space(source, relative=self.relative)
-        return TokenizedSource(white_spaces, tokens, tabulation=self.tabulation, relative=self.relative)
+        return TokenizedSource(white_spaces, tokens, relative=self.relative)
