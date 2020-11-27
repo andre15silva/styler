@@ -1,0 +1,381 @@
+{
+    "error_id": "28",
+    "information": {
+        "errors": [
+            {
+                "line": "80",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 122).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n        patientInfo = Utilities.getPatientInfo(patient);\n        practitionerRoleInfo = Utilities.getPractitionerRoleInfo(practitionerRole, options.isCheckPractitionerLocation());\n\n        queries.addAll(\n            this.resourcesToQueries(codings, patient == null, practitionerRole == null, patientInfo,",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/28/MedicationPrescribeService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/28/MedicationPrescribeService.java\nindex 5a84e84e46..198cb167e1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/28/MedicationPrescribeService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/28/MedicationPrescribeService.java\n@@ -46,6 +46,7 @@ public class MedicationPrescribeService extends CdsService<MedicationPrescribeRe\n   /**\n    * Acquires the specific information needed by the parent request handling\n    * function.\n+   *\n    * @param orderReviewRequest the request to extract information from\n    * @return a list of the information required.\n    * @throws RequestIncompleteException if the request cannot be parsed.\n@@ -77,7 +78,8 @@ public class MedicationPrescribeService extends CdsService<MedicationPrescribeRe\n               .getReference());\n         }\n         patientInfo = Utilities.getPatientInfo(patient);\n-        practitionerRoleInfo = Utilities.getPractitionerRoleInfo(practitionerRole, options.isCheckPractitionerLocation());\n+        practitionerRoleInfo =\n+            Utilities.getPractitionerRoleInfo(practitionerRole, options.isCheckPractitionerLocation());\n \n         queries.addAll(\n             this.resourcesToQueries(codings, patient == null, practitionerRole == null, patientInfo,\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "79",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "warning",
+                    "message": "'try rcurly' has incorrect indentation level 2, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/28/MedicationPrescribeService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/28/MedicationPrescribeService.java\nindex 5a84e84e46..dbfd1f0868 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/28/MedicationPrescribeService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/28/MedicationPrescribeService.java\n@@ -28,6 +28,7 @@ import org.springframework.stereotype.Component;\n @Component(\"r4_MedicationPrescribeService\")\n public class MedicationPrescribeService extends CdsService<MedicationPrescribeRequest> {\n \n+\n   public static final String ID = \"medication-prescribe-crd\";\n   public static final String TITLE = \"medication-prescribe Coverage Requirements Discovery\";\n   public static final Hook HOOK = Hook.MEDICATION_PRESCRIBE;\n@@ -51,8 +52,7 @@ public class MedicationPrescribeService extends CdsService<MedicationPrescribeRe\n    * @throws RequestIncompleteException if the request cannot be parsed.\n    */\n   public List<CoverageRequirementRuleQuery> makeQueries(\n-      MedicationPrescribeRequest orderReviewRequest, YamlConfig options)\n-      throws RequestIncompleteException {\n+      MedicationPrescribeRequest orderReviewRequest, YamlConfig options) throws RequestIncompleteException {\n     List<CoverageRequirementRuleQuery> queries = new ArrayList<>();\n     Bundle medicationRequestBundle = orderReviewRequest.getPrefetch().getMedicationRequestBundle();\n     List<MedicationRequest> medicationRequestList = Utilities\n@@ -72,8 +72,7 @@ public class MedicationPrescribeService extends CdsService<MedicationPrescribeRe\n         patient = (Patient) medicationRequest.getSubject().getResource();\n         practitionerRole = (PractitionerRole) medicationRequest.getPerformer().getResource();\n         if (practitionerRole == null) {\n-          throw new RequestIncompleteException(\"Cannot find practitioner role \" + medicationRequest\n-              .getPerformer()\n+          throw new RequestIncompleteException(\"Cannot find practitioner role \" + medicationRequest.getPerformer()\n               .getReference());\n         }\n         patientInfo = Utilities.getPatientInfo(patient);\n@@ -82,7 +81,7 @@ public class MedicationPrescribeService extends CdsService<MedicationPrescribeRe\n         queries.addAll(\n             this.resourcesToQueries(codings, patient == null, practitionerRole == null, patientInfo,\n                 practitionerRoleInfo));\n-      } catch (RequestIncompleteException e) {\n+  } catch (RequestIncompleteException e) {\n         throw e;\n       } catch (FHIRException e) {\n         logger.error(\"Failed to parse medication request bundle\", e);\n@@ -90,4 +89,4 @@ public class MedicationPrescribeService extends CdsService<MedicationPrescribeRe\n     }\n     return queries;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 54.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 160).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 76, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 159).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 139).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 159).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 133).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 188).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 201).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "warning",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "warning",
+                    "message": "'catch' has incorrect indentation level 0, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "warning",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/28/MedicationPrescribeService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/28/MedicationPrescribeService.java\nindex 5a84e84e46..2ed47898e1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/28/MedicationPrescribeService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/28/MedicationPrescribeService.java\n@@ -25,23 +25,22 @@ import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n import org.springframework.stereotype.Component;\n \n+\n @Component(\"r4_MedicationPrescribeService\")\n public class MedicationPrescribeService extends CdsService<MedicationPrescribeRequest> {\n \n-  public static final String ID = \"medication-prescribe-crd\";\n-  public static final String TITLE = \"medication-prescribe Coverage Requirements Discovery\";\n-  public static final Hook HOOK = Hook.MEDICATION_PRESCRIBE;\n-  public static final String DESCRIPTION =\n-      \"Get information regarding the coverage requirements for durable medical equipment\";\n-  public static final List<PrefetchTemplateElement> PREFETCH_ELEMENTS = Arrays\n-      .asList(CrdPrefetchTemplateElements.MEDICATION_REQUEST_BUNDLE);\n-  public static final Logger logger = LoggerFactory.getLogger(MedicationPrescribeService.class);\n \n-  public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n+    public static final String ID = \"medication-prescribe-crd\";\n+    public static final String TITLE = \"medication-prescribe Coverage Requirements Discovery\";\n+    public static final Hook HOOK = Hook.MEDICATION_PRESCRIBE;\n+    public static final String DESCRIPTION = \"Get information regarding the coverage requirements for durable medical equipment\";\n+    public static final List<PrefetchTemplateElement> PREFETCH_ELEMENTS = Arrays.asList(CrdPrefetchTemplateElements.MEDICATION_REQUEST_BUNDLE);\n+    public static final Logger logger = LoggerFactory.getLogger(MedicationPrescribeService.class);\n+    public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n \n-  public MedicationPrescribeService() {\n+    public MedicationPrescribeService() {\n     super(ID, HOOK, TITLE, DESCRIPTION, PREFETCH_ELEMENTS, FHIRCOMPONENTS);\n-  }\n+    }\n \n   /**\n    * Acquires the specific information needed by the parent request handling\n@@ -50,44 +49,39 @@ public class MedicationPrescribeService extends CdsService<MedicationPrescribeRe\n    * @return a list of the information required.\n    * @throws RequestIncompleteException if the request cannot be parsed.\n    */\n-  public List<CoverageRequirementRuleQuery> makeQueries(\n-      MedicationPrescribeRequest orderReviewRequest, YamlConfig options)\n-      throws RequestIncompleteException {\n+\n+\n+    public List<CoverageRequirementRuleQuery> makeQueries(MedicationPrescribeRequest orderReviewRequest, YamlConfig options) throws RequestIncompleteException {\n     List<CoverageRequirementRuleQuery> queries = new ArrayList<>();\n     Bundle medicationRequestBundle = orderReviewRequest.getPrefetch().getMedicationRequestBundle();\n-    List<MedicationRequest> medicationRequestList = Utilities\n-        .getResourcesOfTypeFromBundle(MedicationRequest.class, medicationRequestBundle);\n+    List<MedicationRequest> medicationRequestList = Utilities.getResourcesOfTypeFromBundle(MedicationRequest.class, medicationRequestBundle);\n     for (MedicationRequest medicationRequest : medicationRequestList) {\n-      List<Coding> codings = null;\n-      Patient patient = null;\n-      PractitionerRole practitionerRole = null;\n-      PatientInfo patientInfo = null;\n-      PractitionerRoleInfo practitionerRoleInfo = null;\n-      try {\n-        if (medicationRequest.hasMedicationCodeableConcept()) {\n-          codings = medicationRequest.getMedicationCodeableConcept().getCoding();\n-        } else {\n-          throw new RequestIncompleteException(\"Request bundle is missing medication code.\");\n+        List<Coding> codings = null;\n+        Patient patient = null;\n+        PractitionerRole practitionerRole = null;\n+        PatientInfo patientInfo = null;\n+        PractitionerRoleInfo practitionerRoleInfo = null;\n+        try {\n+                                                                          if (medicationRequest.hasMedicationCodeableConcept()) {\n+            codings = medicationRequest.getMedicationCodeableConcept().getCoding();\n+                                                                          } else {\n+                                                                            throw new RequestIncompleteException(\"Request bundle is missing medication code.\");\n+                                                                          }\n+                                                                          patient = (Patient) medicationRequest.getSubject().getResource();\n+                                                                          practitionerRole = (PractitionerRole) medicationRequest.getPerformer().getResource();\n+                                                                          if (practitionerRole == null) {\n+            throw new RequestIncompleteException(\"Cannot find practitioner role \" + medicationRequest.getPerformer().getReference());\n+                                                                          }\n+                                                                          patientInfo = Utilities.getPatientInfo(patient);\n+                                                                          practitionerRoleInfo = Utilities.getPractitionerRoleInfo(practitionerRole, options.isCheckPractitionerLocation());\n+                                                                          queries.addAll(this.resourcesToQueries(codings, patient == null, practitionerRole == null, patientInfo, practitionerRoleInfo));\n+        } catch (RequestIncompleteException e) {\n+          throw e;\n         }\n-        patient = (Patient) medicationRequest.getSubject().getResource();\n-        practitionerRole = (PractitionerRole) medicationRequest.getPerformer().getResource();\n-        if (practitionerRole == null) {\n-          throw new RequestIncompleteException(\"Cannot find practitioner role \" + medicationRequest\n-              .getPerformer()\n-              .getReference());\n+catch (FHIRException e) {\n+logger.error(\"Failed to parse medication request bundle\", e);\n         }\n-        patientInfo = Utilities.getPatientInfo(patient);\n-        practitionerRoleInfo = Utilities.getPractitionerRoleInfo(practitionerRole, options.isCheckPractitionerLocation());\n-\n-        queries.addAll(\n-            this.resourcesToQueries(codings, patient == null, practitionerRole == null, patientInfo,\n-                practitionerRoleInfo));\n-      } catch (RequestIncompleteException e) {\n-        throw e;\n-      } catch (FHIRException e) {\n-        logger.error(\"Failed to parse medication request bundle\", e);\n-      }\n     }\n     return queries;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 63
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/28/MedicationPrescribeService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/28/MedicationPrescribeService.java\nindex 5a84e84e46..9b82bcd5b8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/28/MedicationPrescribeService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/28/MedicationPrescribeService.java\n@@ -78,7 +78,6 @@ public class MedicationPrescribeService extends CdsService<MedicationPrescribeRe\n         }\n         patientInfo = Utilities.getPatientInfo(patient);\n         practitionerRoleInfo = Utilities.getPractitionerRoleInfo(practitionerRole, options.isCheckPractitionerLocation());\n-\n         queries.addAll(\n             this.resourcesToQueries(codings, patient == null, practitionerRole == null, patientInfo,\n                 practitionerRoleInfo));\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

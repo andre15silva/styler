@@ -1,0 +1,98 @@
+{
+    "error_id": "53",
+    "information": {
+        "errors": [
+            {
+                "line": "31",
+                "column": "15",
+                "severity": "error",
+                "message": "'}' at column 15 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "public class Equals implements Operator<Boolean> {\n\n    Equals() {}\n\n    @Override\n    public void validate(FilterContext context, FilterOperand[] operands) throws ValidationException {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "31",
+                    "column": "15",
+                    "severity": "error",
+                    "message": "'}' at column 15 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/53/Equals.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/53/Equals.java\nindex 07983d8618..f024ee3c27 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/53/Equals.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/53/Equals.java\n@@ -28,7 +28,8 @@ import org.eclipse.milo.opcua.stack.core.util.ArrayUtil;\n \n public class Equals implements Operator<Boolean> {\n \n-    Equals() {}\n+    Equals() {\n+    }\n \n     @Override\n     public void validate(FilterContext context, FilterOperand[] operands) throws ValidationException {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "31",
+                    "column": "15",
+                    "severity": "error",
+                    "message": "'}' at column 15 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/53/Equals.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/53/Equals.java\nindex 07983d8618..6b0bd7b192 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/53/Equals.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/53/Equals.java\n@@ -127,4 +127,4 @@ public class Equals implements Operator<Boolean> {\n         }\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/53/Equals.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/53/Equals.java\nindex 07983d8618..dc3396ddbd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/53/Equals.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/53/Equals.java\n@@ -14,7 +14,6 @@ import java.lang.reflect.Array;\n import java.util.Objects;\n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.sdk.server.events.FilterContext;\n import org.eclipse.milo.opcua.sdk.server.events.OperatorContext;\n import org.eclipse.milo.opcua.sdk.server.events.ValidationException;\n@@ -27,8 +26,8 @@ import org.eclipse.milo.opcua.stack.core.types.structured.FilterOperand;\n import org.eclipse.milo.opcua.stack.core.util.ArrayUtil;\n \n public class Equals implements Operator<Boolean> {\n-\n-    Equals() {}\n+    Equals() {\n+    }\n \n     @Override\n     public void validate(FilterContext context, FilterOperand[] operands) throws ValidationException {\n@@ -39,16 +38,11 @@ public class Equals implements Operator<Boolean> {\n \n     @Nullable\n     @Override\n-    public Boolean apply(\n-        OperatorContext context,\n-        BaseEventTypeNode eventNode,\n-        FilterOperand[] operands) throws UaException {\n-\n+    public Boolean apply(OperatorContext context, BaseEventTypeNode eventNode, FilterOperand[] operands) throws UaException {\n         validate(context, operands);\n \n         FilterOperand op0 = operands[0];\n         FilterOperand op1 = operands[1];\n-\n         Object value0 = context.resolve(op0, eventNode);\n         Object value1 = context.resolve(op1, eventNode);\n \n@@ -94,15 +88,14 @@ public class Equals implements Operator<Boolean> {\n \n     private static Object convertArray(@Nonnull Object array, BuiltinDataType targetType) {\n         int[] dimensions = ArrayUtil.getDimensions(array);\n-\n         Object flattened = ArrayUtil.flatten(array);\n         int length = Array.getLength(flattened);\n-\n         Object transformed = Array.newInstance(targetType.getBackingClass(), length);\n \n         for (int i = 0; i < length; i++) {\n             Object sourceValue = Array.get(flattened, i);\n             Object targetValue = ImplicitConversions.convert(sourceValue, targetType);\n+\n             Array.set(transformed, i, targetValue);\n         }\n \n@@ -126,5 +119,4 @@ public class Equals implements Operator<Boolean> {\n             return BuiltinDataType.fromBackingClass(o.getClass());\n         }\n     }\n-\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "31",
+                    "column": "15",
+                    "severity": "error",
+                    "message": "'}' at column 15 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "31",
+                    "column": "16",
+                    "severity": "error",
+                    "message": "'}' at column 16 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/53/Equals.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/53/Equals.java\nindex 07983d8618..3b3db586f9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/53/Equals.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/53/Equals.java\n@@ -28,9 +28,9 @@ import org.eclipse.milo.opcua.stack.core.util.ArrayUtil;\n \n public class Equals implements Operator<Boolean> {\n \n-    Equals() {}\n+    Equals() { }\n \n-    @Override\n+        @Override\n     public void validate(FilterContext context, FilterOperand[] operands) throws ValidationException {\n         if (operands.length < 2) {\n             throw new ValidationException(StatusCodes.Bad_FilterOperandCountMismatch);\n",
+            "diff_size": 2
+        }
+    ]
+}

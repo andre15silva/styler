@@ -1,0 +1,65 @@
+{
+    "error_id": "22",
+    "information": {
+        "errors": [
+            {
+                "line": "64",
+                "severity": "error",
+                "message": "Line is longer than 130 characters (found 139).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "                .stream()\n                .filter(key -> ((String) key).startsWith(\"monitor\"))\n                .forEach(key -> assertNotEquals(originalProperties.getProperty((String) key), properties.getPropertyString((String) key)));\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler/22/MPDPropertiesOverrideTest.java\nindex 3f8aaea771..b94d26e041 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler/22/MPDPropertiesOverrideTest.java\n@@ -60,7 +60,7 @@ public class MPDPropertiesOverrideTest {\n         originalProperties.load(is);\n         originalProperties.keySet()\n                 .stream()\n-                .filter(key -> ((String) key).startsWith(\"monitor\"))\n-                .forEach(key -> assertNotEquals(originalProperties.getProperty((String) key), properties.getPropertyString((String) key)));\n+                .filter(key -> ((String) key).startsWith(\"monitor\")).forEach(key->assertNotEquals(originalProperties\n+                . getProperty ((String) key), properties.getPropertyString((String) key)));\n     }\n }\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Line is longer than 130 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/intellij/22/MPDPropertiesOverrideTest.java\nindex 3f8aaea771..c10b00cf28 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/intellij/22/MPDPropertiesOverrideTest.java\n@@ -29,8 +29,8 @@ public class MPDPropertiesOverrideTest {\n         properties.load(is);\n \n         String propPath = MPDPropertiesOverrideTest.class.getResource(\"/\")\n-                .toString()\n-                .replace(\"file:\", \"\");\n+            .toString()\n+            .replace(\"file:\", \"\");\n \n         propertiesFile = new File(propPath + \"javampd.properties\");\n         try {\n@@ -59,8 +59,8 @@ public class MPDPropertiesOverrideTest {\n         InputStream is = MPDProperties.class.getResourceAsStream(\"/mpd.properties\");\n         originalProperties.load(is);\n         originalProperties.keySet()\n-                .stream()\n-                .filter(key -> ((String) key).startsWith(\"monitor\"))\n-                .forEach(key -> assertNotEquals(originalProperties.getProperty((String) key), properties.getPropertyString((String) key)));\n+            .stream()\n+            .filter(key -> ((String) key).startsWith(\"monitor\"))\n+            .forEach(key -> assertNotEquals(originalProperties.getProperty((String) key), properties.getPropertyString((String) key)));\n     }\n }\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Line is longer than 130 characters (found 216).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/codebuff/22/MPDPropertiesOverrideTest.java\nindex 3f8aaea771..94cc4b5b9a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/codebuff/22/MPDPropertiesOverrideTest.java\n@@ -7,7 +7,6 @@ import org.junit.BeforeClass;\n import org.junit.Test;\n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n-\n import java.io.File;\n import java.io.FileWriter;\n import java.io.IOException;\n@@ -17,20 +16,20 @@ import java.util.Properties;\n import static org.junit.Assert.assertNotEquals;\n \n public class MPDPropertiesOverrideTest {\n-    private static final Logger LOGGER = LoggerFactory.getLogger(MPDPropertiesOverrideTest.class);\n \n+    private static final Logger LOGGER = LoggerFactory.getLogger(MPDPropertiesOverrideTest.class);\n     private static File propertiesFile;\n     private MPDProperties properties;\n \n     @BeforeClass\n     public static void beforeClass() throws IOException {\n         InputStream is = MPDPropertiesOverrideTest.class.getResourceAsStream(\"/overrides/javampd.properties\");\n+\n         Properties properties = new Properties();\n+\n         properties.load(is);\n \n-        String propPath = MPDPropertiesOverrideTest.class.getResource(\"/\")\n-                .toString()\n-                .replace(\"file:\", \"\");\n+        String propPath = MPDPropertiesOverrideTest.class.getResource(\"/\").toString().replace(\"file:\", \"\");\n \n         propertiesFile = new File(propPath + \"javampd.properties\");\n         try {\n@@ -56,11 +55,10 @@ public class MPDPropertiesOverrideTest {\n     @Test\n     public void testAllMonitorOverrides() throws Exception {\n         Properties originalProperties = new Properties();\n+\n         InputStream is = MPDProperties.class.getResourceAsStream(\"/mpd.properties\");\n+\n         originalProperties.load(is);\n-        originalProperties.keySet()\n-                .stream()\n-                .filter(key -> ((String) key).startsWith(\"monitor\"))\n-                .forEach(key -> assertNotEquals(originalProperties.getProperty((String) key), properties.getPropertyString((String) key)));\n+        originalProperties.keySet().stream().filter(key-> ((String) key).startsWith(\"monitor\")).forEach(key->assertNotEquals(originalProperties.getProperty((String) key), properties.getPropertyString((String) key)));\n     }\n }\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_random/22/MPDPropertiesOverrideTest.java\nindex 3f8aaea771..e9f09450bf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_random/22/MPDPropertiesOverrideTest.java\n@@ -61,6 +61,8 @@ public class MPDPropertiesOverrideTest {\n         originalProperties.keySet()\n                 .stream()\n                 .filter(key -> ((String) key).startsWith(\"monitor\"))\n-                .forEach(key -> assertNotEquals(originalProperties.getProperty((String) key), properties.getPropertyString((String) key)));\n+                .forEach(key->assertNotEquals(originalProperties.getProperty ((String\n+                )key),properties.getPropertyString((String)key\n+                )));\n     }\n }\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_three_grams/22/MPDPropertiesOverrideTest.java\nindex 3f8aaea771..b94d26e041 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/22/MPDPropertiesOverrideTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_three_grams/22/MPDPropertiesOverrideTest.java\n@@ -60,7 +60,7 @@ public class MPDPropertiesOverrideTest {\n         originalProperties.load(is);\n         originalProperties.keySet()\n                 .stream()\n-                .filter(key -> ((String) key).startsWith(\"monitor\"))\n-                .forEach(key -> assertNotEquals(originalProperties.getProperty((String) key), properties.getPropertyString((String) key)));\n+                .filter(key -> ((String) key).startsWith(\"monitor\")).forEach(key->assertNotEquals(originalProperties\n+                . getProperty ((String) key), properties.getPropertyString((String) key)));\n     }\n }\n\\ No newline at end of file\n",
+            "diff_size": 2
+        }
+    ]
+}

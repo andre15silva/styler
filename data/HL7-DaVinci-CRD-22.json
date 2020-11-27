@@ -1,0 +1,215 @@
+{
+    "error_id": "22",
+    "information": {
+        "errors": [
+            {
+                "line": "46",
+                "column": "55",
+                "severity": "warning",
+                "message": "WhitespaceAround: '{' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "      ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());\n      Resource[] cqlFileResources = resolver.getResources(\"/rules/cms/**/*.cql\");\n      for (Resource cqlFileResource: cqlFileResources){\n        String fileName = cqlFileResource.getFile().getName();\n        String code = fileName.substring(0,fileName.indexOf('_') == -1 ? fileName.indexOf('.') : fileName.indexOf('_'));\n        String codeSystemShortName  = cqlFileResource.getFile().getParentFile().getName();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/22/Application.java\nindex fde288cef6..5fbfed6805 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/22/Application.java\n@@ -43,7 +43,7 @@ public class Application {\n     return (args) -> {\n       ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());\n       Resource[] cqlFileResources = resolver.getResources(\"/rules/cms/**/*.cql\");\n-      for (Resource cqlFileResource: cqlFileResources){\n+      for (Resource cqlFileResource: cqlFileResources) {\n         String fileName = cqlFileResource.getFile().getName();\n         String code = fileName.substring(0,fileName.indexOf('_') == -1 ? fileName.indexOf('.') : fileName.indexOf('_'));\n         String codeSystemShortName  = cqlFileResource.getFile().getParentFile().getName();\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/22/Application.java\nindex fde288cef6..75e5e5b2b9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/22/Application.java\n@@ -34,7 +34,6 @@ public class Application {\n   }\n \n \n-\n   /**\n    * Load all rules from the folder cql_rules, there should be a rule and rule info file.\n    */\n@@ -43,20 +42,21 @@ public class Application {\n     return (args) -> {\n       ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());\n       Resource[] cqlFileResources = resolver.getResources(\"/rules/cms/**/*.cql\");\n-      for (Resource cqlFileResource: cqlFileResources){\n+      for (Resource cqlFileResource : cqlFileResources) {\n         String fileName = cqlFileResource.getFile().getName();\n-        String code = fileName.substring(0,fileName.indexOf('_') == -1 ? fileName.indexOf('.') : fileName.indexOf('_'));\n-        String codeSystemShortName  = cqlFileResource.getFile().getParentFile().getName();\n+        String code =\n+            fileName.substring(0, fileName.indexOf('_') == -1 ? fileName.indexOf('.') : fileName.indexOf('_'));\n+        String codeSystemShortName = cqlFileResource.getFile().getParentFile().getName();\n         String payorNameShortName = cqlFileResource.getFile().getParentFile().getParentFile().getName();\n         String cql = new String(Files.readAllBytes(Paths.get(cqlFileResource.getURI())), StandardCharsets.UTF_8);\n \n         String codeSystem = ShortNameMaps.CODE_SYSTEM_SHORT_NAME_TO_FULL_NAME.get(codeSystemShortName);\n         String payorName = ShortNameMaps.PAYOR_SHORT_NAME_TO_FULL_NAME.get(payorNameShortName);\n         CoverageRequirementRule rule = new CoverageRequirementRule()\n-                                            .setPayor(payorName)\n-                                            .setCode(code)\n-                                            .setCodeSystem(codeSystem)\n-                                            .setCql(cql);\n+            .setPayor(payorName)\n+            .setCode(code)\n+            .setCodeSystem(codeSystem)\n+            .setCql(cql);\n         repository.save(rule);\n       }\n     };\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 0, expected is 2, indentation should be the same level as line 39.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/22/Application.java\nindex fde288cef6..c17b088d88 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/22/Application.java\n@@ -33,9 +33,7 @@ public class Application {\n     SpringApplication.run(Application.class, args);\n   }\n \n-\n-\n-  /**\n+/**\n    * Load all rules from the folder cql_rules, there should be a rule and rule info file.\n    */\n   @Bean\n@@ -43,24 +41,23 @@ public class Application {\n     return (args) -> {\n       ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());\n       Resource[] cqlFileResources = resolver.getResources(\"/rules/cms/**/*.cql\");\n-      for (Resource cqlFileResource: cqlFileResources){\n+      for (Resource cqlFileResource : cqlFileResources) {\n         String fileName = cqlFileResource.getFile().getName();\n         String code = fileName.substring(0,fileName.indexOf('_') == -1 ? fileName.indexOf('.') : fileName.indexOf('_'));\n-        String codeSystemShortName  = cqlFileResource.getFile().getParentFile().getName();\n+        String codeSystemShortName = cqlFileResource.getFile().getParentFile().getName();\n         String payorNameShortName = cqlFileResource.getFile().getParentFile().getParentFile().getName();\n         String cql = new String(Files.readAllBytes(Paths.get(cqlFileResource.getURI())), StandardCharsets.UTF_8);\n \n         String codeSystem = ShortNameMaps.CODE_SYSTEM_SHORT_NAME_TO_FULL_NAME.get(codeSystemShortName);\n         String payorName = ShortNameMaps.PAYOR_SHORT_NAME_TO_FULL_NAME.get(payorNameShortName);\n-        CoverageRequirementRule rule = new CoverageRequirementRule()\n-                                            .setPayor(payorName)\n+        CoverageRequirementRule rule = new CoverageRequirementRule().setPayor(payorName)\n                                             .setCode(code)\n                                             .setCodeSystem(codeSystem)\n                                             .setCql(cql);\n-        repository.save(rule);\n+repository.save(rule);\n       }\n     };\n   }\n \n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 44.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "column": "18",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '->' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "warning",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "'for' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "column": "79",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '?' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "51",
+                    "column": "79",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '?' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "51",
+                    "column": "101",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: ':' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 148).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "warning",
+                    "message": "'for rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "'block rcurly' has incorrect indentation level 11, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/22/Application.java\nindex fde288cef6..6db14f645c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/22/Application.java\n@@ -19,6 +19,7 @@ import org.springframework.core.io.Resource;\n import org.springframework.core.io.support.PathMatchingResourcePatternResolver;\n import org.springframework.core.io.support.ResourcePatternResolver;\n \n+\n @SpringBootApplication\n // Finds the FhirServlet and runs it\n @ServletComponentScan\n@@ -29,38 +30,34 @@ import org.springframework.core.io.support.ResourcePatternResolver;\n public class Application {\n \n \n-  public static void main(String[] args) {\n+    public static void main(String[] args) {\n     SpringApplication.run(Application.class, args);\n-  }\n+    }\n \n \n \n   /**\n    * Load all rules from the folder cql_rules, there should be a rule and rule info file.\n    */\n-  @Bean\n-  public CommandLineRunner loadData(DataRepository repository) {\n-    return (args) -> {\n-      ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());\n-      Resource[] cqlFileResources = resolver.getResources(\"/rules/cms/**/*.cql\");\n-      for (Resource cqlFileResource: cqlFileResources){\n-        String fileName = cqlFileResource.getFile().getName();\n-        String code = fileName.substring(0,fileName.indexOf('_') == -1 ? fileName.indexOf('.') : fileName.indexOf('_'));\n-        String codeSystemShortName  = cqlFileResource.getFile().getParentFile().getName();\n-        String payorNameShortName = cqlFileResource.getFile().getParentFile().getParentFile().getName();\n-        String cql = new String(Files.readAllBytes(Paths.get(cqlFileResource.getURI())), StandardCharsets.UTF_8);\n-\n-        String codeSystem = ShortNameMaps.CODE_SYSTEM_SHORT_NAME_TO_FULL_NAME.get(codeSystemShortName);\n-        String payorName = ShortNameMaps.PAYOR_SHORT_NAME_TO_FULL_NAME.get(payorNameShortName);\n-        CoverageRequirementRule rule = new CoverageRequirementRule()\n-                                            .setPayor(payorName)\n-                                            .setCode(code)\n-                                            .setCodeSystem(codeSystem)\n-                                            .setCql(cql);\n-        repository.save(rule);\n-      }\n-    };\n-  }\n \n \n-}\n+    @Bean\n+    public CommandLineRunner loadData(DataRepository repository) {\n+    return (args)-> {\n+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());\n+        Resource[] cqlFileResources = resolver.getResources(\"/rules/cms/**/*.cql\");\n+        for (Resource cqlFileResource : cqlFileResources) {\n+               String fileName = cqlFileResource.getFile().getName();\n+               String code = fileName.substring(0, fileName.indexOf('_') == -1?fileName.indexOf('.'):\n+                                                   fileName.indexOf('_'));\n+               String codeSystemShortName = cqlFileResource.getFile().getParentFile().getName();\n+               String payorNameShortName = cqlFileResource.getFile().getParentFile().getParentFile().getName();\n+               String cql = new String(Files.readAllBytes(Paths.get(cqlFileResource.getURI())), StandardCharsets.UTF_8);\n+               String codeSystem = ShortNameMaps.CODE_SYSTEM_SHORT_NAME_TO_FULL_NAME.get(codeSystemShortName);\n+               String payorName = ShortNameMaps.PAYOR_SHORT_NAME_TO_FULL_NAME.get(payorNameShortName);\n+               CoverageRequirementRule rule = new CoverageRequirementRule().setPayor(payorName).setCode(code).setCodeSystem(codeSystem).setCql(cql);\n+               repository.save(rule);\n+        }\n+           };\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 46
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/22/Application.java\nindex fde288cef6..5fbfed6805 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/22/Application.java\n@@ -43,7 +43,7 @@ public class Application {\n     return (args) -> {\n       ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());\n       Resource[] cqlFileResources = resolver.getResources(\"/rules/cms/**/*.cql\");\n-      for (Resource cqlFileResource: cqlFileResources){\n+      for (Resource cqlFileResource: cqlFileResources) {\n         String fileName = cqlFileResource.getFile().getName();\n         String code = fileName.substring(0,fileName.indexOf('_') == -1 ? fileName.indexOf('.') : fileName.indexOf('_'));\n         String codeSystemShortName  = cqlFileResource.getFile().getParentFile().getName();\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/22/Application.java\nindex fde288cef6..5fbfed6805 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/22/Application.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/22/Application.java\n@@ -43,7 +43,7 @@ public class Application {\n     return (args) -> {\n       ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());\n       Resource[] cqlFileResources = resolver.getResources(\"/rules/cms/**/*.cql\");\n-      for (Resource cqlFileResource: cqlFileResources){\n+      for (Resource cqlFileResource: cqlFileResources) {\n         String fileName = cqlFileResource.getFile().getName();\n         String code = fileName.substring(0,fileName.indexOf('_') == -1 ? fileName.indexOf('.') : fileName.indexOf('_'));\n         String codeSystemShortName  = cqlFileResource.getFile().getParentFile().getName();\n",
+            "diff_size": 1
+        }
+    ]
+}

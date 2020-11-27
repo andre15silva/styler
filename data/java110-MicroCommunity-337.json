@@ -1,0 +1,166 @@
+{
+    "error_id": "337",
+    "information": {
+        "errors": [
+            {
+                "line": "39",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 154).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<StoreDto> storeDtos = BeanConvertUtil.covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil.beanCovertMap(storeDto)), StoreDto.class);\n\n        if (storeDtos == null || storeDtos.size() == 0) {\n            return storeDtos;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/337/StoreInnerServiceSMOImpl.java\nindex 7ff3c8dd8d..794b892008 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/337/StoreInnerServiceSMOImpl.java\n@@ -34,9 +34,9 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             storeDto.setPage((page - 1) * storeDto.getRow());\n-        }\n+        } List<StoreDto>storeDtos=BeanConvertUtil.\n \n-        List<StoreDto> storeDtos = BeanConvertUtil.covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil.beanCovertMap(storeDto)), StoreDto.class);\n+        covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil.beanCovertMap(storeDto)), StoreDto.class);\n \n         if (storeDtos == null || storeDtos.size() == 0) {\n             return storeDtos;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/337/StoreInnerServiceSMOImpl.java\nindex 7ff3c8dd8d..f34e0a4181 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/337/StoreInnerServiceSMOImpl.java\n@@ -21,26 +21,26 @@ import java.util.List;\n  * add by wuxw 2019/9/20\n  **/\n @RestController\n-public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreInnerServiceSMO {\n+public class StoreInnerServiceSMOImpl extends BaseServiceSMO implements IStoreInnerServiceSMO {\n \n-    @Autowired\n-    private IStoreServiceDao storeServiceDaoImpl;\n+  @Autowired\n+  private IStoreServiceDao storeServiceDaoImpl;\n \n-    @Override\n-    public List<StoreDto> getStores(@RequestBody StoreDto storeDto) {\n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+  @Override\n+  public List<StoreDto> getStores(@RequestBody StoreDto storeDto) {\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = storeDto.getPage();\n+    int page = storeDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            storeDto.setPage((page - 1) * storeDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      storeDto.setPage((page - 1) * storeDto.getRow());\n+    }\n \n-        List<StoreDto> storeDtos = BeanConvertUtil.covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil.beanCovertMap(storeDto)), StoreDto.class);\n+    List<StoreDto> storeDtos = BeanConvertUtil.covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil.beanCovertMap(storeDto)), StoreDto.class);\n \n-        if (storeDtos == null || storeDtos.size() == 0) {\n-            return storeDtos;\n-        }\n+    if (storeDtos == null || storeDtos.size() == 0) {\n+      return storeDtos;\n+    }\n \n       /*  String[] userIds = getUserIds(ownerCars);\n         //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n@@ -49,15 +49,15 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n         for (OwnerCarDto ownerCar : ownerCars) {\n             refreshOwnerCar(ownerCar, users);\n         }*/\n-        return storeDtos;\n-    }\n+    return storeDtos;\n+  }\n \n \n-    public IStoreServiceDao getStoreServiceDaoImpl() {\n-        return storeServiceDaoImpl;\n-    }\n+  public IStoreServiceDao getStoreServiceDaoImpl() {\n+    return storeServiceDaoImpl;\n+  }\n \n-    public void setStoreServiceDaoImpl(IStoreServiceDao storeServiceDaoImpl) {\n-        this.storeServiceDaoImpl = storeServiceDaoImpl;\n-    }\n+  public void setStoreServiceDaoImpl(IStoreServiceDao storeServiceDaoImpl) {\n+    this.storeServiceDaoImpl = storeServiceDaoImpl;\n+  }\n }\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 154).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/337/StoreInnerServiceSMOImpl.java\nindex 7ff3c8dd8d..050ebd7d89 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/337/StoreInnerServiceSMOImpl.java\n@@ -28,7 +28,8 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n \n     @Override\n     public List<StoreDto> getStores(@RequestBody StoreDto storeDto) {\n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n         int page = storeDto.getPage();\n \n@@ -41,8 +42,7 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n         if (storeDtos == null || storeDtos.size() == 0) {\n             return storeDtos;\n         }\n-\n-      /*  String[] userIds = getUserIds(ownerCars);\n+ /*  String[] userIds = getUserIds(ownerCars);\n         //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n         List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n \n@@ -60,4 +60,4 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n     public void setStoreServiceDaoImpl(IStoreServiceDao storeServiceDaoImpl) {\n         this.storeServiceDaoImpl = storeServiceDaoImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 154).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/337/StoreInnerServiceSMOImpl.java\nindex 7ff3c8dd8d..1eeac1d1f9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/337/StoreInnerServiceSMOImpl.java\n@@ -9,7 +9,6 @@ import com.java110.store.dao.IStoreServiceDao;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -20,8 +19,10 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/9/20\n  **/\n+\n+\n @RestController\n-public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreInnerServiceSMO {\n+public class StoreInnerServiceSMOImpl extends BaseServiceSMO implements IStoreInnerServiceSMO {\n \n     @Autowired\n     private IStoreServiceDao storeServiceDaoImpl;\n@@ -29,15 +30,12 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n     @Override\n     public List<StoreDto> getStores(@RequestBody StoreDto storeDto) {\n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = storeDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             storeDto.setPage((page - 1) * storeDto.getRow());\n         }\n \n         List<StoreDto> storeDtos = BeanConvertUtil.covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil.beanCovertMap(storeDto)), StoreDto.class);\n-\n         if (storeDtos == null || storeDtos.size() == 0) {\n             return storeDtos;\n         }\n@@ -49,10 +47,10 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n         for (OwnerCarDto ownerCar : ownerCars) {\n             refreshOwnerCar(ownerCar, users);\n         }*/\n+\n         return storeDtos;\n     }\n \n-\n     public IStoreServiceDao getStoreServiceDaoImpl() {\n         return storeServiceDaoImpl;\n     }\n@@ -60,4 +58,4 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n     public void setStoreServiceDaoImpl(IStoreServiceDao storeServiceDaoImpl) {\n         this.storeServiceDaoImpl = storeServiceDaoImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 159).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "38",
+                    "column": "32",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "38",
+                    "column": "110",
+                    "severity": "error",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "38",
+                    "column": "126",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "38",
+                    "column": "136",
+                    "severity": "error",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "38",
+                    "column": "138",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "38",
+                    "column": "147",
+                    "severity": "error",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "38",
+                    "column": "155",
+                    "severity": "error",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/337/StoreInnerServiceSMOImpl.java\nindex 7ff3c8dd8d..59c17e2a5e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/337/StoreInnerServiceSMOImpl.java\n@@ -35,29 +35,28 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n         if (page != PageDto.DEFAULT_PAGE) {\n             storeDto.setPage((page - 1) * storeDto.getRow());\n         }\n+        List<StoreDto>storeDtos= BeanConvertUtil.covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil. beanCovertMap (storeDto )),StoreDto. class ); if\n+            (storeDtos == null || storeDtos.size() == 0) {\n+             return storeDtos;\n+         }\n \n-        List<StoreDto> storeDtos = BeanConvertUtil.covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil.beanCovertMap(storeDto)), StoreDto.class);\n-\n-        if (storeDtos == null || storeDtos.size() == 0) {\n-            return storeDtos;\n-        }\n-\n-      /*  String[] userIds = getUserIds(ownerCars);\n+       /*  String[] userIds = getUserIds(ownerCars);\n         //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n         List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n \n         for (OwnerCarDto ownerCar : ownerCars) {\n             refreshOwnerCar(ownerCar, users);\n         }*/\n-        return storeDtos;\n-    }\n+         return storeDtos;\n+     }\n \n \n-    public IStoreServiceDao getStoreServiceDaoImpl() {\n-        return storeServiceDaoImpl;\n-    }\n+     public IStoreServiceDao getStoreServiceDaoImpl() {\n+         return storeServiceDaoImpl;\n+     }\n \n-    public void setStoreServiceDaoImpl(IStoreServiceDao storeServiceDaoImpl) {\n-        this.storeServiceDaoImpl = storeServiceDaoImpl;\n-    }\n-}\n+     public void setStoreServiceDaoImpl(IStoreServiceDao storeServiceDaoImpl) {\n+         this.storeServiceDaoImpl = storeServiceDaoImpl;\n+     }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 21
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/337/StoreInnerServiceSMOImpl.java\nindex 7ff3c8dd8d..794b892008 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/337/StoreInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/337/StoreInnerServiceSMOImpl.java\n@@ -34,9 +34,9 @@ public class StoreInnerServiceSMOImpl  extends BaseServiceSMO implements IStoreI\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             storeDto.setPage((page - 1) * storeDto.getRow());\n-        }\n+        } List<StoreDto>storeDtos=BeanConvertUtil.\n \n-        List<StoreDto> storeDtos = BeanConvertUtil.covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil.beanCovertMap(storeDto)), StoreDto.class);\n+        covertBeanList(storeServiceDaoImpl.getStores(BeanConvertUtil.beanCovertMap(storeDto)), StoreDto.class);\n \n         if (storeDtos == null || storeDtos.size() == 0) {\n             return storeDtos;\n",
+            "diff_size": 2
+        }
+    ]
+}

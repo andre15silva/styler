@@ -1,0 +1,212 @@
+{
+    "error_id": "40",
+    "information": {
+        "errors": [
+            {
+                "line": "43",
+                "column": "112",
+                "severity": "warning",
+                "message": "'+' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "        ResponseStatus status) throws Exception {\n        if (!TranscoderUtils.hasBinaryFlags(flags)) {\n            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-binary \" +\n                \"document for id \" + id + \", could not decode.\");\n        }\n        byte[] data = new byte[content.readableBytes()];",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "112",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "112",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/40/ByteArrayTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/intellij/40/ByteArrayTranscoder.java\nindex 31308cd685..d151679df8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/40/ByteArrayTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/intellij/40/ByteArrayTranscoder.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package com.couchbase.client.java.transcoder;\n \n import com.couchbase.client.core.lang.Tuple;\n@@ -26,7 +27,7 @@ import com.couchbase.client.java.error.TranscodingException;\n \n /**\n  * A transcoder to encode and decode {@link ByteArrayDocument}s.\n- *\n+ * <p>\n  * This transcoder makes it much easier to work with raw binary data than {@link BinaryTranscoder} since\n  * on retry and unsubscribe, buffers don't need to be freed and managed seperately. As a result, for all\n  * but special purpose cases it should be preferred over {@link BinaryTranscoder}.\n@@ -38,7 +39,7 @@ public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, b\n \n     @Override\n     protected ByteArrayDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+                                         ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasBinaryFlags(flags)) {\n             throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-binary \" +\n                 \"document for id \" + id + \", could not decode.\");\n@@ -63,7 +64,7 @@ public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, b\n \n     @Override\n     public ByteArrayDocument newDocument(String id, int expiry, byte[] content, long cas,\n-        MutationToken mutationToken) {\n+                                         MutationToken mutationToken) {\n         return ByteArrayDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n",
+            "diff_size": 4
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "40",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 162).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/40/ByteArrayTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/naturalize/40/ByteArrayTranscoder.java\nindex 31308cd685..b395dbcec4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/40/ByteArrayTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/naturalize/40/ByteArrayTranscoder.java\n@@ -37,13 +37,12 @@ import com.couchbase.client.java.error.TranscodingException;\n public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, byte[]> {\n \n     @Override\n-    protected ByteArrayDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+    protected ByteArrayDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags, ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasBinaryFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-binary \" +\n-                \"document for id \" + id + \", could not decode.\");\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-binary \" + \"document for id \" + id + \", could not decode.\");\n         }\n-        byte[] data = new byte[content.readableBytes()];\n+\n+byte[] data = new byte[content.readableBytes()];\n         content.readBytes(data);\n         return newDocument(id, expiry, data, cas);\n     }\n@@ -52,8 +51,7 @@ public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, b\n     protected Tuple2<ByteBuf, Integer> doEncode(ByteArrayDocument document) throws Exception {\n         return Tuple.create(\n             Unpooled.wrappedBuffer(document.content()),\n-            TranscoderUtils.BINARY_COMPAT_FLAGS\n-        );\n+            TranscoderUtils.BINARY_COMPAT_FLAGS);\n     }\n \n     @Override\n@@ -62,8 +60,7 @@ public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, b\n     }\n \n     @Override\n-    public ByteArrayDocument newDocument(String id, int expiry, byte[] content, long cas,\n-        MutationToken mutationToken) {\n+    public ByteArrayDocument newDocument(String id, int expiry, byte[] content, long cas, MutationToken mutationToken) {\n         return ByteArrayDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n@@ -71,4 +68,4 @@ public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, b\n     public Class<ByteArrayDocument> documentType() {\n         return ByteArrayDocument.class;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "41",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 162).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/40/ByteArrayTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/codebuff/40/ByteArrayTranscoder.java\nindex 31308cd685..4df3e810f5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/40/ByteArrayTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/codebuff/40/ByteArrayTranscoder.java\n@@ -34,15 +34,15 @@ import com.couchbase.client.java.error.TranscodingException;\n  * @author Michael Nitschinger\n  * @since 2.5.2\n  */\n-public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, byte[]> {\n \n+\n+public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, byte[]> {\n     @Override\n-    protected ByteArrayDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+    protected ByteArrayDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags, ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasBinaryFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-binary \" +\n-                \"document for id \" + id + \", could not decode.\");\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-binary \" + \"document for id \" + id + \", could not decode.\");\n         }\n+\n         byte[] data = new byte[content.readableBytes()];\n         content.readBytes(data);\n         return newDocument(id, expiry, data, cas);\n@@ -50,10 +50,7 @@ public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, b\n \n     @Override\n     protected Tuple2<ByteBuf, Integer> doEncode(ByteArrayDocument document) throws Exception {\n-        return Tuple.create(\n-            Unpooled.wrappedBuffer(document.content()),\n-            TranscoderUtils.BINARY_COMPAT_FLAGS\n-        );\n+        return Tuple.create(Unpooled.wrappedBuffer(document.content()), TranscoderUtils.BINARY_COMPAT_FLAGS);\n     }\n \n     @Override\n@@ -62,8 +59,7 @@ public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, b\n     }\n \n     @Override\n-    public ByteArrayDocument newDocument(String id, int expiry, byte[] content, long cas,\n-        MutationToken mutationToken) {\n+    public ByteArrayDocument newDocument(String id, int expiry, byte[] content, long cas, MutationToken mutationToken) {\n         return ByteArrayDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n@@ -71,4 +67,4 @@ public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, b\n     public Class<ByteArrayDocument> documentType() {\n         return ByteArrayDocument.class;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/40/ByteArrayTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_random/40/ByteArrayTranscoder.java\nindex 31308cd685..2ea7cd8138 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/40/ByteArrayTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_random/40/ByteArrayTranscoder.java\n@@ -40,35 +40,35 @@ public class ByteArrayTranscoder extends AbstractTranscoder<ByteArrayDocument, b\n     protected ByteArrayDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n         ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasBinaryFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-binary \" +\n-                \"document for id \" + id + \", could not decode.\");\n-        }\n-        byte[] data = new byte[content.readableBytes()];\n-        content.readBytes(data);\n-        return newDocument(id, expiry, data, cas);\n-    }\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-binary \"\n+            + \"document for id \" + id + \", could not decode.\");\n+     }\n+     byte[] data = new byte[content.readableBytes()];\n+     content.readBytes(data);\n+     return newDocument(id, expiry, data, cas);\n+ }\n \n-    @Override\n-    protected Tuple2<ByteBuf, Integer> doEncode(ByteArrayDocument document) throws Exception {\n-        return Tuple.create(\n-            Unpooled.wrappedBuffer(document.content()),\n-            TranscoderUtils.BINARY_COMPAT_FLAGS\n-        );\n-    }\n+ @Override\n+ protected Tuple2<ByteBuf, Integer> doEncode(ByteArrayDocument document) throws Exception {\n+     return Tuple.create(\n+         Unpooled.wrappedBuffer(document.content()),\n+         TranscoderUtils.BINARY_COMPAT_FLAGS\n+     );\n+ }\n \n-    @Override\n-    public ByteArrayDocument newDocument(String id, int expiry, byte[] content, long cas) {\n-        return ByteArrayDocument.create(id, expiry, content, cas);\n-    }\n+ @Override\n+ public ByteArrayDocument newDocument(String id, int expiry, byte[] content, long cas) {\n+     return ByteArrayDocument.create(id, expiry, content, cas);\n+ }\n \n-    @Override\n-    public ByteArrayDocument newDocument(String id, int expiry, byte[] content, long cas,\n-        MutationToken mutationToken) {\n-        return ByteArrayDocument.create(id, expiry, content, cas, mutationToken);\n-    }\n+ @Override\n+ public ByteArrayDocument newDocument(String id, int expiry, byte[] content, long cas,\n+     MutationToken mutationToken) {\n+     return ByteArrayDocument.create(id, expiry, content, cas, mutationToken);\n+ }\n \n-    @Override\n-    public Class<ByteArrayDocument> documentType() {\n-        return ByteArrayDocument.class;\n-    }\n+ @Override\n+ public Class<ByteArrayDocument> documentType() {\n+     return ByteArrayDocument.class;\n+ }\n }\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "112",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

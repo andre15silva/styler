@@ -1,0 +1,58 @@
+{
+    "error_id": "24",
+    "information": {
+        "errors": [
+            {
+                "line": "13",
+                "severity": "info",
+                "message": "La ligne correspond au motif ill\u00e9gal 'more than one blank line'.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck"
+            }
+        ]
+    },
+    "source_code": "\tprivate ArgumentDescriptor descriptor;\n\n\tprivate IActionItemRepository objectRepository;\n\n\n\t@Override",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/styler/24/StringValueHandler.java\nindex 3992826b2f..9d748d22ba 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/styler/24/StringValueHandler.java\n@@ -12,7 +12,6 @@ public class StringValueHandler implements IValueHandler{\n \n \tprivate IActionItemRepository objectRepository;\n \n-\n \t@Override\n \tpublic Object handle(final String group, final String argValue) {\n \t\treturn objectRepository.getUserVariables().getOrDefault(group, argValue);\n@@ -22,7 +21,7 @@ public class StringValueHandler implements IValueHandler{\n \tpublic void setArgumentDescriptor(final ArgumentDescriptor descriptor) {\n \t\tthis.descriptor = descriptor;\n \t}\n-\t\n+\n \t@Override\n \tpublic void setInjector(final Injector injector) {\n \t\tthis.injector = injector;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "info",
+                    "message": "La ligne correspond au motif ill\u00e9gal 'more than one blank line'.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/intellij/24/StringValueHandler.java\nindex 3992826b2f..b77b4a40ac 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/intellij/24/StringValueHandler.java\n@@ -4,28 +4,28 @@ import com.google.inject.Injector;\n import com.synaptix.toast.runtime.IActionItemRepository;\n import com.synaptix.toast.runtime.bean.ArgumentDescriptor;\n \n-public class StringValueHandler implements IValueHandler{\n+public class StringValueHandler implements IValueHandler {\n \n-\tprivate Injector injector;\n+    private Injector injector;\n \n-\tprivate ArgumentDescriptor descriptor;\n+    private ArgumentDescriptor descriptor;\n \n-\tprivate IActionItemRepository objectRepository;\n+    private IActionItemRepository objectRepository;\n \n \n-\t@Override\n-\tpublic Object handle(final String group, final String argValue) {\n-\t\treturn objectRepository.getUserVariables().getOrDefault(group, argValue);\n-\t}\n+    @Override\n+    public Object handle(final String group, final String argValue) {\n+        return objectRepository.getUserVariables().getOrDefault(group, argValue);\n+    }\n \n-\t@Override\n-\tpublic void setArgumentDescriptor(final ArgumentDescriptor descriptor) {\n-\t\tthis.descriptor = descriptor;\n-\t}\n-\t\n-\t@Override\n-\tpublic void setInjector(final Injector injector) {\n-\t\tthis.injector = injector;\n-\t\tthis.objectRepository = injector.getInstance(IActionItemRepository.class);\n-\t}\n+    @Override\n+    public void setArgumentDescriptor(final ArgumentDescriptor descriptor) {\n+        this.descriptor = descriptor;\n+    }\n+\n+    @Override\n+    public void setInjector(final Injector injector) {\n+        this.injector = injector;\n+        this.objectRepository = injector.getInstance(IActionItemRepository.class);\n+    }\n }\n\\ No newline at end of file\n",
+            "diff_size": 18
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/codebuff/24/StringValueHandler.java\nindex 3992826b2f..c0adce8b16 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/codebuff/24/StringValueHandler.java\n@@ -4,28 +4,30 @@ import com.google.inject.Injector;\n import com.synaptix.toast.runtime.IActionItemRepository;\n import com.synaptix.toast.runtime.bean.ArgumentDescriptor;\n \n-public class StringValueHandler implements IValueHandler{\n+public class StringValueHandler implements IValueHandler {\n \n-\tprivate Injector injector;\n+    private Injector injector;\n \n-\tprivate ArgumentDescriptor descriptor;\n+    private ArgumentDescriptor descriptor;\n \n-\tprivate IActionItemRepository objectRepository;\n+    private IActionItemRepository objectRepository;\n \n+    @Override\n+    public Object handle(final String group,\n+                         final String argValue) {\n+                         return objectRepository.getUserVariables().getOrDefault(group, argValue);\n+    }\n \n-\t@Override\n-\tpublic Object handle(final String group, final String argValue) {\n-\t\treturn objectRepository.getUserVariables().getOrDefault(group, argValue);\n-\t}\n+    @Override\n+    public void setArgumentDescriptor(\n+        final ArgumentDescriptor descriptor) {\n+        this.descriptor = descriptor;\n+    }\n \n-\t@Override\n-\tpublic void setArgumentDescriptor(final ArgumentDescriptor descriptor) {\n-\t\tthis.descriptor = descriptor;\n-\t}\n-\t\n-\t@Override\n-\tpublic void setInjector(final Injector injector) {\n-\t\tthis.injector = injector;\n-\t\tthis.objectRepository = injector.getInstance(IActionItemRepository.class);\n-\t}\n+    @Override\n+    public void setInjector(\n+        final Injector injector) {\n+        this.injector = injector;\n+        this.objectRepository = injector.getInstance(IActionItemRepository.class);\n+    }\n }\n\\ No newline at end of file\n",
+            "diff_size": 24
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/styler_random/24/StringValueHandler.java\nindex 3992826b2f..9d748d22ba 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/styler_random/24/StringValueHandler.java\n@@ -12,7 +12,6 @@ public class StringValueHandler implements IValueHandler{\n \n \tprivate IActionItemRepository objectRepository;\n \n-\n \t@Override\n \tpublic Object handle(final String group, final String argValue) {\n \t\treturn objectRepository.getUserVariables().getOrDefault(group, argValue);\n@@ -22,7 +21,7 @@ public class StringValueHandler implements IValueHandler{\n \tpublic void setArgumentDescriptor(final ArgumentDescriptor descriptor) {\n \t\tthis.descriptor = descriptor;\n \t}\n-\t\n+\n \t@Override\n \tpublic void setInjector(final Injector injector) {\n \t\tthis.injector = injector;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/styler_three_grams/24/StringValueHandler.java\nindex 3992826b2f..9d748d22ba 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/errored/1/24/StringValueHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/toast-tk-toast-tk-engine/styler_three_grams/24/StringValueHandler.java\n@@ -12,7 +12,6 @@ public class StringValueHandler implements IValueHandler{\n \n \tprivate IActionItemRepository objectRepository;\n \n-\n \t@Override\n \tpublic Object handle(final String group, final String argValue) {\n \t\treturn objectRepository.getUserVariables().getOrDefault(group, argValue);\n@@ -22,7 +21,7 @@ public class StringValueHandler implements IValueHandler{\n \tpublic void setArgumentDescriptor(final ArgumentDescriptor descriptor) {\n \t\tthis.descriptor = descriptor;\n \t}\n-\t\n+\n \t@Override\n \tpublic void setInjector(final Injector injector) {\n \t\tthis.injector = injector;\n",
+            "diff_size": 2
+        }
+    ]
+}

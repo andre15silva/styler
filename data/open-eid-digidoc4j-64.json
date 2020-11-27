@@ -1,0 +1,118 @@
+{
+    "error_id": "64",
+    "information": {
+        "errors": [
+            {
+                "line": "88",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 143).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "      throw e;\n    } catch (Exception e) {\n      throw new NetworkException(\"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\", url, getServiceType(), e);\n    } finally {\n      try {\n        if (httpRequest != null) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "90",
+                    "column": "5",
+                    "severity": "error",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/styler/64/SkDataLoader.java\nindex 409c242d31..36a4a031d8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/styler/64/SkDataLoader.java\n@@ -84,41 +84,45 @@ public abstract class SkDataLoader extends CommonsDataLoader {\n       throw new ConnectionTimedOutException(url, getServiceType());\n     } catch (NetworkException e) {\n       throw e;\n-    } catch (Exception e) {\n-      throw new NetworkException(\"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\", url, getServiceType(), e);\n-    } finally {\n-      try {\n-        if (httpRequest != null) {\n-          httpRequest.releaseConnection();\n-        }\n-        if (httpResponse != null) {\n-          EntityUtils.consumeQuietly(httpResponse.getEntity());\n-        }\n-      } finally {\n-        Utils.closeQuietly(client);\n+    } catch (Exception e) { thrownewNetworkException\n+\n+\n+    (\n+\n+    \"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\", url, getServiceType(), e);\n+  } finally {\n+    try {\n+      if (httpRequest != null) {\n+        httpRequest.releaseConnection();\n+      }\n+      if (httpResponse != null) {\n+        EntityUtils.consumeQuietly(httpResponse.getEntity());\n       }\n+    } finally {\n+      Utils.closeQuietly(client);\n     }\n   }\n+}\n \n-  private void validateHttpResponse(CloseableHttpResponse httpResponse, String url) {\n-    if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_FORBIDDEN) {\n-      throw new ServiceAccessDeniedException(url, getServiceType());\n-    }\n+private void validateHttpResponse(CloseableHttpResponse httpResponse, String url) {\n+  if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_FORBIDDEN) {\n+    throw new ServiceAccessDeniedException(url, getServiceType());\n   }\n+}\n \n-  protected abstract void logAction(String url);\n+protected abstract void logAction(String url);\n \n-  protected abstract ServiceType getServiceType();\n+protected abstract ServiceType getServiceType();\n \n-  /*\n+/*\n    * ACCESSORS\n    */\n \n-  public void setUserAgent(String userAgent) {\n-    this.userAgent = userAgent;\n-  }\n+public void setUserAgent(String userAgent) {\n+  this.userAgent = userAgent;\n+}\n \n-  public String getUserAgent() {\n-    return userAgent;\n-  }\n+public String getUserAgent() {\n+  return userAgent;\n+}\n }\n",
+            "diff_size": 30
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/intellij/64/SkDataLoader.java\nindex 409c242d31..a426a8395e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/intellij/64/SkDataLoader.java\n@@ -1,12 +1,12 @@\n /* DigiDoc4J library\n-*\n-* This software is released under either the GNU Library General Public\n-* License (see LICENSE.LGPL).\n-*\n-* Note that the only valid version of the LGPL license as far as this\n-* project is concerned is the original GNU Library General Public License\n-* Version 2.1, February 1999\n-*/\n+ *\n+ * This software is released under either the GNU Library General Public\n+ * License (see LICENSE.LGPL).\n+ *\n+ * Note that the only valid version of the LGPL license as far as this\n+ * project is concerned is the original GNU Library General Public License\n+ * Version 2.1, February 1999\n+ */\n \n package org.digidoc4j.impl;\n \n@@ -85,7 +85,8 @@ public abstract class SkDataLoader extends CommonsDataLoader {\n     } catch (NetworkException e) {\n       throw e;\n     } catch (Exception e) {\n-      throw new NetworkException(\"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\", url, getServiceType(), e);\n+      throw new NetworkException(\"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\",\n+          url, getServiceType(), e);\n     } finally {\n       try {\n         if (httpRequest != null) {\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/naturalize/64/SkDataLoader.java\nindex 409c242d31..d966586ec6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/naturalize/64/SkDataLoader.java\n@@ -77,8 +77,7 @@ public abstract class SkDataLoader extends CommonsDataLoader {\n       httpResponse = this.getHttpResponse(client, httpRequest);\n       validateHttpResponse(httpResponse, url);\n       return readHttpResponse(httpResponse);\n-\n-    } catch (UnknownHostException e) {\n+  } catch (UnknownHostException e) {\n       throw new InvalidServiceUrlException(url, getServiceType());\n     } catch (InterruptedIOException e) {\n       throw new ConnectionTimedOutException(url, getServiceType());\n@@ -121,4 +120,4 @@ public abstract class SkDataLoader extends CommonsDataLoader {\n   public String getUserAgent() {\n     return userAgent;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/codebuff/64/SkDataLoader.java\nindex 409c242d31..3b1a5f28b7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/codebuff/64/SkDataLoader.java\n@@ -31,7 +31,6 @@ import org.digidoc4j.exceptions.TechnicalException;\n import org.digidoc4j.impl.asic.DataLoaderDecorator;\n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n-\n import java.io.ByteArrayInputStream;\n import java.io.InterruptedIOException;\n import java.net.URI;\n@@ -40,44 +39,45 @@ import java.net.UnknownHostException;\n /**\n  * Data loader implementation for SK ID Solutions AS\n  */\n+\n+\n public abstract class SkDataLoader extends CommonsDataLoader {\n \n-  protected static final Logger LOGGER = LoggerFactory.getLogger(SkDataLoader.class);\n-  private String userAgent;\n+    protected static final Logger LOGGER = LoggerFactory.getLogger(SkDataLoader.class);\n+    private String userAgent;\n \n-  protected SkDataLoader(Configuration configuration) {\n+    protected SkDataLoader(Configuration configuration) {\n     DataLoaderDecorator.decorateWithProxySettings(this, configuration);\n     DataLoaderDecorator.decorateWithSslSettings(this, configuration);\n-  }\n+    }\n \n-  @Override\n-  public byte[] post(final String url, final byte[] content) {\n+    @Override\n+    public byte[] post(final String url, final byte[] content) {\n     if (StringUtils.isBlank(url)) {\n-      throw new TechnicalException(\"SK endpoint url is unset\");\n+        throw new TechnicalException(\"SK endpoint url is unset\");\n     }\n     logAction(url);\n     if (StringUtils.isBlank(this.userAgent)) {\n-      throw new TechnicalException(\"Header <User-Agent> is unset\");\n+        throw new TechnicalException(\"Header <User-Agent> is unset\");\n     }\n     HttpPost httpRequest = null;\n     CloseableHttpResponse httpResponse = null;\n     CloseableHttpClient client = null;\n     try {\n-      final URI uri = URI.create(url.trim());\n-      httpRequest = new HttpPost(uri);\n-      httpRequest.setHeader(\"User-Agent\", this.userAgent);\n-      ByteArrayInputStream bis = new ByteArrayInputStream(content);\n-      HttpEntity httpEntity = new InputStreamEntity(bis, content.length);\n-      HttpEntity requestEntity = new BufferedHttpEntity(httpEntity);\n-      httpRequest.setEntity(requestEntity);\n-      if (StringUtils.isNotBlank(this.contentType)) {\n+        final URI uri = URI.create(url.trim());\n+        httpRequest = new HttpPost(uri);\n+        httpRequest.setHeader(\"User-Agent\", this.userAgent);\n+        ByteArrayInputStream bis = new ByteArrayInputStream(content);\n+        HttpEntity httpEntity = new InputStreamEntity(bis, content.length);\n+        HttpEntity requestEntity = new BufferedHttpEntity(httpEntity);\n+        httpRequest.setEntity(requestEntity);\n+        if (StringUtils.isNotBlank(this.contentType)) {\n         httpRequest.setHeader(CONTENT_TYPE, this.contentType);\n-      }\n-      client = getHttpClient(url);\n-      httpResponse = this.getHttpResponse(client, httpRequest);\n-      validateHttpResponse(httpResponse, url);\n-      return readHttpResponse(httpResponse);\n-\n+        }\n+        client = getHttpClient(url);\n+        httpResponse = this.getHttpResponse(client, httpRequest);\n+        validateHttpResponse(httpResponse, url);\n+        return readHttpResponse(httpResponse);\n     } catch (UnknownHostException e) {\n       throw new InvalidServiceUrlException(url, getServiceType());\n     } catch (InterruptedIOException e) {\n@@ -85,7 +85,10 @@ public abstract class SkDataLoader extends CommonsDataLoader {\n     } catch (NetworkException e) {\n       throw e;\n     } catch (Exception e) {\n-      throw new NetworkException(\"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\", url, getServiceType(), e);\n+      throw new NetworkException(\"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\",\n+          url,\n+          getServiceType(),\n+          e);\n     } finally {\n       try {\n         if (httpRequest != null) {\n@@ -98,27 +101,28 @@ public abstract class SkDataLoader extends CommonsDataLoader {\n         Utils.closeQuietly(client);\n       }\n     }\n-  }\n+    }\n \n-  private void validateHttpResponse(CloseableHttpResponse httpResponse, String url) {\n+    private void validateHttpResponse(CloseableHttpResponse httpResponse, String url) {\n     if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_FORBIDDEN) {\n-      throw new ServiceAccessDeniedException(url, getServiceType());\n+        throw new ServiceAccessDeniedException(url, getServiceType());\n+    }\n     }\n-  }\n-\n-  protected abstract void logAction(String url);\n \n-  protected abstract ServiceType getServiceType();\n+    protected abstract void logAction(String url);\n+    protected abstract ServiceType getServiceType();\n \n   /*\n    * ACCESSORS\n    */\n \n-  public void setUserAgent(String userAgent) {\n+\n+    public void setUserAgent(String userAgent) {\n     this.userAgent = userAgent;\n-  }\n+    }\n+\n \n-  public String getUserAgent() {\n+    public String getUserAgent() {\n     return userAgent;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 45
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "88",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "88",
+                    "column": "56",
+                    "severity": "error",
+                    "message": "'+' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "88",
+                    "column": "74",
+                    "severity": "error",
+                    "message": "'+' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "88",
+                    "column": "110",
+                    "severity": "error",
+                    "message": "'+' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "89",
+                    "column": "7",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "89",
+                    "column": "13",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/styler_random/64/SkDataLoader.java\nindex 409c242d31..1b96ade2b5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/styler_random/64/SkDataLoader.java\n@@ -85,7 +85,8 @@ public abstract class SkDataLoader extends CommonsDataLoader {\n     } catch (NetworkException e) {\n       throw e;\n     } catch (Exception e) {\n-      throw new NetworkException(\"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\", url, getServiceType(), e);\n+      throw new NetworkException (\"Unable to process <\"+ getServiceType()+ \"> POST call for service <\" + url +\">\"\n+      , url , getServiceType(), e);\n     } finally {\n       try {\n         if (httpRequest != null) {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "90",
+                    "column": "5",
+                    "severity": "error",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/styler_three_grams/64/SkDataLoader.java\nindex 409c242d31..36a4a031d8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/64/SkDataLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/styler_three_grams/64/SkDataLoader.java\n@@ -84,41 +84,45 @@ public abstract class SkDataLoader extends CommonsDataLoader {\n       throw new ConnectionTimedOutException(url, getServiceType());\n     } catch (NetworkException e) {\n       throw e;\n-    } catch (Exception e) {\n-      throw new NetworkException(\"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\", url, getServiceType(), e);\n-    } finally {\n-      try {\n-        if (httpRequest != null) {\n-          httpRequest.releaseConnection();\n-        }\n-        if (httpResponse != null) {\n-          EntityUtils.consumeQuietly(httpResponse.getEntity());\n-        }\n-      } finally {\n-        Utils.closeQuietly(client);\n+    } catch (Exception e) { thrownewNetworkException\n+\n+\n+    (\n+\n+    \"Unable to process <\" + getServiceType() + \"> POST call for service <\" + url + \">\", url, getServiceType(), e);\n+  } finally {\n+    try {\n+      if (httpRequest != null) {\n+        httpRequest.releaseConnection();\n+      }\n+      if (httpResponse != null) {\n+        EntityUtils.consumeQuietly(httpResponse.getEntity());\n       }\n+    } finally {\n+      Utils.closeQuietly(client);\n     }\n   }\n+}\n \n-  private void validateHttpResponse(CloseableHttpResponse httpResponse, String url) {\n-    if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_FORBIDDEN) {\n-      throw new ServiceAccessDeniedException(url, getServiceType());\n-    }\n+private void validateHttpResponse(CloseableHttpResponse httpResponse, String url) {\n+  if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_FORBIDDEN) {\n+    throw new ServiceAccessDeniedException(url, getServiceType());\n   }\n+}\n \n-  protected abstract void logAction(String url);\n+protected abstract void logAction(String url);\n \n-  protected abstract ServiceType getServiceType();\n+protected abstract ServiceType getServiceType();\n \n-  /*\n+/*\n    * ACCESSORS\n    */\n \n-  public void setUserAgent(String userAgent) {\n-    this.userAgent = userAgent;\n-  }\n+public void setUserAgent(String userAgent) {\n+  this.userAgent = userAgent;\n+}\n \n-  public String getUserAgent() {\n-    return userAgent;\n-  }\n+public String getUserAgent() {\n+  return userAgent;\n+}\n }\n",
+            "diff_size": 30
+        }
+    ]
+}

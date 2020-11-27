@@ -1,0 +1,88 @@
+{
+    "error_id": "79",
+    "information": {
+        "errors": [
+            {
+                "line": "50",
+                "severity": "warning",
+                "message": "Line is longer than 160 characters (found 161).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        metrics.forEach(record -> printWriter.printf(Locale.ENGLISH, \"%s %f %d\\n\", record.getMetricName(), record.getMetricValue(), record.getMetricUnixTime()));\n\n        printWriter.flush();\n        outputWriter.flush();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "Line is longer than 160 characters (found 161).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/79/GraphiteConnection.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/intellij/79/GraphiteConnection.java\nindex 27fd0ae5be..89b7a3172d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/79/GraphiteConnection.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/intellij/79/GraphiteConnection.java\n@@ -47,7 +47,8 @@ public class GraphiteConnection implements AutoCloseable {\n             printWriter = new PrintWriter(outputWriter, false);\n         }\n \n-        metrics.forEach(record -> printWriter.printf(Locale.ENGLISH, \"%s %f %d\\n\", record.getMetricName(), record.getMetricValue(), record.getMetricUnixTime()));\n+        metrics\n+            .forEach(record -> printWriter.printf(Locale.ENGLISH, \"%s %f %d\\n\", record.getMetricName(), record.getMetricValue(), record.getMetricUnixTime()));\n \n         printWriter.flush();\n         outputWriter.flush();\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "Line is longer than 160 characters (found 161).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/79/GraphiteConnection.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/naturalize/79/GraphiteConnection.java\nindex 27fd0ae5be..0724d97612 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/79/GraphiteConnection.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/naturalize/79/GraphiteConnection.java\n@@ -64,4 +64,4 @@ public class GraphiteConnection implements AutoCloseable {\n             LOGGER.warn(\"Failed to close a connection to Graphite.\", exception);\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/79/GraphiteConnection.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/codebuff/79/GraphiteConnection.java\nindex 27fd0ae5be..6e95e0cf0a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/79/GraphiteConnection.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/codebuff/79/GraphiteConnection.java\n@@ -2,7 +2,6 @@ package ru.kontur.vostok.hercules.graphite.sink;\n \n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n-\n import java.io.BufferedOutputStream;\n import java.io.IOException;\n import java.io.OutputStream;\n@@ -16,15 +15,21 @@ import java.util.Locale;\n /**\n  * Not thread-safe, expected to be used exclusively by one thread at any given moment.\n  */\n+\n+\n public class GraphiteConnection implements AutoCloseable {\n     private static final Logger LOGGER = LoggerFactory.getLogger(GraphiteConnection.class);\n \n     private final String server;\n+\n     private final int port;\n \n     private volatile Socket socket;\n+\n     private volatile OutputStream outputStream;\n+\n     private volatile OutputStreamWriter outputWriter;\n+\n     private volatile PrintWriter printWriter;\n \n     public GraphiteConnection(String server, int port) {\n@@ -34,25 +39,26 @@ public class GraphiteConnection implements AutoCloseable {\n \n     public void send(Collection<GraphiteMetricData> metrics) throws IOException {\n         LOGGER.info(\"Sending {} metric(s) to Graphite..\", metrics.size());\n-\n         if (printWriter == null) {\n             LOGGER.info(\"Opening a connection to Graphite server at {}:{}..\", server, port);\n-\n             socket = new Socket(server, port);\n             socket.setKeepAlive(true);\n             socket.setTcpNoDelay(true);\n-\n             outputStream = new BufferedOutputStream(socket.getOutputStream(), 64 * 1024);\n             outputWriter = new OutputStreamWriter(outputStream, StandardCharsets.US_ASCII);\n             printWriter = new PrintWriter(outputWriter, false);\n         }\n \n-        metrics.forEach(record -> printWriter.printf(Locale.ENGLISH, \"%s %f %d\\n\", record.getMetricName(), record.getMetricValue(), record.getMetricUnixTime()));\n-\n+        metrics.forEach(record -> printWriter.printf(\n+            Locale.ENGLISH,\n+            \"%s %f %d\\n\",\n+            record.getMetricName(),\n+            record.getMetricValue(),\n+            record.getMetricUnixTime()\n+                        ));\n         printWriter.flush();\n         outputWriter.flush();\n         outputStream.flush();\n-\n         LOGGER.info(\"Successfully sent {} metric(s) to Graphite.\", metrics.size());\n     }\n \n@@ -64,4 +70,4 @@ public class GraphiteConnection implements AutoCloseable {\n             LOGGER.warn(\"Failed to close a connection to Graphite.\", exception);\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "50",
+                    "column": "32",
+                    "severity": "warning",
+                    "message": "'->' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "50",
+                    "column": "32",
+                    "severity": "warning",
+                    "message": "'->' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/79/GraphiteConnection.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/styler_random/79/GraphiteConnection.java\nindex 27fd0ae5be..fcb89f7f5b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/79/GraphiteConnection.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/styler_random/79/GraphiteConnection.java\n@@ -47,9 +47,8 @@ public class GraphiteConnection implements AutoCloseable {\n             printWriter = new PrintWriter(outputWriter, false);\n         }\n \n-        metrics.forEach(record -> printWriter.printf(Locale.ENGLISH, \"%s %f %d\\n\", record.getMetricName(), record.getMetricValue(), record.getMetricUnixTime()));\n-\n-        printWriter.flush();\n+        metrics.forEach( record->printWriter.printf(Locale.ENGLISH,\"%s %f %d\\n\",record.\n+        getMetricName(),record.getMetricValue(),record.getMetricUnixTime()));printWriter.flush();\n         outputWriter.flush();\n         outputStream.flush();\n \n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "Line is longer than 160 characters (found 161).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

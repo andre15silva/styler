@@ -1,0 +1,405 @@
+{
+    "error_id": "19",
+    "information": {
+        "errors": [
+            {
+                "line": "16",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage name.neuhalfen.projects.crypto.bouncycastle.openpgp.keys.generation;\n\nimport java.util.Collection;\nimport name.neuhalfen.projects.crypto.bouncycastle.openpgp.algorithms.Feature;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/errored/1/19/KeySpecBuilderInterface.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/intellij/19/KeySpecBuilderInterface.java\nindex 03f955a9b0..1af7b5e701 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/errored/1/19/KeySpecBuilderInterface.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/intellij/19/KeySpecBuilderInterface.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package name.neuhalfen.projects.crypto.bouncycastle.openpgp.keys.generation;\n \n import java.util.Collection;\n@@ -48,7 +49,7 @@ public interface KeySpecBuilderInterface {\n    * decision is left wholly up to the implementation; the authors of this\n    * document do not claim any special wisdom on the issue and realize\n    * that accepted opinion may change.\n-   *\n+   * <p>\n    * The \"split key\" (0x10) and \"group key\" (0x80) flags are placed on a\n    * self-signature only; they are meaningless on a certification\n    * signature.  They SHOULD be placed only on a direct-key signature\n@@ -57,7 +58,6 @@ public interface KeySpecBuilderInterface {\n    * </blockquote>\n    *\n    * @param flags Flags to be enabled for this sub- or master-key\n-   *\n    * @return next step\n    */\n   WithDetailedConfiguration allowKeyToBeUsedTo(KeyFlag... flags);\n@@ -84,7 +84,7 @@ public interface KeySpecBuilderInterface {\n    * decision is left wholly up to the implementation; the authors of this\n    * document do not claim any special wisdom on the issue and realize\n    * that accepted opinion may change.\n-   *\n+   * <p>\n    * The \"split key\" (0x10) and \"group key\" (0x80) flags are placed on a\n    * self-signature only; they are meaningless on a certification\n    * signature.  They SHOULD be placed only on a direct-key signature\n@@ -98,6 +98,7 @@ public interface KeySpecBuilderInterface {\n \n   /**\n    * Copy all key flags, algorithms, ... from the parent key.\n+   *\n    * @return key spec.\n    */\n   KeySpec withInheritedSubPackets();\n@@ -115,7 +116,6 @@ public interface KeySpecBuilderInterface {\n      * </ul>\n      *\n      * @return keyspec\n-     *\n      * @see PGPCompressionAlgorithms#recommendedAlgorithmIds()\n      * @see PGPSymmetricEncryptionAlgorithms#recommendedAlgorithmIds()\n      * @see PGPHashAlgorithms#recommendedAlgorithmIds()\n@@ -160,7 +160,6 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @param algorithms set of preferred algorithms\n-     *\n      * @return next builder step\n      */\n     WithPreferredHashAlgorithms withPreferredSymmetricAlgorithms(\n@@ -183,7 +182,6 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @param algorithms set of preferred algorithms\n-     *\n      * @return next builder step\n      */\n     WithPreferredHashAlgorithms withPreferredSymmetricAlgorithms(\n@@ -208,7 +206,6 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @return next builder step\n-     *\n      * @see PGPSymmetricEncryptionAlgorithms#recommendedAlgorithms()\n      */\n     WithPreferredHashAlgorithms withDefaultSymmetricAlgorithms();\n@@ -238,7 +235,6 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @return next builder step\n-     *\n      * @see PGPSymmetricEncryptionAlgorithms#recommendedAlgorithms()\n      * @see PGPCompressionAlgorithms#recommendedAlgorithms()\n      * @see PGPHashAlgorithms#recommendedAlgorithms()\n@@ -265,9 +261,7 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @param algorithms the algorithms to set\n-     *\n      * @return next builder step\n-     *\n      * @see PGPHashAlgorithms#recommendedAlgorithms()\n      */\n     WithPreferredCompressionAlgorithms withPreferredHashAlgorithms(\n@@ -290,9 +284,7 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @param algorithms the algorithms to set\n-     *\n      * @return next builder step\n-     *\n      * @see PGPHashAlgorithms#recommendedAlgorithms()\n      */\n     WithPreferredCompressionAlgorithms withPreferredHashAlgorithms(\n@@ -315,7 +307,6 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @return next builder step\n-     *\n      * @see PGPHashAlgorithms#recommendedAlgorithms()\n      */\n     WithPreferredCompressionAlgorithms withDefaultHashAlgorithms();\n@@ -343,9 +334,7 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @param algorithms the algorithms to set\n-     *\n      * @return next builder step\n-     *\n      * @see PGPCompressionAlgorithms#recommendedAlgorithms()\n      */\n     WithFeatures withPreferredCompressionAlgorithms(PGPCompressionAlgorithms... algorithms);\n@@ -369,9 +358,7 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @param algorithms the algorithms to set\n-     *\n      * @return next builder step\n-     *\n      * @see PGPCompressionAlgorithms#recommendedAlgorithms()\n      */\n     WithFeatures withPreferredCompressionAlgorithms(\n@@ -396,7 +383,6 @@ public interface KeySpecBuilderInterface {\n      * </blockquote>\n      *\n      * @return next builder step\n-     *\n      * @see PGPCompressionAlgorithms#recommendedAlgorithms()\n      */\n     WithFeatures withDefaultCompressionAlgorithms();\n@@ -409,7 +395,6 @@ public interface KeySpecBuilderInterface {\n      * Add features to the key.\n      *\n      * @param feature the feature\n-     *\n      * @return next step\n      */\n     WithFeatures withFeature(Feature feature);\n",
+            "diff_size": 21
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/errored/1/19/KeySpecBuilderInterface.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/naturalize/19/KeySpecBuilderInterface.java\nindex 03f955a9b0..ceaa9393d1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/errored/1/19/KeySpecBuilderInterface.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/naturalize/19/KeySpecBuilderInterface.java\n@@ -417,4 +417,4 @@ public interface KeySpecBuilderInterface {\n     KeySpec done();\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 66.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 102.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 110.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "warning",
+                    "message": "'interface def ident' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "116",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 12, indentation should be the same level as line 135.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "135",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 12, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "136",
+                    "severity": "warning",
+                    "message": "'interface def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "138",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 155.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "155",
+                    "severity": "warning",
+                    "message": "'interface def ident' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 8, indentation should be the same level as line 179.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "179",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "179",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 117).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "181",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 12, indentation should be the same level as line 203.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "203",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 12, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "203",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "205",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 16, indentation should be the same level as line 229.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "229",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 16, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "231",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 20, indentation should be the same level as line 263.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "263",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 20, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "264",
+                    "severity": "warning",
+                    "message": "'interface def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "265",
+                    "severity": "warning",
+                    "message": "'INTERFACE_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "265",
+                    "severity": "warning",
+                    "message": "'interface def ident' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "267",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 8, indentation should be the same level as line 290.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "290",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "290",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "293",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 12, indentation should be the same level as line 316.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "316",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 12, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "316",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 117).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "318",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 16, indentation should be the same level as line 340.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "340",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 16, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "341",
+                    "severity": "warning",
+                    "message": "'interface def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "342",
+                    "severity": "warning",
+                    "message": "'INTERFACE_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "342",
+                    "severity": "warning",
+                    "message": "'interface def ident' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "344",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 8, indentation should be the same level as line 370.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "370",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "372",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 12, indentation should be the same level as line 398.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "398",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 12, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "398",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 109).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "400",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 16, indentation should be the same level as line 424.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "424",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 16, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "425",
+                    "severity": "warning",
+                    "message": "'interface def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "426",
+                    "severity": "warning",
+                    "message": "'INTERFACE_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "426",
+                    "severity": "warning",
+                    "message": "'interface def ident' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "428",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 4, expected is 8, indentation should be the same level as line 437.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "437",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "440",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 12, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "441",
+                    "severity": "warning",
+                    "message": "'interface def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/errored/1/19/KeySpecBuilderInterface.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/codebuff/19/KeySpecBuilderInterface.java\nindex 03f955a9b0..2e42a1c6e4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/errored/1/19/KeySpecBuilderInterface.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/codebuff/19/KeySpecBuilderInterface.java\n@@ -22,6 +22,7 @@ import name.neuhalfen.projects.crypto.bouncycastle.openpgp.algorithms.PGPHashAlg\n import name.neuhalfen.projects.crypto.bouncycastle.openpgp.algorithms.PGPSymmetricEncryptionAlgorithms;\n import org.bouncycastle.bcpg.sig.Features;\n \n+\n public interface KeySpecBuilderInterface {\n \n   /**\n@@ -60,7 +61,9 @@ public interface KeySpecBuilderInterface {\n    *\n    * @return next step\n    */\n-  WithDetailedConfiguration allowKeyToBeUsedTo(KeyFlag... flags);\n+\n+\n+    WithDetailedConfiguration allowKeyToBeUsedTo(KeyFlag... flags);\n \n   /**\n    * <p>Configure the GPG keyflags for a key.</p>\n@@ -94,17 +97,23 @@ public interface KeySpecBuilderInterface {\n    *\n    * @return next step\n    */\n-  WithDetailedConfiguration allowKeyToBeUsedForEverything();\n+\n+\n+    WithDetailedConfiguration allowKeyToBeUsedForEverything();\n \n   /**\n    * Copy all key flags, algorithms, ... from the parent key.\n    * @return key spec.\n    */\n-  KeySpec withInheritedSubPackets();\n \n-  interface WithDetailedConfiguration {\n \n-    WithPreferredSymmetricAlgorithms withDetailedConfiguration();\n+    KeySpec withInheritedSubPackets();\n+\n+\n+    interface WithDetailedConfiguration {\n+\n+\n+        WithPreferredSymmetricAlgorithms withDetailedConfiguration();\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -121,8 +130,10 @@ public interface KeySpecBuilderInterface {\n      * @see PGPHashAlgorithms#recommendedAlgorithmIds()\n      * @see Features#FEATURE_MODIFICATION_DETECTION\n      */\n-    KeySpec withDefaultAlgorithms();\n-  }\n+\n+\n+            KeySpec withDefaultAlgorithms();\n+    }\n \n   /**\n    * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -141,7 +152,7 @@ public interface KeySpecBuilderInterface {\n    * signature.\n    * </blockquote>\n    */\n-  interface WithPreferredSymmetricAlgorithms {\n+    interface WithPreferredSymmetricAlgorithms {\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -163,8 +174,9 @@ public interface KeySpecBuilderInterface {\n      *\n      * @return next builder step\n      */\n-    WithPreferredHashAlgorithms withPreferredSymmetricAlgorithms(\n-        PGPSymmetricEncryptionAlgorithms... algorithms);\n+\n+\n+        WithPreferredHashAlgorithms withPreferredSymmetricAlgorithms(PGPSymmetricEncryptionAlgorithms... algorithms);\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -186,8 +198,9 @@ public interface KeySpecBuilderInterface {\n      *\n      * @return next builder step\n      */\n-    WithPreferredHashAlgorithms withPreferredSymmetricAlgorithms(\n-        Collection<PGPSymmetricEncryptionAlgorithms> algorithms);\n+\n+\n+            WithPreferredHashAlgorithms withPreferredSymmetricAlgorithms(Collection<PGPSymmetricEncryptionAlgorithms> algorithms);\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -211,7 +224,9 @@ public interface KeySpecBuilderInterface {\n      *\n      * @see PGPSymmetricEncryptionAlgorithms#recommendedAlgorithms()\n      */\n-    WithPreferredHashAlgorithms withDefaultSymmetricAlgorithms();\n+\n+\n+                WithPreferredHashAlgorithms withDefaultSymmetricAlgorithms();\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -243,11 +258,11 @@ public interface KeySpecBuilderInterface {\n      * @see PGPCompressionAlgorithms#recommendedAlgorithms()\n      * @see PGPHashAlgorithms#recommendedAlgorithms()\n      */\n-    WithFeatures withDefaultAlgorithms();\n \n-  }\n \n-  interface WithPreferredHashAlgorithms {\n+                    WithFeatures withDefaultAlgorithms();\n+    }\n+    interface WithPreferredHashAlgorithms {\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -270,8 +285,9 @@ public interface KeySpecBuilderInterface {\n      *\n      * @see PGPHashAlgorithms#recommendedAlgorithms()\n      */\n-    WithPreferredCompressionAlgorithms withPreferredHashAlgorithms(\n-        PGPHashAlgorithms... algorithms);\n+\n+\n+        WithPreferredCompressionAlgorithms withPreferredHashAlgorithms(PGPHashAlgorithms... algorithms);\n \n \n     /**\n@@ -295,8 +311,9 @@ public interface KeySpecBuilderInterface {\n      *\n      * @see PGPHashAlgorithms#recommendedAlgorithms()\n      */\n-    WithPreferredCompressionAlgorithms withPreferredHashAlgorithms(\n-        Collection<PGPHashAlgorithms> algorithms);\n+\n+\n+            WithPreferredCompressionAlgorithms withPreferredHashAlgorithms(Collection<PGPHashAlgorithms> algorithms);\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -318,11 +335,11 @@ public interface KeySpecBuilderInterface {\n      *\n      * @see PGPHashAlgorithms#recommendedAlgorithms()\n      */\n-    WithPreferredCompressionAlgorithms withDefaultHashAlgorithms();\n \n-  }\n \n-  interface WithPreferredCompressionAlgorithms {\n+                WithPreferredCompressionAlgorithms withDefaultHashAlgorithms();\n+    }\n+    interface WithPreferredCompressionAlgorithms {\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -348,7 +365,9 @@ public interface KeySpecBuilderInterface {\n      *\n      * @see PGPCompressionAlgorithms#recommendedAlgorithms()\n      */\n-    WithFeatures withPreferredCompressionAlgorithms(PGPCompressionAlgorithms... algorithms);\n+\n+\n+        WithFeatures withPreferredCompressionAlgorithms(PGPCompressionAlgorithms... algorithms);\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -374,8 +393,9 @@ public interface KeySpecBuilderInterface {\n      *\n      * @see PGPCompressionAlgorithms#recommendedAlgorithms()\n      */\n-    WithFeatures withPreferredCompressionAlgorithms(\n-        Collection<PGPCompressionAlgorithms> algorithms);\n+\n+\n+            WithFeatures withPreferredCompressionAlgorithms(Collection<PGPCompressionAlgorithms> algorithms);\n \n     /**\n      * <p>Annotate the public key with the set of algorithms the key holder prefers to use. It is\n@@ -399,11 +419,11 @@ public interface KeySpecBuilderInterface {\n      *\n      * @see PGPCompressionAlgorithms#recommendedAlgorithms()\n      */\n-    WithFeatures withDefaultCompressionAlgorithms();\n \n-  }\n \n-  interface WithFeatures {\n+                WithFeatures withDefaultCompressionAlgorithms();\n+    }\n+    interface WithFeatures {\n \n     /**\n      * Add features to the key.\n@@ -412,9 +432,11 @@ public interface KeySpecBuilderInterface {\n      *\n      * @return next step\n      */\n-    WithFeatures withFeature(Feature feature);\n \n-    KeySpec done();\n-  }\n \n-}\n+        WithFeatures withFeature(Feature feature);\n+\n+\n+            KeySpec done();\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 66
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "16",
+                    "severity": "warning",
+                    "message": "package statement should not be line-wrapped.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoLineWrapCheck"
+                },
+                {
+                    "line": "17",
+                    "severity": "warning",
+                    "message": "'keys' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/errored/1/19/KeySpecBuilderInterface.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/styler_random/19/KeySpecBuilderInterface.java\nindex 03f955a9b0..57c3919dc4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/errored/1/19/KeySpecBuilderInterface.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neuhalje-bouncy-gpg/styler_random/19/KeySpecBuilderInterface.java\n@@ -13,7 +13,8 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n-package name.neuhalfen.projects.crypto.bouncycastle.openpgp.keys.generation;\n+package name.neuhalfen.projects.crypto.bouncycastle.openpgp.\n+keys.generation;\n \n import java.util.Collection;\n import name.neuhalfen.projects.crypto.bouncycastle.openpgp.algorithms.Feature;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

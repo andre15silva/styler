@@ -1,0 +1,75 @@
+{
+    "error_id": "146",
+    "information": {
+        "errors": [
+            {
+                "line": "41",
+                "column": "66",
+                "severity": "warning",
+                "message": "'&&' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "      .getClassByName(\"org.springframework.web.bind.annotation.RestController\");\n\n  private boolean scanRestController = restControllerCls != null &&\n      DynamicPropertyFactory.getInstance().getBooleanProperty(RestConst.PROVIDER_SCAN_REST_CONTROLLER, true).get();\n\n  public List<ProducerMeta> getProducerMetaList() {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/146/RestProducers.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/146/RestProducers.java\nindex 16d2cf93bb..ee5dfb9e47 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/146/RestProducers.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/146/RestProducers.java\n@@ -38,42 +38,42 @@ public class RestProducers implements BeanPostProcessor {\n   private Class<? extends Annotation> restControllerCls = (Class<? extends Annotation>) ReflectUtils\n       .getClassByName(\"org.springframework.web.bind.annotation.RestController\");\n \n-  private boolean scanRestController = restControllerCls != null &&\n-      DynamicPropertyFactory.getInstance().getBooleanProperty(RestConst.PROVIDER_SCAN_REST_CONTROLLER, true).get();\n+  private boolean scanRestController = restControllerCls != null\n+      && DynamicPropertyFactory.getInstance().getBooleanProperty(RestConst.PROVIDER_SCAN_REST_CONTROLLER, true).get();\n \n-  public List<ProducerMeta> getProducerMetaList() {\n-    return producerMetaList;\n-  }\n+public List<ProducerMeta> getProducerMetaList() {\n+  return producerMetaList;\n+}\n \n-  @Override\n-  public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {\n-    return bean;\n-  }\n+@Override\n+public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {\n+  return bean;\n+}\n \n-  @Override\n-  public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {\n-    processProvider(beanName, bean);\n+@Override\n+public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {\n+  processProvider(beanName, bean);\n \n-    return bean;\n-  }\n+  return bean;\n+}\n \n-  protected void processProvider(String beanName, Object bean) {\n-    // aop\u540e\uff0c\u65b0\u7684\u5b9e\u4f8b\u7684\u7236\u7c7b\u53ef\u80fd\u662f\u539fclass\uff0c\u4e5f\u53ef\u80fd\u53ea\u662f\u4e2aproxy\uff0c\u7236\u7c7b\u4e0d\u662f\u539fclass\n-    // \u6240\u4ee5\uff0c\u9700\u8981\u5148\u53d6\u51fa\u539fclass\uff0c\u518d\u53d6\u6807\u6ce8\n-    Class<?> beanCls = BeanUtils.getImplClassFromBean(bean);\n-    if (beanCls == null) {\n-      return;\n-    }\n-    RestSchema restSchema = beanCls.getAnnotation(RestSchema.class);\n-    if (restSchema != null) {\n-      ProducerMeta producerMeta = new ProducerMeta(restSchema.schemaId(), bean);\n-      producerMetaList.add(producerMeta);\n-      return;\n-    }\n+protected void processProvider(String beanName, Object bean) {\n+  // aop\u540e\uff0c\u65b0\u7684\u5b9e\u4f8b\u7684\u7236\u7c7b\u53ef\u80fd\u662f\u539fclass\uff0c\u4e5f\u53ef\u80fd\u53ea\u662f\u4e2aproxy\uff0c\u7236\u7c7b\u4e0d\u662f\u539fclass\n+  // \u6240\u4ee5\uff0c\u9700\u8981\u5148\u53d6\u51fa\u539fclass\uff0c\u518d\u53d6\u6807\u6ce8\n+  Class<?> beanCls = BeanUtils.getImplClassFromBean(bean);\n+  if (beanCls == null) {\n+    return;\n+  }\n+  RestSchema restSchema = beanCls.getAnnotation(RestSchema.class);\n+  if (restSchema != null) {\n+    ProducerMeta producerMeta = new ProducerMeta(restSchema.schemaId(), bean);\n+    producerMetaList.add(producerMeta);\n+    return;\n+  }\n \n-    if (scanRestController && beanCls.getAnnotation(restControllerCls) != null) {\n-      ProducerMeta producerMeta = new ProducerMeta(beanCls.getName(), bean);\n-      producerMetaList.add(producerMeta);\n-    }\n+  if (scanRestController && beanCls.getAnnotation(restControllerCls) != null) {\n+    ProducerMeta producerMeta = new ProducerMeta(beanCls.getName(), bean);\n+    producerMetaList.add(producerMeta);\n   }\n }\n+}\n",
+            "diff_size": 32
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "42",
+                    "column": "66",
+                    "severity": "warning",
+                    "message": "'&&' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/146/RestProducers.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/146/RestProducers.java\nindex 16d2cf93bb..1c23027630 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/146/RestProducers.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/146/RestProducers.java\n@@ -14,6 +14,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.servicecomb.provider.rest.common;\n \n import java.lang.annotation.Annotation;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "41",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 177).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/146/RestProducers.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/146/RestProducers.java\nindex 16d2cf93bb..cc656bbf83 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/146/RestProducers.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/146/RestProducers.java\n@@ -38,8 +38,7 @@ public class RestProducers implements BeanPostProcessor {\n   private Class<? extends Annotation> restControllerCls = (Class<? extends Annotation>) ReflectUtils\n       .getClassByName(\"org.springframework.web.bind.annotation.RestController\");\n \n-  private boolean scanRestController = restControllerCls != null &&\n-      DynamicPropertyFactory.getInstance().getBooleanProperty(RestConst.PROVIDER_SCAN_REST_CONTROLLER, true).get();\n+  private boolean scanRestController = restControllerCls != null && DynamicPropertyFactory.getInstance().getBooleanProperty(RestConst.PROVIDER_SCAN_REST_CONTROLLER, true).get();\n \n   public List<ProducerMeta> getProducerMetaList() {\n     return producerMetaList;\n@@ -76,4 +75,4 @@ public class RestProducers implements BeanPostProcessor {\n       producerMetaList.add(producerMeta);\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/146/RestProducers.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/146/RestProducers.java\nindex 16d2cf93bb..ee5dfb9e47 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/146/RestProducers.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/146/RestProducers.java\n@@ -38,42 +38,42 @@ public class RestProducers implements BeanPostProcessor {\n   private Class<? extends Annotation> restControllerCls = (Class<? extends Annotation>) ReflectUtils\n       .getClassByName(\"org.springframework.web.bind.annotation.RestController\");\n \n-  private boolean scanRestController = restControllerCls != null &&\n-      DynamicPropertyFactory.getInstance().getBooleanProperty(RestConst.PROVIDER_SCAN_REST_CONTROLLER, true).get();\n+  private boolean scanRestController = restControllerCls != null\n+      && DynamicPropertyFactory.getInstance().getBooleanProperty(RestConst.PROVIDER_SCAN_REST_CONTROLLER, true).get();\n \n-  public List<ProducerMeta> getProducerMetaList() {\n-    return producerMetaList;\n-  }\n+public List<ProducerMeta> getProducerMetaList() {\n+  return producerMetaList;\n+}\n \n-  @Override\n-  public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {\n-    return bean;\n-  }\n+@Override\n+public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {\n+  return bean;\n+}\n \n-  @Override\n-  public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {\n-    processProvider(beanName, bean);\n+@Override\n+public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {\n+  processProvider(beanName, bean);\n \n-    return bean;\n-  }\n+  return bean;\n+}\n \n-  protected void processProvider(String beanName, Object bean) {\n-    // aop\u540e\uff0c\u65b0\u7684\u5b9e\u4f8b\u7684\u7236\u7c7b\u53ef\u80fd\u662f\u539fclass\uff0c\u4e5f\u53ef\u80fd\u53ea\u662f\u4e2aproxy\uff0c\u7236\u7c7b\u4e0d\u662f\u539fclass\n-    // \u6240\u4ee5\uff0c\u9700\u8981\u5148\u53d6\u51fa\u539fclass\uff0c\u518d\u53d6\u6807\u6ce8\n-    Class<?> beanCls = BeanUtils.getImplClassFromBean(bean);\n-    if (beanCls == null) {\n-      return;\n-    }\n-    RestSchema restSchema = beanCls.getAnnotation(RestSchema.class);\n-    if (restSchema != null) {\n-      ProducerMeta producerMeta = new ProducerMeta(restSchema.schemaId(), bean);\n-      producerMetaList.add(producerMeta);\n-      return;\n-    }\n+protected void processProvider(String beanName, Object bean) {\n+  // aop\u540e\uff0c\u65b0\u7684\u5b9e\u4f8b\u7684\u7236\u7c7b\u53ef\u80fd\u662f\u539fclass\uff0c\u4e5f\u53ef\u80fd\u53ea\u662f\u4e2aproxy\uff0c\u7236\u7c7b\u4e0d\u662f\u539fclass\n+  // \u6240\u4ee5\uff0c\u9700\u8981\u5148\u53d6\u51fa\u539fclass\uff0c\u518d\u53d6\u6807\u6ce8\n+  Class<?> beanCls = BeanUtils.getImplClassFromBean(bean);\n+  if (beanCls == null) {\n+    return;\n+  }\n+  RestSchema restSchema = beanCls.getAnnotation(RestSchema.class);\n+  if (restSchema != null) {\n+    ProducerMeta producerMeta = new ProducerMeta(restSchema.schemaId(), bean);\n+    producerMetaList.add(producerMeta);\n+    return;\n+  }\n \n-    if (scanRestController && beanCls.getAnnotation(restControllerCls) != null) {\n-      ProducerMeta producerMeta = new ProducerMeta(beanCls.getName(), bean);\n-      producerMetaList.add(producerMeta);\n-    }\n+  if (scanRestController && beanCls.getAnnotation(restControllerCls) != null) {\n+    ProducerMeta producerMeta = new ProducerMeta(beanCls.getName(), bean);\n+    producerMetaList.add(producerMeta);\n   }\n }\n+}\n",
+            "diff_size": 32
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "41",
+                    "column": "66",
+                    "severity": "warning",
+                    "message": "'&&' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

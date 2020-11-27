@@ -1,0 +1,204 @@
+{
+    "error_id": "74",
+    "information": {
+        "errors": [
+            {
+                "line": "40",
+                "severity": "warning",
+                "message": "'STATIC_INIT' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "  public static final String FHIRVERSION = \"r4\";\n  public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n  static {\n    PREFETCH = new Prefetch();\n    List<PrefetchTemplateElement> elements = Arrays.asList(\n        CrdPrefetchTemplateElements.DEVICE_REQUEST_BUNDLE,",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/74/OrderReviewService.java\nindex 705762d975..6f14e8508b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/74/OrderReviewService.java\n@@ -37,6 +37,7 @@ public class OrderReviewService extends\n   static final Logger logger = LoggerFactory.getLogger(OrderReviewService.class);\n   public static final String FHIRVERSION = \"r4\";\n   public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n+\n   static {\n     PREFETCH = new Prefetch();\n     List<PrefetchTemplateElement> elements = Arrays.asList(\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/74/OrderReviewService.java\nindex 705762d975..6f14e8508b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/74/OrderReviewService.java\n@@ -37,6 +37,7 @@ public class OrderReviewService extends\n   static final Logger logger = LoggerFactory.getLogger(OrderReviewService.class);\n   public static final String FHIRVERSION = \"r4\";\n   public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n+\n   static {\n     PREFETCH = new Prefetch();\n     List<PrefetchTemplateElement> elements = Arrays.asList(\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "'static initialization' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/74/OrderReviewService.java\nindex 705762d975..d36d45faa3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/74/OrderReviewService.java\n@@ -25,8 +25,8 @@ import java.util.List;\n \n \n @Component(\"r4_OrderReviewService\")\n-public class OrderReviewService extends\n-    CdsService<Bundle, DeviceRequest, Patient, CodeableConcept> {\n+public class OrderReviewService extends CdsService<Bundle, DeviceRequest, Patient, CodeableConcept> {\n+\n \n   public static final String ID = \"order-review-crd\";\n   public static final String TITLE = \"order-review Coverage Requirements Discovery\";\n@@ -34,18 +34,19 @@ public class OrderReviewService extends\n   public static final String DESCRIPTION =\n       \"Get information regarding the coverage requirements for durable medical equipment\";\n   public static final Prefetch PREFETCH;\n-  static final Logger logger = LoggerFactory.getLogger(OrderReviewService.class);\n+\n+static final Logger logger = LoggerFactory.getLogger(OrderReviewService.class);\n   public static final String FHIRVERSION = \"r4\";\n   public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n-  static {\n+\n+static {\n     PREFETCH = new Prefetch();\n     List<PrefetchTemplateElement> elements = Arrays.asList(\n         CrdPrefetchTemplateElements.DEVICE_REQUEST_BUNDLE,\n         CrdPrefetchTemplateElements.SUPPLY_REQUEST_BUNDLE,\n         CrdPrefetchTemplateElements.NUTRITION_ORDER_BUNDLE,\n         CrdPrefetchTemplateElements.MEDICATION_REQUEST_BUNDLE,\n-        CrdPrefetchTemplateElements.SERVICE_REQUEST_BUNDLE\n-    );\n+        CrdPrefetchTemplateElements.SERVICE_REQUEST_BUNDLE);\n     for (PrefetchTemplateElement element : elements) {\n       PREFETCH.put(element.getKey(), element.getQuery());\n     }\n@@ -76,4 +77,4 @@ public class OrderReviewService extends\n     Utilities util = new Utilities();\n     return util.getResourcesOfTypeFromBundle(DeviceRequest.class, orderReviewBundle);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "30",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "warning",
+                    "message": "'static initialization' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 320).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'static initialization rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/74/OrderReviewService.java\nindex 705762d975..239e4eeceb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/74/OrderReviewService.java\n@@ -19,61 +19,58 @@ import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.stereotype.Component;\n-\n import java.util.Arrays;\n import java.util.List;\n \n \n @Component(\"r4_OrderReviewService\")\n-public class OrderReviewService extends\n-    CdsService<Bundle, DeviceRequest, Patient, CodeableConcept> {\n-\n-  public static final String ID = \"order-review-crd\";\n-  public static final String TITLE = \"order-review Coverage Requirements Discovery\";\n-  public static final Hook HOOK = Hook.ORDER_REVIEW;\n-  public static final String DESCRIPTION =\n-      \"Get information regarding the coverage requirements for durable medical equipment\";\n-  public static final Prefetch PREFETCH;\n-  static final Logger logger = LoggerFactory.getLogger(OrderReviewService.class);\n-  public static final String FHIRVERSION = \"r4\";\n-  public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n-  static {\n+public class OrderReviewService extends CdsService<Bundle,DeviceRequest,Patient,CodeableConcept> {\n+\n+\n+    public static final String ID = \"order-review-crd\";\n+    public static final String TITLE = \"order-review Coverage Requirements Discovery\";\n+    public static final Hook HOOK = Hook.ORDER_REVIEW;\n+    public static final String DESCRIPTION = \"Get information regarding the coverage requirements for durable medical equipment\";\n+    public static final Prefetch PREFETCH;\n+    static final Logger logger = LoggerFactory.getLogger(OrderReviewService.class);\n+    public static final String FHIRVERSION = \"r4\";\n+    public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n+\n+    static {\n     PREFETCH = new Prefetch();\n-    List<PrefetchTemplateElement> elements = Arrays.asList(\n-        CrdPrefetchTemplateElements.DEVICE_REQUEST_BUNDLE,\n-        CrdPrefetchTemplateElements.SUPPLY_REQUEST_BUNDLE,\n-        CrdPrefetchTemplateElements.NUTRITION_ORDER_BUNDLE,\n-        CrdPrefetchTemplateElements.MEDICATION_REQUEST_BUNDLE,\n-        CrdPrefetchTemplateElements.SERVICE_REQUEST_BUNDLE\n-    );\n+    List<PrefetchTemplateElement> elements = Arrays.asList(CrdPrefetchTemplateElements.DEVICE_REQUEST_BUNDLE, CrdPrefetchTemplateElements.SUPPLY_REQUEST_BUNDLE, CrdPrefetchTemplateElements.NUTRITION_ORDER_BUNDLE, CrdPrefetchTemplateElements.MEDICATION_REQUEST_BUNDLE, CrdPrefetchTemplateElements.SERVICE_REQUEST_BUNDLE);\n     for (PrefetchTemplateElement element : elements) {\n-      PREFETCH.put(element.getKey(), element.getQuery());\n+        PREFETCH.put(element.getKey(), element.getQuery());\n     }\n-  }\n+    }\n+\n \n-  @Autowired\n-  CoverageRequirementRuleFinder ruleFinder;\n+    @Autowired CoverageRequirementRuleFinder ruleFinder;\n \n-  public OrderReviewService() {\n+    public OrderReviewService() {\n     super(ID, HOOK, TITLE, DESCRIPTION, PREFETCH, FHIRCOMPONENTS, FHIRVERSION);\n-  }\n+    }\n \n-  public CodeableConcept getCc(DeviceRequest deviceRequest) throws FHIRException {\n+\n+    public CodeableConcept getCc(DeviceRequest deviceRequest) throws FHIRException {\n     return deviceRequest.getCodeCodeableConcept();\n-  }\n+    }\n \n-  public Patient getPatient(DeviceRequest deviceRequest) {\n+    public Patient getPatient(DeviceRequest deviceRequest) {\n     return (Patient) deviceRequest.getSubject().getResource();\n-  }\n+    }\n+\n \n-  @Override\n-  public List<DeviceRequest> getRequests(CdsRequest request) {\n+    @Override\n+    public List<DeviceRequest> getRequests(CdsRequest request) {\n     OrderReviewRequest orderReviewRequest = (OrderReviewRequest) request;\n     Bundle orderReviewBundle = orderReviewRequest.getPrefetch().getDeviceRequestBundle();\n     if (orderReviewBundle == null) {\n-      return null;\n+        return null;\n     }\n+\n+\n     Utilities util = new Utilities();\n     return util.getResourcesOfTypeFromBundle(DeviceRequest.class, orderReviewBundle);\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 41
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/74/OrderReviewService.java\nindex 705762d975..6f14e8508b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/74/OrderReviewService.java\n@@ -37,6 +37,7 @@ public class OrderReviewService extends\n   static final Logger logger = LoggerFactory.getLogger(OrderReviewService.class);\n   public static final String FHIRVERSION = \"r4\";\n   public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n+\n   static {\n     PREFETCH = new Prefetch();\n     List<PrefetchTemplateElement> elements = Arrays.asList(\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/74/OrderReviewService.java\nindex 705762d975..6f14e8508b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/74/OrderReviewService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/74/OrderReviewService.java\n@@ -37,6 +37,7 @@ public class OrderReviewService extends\n   static final Logger logger = LoggerFactory.getLogger(OrderReviewService.class);\n   public static final String FHIRVERSION = \"r4\";\n   public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();\n+\n   static {\n     PREFETCH = new Prefetch();\n     List<PrefetchTemplateElement> elements = Arrays.asList(\n",
+            "diff_size": 1
+        }
+    ]
+}

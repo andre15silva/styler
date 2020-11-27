@@ -1,0 +1,53 @@
+{
+    "error_id": "27",
+    "information": {
+        "errors": [
+            {
+                "line": "90",
+                "column": "56",
+                "severity": "error",
+                "message": "'...' is preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+            }
+        ]
+    },
+    "source_code": "    }\n\n    public void modify(String dn, AttributeModification ... modifications) throws LdapException {\n        Connection conn = null;\n        try {\n            conn = this.connFactory.getConnection();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/styler/27/LdapUtils.java\nindex d9e7fe4478..87ee6111b5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/styler/27/LdapUtils.java\n@@ -87,7 +87,7 @@ public class LdapUtils {\n         }\n     }\n \n-    public void modify(String dn, AttributeModification ... modifications) throws LdapException {\n+    public void modify(String dn, AttributeModification... modifications) throws LdapException {\n         Connection conn = null;\n         try {\n             conn = this.connFactory.getConnection();\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/intellij/27/LdapUtils.java\nindex d9e7fe4478..466a50f1e6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/intellij/27/LdapUtils.java\n@@ -44,15 +44,20 @@ public class LdapUtils {\n     public LdapUtils() {\n         this.user = System.getProperty(\"LDAP_USER\", \"cn=exampleuser,dc=org\");\n         this.password = System.getProperty(\"LDAP_PASSWORD\", \"password\");\n-        this.ssl = System.getProperty(\"LDAP_SSL\", \"false\").equals(\"true\") ? true : false;\n-        this.url = (this.ssl == true ? \"ldaps://\" : \"ldap://\") + System.getProperty(\"LDAP_URL\", \"example.host.com\");\n+        this.ssl =\n+            System.getProperty(\"LDAP_SSL\", \"false\").equals(\"true\") ? true :\n+                false;\n+        this.url = (this.ssl == true ? \"ldaps://\" : \"ldap://\") +\n+            System.getProperty(\"LDAP_URL\", \"example.host.com\");\n     }\n \n     public void connect() {\n         this.config.setLdapUrl(this.url);\n         this.config.setUseSSL(this.ssl);\n-        this.config.setConnectionInitializer(new BindConnectionInitializer(user, new Credential(password)));\n-        this.pool = new BlockingConnectionPool(new DefaultConnectionFactory(this.config));\n+        this.config.setConnectionInitializer(\n+            new BindConnectionInitializer(user, new Credential(password)));\n+        this.pool = new BlockingConnectionPool(\n+            new DefaultConnectionFactory(this.config));\n         if (!this.pool.isInitialized()) {\n             this.pool.initialize();\n         }\n@@ -87,7 +92,8 @@ public class LdapUtils {\n         }\n     }\n \n-    public void modify(String dn, AttributeModification ... modifications) throws LdapException {\n+    public void modify(String dn, AttributeModification... modifications)\n+        throws LdapException {\n         Connection conn = null;\n         try {\n             conn = this.connFactory.getConnection();\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/naturalize/27/LdapUtils.java\nindex d9e7fe4478..7d5f421b1d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/naturalize/27/LdapUtils.java\n@@ -87,7 +87,7 @@ public class LdapUtils {\n         }\n     }\n \n-    public void modify(String dn, AttributeModification ... modifications) throws LdapException {\n+    public void modify(String dn, AttributeModification... modifications) throws LdapException {\n         Connection conn = null;\n         try {\n             conn = this.connFactory.getConnection();\n@@ -112,4 +112,4 @@ public class LdapUtils {\n             conn.close();\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/codebuff/27/LdapUtils.java\nindex d9e7fe4478..9b141502a5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/codebuff/27/LdapUtils.java\n@@ -22,7 +22,6 @@ import org.ldaptive.pool.PooledConnectionFactory;\n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n \n-\n public class LdapUtils {\n \n     private final Logger logger = LoggerFactory.getLogger(LdapUtils.class);\n@@ -41,6 +40,7 @@ public class LdapUtils {\n \n     private String url;\n \n+\n     public LdapUtils() {\n         this.user = System.getProperty(\"LDAP_USER\", \"cn=exampleuser,dc=org\");\n         this.password = System.getProperty(\"LDAP_PASSWORD\", \"password\");\n@@ -59,6 +59,7 @@ public class LdapUtils {\n         this.connFactory = new PooledConnectionFactory(this.pool);\n     }\n \n+\n     public SearchResult search(SearchRequest request) throws LdapException {\n         Connection conn = null;\n         try {\n@@ -74,6 +75,7 @@ public class LdapUtils {\n         }\n     }\n \n+\n     public void add(LdapEntry entry) throws LdapException {\n         Connection conn = null;\n         try {\n@@ -87,7 +89,8 @@ public class LdapUtils {\n         }\n     }\n \n-    public void modify(String dn, AttributeModification ... modifications) throws LdapException {\n+\n+    public void modify(String dn, AttributeModification... modifications) throws LdapException {\n         Connection conn = null;\n         try {\n             conn = this.connFactory.getConnection();\n@@ -100,6 +103,7 @@ public class LdapUtils {\n         }\n     }\n \n+\n     public void delete(String dn) throws LdapException {\n         Connection conn = null;\n         try {\n@@ -112,4 +116,4 @@ public class LdapUtils {\n             conn.close();\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/styler_random/27/LdapUtils.java\nindex d9e7fe4478..87ee6111b5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/styler_random/27/LdapUtils.java\n@@ -87,7 +87,7 @@ public class LdapUtils {\n         }\n     }\n \n-    public void modify(String dn, AttributeModification ... modifications) throws LdapException {\n+    public void modify(String dn, AttributeModification... modifications) throws LdapException {\n         Connection conn = null;\n         try {\n             conn = this.connFactory.getConnection();\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/styler_three_grams/27/LdapUtils.java\nindex d9e7fe4478..87ee6111b5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/errored/1/27/LdapUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Stratio-bdt/styler_three_grams/27/LdapUtils.java\n@@ -87,7 +87,7 @@ public class LdapUtils {\n         }\n     }\n \n-    public void modify(String dn, AttributeModification ... modifications) throws LdapException {\n+    public void modify(String dn, AttributeModification... modifications) throws LdapException {\n         Connection conn = null;\n         try {\n             conn = this.connFactory.getConnection();\n",
+            "diff_size": 1
+        }
+    ]
+}

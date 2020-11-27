@@ -1,0 +1,65 @@
+{
+    "error_id": "115",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.domain;\n\nimport java.lang.reflect.Type;\nimport javax.inject.Inject;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/115/BaseRepository.java\nindex c888ef35ec..d432cad4fb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/115/BaseRepository.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import java.lang.reflect.Type;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/115/BaseRepository.java\nindex c888ef35ec..d432cad4fb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/115/BaseRepository.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import java.lang.reflect.Type;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/115/BaseRepository.java\nindex c888ef35ec..5be4328b21 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/115/BaseRepository.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import java.lang.reflect.Type;\n@@ -71,4 +72,4 @@ public abstract class BaseRepository<A extends AggregateRoot<I>, I> implements R\n     public SpecificationBuilder getSpecificationBuilder() {\n         return specificationBuilder;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "30",
+                    "column": "38",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/115/BaseRepository.java\nindex c888ef35ec..b8325468bf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/115/BaseRepository.java\n@@ -25,7 +25,9 @@ import org.seedstack.business.specification.dsl.SpecificationBuilder;\n  * @see Repository\n  * @see org.seedstack.business.util.inmemory.BaseInMemoryRepository\n  */\n-public abstract class BaseRepository<A extends AggregateRoot<I>, I> implements Repository<A, I> {\n+\n+\n+public abstract class BaseRepository <A extends AggregateRoot<I>, I> implements Repository<A, I> {\n \n     private static final int AGGREGATE_INDEX = 0;\n     private static final int KEY_INDEX = 1;\n@@ -38,8 +40,8 @@ public abstract class BaseRepository<A extends AggregateRoot<I>, I> implements R\n      * Creates a base domain repository. Actual classes managed by the repository are determined by\n      * reflection.\n      */\n-    @SuppressWarnings(\"unchecked\")\n-    protected BaseRepository() {\n+\n+    @SuppressWarnings(\"unchecked\") protected BaseRepository() {\n         Type[] generics = BusinessUtils.resolveGenerics(BaseRepository.class, getClass());\n         this.aggregateRootClass = (Class<A>) generics[AGGREGATE_INDEX];\n         this.idClass = (Class<I>) generics[KEY_INDEX];\n@@ -52,6 +54,8 @@ public abstract class BaseRepository<A extends AggregateRoot<I>, I> implements R\n      * @param aggregateRootClass the aggregate root class.\n      * @param idClass            the aggregate root identifier class.\n      */\n+\n+\n     protected BaseRepository(Class<A> aggregateRootClass, Class<I> idClass) {\n         this.aggregateRootClass = aggregateRootClass;\n         this.idClass = idClass;\n@@ -71,4 +75,4 @@ public abstract class BaseRepository<A extends AggregateRoot<I>, I> implements R\n     public SpecificationBuilder getSpecificationBuilder() {\n         return specificationBuilder;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/115/BaseRepository.java\nindex c888ef35ec..d432cad4fb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/115/BaseRepository.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/115/BaseRepository.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import java.lang.reflect.Type;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

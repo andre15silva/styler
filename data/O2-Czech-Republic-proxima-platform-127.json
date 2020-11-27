@@ -1,0 +1,212 @@
+{
+    "error_id": "127",
+    "information": {
+        "errors": [
+            {
+                "line": "94",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 96).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "\n  @Override\n  public BoundedReader<StreamElement> createReader(PipelineOptions options) throws IOException {\n\n    return BeamBatchLogReader.of(this, reader, attrs, split, startStamp, endStamp);\n  }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 96).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'Partition' has incorrect indentation level 2, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/127/DirectBatchSource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/127/DirectBatchSource.java\nindex 5bf85dc4ab..4892438611 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/127/DirectBatchSource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/127/DirectBatchSource.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.beam.direct.io;\n \n import cz.o2.proxima.direct.batch.BatchLogObservable;\n@@ -50,7 +51,8 @@ public class DirectBatchSource extends AbstractDirectBoundedSource {\n   private final List<AttributeDescriptor<?>> attrs;\n   private final long startStamp;\n   private final long endStamp;\n-  private final @Nullable Partition split;\n+  private final @Nullable\n+  Partition split;\n \n   private DirectBatchSource(\n       RepositoryFactory factory,\n@@ -91,7 +93,8 @@ public class DirectBatchSource extends AbstractDirectBoundedSource {\n   }\n \n   @Override\n-  public BoundedReader<StreamElement> createReader(PipelineOptions options) throws IOException {\n+  public BoundedReader<StreamElement> createReader(PipelineOptions options)\n+      throws IOException {\n \n     return BeamBatchLogReader.of(this, reader, attrs, split, startStamp, endStamp);\n   }\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 96).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/127/DirectBatchSource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/127/DirectBatchSource.java\nindex 5bf85dc4ab..9ac6883efa 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/127/DirectBatchSource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/127/DirectBatchSource.java\n@@ -39,9 +39,7 @@ public class DirectBatchSource extends AbstractDirectBoundedSource {\n   static DirectBatchSource of(\n       RepositoryFactory factory,\n       BatchLogObservable reader,\n-      List<AttributeDescriptor<?>> attrs,\n-      long startStamp,\n-      long endStamp) {\n+      List<AttributeDescriptor<?>> attrs, long startStamp, long endStamp) {\n \n     return new DirectBatchSource(factory, reader, attrs, startStamp, endStamp);\n   }\n@@ -55,9 +53,7 @@ public class DirectBatchSource extends AbstractDirectBoundedSource {\n   private DirectBatchSource(\n       RepositoryFactory factory,\n       BatchLogObservable reader,\n-      List<AttributeDescriptor<?>> attrs,\n-      long startStamp,\n-      long endStamp) {\n+      List<AttributeDescriptor<?>> attrs, long startStamp, long endStamp) {\n \n     super(factory);\n     this.reader = Objects.requireNonNull(reader);\n@@ -77,14 +73,11 @@ public class DirectBatchSource extends AbstractDirectBoundedSource {\n   }\n \n   @Override\n-  public List<? extends BoundedSource<StreamElement>> split(\n-      long desiredBundleSizeBytes, PipelineOptions arg1) throws Exception {\n-\n-    if (split != null) {\n+  public List<? extends BoundedSource<StreamElement>> split(long desiredBundleSizeBytes, PipelineOptions arg1) throws Exception {\n+  if (split != null) {\n       return Arrays.asList(this);\n     }\n-    return reader\n-        .getPartitions(startStamp, endStamp)\n+    return reader.getPartitions(startStamp, endStamp)\n         .stream()\n         .map(p -> new DirectBatchSource(this, p))\n         .collect(Collectors.toList());\n@@ -95,4 +88,4 @@ public class DirectBatchSource extends AbstractDirectBoundedSource {\n \n     return BeamBatchLogReader.of(this, reader, attrs, split, startStamp, endStamp);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 94).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 98).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/127/DirectBatchSource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/127/DirectBatchSource.java\nindex 5bf85dc4ab..b9b85c92c8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/127/DirectBatchSource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/127/DirectBatchSource.java\n@@ -31,68 +31,60 @@ import org.apache.beam.sdk.io.BoundedSource;\n import org.apache.beam.sdk.options.PipelineOptions;\n \n /** An {@link BoundedSource} created from direct operator's {@link BatchLogObservable}. */\n-@Slf4j\n-public class DirectBatchSource extends AbstractDirectBoundedSource {\n \n-  private static final long serialVersionUID = 1L;\n \n-  static DirectBatchSource of(\n-      RepositoryFactory factory,\n-      BatchLogObservable reader,\n-      List<AttributeDescriptor<?>> attrs,\n-      long startStamp,\n-      long endStamp) {\n+@Slf4j\n+public class DirectBatchSource extends AbstractDirectBoundedSource {\n \n+    private static final long serialVersionUID = 1L;\n+    static DirectBatchSource of(\n+        RepositoryFactory factory,\n+        BatchLogObservable reader,\n+        List<AttributeDescriptor<?>> attrs,\n+        long startStamp, long endStamp) {\n     return new DirectBatchSource(factory, reader, attrs, startStamp, endStamp);\n-  }\n-\n-  private final BatchLogObservable reader;\n-  private final List<AttributeDescriptor<?>> attrs;\n-  private final long startStamp;\n-  private final long endStamp;\n-  private final @Nullable Partition split;\n+    }\n \n-  private DirectBatchSource(\n-      RepositoryFactory factory,\n-      BatchLogObservable reader,\n-      List<AttributeDescriptor<?>> attrs,\n-      long startStamp,\n-      long endStamp) {\n+    private final BatchLogObservable reader;\n+    private final List<AttributeDescriptor<?>> attrs;\n+    private final long startStamp;\n+    private final long endStamp;\n+    private final @Nullable Partition split;\n \n+    private DirectBatchSource(\n+                RepositoryFactory factory,\n+                BatchLogObservable reader,\n+                List<AttributeDescriptor<?>> attrs,\n+                long startStamp, long endStamp) {\n     super(factory);\n     this.reader = Objects.requireNonNull(reader);\n     this.attrs = Objects.requireNonNull(attrs);\n     this.startStamp = startStamp;\n     this.endStamp = endStamp;\n     this.split = null;\n-  }\n+    }\n \n-  private DirectBatchSource(DirectBatchSource parent, Partition split) {\n+    private DirectBatchSource(DirectBatchSource parent, Partition split) {\n     super(parent.factory);\n     this.reader = parent.reader;\n     this.attrs = parent.attrs;\n     this.startStamp = parent.startStamp;\n     this.endStamp = parent.endStamp;\n     this.split = split;\n-  }\n-\n-  @Override\n-  public List<? extends BoundedSource<StreamElement>> split(\n-      long desiredBundleSizeBytes, PipelineOptions arg1) throws Exception {\n+    }\n \n+    @Override\n+    public List<? extends BoundedSource<StreamElement>> split(long desiredBundleSizeBytes, PipelineOptions arg1) throws Exception {\n     if (split != null) {\n-      return Arrays.asList(this);\n+        return Arrays.asList(this);\n+    }\n+    return reader.getPartitions(startStamp, endStamp).stream()\n+                                                     .map(p -> new DirectBatchSource(this, p))\n+                                                     .collect(Collectors.toList());\n     }\n-    return reader\n-        .getPartitions(startStamp, endStamp)\n-        .stream()\n-        .map(p -> new DirectBatchSource(this, p))\n-        .collect(Collectors.toList());\n-  }\n-\n-  @Override\n-  public BoundedReader<StreamElement> createReader(PipelineOptions options) throws IOException {\n \n+    @Override\n+    public BoundedReader<StreamElement> createReader(PipelineOptions options) throws IOException {\n     return BeamBatchLogReader.of(this, reader, attrs, split, startStamp, endStamp);\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 60
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 96).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

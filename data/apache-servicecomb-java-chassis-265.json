@@ -1,0 +1,79 @@
+{
+    "error_id": "265",
+    "information": {
+        "errors": [
+            {
+                "line": "43",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 121).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  private static final String PUBLISH_CLASS_NAME = \"servicecomb.metrics.publish.class\";\n\n  private static final String METRICS_CONTRACT_DEFINITION_FILE = \"servicecomb_internal_metrics_contract_definition.yaml\";\n\n  private final ProducerSchemaFactory schemaFactory;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/265/MetricsBootListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/265/MetricsBootListener.java\nindex 9d9571f641..260e1495a2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/265/MetricsBootListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/265/MetricsBootListener.java\n@@ -40,7 +40,8 @@ public class MetricsBootListener implements BootListener {\n \n   private static final String PUBLISH_CLASS_NAME = \"servicecomb.metrics.publish.class\";\n \n-  private static final String METRICS_CONTRACT_DEFINITION_FILE = \"servicecomb_internal_metrics_contract_definition.yaml\";\n+  private static final String METRICS_CONTRACT_DEFINITION_FILE =\n+      \"servicecomb_internal_metrics_contract_definition.yaml\";\n \n   private final ProducerSchemaFactory schemaFactory;\n \n@@ -50,7 +51,7 @@ public class MetricsBootListener implements BootListener {\n \n   @Autowired\n   public MetricsBootListener(ProducerSchemaFactory schemaFactory, SchemaLoader schemaLoader,\n-      MetricsPublisher metricsPublisher) {\n+                             MetricsPublisher metricsPublisher) {\n     this.schemaFactory = schemaFactory;\n     this.schemaLoader = schemaLoader;\n     this.metricsPublisher = metricsPublisher;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/265/MetricsBootListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/265/MetricsBootListener.java\nindex 9d9571f641..56431b77c3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/265/MetricsBootListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/265/MetricsBootListener.java\n@@ -63,16 +63,14 @@ public class MetricsBootListener implements BootListener {\n \n       String publisherClassName = DynamicPropertyFactory.getInstance()\n           .getStringProperty(PUBLISH_CLASS_NAME, JsonMetricsPublisher.class.getName()).get();\n-\n-      Resource[] resources = PaaSResourceUtils.getResources(METRICS_CONTRACT_DEFINITION_FILE);\n+Resource[] resources = PaaSResourceUtils.getResources(METRICS_CONTRACT_DEFINITION_FILE);\n       if (resources.length != 0) {\n         Microservice microservice = RegistryUtils.getMicroservice();\n         try {\n           String swaggerContent = IOUtils.toString(resources[0].getURL());\n           SchemaMeta meta = schemaLoader\n               .registerSchema(microservice.getServiceName(), \"metricsEndpoint\", swaggerContent);\n-          schemaFactory\n-              .getOrCreateProducerSchema(microservice.getServiceName(), meta.getSchemaId(),\n+schemaFactory.getOrCreateProducerSchema(microservice.getServiceName(), meta.getSchemaId(),\n                   Class.forName(publisherClassName),\n                   metricsPublisher);\n         } catch (ClassNotFoundException e) {\n@@ -83,4 +81,4 @@ public class MetricsBootListener implements BootListener {\n       }\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

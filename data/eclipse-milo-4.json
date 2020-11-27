@@ -1,0 +1,85 @@
+{
+    "error_id": "4",
+    "information": {
+        "errors": [
+            {
+                "line": "22",
+                "column": "41",
+                "severity": "error",
+                "message": "'}' at column 41 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "final class QualifiedNameConversions {\n\n    private QualifiedNameConversions() {}\n\n    @Nullable\n    static String qualifiedNameToString(@Nonnull QualifiedName name) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/4/QualifiedNameConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/4/QualifiedNameConversions.java\nindex c6bd7ae709..9261472044 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/4/QualifiedNameConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/4/QualifiedNameConversions.java\n@@ -19,7 +19,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.QualifiedName;\n \n final class QualifiedNameConversions {\n \n-    private QualifiedNameConversions() {}\n+    private QualifiedNameConversions() {\n+    }\n \n     @Nullable\n     static String qualifiedNameToString(@Nonnull QualifiedName name) {\n@@ -53,9 +54,12 @@ final class QualifiedNameConversions {\n     static Object implicitConversion(@Nonnull QualifiedName name, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:        return qualifiedNameToString(name);\n-            case LocalizedText: return qualifiedNameToLocalizedText(name);\n-            default:            return null;\n+            case String:\n+                return qualifiedNameToString(name);\n+            case LocalizedText:\n+                return qualifiedNameToLocalizedText(name);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/4/QualifiedNameConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/4/QualifiedNameConversions.java\nindex c6bd7ae709..22c7180047 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/4/QualifiedNameConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/4/QualifiedNameConversions.java\n@@ -60,4 +60,4 @@ final class QualifiedNameConversions {\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/4/QualifiedNameConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/4/QualifiedNameConversions.java\nindex c6bd7ae709..bb15bbe8e9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/4/QualifiedNameConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/4/QualifiedNameConversions.java\n@@ -12,14 +12,14 @@ package org.eclipse.milo.opcua.sdk.server.events.conversions;\n \n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.stack.core.BuiltinDataType;\n import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;\n import org.eclipse.milo.opcua.stack.core.types.builtin.QualifiedName;\n \n final class QualifiedNameConversions {\n \n-    private QualifiedNameConversions() {}\n+    private QualifiedNameConversions() {\n+    }\n \n     @Nullable\n     static String qualifiedNameToString(@Nonnull QualifiedName name) {\n@@ -32,13 +32,12 @@ final class QualifiedNameConversions {\n     }\n \n     @Nullable\n-    static Object convert(@Nonnull Object o, BuiltinDataType targetType, boolean implicit) {\n+    static Object convert(@Nonnull Object o, BuiltinDataType targetType,\n+                          boolean implicit) {\n         if (o instanceof QualifiedName) {\n             QualifiedName name = (QualifiedName) o;\n \n-            return implicit ?\n-                implicitConversion(name, targetType) :\n-                explicitConversion(name, targetType);\n+            return implicit ? implicitConversion(name, targetType) : explicitConversion(name, targetType);\n         } else {\n             return null;\n         }\n@@ -53,11 +52,14 @@ final class QualifiedNameConversions {\n     static Object implicitConversion(@Nonnull QualifiedName name, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:        return qualifiedNameToString(name);\n-            case LocalizedText: return qualifiedNameToLocalizedText(name);\n-            default:            return null;\n+            case String:\n+                return qualifiedNameToString(name);\n+            case LocalizedText:\n+                return qualifiedNameToLocalizedText(name);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

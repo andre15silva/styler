@@ -1,0 +1,265 @@
+{
+    "error_id": "16",
+    "information": {
+        "errors": [
+            {
+                "line": "134",
+                "column": "26",
+                "severity": "warning",
+                "message": "WhitespaceAround: '{' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "    Resource resource = fhirUriFetcher.fetch(fhirUri);\n\n    if (resource == null){\n      return ResponseEntity.notFound().build();\n    }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/16/DataController.java\nindex 5dcadb8b54..cb2b839000 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/16/DataController.java\n@@ -131,7 +131,7 @@ public class DataController {\n \n     Resource resource = fhirUriFetcher.fetch(fhirUri);\n \n-    if (resource == null){\n+    if (resource == null) {\n       return ResponseEntity.notFound().build();\n     }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/16/DataController.java\nindex 5dcadb8b54..ee98276d06 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/16/DataController.java\n@@ -41,7 +41,6 @@ public class DataController {\n   private RequestRepository requestRepository;\n \n \n-\n   @Autowired\n   private YamlConfig myConfig;\n \n@@ -57,7 +56,8 @@ public class DataController {\n \n   /**\n    * Basic constructor to initialize both data repositories.\n-   * @param repository the database for the data (rules)\n+   *\n+   * @param repository        the database for the data (rules)\n    * @param requestRepository the database for request logging\n    */\n   @Autowired\n@@ -83,6 +83,7 @@ public class DataController {\n \n   /**\n    * Gets some data from the repository.\n+   *\n    * @param id the id of the desired data.\n    * @return the data from the repository\n    */\n@@ -131,7 +132,7 @@ public class DataController {\n \n     Resource resource = fhirUriFetcher.fetch(fhirUri);\n \n-    if (resource == null){\n+    if (resource == null) {\n       return ResponseEntity.notFound().build();\n     }\n \n",
+            "diff_size": 5
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "warning",
+                    "message": "'@' has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "warning",
+                    "message": "'method call' child has incorrect indentation level 0, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/16/DataController.java\nindex 5dcadb8b54..7e21b578cb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/16/DataController.java\n@@ -40,9 +40,7 @@ public class DataController {\n   @Autowired\n   private RequestRepository requestRepository;\n \n-\n-\n-  @Autowired\n+@Autowired\n   private YamlConfig myConfig;\n \n   @Autowired\n@@ -120,8 +118,10 @@ public class DataController {\n   }\n \n   @GetMapping(path = \"/getfile/{id}/{name}\")\n-  public ResponseEntity<Resource> getFile(@PathVariable long id, @PathVariable String name) throws IOException {\n-    logger.info(\"getfile: GET /getfile/\" + id + \"/\" + name);\n+  public ResponseEntity<Resource> getFile(@PathVariable long id,\n+    @PathVariable String name) throws IOException {\n+    logger.info(\"getfile: GET /getfile/\" + id + \"/\"\n++ name);\n     return downloadFile(id, name);\n   }\n \n@@ -131,7 +131,7 @@ public class DataController {\n \n     Resource resource = fhirUriFetcher.fetch(fhirUri);\n \n-    if (resource == null){\n+    if (resource == null) {\n       return ResponseEntity.notFound().build();\n     }\n \n@@ -146,4 +146,4 @@ public class DataController {\n   }\n \n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 68.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 97.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "108",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "128",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "136",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "139",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "149",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "152",
+                    "severity": "warning",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "warning",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "154",
+                    "severity": "warning",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/16/DataController.java\nindex 5dcadb8b54..44859b6131 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/16/DataController.java\n@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.GetMapping;\n import org.springframework.web.bind.annotation.PathVariable;\n import org.springframework.web.bind.annotation.ResponseStatus;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.io.IOException;\n import java.util.Optional;\n import java.util.logging.Logger;\n@@ -29,30 +28,35 @@ import java.util.logging.Logger;\n /**\n  * Provides the REST interface that can be interacted with at [base]/api/data.\n  */\n+\n+\n @RestController\n public class DataController {\n-  private static Logger logger = Logger.getLogger(Application.class.getName());\n+    private static Logger logger = Logger.getLogger(Application.class.getName());\n+\n \n+    @Autowired\n+    private DataRepository repository;\n \n-  @Autowired\n-  private DataRepository repository;\n \n-  @Autowired\n-  private RequestRepository requestRepository;\n+    @Autowired\n+    private RequestRepository requestRepository;\n \n \n+    @Autowired\n+    private YamlConfig myConfig;\n \n-  @Autowired\n-  private YamlConfig myConfig;\n \n-  @Autowired\n-  private CoverageRequirementRuleFinder ruleFinder;\n+    @Autowired\n+    private CoverageRequirementRuleFinder ruleFinder;\n \n-  @Autowired\n-  private CoverageRequirementRuleDownloader downloader;\n \n-  @Autowired\n-  private FhirUriFetcher fhirUriFetcher;\n+    @Autowired\n+    private CoverageRequirementRuleDownloader downloader;\n+\n+\n+    @Autowired\n+    private FhirUriFetcher fhirUriFetcher;\n \n \n   /**\n@@ -60,90 +64,92 @@ public class DataController {\n    * @param repository the database for the data (rules)\n    * @param requestRepository the database for request logging\n    */\n-  @Autowired\n-  public DataController(DataRepository repository, RequestRepository requestRepository) {\n+\n+    @Autowired\n+    public DataController(DataRepository repository, RequestRepository requestRepository) {\n     this.repository = repository;\n     this.requestRepository = requestRepository;\n+    }\n \n-  }\n \n-  @GetMapping(value = \"/api/requests\")\n-  @CrossOrigin\n-  public Iterable<RequestLog> showAllLogs() {\n+    @GetMapping(value = \"/api/requests\")\n+    @CrossOrigin\n+    public Iterable<RequestLog> showAllLogs() {\n     logger.info(\"showAllLogs: GET /api/requests\");\n     return requestRepository.findAll();\n-  }\n+    }\n \n-  @GetMapping(value = \"/api/data\")\n-  @CrossOrigin\n-  public Iterable<CoverageRequirementRule> showAll() {\n+\n+    @GetMapping(value = \"/api/data\")\n+    @CrossOrigin\n+    public Iterable<CoverageRequirementRule> showAll() {\n     logger.info(\"showAll: GET /api/data\");\n     return ruleFinder.findAll();\n-  }\n+    }\n \n   /**\n    * Gets some data from the repository.\n    * @param id the id of the desired data.\n    * @return the data from the repository\n    */\n-  @CrossOrigin\n-  @GetMapping(\"/api/data/{id}\")\n-  public CoverageRequirementRule getRule(@PathVariable long id) {\n+\n+\n+    @CrossOrigin\n+    @GetMapping(\"/api/data/{id}\")\n+    public CoverageRequirementRule getRule(@PathVariable long id) {\n     logger.info(\"getRule: GET /api/data/\" + id);\n     Optional<CoverageRequirementRule> rule = repository.findById(id);\n-\n     if (!rule.isPresent()) {\n-      throw new RuleNotFoundException();\n+        throw new RuleNotFoundException();\n     }\n-\n     return rule.get();\n-  }\n+    }\n \n-  public ResponseEntity<Resource> downloadFile(long id, String name) {\n+    public ResponseEntity<Resource> downloadFile(long id, String name) {\n     CqlBundleFile bundleFile = downloader.downloadCqlBundleFile(id, name);\n-\n     if (bundleFile == null) {\n-      logger.warning(\"file not found, return error (404)\");\n-      return ResponseEntity.notFound().build();\n+        logger.warning(\"file not found, return error (404)\");\n+        return ResponseEntity.notFound().build();\n+    }\n+    return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,\n+\"attachment; filename=\\\"\"\n++ bundleFile.getFilename()\n++ \"\\\"\").contentType(MediaType.parseMediaType(\"application/octet-stream\")).body(bundleFile.getResource());\n     }\n \n-    return ResponseEntity.ok()\n-        .header(HttpHeaders.CONTENT_DISPOSITION, \"attachment; filename=\\\"\" + bundleFile.getFilename() + \"\\\"\")\n-        .contentType(MediaType.parseMediaType(\"application/octet-stream\"))\n-        .body(bundleFile.getResource());\n-  }\n \n-  @GetMapping(path = \"/download/{id}\")\n-  public ResponseEntity<Resource> download(@PathVariable long id) throws IOException {\n+    @GetMapping(path = \"/download/{id}\")\n+    public ResponseEntity<Resource> download(@PathVariable long id) throws IOException {\n     logger.info(\"download: GET /download/\" + id);\n     return downloadFile(id, \"\");\n-  }\n+    }\n+\n \n-  @GetMapping(path = \"/getfile/{id}/{name}\")\n-  public ResponseEntity<Resource> getFile(@PathVariable long id, @PathVariable String name) throws IOException {\n-    logger.info(\"getfile: GET /getfile/\" + id + \"/\" + name);\n+    @GetMapping(path = \"/getfile/{id}/{name}\")\n+    public ResponseEntity<Resource> getFile(@PathVariable long id,\n+                                            @PathVariable String name) throws IOException {\n+    logger.info(\"getfile: GET /getfile/\"\n+        + id\n+        + \"/\"\n+        + name);\n     return downloadFile(id, name);\n-  }\n+    }\n \n-  @GetMapping(path = \"/fetchFhirUri/{fhirUri}\")\n-  public ResponseEntity<Resource> fetchFhirUri(@PathVariable String fhirUri) throws IOException {\n-    logger.info(\"download: GET /fetchFhirUri/\" + fhirUri);\n \n+    @GetMapping(path = \"/fetchFhirUri/{fhirUri}\")\n+    public ResponseEntity<Resource> fetchFhirUri(@PathVariable String fhirUri) throws IOException {\n+    logger.info(\"download: GET /fetchFhirUri/\" + fhirUri);\n     Resource resource = fhirUriFetcher.fetch(fhirUri);\n-\n-    if (resource == null){\n-      return ResponseEntity.notFound().build();\n+    if (resource == null) {\n+        return ResponseEntity.notFound().build();\n+    }\n+    return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, \"attachment; filename=\\\"\"\n+    + fhirUri\n+    + \"\\\"\").contentType(MediaType.parseMediaType(\"application/octet-stream\")).body(resource);\n     }\n-\n-    return ResponseEntity.ok()\n-        .header(HttpHeaders.CONTENT_DISPOSITION, \"attachment; filename=\\\"\" + fhirUri + \"\\\"\")\n-        .contentType(MediaType.parseMediaType(\"application/octet-stream\"))\n-        .body(resource);\n-  }\n-\n-  @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = \"No such rule\")  // 404\n-  public class RuleNotFoundException extends RuntimeException {\n-  }\n \n \n-}\n+    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = \"No such rule\")  // 404\n+    public class RuleNotFoundException extends RuntimeException {\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 100
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/16/DataController.java\nindex 5dcadb8b54..cb2b839000 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/16/DataController.java\n@@ -131,7 +131,7 @@ public class DataController {\n \n     Resource resource = fhirUriFetcher.fetch(fhirUri);\n \n-    if (resource == null){\n+    if (resource == null) {\n       return ResponseEntity.notFound().build();\n     }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/16/DataController.java\nindex 5dcadb8b54..cb2b839000 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/16/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/16/DataController.java\n@@ -131,7 +131,7 @@ public class DataController {\n \n     Resource resource = fhirUriFetcher.fetch(fhirUri);\n \n-    if (resource == null){\n+    if (resource == null) {\n       return ResponseEntity.notFound().build();\n     }\n \n",
+            "diff_size": 1
+        }
+    ]
+}

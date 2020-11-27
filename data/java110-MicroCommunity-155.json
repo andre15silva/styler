@@ -1,0 +1,150 @@
+{
+    "error_id": "155",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 238).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<InspectionPlanStaffDto> inspectionPlanStaffs = BeanConvertUtil.covertBeanList(inspectionPlanStaffServiceDaoImpl.getInspectionPlanStaffInfo(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto)), InspectionPlanStaffDto.class);\n\n        return inspectionPlanStaffs;\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 170).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/155/InspectionPlanStaffInnerServiceSMOImpl.java\nindex a45c95d72b..5ce8f722e6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/155/InspectionPlanStaffInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class InspectionPlanStaffInnerServiceSMOImpl extends BaseServiceSMO imple\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             inspectionPlanStaffDto.setPage((page - 1) * inspectionPlanStaffDto.getRow());\n-        }\n+        } List<InspectionPlanStaffDto>inspectionPlanStaffs=BeanConvertUtil.\n \n-        List<InspectionPlanStaffDto> inspectionPlanStaffs = BeanConvertUtil.covertBeanList(inspectionPlanStaffServiceDaoImpl.getInspectionPlanStaffInfo(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto)), InspectionPlanStaffDto.class);\n+        covertBeanList(inspectionPlanStaffServiceDaoImpl.getInspectionPlanStaffInfo(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto)), InspectionPlanStaffDto.class);\n \n         return inspectionPlanStaffs;\n     }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/155/InspectionPlanStaffInnerServiceSMOImpl.java\nindex a45c95d72b..0e69a3a17b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/155/InspectionPlanStaffInnerServiceSMOImpl.java\n@@ -25,47 +25,49 @@ import java.util.List;\n @RestController\n public class InspectionPlanStaffInnerServiceSMOImpl extends BaseServiceSMO implements IInspectionPlanStaffInnerServiceSMO {\n \n-    @Autowired\n-    private IInspectionPlanStaffServiceDao inspectionPlanStaffServiceDaoImpl;\n+  @Autowired\n+  private IInspectionPlanStaffServiceDao inspectionPlanStaffServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<InspectionPlanStaffDto> queryInspectionPlanStaffs(@RequestBody InspectionPlanStaffDto inspectionPlanStaffDto) {\n+  @Override\n+  public List<InspectionPlanStaffDto> queryInspectionPlanStaffs(@RequestBody InspectionPlanStaffDto inspectionPlanStaffDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = inspectionPlanStaffDto.getPage();\n+    int page = inspectionPlanStaffDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            inspectionPlanStaffDto.setPage((page - 1) * inspectionPlanStaffDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      inspectionPlanStaffDto.setPage((page - 1) * inspectionPlanStaffDto.getRow());\n+    }\n \n-        List<InspectionPlanStaffDto> inspectionPlanStaffs = BeanConvertUtil.covertBeanList(inspectionPlanStaffServiceDaoImpl.getInspectionPlanStaffInfo(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto)), InspectionPlanStaffDto.class);\n+    List<InspectionPlanStaffDto> inspectionPlanStaffs = BeanConvertUtil\n+      .covertBeanList(inspectionPlanStaffServiceDaoImpl.getInspectionPlanStaffInfo(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto)),\n+        InspectionPlanStaffDto.class);\n \n-        return inspectionPlanStaffs;\n-    }\n+    return inspectionPlanStaffs;\n+  }\n \n \n-    @Override\n-    public int queryInspectionPlanStaffsCount(@RequestBody InspectionPlanStaffDto inspectionPlanStaffDto) {\n-        return inspectionPlanStaffServiceDaoImpl.queryInspectionPlanStaffsCount(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto));\n-    }\n+  @Override\n+  public int queryInspectionPlanStaffsCount(@RequestBody InspectionPlanStaffDto inspectionPlanStaffDto) {\n+    return inspectionPlanStaffServiceDaoImpl.queryInspectionPlanStaffsCount(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto));\n+  }\n \n-    public IInspectionPlanStaffServiceDao getInspectionPlanStaffServiceDaoImpl() {\n-        return inspectionPlanStaffServiceDaoImpl;\n-    }\n+  public IInspectionPlanStaffServiceDao getInspectionPlanStaffServiceDaoImpl() {\n+    return inspectionPlanStaffServiceDaoImpl;\n+  }\n \n-    public void setInspectionPlanStaffServiceDaoImpl(IInspectionPlanStaffServiceDao inspectionPlanStaffServiceDaoImpl) {\n-        this.inspectionPlanStaffServiceDaoImpl = inspectionPlanStaffServiceDaoImpl;\n-    }\n+  public void setInspectionPlanStaffServiceDaoImpl(IInspectionPlanStaffServiceDao inspectionPlanStaffServiceDaoImpl) {\n+    this.inspectionPlanStaffServiceDaoImpl = inspectionPlanStaffServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 32
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 238).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/155/InspectionPlanStaffInnerServiceSMOImpl.java\nindex a45c95d72b..084a9a5170 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/155/InspectionPlanStaffInnerServiceSMOImpl.java\n@@ -68,4 +68,4 @@ public class InspectionPlanStaffInnerServiceSMOImpl extends BaseServiceSMO imple\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 238).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/155/InspectionPlanStaffInnerServiceSMOImpl.java\nindex a45c95d72b..c524e86eb5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/155/InspectionPlanStaffInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.community.smo.impl;\n \n-\n import com.java110.community.dao.IInspectionPlanStaffServiceDao;\n import com.java110.core.base.smo.BaseServiceSMO;\n import com.java110.core.smo.inspectionPlanStaff.IInspectionPlanStaffInnerServiceSMO;\n@@ -11,7 +10,6 @@ import com.java110.utils.util.BeanConvertUtil;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -22,6 +20,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class InspectionPlanStaffInnerServiceSMOImpl extends BaseServiceSMO implements IInspectionPlanStaffInnerServiceSMO {\n \n@@ -35,9 +35,7 @@ public class InspectionPlanStaffInnerServiceSMOImpl extends BaseServiceSMO imple\n     public List<InspectionPlanStaffDto> queryInspectionPlanStaffs(@RequestBody InspectionPlanStaffDto inspectionPlanStaffDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = inspectionPlanStaffDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             inspectionPlanStaffDto.setPage((page - 1) * inspectionPlanStaffDto.getRow());\n         }\n@@ -68,4 +66,4 @@ public class InspectionPlanStaffInnerServiceSMOImpl extends BaseServiceSMO imple\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 167).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "57",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "151",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "47",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/155/InspectionPlanStaffInnerServiceSMOImpl.java\nindex a45c95d72b..a8c216087a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/155/InspectionPlanStaffInnerServiceSMOImpl.java\n@@ -41,10 +41,8 @@ public class InspectionPlanStaffInnerServiceSMOImpl extends BaseServiceSMO imple\n         if (page != PageDto.DEFAULT_PAGE) {\n             inspectionPlanStaffDto.setPage((page - 1) * inspectionPlanStaffDto.getRow());\n         }\n-\n-        List<InspectionPlanStaffDto> inspectionPlanStaffs = BeanConvertUtil.covertBeanList(inspectionPlanStaffServiceDaoImpl.getInspectionPlanStaffInfo(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto)), InspectionPlanStaffDto.class);\n-\n-        return inspectionPlanStaffs;\n+        List<InspectionPlanStaffDto>inspectionPlanStaffs= BeanConvertUtil.covertBeanList(inspectionPlanStaffServiceDaoImpl.getInspectionPlanStaffInfo (BeanConvertUtil.\n+        beanCovertMap(inspectionPlanStaffDto)),InspectionPlanStaffDto.class); returninspectionPlanStaffs;\n     }\n \n \n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 170).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/155/InspectionPlanStaffInnerServiceSMOImpl.java\nindex a45c95d72b..5ce8f722e6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/155/InspectionPlanStaffInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/155/InspectionPlanStaffInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class InspectionPlanStaffInnerServiceSMOImpl extends BaseServiceSMO imple\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             inspectionPlanStaffDto.setPage((page - 1) * inspectionPlanStaffDto.getRow());\n-        }\n+        } List<InspectionPlanStaffDto>inspectionPlanStaffs=BeanConvertUtil.\n \n-        List<InspectionPlanStaffDto> inspectionPlanStaffs = BeanConvertUtil.covertBeanList(inspectionPlanStaffServiceDaoImpl.getInspectionPlanStaffInfo(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto)), InspectionPlanStaffDto.class);\n+        covertBeanList(inspectionPlanStaffServiceDaoImpl.getInspectionPlanStaffInfo(BeanConvertUtil.beanCovertMap(inspectionPlanStaffDto)), InspectionPlanStaffDto.class);\n \n         return inspectionPlanStaffs;\n     }\n",
+            "diff_size": 2
+        }
+    ]
+}

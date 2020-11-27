@@ -1,0 +1,92 @@
+{
+    "error_id": "170",
+    "information": {
+        "errors": [
+            {
+                "line": "30",
+                "severity": "warning",
+                "message": "Use of @author javadoc keyword is prohibited.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": " * Parser for reading and writing secondary index composites\n *\n * @author tnine\n */\npublic class SecondaryIndexSliceParser implements SliceParser {\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "30",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "31",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/170/SecondaryIndexSliceParser.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/170/SecondaryIndexSliceParser.java\nindex e27d99cd29..8aa4eb8870 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/170/SecondaryIndexSliceParser.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/170/SecondaryIndexSliceParser.java\n@@ -14,6 +14,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.usergrid.persistence.query.ir.result;\n \n \n@@ -32,50 +33,52 @@ import me.prettyprint.hector.api.beans.DynamicComposite;\n public class SecondaryIndexSliceParser implements SliceParser {\n \n \n-    /* (non-Javadoc)\n-     * @see org.apache.usergrid.persistence.query.ir.result.SliceParser#parse(java.nio.ByteBuffer)\n-     */\n-    @Override\n-    public ScanColumn parse( ByteBuffer buff, final boolean isReversed) {\n-        DynamicComposite composite = DynamicComposite.fromByteBuffer( buff.duplicate() );\n+  /* (non-Javadoc)\n+   * @see org.apache.usergrid.persistence.query.ir.result.SliceParser#parse(java.nio.ByteBuffer)\n+   */\n+  @Override\n+  public ScanColumn parse(ByteBuffer buff, final boolean isReversed) {\n+    DynamicComposite composite = DynamicComposite.fromByteBuffer(buff.duplicate());\n \n-        throw new UnsupportedOperationException( \"Implement me with static comparators\" );\n+    throw new UnsupportedOperationException(\"Implement me with static comparators\");\n \n //        return new SecondaryIndexColumn( ( UUID ) composite.get( 2 ), composite.get( 1 ), buff, null );\n-    }\n-\n+  }\n \n \n-    public static class SecondaryIndexColumn extends AbstractScanColumn {\n+  public static class SecondaryIndexColumn extends AbstractScanColumn {\n \n-        private final Object value;\n-        private final Comparator<Object> valueComparator;\n+    private final Object value;\n+    private final Comparator<Object> valueComparator;\n \n \n-        /**\n-         * Create the secondary index column\n-         * @param uuid\n-         * @param value\n-         * @param columnNameBuffer\n-         * @param valueComparator The comparator for the values\n-         */\n-        public SecondaryIndexColumn( final UUID uuid, final Object value, final ByteBuffer columnNameBuffer,\n-                                  final Comparator<Object> valueComparator ) {\n-            super( uuid, columnNameBuffer );\n-            this.value = value;\n-            this.valueComparator = valueComparator;\n-        }\n+    /**\n+     * Create the secondary index column\n+     *\n+     * @param uuid\n+     * @param value\n+     * @param columnNameBuffer\n+     * @param valueComparator  The comparator for the values\n+     */\n+    public SecondaryIndexColumn(final UUID uuid, final Object value, final ByteBuffer columnNameBuffer,\n+                                final Comparator<Object> valueComparator) {\n+      super(uuid, columnNameBuffer);\n+      this.value = value;\n+      this.valueComparator = valueComparator;\n+    }\n \n \n-        /** Get the value from the node */\n-        public Object getValue() {\n-            return this.value;\n-        }\n+    /**\n+     * Get the value from the node\n+     */\n+    public Object getValue() {\n+      return this.value;\n+    }\n \n \n-        @Override\n-        public int compareTo( final ScanColumn o ) {\n-            throw new UnsupportedOperationException( \"Impelment me\" );\n-        }\n+    @Override\n+    public int compareTo(final ScanColumn o) {\n+      throw new UnsupportedOperationException(\"Impelment me\");\n     }\n+  }\n }\n",
+            "diff_size": 38
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "29",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 153).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/170/SecondaryIndexSliceParser.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/170/SecondaryIndexSliceParser.java\nindex e27d99cd29..a9d00b94ed 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/170/SecondaryIndexSliceParser.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/170/SecondaryIndexSliceParser.java\n@@ -20,7 +20,6 @@ package org.apache.usergrid.persistence.query.ir.result;\n import java.nio.ByteBuffer;\n import java.util.Comparator;\n import java.util.UUID;\n-\n import me.prettyprint.hector.api.beans.DynamicComposite;\n \n \n@@ -29,23 +28,24 @@ import me.prettyprint.hector.api.beans.DynamicComposite;\n  *\n  * @author tnine\n  */\n+\n+\n public class SecondaryIndexSliceParser implements SliceParser {\n \n \n     /* (non-Javadoc)\n      * @see org.apache.usergrid.persistence.query.ir.result.SliceParser#parse(java.nio.ByteBuffer)\n      */\n+\n     @Override\n-    public ScanColumn parse( ByteBuffer buff, final boolean isReversed) {\n+    public ScanColumn parse( ByteBuffer buff, final boolean isReversed ) {\n         DynamicComposite composite = DynamicComposite.fromByteBuffer( buff.duplicate() );\n-\n         throw new UnsupportedOperationException( \"Implement me with static comparators\" );\n \n //        return new SecondaryIndexColumn( ( UUID ) composite.get( 2 ), composite.get( 1 ), buff, null );\n     }\n \n \n-\n     public static class SecondaryIndexColumn extends AbstractScanColumn {\n \n         private final Object value;\n@@ -59,8 +59,9 @@ public class SecondaryIndexSliceParser implements SliceParser {\n          * @param columnNameBuffer\n          * @param valueComparator The comparator for the values\n          */\n-        public SecondaryIndexColumn( final UUID uuid, final Object value, final ByteBuffer columnNameBuffer,\n-                                  final Comparator<Object> valueComparator ) {\n+\n+\n+        public SecondaryIndexColumn( final UUID uuid, final Object value, final ByteBuffer columnNameBuffer, final Comparator<Object> valueComparator ) {\n             super( uuid, columnNameBuffer );\n             this.value = value;\n             this.valueComparator = valueComparator;\n@@ -68,6 +69,8 @@ public class SecondaryIndexSliceParser implements SliceParser {\n \n \n         /** Get the value from the node */\n+\n+\n         public Object getValue() {\n             return this.value;\n         }\n@@ -78,4 +81,4 @@ public class SecondaryIndexSliceParser implements SliceParser {\n             throw new UnsupportedOperationException( \"Impelment me\" );\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "30",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "29",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/170/SecondaryIndexSliceParser.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/170/SecondaryIndexSliceParser.java\nindex e27d99cd29..aa2434bae9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/170/SecondaryIndexSliceParser.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/170/SecondaryIndexSliceParser.java\n@@ -23,7 +23,6 @@ import java.util.UUID;\n \n import me.prettyprint.hector.api.beans.DynamicComposite;\n \n-\n /**\n  * Parser for reading and writing secondary index composites\n  *\n",
+            "diff_size": 1
+        }
+    ]
+}

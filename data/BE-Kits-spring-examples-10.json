@@ -1,0 +1,115 @@
+{
+    "error_id": "10",
+    "information": {
+        "errors": [
+            {
+                "line": "30",
+                "column": "5",
+                "severity": "warning",
+                "message": "WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "    boolean success = sendMoneyUseCase.sendMoney(command);\n\n    if(success) {\n      return ResponseEntity\n              .ok()\n              .build();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/styler/10/SendMoneyController.java\nindex 89d96caf51..22244bc258 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/styler/10/SendMoneyController.java\n@@ -27,7 +27,7 @@ public class SendMoneyController {\n \n     boolean success = sendMoneyUseCase.sendMoney(command);\n \n-    if(success) {\n+    if (success) {\n       return ResponseEntity\n               .ok()\n               .build();\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/intellij/10/SendMoneyController.java\nindex 89d96caf51..a5c6967dc6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/intellij/10/SendMoneyController.java\n@@ -16,25 +16,25 @@ public class SendMoneyController {\n \n   @PostMapping(path = \"/sendMoney/{sourceAccountId}/{targetAccountId}/{amount}\")\n   ResponseEntity sendMoney(\n-          @PathVariable(\"sourceAccountId\") Long sourceAccountId,\n-          @PathVariable(\"targetAccountId\") Long targetAccountId,\n-          @PathVariable(\"amount\") Integer amount) {\n+      @PathVariable(\"sourceAccountId\") Long sourceAccountId,\n+      @PathVariable(\"targetAccountId\") Long targetAccountId,\n+      @PathVariable(\"amount\") Integer amount) {\n \n     SendMoneyCommand command = new SendMoneyCommand(\n-            sourceAccountId,\n-            targetAccountId,\n-            amount);\n+        sourceAccountId,\n+        targetAccountId,\n+        amount);\n \n     boolean success = sendMoneyUseCase.sendMoney(command);\n \n-    if(success) {\n+    if (success) {\n       return ResponseEntity\n-              .ok()\n-              .build();\n+          .ok()\n+          .build();\n     } else {\n       return ResponseEntity\n-              .status(HttpStatus.INTERNAL_SERVER_ERROR)\n-              .build();\n+          .status(HttpStatus.INTERNAL_SERVER_ERROR)\n+          .build();\n     }\n   }\n \n",
+            "diff_size": 11
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'@' has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "22",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "23",
+                    "severity": "warning",
+                    "message": "'sourceAccountId' has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "warning",
+                    "message": "'class def rcurly' has incorrect indentation level 2, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/naturalize/10/SendMoneyController.java\nindex 89d96caf51..09e7a5902f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/naturalize/10/SendMoneyController.java\n@@ -16,26 +16,22 @@ public class SendMoneyController {\n \n   @PostMapping(path = \"/sendMoney/{sourceAccountId}/{targetAccountId}/{amount}\")\n   ResponseEntity sendMoney(\n-          @PathVariable(\"sourceAccountId\") Long sourceAccountId,\n+    @PathVariable(\"sourceAccountId\") Long sourceAccountId,\n           @PathVariable(\"targetAccountId\") Long targetAccountId,\n           @PathVariable(\"amount\") Integer amount) {\n-\n-    SendMoneyCommand command = new SendMoneyCommand(\n-            sourceAccountId,\n+  SendMoneyCommand command = new SendMoneyCommand(\n+    sourceAccountId,\n             targetAccountId,\n             amount);\n \n-    boolean success = sendMoneyUseCase.sendMoney(command);\n+boolean success = sendMoneyUseCase.sendMoney(command);\n \n-    if(success) {\n-      return ResponseEntity\n-              .ok()\n+    if (success) {\n+      return ResponseEntity.ok()\n               .build();\n     } else {\n-      return ResponseEntity\n-              .status(HttpStatus.INTERNAL_SERVER_ERROR)\n+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)\n               .build();\n     }\n   }\n-\n-}\n+  }\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "15",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "17",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "20",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "24",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/codebuff/10/SendMoneyController.java\nindex 89d96caf51..efb92df0bf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/codebuff/10/SendMoneyController.java\n@@ -12,30 +12,18 @@ import org.springframework.web.bind.annotation.RestController;\n @RequiredArgsConstructor\n public class SendMoneyController {\n \n-  private final SendMoneyUseCase sendMoneyUseCase;\n-\n-  @PostMapping(path = \"/sendMoney/{sourceAccountId}/{targetAccountId}/{amount}\")\n-  ResponseEntity sendMoney(\n-          @PathVariable(\"sourceAccountId\") Long sourceAccountId,\n-          @PathVariable(\"targetAccountId\") Long targetAccountId,\n-          @PathVariable(\"amount\") Integer amount) {\n-\n-    SendMoneyCommand command = new SendMoneyCommand(\n-            sourceAccountId,\n-            targetAccountId,\n-            amount);\n+    private final SendMoneyUseCase sendMoneyUseCase;\n \n+    @PostMapping(path = \"/sendMoney/{sourceAccountId}/{targetAccountId}/{amount}\")\n+    ResponseEntity sendMoney(\n+        @PathVariable(\"sourceAccountId\") Long sourceAccountId,\n+        @PathVariable(\"targetAccountId\") Long targetAccountId, @PathVariable(\"amount\") Integer amount) {\n+    SendMoneyCommand command = new SendMoneyCommand(sourceAccountId, targetAccountId, amount);\n     boolean success = sendMoneyUseCase.sendMoney(command);\n-\n-    if(success) {\n-      return ResponseEntity\n-              .ok()\n-              .build();\n+    if (success) {\n+        return ResponseEntity.ok().build();\n     } else {\n-      return ResponseEntity\n-              .status(HttpStatus.INTERNAL_SERVER_ERROR)\n-              .build();\n+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();\n     }\n-  }\n-\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 28
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/styler_random/10/SendMoneyController.java\nindex 89d96caf51..22244bc258 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/styler_random/10/SendMoneyController.java\n@@ -27,7 +27,7 @@ public class SendMoneyController {\n \n     boolean success = sendMoneyUseCase.sendMoney(command);\n \n-    if(success) {\n+    if (success) {\n       return ResponseEntity\n               .ok()\n               .build();\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/styler_three_grams/10/SendMoneyController.java\nindex 89d96caf51..22244bc258 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/errored/1/10/SendMoneyController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/BE-Kits-spring-examples/styler_three_grams/10/SendMoneyController.java\n@@ -27,7 +27,7 @@ public class SendMoneyController {\n \n     boolean success = sendMoneyUseCase.sendMoney(command);\n \n-    if(success) {\n+    if (success) {\n       return ResponseEntity\n               .ok()\n               .build();\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,270 @@
+{
+    "error_id": "43",
+    "information": {
+        "errors": [
+            {
+                "line": "36",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 123).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=921\");\n\n    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=922\");\n\n    private final Variant[] eventFields;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/43/HistoryEventFieldList.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/43/HistoryEventFieldList.java\nindex e9379f0ebb..9c9cb5cbde 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/43/HistoryEventFieldList.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/43/HistoryEventFieldList.java\n@@ -33,7 +33,8 @@ public class HistoryEventFieldList extends Structure implements UaStructure {\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=921\");\n \n-    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=922\");\n+    public static final ExpandedNodeId BINARY_ENCODING_ID =\n+        ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=922\");\n \n     private final Variant[] eventFields;\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/43/HistoryEventFieldList.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/43/HistoryEventFieldList.java\nindex e9379f0ebb..a1523ddb6b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/43/HistoryEventFieldList.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/43/HistoryEventFieldList.java\n@@ -78,4 +78,4 @@ public class HistoryEventFieldList extends Structure implements UaStructure {\n             encoder.writeVariantArray(\"EventFields\", value.getEventFields());\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/43/HistoryEventFieldList.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/43/HistoryEventFieldList.java\nindex e9379f0ebb..3b5176a017 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/43/HistoryEventFieldList.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/43/HistoryEventFieldList.java\n@@ -29,12 +29,12 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;\n )\n @ToString\n public class HistoryEventFieldList extends Structure implements UaStructure {\n+\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=920\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=921\");\n \n     public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=922\");\n-\n     private final Variant[] eventFields;\n \n     public HistoryEventFieldList(Variant[] eventFields) {\n@@ -69,13 +69,14 @@ public class HistoryEventFieldList extends Structure implements UaStructure {\n         @Override\n         public HistoryEventFieldList decode(SerializationContext context, UaDecoder decoder) {\n             Variant[] eventFields = decoder.readVariantArray(\"EventFields\");\n+\n             return new HistoryEventFieldList(eventFields);\n         }\n \n         @Override\n-        public void encode(SerializationContext context, UaEncoder encoder,\n-                           HistoryEventFieldList value) {\n+        public void encode(SerializationContext context, UaEncoder encoder, HistoryEventFieldList value) {\n             encoder.writeVariantArray(\"EventFields\", value.getEventFields());\n         }\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "30",
+                    "severity": "error",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "73",
+                    "severity": "error",
+                    "message": "';' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "107",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'ctor def' child has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'class def modifier' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 13, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 13, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 13, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 13, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 9, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 1, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/43/HistoryEventFieldList.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_random/43/HistoryEventFieldList.java\nindex e9379f0ebb..94956b3ed3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/43/HistoryEventFieldList.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_random/43/HistoryEventFieldList.java\n@@ -33,49 +33,49 @@ public class HistoryEventFieldList extends Structure implements UaStructure {\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=921\");\n \n-    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=922\");\n+    public static final ExpandedNodeId BINARY_ENCODING_ID =\n+        ExpandedNodeId .parse( \"nsu=http://opcfoundation.org/UA/;i=922\");privatefinalVariant[] eventFields;\n \n-    private final Variant[] eventFields;\n+     public HistoryEventFieldList(Variant[] eventFields) {\n+         this.eventFields = eventFields;\n+     }\n \n-    public HistoryEventFieldList(Variant[] eventFields) {\n-        this.eventFields = eventFields;\n-    }\n+     @Override\n+     public ExpandedNodeId getTypeId() {\n+         return TYPE_ID;\n+     }\n \n-    @Override\n-    public ExpandedNodeId getTypeId() {\n-        return TYPE_ID;\n-    }\n+     @Override\n+     public ExpandedNodeId getXmlEncodingId() {\n+         return XML_ENCODING_ID;\n+     }\n \n-    @Override\n-    public ExpandedNodeId getXmlEncodingId() {\n-        return XML_ENCODING_ID;\n-    }\n+     @Override\n+     public ExpandedNodeId getBinaryEncodingId() {\n+         return BINARY_ENCODING_ID;\n+     }\n \n-    @Override\n-    public ExpandedNodeId getBinaryEncodingId() {\n-        return BINARY_ENCODING_ID;\n-    }\n+     public Variant[] getEventFields() {\n+         return eventFields;\n+     }\n \n-    public Variant[] getEventFields() {\n-        return eventFields;\n-    }\n+     public static final class Codec extends GenericDataTypeCodec<HistoryEventFieldList> {\n+         @Override\n+         public Class<HistoryEventFieldList> getType() {\n+             return HistoryEventFieldList.class;\n+         }\n \n-    public static final class Codec extends GenericDataTypeCodec<HistoryEventFieldList> {\n-        @Override\n-        public Class<HistoryEventFieldList> getType() {\n-            return HistoryEventFieldList.class;\n-        }\n+         @Override\n+         public HistoryEventFieldList decode(SerializationContext context, UaDecoder decoder) {\n+             Variant[] eventFields = decoder.readVariantArray(\"EventFields\");\n+             return new HistoryEventFieldList(eventFields);\n+         }\n \n-        @Override\n-        public HistoryEventFieldList decode(SerializationContext context, UaDecoder decoder) {\n-            Variant[] eventFields = decoder.readVariantArray(\"EventFields\");\n-            return new HistoryEventFieldList(eventFields);\n-        }\n-\n-        @Override\n-        public void encode(SerializationContext context, UaEncoder encoder,\n-                           HistoryEventFieldList value) {\n-            encoder.writeVariantArray(\"EventFields\", value.getEventFields());\n-        }\n-    }\n-}\n+         @Override\n+         public void encode(SerializationContext context, UaEncoder encoder,\n+                            HistoryEventFieldList value) {\n+             encoder.writeVariantArray(\"EventFields\", value.getEventFields());\n+         }\n+     }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 44
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

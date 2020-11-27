@@ -1,0 +1,164 @@
+{
+    "error_id": "140",
+    "information": {
+        "errors": [
+            {
+                "line": "26",
+                "column": "82",
+                "severity": "error",
+                "message": "'}' at column 82 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "   */\n  @Override\n  public void initialize(SetHasBeenReleasedBeforeOnlyOnce constraintAnnotation) {}\n\n  /*\n   * (non-Javadoc)",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "26",
+                    "column": "82",
+                    "severity": "error",
+                    "message": "'}' at column 82 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\nindex 079a7e1381..4b4917146f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n@@ -17,7 +17,7 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n \n   @Autowired\n   private DataAcquisitionProjectRepository dataAcquisitionProjectRepository;\n-  \n+\n   /*\n    * (non-Javadoc)\n    * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)\n@@ -32,13 +32,13 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n    */\n   @Override\n   public boolean isValid(DataAcquisitionProject value, ConstraintValidatorContext context) {\n-    \n+\n     //No id, no validation\n     if (value.getId() == null) {\n       return true;\n     }\n-    \n-    DataAcquisitionProject oldProjectState = \n+\n+    DataAcquisitionProject oldProjectState =\n         this.dataAcquisitionProjectRepository.findById(value.getId())\n         .orElse(null);\n \n@@ -46,13 +46,13 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n     if (oldProjectState == null) {\n       return true;\n     }\n-    \n+\n     //it is not allowed to set the has been released before to false, if it was true before\n     if (oldProjectState.getHasBeenReleasedBefore() && !value.getHasBeenReleasedBefore()) {\n       return false;\n     }\n-    \n+\n     //all other cases is true\n     return true;\n-  } \n+  }\n }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/intellij/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\nindex 079a7e1381..72b280fea7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/intellij/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n@@ -17,13 +17,14 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n \n   @Autowired\n   private DataAcquisitionProjectRepository dataAcquisitionProjectRepository;\n-  \n+\n   /*\n    * (non-Javadoc)\n    * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)\n    */\n   @Override\n-  public void initialize(SetHasBeenReleasedBeforeOnlyOnce constraintAnnotation) {}\n+  public void initialize(SetHasBeenReleasedBeforeOnlyOnce constraintAnnotation) {\n+  }\n \n   /*\n    * (non-Javadoc)\n@@ -32,27 +33,27 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n    */\n   @Override\n   public boolean isValid(DataAcquisitionProject value, ConstraintValidatorContext context) {\n-    \n+\n     //No id, no validation\n     if (value.getId() == null) {\n       return true;\n     }\n-    \n-    DataAcquisitionProject oldProjectState = \n+\n+    DataAcquisitionProject oldProjectState =\n         this.dataAcquisitionProjectRepository.findById(value.getId())\n-        .orElse(null);\n+            .orElse(null);\n \n     //No old version. Project will be saved the first time\n     if (oldProjectState == null) {\n       return true;\n     }\n-    \n+\n     //it is not allowed to set the has been released before to false, if it was true before\n     if (oldProjectState.getHasBeenReleasedBefore() && !value.getHasBeenReleasedBefore()) {\n       return false;\n     }\n-    \n+\n     //all other cases is true\n     return true;\n-  } \n+  }\n }\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "26",
+                    "column": "82",
+                    "severity": "error",
+                    "message": "'}' at column 82 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/naturalize/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\nindex 079a7e1381..074792672f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/naturalize/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n@@ -38,8 +38,7 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n       return true;\n     }\n     \n-    DataAcquisitionProject oldProjectState = \n-        this.dataAcquisitionProjectRepository.findById(value.getId())\n+    DataAcquisitionProject oldProjectState = this.dataAcquisitionProjectRepository.findById(value.getId())\n         .orElse(null);\n \n     //No old version. Project will be saved the first time\n@@ -55,4 +54,4 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n     //all other cases is true\n     return true;\n   } \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "15",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 119).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "16",
+                    "severity": "error",
+                    "message": "'DataAcquisitionProject' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "18",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/codebuff/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\nindex 079a7e1381..43caf16745 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/codebuff/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n@@ -2,9 +2,7 @@ package eu.dzhw.fdz.metadatamanagement.projectmanagement.domain.validation;\n \n import javax.validation.ConstraintValidator;\n import javax.validation.ConstraintValidatorContext;\n-\n import org.springframework.beans.factory.annotation.Autowired;\n-\n import eu.dzhw.fdz.metadatamanagement.projectmanagement.domain.DataAcquisitionProject;\n import eu.dzhw.fdz.metadatamanagement.projectmanagement.repository.DataAcquisitionProjectRepository;\n \n@@ -12,47 +10,54 @@ import eu.dzhw.fdz.metadatamanagement.projectmanagement.repository.DataAcquisiti\n  * Ensure that there is enough information to display a histogram\n  * for ratio variables.\n  */\n-public class SetHasBeenReleasedBeforeOnlyOnceValidator\n-    implements ConstraintValidator<SetHasBeenReleasedBeforeOnlyOnce, DataAcquisitionProject> {\n \n-  @Autowired\n-  private DataAcquisitionProjectRepository dataAcquisitionProjectRepository;\n+\n+public class SetHasBeenReleasedBeforeOnlyOnceValidator implements ConstraintValidator<SetHasBeenReleasedBeforeOnlyOnce,\n+DataAcquisitionProject> {\n+\n+    @Autowired\n+    private DataAcquisitionProjectRepository dataAcquisitionProjectRepository;\n   \n   /*\n    * (non-Javadoc)\n    * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)\n    */\n-  @Override\n-  public void initialize(SetHasBeenReleasedBeforeOnlyOnce constraintAnnotation) {}\n+\n+    @Override\n+    public void initialize(SetHasBeenReleasedBeforeOnlyOnce constraintAnnotation) {\n+\n+    }\n \n   /*\n    * (non-Javadoc)\n    * @see javax.validation.ConstraintValidator#isValid(\n    * java.lang.Object, javax.validation.ConstraintValidatorContext)\n    */\n-  @Override\n-  public boolean isValid(DataAcquisitionProject value, ConstraintValidatorContext context) {\n+\n+\n+    @Override\n+    public boolean isValid(DataAcquisitionProject value,\n+        ConstraintValidatorContext context) {\n     \n     //No id, no validation\n     if (value.getId() == null) {\n-      return true;\n+        return true;\n     }\n-    \n-    DataAcquisitionProject oldProjectState = \n-        this.dataAcquisitionProjectRepository.findById(value.getId())\n-        .orElse(null);\n+    DataAcquisitionProject oldProjectState = this.dataAcquisitionProjectRepository.findById(value.getId())\n+                                                 .orElse(null);\n \n     //No old version. Project will be saved the first time\n     if (oldProjectState == null) {\n-      return true;\n+        return true;\n     }\n     \n     //it is not allowed to set the has been released before to false, if it was true before\n     if (oldProjectState.getHasBeenReleasedBefore() && !value.getHasBeenReleasedBefore()) {\n-      return false;\n+        return false;\n     }\n     \n     //all other cases is true\n+\n     return true;\n-  } \n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 30
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "26",
+                    "column": "82",
+                    "severity": "error",
+                    "message": "'}' at column 82 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler_random/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\nindex 079a7e1381..4b4917146f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler_random/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n@@ -17,7 +17,7 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n \n   @Autowired\n   private DataAcquisitionProjectRepository dataAcquisitionProjectRepository;\n-  \n+\n   /*\n    * (non-Javadoc)\n    * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)\n@@ -32,13 +32,13 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n    */\n   @Override\n   public boolean isValid(DataAcquisitionProject value, ConstraintValidatorContext context) {\n-    \n+\n     //No id, no validation\n     if (value.getId() == null) {\n       return true;\n     }\n-    \n-    DataAcquisitionProject oldProjectState = \n+\n+    DataAcquisitionProject oldProjectState =\n         this.dataAcquisitionProjectRepository.findById(value.getId())\n         .orElse(null);\n \n@@ -46,13 +46,13 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n     if (oldProjectState == null) {\n       return true;\n     }\n-    \n+\n     //it is not allowed to set the has been released before to false, if it was true before\n     if (oldProjectState.getHasBeenReleasedBefore() && !value.getHasBeenReleasedBefore()) {\n       return false;\n     }\n-    \n+\n     //all other cases is true\n     return true;\n-  } \n+  }\n }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "26",
+                    "column": "83",
+                    "severity": "error",
+                    "message": "'}' at column 83 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler_three_grams/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\nindex 079a7e1381..87ab383e3f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler_three_grams/140/SetHasBeenReleasedBeforeOnlyOnceValidator.java\n@@ -17,28 +17,26 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n \n   @Autowired\n   private DataAcquisitionProjectRepository dataAcquisitionProjectRepository;\n-  \n+\n   /*\n    * (non-Javadoc)\n    * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)\n    */\n   @Override\n-  public void initialize(SetHasBeenReleasedBeforeOnlyOnce constraintAnnotation) {}\n-\n-  /*\n+  public void initialize(SetHasBeenReleasedBeforeOnlyOnce constraintAnnotation) { }/*\n    * (non-Javadoc)\n    * @see javax.validation.ConstraintValidator#isValid(\n    * java.lang.Object, javax.validation.ConstraintValidatorContext)\n    */\n   @Override\n   public boolean isValid(DataAcquisitionProject value, ConstraintValidatorContext context) {\n-    \n+\n     //No id, no validation\n     if (value.getId() == null) {\n       return true;\n     }\n-    \n-    DataAcquisitionProject oldProjectState = \n+\n+    DataAcquisitionProject oldProjectState =\n         this.dataAcquisitionProjectRepository.findById(value.getId())\n         .orElse(null);\n \n@@ -46,13 +44,13 @@ public class SetHasBeenReleasedBeforeOnlyOnceValidator\n     if (oldProjectState == null) {\n       return true;\n     }\n-    \n+\n     //it is not allowed to set the has been released before to false, if it was true before\n     if (oldProjectState.getHasBeenReleasedBefore() && !value.getHasBeenReleasedBefore()) {\n       return false;\n     }\n-    \n+\n     //all other cases is true\n     return true;\n-  } \n+  }\n }\n",
+            "diff_size": 10
+        }
+    ]
+}

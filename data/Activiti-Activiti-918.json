@@ -1,0 +1,77 @@
+{
+    "error_id": "918",
+    "information": {
+        "errors": [
+            {
+                "line": "13",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.engine.delegate.event.impl;\n\nimport org.activiti.engine.ActivitiIllegalArgumentException;\nimport org.activiti.engine.delegate.event.ActivitiEvent;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/918/ActivitiEventImpl.java\nindex a231eb073e..0a7c434be6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/918/ActivitiEventImpl.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.delegate.event.impl;\n \n import org.activiti.engine.ActivitiIllegalArgumentException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/918/ActivitiEventImpl.java\nindex a231eb073e..d7f67f524d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/918/ActivitiEventImpl.java\n@@ -1,15 +1,16 @@\n /* Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- * \n+ *\n  *      http://www.apache.org/licenses/LICENSE-2.0\n- * \n+ *\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.delegate.event.impl;\n \n import org.activiti.engine.ActivitiIllegalArgumentException;\n@@ -18,73 +19,71 @@ import org.activiti.engine.delegate.event.ActivitiEventType;\n \n /**\n  * Base class for all {@link ActivitiEvent} implementations.\n- * \n-\n  */\n public class ActivitiEventImpl implements ActivitiEvent {\n \n-  protected ActivitiEventType type;\n-  protected String executionId;\n-  protected String processInstanceId;\n-  protected String processDefinitionId;\n-  private String reason;\n-\n-  /**\n-   * Creates a new event implementation, not part of an execution context.\n-   */\n-  public ActivitiEventImpl(ActivitiEventType type) {\n-    this(type, null, null, null);\n-  }\n-\n-  /**\n-   * Creates a new event implementation, part of an execution context.\n-   */\n-  public ActivitiEventImpl(ActivitiEventType type, String executionId, String processInstanceId, String processDefinitionId) {\n-    if (type == null) {\n-      throw new ActivitiIllegalArgumentException(\"type is null\");\n+    protected ActivitiEventType type;\n+    protected String executionId;\n+    protected String processInstanceId;\n+    protected String processDefinitionId;\n+    private String reason;\n+\n+    /**\n+     * Creates a new event implementation, not part of an execution context.\n+     */\n+    public ActivitiEventImpl(ActivitiEventType type) {\n+        this(type, null, null, null);\n+    }\n+\n+    /**\n+     * Creates a new event implementation, part of an execution context.\n+     */\n+    public ActivitiEventImpl(ActivitiEventType type, String executionId, String processInstanceId, String processDefinitionId) {\n+        if (type == null) {\n+            throw new ActivitiIllegalArgumentException(\"type is null\");\n+        }\n+        this.type = type;\n+        this.executionId = executionId;\n+        this.processInstanceId = processInstanceId;\n+        this.processDefinitionId = processDefinitionId;\n+    }\n+\n+    public ActivitiEventType getType() {\n+        return type;\n+    }\n+\n+    public void setType(ActivitiEventType type) {\n+        this.type = type;\n+    }\n+\n+    public String getExecutionId() {\n+        return executionId;\n+    }\n+\n+    public void setExecutionId(String executionId) {\n+        this.executionId = executionId;\n+    }\n+\n+    public String getProcessDefinitionId() {\n+        return processDefinitionId;\n+    }\n+\n+    public void setProcessDefinitionId(String processDefinitionId) {\n+        this.processDefinitionId = processDefinitionId;\n+    }\n+\n+    public String getProcessInstanceId() {\n+        return processInstanceId;\n+    }\n+\n+    public void setProcessInstanceId(String processInstanceId) {\n+        this.processInstanceId = processInstanceId;\n+    }\n+\n+    @Override\n+    public String toString() {\n+        return getClass() + \" - \" + type;\n     }\n-    this.type = type;\n-    this.executionId = executionId;\n-    this.processInstanceId = processInstanceId;\n-    this.processDefinitionId = processDefinitionId;\n-  }\n-\n-  public ActivitiEventType getType() {\n-    return type;\n-  }\n-\n-  public void setType(ActivitiEventType type) {\n-    this.type = type;\n-  }\n-\n-  public String getExecutionId() {\n-    return executionId;\n-  }\n-\n-  public void setExecutionId(String executionId) {\n-    this.executionId = executionId;\n-  }\n-\n-  public String getProcessDefinitionId() {\n-    return processDefinitionId;\n-  }\n-\n-  public void setProcessDefinitionId(String processDefinitionId) {\n-    this.processDefinitionId = processDefinitionId;\n-  }\n-\n-  public String getProcessInstanceId() {\n-    return processInstanceId;\n-  }\n-\n-  public void setProcessInstanceId(String processInstanceId) {\n-    this.processInstanceId = processInstanceId;\n-  }\n-\n-  @Override\n-  public String toString() {\n-    return getClass() + \" - \" + type;\n-  }\n \n     public String getReason() {\n         return reason;\n",
+            "diff_size": 108
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/918/ActivitiEventImpl.java\nindex a231eb073e..b56fb2aec6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/918/ActivitiEventImpl.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.delegate.event.impl;\n \n import org.activiti.engine.ActivitiIllegalArgumentException;\n@@ -93,4 +94,4 @@ public class ActivitiEventImpl implements ActivitiEvent {\n     public void setReason(String reason) {\n         this.reason = reason;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 39.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 47.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/918/ActivitiEventImpl.java\nindex a231eb073e..31dc9b831d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/918/ActivitiEventImpl.java\n@@ -21,76 +21,81 @@ import org.activiti.engine.delegate.event.ActivitiEventType;\n  * \n \n  */\n+\n+\n public class ActivitiEventImpl implements ActivitiEvent {\n \n-  protected ActivitiEventType type;\n-  protected String executionId;\n-  protected String processInstanceId;\n-  protected String processDefinitionId;\n-  private String reason;\n+    protected ActivitiEventType type;\n+    protected String executionId;\n+    protected String processInstanceId;\n+    protected String processDefinitionId;\n+\n+    private String reason;\n \n   /**\n    * Creates a new event implementation, not part of an execution context.\n    */\n-  public ActivitiEventImpl(ActivitiEventType type) {\n+\n+    public ActivitiEventImpl(ActivitiEventType type) {\n     this(type, null, null, null);\n-  }\n+    }\n \n   /**\n    * Creates a new event implementation, part of an execution context.\n    */\n-  public ActivitiEventImpl(ActivitiEventType type, String executionId, String processInstanceId, String processDefinitionId) {\n+\n+    public ActivitiEventImpl(ActivitiEventType type, String executionId, String processInstanceId, String processDefinitionId) {\n     if (type == null) {\n-      throw new ActivitiIllegalArgumentException(\"type is null\");\n+        throw new ActivitiIllegalArgumentException(\"type is null\");\n     }\n     this.type = type;\n     this.executionId = executionId;\n     this.processInstanceId = processInstanceId;\n     this.processDefinitionId = processDefinitionId;\n-  }\n+    }\n \n-  public ActivitiEventType getType() {\n+    public ActivitiEventType getType() {\n     return type;\n-  }\n+    }\n \n-  public void setType(ActivitiEventType type) {\n+    public void setType(ActivitiEventType type) {\n     this.type = type;\n-  }\n+    }\n \n-  public String getExecutionId() {\n+    public String getExecutionId() {\n     return executionId;\n-  }\n+    }\n \n-  public void setExecutionId(String executionId) {\n+    public void setExecutionId(String executionId) {\n     this.executionId = executionId;\n-  }\n+    }\n \n-  public String getProcessDefinitionId() {\n+    public String getProcessDefinitionId() {\n     return processDefinitionId;\n-  }\n+    }\n \n-  public void setProcessDefinitionId(String processDefinitionId) {\n+    public void setProcessDefinitionId(String processDefinitionId) {\n     this.processDefinitionId = processDefinitionId;\n-  }\n+    }\n \n-  public String getProcessInstanceId() {\n+    public String getProcessInstanceId() {\n     return processInstanceId;\n-  }\n+    }\n \n-  public void setProcessInstanceId(String processInstanceId) {\n+    public void setProcessInstanceId(String processInstanceId) {\n     this.processInstanceId = processInstanceId;\n-  }\n+    }\n \n-  @Override\n-  public String toString() {\n-    return getClass() + \" - \" + type;\n-  }\n+    @Override\n+    public String toString() {\n+        return getClass() + \" - \" + type;\n+    }\n \n     public String getReason() {\n-        return reason;\n+    return reason;\n     }\n \n     public void setReason(String reason) {\n-        this.reason = reason;\n+    this.reason = reason;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 38
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/918/ActivitiEventImpl.java\nindex a231eb073e..0a7c434be6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/918/ActivitiEventImpl.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.delegate.event.impl;\n \n import org.activiti.engine.ActivitiIllegalArgumentException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/918/ActivitiEventImpl.java\nindex a231eb073e..0a7c434be6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/918/ActivitiEventImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/918/ActivitiEventImpl.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.delegate.event.impl;\n \n import org.activiti.engine.ActivitiIllegalArgumentException;\n",
+            "diff_size": 1
+        }
+    ]
+}

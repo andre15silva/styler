@@ -1,0 +1,124 @@
+{
+    "error_id": "447",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/447/FTRLUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/447/FTRLUpdateFunc.java\nindex 271facef63..29398416f8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/447/FTRLUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/447/FTRLUpdateFunc.java\n@@ -28,55 +28,57 @@ import org.apache.commons.logging.LogFactory;\n \n public class FTRLUpdateFunc extends OptMMUpdateFunc {\n \n-  private static final Log LOG = LogFactory.getLog(FTRLUpdateFunc.class);\n+    private static final Log LOG = LogFactory.getLog(FTRLUpdateFunc.class);\n \n-  public FTRLUpdateFunc() {\n-    super();\n-  }\n+    public FTRLUpdateFunc() {\n+        super();\n+    }\n \n-  public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1,\n-      double lambda2, int epoch) {\n-    this(matId, factor, alpha, beta, lambda1, lambda2, epoch, 1);\n-  }\n+    public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1,\n+                          double lambda2, int epoch) {\n+        this(matId, factor, alpha, beta, lambda1, lambda2, epoch, 1);\n+    }\n \n-  public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1,\n-      double lambda2, int epoch, int batchSize) {\n-    super(matId, new int[]{factor}, new double[]{alpha, beta, lambda1, lambda2, epoch, batchSize});\n-  }\n+    public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1,\n+                          double lambda2, int epoch, int batchSize) {\n+        super(matId, new int[] {factor},\n+                new double[] {alpha, beta, lambda1, lambda2, epoch, batchSize});\n+    }\n \n-  @Override\n-  public void update(ServerPartition partition, int factor, double[] scalars) {\n-    double alpha = scalars[0];\n-    double beta = scalars[1];\n-    double lambda1 = scalars[2];\n-    double lambda2 = scalars[3];\n-    int epoch = (int) scalars[4];\n-    int batchSize = (int) scalars[5];\n+    @Override\n+    public void update(ServerPartition partition, int factor, double[] scalars) {\n+        double alpha = scalars[0];\n+        double beta = scalars[1];\n+        double lambda1 = scalars[2];\n+        double lambda2 = scalars[3];\n+        int epoch = (int) scalars[4];\n+        int batchSize = (int) scalars[5];\n \n-    for (int f = 0; f < factor; f++) {\n-      ServerRow gradientServerRow = partition.getRow(f + 3 * factor);\n-      try {\n-        gradientServerRow.startWrite();\n-        Vector weight = partition.getRow(f).getSplit();\n-        Vector zModel = partition.getRow(f + factor).getSplit();\n-        Vector nModel = partition.getRow(f + 2 * factor).getSplit();\n-        Vector gradient = gradientServerRow.getSplit();\n+        for (int f = 0; f < factor; f++) {\n+            ServerRow gradientServerRow = partition.getRow(f + 3 * factor);\n+            try {\n+                gradientServerRow.startWrite();\n+                Vector weight = partition.getRow(f).getSplit();\n+                Vector zModel = partition.getRow(f + factor).getSplit();\n+                Vector nModel = partition.getRow(f + 2 * factor).getSplit();\n+                Vector gradient = gradientServerRow.getSplit();\n \n-        if (batchSize > 1) {\n-          gradient.idiv(batchSize);\n-        }\n+                if (batchSize > 1) {\n+                    gradient.idiv(batchSize);\n+                }\n \n-        Vector delta = OptFuncs.ftrldelta(nModel, gradient, alpha);\n-        Ufuncs.iaxpy2(nModel, gradient, 1);\n-        zModel.iadd(gradient.sub(delta.mul(weight)));\n+                Vector delta = OptFuncs.ftrldelta(nModel, gradient, alpha);\n+                Ufuncs.iaxpy2(nModel, gradient, 1);\n+                zModel.iadd(gradient.sub(delta.mul(weight)));\n \n-        Vector newWeight = Ufuncs.ftrlthreshold(zModel, nModel, alpha, beta, lambda1, lambda2);\n-        weight.setStorage(newWeight.getStorage());\n+                Vector newWeight =\n+                        Ufuncs.ftrlthreshold(zModel, nModel, alpha, beta, lambda1, lambda2);\n+                weight.setStorage(newWeight.getStorage());\n \n-        gradient.clear();\n-      } finally {\n-        gradientServerRow.endWrite();\n-      }\n+                gradient.clear();\n+            } finally {\n+                gradientServerRow.endWrite();\n+            }\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 44
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 118).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 133).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/447/FTRLUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/447/FTRLUpdateFunc.java\nindex 271facef63..6d742fb845 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/447/FTRLUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/447/FTRLUpdateFunc.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.psf.optimizer;\n \n import com.tencent.angel.ml.math2.ufuncs.OptFuncs;\n@@ -34,13 +33,11 @@ public class FTRLUpdateFunc extends OptMMUpdateFunc {\n     super();\n   }\n \n-  public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1,\n-      double lambda2, int epoch) {\n-    this(matId, factor, alpha, beta, lambda1, lambda2, epoch, 1);\n+  public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1, double lambda2, int epoch) {\n+  this(matId, factor, alpha, beta, lambda1, lambda2, epoch, 1);\n   }\n \n-  public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1,\n-      double lambda2, int epoch, int batchSize) {\n+  public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1, double lambda2, int epoch, int batchSize) {\n     super(matId, new int[]{factor}, new double[]{alpha, beta, lambda1, lambda2, epoch, batchSize});\n   }\n \n@@ -79,4 +76,4 @@ public class FTRLUpdateFunc extends OptMMUpdateFunc {\n       }\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 120).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 128).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/447/FTRLUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/447/FTRLUpdateFunc.java\nindex 271facef63..d14a50bc0c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/447/FTRLUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/447/FTRLUpdateFunc.java\n@@ -27,56 +27,56 @@ import org.apache.commons.logging.Log;\n import org.apache.commons.logging.LogFactory;\n \n public class FTRLUpdateFunc extends OptMMUpdateFunc {\n+    private static final Log LOG = LogFactory.getLog(FTRLUpdateFunc.class);\n \n-  private static final Log LOG = LogFactory.getLog(FTRLUpdateFunc.class);\n-\n-  public FTRLUpdateFunc() {\n+    public FTRLUpdateFunc() {\n     super();\n-  }\n+    }\n \n-  public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1,\n-      double lambda2, int epoch) {\n+    public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1, double lambda2, int epoch) {\n     this(matId, factor, alpha, beta, lambda1, lambda2, epoch, 1);\n-  }\n+    }\n \n-  public FTRLUpdateFunc(int matId, int factor, double alpha, double beta, double lambda1,\n-      double lambda2, int epoch, int batchSize) {\n+    public FTRLUpdateFunc(int matId,\n+                          int factor,\n+                          double alpha,\n+                          double beta,\n+                          double lambda1,\n+                          double lambda2,\n+                          int epoch, int batchSize) {\n     super(matId, new int[]{factor}, new double[]{alpha, beta, lambda1, lambda2, epoch, batchSize});\n-  }\n+    }\n \n-  @Override\n-  public void update(ServerPartition partition, int factor, double[] scalars) {\n+    @Override\n+    public void update(ServerPartition partition, int factor, double[] scalars) {\n     double alpha = scalars[0];\n     double beta = scalars[1];\n     double lambda1 = scalars[2];\n     double lambda2 = scalars[3];\n     int epoch = (int) scalars[4];\n     int batchSize = (int) scalars[5];\n-\n     for (int f = 0; f < factor; f++) {\n-      ServerRow gradientServerRow = partition.getRow(f + 3 * factor);\n-      try {\n-        gradientServerRow.startWrite();\n-        Vector weight = partition.getRow(f).getSplit();\n-        Vector zModel = partition.getRow(f + factor).getSplit();\n-        Vector nModel = partition.getRow(f + 2 * factor).getSplit();\n-        Vector gradient = gradientServerRow.getSplit();\n+        ServerRow gradientServerRow = partition.getRow(f + 3 * factor);\n+        try {\n+                                         gradientServerRow.startWrite();\n+                                         Vector weight = partition.getRow(f).getSplit();\n+                                         Vector zModel = partition.getRow(f + factor).getSplit();\n+                                         Vector nModel = partition.getRow(f + 2 * factor).getSplit();\n+                                         Vector gradient = gradientServerRow.getSplit();\n+                                         if (batchSize > 1) {\n+            gradient.idiv(batchSize);\n+                                         }\n \n-        if (batchSize > 1) {\n-          gradient.idiv(batchSize);\n+                                         Vector delta = OptFuncs.ftrldelta(nModel, gradient, alpha);\n+                                         Ufuncs.iaxpy2(nModel, gradient, 1);\n+                                         zModel.iadd(gradient.sub(delta.mul(weight)));\n+                                         Vector newWeight = Ufuncs.ftrlthreshold(zModel, nModel, alpha, beta, lambda1, lambda2);\n+                                         weight.setStorage(newWeight.getStorage());\n+                                         gradient.clear();\n+        } finally {\n+          gradientServerRow.endWrite();\n         }\n-\n-        Vector delta = OptFuncs.ftrldelta(nModel, gradient, alpha);\n-        Ufuncs.iaxpy2(nModel, gradient, 1);\n-        zModel.iadd(gradient.sub(delta.mul(weight)));\n-\n-        Vector newWeight = Ufuncs.ftrlthreshold(zModel, nModel, alpha, beta, lambda1, lambda2);\n-        weight.setStorage(newWeight.getStorage());\n-\n-        gradient.clear();\n-      } finally {\n-        gradientServerRow.endWrite();\n-      }\n     }\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 52
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/447/FTRLUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/447/FTRLUpdateFunc.java\nindex 271facef63..9a34f8bbbe 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/447/FTRLUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/447/FTRLUpdateFunc.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.psf.optimizer;\n \n import com.tencent.angel.ml.math2.ufuncs.OptFuncs;\n",
+            "diff_size": 1
+        }
+    ]
+}

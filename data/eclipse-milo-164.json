@@ -1,0 +1,87 @@
+{
+    "error_id": "164",
+    "information": {
+        "errors": [
+            {
+                "line": "34",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 123).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=845\");\n\n    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=847\");\n\n    public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=846\");\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/164/DeleteSubscriptionsRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/164/DeleteSubscriptionsRequest.java\nindex ca550b5fdb..559f91aee6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/164/DeleteSubscriptionsRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/164/DeleteSubscriptionsRequest.java\n@@ -31,7 +31,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;\n public class DeleteSubscriptionsRequest extends Structure implements UaRequestMessage {\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=845\");\n \n-    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=847\");\n+    public static final ExpandedNodeId BINARY_ENCODING_ID =\n+        ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=847\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=846\");\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/164/DeleteSubscriptionsRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/164/DeleteSubscriptionsRequest.java\nindex ca550b5fdb..9d19eb4740 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/164/DeleteSubscriptionsRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/164/DeleteSubscriptionsRequest.java\n@@ -87,4 +87,4 @@ public class DeleteSubscriptionsRequest extends Structure implements UaRequestMe\n             encoder.writeUInt32Array(\"SubscriptionIds\", value.getSubscriptionIds());\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/164/DeleteSubscriptionsRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/164/DeleteSubscriptionsRequest.java\nindex ca550b5fdb..b345bee12a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/164/DeleteSubscriptionsRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/164/DeleteSubscriptionsRequest.java\n@@ -29,14 +29,13 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;\n )\n @ToString\n public class DeleteSubscriptionsRequest extends Structure implements UaRequestMessage {\n+\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=845\");\n \n     public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=847\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=846\");\n-\n     private final RequestHeader requestHeader;\n-\n     private final UInteger[] subscriptionIds;\n \n     public DeleteSubscriptionsRequest(RequestHeader requestHeader, UInteger[] subscriptionIds) {\n@@ -77,14 +76,15 @@ public class DeleteSubscriptionsRequest extends Structure implements UaRequestMe\n         public DeleteSubscriptionsRequest decode(SerializationContext context, UaDecoder decoder) {\n             RequestHeader requestHeader = (RequestHeader) decoder.readStruct(\"RequestHeader\", RequestHeader.TYPE_ID);\n             UInteger[] subscriptionIds = decoder.readUInt32Array(\"SubscriptionIds\");\n+\n             return new DeleteSubscriptionsRequest(requestHeader, subscriptionIds);\n         }\n \n         @Override\n-        public void encode(SerializationContext context, UaEncoder encoder,\n-                           DeleteSubscriptionsRequest value) {\n+        public void encode(SerializationContext context, UaEncoder encoder, DeleteSubscriptionsRequest value) {\n             encoder.writeStruct(\"RequestHeader\", value.getRequestHeader(), RequestHeader.TYPE_ID);\n             encoder.writeUInt32Array(\"SubscriptionIds\", value.getSubscriptionIds());\n         }\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

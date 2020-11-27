@@ -1,0 +1,87 @@
+{
+    "error_id": "189",
+    "information": {
+        "errors": [
+            {
+                "line": "33",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 123).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=486\");\n\n    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=488\");\n\n    public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=487\");\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/189/AddNodesRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/189/AddNodesRequest.java\nindex 967da254da..883c8946ea 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/189/AddNodesRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/189/AddNodesRequest.java\n@@ -30,7 +30,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId;\n public class AddNodesRequest extends Structure implements UaRequestMessage {\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=486\");\n \n-    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=488\");\n+    public static final ExpandedNodeId BINARY_ENCODING_ID =\n+        ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=488\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=487\");\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/189/AddNodesRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/189/AddNodesRequest.java\nindex 967da254da..adc4c1fd31 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/189/AddNodesRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/189/AddNodesRequest.java\n@@ -85,4 +85,4 @@ public class AddNodesRequest extends Structure implements UaRequestMessage {\n             encoder.writeStructArray(\"NodesToAdd\", value.getNodesToAdd(), AddNodesItem.TYPE_ID);\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/189/AddNodesRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/189/AddNodesRequest.java\nindex 967da254da..f22b880ccf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/189/AddNodesRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/189/AddNodesRequest.java\n@@ -28,14 +28,13 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId;\n )\n @ToString\n public class AddNodesRequest extends Structure implements UaRequestMessage {\n+\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=486\");\n \n     public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=488\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=487\");\n-\n     private final RequestHeader requestHeader;\n-\n     private final AddNodesItem[] nodesToAdd;\n \n     public AddNodesRequest(RequestHeader requestHeader, AddNodesItem[] nodesToAdd) {\n@@ -76,6 +75,7 @@ public class AddNodesRequest extends Structure implements UaRequestMessage {\n         public AddNodesRequest decode(SerializationContext context, UaDecoder decoder) {\n             RequestHeader requestHeader = (RequestHeader) decoder.readStruct(\"RequestHeader\", RequestHeader.TYPE_ID);\n             AddNodesItem[] nodesToAdd = (AddNodesItem[]) decoder.readStructArray(\"NodesToAdd\", AddNodesItem.TYPE_ID);\n+\n             return new AddNodesRequest(requestHeader, nodesToAdd);\n         }\n \n@@ -85,4 +85,5 @@ public class AddNodesRequest extends Structure implements UaRequestMessage {\n             encoder.writeStructArray(\"NodesToAdd\", value.getNodesToAdd(), AddNodesItem.TYPE_ID);\n         }\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

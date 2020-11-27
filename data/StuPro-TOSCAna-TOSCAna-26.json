@@ -1,0 +1,87 @@
+{
+    "error_id": "26",
+    "information": {
+        "errors": [
+            {
+                "line": "56",
+                "column": "5",
+                "severity": "error",
+                "message": "'/*' has more than 1 empty lines before.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "\n\n    /**\n     @param nodeName {@link #nodeName}\n     @param host     {@link #host}\n     */",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/styler/26/Dbms.java\nindex d977f2fb8d..88a882d527 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/styler/26/Dbms.java\n@@ -52,7 +52,6 @@ public class Dbms extends SoftwareComponent {\n         capabilities.add(host);\n     }\n \n-\n     /**\n      @param nodeName {@link #nodeName}\n      @param host     {@link #host}\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "57",
+                    "column": "5",
+                    "severity": "error",
+                    "message": "'/*' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/intellij/26/Dbms.java\nindex d977f2fb8d..a338404761 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/intellij/26/Dbms.java\n@@ -14,8 +14,8 @@ import lombok.Data;\n import lombok.Getter;\n \n /**\n- Represents a typical relational, SQL Database Management System software component or service.\n- (TOSCA Simple Profile in YAML Version 1.1, p. 172)\n+ * Represents a typical relational, SQL Database Management System software component or service.\n+ * (TOSCA Simple Profile in YAML Version 1.1, p. 172)\n  */\n @Data\n public class Dbms extends SoftwareComponent {\n@@ -24,14 +24,14 @@ public class Dbms extends SoftwareComponent {\n     public final ContainerCapability host;\n \n     /**\n-     The optional root password for the Dbms server.\n-     (TOSCA Simple Profile in YAML Version 1.1, p. 172)\n+     * The optional root password for the Dbms server.\n+     * (TOSCA Simple Profile in YAML Version 1.1, p. 172)\n      */\n     private final String rootPassword;\n \n     /**\n-     The Dbms server\u2019s port.\n-     (TOSCA Simple Profile in YAML Version 1.1, p. 172)\n+     * The Dbms server\u2019s port.\n+     * (TOSCA Simple Profile in YAML Version 1.1, p. 172)\n      */\n     private final Integer port;\n \n@@ -44,7 +44,8 @@ public class Dbms extends SoftwareComponent {\n                    String nodeName,\n                    StandardLifecycle standardLifecycle,\n                    String description) {\n-        super(componentVersion, adminCredential, nodeName, standardLifecycle, description);\n+        super(componentVersion, adminCredential, nodeName, standardLifecycle,\n+            description);\n         this.host = Objects.requireNonNull(host);\n         this.port = port;\n         this.rootPassword = rootPassword;\n@@ -54,8 +55,8 @@ public class Dbms extends SoftwareComponent {\n \n \n     /**\n-     @param nodeName {@link #nodeName}\n-     @param host     {@link #host}\n+     * @param nodeName {@link #nodeName}\n+     * @param host     {@link #host}\n      */\n     public static DbmsBuilder builder(String nodeName,\n                                       ContainerCapability host) {\n@@ -65,14 +66,14 @@ public class Dbms extends SoftwareComponent {\n     }\n \n     /**\n-     @return {@link #rootPassword}\n+     * @return {@link #rootPassword}\n      */\n     public Optional<String> getRootPassword() {\n         return Optional.ofNullable(rootPassword);\n     }\n \n     /**\n-     @return {@link #port}\n+     * @return {@link #port}\n      */\n     public Optional<Integer> getPort() {\n         return Optional.ofNullable(port);\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/naturalize/26/Dbms.java\nindex d977f2fb8d..44e8dac9df 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/naturalize/26/Dbms.java\n@@ -36,15 +36,14 @@ public class Dbms extends SoftwareComponent {\n     private final Integer port;\n \n     @Builder\n-    protected Dbms(ContainerCapability host,\n-                   String rootPassword,\n+    protected Dbms(ContainerCapability host, String rootPassword,\n                    Integer port,\n                    String componentVersion,\n                    Credential adminCredential,\n                    String nodeName,\n                    StandardLifecycle standardLifecycle,\n                    String description) {\n-        super(componentVersion, adminCredential, nodeName, standardLifecycle, description);\n+    super(componentVersion, adminCredential, nodeName, standardLifecycle, description);\n         this.host = Objects.requireNonNull(host);\n         this.port = port;\n         this.rootPassword = rootPassword;\n@@ -52,14 +51,12 @@ public class Dbms extends SoftwareComponent {\n         capabilities.add(host);\n     }\n \n-\n-    /**\n+/**\n      @param nodeName {@link #nodeName}\n      @param host     {@link #host}\n      */\n-    public static DbmsBuilder builder(String nodeName,\n-                                      ContainerCapability host) {\n-        return new DbmsBuilder()\n+    public static DbmsBuilder builder(String nodeName, ContainerCapability host) {\n+    return new DbmsBuilder()\n             .nodeName(nodeName)\n             .host(host);\n     }\n@@ -82,4 +79,4 @@ public class Dbms extends SoftwareComponent {\n     public void accept(Visitor v) {\n         v.visit(this);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "20",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "56",
+                    "column": "5",
+                    "severity": "error",
+                    "message": "'/*' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/codebuff/26/Dbms.java\nindex d977f2fb8d..30ef4799cb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/codebuff/26/Dbms.java\n@@ -2,12 +2,10 @@ package org.opentosca.toscana.model.node;\n \n import java.util.Objects;\n import java.util.Optional;\n-\n import org.opentosca.toscana.model.capability.ContainerCapability;\n import org.opentosca.toscana.model.datatype.Credential;\n import org.opentosca.toscana.model.operation.StandardLifecycle;\n import org.opentosca.toscana.model.visitor.Visitor;\n-\n import lombok.AccessLevel;\n import lombok.Builder;\n import lombok.Data;\n@@ -17,6 +15,8 @@ import lombok.Getter;\n  Represents a typical relational, SQL Database Management System software component or service.\n  (TOSCA Simple Profile in YAML Version 1.1, p. 172)\n  */\n+\n+\n @Data\n public class Dbms extends SoftwareComponent {\n \n@@ -36,19 +36,19 @@ public class Dbms extends SoftwareComponent {\n     private final Integer port;\n \n     @Builder\n-    protected Dbms(ContainerCapability host,\n-                   String rootPassword,\n-                   Integer port,\n-                   String componentVersion,\n-                   Credential adminCredential,\n-                   String nodeName,\n-                   StandardLifecycle standardLifecycle,\n-                   String description) {\n+    protected Dbms(\n+        ContainerCapability host,\n+        String rootPassword,\n+        Integer port,\n+        String componentVersion,\n+        Credential adminCredential,\n+        String nodeName,\n+        StandardLifecycle standardLifecycle, String description\n+    ) {\n         super(componentVersion, adminCredential, nodeName, standardLifecycle, description);\n         this.host = Objects.requireNonNull(host);\n         this.port = port;\n         this.rootPassword = rootPassword;\n-\n         capabilities.add(host);\n     }\n \n@@ -57,8 +57,8 @@ public class Dbms extends SoftwareComponent {\n      @param nodeName {@link #nodeName}\n      @param host     {@link #host}\n      */\n-    public static DbmsBuilder builder(String nodeName,\n-                                      ContainerCapability host) {\n+\n+    public static DbmsBuilder builder(String nodeName, ContainerCapability host) {\n         return new DbmsBuilder()\n             .nodeName(nodeName)\n             .host(host);\n@@ -67,6 +67,8 @@ public class Dbms extends SoftwareComponent {\n     /**\n      @return {@link #rootPassword}\n      */\n+\n+\n     public Optional<String> getRootPassword() {\n         return Optional.ofNullable(rootPassword);\n     }\n@@ -74,6 +76,8 @@ public class Dbms extends SoftwareComponent {\n     /**\n      @return {@link #port}\n      */\n+\n+\n     public Optional<Integer> getPort() {\n         return Optional.ofNullable(port);\n     }\n@@ -82,4 +86,4 @@ public class Dbms extends SoftwareComponent {\n     public void accept(Visitor v) {\n         v.visit(this);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 21
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/styler_random/26/Dbms.java\nindex d977f2fb8d..3512fbb457 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/styler_random/26/Dbms.java\n@@ -51,13 +51,10 @@ public class Dbms extends SoftwareComponent {\n \n         capabilities.add(host);\n     }\n-\n-\n     /**\n      @param nodeName {@link #nodeName}\n      @param host     {@link #host}\n-     */\n-    public static DbmsBuilder builder(String nodeName,\n+     */ public static DbmsBuilder builder(String nodeName,\n                                       ContainerCapability host) {\n         return new DbmsBuilder()\n             .nodeName(nodeName)\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/styler_three_grams/26/Dbms.java\nindex d977f2fb8d..88a882d527 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/errored/1/26/Dbms.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/StuPro-TOSCAna-TOSCAna/styler_three_grams/26/Dbms.java\n@@ -52,7 +52,6 @@ public class Dbms extends SoftwareComponent {\n         capabilities.add(host);\n     }\n \n-\n     /**\n      @param nodeName {@link #nodeName}\n      @param host     {@link #host}\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,169 @@
+{
+    "error_id": "53",
+    "information": {
+        "errors": [
+            {
+                "line": "23",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 179).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "\n        if (request.getHeader(HttpHeaders.X_FORWARDED_PORT) != null) {\n          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, Integer.parseInt(request.getHeader(HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n        } else {\n          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, request.getContextPath());\n        }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "25",
+                    "column": "19",
+                    "severity": "warning",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/53/Utils.java\nindex 66373d4355..cbbb2034db 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/53/Utils.java\n@@ -20,7 +20,9 @@ public class Utils {\n         serverName = serverParts[serverParts.length - 1];\n \n         if (request.getHeader(HttpHeaders.X_FORWARDED_PORT) != null) {\n-          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, Integer.parseInt(request.getHeader(HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n+          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO)\n+          , serverName,Integer.parseInt(request\n+      . getHeader (HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n         } else {\n           url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, request.getContextPath());\n         }\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/53/Utils.java\nindex 66373d4355..15b41f0b2c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/53/Utils.java\n@@ -20,7 +20,8 @@ public class Utils {\n         serverName = serverParts[serverParts.length - 1];\n \n         if (request.getHeader(HttpHeaders.X_FORWARDED_PORT) != null) {\n-          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, Integer.parseInt(request.getHeader(HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n+          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName,\n+              Integer.parseInt(request.getHeader(HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n         } else {\n           url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, request.getContextPath());\n         }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "22",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "23",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 179).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/53/Utils.java\nindex 66373d4355..177396b204 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/53/Utils.java\n@@ -7,6 +7,7 @@ import com.google.common.net.HttpHeaders;\n \n public class Utils {\n \n+\n   public static URL getApplicationBaseUrl(HttpServletRequest request) {\n     try {\n       URL url = null;\n@@ -18,8 +19,7 @@ public class Utils {\n         // grab the last forwarded url\n         String[] serverParts = serverName.split(\", \");\n         serverName = serverParts[serverParts.length - 1];\n-\n-        if (request.getHeader(HttpHeaders.X_FORWARDED_PORT) != null) {\n+if (request.getHeader(HttpHeaders.X_FORWARDED_PORT) != null) {\n           url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, Integer.parseInt(request.getHeader(HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n         } else {\n           url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, request.getContextPath());\n@@ -35,4 +35,4 @@ public class Utils {\n     }\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "12",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "14",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 76, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "16",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 6, expected is 76, indentation should be the same level as line 17.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "17",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 76, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "17",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "24",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 141, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "24",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 310).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 76, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 78, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 76, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 76, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/53/Utils.java\nindex 66373d4355..2035291e3e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/53/Utils.java\n@@ -5,34 +5,37 @@ import java.net.URL;\n import javax.servlet.http.HttpServletRequest;\n import com.google.common.net.HttpHeaders;\n \n+\n public class Utils {\n \n-  public static URL getApplicationBaseUrl(HttpServletRequest request) {\n+\n+    public static URL getApplicationBaseUrl(HttpServletRequest request) {\n     try {\n-      URL url = null;\n+                                                                            URL url = null;\n \n       // grab the forwarded values if they are not null\n-      if (request.getHeader(HttpHeaders.X_FORWARDED_HOST) != null) {\n+                                                                            if (request.getHeader(HttpHeaders.X_FORWARDED_HOST) != null) {\n         String serverName = request.getHeader(HttpHeaders.X_FORWARDED_HOST);\n \n         // grab the last forwarded url\n         String[] serverParts = serverName.split(\", \");\n         serverName = serverParts[serverParts.length - 1];\n-\n         if (request.getHeader(HttpHeaders.X_FORWARDED_PORT) != null) {\n-          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, Integer.parseInt(request.getHeader(HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n+                                                                                                                                             url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, Integer.parseInt(request.getHeader(HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n         } else {\n-          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, request.getContextPath());\n+          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO),\n+              serverName,\n+              request.getContextPath());\n         }\n-\n-      } else {\n-        url = new URL(request.getScheme(), request.getServerName(), request.getServerPort(), request.getContextPath());\n-      }\n-\n-      return url;\n+                                                                            } else {\n+                                                                              url = new URL(request.getScheme(),\n+                                                                                  request.getServerName(),\n+                                                                                  request.getServerPort(),\n+                                                                                  request.getContextPath());\n+                                                                            }\n+                                                                            return url;\n     } catch (MalformedURLException e) {\n       throw new RuntimeException(\"Unable to get current server URL\");\n     }\n-  }\n-\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 20
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "25",
+                    "column": "19",
+                    "severity": "warning",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/53/Utils.java\nindex 66373d4355..cbbb2034db 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/53/Utils.java\n@@ -20,7 +20,9 @@ public class Utils {\n         serverName = serverParts[serverParts.length - 1];\n \n         if (request.getHeader(HttpHeaders.X_FORWARDED_PORT) != null) {\n-          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, Integer.parseInt(request.getHeader(HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n+          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO)\n+          , serverName,Integer.parseInt(request\n+      . getHeader (HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n         } else {\n           url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, request.getContextPath());\n         }\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "24",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "26",
+                    "column": "23",
+                    "severity": "warning",
+                    "message": "'.' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/53/Utils.java\nindex 66373d4355..2e2f164f7f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/53/Utils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/53/Utils.java\n@@ -20,7 +20,10 @@ public class Utils {\n         serverName = serverParts[serverParts.length - 1];\n \n         if (request.getHeader(HttpHeaders.X_FORWARDED_PORT) != null) {\n-          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, Integer.parseInt(request.getHeader(HttpHeaders.X_FORWARDED_PORT)), request.getContextPath());\n+          url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, Integer.parseInt(request.getHeader\n+        (\n+\n+          HttpHeaders .X_FORWARDED_PORT)), request.getContextPath());\n         } else {\n           url = new URL(request.getHeader(HttpHeaders.X_FORWARDED_PROTO), serverName, request.getContextPath());\n         }\n",
+            "diff_size": 4
+        }
+    ]
+}

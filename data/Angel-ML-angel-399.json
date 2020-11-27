@@ -1,0 +1,106 @@
+{
+    "error_id": "399",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/399/AngelRunJar.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/399/AngelRunJar.java\nindex aba1a25b7f..6e9226bb28 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/399/AngelRunJar.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/399/AngelRunJar.java\n@@ -30,40 +30,42 @@ import java.security.PrivilegedExceptionAction;\n  * Java class running tools for Angel.\n  */\n public class AngelRunJar {\n-  private static final Log LOG = LogFactory.getLog(AngelRunJar.class);\n-  private static final String angelSysConfFile = \"angel-site.xml\";\n+    private static final Log LOG = LogFactory.getLog(AngelRunJar.class);\n+    private static final String angelSysConfFile = \"angel-site.xml\";\n \n-  public static void main(String[] args) {\n-    try{\n-      submit(ConfUtils.initConf(args));\n-    } catch (Exception x) {\n-      LOG.fatal(\"submit job failed \", x);\n-      System.exit(-1);\n-    }\n-  }\n-\n-  public static void submit(Configuration conf) throws Exception {\n-    // instance submitter class\n-    final String submitClassName =\n-      conf.get(AngelConf.ANGEL_APP_SUBMIT_CLASS, AngelConf.DEFAULT_ANGEL_APP_SUBMIT_CLASS);\n-    UserGroupInformation ugi = UGITools.getCurrentUser(conf);\n-    ugi.doAs(new PrivilegedExceptionAction<String>() {\n-      @Override public String run() throws Exception {\n-        AppSubmitter submmiter = null;\n+    public static void main(String[] args) {\n         try {\n-          Class<?> submitClass = Class.forName(submitClassName);\n-          submmiter = (AppSubmitter) submitClass.newInstance();\n-          LOG.info(\"submitClass: \" + submitClass.getName());\n+            submit(ConfUtils.initConf(args));\n         } catch (Exception x) {\n-          String message = \"load submit class failed \" + x.getMessage();\n-          LOG.fatal(message, x);\n-          throw new InvalidParameterException(message);\n+            LOG.fatal(\"submit job failed \", x);\n+            System.exit(-1);\n         }\n-        LOG.info(\"submit jars: \" + conf.get(AngelConf.ANGEL_JOB_LIBJARS));\n+    }\n \n-        submmiter.submit(conf);\n-        return \"OK\";\n-      }\n-    });\n-  }\n+    public static void submit(Configuration conf) throws Exception {\n+        // instance submitter class\n+        final String submitClassName =\n+                conf.get(AngelConf.ANGEL_APP_SUBMIT_CLASS,\n+                        AngelConf.DEFAULT_ANGEL_APP_SUBMIT_CLASS);\n+        UserGroupInformation ugi = UGITools.getCurrentUser(conf);\n+        ugi.doAs(new PrivilegedExceptionAction<String>() {\n+            @Override\n+            public String run() throws Exception {\n+                AppSubmitter submmiter = null;\n+                try {\n+                    Class<?> submitClass = Class.forName(submitClassName);\n+                    submmiter = (AppSubmitter) submitClass.newInstance();\n+                    LOG.info(\"submitClass: \" + submitClass.getName());\n+                } catch (Exception x) {\n+                    String message = \"load submit class failed \" + x.getMessage();\n+                    LOG.fatal(message, x);\n+                    throw new InvalidParameterException(message);\n+                }\n+                LOG.info(\"submit jars: \" + conf.get(AngelConf.ANGEL_JOB_LIBJARS));\n+\n+                submmiter.submit(conf);\n+                return \"OK\";\n+            }\n+        });\n+    }\n }\n",
+            "diff_size": 52
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 120).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/399/AngelRunJar.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/399/AngelRunJar.java\nindex aba1a25b7f..0d2475b72a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/399/AngelRunJar.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/399/AngelRunJar.java\n@@ -34,7 +34,7 @@ public class AngelRunJar {\n   private static final String angelSysConfFile = \"angel-site.xml\";\n \n   public static void main(String[] args) {\n-    try{\n+    try {\n       submit(ConfUtils.initConf(args));\n     } catch (Exception x) {\n       LOG.fatal(\"submit job failed \", x);\n@@ -44,11 +44,11 @@ public class AngelRunJar {\n \n   public static void submit(Configuration conf) throws Exception {\n     // instance submitter class\n-    final String submitClassName =\n-      conf.get(AngelConf.ANGEL_APP_SUBMIT_CLASS, AngelConf.DEFAULT_ANGEL_APP_SUBMIT_CLASS);\n+    final String submitClassName = conf.get(AngelConf.ANGEL_APP_SUBMIT_CLASS, AngelConf.DEFAULT_ANGEL_APP_SUBMIT_CLASS);\n     UserGroupInformation ugi = UGITools.getCurrentUser(conf);\n     ugi.doAs(new PrivilegedExceptionAction<String>() {\n-      @Override public String run() throws Exception {\n+      @Override\n+public String run() throws Exception {\n         AppSubmitter submmiter = null;\n         try {\n           Class<?> submitClass = Class.forName(submitClassName);\n@@ -66,4 +66,4 @@ public class AngelRunJar {\n       }\n     });\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 120).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/399/AngelRunJar.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/399/AngelRunJar.java\nindex aba1a25b7f..ae444300c0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/399/AngelRunJar.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/399/AngelRunJar.java\n@@ -23,47 +23,49 @@ import org.apache.commons.logging.Log;\n import org.apache.commons.logging.LogFactory;\n import org.apache.hadoop.conf.Configuration;\n import org.apache.hadoop.security.UserGroupInformation;\n-\n import java.security.PrivilegedExceptionAction;\n \n /**\n  * Java class running tools for Angel.\n  */\n+\n public class AngelRunJar {\n-  private static final Log LOG = LogFactory.getLog(AngelRunJar.class);\n-  private static final String angelSysConfFile = \"angel-site.xml\";\n+    private static final Log LOG = LogFactory.getLog(AngelRunJar.class);\n+    private static final String angelSysConfFile = \"angel-site.xml\";\n \n-  public static void main(String[] args) {\n-    try{\n-      submit(ConfUtils.initConf(args));\n+    public static void main(String[] args) {\n+    try {\n+        submit(ConfUtils.initConf(args));\n     } catch (Exception x) {\n       LOG.fatal(\"submit job failed \", x);\n       System.exit(-1);\n     }\n-  }\n+    }\n \n-  public static void submit(Configuration conf) throws Exception {\n+    public static void submit(Configuration conf) throws Exception {\n     // instance submitter class\n-    final String submitClassName =\n-      conf.get(AngelConf.ANGEL_APP_SUBMIT_CLASS, AngelConf.DEFAULT_ANGEL_APP_SUBMIT_CLASS);\n+    final String submitClassName = conf.get(AngelConf.ANGEL_APP_SUBMIT_CLASS, AngelConf.DEFAULT_ANGEL_APP_SUBMIT_CLASS);\n     UserGroupInformation ugi = UGITools.getCurrentUser(conf);\n     ugi.doAs(new PrivilegedExceptionAction<String>() {\n-      @Override public String run() throws Exception {\n-        AppSubmitter submmiter = null;\n-        try {\n-          Class<?> submitClass = Class.forName(submitClassName);\n-          submmiter = (AppSubmitter) submitClass.newInstance();\n-          LOG.info(\"submitClass: \" + submitClass.getName());\n-        } catch (Exception x) {\n-          String message = \"load submit class failed \" + x.getMessage();\n-          LOG.fatal(message, x);\n-          throw new InvalidParameterException(message);\n-        }\n-        LOG.info(\"submit jars: \" + conf.get(AngelConf.ANGEL_JOB_LIBJARS));\n \n-        submmiter.submit(conf);\n-        return \"OK\";\n-      }\n+\n+        @Override\n+        public String run() throws Exception {\n+                 AppSubmitter submmiter = null;\n+                 try {\n+            Class<?> submitClass = Class.forName(submitClassName);\n+            submmiter = (AppSubmitter) submitClass.newInstance();\n+            LOG.info(\"submitClass: \" + submitClass.getName());\n+                 } catch (Exception x) {\n+                   String message = \"load submit class failed \" + x.getMessage();\n+                   LOG.fatal(message, x);\n+                   throw new InvalidParameterException(message);\n+                 }\n+                 LOG.info(\"submit jars: \" + conf.get(AngelConf.ANGEL_JOB_LIBJARS));\n+                 submmiter.submit(conf);\n+                 return \"OK\";\n+        }\n     });\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 43
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

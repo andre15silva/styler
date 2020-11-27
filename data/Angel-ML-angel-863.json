@@ -1,0 +1,104 @@
+{
+    "error_id": "863",
+    "information": {
+        "errors": [
+            {
+                "line": "53",
+                "column": "9",
+                "severity": "error",
+                "message": "',' should be on the previous line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.SeparatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "    PartitionKey key = partKey.getPartKey();\n    int[] partInfo = new int[] {key.getStartRow(), key.getEndRow()\n        , key.getStartCol(), key.getEndCol()};\n    return new FullPartitionAggrResult(result, partInfo);\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "53",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "',' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.SeparatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "53",
+                    "column": "17",
+                    "severity": "error",
+                    "message": "',' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.SeparatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/863/FullAggrFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/863/FullAggrFunc.java\nindex 7defaa63bc..042e9da44c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/863/FullAggrFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/863/FullAggrFunc.java\n@@ -31,44 +31,44 @@ import com.tencent.angel.ps.impl.matrix.ServerPartition;\n  */\n public abstract class FullAggrFunc extends GetFunc {\n \n-  public FullAggrFunc(int matrixId) {\n-    super(new FullAggrParam(matrixId));\n-  }\n+    public FullAggrFunc(int matrixId) {\n+        super(new FullAggrParam(matrixId));\n+    }\n \n-  public FullAggrFunc() {\n-    super(null);\n-  }\n+    public FullAggrFunc() {\n+        super(null);\n+    }\n \n-  @Override\n-  public PartitionGetResult partitionGet(PartitionGetParam partKey) {\n-    ServerPartition part = PSContext.get().getMatrixPartitionManager()\n-        .getPartition(partKey.getMatrixId(), partKey.getPartKey().getPartitionId());\n+    @Override\n+    public PartitionGetResult partitionGet(PartitionGetParam partKey) {\n+        ServerPartition part = PSContext.get().getMatrixPartitionManager()\n+                .getPartition(partKey.getMatrixId(), partKey.getPartKey().getPartitionId());\n \n-    double[][] result = null;\n-    if (part != null) {\n-      result = process(part, partKey.getPartKey());\n+        double[][] result = null;\n+        if (part != null) {\n+            result = process(part, partKey.getPartKey());\n+        }\n+        PartitionKey key = partKey.getPartKey();\n+        int[] partInfo = new int[] {key.getStartRow(), key.getEndRow()\n+                , key.getStartCol(), key.getEndCol()};\n+        return new FullPartitionAggrResult(result, partInfo);\n     }\n-    PartitionKey key = partKey.getPartKey();\n-    int[] partInfo = new int[] {key.getStartRow(), key.getEndRow()\n-        , key.getStartCol(), key.getEndCol()};\n-    return new FullPartitionAggrResult(result, partInfo);\n-  }\n \n-  private double[][] process(ServerPartition part, PartitionKey key) {\n-    switch (part.getRowType()) {\n-      case T_DOUBLE_DENSE:\n-        int startRow = key.getStartRow();\n-        int endRow = key.getEndRow();\n-        ServerDenseDoubleRow[] denseRows = new ServerDenseDoubleRow[endRow - startRow];\n-        for (int i = startRow; i < endRow; i++) {\n-          denseRows[i - startRow] = (ServerDenseDoubleRow) part.getRow(i);\n+    private double[][] process(ServerPartition part, PartitionKey key) {\n+        switch (part.getRowType()) {\n+            case T_DOUBLE_DENSE:\n+                int startRow = key.getStartRow();\n+                int endRow = key.getEndRow();\n+                ServerDenseDoubleRow[] denseRows = new ServerDenseDoubleRow[endRow - startRow];\n+                for (int i = startRow; i < endRow; i++) {\n+                    denseRows[i - startRow] = (ServerDenseDoubleRow) part.getRow(i);\n+                }\n+                return doProcess(denseRows);\n+            default:\n+                throw new RuntimeException(\"currently only supports Double Dense Row\");\n         }\n-        return doProcess(denseRows);\n-      default:\n-        throw new RuntimeException(\"currently only supports Double Dense Row\");\n     }\n-  }\n \n-  protected abstract double[][] doProcess(ServerDenseDoubleRow[] rows);\n+    protected abstract double[][] doProcess(ServerDenseDoubleRow[] rows);\n \n }\n",
+            "diff_size": 40
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/863/FullAggrFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/863/FullAggrFunc.java\nindex 7defaa63bc..a32a4fb9c4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/863/FullAggrFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/863/FullAggrFunc.java\n@@ -43,15 +43,13 @@ public abstract class FullAggrFunc extends GetFunc {\n   public PartitionGetResult partitionGet(PartitionGetParam partKey) {\n     ServerPartition part = PSContext.get().getMatrixPartitionManager()\n         .getPartition(partKey.getMatrixId(), partKey.getPartKey().getPartitionId());\n-\n-    double[][] result = null;\n+double[][] result = null;\n     if (part != null) {\n       result = process(part, partKey.getPartKey());\n     }\n     PartitionKey key = partKey.getPartKey();\n-    int[] partInfo = new int[] {key.getStartRow(), key.getEndRow()\n-        , key.getStartCol(), key.getEndCol()};\n-    return new FullPartitionAggrResult(result, partInfo);\n+    int[] partInfo = new int[] {key.getStartRow(), key.getEndRow(), key.getStartCol(), key.getEndCol() };\n+return new FullPartitionAggrResult(result, partInfo);\n   }\n \n   private double[][] process(ServerPartition part, PartitionKey key) {\n@@ -71,4 +69,4 @@ public abstract class FullAggrFunc extends GetFunc {\n \n   protected abstract double[][] doProcess(ServerDenseDoubleRow[] rows);\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 146).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/863/FullAggrFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/863/FullAggrFunc.java\nindex 7defaa63bc..7875cffc1f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/863/FullAggrFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/863/FullAggrFunc.java\n@@ -29,46 +29,45 @@ import com.tencent.angel.ps.impl.matrix.ServerPartition;\n  * other aggregate function will extend `FullAggrFunc` and implement `doProcessRow`.\n  * This function will process the whole matrix.\n  */\n+\n public abstract class FullAggrFunc extends GetFunc {\n \n-  public FullAggrFunc(int matrixId) {\n+    public FullAggrFunc(int matrixId) {\n     super(new FullAggrParam(matrixId));\n-  }\n+    }\n \n-  public FullAggrFunc() {\n+    public FullAggrFunc() {\n     super(null);\n-  }\n-\n-  @Override\n-  public PartitionGetResult partitionGet(PartitionGetParam partKey) {\n-    ServerPartition part = PSContext.get().getMatrixPartitionManager()\n-        .getPartition(partKey.getMatrixId(), partKey.getPartKey().getPartitionId());\n+    }\n \n+    @Override\n+    public PartitionGetResult partitionGet(PartitionGetParam partKey) {\n+    ServerPartition part = PSContext.get().getMatrixPartitionManager().getPartition(partKey.getMatrixId(), partKey.getPartKey().getPartitionId());\n     double[][] result = null;\n     if (part != null) {\n-      result = process(part, partKey.getPartKey());\n+        result = process(part, partKey.getPartKey());\n     }\n+\n     PartitionKey key = partKey.getPartKey();\n-    int[] partInfo = new int[] {key.getStartRow(), key.getEndRow()\n-        , key.getStartCol(), key.getEndCol()};\n+    int[] partInfo = new int[]{key.getStartRow(), key.getEndRow(), key.getStartCol(), key.getEndCol()};\n     return new FullPartitionAggrResult(result, partInfo);\n-  }\n+    }\n \n-  private double[][] process(ServerPartition part, PartitionKey key) {\n+    private double[][] process(ServerPartition part, PartitionKey key) {\n     switch (part.getRowType()) {\n-      case T_DOUBLE_DENSE:\n+        case T_DOUBLE_DENSE:\n         int startRow = key.getStartRow();\n         int endRow = key.getEndRow();\n         ServerDenseDoubleRow[] denseRows = new ServerDenseDoubleRow[endRow - startRow];\n         for (int i = startRow; i < endRow; i++) {\n-          denseRows[i - startRow] = (ServerDenseDoubleRow) part.getRow(i);\n+        denseRows[i - startRow] = (ServerDenseDoubleRow) part.getRow(i);\n         }\n         return doProcess(denseRows);\n-      default:\n+        default:\n         throw new RuntimeException(\"currently only supports Double Dense Row\");\n     }\n-  }\n+    }\n \n-  protected abstract double[][] doProcess(ServerDenseDoubleRow[] rows);\n+    protected abstract double[][] doProcess(ServerDenseDoubleRow[] rows);\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "53",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "',' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.SeparatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/863/FullAggrFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/863/FullAggrFunc.java\nindex 7defaa63bc..b476ec1d37 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/863/FullAggrFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/863/FullAggrFunc.java\n@@ -49,26 +49,25 @@ public abstract class FullAggrFunc extends GetFunc {\n       result = process(part, partKey.getPartKey());\n     }\n     PartitionKey key = partKey.getPartKey();\n-    int[] partInfo = new int[] {key.getStartRow(), key.getEndRow()\n-        , key.getStartCol(), key.getEndCol()};\n-    return new FullPartitionAggrResult(result, partInfo);\n-  }\n+    int[] partInfo = new int[] {key.getStartRow(), key.getEndRow() , key.getStartCol(), key.getEndCol()};\n+return new FullPartitionAggrResult(result, partInfo);\n+}\n \n-  private double[][] process(ServerPartition part, PartitionKey key) {\n-    switch (part.getRowType()) {\n-      case T_DOUBLE_DENSE:\n-        int startRow = key.getStartRow();\n-        int endRow = key.getEndRow();\n-        ServerDenseDoubleRow[] denseRows = new ServerDenseDoubleRow[endRow - startRow];\n-        for (int i = startRow; i < endRow; i++) {\n-          denseRows[i - startRow] = (ServerDenseDoubleRow) part.getRow(i);\n-        }\n-        return doProcess(denseRows);\n-      default:\n-        throw new RuntimeException(\"currently only supports Double Dense Row\");\n-    }\n+private double[][] process(ServerPartition part, PartitionKey key) {\n+  switch (part.getRowType()) {\n+    case T_DOUBLE_DENSE:\n+      int startRow = key.getStartRow();\n+      int endRow = key.getEndRow();\n+      ServerDenseDoubleRow[] denseRows = new ServerDenseDoubleRow[endRow - startRow];\n+      for (int i = startRow; i < endRow; i++) {\n+        denseRows[i - startRow] = (ServerDenseDoubleRow) part.getRow(i);\n+      }\n+      return doProcess(denseRows);\n+    default:\n+      throw new RuntimeException(\"currently only supports Double Dense Row\");\n   }\n+}\n \n-  protected abstract double[][] doProcess(ServerDenseDoubleRow[] rows);\n+protected abstract double[][] doProcess(ServerDenseDoubleRow[] rows);\n \n }\n",
+            "diff_size": 19
+        }
+    ]
+}

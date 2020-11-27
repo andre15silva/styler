@@ -1,0 +1,142 @@
+{
+    "error_id": "420",
+    "information": {
+        "errors": [
+            {
+                "line": "61",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 111).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "   */\n  public void init() throws IOException {\n    int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE, AngelConf.DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);\n    conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n    conf.setInt(DFSConfigKeys.DFS_BYTES_PER_CHECKSUM_KEY, flushLen);\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 149).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/420/DistributeLog.java\nindex 099cd88e4c..b9ba5d0300 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/420/DistributeLog.java\n@@ -57,62 +57,61 @@ public class DistributeLog {\n    * Init\n    * @throws IOException\n    */\n-  public void init() throws IOException {\n-    int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE, AngelConf.DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);\n-    conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n-    conf.setInt(DFSConfigKeys.DFS_BYTES_PER_CHECKSUM_KEY, flushLen);\n+  public void init() throws IOException { int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE, AngelConf.DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);\n+  conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n+  conf.setInt(DFSConfigKeys.DFS_BYTES_PER_CHECKSUM_KEY, flushLen);\n \n-    String pathStr = conf.get(AngelConf.ANGEL_LOG_PATH);\n-    if (pathStr == null) {\n-      throw new IOException(\"log directory is null. you must set \" + AngelConf.ANGEL_LOG_PATH);\n-    }\n+  String pathStr = conf.get(AngelConf.ANGEL_LOG_PATH);\n+  if (pathStr == null) {\n+    throw new IOException(\"log directory is null. you must set \" + AngelConf.ANGEL_LOG_PATH);\n+  }\n \n-    LOG.info(\"algorithm log output directory=\" + pathStr);\n+  LOG.info(\"algorithm log output directory=\" + pathStr);\n \n-    Path path = new Path(pathStr + \"/log\");\n-    FileSystem fs = path.getFileSystem(conf);\n-    if (fs.exists(path)) {\n-      fs.delete(path, true);\n-    }\n-    outputStream =  fs.create(path, true);\n+  Path path = new Path(pathStr + \"/log\");\n+  FileSystem fs = path.getFileSystem(conf);\n+  if (fs.exists(path)) {\n+    fs.delete(path, true);\n   }\n+  outputStream =  fs.create(path, true);\n+}\n \n-  /**\n+/**\n    * Write the index names to file\n    * @param names index name list\n    * @throws IOException\n    */\n-  public void setNames(List<String> names) throws IOException {\n-    this.names = names;\n-    for (String name : names) {\n-      outputStream.write((name + \"\\t\").getBytes());\n-    }\n-    outputStream.writeBytes(\"\\n\");\n-    outputStream.hflush();\n+public void setNames(List<String> names) throws IOException {\n+  this.names = names;\n+  for (String name : names) {\n+    outputStream.write((name + \"\\t\").getBytes());\n   }\n+  outputStream.writeBytes(\"\\n\");\n+  outputStream.hflush();\n+}\n \n-  /**\n+/**\n    * Write index values to file\n    * @param algoIndexes index name to value map\n    * @throws IOException\n    */\n-  public void writeLog(Map<String, String> algoIndexes) throws IOException {\n-    assert(names != null && names.size() == algoIndexes.size());\n-    int size = names.size();\n-    for(int i = 0; i < size; i++) {\n-      outputStream.write((algoIndexes.get(names.get(i)) + \"\\t\").getBytes());\n-    }\n-    outputStream.writeBytes(\"\\n\");\n-    outputStream.hflush();\n+public void writeLog(Map<String, String> algoIndexes) throws IOException {\n+  assert(names != null && names.size() == algoIndexes.size());\n+  int size = names.size();\n+  for(int i = 0; i < size; i++) {\n+    outputStream.write((algoIndexes.get(names.get(i)) + \"\\t\").getBytes());\n   }\n+  outputStream.writeBytes(\"\\n\");\n+  outputStream.hflush();\n+}\n \n-  /**\n+/**\n    * Close file writter\n    * @throws IOException\n    */\n-  public void close() throws IOException {\n-    if(outputStream != null) {\n-      outputStream.close();\n-    }\n+public void close() throws IOException {\n+  if(outputStream != null) {\n+    outputStream.close();\n   }\n }\n+}\n",
+            "diff_size": 46
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/420/DistributeLog.java\nindex 099cd88e4c..6b720d752c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/420/DistributeLog.java\n@@ -34,85 +34,98 @@ import java.util.Map;\n  * The tool that write algorithm logs to file.\n  */\n public class DistributeLog {\n-  static final Log LOG = LogFactory.getLog(DistributeLog.class);\n+    static final Log LOG = LogFactory.getLog(DistributeLog.class);\n \n-  /** Application configuration */\n-  private final Configuration conf;\n+    /**\n+     * Application configuration\n+     */\n+    private final Configuration conf;\n \n-  /** Index name list */\n-  private List<String> names;\n+    /**\n+     * Index name list\n+     */\n+    private List<String> names;\n \n-  /** File output stream */\n-  private FSDataOutputStream outputStream;\n+    /**\n+     * File output stream\n+     */\n+    private FSDataOutputStream outputStream;\n \n-  /**\n-   * Create a new DistributeLog\n-   * @param conf application configuration\n-   */\n-  public DistributeLog(Configuration conf) {\n-    this.conf = conf;\n-  }\n+    /**\n+     * Create a new DistributeLog\n+     *\n+     * @param conf application configuration\n+     */\n+    public DistributeLog(Configuration conf) {\n+        this.conf = conf;\n+    }\n \n-  /**\n-   * Init\n-   * @throws IOException\n-   */\n-  public void init() throws IOException {\n-    int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE, AngelConf.DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);\n-    conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n-    conf.setInt(DFSConfigKeys.DFS_BYTES_PER_CHECKSUM_KEY, flushLen);\n+    /**\n+     * Init\n+     *\n+     * @throws IOException\n+     */\n+    public void init() throws IOException {\n+        int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE,\n+                AngelConf.DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);\n+        conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n+        conf.setInt(DFSConfigKeys.DFS_BYTES_PER_CHECKSUM_KEY, flushLen);\n \n-    String pathStr = conf.get(AngelConf.ANGEL_LOG_PATH);\n-    if (pathStr == null) {\n-      throw new IOException(\"log directory is null. you must set \" + AngelConf.ANGEL_LOG_PATH);\n-    }\n+        String pathStr = conf.get(AngelConf.ANGEL_LOG_PATH);\n+        if (pathStr == null) {\n+            throw new IOException(\n+                    \"log directory is null. you must set \" + AngelConf.ANGEL_LOG_PATH);\n+        }\n \n-    LOG.info(\"algorithm log output directory=\" + pathStr);\n+        LOG.info(\"algorithm log output directory=\" + pathStr);\n \n-    Path path = new Path(pathStr + \"/log\");\n-    FileSystem fs = path.getFileSystem(conf);\n-    if (fs.exists(path)) {\n-      fs.delete(path, true);\n+        Path path = new Path(pathStr + \"/log\");\n+        FileSystem fs = path.getFileSystem(conf);\n+        if (fs.exists(path)) {\n+            fs.delete(path, true);\n+        }\n+        outputStream = fs.create(path, true);\n     }\n-    outputStream =  fs.create(path, true);\n-  }\n \n-  /**\n-   * Write the index names to file\n-   * @param names index name list\n-   * @throws IOException\n-   */\n-  public void setNames(List<String> names) throws IOException {\n-    this.names = names;\n-    for (String name : names) {\n-      outputStream.write((name + \"\\t\").getBytes());\n+    /**\n+     * Write the index names to file\n+     *\n+     * @param names index name list\n+     * @throws IOException\n+     */\n+    public void setNames(List<String> names) throws IOException {\n+        this.names = names;\n+        for (String name : names) {\n+            outputStream.write((name + \"\\t\").getBytes());\n+        }\n+        outputStream.writeBytes(\"\\n\");\n+        outputStream.hflush();\n     }\n-    outputStream.writeBytes(\"\\n\");\n-    outputStream.hflush();\n-  }\n \n-  /**\n-   * Write index values to file\n-   * @param algoIndexes index name to value map\n-   * @throws IOException\n-   */\n-  public void writeLog(Map<String, String> algoIndexes) throws IOException {\n-    assert(names != null && names.size() == algoIndexes.size());\n-    int size = names.size();\n-    for(int i = 0; i < size; i++) {\n-      outputStream.write((algoIndexes.get(names.get(i)) + \"\\t\").getBytes());\n+    /**\n+     * Write index values to file\n+     *\n+     * @param algoIndexes index name to value map\n+     * @throws IOException\n+     */\n+    public void writeLog(Map<String, String> algoIndexes) throws IOException {\n+        assert (names != null && names.size() == algoIndexes.size());\n+        int size = names.size();\n+        for (int i = 0; i < size; i++) {\n+            outputStream.write((algoIndexes.get(names.get(i)) + \"\\t\").getBytes());\n+        }\n+        outputStream.writeBytes(\"\\n\");\n+        outputStream.hflush();\n     }\n-    outputStream.writeBytes(\"\\n\");\n-    outputStream.hflush();\n-  }\n \n-  /**\n-   * Close file writter\n-   * @throws IOException\n-   */\n-  public void close() throws IOException {\n-    if(outputStream != null) {\n-      outputStream.close();\n+    /**\n+     * Close file writter\n+     *\n+     * @throws IOException\n+     */\n+    public void close() throws IOException {\n+        if (outputStream != null) {\n+            outputStream.close();\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 88
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 111).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/420/DistributeLog.java\nindex 099cd88e4c..f6b36ca4ff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/420/DistributeLog.java\n@@ -74,7 +74,7 @@ public class DistributeLog {\n     if (fs.exists(path)) {\n       fs.delete(path, true);\n     }\n-    outputStream =  fs.create(path, true);\n+    outputStream = fs.create(path, true);\n   }\n \n   /**\n@@ -99,7 +99,7 @@ public class DistributeLog {\n   public void writeLog(Map<String, String> algoIndexes) throws IOException {\n     assert(names != null && names.size() == algoIndexes.size());\n     int size = names.size();\n-    for(int i = 0; i < size; i++) {\n+    for (int i = 0; i < size; i++) {\n       outputStream.write((algoIndexes.get(names.get(i)) + \"\\t\").getBytes());\n     }\n     outputStream.writeBytes(\"\\n\");\n@@ -115,4 +115,4 @@ public class DistributeLog {\n       outputStream.close();\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 41.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 44.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 47.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 54.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 63.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 111).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 86.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 101.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 117.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/420/DistributeLog.java\nindex 099cd88e4c..b8292028de 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/420/DistributeLog.java\n@@ -25,7 +25,6 @@ import org.apache.hadoop.fs.FSDataOutputStream;\n import org.apache.hadoop.fs.FileSystem;\n import org.apache.hadoop.fs.Path;\n import org.apache.hadoop.hdfs.DFSConfigKeys;\n-\n import java.io.IOException;\n import java.util.List;\n import java.util.Map;\n@@ -33,86 +32,91 @@ import java.util.Map;\n /**\n  * The tool that write algorithm logs to file.\n  */\n+\n public class DistributeLog {\n-  static final Log LOG = LogFactory.getLog(DistributeLog.class);\n+\n+    static final Log LOG = LogFactory.getLog(DistributeLog.class);\n \n   /** Application configuration */\n-  private final Configuration conf;\n+    private final Configuration conf;\n \n   /** Index name list */\n-  private List<String> names;\n+    private List<String> names;\n \n   /** File output stream */\n-  private FSDataOutputStream outputStream;\n+    private FSDataOutputStream outputStream;\n \n   /**\n    * Create a new DistributeLog\n    * @param conf application configuration\n    */\n-  public DistributeLog(Configuration conf) {\n+\n+    public DistributeLog(Configuration conf) {\n     this.conf = conf;\n-  }\n+    }\n \n   /**\n    * Init\n    * @throws IOException\n    */\n-  public void init() throws IOException {\n+\n+    public void init() throws IOException {\n     int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE, AngelConf.DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);\n     conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n     conf.setInt(DFSConfigKeys.DFS_BYTES_PER_CHECKSUM_KEY, flushLen);\n-\n     String pathStr = conf.get(AngelConf.ANGEL_LOG_PATH);\n     if (pathStr == null) {\n-      throw new IOException(\"log directory is null. you must set \" + AngelConf.ANGEL_LOG_PATH);\n+        throw new IOException(\"log directory is null. you must set \" + AngelConf.ANGEL_LOG_PATH);\n     }\n-\n     LOG.info(\"algorithm log output directory=\" + pathStr);\n-\n     Path path = new Path(pathStr + \"/log\");\n     FileSystem fs = path.getFileSystem(conf);\n     if (fs.exists(path)) {\n-      fs.delete(path, true);\n+        fs.delete(path, true);\n+    }\n+    outputStream = fs.create(path, true);\n     }\n-    outputStream =  fs.create(path, true);\n-  }\n \n   /**\n    * Write the index names to file\n    * @param names index name list\n    * @throws IOException\n    */\n-  public void setNames(List<String> names) throws IOException {\n+\n+    public void setNames(List<String> names) throws IOException {\n     this.names = names;\n     for (String name : names) {\n-      outputStream.write((name + \"\\t\").getBytes());\n+        outputStream.write((name + \"\\t\").getBytes());\n     }\n     outputStream.writeBytes(\"\\n\");\n     outputStream.hflush();\n-  }\n+    }\n \n   /**\n    * Write index values to file\n    * @param algoIndexes index name to value map\n    * @throws IOException\n    */\n-  public void writeLog(Map<String, String> algoIndexes) throws IOException {\n-    assert(names != null && names.size() == algoIndexes.size());\n+\n+    public void writeLog(Map<String, String> algoIndexes) throws IOException {\n+    assert (names != null && names.size() == algoIndexes.size());\n+\n     int size = names.size();\n-    for(int i = 0; i < size; i++) {\n-      outputStream.write((algoIndexes.get(names.get(i)) + \"\\t\").getBytes());\n+    for (int i = 0; i < size; i++) {\n+        outputStream.write((algoIndexes.get(names.get(i)) + \"\\t\").getBytes());\n     }\n     outputStream.writeBytes(\"\\n\");\n     outputStream.hflush();\n-  }\n+    }\n \n   /**\n    * Close file writter\n    * @throws IOException\n    */\n-  public void close() throws IOException {\n-    if(outputStream != null) {\n-      outputStream.close();\n+\n+    public void close() throws IOException {\n+    if (outputStream != null) {\n+        outputStream.close();\n+    }\n     }\n-  }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 39
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 113).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "62",
+                    "column": "113",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/420/DistributeLog.java\nindex 099cd88e4c..8434824fe9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/420/DistributeLog.java\n@@ -58,8 +58,8 @@ public class DistributeLog {\n    * @throws IOException\n    */\n   public void init() throws IOException {\n-    int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE, AngelConf.DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);\n-    conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n+    int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE,AngelConf\n+        .DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n     conf.setInt(DFSConfigKeys.DFS_BYTES_PER_CHECKSUM_KEY, flushLen);\n \n     String pathStr = conf.get(AngelConf.ANGEL_LOG_PATH);\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 149).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/420/DistributeLog.java\nindex 099cd88e4c..b9ba5d0300 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/420/DistributeLog.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/420/DistributeLog.java\n@@ -57,62 +57,61 @@ public class DistributeLog {\n    * Init\n    * @throws IOException\n    */\n-  public void init() throws IOException {\n-    int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE, AngelConf.DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);\n-    conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n-    conf.setInt(DFSConfigKeys.DFS_BYTES_PER_CHECKSUM_KEY, flushLen);\n+  public void init() throws IOException { int flushLen = conf.getInt(AngelConf.ANGEL_LOG_FLUSH_MIN_SIZE, AngelConf.DEFAULT_ANGEL_LOG_FLUSH_MIN_SIZE);\n+  conf.setInt(DFSConfigKeys.DFS_CLIENT_WRITE_PACKET_SIZE_KEY, flushLen);\n+  conf.setInt(DFSConfigKeys.DFS_BYTES_PER_CHECKSUM_KEY, flushLen);\n \n-    String pathStr = conf.get(AngelConf.ANGEL_LOG_PATH);\n-    if (pathStr == null) {\n-      throw new IOException(\"log directory is null. you must set \" + AngelConf.ANGEL_LOG_PATH);\n-    }\n+  String pathStr = conf.get(AngelConf.ANGEL_LOG_PATH);\n+  if (pathStr == null) {\n+    throw new IOException(\"log directory is null. you must set \" + AngelConf.ANGEL_LOG_PATH);\n+  }\n \n-    LOG.info(\"algorithm log output directory=\" + pathStr);\n+  LOG.info(\"algorithm log output directory=\" + pathStr);\n \n-    Path path = new Path(pathStr + \"/log\");\n-    FileSystem fs = path.getFileSystem(conf);\n-    if (fs.exists(path)) {\n-      fs.delete(path, true);\n-    }\n-    outputStream =  fs.create(path, true);\n+  Path path = new Path(pathStr + \"/log\");\n+  FileSystem fs = path.getFileSystem(conf);\n+  if (fs.exists(path)) {\n+    fs.delete(path, true);\n   }\n+  outputStream =  fs.create(path, true);\n+}\n \n-  /**\n+/**\n    * Write the index names to file\n    * @param names index name list\n    * @throws IOException\n    */\n-  public void setNames(List<String> names) throws IOException {\n-    this.names = names;\n-    for (String name : names) {\n-      outputStream.write((name + \"\\t\").getBytes());\n-    }\n-    outputStream.writeBytes(\"\\n\");\n-    outputStream.hflush();\n+public void setNames(List<String> names) throws IOException {\n+  this.names = names;\n+  for (String name : names) {\n+    outputStream.write((name + \"\\t\").getBytes());\n   }\n+  outputStream.writeBytes(\"\\n\");\n+  outputStream.hflush();\n+}\n \n-  /**\n+/**\n    * Write index values to file\n    * @param algoIndexes index name to value map\n    * @throws IOException\n    */\n-  public void writeLog(Map<String, String> algoIndexes) throws IOException {\n-    assert(names != null && names.size() == algoIndexes.size());\n-    int size = names.size();\n-    for(int i = 0; i < size; i++) {\n-      outputStream.write((algoIndexes.get(names.get(i)) + \"\\t\").getBytes());\n-    }\n-    outputStream.writeBytes(\"\\n\");\n-    outputStream.hflush();\n+public void writeLog(Map<String, String> algoIndexes) throws IOException {\n+  assert(names != null && names.size() == algoIndexes.size());\n+  int size = names.size();\n+  for(int i = 0; i < size; i++) {\n+    outputStream.write((algoIndexes.get(names.get(i)) + \"\\t\").getBytes());\n   }\n+  outputStream.writeBytes(\"\\n\");\n+  outputStream.hflush();\n+}\n \n-  /**\n+/**\n    * Close file writter\n    * @throws IOException\n    */\n-  public void close() throws IOException {\n-    if(outputStream != null) {\n-      outputStream.close();\n-    }\n+public void close() throws IOException {\n+  if(outputStream != null) {\n+    outputStream.close();\n   }\n }\n+}\n",
+            "diff_size": 46
+        }
+    ]
+}

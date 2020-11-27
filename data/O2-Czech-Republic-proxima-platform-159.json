@@ -1,0 +1,133 @@
+{
+    "error_id": "159",
+    "information": {
+        "errors": [
+            {
+                "line": "47",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 92).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "            .getUser()\n            .getEventDescriptor()\n            .upsert(\"user\", \"key\", \"suffix\", Instant.now(), BaseEvent.newBuilder().build());\n    assertEquals(\"key\", element.getKey());\n  }\n}",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/159/ModelTest.java\nindex 44a38349ca..b1c3583213 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/159/ModelTest.java\n@@ -44,7 +44,8 @@ public class ModelTest {\n         model\n             .getUser()\n             .getEventDescriptor()\n-            .upsert(\"user\", \"key\", \"suffix\", Instant.now(), BaseEvent.newBuilder().build());\n+            .upsert(\"user\",\"key\" ,\"suffix\",Instant. now(),BaseEvent.newBuilder().build(\n+            ));\n     assertEquals(\"key\", element.getKey());\n   }\n }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/159/ModelTest.java\nindex 44a38349ca..513c29d693 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/159/ModelTest.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.example.model;\n \n import static org.junit.Assert.*;\n@@ -44,7 +45,8 @@ public class ModelTest {\n         model\n             .getUser()\n             .getEventDescriptor()\n-            .upsert(\"user\", \"key\", \"suffix\", Instant.now(), BaseEvent.newBuilder().build());\n+            .upsert(\"user\", \"key\", \"suffix\", Instant.now(),\n+                BaseEvent.newBuilder().build());\n     assertEquals(\"key\", element.getKey());\n   }\n }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 92).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/159/ModelTest.java\nindex 44a38349ca..2469bb8dd0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/159/ModelTest.java\n@@ -35,7 +35,8 @@ public class ModelTest {\n             .getUser()\n             .getDetailsDescriptor()\n             .upsert(\"key\", Instant.now(), Details.newBuilder().setEmail(\"email\").build());\n-    assertNotNull(element);\n+\n+assertNotNull(element);\n   }\n \n   @Test\n@@ -45,6 +46,7 @@ public class ModelTest {\n             .getUser()\n             .getEventDescriptor()\n             .upsert(\"user\", \"key\", \"suffix\", Instant.now(), BaseEvent.newBuilder().build());\n-    assertEquals(\"key\", element.getKey());\n+\n+assertEquals(\"key\", element.getKey());\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 111).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/159/ModelTest.java\nindex 44a38349ca..987e6746dd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/159/ModelTest.java\n@@ -16,7 +16,6 @@\n package cz.o2.proxima.example.model;\n \n import static org.junit.Assert.*;\n-\n import com.typesafe.config.ConfigFactory;\n import cz.o2.proxima.example.event.Event.BaseEvent;\n import cz.o2.proxima.example.user.User.Details;\n@@ -24,27 +23,23 @@ import cz.o2.proxima.storage.StreamElement;\n import java.time.Instant;\n import org.junit.Test;\n \n+\n public class ModelTest {\n \n-  private Model model = Model.of(() -> ConfigFactory.load().resolve());\n+    private Model model = Model.of(() -> ConfigFactory.load().resolve());\n \n-  @Test\n-  public void testSimplifiedUpsertFromGeneratedSource() {\n-    StreamElement element =\n-        model\n-            .getUser()\n-            .getDetailsDescriptor()\n-            .upsert(\"key\", Instant.now(), Details.newBuilder().setEmail(\"email\").build());\n+    @Test\n+    public void testSimplifiedUpsertFromGeneratedSource() {\n+    StreamElement element = model.getUser().getDetailsDescriptor()\n+                                           .upsert(\"key\", Instant.now(), Details.newBuilder().setEmail(\"email\")\n+                                                                                             .build());\n     assertNotNull(element);\n-  }\n+    }\n \n-  @Test\n-  public void testSimplifiedUpsertWildcard() {\n-    StreamElement element =\n-        model\n-            .getUser()\n-            .getEventDescriptor()\n-            .upsert(\"user\", \"key\", \"suffix\", Instant.now(), BaseEvent.newBuilder().build());\n+    @Test\n+    public void testSimplifiedUpsertWildcard() {\n+    StreamElement element = model.getUser().getEventDescriptor()\n+                                           .upsert(\"user\", \"key\", \"suffix\", Instant.now(), BaseEvent.newBuilder().build());\n     assertEquals(\"key\", element.getKey());\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 20
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/159/ModelTest.java\nindex 44a38349ca..b1c3583213 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/159/ModelTest.java\n@@ -44,7 +44,8 @@ public class ModelTest {\n         model\n             .getUser()\n             .getEventDescriptor()\n-            .upsert(\"user\", \"key\", \"suffix\", Instant.now(), BaseEvent.newBuilder().build());\n+            .upsert(\"user\",\"key\" ,\"suffix\",Instant. now(),BaseEvent.newBuilder().build(\n+            ));\n     assertEquals(\"key\", element.getKey());\n   }\n }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 1, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/159/ModelTest.java\nindex 44a38349ca..7d1855188c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/159/ModelTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/159/ModelTest.java\n@@ -44,7 +44,10 @@ public class ModelTest {\n         model\n             .getUser()\n             .getEventDescriptor()\n-            .upsert(\"user\", \"key\", \"suffix\", Instant.now(), BaseEvent.newBuilder().build());\n+            .upsert(\"user\",\n+            \"key\", \"suffix\", Instant.now(),BaseEvent.newBuilder().build());\n+\n     assertEquals(\"key\", element.getKey());\n-  }\n-}\n+   }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 6
+        }
+    ]
+}

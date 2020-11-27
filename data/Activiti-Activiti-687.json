@@ -1,0 +1,71 @@
+{
+    "error_id": "687",
+    "information": {
+        "errors": [
+            {
+                "line": "13",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.engine.impl.persistence.entity;\n\nimport java.util.Date;\nimport java.util.Map;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/687/JobEntityImpl.java\nindex 1afcd33c94..06d365cbb0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/687/JobEntityImpl.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.persistence.entity;\n \n import java.util.Date;\n@@ -33,7 +34,7 @@ public class JobEntityImpl extends AbstractJobEntityImpl implements JobEntity {\n     Map<String, Object> persistentState = (Map<String, Object>) super.getPersistentState();\n     persistentState.put(\"lockOwner\", lockOwner);\n     persistentState.put(\"lockExpirationTime\", lockExpirationTime);\n-    \n+\n     return persistentState;\n   }\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/687/JobEntityImpl.java\nindex 1afcd33c94..5df47ec3d4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/687/JobEntityImpl.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.persistence.entity;\n \n import java.util.Date;\n@@ -17,52 +18,49 @@ import java.util.Map;\n \n /**\n  * Job entity.\n- *\n-\n-\n  */\n public class JobEntityImpl extends AbstractJobEntityImpl implements JobEntity {\n \n-  private static final long serialVersionUID = 1L;\n+    private static final long serialVersionUID = 1L;\n+\n+    protected String lockOwner;\n+    protected Date lockExpirationTime;\n \n-  protected String lockOwner;\n-  protected Date lockExpirationTime;\n+    @SuppressWarnings(\"unchecked\")\n+    public Object getPersistentState() {\n+        Map<String, Object> persistentState = (Map<String, Object>) super.getPersistentState();\n+        persistentState.put(\"lockOwner\", lockOwner);\n+        persistentState.put(\"lockExpirationTime\", lockExpirationTime);\n \n-  @SuppressWarnings(\"unchecked\")\n-  public Object getPersistentState() {\n-    Map<String, Object> persistentState = (Map<String, Object>) super.getPersistentState();\n-    persistentState.put(\"lockOwner\", lockOwner);\n-    persistentState.put(\"lockExpirationTime\", lockExpirationTime);\n-    \n-    return persistentState;\n-  }\n+        return persistentState;\n+    }\n \n-  // getters and setters ////////////////////////////////////////////////////////\n+    // getters and setters ////////////////////////////////////////////////////////\n \n-  public void setExecution(ExecutionEntity execution) {\n-    super.setExecution(execution);\n-    execution.getJobs().add(this);\n-  }\n+    public void setExecution(ExecutionEntity execution) {\n+        super.setExecution(execution);\n+        execution.getJobs().add(this);\n+    }\n \n-  public String getLockOwner() {\n-    return lockOwner;\n-  }\n+    public String getLockOwner() {\n+        return lockOwner;\n+    }\n \n-  public void setLockOwner(String claimedBy) {\n-    this.lockOwner = claimedBy;\n-  }\n+    public void setLockOwner(String claimedBy) {\n+        this.lockOwner = claimedBy;\n+    }\n \n-  public Date getLockExpirationTime() {\n-    return lockExpirationTime;\n-  }\n+    public Date getLockExpirationTime() {\n+        return lockExpirationTime;\n+    }\n \n-  public void setLockExpirationTime(Date claimedUntil) {\n-    this.lockExpirationTime = claimedUntil;\n-  }\n+    public void setLockExpirationTime(Date claimedUntil) {\n+        this.lockExpirationTime = claimedUntil;\n+    }\n \n-  @Override\n-  public String toString() {\n-    return \"JobEntity [id=\" + id + \"]\";\n-  }\n+    @Override\n+    public String toString() {\n+        return \"JobEntity [id=\" + id + \"]\";\n+    }\n \n }\n",
+            "diff_size": 42
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/687/JobEntityImpl.java\nindex 1afcd33c94..3bd8d80463 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/687/JobEntityImpl.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.persistence.entity;\n \n import java.util.Date;\n@@ -65,4 +66,4 @@ public class JobEntityImpl extends AbstractJobEntityImpl implements JobEntity {\n     return \"JobEntity [id=\" + id + \"]\";\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 42.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/687/JobEntityImpl.java\nindex 1afcd33c94..ddaaea528b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/687/JobEntityImpl.java\n@@ -21,48 +21,48 @@ import java.util.Map;\n \n \n  */\n-public class JobEntityImpl extends AbstractJobEntityImpl implements JobEntity {\n \n-  private static final long serialVersionUID = 1L;\n \n-  protected String lockOwner;\n-  protected Date lockExpirationTime;\n+public class JobEntityImpl extends AbstractJobEntityImpl implements JobEntity {\n+\n+    private static final long serialVersionUID = 1L;\n+    protected String lockOwner;\n+    protected Date lockExpirationTime;\n \n-  @SuppressWarnings(\"unchecked\")\n-  public Object getPersistentState() {\n+    @SuppressWarnings(\"unchecked\")\n+    public Object getPersistentState() {\n     Map<String, Object> persistentState = (Map<String, Object>) super.getPersistentState();\n     persistentState.put(\"lockOwner\", lockOwner);\n     persistentState.put(\"lockExpirationTime\", lockExpirationTime);\n-    \n     return persistentState;\n-  }\n+    }\n \n   // getters and setters ////////////////////////////////////////////////////////\n \n-  public void setExecution(ExecutionEntity execution) {\n+    public void setExecution(ExecutionEntity execution) {\n     super.setExecution(execution);\n     execution.getJobs().add(this);\n-  }\n+    }\n \n-  public String getLockOwner() {\n+    public String getLockOwner() {\n     return lockOwner;\n-  }\n+    }\n \n-  public void setLockOwner(String claimedBy) {\n+    public void setLockOwner(String claimedBy) {\n     this.lockOwner = claimedBy;\n-  }\n+    }\n \n-  public Date getLockExpirationTime() {\n+    public Date getLockExpirationTime() {\n     return lockExpirationTime;\n-  }\n+    }\n \n-  public void setLockExpirationTime(Date claimedUntil) {\n+    public void setLockExpirationTime(Date claimedUntil) {\n     this.lockExpirationTime = claimedUntil;\n-  }\n+    }\n \n-  @Override\n-  public String toString() {\n-    return \"JobEntity [id=\" + id + \"]\";\n-  }\n+    @Override\n+    public String toString() {\n+        return \"JobEntity [id=\" + id + \"]\";\n+    }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 26
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/687/JobEntityImpl.java\nindex 1afcd33c94..06d365cbb0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/687/JobEntityImpl.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.persistence.entity;\n \n import java.util.Date;\n@@ -33,7 +34,7 @@ public class JobEntityImpl extends AbstractJobEntityImpl implements JobEntity {\n     Map<String, Object> persistentState = (Map<String, Object>) super.getPersistentState();\n     persistentState.put(\"lockOwner\", lockOwner);\n     persistentState.put(\"lockExpirationTime\", lockExpirationTime);\n-    \n+\n     return persistentState;\n   }\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/687/JobEntityImpl.java\nindex 1afcd33c94..06d365cbb0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/687/JobEntityImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/687/JobEntityImpl.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.persistence.entity;\n \n import java.util.Date;\n@@ -33,7 +34,7 @@ public class JobEntityImpl extends AbstractJobEntityImpl implements JobEntity {\n     Map<String, Object> persistentState = (Map<String, Object>) super.getPersistentState();\n     persistentState.put(\"lockOwner\", lockOwner);\n     persistentState.put(\"lockExpirationTime\", lockExpirationTime);\n-    \n+\n     return persistentState;\n   }\n \n",
+            "diff_size": 2
+        }
+    ]
+}

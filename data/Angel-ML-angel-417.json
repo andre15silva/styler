@@ -1,0 +1,178 @@
+{
+    "error_id": "417",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/417/ParameterServersBlock.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/417/ParameterServersBlock.java\nindex 7b91e15cac..0698b24b14 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/417/ParameterServersBlock.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/417/ParameterServersBlock.java\n@@ -41,107 +41,116 @@ import static org.apache.hadoop.yarn.util.StringHelper.join;\n import static org.apache.hadoop.yarn.webapp.view.JQueryUI._TH;\n \n public class ParameterServersBlock extends HtmlBlock {\n-  final AMContext amContext;\n-\n-  @Inject\n-  ParameterServersBlock(AMContext amctx) {\n-    amContext = amctx;\n-  }\n-\n-  private Set<PSAttemptStateInternal> transformToInternalState(String state) {\n-    Set<PSAttemptStateInternal> stateSet = new HashSet<PSAttemptStateInternal>();\n-    switch (state) {\n-      case \"NEW\":\n-        stateSet.add(PSAttemptStateInternal.NEW);\n-        stateSet.add(PSAttemptStateInternal.INITED);\n-        stateSet.add(PSAttemptStateInternal.ASSIGNED);\n-        stateSet.add(PSAttemptStateInternal.SCHEDULED);\n-        stateSet.add(PSAttemptStateInternal.LAUNCHED);\n-        break;\n-      case \"RUNNING\":\n-        stateSet.add(PSAttemptStateInternal.RUNNING);\n-        stateSet.add(PSAttemptStateInternal.COMMITTING);\n-        break;\n-      case \"FAILED\":\n-        stateSet.add(PSAttemptStateInternal.FAILED);\n-        break;\n-      case \"KILLED\":\n-        stateSet.add(PSAttemptStateInternal.KILLED);\n-        break;\n-      case \"SUCCESS\":\n-        stateSet.add(PSAttemptStateInternal.SUCCESS);\n-        break;\n+    final AMContext amContext;\n+\n+    @Inject\n+    ParameterServersBlock(AMContext amctx) {\n+        amContext = amctx;\n     }\n-    return stateSet;\n-  }\n-\n-  @Override\n-  protected void render(Block html) {\n-    set(TITLE, join(\"Angel ParameterServers\"));\n-\n-    TABLE<Hamlet> table = html.table(\"#job\");\n-    TR<THEAD<TABLE<Hamlet>>> headTr = table.thead().tr();\n-\n-    headTr.th(_TH, \"id\").th(_TH, \"state\").th(_TH, \"node address\").th(_TH, \"start time\")\n-        .th(_TH, \"end time\").th(_TH, \"elapsed time\").th(_TH, \"log\").th(_TH, \"threadstack\");\n-    headTr._()._();\n-\n-    Set<PSAttemptStateInternal> stateSet = transformToInternalState($(PARAMETERSERVER_STATE));\n-\n-    TBODY<TABLE<Hamlet>> tbody = table.tbody();\n-\n-    for (AMParameterServer ps : amContext.getParameterServerManager().getParameterServerMap()\n-        .values()) {\n-\n-      Map<PSAttemptId, PSAttempt> psAttempts = ps.getPSAttempts();\n-      for (PSAttempt psAttempt : psAttempts.values()) {\n-        if (stateSet.contains(psAttempt.getInternalState())) {\n-          TR<TBODY<TABLE<Hamlet>>> tr = tbody.tr();\n-          long elaspedTs = 0;\n-          if (psAttempt.getLaunchTime() != 0 && psAttempt.getFinishTime() != 0) {\n-            elaspedTs = psAttempt.getFinishTime() - psAttempt.getLaunchTime();\n-          } else if (psAttempt.getLaunchTime() != 0 && psAttempt.getFinishTime() == 0) {\n-            elaspedTs = System.currentTimeMillis() - psAttempt.getLaunchTime();\n-          }\n-\n-          if (psAttempt.getNodeHttpAddr() == null) {\n-            tr.td(psAttempt.getId().toString())\n-                .td($(PARAMETERSERVER_STATE))\n-                .td(\"N/A\")\n-                .td(psAttempt.getLaunchTime() == 0 ? \"N/A\" : new Date(psAttempt.getLaunchTime())\n-                    .toString())\n-                .td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime())\n-                    .toString()).td(elaspedTs == 0 ? \"N/A\" : new Date(elaspedTs).toString())\n-                .td(\"N/A\").td(\"N/A\");\n-            tr._();\n-          } else {\n-            tr.td(psAttempt.getId().toString())\n-                .td($(PARAMETERSERVER_STATE))\n-                .td()\n-                .a(url(MRWebAppUtil.getYARNWebappScheme(), psAttempt.getNodeHttpAddr()),\n-                    psAttempt.getNodeHttpAddr())\n-                ._()\n-                .td(psAttempt.getLaunchTime() == 0 ? \"N/A\" : new Date(psAttempt.getLaunchTime())\n-                    .toString())\n-                .td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime())\n-                    .toString())\n-                .td(elaspedTs == 0 ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n-                .td()\n-                .a(url(MRWebAppUtil.getYARNWebappScheme(), psAttempt.getNodeHttpAddr(), \"node\",\n-                    \"containerlogs\", psAttempt.getContainerIdStr(), amContext.getUser().toString()),\n-                    \"log\")\n-                ._()\n-                .td()\n-                .a(url(\"/angel/parameterServerThreadStackPage/\", psAttempt.getId().toString()),\n-                    \"psthreadstack\")._();\n-\n-\n-            tr._();\n-          }\n+\n+    private Set<PSAttemptStateInternal> transformToInternalState(String state) {\n+        Set<PSAttemptStateInternal> stateSet = new HashSet<PSAttemptStateInternal>();\n+        switch (state) {\n+            case \"NEW\":\n+                stateSet.add(PSAttemptStateInternal.NEW);\n+                stateSet.add(PSAttemptStateInternal.INITED);\n+                stateSet.add(PSAttemptStateInternal.ASSIGNED);\n+                stateSet.add(PSAttemptStateInternal.SCHEDULED);\n+                stateSet.add(PSAttemptStateInternal.LAUNCHED);\n+                break;\n+            case \"RUNNING\":\n+                stateSet.add(PSAttemptStateInternal.RUNNING);\n+                stateSet.add(PSAttemptStateInternal.COMMITTING);\n+                break;\n+            case \"FAILED\":\n+                stateSet.add(PSAttemptStateInternal.FAILED);\n+                break;\n+            case \"KILLED\":\n+                stateSet.add(PSAttemptStateInternal.KILLED);\n+                break;\n+            case \"SUCCESS\":\n+                stateSet.add(PSAttemptStateInternal.SUCCESS);\n+                break;\n         }\n+        return stateSet;\n+    }\n \n-      }\n+    @Override\n+    protected void render(Block html) {\n+        set(TITLE, join(\"Angel ParameterServers\"));\n+\n+        TABLE<Hamlet> table = html.table(\"#job\");\n+        TR<THEAD<TABLE<Hamlet>>> headTr = table.thead().tr();\n+\n+        headTr.th(_TH, \"id\").th(_TH, \"state\").th(_TH, \"node address\").th(_TH, \"start time\")\n+                .th(_TH, \"end time\").th(_TH, \"elapsed time\").th(_TH, \"log\").th(_TH, \"threadstack\");\n+        headTr._()._();\n+\n+        Set<PSAttemptStateInternal> stateSet = transformToInternalState($(PARAMETERSERVER_STATE));\n+\n+        TBODY<TABLE<Hamlet>> tbody = table.tbody();\n+\n+        for (AMParameterServer ps : amContext.getParameterServerManager().getParameterServerMap()\n+                .values()) {\n+\n+            Map<PSAttemptId, PSAttempt> psAttempts = ps.getPSAttempts();\n+            for (PSAttempt psAttempt : psAttempts.values()) {\n+                if (stateSet.contains(psAttempt.getInternalState())) {\n+                    TR<TBODY<TABLE<Hamlet>>> tr = tbody.tr();\n+                    long elaspedTs = 0;\n+                    if (psAttempt.getLaunchTime() != 0 && psAttempt.getFinishTime() != 0) {\n+                        elaspedTs = psAttempt.getFinishTime() - psAttempt.getLaunchTime();\n+                    } else if (psAttempt.getLaunchTime() != 0 && psAttempt.getFinishTime() == 0) {\n+                        elaspedTs = System.currentTimeMillis() - psAttempt.getLaunchTime();\n+                    }\n+\n+                    if (psAttempt.getNodeHttpAddr() == null) {\n+                        tr.td(psAttempt.getId().toString())\n+                                .td($(PARAMETERSERVER_STATE))\n+                                .td(\"N/A\")\n+                                .td(psAttempt.getLaunchTime() == 0 ? \"N/A\" :\n+                                        new Date(psAttempt.getLaunchTime())\n+                                                .toString())\n+                                .td(psAttempt.getFinishTime() == 0 ? \"N/A\" :\n+                                        new Date(psAttempt.getFinishTime())\n+                                                .toString())\n+                                .td(elaspedTs == 0 ? \"N/A\" : new Date(elaspedTs).toString())\n+                                .td(\"N/A\").td(\"N/A\");\n+                        tr._();\n+                    } else {\n+                        tr.td(psAttempt.getId().toString())\n+                                .td($(PARAMETERSERVER_STATE))\n+                                .td()\n+                                .a(url(MRWebAppUtil.getYARNWebappScheme(),\n+                                        psAttempt.getNodeHttpAddr()),\n+                                        psAttempt.getNodeHttpAddr())\n+                                ._()\n+                                .td(psAttempt.getLaunchTime() == 0 ? \"N/A\" :\n+                                        new Date(psAttempt.getLaunchTime())\n+                                                .toString())\n+                                .td(psAttempt.getFinishTime() == 0 ? \"N/A\" :\n+                                        new Date(psAttempt.getFinishTime())\n+                                                .toString())\n+                                .td(elaspedTs == 0 ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n+                                .td()\n+                                .a(url(MRWebAppUtil.getYARNWebappScheme(),\n+                                        psAttempt.getNodeHttpAddr(), \"node\",\n+                                        \"containerlogs\", psAttempt.getContainerIdStr(),\n+                                        amContext.getUser().toString()),\n+                                        \"log\")\n+                                ._()\n+                                .td()\n+                                .a(url(\"/angel/parameterServerThreadStackPage/\",\n+                                        psAttempt.getId().toString()),\n+                                        \"psthreadstack\")._();\n+\n+\n+                        tr._();\n+                    }\n+                }\n+\n+            }\n+        }\n+        tbody._()._();\n     }\n-    tbody._()._();\n-  }\n }\n",
+            "diff_size": 177
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 113).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 176).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/417/ParameterServersBlock.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/417/ParameterServersBlock.java\nindex 7b91e15cac..e51610adb4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/417/ParameterServersBlock.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/417/ParameterServersBlock.java\n@@ -92,8 +92,7 @@ public class ParameterServersBlock extends HtmlBlock {\n \n     for (AMParameterServer ps : amContext.getParameterServerManager().getParameterServerMap()\n         .values()) {\n-\n-      Map<PSAttemptId, PSAttempt> psAttempts = ps.getPSAttempts();\n+  Map<PSAttemptId, PSAttempt> psAttempts = ps.getPSAttempts();\n       for (PSAttempt psAttempt : psAttempts.values()) {\n         if (stateSet.contains(psAttempt.getInternalState())) {\n           TR<TBODY<TABLE<Hamlet>>> tr = tbody.tr();\n@@ -109,34 +108,26 @@ public class ParameterServersBlock extends HtmlBlock {\n                 .td($(PARAMETERSERVER_STATE))\n                 .td(\"N/A\")\n                 .td(psAttempt.getLaunchTime() == 0 ? \"N/A\" : new Date(psAttempt.getLaunchTime())\n-                    .toString())\n-                .td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime())\n-                    .toString()).td(elaspedTs == 0 ? \"N/A\" : new Date(elaspedTs).toString())\n-                .td(\"N/A\").td(\"N/A\");\n+                    .toString()).td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime())\n+                    .toString()).td(elaspedTs == 0 ? \"N/A\" : new Date(elaspedTs).toString()).td(\"N/A\").td(\"N/A\");\n             tr._();\n           } else {\n             tr.td(psAttempt.getId().toString())\n                 .td($(PARAMETERSERVER_STATE))\n                 .td()\n                 .a(url(MRWebAppUtil.getYARNWebappScheme(), psAttempt.getNodeHttpAddr()),\n-                    psAttempt.getNodeHttpAddr())\n-                ._()\n+                    psAttempt.getNodeHttpAddr())._()\n                 .td(psAttempt.getLaunchTime() == 0 ? \"N/A\" : new Date(psAttempt.getLaunchTime())\n-                    .toString())\n-                .td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime())\n-                    .toString())\n-                .td(elaspedTs == 0 ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n+                    .toString()).td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime())\n+                    .toString()).td(elaspedTs == 0 ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n                 .td()\n-                .a(url(MRWebAppUtil.getYARNWebappScheme(), psAttempt.getNodeHttpAddr(), \"node\",\n-                    \"containerlogs\", psAttempt.getContainerIdStr(), amContext.getUser().toString()),\n-                    \"log\")\n+                .a(url(MRWebAppUtil.getYARNWebappScheme(), psAttempt.getNodeHttpAddr(), \"node\", \"containerlogs\", psAttempt.getContainerIdStr(), amContext.getUser().toString()),\n+    \"log\")\n                 ._()\n                 .td()\n                 .a(url(\"/angel/parameterServerThreadStackPage/\", psAttempt.getId().toString()),\n                     \"psthreadstack\")._();\n-\n-\n-            tr._();\n+tr._();\n           }\n         }\n \n@@ -144,4 +135,4 @@ public class ParameterServersBlock extends HtmlBlock {\n     }\n     tbody._()._();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 170).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 162).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 178).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 232).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 451).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 119).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 648).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 109).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/417/ParameterServersBlock.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/417/ParameterServersBlock.java\nindex 7b91e15cac..528c5972c3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/417/ParameterServersBlock.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/417/ParameterServersBlock.java\n@@ -30,118 +30,84 @@ import org.apache.hadoop.yarn.webapp.hamlet.Hamlet.TBODY;\n import org.apache.hadoop.yarn.webapp.hamlet.Hamlet.THEAD;\n import org.apache.hadoop.yarn.webapp.hamlet.Hamlet.TR;\n import org.apache.hadoop.yarn.webapp.view.HtmlBlock;\n-\n import java.util.Date;\n import java.util.HashSet;\n import java.util.Map;\n import java.util.Set;\n-\n import static com.tencent.angel.webapp.AngelParams.PARAMETERSERVER_STATE;\n import static org.apache.hadoop.yarn.util.StringHelper.join;\n import static org.apache.hadoop.yarn.webapp.view.JQueryUI._TH;\n \n public class ParameterServersBlock extends HtmlBlock {\n-  final AMContext amContext;\n \n-  @Inject\n-  ParameterServersBlock(AMContext amctx) {\n+    final AMContext amContext;\n+\n+    @Inject\n+    ParameterServersBlock(AMContext amctx) {\n     amContext = amctx;\n-  }\n+    }\n \n-  private Set<PSAttemptStateInternal> transformToInternalState(String state) {\n+    private Set<PSAttemptStateInternal> transformToInternalState(String state) {\n     Set<PSAttemptStateInternal> stateSet = new HashSet<PSAttemptStateInternal>();\n     switch (state) {\n-      case \"NEW\":\n+        case \"NEW\":\n         stateSet.add(PSAttemptStateInternal.NEW);\n         stateSet.add(PSAttemptStateInternal.INITED);\n         stateSet.add(PSAttemptStateInternal.ASSIGNED);\n         stateSet.add(PSAttemptStateInternal.SCHEDULED);\n         stateSet.add(PSAttemptStateInternal.LAUNCHED);\n         break;\n-      case \"RUNNING\":\n+        case \"RUNNING\":\n         stateSet.add(PSAttemptStateInternal.RUNNING);\n         stateSet.add(PSAttemptStateInternal.COMMITTING);\n         break;\n-      case \"FAILED\":\n+        case \"FAILED\":\n         stateSet.add(PSAttemptStateInternal.FAILED);\n         break;\n-      case \"KILLED\":\n+        case \"KILLED\":\n         stateSet.add(PSAttemptStateInternal.KILLED);\n         break;\n-      case \"SUCCESS\":\n+        case \"SUCCESS\":\n         stateSet.add(PSAttemptStateInternal.SUCCESS);\n         break;\n     }\n     return stateSet;\n-  }\n+    }\n \n-  @Override\n-  protected void render(Block html) {\n+    @Override\n+    protected void render(Block html) {\n     set(TITLE, join(\"Angel ParameterServers\"));\n-\n     TABLE<Hamlet> table = html.table(\"#job\");\n     TR<THEAD<TABLE<Hamlet>>> headTr = table.thead().tr();\n-\n-    headTr.th(_TH, \"id\").th(_TH, \"state\").th(_TH, \"node address\").th(_TH, \"start time\")\n-        .th(_TH, \"end time\").th(_TH, \"elapsed time\").th(_TH, \"log\").th(_TH, \"threadstack\");\n+    headTr.th(_TH, \"id\").th(_TH, \"state\").th(_TH, \"node address\").th(_TH, \"start time\").th(_TH, \"end time\").th(_TH, \"elapsed time\").th(_TH, \"log\").th(_TH, \"threadstack\");\n     headTr._()._();\n-\n     Set<PSAttemptStateInternal> stateSet = transformToInternalState($(PARAMETERSERVER_STATE));\n-\n     TBODY<TABLE<Hamlet>> tbody = table.tbody();\n-\n-    for (AMParameterServer ps : amContext.getParameterServerManager().getParameterServerMap()\n-        .values()) {\n-\n-      Map<PSAttemptId, PSAttempt> psAttempts = ps.getPSAttempts();\n-      for (PSAttempt psAttempt : psAttempts.values()) {\n-        if (stateSet.contains(psAttempt.getInternalState())) {\n-          TR<TBODY<TABLE<Hamlet>>> tr = tbody.tr();\n-          long elaspedTs = 0;\n-          if (psAttempt.getLaunchTime() != 0 && psAttempt.getFinishTime() != 0) {\n-            elaspedTs = psAttempt.getFinishTime() - psAttempt.getLaunchTime();\n-          } else if (psAttempt.getLaunchTime() != 0 && psAttempt.getFinishTime() == 0) {\n-            elaspedTs = System.currentTimeMillis() - psAttempt.getLaunchTime();\n-          }\n-\n-          if (psAttempt.getNodeHttpAddr() == null) {\n-            tr.td(psAttempt.getId().toString())\n-                .td($(PARAMETERSERVER_STATE))\n-                .td(\"N/A\")\n-                .td(psAttempt.getLaunchTime() == 0 ? \"N/A\" : new Date(psAttempt.getLaunchTime())\n-                    .toString())\n-                .td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime())\n-                    .toString()).td(elaspedTs == 0 ? \"N/A\" : new Date(elaspedTs).toString())\n-                .td(\"N/A\").td(\"N/A\");\n-            tr._();\n-          } else {\n-            tr.td(psAttempt.getId().toString())\n-                .td($(PARAMETERSERVER_STATE))\n-                .td()\n-                .a(url(MRWebAppUtil.getYARNWebappScheme(), psAttempt.getNodeHttpAddr()),\n-                    psAttempt.getNodeHttpAddr())\n-                ._()\n-                .td(psAttempt.getLaunchTime() == 0 ? \"N/A\" : new Date(psAttempt.getLaunchTime())\n-                    .toString())\n-                .td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime())\n-                    .toString())\n-                .td(elaspedTs == 0 ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n-                .td()\n-                .a(url(MRWebAppUtil.getYARNWebappScheme(), psAttempt.getNodeHttpAddr(), \"node\",\n-                    \"containerlogs\", psAttempt.getContainerIdStr(), amContext.getUser().toString()),\n-                    \"log\")\n-                ._()\n-                .td()\n-                .a(url(\"/angel/parameterServerThreadStackPage/\", psAttempt.getId().toString()),\n-                    \"psthreadstack\")._();\n-\n-\n-            tr._();\n-          }\n+    for (AMParameterServer ps : amContext.getParameterServerManager().getParameterServerMap().values()) {\n+        Map<PSAttemptId, PSAttempt> psAttempts = ps.getPSAttempts();\n+        for (PSAttempt psAttempt : psAttempts.values()) {\n+                                                                                                            if (stateSet.contains(psAttempt.getInternalState())) {\n+            TR<TBODY<TABLE<Hamlet>>> tr = tbody.tr();\n+            long elaspedTs = 0;\n+            if (psAttempt.getLaunchTime() != 0 && psAttempt.getFinishTime() != 0) {\n+                                                                                                                elaspedTs = psAttempt.getFinishTime() - psAttempt.getLaunchTime();\n+            } else if (psAttempt.getLaunchTime() != 0 && psAttempt.getFinishTime() == 0) {\n+                                                                                                                                                                     elaspedTs = System.currentTimeMillis() - psAttempt.getLaunchTime();\n+                   }\n+\n+            if (psAttempt.getNodeHttpAddr() == null) {\n+                                                                                                                tr.td(psAttempt.getId().toString()).td($(PARAMETERSERVER_STATE)).td(\"N/A\").td(psAttempt.getLaunchTime() == 0 ? \"N/A\" : new Date(psAttempt.getLaunchTime()).toString()).td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime()).toString()).td(elaspedTs == 0 ? \"N/A\" : new Date(elaspedTs).toString()).td(\"N/A\").td(\"N/A\");\n+                                                                                                                tr._();\n+            } else {\n+              tr.td(psAttempt.getId().toString()).td($(PARAMETERSERVER_STATE)).td().a(\n+                                                                                       url(MRWebAppUtil.getYARNWebappScheme(), psAttempt.getNodeHttpAddr()),\n+                                                                                       psAttempt.getNodeHttpAddr())._().td(psAttempt.getLaunchTime() == 0 ? \"N/A\" : new Date(psAttempt.getLaunchTime()).toString()).td(psAttempt.getFinishTime() == 0 ? \"N/A\" : new Date(psAttempt.getFinishTime()).toString()).td(elaspedTs == 0 ? \"N/A\" : StringUtils.formatTime(elaspedTs)).td().a(url(MRWebAppUtil.getYARNWebappScheme(), psAttempt.getNodeHttpAddr(), \"node\", \"containerlogs\", psAttempt.getContainerIdStr(), amContext.getUser().toString()), \"log\")._().td().a(url(\"/angel/parameterServerThreadStackPage/\", psAttempt.getId().toString()), \"psthreadstack\")._();\n+              tr._();\n+            }\n+                                                                                                            }\n         }\n-\n-      }\n     }\n     tbody._()._();\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 77
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

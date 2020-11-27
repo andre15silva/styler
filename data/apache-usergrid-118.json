@@ -1,0 +1,94 @@
+{
+    "error_id": "118",
+    "information": {
+        "errors": [
+            {
+                "line": "26",
+                "severity": "warning",
+                "message": "Use of @author javadoc keyword is prohibited.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": "\n\n/** @author tnine */\npublic class StringLiteral extends Literal<String> {\n\n    private String value;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "26",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler/118/StringLiteral.java\nindex 2a8347a918..c5e38a024f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler/118/StringLiteral.java\n@@ -62,7 +62,7 @@ public class StringLiteral extends Literal<String> {\n         if ( value != null && value.endsWith( \"*\" ) ) {\n             this.value = removeEnd( value.toString(), \"*\" );\n \n-            finishValue = this.value + \"\\uFFFF\";\n+            finishValue = this.value + \"\uffff\";\n         }\n         // set the end value to the same as the start value\n         else {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/118/StringLiteral.java\nindex 2a8347a918..01023a1373 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/118/StringLiteral.java\n@@ -14,6 +14,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.usergrid.persistence.query.tree;\n \n \n@@ -23,61 +24,67 @@ import org.antlr.runtime.Token;\n import static org.apache.commons.lang.StringUtils.removeEnd;\n \n \n-/** @author tnine */\n+/**\n+ * @author tnine\n+ */\n public class StringLiteral extends Literal<String> {\n \n-    private String value;\n-    private String finishValue;\n+  private String value;\n+  private String finishValue;\n \n \n-    /**\n-     * @param t\n-     */\n-    public StringLiteral( Token t ) {\n-        super( t );\n-        String newValue = t.getText();\n-        newValue = newValue.substring( 1, newValue.length() - 1 );\n+  /**\n+   * @param t\n+   */\n+  public StringLiteral(Token t) {\n+    super(t);\n+    String newValue = t.getText();\n+    newValue = newValue.substring(1, newValue.length() - 1);\n \n-        parseValue( newValue );\n-    }\n+    parseValue(newValue);\n+  }\n \n \n-    public StringLiteral( String value ) {\n-        super( new ClassicToken( 0, value ) );\n-        parseValue( value );\n-    }\n+  public StringLiteral(String value) {\n+    super(new ClassicToken(0, value));\n+    parseValue(value);\n+  }\n \n \n-    /** Parse the value and set the optional end value */\n-    private void parseValue( String value ) {\n+  /**\n+   * Parse the value and set the optional end value\n+   */\n+  private void parseValue(String value) {\n \n-        this.value = value.trim().toLowerCase();\n+    this.value = value.trim().toLowerCase();\n \n-        if ( \"*\".equals( value ) ) {\n-            this.value = null;\n-            this.finishValue = null;\n-            return;\n-        }\n+    if (\"*\".equals(value)) {\n+      this.value = null;\n+      this.finishValue = null;\n+      return;\n+    }\n \n-        if ( value != null && value.endsWith( \"*\" ) ) {\n-            this.value = removeEnd( value.toString(), \"*\" );\n+    if (value != null && value.endsWith(\"*\")) {\n+      this.value = removeEnd(value.toString(), \"*\");\n \n-            finishValue = this.value + \"\\uFFFF\";\n-        }\n-        // set the end value to the same as the start value\n-        else {\n-            finishValue = value;\n-        }\n+      finishValue = this.value + \"\\uFFFF\";\n+    }\n+    // set the end value to the same as the start value\n+    else {\n+      finishValue = value;\n     }\n+  }\n \n \n-    /** If this were a string literal */\n-    public String getEndValue() {\n-        return this.finishValue;\n-    }\n+  /**\n+   * If this were a string literal\n+   */\n+  public String getEndValue() {\n+    return this.finishValue;\n+  }\n \n \n-    public String getValue() {\n-        return this.value;\n-    }\n+  public String getValue() {\n+    return this.value;\n+  }\n }\n",
+            "diff_size": 47
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "26",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/118/StringLiteral.java\nindex 2a8347a918..9afb0c3683 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/118/StringLiteral.java\n@@ -50,8 +50,7 @@ public class StringLiteral extends Literal<String> {\n \n     /** Parse the value and set the optional end value */\n     private void parseValue( String value ) {\n-\n-        this.value = value.trim().toLowerCase();\n+    this.value = value.trim().toLowerCase();\n \n         if ( \"*\".equals( value ) ) {\n             this.value = null;\n@@ -80,4 +79,4 @@ public class StringLiteral extends Literal<String> {\n     public String getValue() {\n         return this.value;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "26",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/118/StringLiteral.java\nindex 2a8347a918..3eaf0e0408 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/118/StringLiteral.java\n@@ -24,6 +24,8 @@ import static org.apache.commons.lang.StringUtils.removeEnd;\n \n \n /** @author tnine */\n+\n+\n public class StringLiteral extends Literal<String> {\n \n     private String value;\n@@ -33,11 +35,12 @@ public class StringLiteral extends Literal<String> {\n     /**\n      * @param t\n      */\n+\n+\n     public StringLiteral( Token t ) {\n         super( t );\n         String newValue = t.getText();\n         newValue = newValue.substring( 1, newValue.length() - 1 );\n-\n         parseValue( newValue );\n     }\n \n@@ -49,19 +52,17 @@ public class StringLiteral extends Literal<String> {\n \n \n     /** Parse the value and set the optional end value */\n-    private void parseValue( String value ) {\n \n-        this.value = value.trim().toLowerCase();\n \n+    private void parseValue( String value ) {\n+        this.value = value.trim().toLowerCase();\n         if ( \"*\".equals( value ) ) {\n             this.value = null;\n             this.finishValue = null;\n             return;\n         }\n-\n         if ( value != null && value.endsWith( \"*\" ) ) {\n             this.value = removeEnd( value.toString(), \"*\" );\n-\n             finishValue = this.value + \"\\uFFFF\";\n         }\n         // set the end value to the same as the start value\n@@ -72,6 +73,8 @@ public class StringLiteral extends Literal<String> {\n \n \n     /** If this were a string literal */\n+\n+\n     public String getEndValue() {\n         return this.finishValue;\n     }\n@@ -80,4 +83,4 @@ public class StringLiteral extends Literal<String> {\n     public String getValue() {\n         return this.value;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "26",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_random/118/StringLiteral.java\nindex 2a8347a918..c5e38a024f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_random/118/StringLiteral.java\n@@ -62,7 +62,7 @@ public class StringLiteral extends Literal<String> {\n         if ( value != null && value.endsWith( \"*\" ) ) {\n             this.value = removeEnd( value.toString(), \"*\" );\n \n-            finishValue = this.value + \"\\uFFFF\";\n+            finishValue = this.value + \"\uffff\";\n         }\n         // set the end value to the same as the start value\n         else {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/118/StringLiteral.java\nindex 2a8347a918..7bd707ae8c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/118/StringLiteral.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/118/StringLiteral.java\n@@ -22,7 +22,6 @@ import org.antlr.runtime.Token;\n \n import static org.apache.commons.lang.StringUtils.removeEnd;\n \n-\n /** @author tnine */\n public class StringLiteral extends Literal<String> {\n \n@@ -62,7 +61,7 @@ public class StringLiteral extends Literal<String> {\n         if ( value != null && value.endsWith( \"*\" ) ) {\n             this.value = removeEnd( value.toString(), \"*\" );\n \n-            finishValue = this.value + \"\\uFFFF\";\n+            finishValue = this.value + \"\uffff\";\n         }\n         // set the end value to the same as the start value\n         else {\n",
+            "diff_size": 2
+        }
+    ]
+}

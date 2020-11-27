@@ -1,0 +1,61 @@
+{
+    "error_id": "11",
+    "information": {
+        "errors": [
+            {
+                "line": "20",
+                "column": "9",
+                "severity": "error",
+                "message": "'if' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+            }
+        ]
+    },
+    "source_code": "    public Interpretation analyze(Interpretation sentence) {\n        Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());\n        if(intent.length == 2) {\n            try {\n                sentence.setIntent(intent[0].toString());\n                sentence.setIntentDistance(intent[1].toString());",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/styler/11/IntentAnalyzer.java\nindex adcc0411d9..7454a35a67 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/styler/11/IntentAnalyzer.java\n@@ -17,7 +17,7 @@ public class IntentAnalyzer implements Analyzer {\n     @Override\n     public Interpretation analyze(Interpretation sentence) {\n         Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());\n-        if(intent.length == 2) {\n+        if (intent.length == 2) {\n             try {\n                 sentence.setIntent(intent[0].toString());\n                 sentence.setIntentDistance(intent[1].toString());\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/intellij/11/IntentAnalyzer.java\nindex adcc0411d9..7454a35a67 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/intellij/11/IntentAnalyzer.java\n@@ -17,7 +17,7 @@ public class IntentAnalyzer implements Analyzer {\n     @Override\n     public Interpretation analyze(Interpretation sentence) {\n         Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());\n-        if(intent.length == 2) {\n+        if (intent.length == 2) {\n             try {\n                 sentence.setIntent(intent[0].toString());\n                 sentence.setIntentDistance(intent[1].toString());\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/naturalize/11/IntentAnalyzer.java\nindex adcc0411d9..9cfbc1bf9e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/naturalize/11/IntentAnalyzer.java\n@@ -16,9 +16,9 @@ public class IntentAnalyzer implements Analyzer {\n \n     @Override\n     public Interpretation analyze(Interpretation sentence) {\n-        Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());\n-        if(intent.length == 2) {\n-            try {\n+  Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());\n+        if (intent.length == 2) {\n+  try {\n                 sentence.setIntent(intent[0].toString());\n                 sentence.setIntentDistance(intent[1].toString());\n             } catch (RuntimeException e) {\n@@ -27,4 +27,4 @@ public class IntentAnalyzer implements Analyzer {\n         }\n         return sentence;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/codebuff/11/IntentAnalyzer.java\nindex adcc0411d9..8bf806fbc4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/codebuff/11/IntentAnalyzer.java\n@@ -7,24 +7,27 @@ import roboy.ros.RosMainNode;\n  * one of the learned intents. Stores the highest scoring intent in the Linguistics.INTENT feature\n  * and the score in the Linguistics.INTENT_DISTANCE feature.\n  */\n+\n+\n public class IntentAnalyzer implements Analyzer {\n+\n     private RosMainNode ros;\n \n     public IntentAnalyzer(RosMainNode ros) {\n-        this.ros = ros;\n+    this.ros = ros;\n     }\n \n     @Override\n     public Interpretation analyze(Interpretation sentence) {\n-        Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());\n-        if(intent.length == 2) {\n-            try {\n-                sentence.setIntent(intent[0].toString());\n-                sentence.setIntentDistance(intent[1].toString());\n-            } catch (RuntimeException e) {\n-                System.out.println(\"Exception while parsing intent response: \" + e.getStackTrace());\n-            }\n+    Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());\n+    if (intent.length == 2) {\n+        try {\n+        sentence.setIntent(intent[0].toString());\n+        sentence.setIntentDistance(intent[1].toString());\n+        } catch (RuntimeException e) {\n+          System.out.println(\"Exception while parsing intent response: \" + e.getStackTrace());\n         }\n-        return sentence;\n     }\n-}\n+    return sentence;\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/styler_random/11/IntentAnalyzer.java\nindex adcc0411d9..7454a35a67 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/styler_random/11/IntentAnalyzer.java\n@@ -17,7 +17,7 @@ public class IntentAnalyzer implements Analyzer {\n     @Override\n     public Interpretation analyze(Interpretation sentence) {\n         Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());\n-        if(intent.length == 2) {\n+        if (intent.length == 2) {\n             try {\n                 sentence.setIntent(intent[0].toString());\n                 sentence.setIntentDistance(intent[1].toString());\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "19",
+                    "column": "80",
+                    "severity": "error",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/styler_three_grams/11/IntentAnalyzer.java\nindex adcc0411d9..5535557cc0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/11/IntentAnalyzer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/styler_three_grams/11/IntentAnalyzer.java\n@@ -16,8 +16,7 @@ public class IntentAnalyzer implements Analyzer {\n \n     @Override\n     public Interpretation analyze(Interpretation sentence) {\n-        Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());\n-        if(intent.length == 2) {\n+        Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence()); if(intent.length == 2) {\n             try {\n                 sentence.setIntent(intent[0].toString());\n                 sentence.setIntentDistance(intent[1].toString());\n",
+            "diff_size": 2
+        }
+    ]
+}

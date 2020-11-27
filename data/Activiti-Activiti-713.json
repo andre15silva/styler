@@ -1,0 +1,97 @@
+{
+    "error_id": "713",
+    "information": {
+        "errors": [
+            {
+                "line": "57",
+                "column": "11",
+                "severity": "error",
+                "message": "'+' should be on the previous line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "    } else if (!processInstance.isProcessInstanceType()) {\n      throw new ActivitiIllegalArgumentException(\"A process instance id is required, but the provided id \" + \"'\" + processInstanceId + \"' \" + \"points to a child execution of process instance \" + \"'\"\n          + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n    }\n    \n    executionManager.updateProcessInstanceBusinessKey(processInstance, businessKey);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "57",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'+' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/713/SetProcessInstanceBusinessKeyCmd.java\nindex f5038eab93..bba8d056b1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/713/SetProcessInstanceBusinessKeyCmd.java\n@@ -54,9 +54,9 @@ public class SetProcessInstanceBusinessKeyCmd implements Command<Void>, Serializ\n       throw new ActivitiObjectNotFoundException(\"No process instance found for id = '\" + processInstanceId + \"'.\", ProcessInstance.class);\n     } else if (!processInstance.isProcessInstanceType()) {\n       throw new ActivitiIllegalArgumentException(\"A process instance id is required, but the provided id \" + \"'\" + processInstanceId + \"' \" + \"points to a child execution of process instance \" + \"'\"\n-          + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n+        + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n     }\n-    \n+\n     executionManager.updateProcessInstanceBusinessKey(processInstance, businessKey);\n \n     return null;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "55",
+                    "column": "21",
+                    "severity": "error",
+                    "message": "'+' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/713/SetProcessInstanceBusinessKeyCmd.java\nindex f5038eab93..999392a6f7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/713/SetProcessInstanceBusinessKeyCmd.java\n@@ -1,9 +1,9 @@\n /* Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- * \n+ *\n  *      http://www.apache.org/licenses/LICENSE-2.0\n- * \n+ *\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n@@ -25,40 +25,38 @@ import org.activiti.engine.runtime.ProcessInstance;\n \n /**\n  * {@link Command} that changes the business key of an existing process instance.\n- * \n-\n  */\n public class SetProcessInstanceBusinessKeyCmd implements Command<Void>, Serializable {\n \n-  private static final long serialVersionUID = 1L;\n+    private static final long serialVersionUID = 1L;\n \n-  private final String processInstanceId;\n-  private final String businessKey;\n+    private final String processInstanceId;\n+    private final String businessKey;\n \n-  public SetProcessInstanceBusinessKeyCmd(String processInstanceId, String businessKey) {\n-    if (processInstanceId == null || processInstanceId.length() < 1) {\n-      throw new ActivitiIllegalArgumentException(\"The process instance id is mandatory, but '\" + processInstanceId + \"' has been provided.\");\n-    }\n-    if (businessKey == null) {\n-      throw new ActivitiIllegalArgumentException(\"The business key is mandatory, but 'null' has been provided.\");\n+    public SetProcessInstanceBusinessKeyCmd(String processInstanceId, String businessKey) {\n+        if (processInstanceId == null || processInstanceId.length() < 1) {\n+            throw new ActivitiIllegalArgumentException(\"The process instance id is mandatory, but '\" + processInstanceId + \"' has been provided.\");\n+        }\n+        if (businessKey == null) {\n+            throw new ActivitiIllegalArgumentException(\"The business key is mandatory, but 'null' has been provided.\");\n+        }\n+\n+        this.processInstanceId = processInstanceId;\n+        this.businessKey = businessKey;\n     }\n \n-    this.processInstanceId = processInstanceId;\n-    this.businessKey = businessKey;\n-  }\n+    public Void execute(CommandContext commandContext) {\n+        ExecutionEntityManager executionManager = commandContext.getExecutionEntityManager();\n+        ExecutionEntity processInstance = executionManager.findById(processInstanceId);\n+        if (processInstance == null) {\n+            throw new ActivitiObjectNotFoundException(\"No process instance found for id = '\" + processInstanceId + \"'.\", ProcessInstance.class);\n+        } else if (!processInstance.isProcessInstanceType()) {\n+            throw new ActivitiIllegalArgumentException(\"A process instance id is required, but the provided id \" + \"'\" + processInstanceId + \"' \" + \"points to a child execution of process instance \" + \"'\"\n+                    + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n+        }\n \n-  public Void execute(CommandContext commandContext) {\n-    ExecutionEntityManager executionManager = commandContext.getExecutionEntityManager();\n-    ExecutionEntity processInstance = executionManager.findById(processInstanceId);\n-    if (processInstance == null) {\n-      throw new ActivitiObjectNotFoundException(\"No process instance found for id = '\" + processInstanceId + \"'.\", ProcessInstance.class);\n-    } else if (!processInstance.isProcessInstanceType()) {\n-      throw new ActivitiIllegalArgumentException(\"A process instance id is required, but the provided id \" + \"'\" + processInstanceId + \"' \" + \"points to a child execution of process instance \" + \"'\"\n-          + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n-    }\n-    \n-    executionManager.updateProcessInstanceBusinessKey(processInstance, businessKey);\n+        executionManager.updateProcessInstanceBusinessKey(processInstance, businessKey);\n \n-    return null;\n-  }\n+        return null;\n+    }\n }\n",
+            "diff_size": 39
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Line is longer than 240 characters (found 385).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/713/SetProcessInstanceBusinessKeyCmd.java\nindex f5038eab93..99c99e807e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/713/SetProcessInstanceBusinessKeyCmd.java\n@@ -14,7 +14,6 @@\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n-\n import org.activiti.engine.ActivitiIllegalArgumentException;\n import org.activiti.engine.ActivitiObjectNotFoundException;\n import org.activiti.engine.impl.interceptor.Command;\n@@ -28,37 +27,37 @@ import org.activiti.engine.runtime.ProcessInstance;\n  * \n \n  */\n+\n+\n public class SetProcessInstanceBusinessKeyCmd implements Command<Void>, Serializable {\n \n-  private static final long serialVersionUID = 1L;\n+    private static final long serialVersionUID = 1L;\n \n-  private final String processInstanceId;\n-  private final String businessKey;\n+    private final String processInstanceId;\n \n-  public SetProcessInstanceBusinessKeyCmd(String processInstanceId, String businessKey) {\n+    private final String businessKey;\n+\n+    public SetProcessInstanceBusinessKeyCmd(String processInstanceId, String businessKey) {\n     if (processInstanceId == null || processInstanceId.length() < 1) {\n-      throw new ActivitiIllegalArgumentException(\"The process instance id is mandatory, but '\" + processInstanceId + \"' has been provided.\");\n+        throw new ActivitiIllegalArgumentException(\"The process instance id is mandatory, but '\" + processInstanceId + \"' has been provided.\");\n     }\n+\n     if (businessKey == null) {\n-      throw new ActivitiIllegalArgumentException(\"The business key is mandatory, but 'null' has been provided.\");\n+        throw new ActivitiIllegalArgumentException(\"The business key is mandatory, but 'null' has been provided.\");\n     }\n-\n     this.processInstanceId = processInstanceId;\n     this.businessKey = businessKey;\n-  }\n+    }\n \n-  public Void execute(CommandContext commandContext) {\n+    public Void execute(CommandContext commandContext) {\n     ExecutionEntityManager executionManager = commandContext.getExecutionEntityManager();\n     ExecutionEntity processInstance = executionManager.findById(processInstanceId);\n     if (processInstance == null) {\n-      throw new ActivitiObjectNotFoundException(\"No process instance found for id = '\" + processInstanceId + \"'.\", ProcessInstance.class);\n+        throw new ActivitiObjectNotFoundException(\"No process instance found for id = '\" + processInstanceId + \"'.\", ProcessInstance.class);\n     } else if (!processInstance.isProcessInstanceType()) {\n-      throw new ActivitiIllegalArgumentException(\"A process instance id is required, but the provided id \" + \"'\" + processInstanceId + \"' \" + \"points to a child execution of process instance \" + \"'\"\n-          + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n+                                                           throw new ActivitiIllegalArgumentException(\"A process instance id is required, but the provided id \" + \"'\" + processInstanceId + \"' \" + \"points to a child execution of process instance \" + \"'\" + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n     }\n-    \n     executionManager.updateProcessInstanceBusinessKey(processInstance, businessKey);\n-\n     return null;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "57",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'+' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/713/SetProcessInstanceBusinessKeyCmd.java\nindex f5038eab93..bba8d056b1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/713/SetProcessInstanceBusinessKeyCmd.java\n@@ -54,9 +54,9 @@ public class SetProcessInstanceBusinessKeyCmd implements Command<Void>, Serializ\n       throw new ActivitiObjectNotFoundException(\"No process instance found for id = '\" + processInstanceId + \"'.\", ProcessInstance.class);\n     } else if (!processInstance.isProcessInstanceType()) {\n       throw new ActivitiIllegalArgumentException(\"A process instance id is required, but the provided id \" + \"'\" + processInstanceId + \"' \" + \"points to a child execution of process instance \" + \"'\"\n-          + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n+        + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n     }\n-    \n+\n     executionManager.updateProcessInstanceBusinessKey(processInstance, businessKey);\n \n     return null;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "57",
+                    "column": "7",
+                    "severity": "error",
+                    "message": "'+' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/713/SetProcessInstanceBusinessKeyCmd.java\nindex f5038eab93..4cd64b457d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/713/SetProcessInstanceBusinessKeyCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/713/SetProcessInstanceBusinessKeyCmd.java\n@@ -54,9 +54,9 @@ public class SetProcessInstanceBusinessKeyCmd implements Command<Void>, Serializ\n       throw new ActivitiObjectNotFoundException(\"No process instance found for id = '\" + processInstanceId + \"'.\", ProcessInstance.class);\n     } else if (!processInstance.isProcessInstanceType()) {\n       throw new ActivitiIllegalArgumentException(\"A process instance id is required, but the provided id \" + \"'\" + processInstanceId + \"' \" + \"points to a child execution of process instance \" + \"'\"\n-          + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n+      + processInstance.getProcessInstanceId() + \"'. \" + \"Please invoke the \" + getClass().getSimpleName() + \" with a root execution id.\");\n     }\n-    \n+\n     executionManager.updateProcessInstanceBusinessKey(processInstance, businessKey);\n \n     return null;\n",
+            "diff_size": 2
+        }
+    ]
+}

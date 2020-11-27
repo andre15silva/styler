@@ -1,0 +1,170 @@
+{
+    "error_id": "43",
+    "information": {
+        "errors": [
+            {
+                "line": "74",
+                "column": "7",
+                "severity": "warning",
+                "message": "WhitespaceAround: 'catch' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "    try {\n      return (Resource) parser.parseResource(fileResource.getResource().getInputStream());\n    } catch(IOException ioe) {\n      logger.error(\"Issue parsing FHIR file resource for preprocessing.\", ioe);\n      return null;\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/43/FhirResourceProcessor.java\nindex c8ee2366a6..b5f0b3a7c2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/43/FhirResourceProcessor.java\n@@ -71,7 +71,7 @@ public abstract class FhirResourceProcessor<T extends Resource> {\n   protected Resource parseFhirFileResource(FileResource fileResource) {\n     try {\n       return (Resource) parser.parseResource(fileResource.getResource().getInputStream());\n-    } catch(IOException ioe) {\n+    } catch (IOException ioe) {\n       logger.error(\"Issue parsing FHIR file resource for preprocessing.\", ioe);\n       return null;\n     }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/43/FhirResourceProcessor.java\nindex c8ee2366a6..79ebebef7d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/43/FhirResourceProcessor.java\n@@ -16,7 +16,7 @@ import ca.uhn.fhir.parser.IParser;\n  * Abstract interface for making changes to a FHIR resource. This takes care of the parsing\n  * of the resource and encoding back out to a deliverable buffer. The implementing classes\n  * just need to implement processResource and work with the FHIR models solely.\n- * \n+ *\n  * @param <T> Any FHIR R4 Resource model.\n  */\n public abstract class FhirResourceProcessor<T extends Resource> {\n@@ -26,10 +26,10 @@ public abstract class FhirResourceProcessor<T extends Resource> {\n   /**\n    * Implemented by the concrete processor. Makes any changes to the FHIR Resource and returns the\n    * modified Resource\n-   * \n+   *\n    * @param inputResource The Resource to modify.\n-   * @param fileStore The FileStore that may be used if other resources are needed.\n-   * @param baseUrl The base url of the server, usually obtained by the current request.\n+   * @param fileStore     The FileStore that may be used if other resources are needed.\n+   * @param baseUrl       The base url of the server, usually obtained by the current request.\n    * @return The new or modified FHIR Resource.\n    */\n   protected abstract T processResource(T inputResource, FileStore fileStore, String baseUrl);\n@@ -45,10 +45,10 @@ public abstract class FhirResourceProcessor<T extends Resource> {\n   /**\n    * Called by CommonFileStore/other users. This is the main entry point for the use of the processor.\n    * Will call the abstract `processResource` to actually do the work.\n-   * \n+   *\n    * @param inputFileResource The FileResource that will be parsed, then modified.\n-   * @param fileStore The file store to be used if any other resources need to be pulled for modifications.\n-   * @param baseUrl The base url of the server, usually obtained by the current request.\n+   * @param fileStore         The file store to be used if any other resources need to be pulled for modifications.\n+   * @param baseUrl           The base url of the server, usually obtained by the current request.\n    * @return The new FileResource after modification.\n    */\n   public FileResource processResource(FileResource inputFileResource, FileStore fileStore, String baseUrl) {\n@@ -64,14 +64,14 @@ public abstract class FhirResourceProcessor<T extends Resource> {\n \n   /**\n    * Parses a FHIR resource from a FileResource.\n-   * \n+   *\n    * @param fileResource The FileResource to parse.\n    * @return The parsed FHIR R4 model.\n    */\n   protected Resource parseFhirFileResource(FileResource fileResource) {\n     try {\n       return (Resource) parser.parseResource(fileResource.getResource().getInputStream());\n-    } catch(IOException ioe) {\n+    } catch (IOException ioe) {\n       logger.error(\"Issue parsing FHIR file resource for preprocessing.\", ioe);\n       return null;\n     }\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "45",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "22",
+                    "column": "65",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '>' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "23",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 34.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "'VARIABLE_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "column": "24",
+                    "severity": "warning",
+                    "message": "'.' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 55.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 73.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 76, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 160).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/43/FhirResourceProcessor.java\nindex c8ee2366a6..209f752f0d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/43/FhirResourceProcessor.java\n@@ -3,12 +3,10 @@ package org.hl7.davinci.endpoint.files;\n import java.io.ByteArrayOutputStream;\n import java.io.IOException;\n import java.nio.charset.Charset;\n-\n import org.hl7.fhir.r4.model.Resource;\n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n import org.springframework.core.io.ByteArrayResource;\n-\n import ca.uhn.fhir.context.FhirContext;\n import ca.uhn.fhir.parser.IParser;\n \n@@ -19,9 +17,10 @@ import ca.uhn.fhir.parser.IParser;\n  * \n  * @param <T> Any FHIR R4 Resource model.\n  */\n-public abstract class FhirResourceProcessor<T extends Resource> {\n \n-  static final Logger logger = LoggerFactory.getLogger(FhirResourceProcessor.class);\n+\n+public abstract class FhirResourceProcessor <T extends Resource > {\n+    static final Logger logger = LoggerFactory.getLogger(FhirResourceProcessor.class);\n \n   /**\n    * Implemented by the concrete processor. Makes any changes to the FHIR Resource and returns the\n@@ -32,15 +31,15 @@ public abstract class FhirResourceProcessor<T extends Resource> {\n    * @param baseUrl The base url of the server, usually obtained by the current request.\n    * @return The new or modified FHIR Resource.\n    */\n-  protected abstract T processResource(T inputResource, FileStore fileStore, String baseUrl);\n+    protected abstract T processResource(\n+        T inputResource, FileStore fileStore, String baseUrl);\n+    private FhirContext ctx;\n+    private IParser parser;\n \n-  private FhirContext ctx;\n-  private IParser parser;\n-\n-  public FhirResourceProcessor() {\n-    this.ctx = new org.hl7.davinci.r4.FhirComponents().getFhirContext();\n+    public FhirResourceProcessor() {\n+    this.ctx = new org . hl7. davinci. r4. FhirComponents().getFhirContext();\n     this.parser = ctx.newJsonParser().setPrettyPrint(true);\n-  }\n+    }\n \n   /**\n    * Called by CommonFileStore/other users. This is the main entry point for the use of the processor.\n@@ -51,16 +50,18 @@ public abstract class FhirResourceProcessor<T extends Resource> {\n    * @param baseUrl The base url of the server, usually obtained by the current request.\n    * @return The new FileResource after modification.\n    */\n-  public FileResource processResource(FileResource inputFileResource, FileStore fileStore, String baseUrl) {\n+\n+\n+    public FileResource processResource(\n+        FileResource inputFileResource, FileStore fileStore, String baseUrl) {\n     T inputResource = (T) this.parseFhirFileResource(inputFileResource);\n     T outputResource = this.processResource(inputResource, fileStore, baseUrl);\n-\n-    byte[] resourceData = parser.encodeResourceToString(outputResource).getBytes(Charset.defaultCharset());\n+    byte [] resourceData = parser.encodeResourceToString(outputResource).getBytes(Charset.defaultCharset());\n     FileResource outputFileResource = new FileResource();\n     outputFileResource.setResource(new ByteArrayResource(resourceData));\n     outputFileResource.setFilename(inputFileResource.getFilename());\n     return outputFileResource;\n-  }\n+    }\n \n   /**\n    * Parses a FHIR resource from a FileResource.\n@@ -68,12 +69,13 @@ public abstract class FhirResourceProcessor<T extends Resource> {\n    * @param fileResource The FileResource to parse.\n    * @return The parsed FHIR R4 model.\n    */\n-  protected Resource parseFhirFileResource(FileResource fileResource) {\n+\n+    protected Resource parseFhirFileResource(FileResource fileResource) {\n     try {\n-      return (Resource) parser.parseResource(fileResource.getResource().getInputStream());\n-    } catch(IOException ioe) {\n+                                                                            return (Resource) parser.parseResource(fileResource.getResource().getInputStream());\n+    } catch (IOException ioe) {\n       logger.error(\"Issue parsing FHIR file resource for preprocessing.\", ioe);\n       return null;\n     }\n-  }\n+    }\n }\n\\ No newline at end of file\n",
+            "diff_size": 28
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/43/FhirResourceProcessor.java\nindex c8ee2366a6..b5f0b3a7c2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/43/FhirResourceProcessor.java\n@@ -71,7 +71,7 @@ public abstract class FhirResourceProcessor<T extends Resource> {\n   protected Resource parseFhirFileResource(FileResource fileResource) {\n     try {\n       return (Resource) parser.parseResource(fileResource.getResource().getInputStream());\n-    } catch(IOException ioe) {\n+    } catch (IOException ioe) {\n       logger.error(\"Issue parsing FHIR file resource for preprocessing.\", ioe);\n       return null;\n     }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/43/FhirResourceProcessor.java\nindex c8ee2366a6..b5f0b3a7c2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/43/FhirResourceProcessor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_three_grams/43/FhirResourceProcessor.java\n@@ -71,7 +71,7 @@ public abstract class FhirResourceProcessor<T extends Resource> {\n   protected Resource parseFhirFileResource(FileResource fileResource) {\n     try {\n       return (Resource) parser.parseResource(fileResource.getResource().getInputStream());\n-    } catch(IOException ioe) {\n+    } catch (IOException ioe) {\n       logger.error(\"Issue parsing FHIR file resource for preprocessing.\", ioe);\n       return null;\n     }\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,382 @@
+{
+    "error_id": "25",
+    "information": {
+        "errors": [
+            {
+                "line": "171",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 130).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        \"a\", new Tuple4.Collect<String, String, String, String>(coll(\"1-1\", \"1-4\"), coll(), coll(\"1-1\", \"1-4\"), coll()),\n        \"b\", new Tuple4.Collect<String, String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\"), coll(\"2-1\")),\n        \"c\", new Tuple4.Collect<String, String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\"), coll(\"2-2\", \"2-3\")),\n        \"d\", new Tuple4.Collect<String, String, String, String>(coll(), coll(\"2-4\"), coll(), coll(\"2-4\"))\n    );\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "171",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/25/SparkCogroupIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/intellij/25/SparkCogroupIT.java\nindex 1b80b690e9..2e5a79dd2d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/25/SparkCogroupIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/intellij/25/SparkCogroupIT.java\n@@ -6,15 +6,16 @@\n  * to you under the Apache License, Version 2.0 (the\n  * \"License\"); you may not use this file except in compliance\n  * with the License.  You may obtain a copy of the License at\n- *\n- *     http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.crunch;\n \n import static org.hamcrest.Matchers.is;\n@@ -168,7 +169,8 @@ public class SparkCogroupIT {\n     Map<String, Tuple4.Collect<String, String, String, String>> expected = ImmutableMap.of(\n         \"a\", new Tuple4.Collect<String, String, String, String>(coll(\"1-1\", \"1-4\"), coll(), coll(\"1-1\", \"1-4\"), coll()),\n         \"b\", new Tuple4.Collect<String, String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\"), coll(\"2-1\")),\n-        \"c\", new Tuple4.Collect<String, String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\"), coll(\"2-2\", \"2-3\")),\n+        \"c\", new Tuple4.Collect<String, String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\"),\n+            coll(\"2-2\", \"2-3\")),\n         \"d\", new Tuple4.Collect<String, String, String, String>(coll(), coll(\"2-4\"), coll(), coll(\"2-4\"))\n     );\n \n",
+            "diff_size": 6
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "169",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/25/SparkCogroupIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/naturalize/25/SparkCogroupIT.java\nindex 1b80b690e9..378f55c117 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/25/SparkCogroupIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/naturalize/25/SparkCogroupIT.java\n@@ -113,8 +113,7 @@ public class SparkCogroupIT {\n         \"a\", Pair.of(coll(\"1-1\", \"1-4\"), coll()),\n         \"b\", Pair.of(coll(\"1-2\"), coll(\"2-1\")),\n         \"c\", Pair.of(coll(\"1-3\"), coll(\"2-2\", \"2-3\")),\n-        \"d\", Pair.of(coll(), coll(\"2-4\"))\n-    );\n+        \"d\", Pair.of(coll(), coll(\"2-4\")));\n \n     assertThat(actual, is(expected));\n   }\n@@ -140,8 +139,7 @@ public class SparkCogroupIT {\n         \"a\", new Tuple3.Collect<String, String, String>(coll(\"1-1\", \"1-4\"), coll(), coll(\"1-1\", \"1-4\")),\n         \"b\", new Tuple3.Collect<String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\")),\n         \"c\", new Tuple3.Collect<String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\")),\n-        \"d\", new Tuple3.Collect<String, String, String>(coll(), coll(\"2-4\"), coll())\n-    );\n+        \"d\", new Tuple3.Collect<String, String, String>(coll(), coll(\"2-4\"), coll()));\n \n     assertThat(actual, is(expected));\n   }\n@@ -169,8 +167,7 @@ public class SparkCogroupIT {\n         \"a\", new Tuple4.Collect<String, String, String, String>(coll(\"1-1\", \"1-4\"), coll(), coll(\"1-1\", \"1-4\"), coll()),\n         \"b\", new Tuple4.Collect<String, String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\"), coll(\"2-1\")),\n         \"c\", new Tuple4.Collect<String, String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\"), coll(\"2-2\", \"2-3\")),\n-        \"d\", new Tuple4.Collect<String, String, String, String>(coll(), coll(\"2-4\"), coll(), coll(\"2-4\"))\n-    );\n+        \"d\", new Tuple4.Collect<String, String, String, String>(coll(), coll(\"2-4\"), coll(), coll(\"2-4\")));\n \n     assertThat(actual, is(expected));\n   }\n@@ -186,4 +183,4 @@ public class SparkCogroupIT {\n   private static Collection<String> coll(String... values) {\n     return ImmutableSet.copyOf(values);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 253).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "120",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "123",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 441).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "127",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "129",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "139",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "140",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "141",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "142",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "143",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "145",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 535).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "147",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "149",
+                    "severity": "warning",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "152",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "155",
+                    "severity": "warning",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "159",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/25/SparkCogroupIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/codebuff/25/SparkCogroupIT.java\nindex 1b80b690e9..8241c9361b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/25/SparkCogroupIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/codebuff/25/SparkCogroupIT.java\n@@ -35,155 +35,126 @@ import org.junit.After;\n import org.junit.Before;\n import org.junit.Rule;\n import org.junit.Test;\n-\n import java.io.IOException;\n import java.util.Collection;\n import java.util.Map;\n \n public class SparkCogroupIT {\n-  @Rule\n-  public TemporaryPath tmpDir = new TemporaryPath();\n-\n-  private SparkPipeline pipeline;\n-  private PCollection<String> lines1;\n-  private PCollection<String> lines2;\n-  private PCollection<String> lines3;\n-  private PCollection<String> lines4;\n-\n-  @Before\n-  public void setUp() throws IOException {\n+    @Rule\n+    public TemporaryPath tmpDir = new TemporaryPath();\n+    private SparkPipeline pipeline;\n+    private PCollection<String> lines1;\n+    private PCollection<String> lines2;\n+    private PCollection<String> lines3;\n+    private PCollection<String> lines4;\n+\n+    @Before\n+    public void setUp() throws IOException {\n     pipeline = new SparkPipeline(\"local\", \"wordcount\");\n     lines1 = pipeline.readTextFile(tmpDir.copyResourceFileName(Tests.resource(this, \"src1.txt\")));\n     lines2 = pipeline.readTextFile(tmpDir.copyResourceFileName(Tests.resource(this, \"src2.txt\")));\n     lines3 = pipeline.readTextFile(tmpDir.copyResourceFileName(Tests.resource(this, \"src1.txt\")));\n     lines4 = pipeline.readTextFile(tmpDir.copyResourceFileName(Tests.resource(this, \"src2.txt\")));\n-  }\n+    }\n \n-  @After\n-  public void tearDown() {\n+    @After\n+    public void tearDown() {\n     pipeline.done();\n-  }\n+    }\n \n-  @Test\n-  public void testCogroupWritables() {\n+    @Test\n+    public void testCogroupWritables() {\n     runCogroup(WritableTypeFamily.getInstance());\n-  }\n+    }\n \n-  @Test\n-  public void testCogroupAvro() {\n+    @Test\n+    public void testCogroupAvro() {\n     runCogroup(AvroTypeFamily.getInstance());\n-  }\n+    }\n \n-  @Test\n-  public void testCogroup3Writables() {\n+    @Test\n+    public void testCogroup3Writables() {\n     runCogroup3(WritableTypeFamily.getInstance());\n-  }\n+    }\n \n-  @Test\n-  public void testCogroup3Avro() {\n+    @Test\n+    public void testCogroup3Avro() {\n     runCogroup3(AvroTypeFamily.getInstance());\n-  }\n+    }\n \n-  @Test\n-  public void testCogroup4Writables() {\n+    @Test\n+    public void testCogroup4Writables() {\n     runCogroup4(WritableTypeFamily.getInstance());\n-  }\n+    }\n \n-  @Test\n-  public void testCogroup4Avro() {\n+    @Test\n+    public void testCogroup4Avro() {\n     runCogroup4(AvroTypeFamily.getInstance());\n-  }\n+    }\n \n-  public void runCogroup(PTypeFamily ptf) {\n+    public void runCogroup(PTypeFamily ptf) {\n     PTableType<String, String> tt = ptf.tableOf(ptf.strings(), ptf.strings());\n-\n     PTable<String, String> kv1 = lines1.parallelDo(\"kv1\", new KeyValueSplit(), tt);\n     PTable<String, String> kv2 = lines2.parallelDo(\"kv2\", new KeyValueSplit(), tt);\n-\n     PTable<String, Pair<Collection<String>, Collection<String>>> cg = Cogroup.cogroup(kv1, kv2);\n-\n     Map<String, Pair<Collection<String>, Collection<String>>> result = cg.materializeToMap();\n     Map<String, Pair<Collection<String>, Collection<String>>> actual = Maps.newHashMap();\n     for (Map.Entry<String, Pair<Collection<String>, Collection<String>>> e : result.entrySet()) {\n-      Collection<String> one = ImmutableSet.copyOf(e.getValue().first());\n-      Collection<String> two = ImmutableSet.copyOf(e.getValue().second());\n-      actual.put(e.getKey(), Pair.of(one, two));\n+        Collection<String> one = ImmutableSet.copyOf(e.getValue().first());\n+        Collection<String> two = ImmutableSet.copyOf(e.getValue().second());\n+        actual.put(e.getKey(), Pair.of(one, two));\n     }\n-    Map<String, Pair<Collection<String>, Collection<String>>> expected = ImmutableMap.of(\n-        \"a\", Pair.of(coll(\"1-1\", \"1-4\"), coll()),\n-        \"b\", Pair.of(coll(\"1-2\"), coll(\"2-1\")),\n-        \"c\", Pair.of(coll(\"1-3\"), coll(\"2-2\", \"2-3\")),\n-        \"d\", Pair.of(coll(), coll(\"2-4\"))\n-    );\n-\n+    Map<String, Pair<Collection<String>, Collection<String>>> expected = ImmutableMap.of(\"a\", Pair.of(coll(\"1-1\", \"1-4\"), coll()), \"b\", Pair.of(coll(\"1-2\"), coll(\"2-1\")), \"c\", Pair.of(coll(\"1-3\"), coll(\"2-2\", \"2-3\")), \"d\", Pair.of(coll(), coll(\"2-4\")));\n     assertThat(actual, is(expected));\n-  }\n+    }\n \n-  public void runCogroup3(PTypeFamily ptf) {\n+    public void runCogroup3(PTypeFamily ptf) {\n     PTableType<String, String> tt = ptf.tableOf(ptf.strings(), ptf.strings());\n-\n     PTable<String, String> kv1 = lines1.parallelDo(\"kv1\", new KeyValueSplit(), tt);\n     PTable<String, String> kv2 = lines2.parallelDo(\"kv2\", new KeyValueSplit(), tt);\n     PTable<String, String> kv3 = lines3.parallelDo(\"kv3\", new KeyValueSplit(), tt);\n-\n     PTable<String, Tuple3.Collect<String, String, String>> cg = Cogroup.cogroup(kv1, kv2, kv3);\n-\n     Map<String, Tuple3.Collect<String, String, String>> result = cg.materializeToMap();\n     Map<String, Tuple3.Collect<String, String, String>> actual = Maps.newHashMap();\n     for (Map.Entry<String, Tuple3.Collect<String, String, String>> e : result.entrySet()) {\n-      Collection<String> one = ImmutableSet.copyOf(e.getValue().first());\n-      Collection<String> two = ImmutableSet.copyOf(e.getValue().second());\n-      Collection<String> three = ImmutableSet.copyOf(e.getValue().third());\n-      actual.put(e.getKey(), new Tuple3.Collect<String, String, String>(one, two, three));\n-    }\n-    Map<String, Tuple3.Collect<String, String, String>> expected = ImmutableMap.of(\n-        \"a\", new Tuple3.Collect<String, String, String>(coll(\"1-1\", \"1-4\"), coll(), coll(\"1-1\", \"1-4\")),\n-        \"b\", new Tuple3.Collect<String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\")),\n-        \"c\", new Tuple3.Collect<String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\")),\n-        \"d\", new Tuple3.Collect<String, String, String>(coll(), coll(\"2-4\"), coll())\n-    );\n-\n+        Collection<String> one = ImmutableSet.copyOf(e.getValue().first());\n+        Collection<String> two = ImmutableSet.copyOf(e.getValue().second());\n+        Collection<String> three = ImmutableSet.copyOf(e.getValue().third());\n+        actual.put(e.getKey(), new Tuple3.Collect<String, String, String>(one, two, three));\n+    }\n+    Map<String, Tuple3.Collect<String, String, String>> expected = ImmutableMap.of(\"a\", new Tuple3.Collect<String, String, String>(coll(\"1-1\", \"1-4\"), coll(), coll(\"1-1\", \"1-4\")), \"b\", new Tuple3.Collect<String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\")), \"c\", new Tuple3.Collect<String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\")), \"d\", new Tuple3.Collect<String, String, String>(coll(), coll(\"2-4\"), coll()));\n     assertThat(actual, is(expected));\n-  }\n+    }\n \n-  public void runCogroup4(PTypeFamily ptf) {\n+    public void runCogroup4(PTypeFamily ptf) {\n     PTableType<String, String> tt = ptf.tableOf(ptf.strings(), ptf.strings());\n-\n     PTable<String, String> kv1 = lines1.parallelDo(\"kv1\", new KeyValueSplit(), tt);\n     PTable<String, String> kv2 = lines2.parallelDo(\"kv2\", new KeyValueSplit(), tt);\n     PTable<String, String> kv3 = lines3.parallelDo(\"kv3\", new KeyValueSplit(), tt);\n     PTable<String, String> kv4 = lines4.parallelDo(\"kv4\", new KeyValueSplit(), tt);\n-\n     PTable<String, Tuple4.Collect<String, String, String, String>> cg = Cogroup.cogroup(kv1, kv2, kv3, kv4);\n-\n     Map<String, Tuple4.Collect<String, String, String, String>> result = cg.materializeToMap();\n     Map<String, Tuple4.Collect<String, String, String, String>> actual = Maps.newHashMap();\n     for (Map.Entry<String, Tuple4.Collect<String, String, String, String>> e : result.entrySet()) {\n-      Collection<String> one = ImmutableSet.copyOf(e.getValue().first());\n-      Collection<String> two = ImmutableSet.copyOf(e.getValue().second());\n-      Collection<String> three = ImmutableSet.copyOf(e.getValue().third());\n-      Collection<String> four = ImmutableSet.copyOf(e.getValue().fourth());\n-      actual.put(e.getKey(), new Tuple4.Collect<String, String, String, String>(one, two, three, four));\n-    }\n-    Map<String, Tuple4.Collect<String, String, String, String>> expected = ImmutableMap.of(\n-        \"a\", new Tuple4.Collect<String, String, String, String>(coll(\"1-1\", \"1-4\"), coll(), coll(\"1-1\", \"1-4\"), coll()),\n-        \"b\", new Tuple4.Collect<String, String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\"), coll(\"2-1\")),\n-        \"c\", new Tuple4.Collect<String, String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\"), coll(\"2-2\", \"2-3\")),\n-        \"d\", new Tuple4.Collect<String, String, String, String>(coll(), coll(\"2-4\"), coll(), coll(\"2-4\"))\n-    );\n-\n+        Collection<String> one = ImmutableSet.copyOf(e.getValue().first());\n+        Collection<String> two = ImmutableSet.copyOf(e.getValue().second());\n+        Collection<String> three = ImmutableSet.copyOf(e.getValue().third());\n+        Collection<String> four = ImmutableSet.copyOf(e.getValue().fourth());\n+        actual.put(e.getKey(), new Tuple4.Collect<String, String, String, String>(one, two, three, four));\n+    }\n+    Map<String, Tuple4.Collect<String, String, String, String>> expected = ImmutableMap.of(\"a\", new Tuple4.Collect<String, String, String, String>(coll(\"1-1\", \"1-4\"), coll(), coll(\"1-1\", \"1-4\"), coll()), \"b\", new Tuple4.Collect<String, String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\"), coll(\"2-1\")), \"c\", new Tuple4.Collect<String, String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\"), coll(\"2-2\", \"2-3\")), \"d\", new Tuple4.Collect<String, String, String, String>(coll(), coll(\"2-4\"), coll(), coll(\"2-4\")));\n     assertThat(actual, is(expected));\n-  }\n+    }\n \n-  private static class KeyValueSplit extends DoFn<String, Pair<String, String>> {\n+    private static class KeyValueSplit extends DoFn<String, Pair<String, String>> {\n     @Override\n     public void process(String input, Emitter<Pair<String, String>> emitter) {\n-      String[] fields = input.split(\",\");\n-      emitter.emit(Pair.of(fields[0], fields[1]));\n+        String[] fields = input.split(\",\");\n+        emitter.emit(Pair.of(fields[0], fields[1]));\n+    }\n     }\n-  }\n \n-  private static Collection<String> coll(String... values) {\n+    private static Collection<String> coll(String... values) {\n     return ImmutableSet.copyOf(values);\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 92
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "171",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "170",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 238).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "170",
+                    "column": "116",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/25/SparkCogroupIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_three_grams/25/SparkCogroupIT.java\nindex 1b80b690e9..2bf896f8ec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/25/SparkCogroupIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_three_grams/25/SparkCogroupIT.java\n@@ -167,8 +167,7 @@ public class SparkCogroupIT {\n     }\n     Map<String, Tuple4.Collect<String, String, String, String>> expected = ImmutableMap.of(\n         \"a\", new Tuple4.Collect<String, String, String, String>(coll(\"1-1\", \"1-4\"), coll(), coll(\"1-1\", \"1-4\"), coll()),\n-        \"b\", new Tuple4.Collect<String, String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\"), coll(\"2-1\")),\n-        \"c\", new Tuple4.Collect<String, String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\"), coll(\"2-2\", \"2-3\")),\n+        \"b\", new Tuple4.Collect<String, String, String, String>(coll(\"1-2\"), coll(\"2-1\"), coll(\"1-2\"), coll(\"2-1\")),\"c\", new Tuple4.Collect<String, String, String, String>(coll(\"1-3\"), coll(\"2-2\", \"2-3\"), coll(\"1-3\"), coll(\"2-2\", \"2-3\")),\n         \"d\", new Tuple4.Collect<String, String, String, String>(coll(), coll(\"2-4\"), coll(), coll(\"2-4\"))\n     );\n \n",
+            "diff_size": 2
+        }
+    ]
+}

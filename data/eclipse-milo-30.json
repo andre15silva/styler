@@ -1,0 +1,91 @@
+{
+    "error_id": "30",
+    "information": {
+        "errors": [
+            {
+                "line": "25",
+                "column": "36",
+                "severity": "error",
+                "message": "'}' at column 36 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "final class DateTimeConversions {\n\n    private DateTimeConversions() {}\n\n    @Nonnull\n    static String dateTimeToString(@Nonnull DateTime dt) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "25",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/30/DateTimeConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/30/DateTimeConversions.java\nindex 134013c796..28e4fdb1b4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/30/DateTimeConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/30/DateTimeConversions.java\n@@ -22,7 +22,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.DateTime;\n \n final class DateTimeConversions {\n \n-    private DateTimeConversions() {}\n+    private DateTimeConversions() {\n+    }\n \n     @Nonnull\n     static String dateTimeToString(@Nonnull DateTime dt) {\n@@ -59,8 +60,10 @@ final class DateTimeConversions {\n     static Object explicitConversion(@Nonnull DateTime d, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:    return dateTimeToString(d);\n-            default:        return implicitConversion(d, targetType);\n+            case String:\n+                return dateTimeToString(d);\n+            default:\n+                return implicitConversion(d, targetType);\n         }\n         //@formatter:on\n     }\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "25",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/30/DateTimeConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/30/DateTimeConversions.java\nindex 134013c796..ac5d79e2f4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/30/DateTimeConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/30/DateTimeConversions.java\n@@ -60,7 +60,8 @@ final class DateTimeConversions {\n         //@formatter:off\n         switch (targetType) {\n             case String:    return dateTimeToString(d);\n-            default:        return implicitConversion(d, targetType);\n+            default:\n+    return implicitConversion(d, targetType);\n         }\n         //@formatter:on\n     }\n@@ -72,4 +73,4 @@ final class DateTimeConversions {\n     }\n \n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/30/DateTimeConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/30/DateTimeConversions.java\nindex 134013c796..34df68fa81 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/30/DateTimeConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/30/DateTimeConversions.java\n@@ -16,13 +16,13 @@ import java.util.Date;\n import java.util.TimeZone;\n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.stack.core.BuiltinDataType;\n import org.eclipse.milo.opcua.stack.core.types.builtin.DateTime;\n \n final class DateTimeConversions {\n \n-    private DateTimeConversions() {}\n+    private DateTimeConversions() {\n+    }\n \n     @Nonnull\n     static String dateTimeToString(@Nonnull DateTime dt) {\n@@ -43,13 +43,12 @@ final class DateTimeConversions {\n     }\n \n     @Nullable\n-    static Object convert(@Nonnull Object o, BuiltinDataType targetType, boolean implicit) {\n+    static Object convert(@Nonnull Object o, BuiltinDataType targetType,\n+                          boolean implicit) {\n         if (o instanceof DateTime) {\n             DateTime d = (DateTime) o;\n \n-            return implicit ?\n-                implicitConversion(d, targetType) :\n-                explicitConversion(d, targetType);\n+            return implicit ? implicitConversion(d, targetType) : explicitConversion(d, targetType);\n         } else {\n             return null;\n         }\n@@ -59,8 +58,10 @@ final class DateTimeConversions {\n     static Object explicitConversion(@Nonnull DateTime d, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:    return dateTimeToString(d);\n-            default:        return implicitConversion(d, targetType);\n+            case String:\n+                return dateTimeToString(d);\n+            default:\n+                return implicitConversion(d, targetType);\n         }\n         //@formatter:on\n     }\n@@ -70,6 +71,4 @@ final class DateTimeConversions {\n         // no implicit conversions exist\n         return null;\n     }\n-\n-\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "25",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "25",
+                    "column": "37",
+                    "severity": "error",
+                    "message": "'}' at column 37 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/30/DateTimeConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/30/DateTimeConversions.java\nindex 134013c796..74689b36ee 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/30/DateTimeConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/30/DateTimeConversions.java\n@@ -22,9 +22,9 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.DateTime;\n \n final class DateTimeConversions {\n \n-    private DateTimeConversions() {}\n+    private DateTimeConversions() { }\n \n-    @Nonnull\n+        @Nonnull\n     static String dateTimeToString(@Nonnull DateTime dt) {\n         return dateToIso8601UtcString(dt.getJavaDate());\n     }\n",
+            "diff_size": 2
+        }
+    ]
+}

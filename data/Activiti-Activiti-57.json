@@ -1,0 +1,64 @@
+{
+    "error_id": "57",
+    "information": {
+        "errors": [
+            {
+                "line": "16",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.core.common.spring.security;\n\nimport org.springframework.lang.NonNull;\nimport org.springframework.security.core.GrantedAuthority;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/57/AbstractSimpleGrantedAuthoritiesMapper.java\nindex 2440097166..305179cfca 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/57/AbstractSimpleGrantedAuthoritiesMapper.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.core.common.spring.security;\n \n import org.springframework.lang.NonNull;\n@@ -24,7 +25,7 @@ import java.util.List;\n import java.util.stream.Collectors;\n \n public abstract class AbstractSimpleGrantedAuthoritiesMapper {\n-    \n+\n     protected static List<String> getAuthoritesFilteredByPrefix(@NonNull Collection<? extends GrantedAuthority> authorities,\n                                                                 @NonNull String prefix) {\n         return authorities.stream()\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/57/AbstractSimpleGrantedAuthoritiesMapper.java\nindex 2440097166..319a998ab6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/57/AbstractSimpleGrantedAuthoritiesMapper.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.core.common.spring.security;\n \n import org.springframework.lang.NonNull;\n@@ -24,14 +25,14 @@ import java.util.List;\n import java.util.stream.Collectors;\n \n public abstract class AbstractSimpleGrantedAuthoritiesMapper {\n-    \n+\n     protected static List<String> getAuthoritesFilteredByPrefix(@NonNull Collection<? extends GrantedAuthority> authorities,\n                                                                 @NonNull String prefix) {\n         return authorities.stream()\n-                          .map(GrantedAuthority::getAuthority)\n-                          .filter(a -> a.startsWith(prefix))\n-                          .map(a -> a.substring(prefix.length()))\n-                          .collect(Collectors.collectingAndThen(Collectors.toList(),\n-                                                                Collections::unmodifiableList));\n+                .map(GrantedAuthority::getAuthority)\n+                .filter(a -> a.startsWith(prefix))\n+                .map(a -> a.substring(prefix.length()))\n+                .collect(Collectors.collectingAndThen(Collectors.toList(),\n+                        Collections::unmodifiableList));\n     }\n }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/57/AbstractSimpleGrantedAuthoritiesMapper.java\nindex 2440097166..26187bff05 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/57/AbstractSimpleGrantedAuthoritiesMapper.java\n@@ -17,21 +17,18 @@ package org.activiti.core.common.spring.security;\n \n import org.springframework.lang.NonNull;\n import org.springframework.security.core.GrantedAuthority;\n-\n import java.util.Collection;\n import java.util.Collections;\n import java.util.List;\n import java.util.stream.Collectors;\n \n+\n public abstract class AbstractSimpleGrantedAuthoritiesMapper {\n-    \n+\n     protected static List<String> getAuthoritesFilteredByPrefix(@NonNull Collection<? extends GrantedAuthority> authorities,\n                                                                 @NonNull String prefix) {\n-        return authorities.stream()\n-                          .map(GrantedAuthority::getAuthority)\n-                          .filter(a -> a.startsWith(prefix))\n-                          .map(a -> a.substring(prefix.length()))\n-                          .collect(Collectors.collectingAndThen(Collectors.toList(),\n-                                                                Collections::unmodifiableList));\n+        return authorities.stream().map(GrantedAuthority::getAuthority).filter(a -> a.startsWith(prefix)).map(a -> a.substring(prefix.length())).collect(Collectors.collectingAndThen(Collectors.toList(),\n+                                                                                                                                                                                      Collections::unmodifiableList));\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/57/AbstractSimpleGrantedAuthoritiesMapper.java\nindex 2440097166..305179cfca 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/57/AbstractSimpleGrantedAuthoritiesMapper.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.core.common.spring.security;\n \n import org.springframework.lang.NonNull;\n@@ -24,7 +25,7 @@ import java.util.List;\n import java.util.stream.Collectors;\n \n public abstract class AbstractSimpleGrantedAuthoritiesMapper {\n-    \n+\n     protected static List<String> getAuthoritesFilteredByPrefix(@NonNull Collection<? extends GrantedAuthority> authorities,\n                                                                 @NonNull String prefix) {\n         return authorities.stream()\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/57/AbstractSimpleGrantedAuthoritiesMapper.java\nindex 2440097166..305179cfca 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/57/AbstractSimpleGrantedAuthoritiesMapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/57/AbstractSimpleGrantedAuthoritiesMapper.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.core.common.spring.security;\n \n import org.springframework.lang.NonNull;\n@@ -24,7 +25,7 @@ import java.util.List;\n import java.util.stream.Collectors;\n \n public abstract class AbstractSimpleGrantedAuthoritiesMapper {\n-    \n+\n     protected static List<String> getAuthoritesFilteredByPrefix(@NonNull Collection<? extends GrantedAuthority> authorities,\n                                                                 @NonNull String prefix) {\n         return authorities.stream()\n",
+            "diff_size": 2
+        }
+    ]
+}

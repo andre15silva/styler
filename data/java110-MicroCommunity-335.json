@@ -1,0 +1,132 @@
+{
+    "error_id": "335",
+    "information": {
+        "errors": [
+            {
+                "line": "67",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 181).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<CommunityDto> communitys = BeanConvertUtil.covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n\n\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "65",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/335/CommunityInnerServiceSMOImpl.java\nindex e25a8c33c8..721d485e64 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/335/CommunityInnerServiceSMOImpl.java\n@@ -62,29 +62,34 @@ public class CommunityInnerServiceSMOImpl extends BaseServiceSMO implements ICom\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             communityDto.setPage((page - 1) * communityDto.getRow());\n-        }\n+        } List<CommunityDto>communitys\n \n-        List<CommunityDto> communitys = BeanConvertUtil.covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n \n \n+        =\n \n-        return communitys;\n-    }\n+        BeanConvertUtil .covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n \n \n \n+          return communitys;\n+      }\n \n \n-    @Override\n-    public int queryCommunitysCount(@RequestBody CommunityDto communityDto) {\n-        return communityServiceDaoImpl.queryCommunitysCount(BeanConvertUtil.beanCovertMap(communityDto));\n-    }\n \n-    public ICommunityServiceDao getCommunityServiceDaoImpl() {\n-        return communityServiceDaoImpl;\n-    }\n \n-    public void setCommunityServiceDaoImpl(ICommunityServiceDao communityServiceDaoImpl) {\n-        this.communityServiceDaoImpl = communityServiceDaoImpl;\n-    }\n-}\n+\n+      @Override\n+      public int queryCommunitysCount(@RequestBody CommunityDto communityDto) {\n+          return communityServiceDaoImpl.queryCommunitysCount(BeanConvertUtil.beanCovertMap(communityDto));\n+      }\n+\n+      public ICommunityServiceDao getCommunityServiceDaoImpl() {\n+          return communityServiceDaoImpl;\n+      }\n+\n+      public void setCommunityServiceDaoImpl(ICommunityServiceDao communityServiceDaoImpl) {\n+          this.communityServiceDaoImpl = communityServiceDaoImpl;\n+      }\n+  }\n+  \n\\ No newline at end of file\n",
+            "diff_size": 29
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/335/CommunityInnerServiceSMOImpl.java\nindex e25a8c33c8..f5dac0996b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/335/CommunityInnerServiceSMOImpl.java\n@@ -22,69 +22,66 @@ import java.util.Map;\n  */\n @RestController\n public class CommunityInnerServiceSMOImpl extends BaseServiceSMO implements ICommunityInnerServiceSMO {\n-    private static Logger logger = LoggerFactory.getLogger(CommunityServiceSMOImpl.class);\n+  private static Logger logger = LoggerFactory.getLogger(CommunityServiceSMOImpl.class);\n \n \n-    @Autowired\n-    private ICommunityServiceDao communityServiceDaoImpl;\n+  @Autowired\n+  private ICommunityServiceDao communityServiceDaoImpl;\n \n \n-    @Override\n-    public List<CommunityMemberDto> getCommunityMembers(@RequestBody CommunityMemberDto communityMemberDto) {\n+  @Override\n+  public List<CommunityMemberDto> getCommunityMembers(@RequestBody CommunityMemberDto communityMemberDto) {\n \n-        logger.debug(\"communityMemberDto\uff1a{}\", JSONObject.toJSONString(communityMemberDto));\n+    logger.debug(\"communityMemberDto\uff1a{}\", JSONObject.toJSONString(communityMemberDto));\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = communityMemberDto.getPage();\n+    int page = communityMemberDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            communityMemberDto.setPage((page - 1) * communityMemberDto.getRow());\n-        }\n-\n-        List<Map> communityMembers = communityServiceDaoImpl.getCommunityMembers(BeanConvertUtil.beanCovertMap(communityMemberDto));\n-        return BeanConvertUtil.covertBeanList(communityMembers, CommunityMemberDto.class);\n-    }\n-\n-    @Override\n-    public int getCommunityMemberCount(@RequestBody CommunityMemberDto communityMemberDto) {\n-         logger.debug(\"getCommunityMemberCount\uff1a{}\", JSONObject.toJSONString(communityMemberDto));\n-\n-        return communityServiceDaoImpl.getCommunityMemberCount(BeanConvertUtil.beanCovertMap(communityMemberDto));\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      communityMemberDto.setPage((page - 1) * communityMemberDto.getRow());\n     }\n \n-    @Override\n-    public List<CommunityDto> queryCommunitys(@RequestBody  CommunityDto communityDto) {\n+    List<Map> communityMembers = communityServiceDaoImpl.getCommunityMembers(BeanConvertUtil.beanCovertMap(communityMemberDto));\n+    return BeanConvertUtil.covertBeanList(communityMembers, CommunityMemberDto.class);\n+  }\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+  @Override\n+  public int getCommunityMemberCount(@RequestBody CommunityMemberDto communityMemberDto) {\n+    logger.debug(\"getCommunityMemberCount\uff1a{}\", JSONObject.toJSONString(communityMemberDto));\n \n-        int page = communityDto.getPage();\n+    return communityServiceDaoImpl.getCommunityMemberCount(BeanConvertUtil.beanCovertMap(communityMemberDto));\n+  }\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            communityDto.setPage((page - 1) * communityDto.getRow());\n-        }\n+  @Override\n+  public List<CommunityDto> queryCommunitys(@RequestBody CommunityDto communityDto) {\n \n-        List<CommunityDto> communitys = BeanConvertUtil.covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n+    int page = communityDto.getPage();\n \n-\n-        return communitys;\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      communityDto.setPage((page - 1) * communityDto.getRow());\n     }\n \n+    List<CommunityDto> communitys =\n+      BeanConvertUtil.covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n \n \n+    return communitys;\n+  }\n \n \n-    @Override\n-    public int queryCommunitysCount(@RequestBody CommunityDto communityDto) {\n-        return communityServiceDaoImpl.queryCommunitysCount(BeanConvertUtil.beanCovertMap(communityDto));\n-    }\n+  @Override\n+  public int queryCommunitysCount(@RequestBody CommunityDto communityDto) {\n+    return communityServiceDaoImpl.queryCommunitysCount(BeanConvertUtil.beanCovertMap(communityDto));\n+  }\n \n-    public ICommunityServiceDao getCommunityServiceDaoImpl() {\n-        return communityServiceDaoImpl;\n-    }\n+  public ICommunityServiceDao getCommunityServiceDaoImpl() {\n+    return communityServiceDaoImpl;\n+  }\n \n-    public void setCommunityServiceDaoImpl(ICommunityServiceDao communityServiceDaoImpl) {\n-        this.communityServiceDaoImpl = communityServiceDaoImpl;\n-    }\n+  public void setCommunityServiceDaoImpl(ICommunityServiceDao communityServiceDaoImpl) {\n+    this.communityServiceDaoImpl = communityServiceDaoImpl;\n+  }\n }\n",
+            "diff_size": 50
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 181).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/335/CommunityInnerServiceSMOImpl.java\nindex e25a8c33c8..e6c6d15ca9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/335/CommunityInnerServiceSMOImpl.java\n@@ -48,7 +48,7 @@ public class CommunityInnerServiceSMOImpl extends BaseServiceSMO implements ICom\n \n     @Override\n     public int getCommunityMemberCount(@RequestBody CommunityMemberDto communityMemberDto) {\n-         logger.debug(\"getCommunityMemberCount\uff1a{}\", JSONObject.toJSONString(communityMemberDto));\n+    logger.debug(\"getCommunityMemberCount\uff1a{}\", JSONObject.toJSONString(communityMemberDto));\n \n         return communityServiceDaoImpl.getCommunityMemberCount(BeanConvertUtil.beanCovertMap(communityMemberDto));\n     }\n@@ -66,16 +66,10 @@ public class CommunityInnerServiceSMOImpl extends BaseServiceSMO implements ICom\n \n         List<CommunityDto> communitys = BeanConvertUtil.covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n \n-\n-\n-        return communitys;\n+return communitys;\n     }\n \n-\n-\n-\n-\n-    @Override\n+@Override\n     public int queryCommunitysCount(@RequestBody CommunityDto communityDto) {\n         return communityServiceDaoImpl.queryCommunitysCount(BeanConvertUtil.beanCovertMap(communityDto));\n     }\n@@ -87,4 +81,4 @@ public class CommunityInnerServiceSMOImpl extends BaseServiceSMO implements ICom\n     public void setCommunityServiceDaoImpl(ICommunityServiceDao communityServiceDaoImpl) {\n         this.communityServiceDaoImpl = communityServiceDaoImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 181).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/335/CommunityInnerServiceSMOImpl.java\nindex e25a8c33c8..f95a8d8290 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/335/CommunityInnerServiceSMOImpl.java\n@@ -13,68 +13,61 @@ import org.slf4j.LoggerFactory;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n import java.util.Map;\n \n /**\n  * \u5c0f\u533a\u670d\u52a1\u5185\u90e8\u7c7b\n  */\n+\n+\n @RestController\n public class CommunityInnerServiceSMOImpl extends BaseServiceSMO implements ICommunityInnerServiceSMO {\n-    private static Logger logger = LoggerFactory.getLogger(CommunityServiceSMOImpl.class);\n \n+    private static Logger logger = LoggerFactory.getLogger(CommunityServiceSMOImpl.class);\n \n     @Autowired\n     private ICommunityServiceDao communityServiceDaoImpl;\n \n-\n     @Override\n     public List<CommunityMemberDto> getCommunityMembers(@RequestBody CommunityMemberDto communityMemberDto) {\n-\n         logger.debug(\"communityMemberDto\uff1a{}\", JSONObject.toJSONString(communityMemberDto));\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n         int page = communityMemberDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             communityMemberDto.setPage((page - 1) * communityMemberDto.getRow());\n         }\n \n         List<Map> communityMembers = communityServiceDaoImpl.getCommunityMembers(BeanConvertUtil.beanCovertMap(communityMemberDto));\n+\n         return BeanConvertUtil.covertBeanList(communityMembers, CommunityMemberDto.class);\n     }\n \n+\n     @Override\n     public int getCommunityMemberCount(@RequestBody CommunityMemberDto communityMemberDto) {\n-         logger.debug(\"getCommunityMemberCount\uff1a{}\", JSONObject.toJSONString(communityMemberDto));\n-\n+        logger.debug(\"getCommunityMemberCount\uff1a{}\", JSONObject.toJSONString(communityMemberDto));\n         return communityServiceDaoImpl.getCommunityMemberCount(BeanConvertUtil.beanCovertMap(communityMemberDto));\n     }\n \n+\n     @Override\n-    public List<CommunityDto> queryCommunitys(@RequestBody  CommunityDto communityDto) {\n+    public List<CommunityDto> queryCommunitys(@RequestBody CommunityDto communityDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = communityDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             communityDto.setPage((page - 1) * communityDto.getRow());\n         }\n \n         List<CommunityDto> communitys = BeanConvertUtil.covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n \n-\n-\n         return communitys;\n     }\n \n \n-\n-\n-\n     @Override\n     public int queryCommunitysCount(@RequestBody CommunityDto communityDto) {\n         return communityServiceDaoImpl.queryCommunitysCount(BeanConvertUtil.beanCovertMap(communityDto));\n@@ -87,4 +80,4 @@ public class CommunityInnerServiceSMOImpl extends BaseServiceSMO implements ICom\n     public void setCommunityServiceDaoImpl(ICommunityServiceDao communityServiceDaoImpl) {\n         this.communityServiceDaoImpl = communityServiceDaoImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "66",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "66",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "67",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "67",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "67",
+                    "column": "55",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "67",
+                    "column": "99",
+                    "severity": "error",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "68",
+                    "column": "13",
+                    "severity": "error",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/335/CommunityInnerServiceSMOImpl.java\nindex e25a8c33c8..c4c9066261 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/335/CommunityInnerServiceSMOImpl.java\n@@ -63,8 +63,9 @@ public class CommunityInnerServiceSMOImpl extends BaseServiceSMO implements ICom\n         if (page != PageDto.DEFAULT_PAGE) {\n             communityDto.setPage((page - 1) * communityDto.getRow());\n         }\n-\n-        List<CommunityDto> communitys = BeanConvertUtil.covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n+            List < CommunityDto > communitys=BeanConvertUtil.covertBeanList\n+        ( communityServiceDaoImpl.getCommunityInfoNew (BeanConvertUtil.beanCovertMap(communityDto )), CommunityDto\n+            . class);\n \n \n \n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "65",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/335/CommunityInnerServiceSMOImpl.java\nindex e25a8c33c8..721d485e64 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/335/CommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/335/CommunityInnerServiceSMOImpl.java\n@@ -62,29 +62,34 @@ public class CommunityInnerServiceSMOImpl extends BaseServiceSMO implements ICom\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             communityDto.setPage((page - 1) * communityDto.getRow());\n-        }\n+        } List<CommunityDto>communitys\n \n-        List<CommunityDto> communitys = BeanConvertUtil.covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n \n \n+        =\n \n-        return communitys;\n-    }\n+        BeanConvertUtil .covertBeanList(communityServiceDaoImpl.getCommunityInfoNew(BeanConvertUtil.beanCovertMap(communityDto)), CommunityDto.class);\n \n \n \n+          return communitys;\n+      }\n \n \n-    @Override\n-    public int queryCommunitysCount(@RequestBody CommunityDto communityDto) {\n-        return communityServiceDaoImpl.queryCommunitysCount(BeanConvertUtil.beanCovertMap(communityDto));\n-    }\n \n-    public ICommunityServiceDao getCommunityServiceDaoImpl() {\n-        return communityServiceDaoImpl;\n-    }\n \n-    public void setCommunityServiceDaoImpl(ICommunityServiceDao communityServiceDaoImpl) {\n-        this.communityServiceDaoImpl = communityServiceDaoImpl;\n-    }\n-}\n+\n+      @Override\n+      public int queryCommunitysCount(@RequestBody CommunityDto communityDto) {\n+          return communityServiceDaoImpl.queryCommunitysCount(BeanConvertUtil.beanCovertMap(communityDto));\n+      }\n+\n+      public ICommunityServiceDao getCommunityServiceDaoImpl() {\n+          return communityServiceDaoImpl;\n+      }\n+\n+      public void setCommunityServiceDaoImpl(ICommunityServiceDao communityServiceDaoImpl) {\n+          this.communityServiceDaoImpl = communityServiceDaoImpl;\n+      }\n+  }\n+  \n\\ No newline at end of file\n",
+            "diff_size": 29
+        }
+    ]
+}

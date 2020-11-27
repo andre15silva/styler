@@ -1,0 +1,71 @@
+{
+    "error_id": "319",
+    "information": {
+        "errors": [
+            {
+                "line": "16",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.application.conf;\n\nimport static java.util.Collections.emptyList;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/319/ApplicationAutoConfiguration.java\nindex 57c23d5f6c..60dbe0ef72 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/319/ApplicationAutoConfiguration.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.application.conf;\n \n import static java.util.Collections.emptyList;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/319/ApplicationAutoConfiguration.java\nindex 57c23d5f6c..1163ce5d7f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/319/ApplicationAutoConfiguration.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.application.conf;\n \n import static java.util.Collections.emptyList;\n@@ -42,11 +43,11 @@ public class ApplicationAutoConfiguration {\n                                                @Autowired(required = false) List<ApplicationEntryDeployer> applicationEntryDeployers,\n                                                @Value(\"${spring.activiti.applicationsLocation:classpath:/applications/}\") String applicationsLocation) {\n         return () -> new ApplicationDeployer(new ApplicationService(new ApplicationDiscovery(resourceLoader,\n-                                                                                             applicationsLocation),\n-                                                                    new ApplicationReader(\n-                                                                           Optional.ofNullable(applicationEntryDiscoveries)\n-                                                                                   .orElse(emptyList()))),\n-                                             Optional.ofNullable(applicationEntryDeployers)\n-                                                     .orElse(emptyList())).deploy();\n+                applicationsLocation),\n+                new ApplicationReader(\n+                        Optional.ofNullable(applicationEntryDiscoveries)\n+                                .orElse(emptyList()))),\n+                Optional.ofNullable(applicationEntryDeployers)\n+                        .orElse(emptyList())).deploy();\n     }\n }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/319/ApplicationAutoConfiguration.java\nindex 57c23d5f6c..a5547002a1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/319/ApplicationAutoConfiguration.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.application.conf;\n \n import static java.util.Collections.emptyList;\n@@ -38,15 +39,12 @@ public class ApplicationAutoConfiguration {\n \n     @Bean\n     public InitializingBean deployApplications(ResourcePatternResolver resourceLoader,\n-                                               @Autowired(required = false) List<ApplicationEntryDiscovery> applicationEntryDiscoveries,\n-                                               @Autowired(required = false) List<ApplicationEntryDeployer> applicationEntryDeployers,\n-                                               @Value(\"${spring.activiti.applicationsLocation:classpath:/applications/}\") String applicationsLocation) {\n-        return () -> new ApplicationDeployer(new ApplicationService(new ApplicationDiscovery(resourceLoader,\n-                                                                                             applicationsLocation),\n-                                                                    new ApplicationReader(\n-                                                                           Optional.ofNullable(applicationEntryDiscoveries)\n-                                                                                   .orElse(emptyList()))),\n-                                             Optional.ofNullable(applicationEntryDeployers)\n+                                                                    @Autowired(required = false) List<ApplicationEntryDiscovery> applicationEntryDiscoveries,\n+                                                                    @Autowired(required = false) List<ApplicationEntryDeployer> applicationEntryDeployers,\n+                                                                    @Value(\"${spring.activiti.applicationsLocation:classpath:/applications/}\") String applicationsLocation) {\n+  return () -> new ApplicationDeployer(new ApplicationService(new ApplicationDiscovery(resourceLoader, applicationsLocation),\n+                new ApplicationReader(Optional.ofNullable(applicationEntryDiscoveries)\n+                                                                                   .orElse(emptyList()))), Optional.ofNullable(applicationEntryDeployers)\n                                                      .orElse(emptyList())).deploy();\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Line is longer than 240 characters (found 263).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Line is longer than 240 characters (found 303).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/319/ApplicationAutoConfiguration.java\nindex 57c23d5f6c..124c71dfe4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/319/ApplicationAutoConfiguration.java\n@@ -16,10 +16,8 @@\n package org.activiti.application.conf;\n \n import static java.util.Collections.emptyList;\n-\n import java.util.List;\n import java.util.Optional;\n-\n import org.activiti.application.ApplicationDiscovery;\n import org.activiti.application.ApplicationEntryDiscovery;\n import org.activiti.application.ApplicationService;\n@@ -37,16 +35,9 @@ import org.springframework.core.io.support.ResourcePatternResolver;\n public class ApplicationAutoConfiguration {\n \n     @Bean\n-    public InitializingBean deployApplications(ResourcePatternResolver resourceLoader,\n-                                               @Autowired(required = false) List<ApplicationEntryDiscovery> applicationEntryDiscoveries,\n-                                               @Autowired(required = false) List<ApplicationEntryDeployer> applicationEntryDeployers,\n+    public InitializingBean deployApplications(ResourcePatternResolver resourceLoader, @Autowired(required = false) List<ApplicationEntryDiscovery> applicationEntryDiscoveries, @Autowired(required = false) List<ApplicationEntryDeployer> applicationEntryDeployers,\n                                                @Value(\"${spring.activiti.applicationsLocation:classpath:/applications/}\") String applicationsLocation) {\n-        return () -> new ApplicationDeployer(new ApplicationService(new ApplicationDiscovery(resourceLoader,\n-                                                                                             applicationsLocation),\n-                                                                    new ApplicationReader(\n-                                                                           Optional.ofNullable(applicationEntryDiscoveries)\n-                                                                                   .orElse(emptyList()))),\n-                                             Optional.ofNullable(applicationEntryDeployers)\n-                                                     .orElse(emptyList())).deploy();\n+        return () -> new ApplicationDeployer(new ApplicationService(new ApplicationDiscovery(resourceLoader, applicationsLocation), new ApplicationReader(Optional.ofNullable(applicationEntryDiscoveries).orElse(emptyList()))), Optional.ofNullable(applicationEntryDeployers).orElse(emptyList())).deploy();\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/319/ApplicationAutoConfiguration.java\nindex 57c23d5f6c..60dbe0ef72 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/319/ApplicationAutoConfiguration.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.application.conf;\n \n import static java.util.Collections.emptyList;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/319/ApplicationAutoConfiguration.java\nindex 57c23d5f6c..60dbe0ef72 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/319/ApplicationAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/319/ApplicationAutoConfiguration.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.application.conf;\n \n import static java.util.Collections.emptyList;\n",
+            "diff_size": 1
+        }
+    ]
+}

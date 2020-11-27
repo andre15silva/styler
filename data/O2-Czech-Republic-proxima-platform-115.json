@@ -1,0 +1,226 @@
+{
+    "error_id": "115",
+    "information": {
+        "errors": [
+            {
+                "line": "69",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 98).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  @Override\n  public TypeDescriptor<Pair<K, V>> getEncodedTypeDescriptor() {\n    return descriptor(keyCoder.getEncodedTypeDescriptor(), valueCoder.getEncodedTypeDescriptor());\n  }\n\n  @Override",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 98).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/115/PairCoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/115/PairCoder.java\nindex 7a32e73d28..49566afeae 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/115/PairCoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/115/PairCoder.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.beam.core.io;\n \n import cz.o2.proxima.annotations.Internal;\n@@ -40,12 +41,17 @@ public class PairCoder<K, V> extends CustomCoder<Pair<K, V>> {\n   public static <K, V> TypeDescriptor<Pair<K, V>> descriptor(\n       TypeDescriptor<K> key, TypeDescriptor<V> value) {\n \n-    return new TypeDescriptor<Pair<K, V>>() {}.where(new TypeParameter<K>() {}, key)\n-        .where(new TypeParameter<V>() {}, value);\n+    return new TypeDescriptor<Pair<K, V>>() {\n+    }.where(new TypeParameter<K>() {\n+    }, key)\n+        .where(new TypeParameter<V>() {\n+        }, value);\n   }\n \n-  @Getter private final Coder<K> keyCoder;\n-  @Getter private final Coder<V> valueCoder;\n+  @Getter\n+  private final Coder<K> keyCoder;\n+  @Getter\n+  private final Coder<V> valueCoder;\n \n   private PairCoder(Coder<K> keyCoder, Coder<V> valueCoder) {\n     this.keyCoder = keyCoder;\n@@ -66,7 +72,8 @@ public class PairCoder<K, V> extends CustomCoder<Pair<K, V>> {\n \n   @Override\n   public TypeDescriptor<Pair<K, V>> getEncodedTypeDescriptor() {\n-    return descriptor(keyCoder.getEncodedTypeDescriptor(), valueCoder.getEncodedTypeDescriptor());\n+    return descriptor(keyCoder.getEncodedTypeDescriptor(),\n+        valueCoder.getEncodedTypeDescriptor());\n   }\n \n   @Override\n@@ -84,5 +91,6 @@ public class PairCoder<K, V> extends CustomCoder<Pair<K, V>> {\n   }\n \n   @Override\n-  public void verifyDeterministic() {}\n+  public void verifyDeterministic() {\n+  }\n }\n",
+            "diff_size": 18
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 98).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/115/PairCoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/115/PairCoder.java\nindex 7a32e73d28..a147eee1a0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/115/PairCoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/115/PairCoder.java\n@@ -85,4 +85,4 @@ public class PairCoder<K, V> extends CustomCoder<Pair<K, V>> {\n \n   @Override\n   public void verifyDeterministic() {}\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 98).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/115/PairCoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/115/PairCoder.java\nindex 7a32e73d28..88d96e01a8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/115/PairCoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/115/PairCoder.java\n@@ -28,61 +28,63 @@ import org.apache.beam.sdk.values.TypeDescriptor;\n import org.apache.beam.sdk.values.TypeParameter;\n \n /** A coder for {@link Pair}s. */\n+\n+\n @Internal\n public class PairCoder<K, V> extends CustomCoder<Pair<K, V>> {\n \n-  private static final long serialVersionUID = 1L;\n-\n-  public static <K, V> PairCoder<K, V> of(Coder<K> keyCoder, Coder<V> valueCoder) {\n+    private static final long serialVersionUID = 1L;\n+    public static <K, V> PairCoder<K, V> of(Coder<K> keyCoder, Coder<V> valueCoder) {\n     return new PairCoder<>(keyCoder, valueCoder);\n-  }\n-\n-  public static <K, V> TypeDescriptor<Pair<K, V>> descriptor(\n-      TypeDescriptor<K> key, TypeDescriptor<V> value) {\n+    }\n \n-    return new TypeDescriptor<Pair<K, V>>() {}.where(new TypeParameter<K>() {}, key)\n+    public static <K, V> TypeDescriptor<Pair<K, V>> descriptor(TypeDescriptor<K> key, TypeDescriptor<V> value) {\n+    return new TypeDescriptor<Pair<K, V>>() {}\n+        .where(new TypeParameter<K>() {}, key)\n         .where(new TypeParameter<V>() {}, value);\n-  }\n+    }\n \n-  @Getter private final Coder<K> keyCoder;\n-  @Getter private final Coder<V> valueCoder;\n+    @Getter private final Coder<K> keyCoder;\n \n-  private PairCoder(Coder<K> keyCoder, Coder<V> valueCoder) {\n+    @Getter private final Coder<V> valueCoder;\n+\n+    private PairCoder(Coder<K> keyCoder, Coder<V> valueCoder) {\n     this.keyCoder = keyCoder;\n     this.valueCoder = valueCoder;\n-  }\n-\n-  @Override\n-  public void encode(Pair<K, V> value, OutputStream outStream) throws IOException {\n+    }\n \n+    @Override\n+    public void encode(Pair<K, V> value, OutputStream outStream) throws IOException {\n     keyCoder.encode(value.getFirst(), outStream);\n     valueCoder.encode(value.getSecond(), outStream);\n-  }\n+    }\n \n-  @Override\n-  public Pair<K, V> decode(InputStream inStream) throws IOException {\n+    @Override\n+    public Pair<K, V> decode(InputStream inStream) throws IOException {\n     return Pair.of(keyCoder.decode(inStream), valueCoder.decode(inStream));\n-  }\n+    }\n \n-  @Override\n-  public TypeDescriptor<Pair<K, V>> getEncodedTypeDescriptor() {\n+    @Override\n+    public TypeDescriptor<Pair<K, V>> getEncodedTypeDescriptor() {\n     return descriptor(keyCoder.getEncodedTypeDescriptor(), valueCoder.getEncodedTypeDescriptor());\n-  }\n+    }\n \n-  @Override\n-  public boolean equals(Object obj) {\n+    @Override\n+    public boolean equals(Object obj) {\n     if (!(obj instanceof PairCoder)) {\n-      return false;\n+        return false;\n     }\n     PairCoder<?, ?> other = (PairCoder<?, ?>) obj;\n     return other.keyCoder.equals(keyCoder) && other.valueCoder.equals(valueCoder);\n-  }\n+    }\n \n-  @Override\n-  public int hashCode() {\n+    @Override\n+    public int hashCode() {\n     return Objects.hash(keyCoder, valueCoder);\n-  }\n+    }\n \n-  @Override\n-  public void verifyDeterministic() {}\n-}\n+    @Override\n+    public void verifyDeterministic() {\n+\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 43
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "70",
+                    "column": "3",
+                    "severity": "error",
+                    "message": "',' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.SeparatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/115/PairCoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/115/PairCoder.java\nindex 7a32e73d28..60c7c7ce99 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/115/PairCoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/115/PairCoder.java\n@@ -66,7 +66,8 @@ public class PairCoder<K, V> extends CustomCoder<Pair<K, V>> {\n \n   @Override\n   public TypeDescriptor<Pair<K, V>> getEncodedTypeDescriptor() {\n-    return descriptor(keyCoder.getEncodedTypeDescriptor(), valueCoder.getEncodedTypeDescriptor());\n+    return descriptor(keyCoder.getEncodedTypeDescriptor()\n+  , valueCoder.getEncodedTypeDescriptor());\n   }\n \n   @Override\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 98).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

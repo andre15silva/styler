@@ -1,0 +1,76 @@
+{
+    "error_id": "87",
+    "information": {
+        "errors": [
+            {
+                "line": "48",
+                "column": "5",
+                "severity": "warning",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "\n    private void setParameters() {\n    \t//\u5982: \n    \t//PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n    \t//EXECUTE mytest(4, 'b4', true)\n        Prepared prepared = procedure.getPrepared();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "49",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/87/ExecuteProcedure.java\nindex 61ed7fed39..ce349569be 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/87/ExecuteProcedure.java\n@@ -45,9 +45,8 @@ public class ExecuteProcedure extends Prepared {\n     }\n \n     private void setParameters() {\n-    \t//\u5982: \n-    \t//PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n-    \t//EXECUTE mytest(4, 'b4', true)\n+    //\u5982:  //PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n+\t\t\t\t\t//EXECUTE mytest(4, 'b4', true)\n         Prepared prepared = procedure.getPrepared();\n         ArrayList<Parameter> params = prepared.getParameters();\n         for (int i = 0; params != null && i < params.size() &&\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/87/ExecuteProcedure.java\nindex 61ed7fed39..56571c02ce 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/87/ExecuteProcedure.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (http://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.command.dml;\n \n import java.util.ArrayList;\n@@ -38,20 +39,20 @@ public class ExecuteProcedure extends Prepared {\n      * Set the expression at the given index.\n      *\n      * @param index the index (0 based)\n-     * @param expr the expression\n+     * @param expr  the expression\n      */\n     public void setExpression(int index, Expression expr) {\n         expressions.add(index, expr);\n     }\n \n     private void setParameters() {\n-    \t//\u5982: \n-    \t//PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n-    \t//EXECUTE mytest(4, 'b4', true)\n+        //\u5982:\n+        //PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n+        //EXECUTE mytest(4, 'b4', true)\n         Prepared prepared = procedure.getPrepared();\n         ArrayList<Parameter> params = prepared.getParameters();\n         for (int i = 0; params != null && i < params.size() &&\n-                i < expressions.size(); i++) {\n+            i < expressions.size(); i++) {\n             Expression expr = expressions.get(i);\n             Parameter p = params.get(i);\n             p.setValue(expr.getValue(session));\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/87/ExecuteProcedure.java\nindex 61ed7fed39..cb3d6ea9fd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/87/ExecuteProcedure.java\n@@ -6,7 +6,6 @@\n package org.h2.command.dml;\n \n import java.util.ArrayList;\n-\n import org.h2.command.CommandInterface;\n import org.h2.command.Prepared;\n import org.h2.engine.Procedure;\n@@ -21,6 +20,8 @@ import org.h2.util.Utils;\n  * EXECUTE\n  */\n //\u53c2\u89c1\u4f8b\u5b50my.test.command.dml.ExecuteProcedureTest\n+\n+\n public class ExecuteProcedure extends Prepared {\n \n     private final ArrayList<Expression> expressions = Utils.newSmallArrayList();\n@@ -30,6 +31,7 @@ public class ExecuteProcedure extends Prepared {\n         super(session);\n     }\n \n+\n     public void setProcedure(Procedure procedure) {\n         this.procedure = procedure;\n     }\n@@ -40,18 +42,19 @@ public class ExecuteProcedure extends Prepared {\n      * @param index the index (0 based)\n      * @param expr the expression\n      */\n+\n+\n     public void setExpression(int index, Expression expr) {\n         expressions.add(index, expr);\n     }\n \n     private void setParameters() {\n-    \t//\u5982: \n-    \t//PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n-    \t//EXECUTE mytest(4, 'b4', true)\n+        //\u5982: \n+        //PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n+        //EXECUTE mytest(4, 'b4', true)\n         Prepared prepared = procedure.getPrepared();\n         ArrayList<Parameter> params = prepared.getParameters();\n-        for (int i = 0; params != null && i < params.size() &&\n-                i < expressions.size(); i++) {\n+        for (int i = 0; params != null && i < params.size() && i < expressions.size(); i++) {\n             Expression expr = expressions.get(i);\n             Parameter p = params.get(i);\n             p.setValue(expr.getValue(session));\n@@ -94,4 +97,4 @@ public class ExecuteProcedure extends Prepared {\n         return CommandInterface.EXECUTE;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "49",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/87/ExecuteProcedure.java\nindex 61ed7fed39..ce349569be 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/87/ExecuteProcedure.java\n@@ -45,9 +45,8 @@ public class ExecuteProcedure extends Prepared {\n     }\n \n     private void setParameters() {\n-    \t//\u5982: \n-    \t//PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n-    \t//EXECUTE mytest(4, 'b4', true)\n+    //\u5982:  //PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n+\t\t\t\t\t//EXECUTE mytest(4, 'b4', true)\n         Prepared prepared = procedure.getPrepared();\n         ArrayList<Parameter> params = prepared.getParameters();\n         for (int i = 0; params != null && i < params.size() &&\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "50",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/87/ExecuteProcedure.java\nindex 61ed7fed39..6f914eea73 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/87/ExecuteProcedure.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/87/ExecuteProcedure.java\n@@ -45,9 +45,9 @@ public class ExecuteProcedure extends Prepared {\n     }\n \n     private void setParameters() {\n-    \t//\u5982: \n-    \t//PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n-    \t//EXECUTE mytest(4, 'b4', true)\n+        //\u5982: \n+     //PREPARE mytest (int, varchar2, boolean) AS insert into ExecuteProcedureTest(id, name, b) values(?, ?, ?)\n+\t\t\t\t\t//EXECUTE mytest(4, 'b4', true)\n         Prepared prepared = procedure.getPrepared();\n         ArrayList<Parameter> params = prepared.getParameters();\n         for (int i = 0; params != null && i < params.size() &&\n",
+            "diff_size": 3
+        }
+    ]
+}

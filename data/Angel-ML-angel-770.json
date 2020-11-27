@@ -1,0 +1,124 @@
+{
+    "error_id": "770",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/770/WorkerClient.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/770/WorkerClient.java\nindex 359ea6520a..b3987c2dbc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/770/WorkerClient.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/770/WorkerClient.java\n@@ -33,42 +33,49 @@ import java.io.IOException;\n /**\n  * The RPC client from master to a worker, it just for get worker thread stack from worker.\n  */\n-public class WorkerClient implements WorkerClientInterface{\n-  private static final Log LOG = LogFactory.getLog(WorkerClient.class);\n-  /**master context*/\n-  private final AMContext context;\n+public class WorkerClient implements WorkerClientInterface {\n+    private static final Log LOG = LogFactory.getLog(WorkerClient.class);\n+    /**\n+     * master context\n+     */\n+    private final AMContext context;\n \n-  /**connection from master to the worker*/\n-  private final TConnection connection;\n+    /**\n+     * connection from master to the worker\n+     */\n+    private final TConnection connection;\n \n-  /**rpc protocol*/\n-  private final WorkerProtocol worker;\n+    /**\n+     * rpc protocol\n+     */\n+    private final WorkerProtocol worker;\n \n-  /**\n-   * Create a WorkerClient\n-   * @param context master context\n-   * @param workerAttemptId worker attempt id\n-   * @throws IOException\n-   */\n-  public WorkerClient(AMContext context, WorkerAttemptId workerAttemptId) throws IOException {\n-    this.context = context;\n-    this.connection = TConnectionManager.getConnection(context.getConf());\n-    Location workerLoc =\n-        context.getWorkerManager().getWorker(workerAttemptId.getWorkerId())\n-            .getWorkerAttempt(workerAttemptId).getLocation();\n-    LOG.debug(\"workerLoc= \" + workerLoc.toString());\n-    this.worker = connection.getWorkerService(workerLoc.getIp(), workerLoc.getPort());\n-  }\n+    /**\n+     * Create a WorkerClient\n+     *\n+     * @param context         master context\n+     * @param workerAttemptId worker attempt id\n+     * @throws IOException\n+     */\n+    public WorkerClient(AMContext context, WorkerAttemptId workerAttemptId) throws IOException {\n+        this.context = context;\n+        this.connection = TConnectionManager.getConnection(context.getConf());\n+        Location workerLoc =\n+                context.getWorkerManager().getWorker(workerAttemptId.getWorkerId())\n+                        .getWorkerAttempt(workerAttemptId).getLocation();\n+        LOG.debug(\"workerLoc= \" + workerLoc.toString());\n+        this.worker = connection.getWorkerService(workerLoc.getIp(), workerLoc.getPort());\n+    }\n \n-  @Override\n-  public String getThreadStack() throws ServiceException {\n-    WorkerProtocol workerProtocol = getWorker();\n-    GetThreadStackRequest request = GetThreadStackRequest.newBuilder().build();\n-    LOG.info(\"the class of workerProtocol is \" + workerProtocol.getClass());\n-    return workerProtocol.workerThreadStack(null, request).getStack();\n-  }\n+    @Override\n+    public String getThreadStack() throws ServiceException {\n+        WorkerProtocol workerProtocol = getWorker();\n+        GetThreadStackRequest request = GetThreadStackRequest.newBuilder().build();\n+        LOG.info(\"the class of workerProtocol is \" + workerProtocol.getClass());\n+        return workerProtocol.workerThreadStack(null, request).getStack();\n+    }\n \n-  private WorkerProtocol getWorker() {\n-    return worker;\n-  }\n+    private WorkerProtocol getWorker() {\n+        return worker;\n+    }\n }\n",
+            "diff_size": 40
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/770/WorkerClient.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/770/WorkerClient.java\nindex 359ea6520a..7eb3d05005 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/770/WorkerClient.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/770/WorkerClient.java\n@@ -33,7 +33,7 @@ import java.io.IOException;\n /**\n  * The RPC client from master to a worker, it just for get worker thread stack from worker.\n  */\n-public class WorkerClient implements WorkerClientInterface{\n+public class WorkerClient implements WorkerClientInterface {\n   private static final Log LOG = LogFactory.getLog(WorkerClient.class);\n   /**master context*/\n   private final AMContext context;\n@@ -71,4 +71,4 @@ public class WorkerClient implements WorkerClientInterface{\n   private WorkerProtocol getWorker() {\n     return worker;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 38.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 41.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 44.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 53.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/770/WorkerClient.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/770/WorkerClient.java\nindex 359ea6520a..935193d027 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/770/WorkerClient.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/770/WorkerClient.java\n@@ -24,25 +24,24 @@ import com.tencent.angel.master.app.AMContext;\n import com.tencent.angel.protobuf.generated.MasterWorkerServiceProtos.GetThreadStackRequest;\n import com.tencent.angel.worker.WorkerAttemptId;\n import com.tencent.angel.worker.WorkerProtocol;\n-\n import org.apache.commons.logging.Log;\n import org.apache.commons.logging.LogFactory;\n-\n import java.io.IOException;\n \n /**\n  * The RPC client from master to a worker, it just for get worker thread stack from worker.\n  */\n-public class WorkerClient implements WorkerClientInterface{\n-  private static final Log LOG = LogFactory.getLog(WorkerClient.class);\n+\n+public class WorkerClient implements WorkerClientInterface {\n+    private static final Log LOG = LogFactory.getLog(WorkerClient.class);\n   /**master context*/\n-  private final AMContext context;\n+    private final AMContext context;\n \n   /**connection from master to the worker*/\n-  private final TConnection connection;\n+    private final TConnection connection;\n \n   /**rpc protocol*/\n-  private final WorkerProtocol worker;\n+    private final WorkerProtocol worker;\n \n   /**\n    * Create a WorkerClient\n@@ -50,25 +49,26 @@ public class WorkerClient implements WorkerClientInterface{\n    * @param workerAttemptId worker attempt id\n    * @throws IOException\n    */\n-  public WorkerClient(AMContext context, WorkerAttemptId workerAttemptId) throws IOException {\n+\n+    public WorkerClient(AMContext context, WorkerAttemptId workerAttemptId)\n+    throws IOException {\n     this.context = context;\n     this.connection = TConnectionManager.getConnection(context.getConf());\n-    Location workerLoc =\n-        context.getWorkerManager().getWorker(workerAttemptId.getWorkerId())\n-            .getWorkerAttempt(workerAttemptId).getLocation();\n+    Location workerLoc = context.getWorkerManager().getWorker(workerAttemptId.getWorkerId()).getWorkerAttempt(workerAttemptId).getLocation();\n     LOG.debug(\"workerLoc= \" + workerLoc.toString());\n     this.worker = connection.getWorkerService(workerLoc.getIp(), workerLoc.getPort());\n-  }\n+    }\n \n-  @Override\n-  public String getThreadStack() throws ServiceException {\n+    @Override\n+    public String getThreadStack() throws ServiceException {\n     WorkerProtocol workerProtocol = getWorker();\n     GetThreadStackRequest request = GetThreadStackRequest.newBuilder().build();\n     LOG.info(\"the class of workerProtocol is \" + workerProtocol.getClass());\n     return workerProtocol.workerThreadStack(null, request).getStack();\n-  }\n+    }\n \n-  private WorkerProtocol getWorker() {\n+    private WorkerProtocol getWorker() {\n     return worker;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

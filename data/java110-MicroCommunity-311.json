@@ -1,0 +1,76 @@
+{
+    "error_id": "311",
+    "information": {
+        "errors": [
+            {
+                "line": "19",
+                "column": "60",
+                "severity": "error",
+                "message": "',' is preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+            }
+        ]
+    },
+    "source_code": " * \u91c7\u8d2d\u4eba\u5458\u91c7\u8d2d\n */\npublic class ComplaintUserListener implements TaskListener , ExecutionListener {\n\n    private IAuditUserInnerServiceSMO auditUserInnerServiceSMOImpl;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/311/ComplaintUserListener.java\nindex 6ff19069c4..2cf41eaf3c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/311/ComplaintUserListener.java\n@@ -16,7 +16,7 @@ import java.util.List;\n /**\n  * \u91c7\u8d2d\u4eba\u5458\u91c7\u8d2d\n  */\n-public class ComplaintUserListener implements TaskListener , ExecutionListener {\n+public class ComplaintUserListener implements TaskListener, ExecutionListener {\n \n     private IAuditUserInnerServiceSMO auditUserInnerServiceSMOImpl;\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/311/ComplaintUserListener.java\nindex 6ff19069c4..f694840332 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/311/ComplaintUserListener.java\n@@ -16,37 +16,37 @@ import java.util.List;\n /**\n  * \u91c7\u8d2d\u4eba\u5458\u91c7\u8d2d\n  */\n-public class ComplaintUserListener implements TaskListener , ExecutionListener {\n+public class ComplaintUserListener implements TaskListener, ExecutionListener {\n \n-    private IAuditUserInnerServiceSMO auditUserInnerServiceSMOImpl;\n+  private IAuditUserInnerServiceSMO auditUserInnerServiceSMOImpl;\n \n-    @Override\n-    public void notify(DelegateTask delegateTask) {\n+  @Override\n+  public void notify(DelegateTask delegateTask) {\n \n-        auditUserInnerServiceSMOImpl = ApplicationContextFactory.getBean(\"auditUserInnerServiceSMOImpl\", IAuditUserInnerServiceSMO.class);\n-        AuditUserDto auditUserDto = new AuditUserDto();\n-        ComplaintDto complaintDto = (ComplaintDto) delegateTask.getVariable(\"complaintDto\");\n-        auditUserDto.setStoreId(complaintDto.getStoreId());\n-        auditUserDto.setObjCode(\"complaint\");\n-        auditUserDto.setAuditLink(\"809004\");\n-        List<AuditUserDto> auditUserDtos = auditUserInnerServiceSMOImpl.queryAuditUsers(auditUserDto);\n+    auditUserInnerServiceSMOImpl = ApplicationContextFactory.getBean(\"auditUserInnerServiceSMOImpl\", IAuditUserInnerServiceSMO.class);\n+    AuditUserDto auditUserDto = new AuditUserDto();\n+    ComplaintDto complaintDto = (ComplaintDto) delegateTask.getVariable(\"complaintDto\");\n+    auditUserDto.setStoreId(complaintDto.getStoreId());\n+    auditUserDto.setObjCode(\"complaint\");\n+    auditUserDto.setAuditLink(\"809004\");\n+    List<AuditUserDto> auditUserDtos = auditUserInnerServiceSMOImpl.queryAuditUsers(auditUserDto);\n \n \n-        for (AuditUserDto tmpAuditUser : auditUserDtos) {\n-            AuditUser auditUser = BeanConvertUtil.covertBean(tmpAuditUser, AuditUser.class);\n-            delegateTask.setVariable(auditUser.getUserId(), auditUser);\n-        }\n-\n-        if (auditUserDtos == null || auditUserDtos.size() < 1) {\n-            return;\n-        }\n-        delegateTask.addCandidateUser(auditUserDtos.get(0).getUserId());\n+    for (AuditUserDto tmpAuditUser : auditUserDtos) {\n+      AuditUser auditUser = BeanConvertUtil.covertBean(tmpAuditUser, AuditUser.class);\n+      delegateTask.setVariable(auditUser.getUserId(), auditUser);\n+    }\n \n-        delegateTask.setAssignee(auditUserDtos.get(0).getUserId());\n+    if (auditUserDtos == null || auditUserDtos.size() < 1) {\n+      return;\n     }\n+    delegateTask.addCandidateUser(auditUserDtos.get(0).getUserId());\n \n-    @Override\n-    public void notify(DelegateExecution execution) {\n+    delegateTask.setAssignee(auditUserDtos.get(0).getUserId());\n+  }\n \n-    }\n+  @Override\n+  public void notify(DelegateExecution execution) {\n+\n+  }\n }\n",
+            "diff_size": 29
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "19",
+                    "column": "60",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/311/ComplaintUserListener.java\nindex 6ff19069c4..70359ad934 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/311/ComplaintUserListener.java\n@@ -30,9 +30,7 @@ public class ComplaintUserListener implements TaskListener , ExecutionListener {\n         auditUserDto.setObjCode(\"complaint\");\n         auditUserDto.setAuditLink(\"809004\");\n         List<AuditUserDto> auditUserDtos = auditUserInnerServiceSMOImpl.queryAuditUsers(auditUserDto);\n-\n-\n-        for (AuditUserDto tmpAuditUser : auditUserDtos) {\n+for (AuditUserDto tmpAuditUser : auditUserDtos) {\n             AuditUser auditUser = BeanConvertUtil.covertBean(tmpAuditUser, AuditUser.class);\n             delegateTask.setVariable(auditUser.getUserId(), auditUser);\n         }\n@@ -49,4 +47,4 @@ public class ComplaintUserListener implements TaskListener , ExecutionListener {\n     public void notify(DelegateExecution execution) {\n \n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/311/ComplaintUserListener.java\nindex 6ff19069c4..7e808862a6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/311/ComplaintUserListener.java\n@@ -10,28 +10,29 @@ import org.activiti.engine.delegate.DelegateExecution;\n import org.activiti.engine.delegate.DelegateTask;\n import org.activiti.engine.delegate.ExecutionListener;\n import org.activiti.engine.delegate.TaskListener;\n-\n import java.util.List;\n \n /**\n  * \u91c7\u8d2d\u4eba\u5458\u91c7\u8d2d\n  */\n-public class ComplaintUserListener implements TaskListener , ExecutionListener {\n+\n+\n+public class ComplaintUserListener implements TaskListener, ExecutionListener {\n \n     private IAuditUserInnerServiceSMO auditUserInnerServiceSMOImpl;\n \n     @Override\n     public void notify(DelegateTask delegateTask) {\n+        auditUserInnerServiceSMOImpl = ApplicationContextFactory.getBean(\"auditUserInnerServiceSMOImpl\",\n+IAuditUserInnerServiceSMO.class);\n \n-        auditUserInnerServiceSMOImpl = ApplicationContextFactory.getBean(\"auditUserInnerServiceSMOImpl\", IAuditUserInnerServiceSMO.class);\n         AuditUserDto auditUserDto = new AuditUserDto();\n         ComplaintDto complaintDto = (ComplaintDto) delegateTask.getVariable(\"complaintDto\");\n         auditUserDto.setStoreId(complaintDto.getStoreId());\n         auditUserDto.setObjCode(\"complaint\");\n         auditUserDto.setAuditLink(\"809004\");\n-        List<AuditUserDto> auditUserDtos = auditUserInnerServiceSMOImpl.queryAuditUsers(auditUserDto);\n-\n \n+        List<AuditUserDto> auditUserDtos = auditUserInnerServiceSMOImpl.queryAuditUsers(auditUserDto);\n         for (AuditUserDto tmpAuditUser : auditUserDtos) {\n             AuditUser auditUser = BeanConvertUtil.covertBean(tmpAuditUser, AuditUser.class);\n             delegateTask.setVariable(auditUser.getUserId(), auditUser);\n@@ -41,12 +42,11 @@ public class ComplaintUserListener implements TaskListener , ExecutionListener {\n             return;\n         }\n         delegateTask.addCandidateUser(auditUserDtos.get(0).getUserId());\n-\n         delegateTask.setAssignee(auditUserDtos.get(0).getUserId());\n     }\n \n+\n     @Override\n     public void notify(DelegateExecution execution) {\n-\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/311/ComplaintUserListener.java\nindex 6ff19069c4..2cf41eaf3c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/311/ComplaintUserListener.java\n@@ -16,7 +16,7 @@ import java.util.List;\n /**\n  * \u91c7\u8d2d\u4eba\u5458\u91c7\u8d2d\n  */\n-public class ComplaintUserListener implements TaskListener , ExecutionListener {\n+public class ComplaintUserListener implements TaskListener, ExecutionListener {\n \n     private IAuditUserInnerServiceSMO auditUserInnerServiceSMOImpl;\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "19",
+                    "column": "60",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "19",
+                    "column": "60",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/311/ComplaintUserListener.java\nindex 6ff19069c4..313fc31150 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/311/ComplaintUserListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/311/ComplaintUserListener.java\n@@ -16,7 +16,7 @@ import java.util.List;\n /**\n  * \u91c7\u8d2d\u4eba\u5458\u91c7\u8d2d\n  */\n-public class ComplaintUserListener implements TaskListener , ExecutionListener {\n+public class ComplaintUserListener implements TaskListener ,ExecutionListener {\n \n     private IAuditUserInnerServiceSMO auditUserInnerServiceSMOImpl;\n \n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+{
+    "error_id": "80",
+    "information": {
+        "errors": [
+            {
+                "line": "50",
+                "column": "5",
+                "severity": "warning",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "    \n    public boolean isEmpty() {\n    \tList<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n    \treturn fm.isEmpty();\n    }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "51",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/80/Messages.java\nindex 460485d773..8e6c2ee895 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/80/Messages.java\n@@ -33,26 +33,26 @@ public class Messages {\n     public void info(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, s, \"\"));\n     }\n-     \n+\n     public void warn(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, s, \"\"));\n     }\n-     \n+\n     public void error(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, s, \"\"));\n     }\n-     \n+\n     public void fatal(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, s, \"\"));\n     }\n-    \n+\n     public boolean isEmpty() {\n-    \tList<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n-    \treturn fm.isEmpty();\n+    List<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n+\t\t\t\t\treturn fm.isEmpty();\n     }\n \n     public void clear() {\n         //Removed because it throws a UnsupportedOperationException on an unmodifiable list\n-    \t//FacesContext.getCurrentInstance().getMessageList().clear();\n+\t\t\t\t\t//FacesContext.getCurrentInstance().getMessageList().clear();\n     }\n }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/80/Messages.java\nindex 460485d773..152608fd3c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/80/Messages.java\n@@ -21,38 +21,36 @@ import javax.faces.context.FacesContext;\n import javax.inject.Named;\n \n /**\n- * \n  * Messages. Provides a drop in replacement for seam international status messages.\n- * \n+ *\n  * @author Kevin McGoldrick\n- * \n  */\n @Named\n @ApplicationScoped\n public class Messages {\n-    public void info(String s) {\n-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, s, \"\"));\n-    }\n-     \n-    public void warn(String s) {\n-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, s, \"\"));\n-    }\n-     \n-    public void error(String s) {\n-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, s, \"\"));\n-    }\n-     \n-    public void fatal(String s) {\n-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, s, \"\"));\n-    }\n-    \n-    public boolean isEmpty() {\n-    \tList<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n-    \treturn fm.isEmpty();\n-    }\n-\n-    public void clear() {\n-        //Removed because it throws a UnsupportedOperationException on an unmodifiable list\n-    \t//FacesContext.getCurrentInstance().getMessageList().clear();\n-    }\n+  public void info(String s) {\n+    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, s, \"\"));\n+  }\n+\n+  public void warn(String s) {\n+    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, s, \"\"));\n+  }\n+\n+  public void error(String s) {\n+    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, s, \"\"));\n+  }\n+\n+  public void fatal(String s) {\n+    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, s, \"\"));\n+  }\n+\n+  public boolean isEmpty() {\n+    List<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n+    return fm.isEmpty();\n+  }\n+\n+  public void clear() {\n+    //Removed because it throws a UnsupportedOperationException on an unmodifiable list\n+    //FacesContext.getCurrentInstance().getMessageList().clear();\n+  }\n }\n",
+            "diff_size": 28
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/80/Messages.java\nindex 460485d773..afe2a6417e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/80/Messages.java\n@@ -13,8 +13,9 @@ package com.intuit.tank.util;\n  * #L%\n  */\n \n-import java.util.List;\n \n+\n+import java.util.List;\n import javax.enterprise.context.ApplicationScoped;\n import javax.faces.application.FacesMessage;\n import javax.faces.context.FacesContext;\n@@ -27,32 +28,43 @@ import javax.inject.Named;\n  * @author Kevin McGoldrick\n  * \n  */\n+\n @Named\n @ApplicationScoped\n public class Messages {\n     public void info(String s) {\n-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, s, \"\"));\n+        FacesContext.getCurrentInstance().addMessage(null,\n+            new FacesMessage(FacesMessage.SEVERITY_INFO, s, \"\"));\n     }\n-     \n+\n+\n     public void warn(String s) {\n-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, s, \"\"));\n+        FacesContext.getCurrentInstance().addMessage(null,\n+            new FacesMessage(FacesMessage.SEVERITY_WARN, s, \"\"));\n     }\n-     \n+\n+\n     public void error(String s) {\n-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, s, \"\"));\n+        FacesContext.getCurrentInstance().addMessage(null,\n+            new FacesMessage(FacesMessage.SEVERITY_ERROR, s, \"\"));\n     }\n-     \n+\n+\n     public void fatal(String s) {\n-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, s, \"\"));\n+        FacesContext.getCurrentInstance().addMessage(null,\n+            new FacesMessage(FacesMessage.SEVERITY_FATAL, s, \"\"));\n     }\n-    \n+\n+\n     public boolean isEmpty() {\n-    \tList<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n-    \treturn fm.isEmpty();\n+        List<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n+        return fm.isEmpty();\n     }\n \n+\n     public void clear() {\n         //Removed because it throws a UnsupportedOperationException on an unmodifiable list\n-    \t//FacesContext.getCurrentInstance().getMessageList().clear();\n+        //FacesContext.getCurrentInstance().getMessageList().clear();\n+\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 26
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "51",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/80/Messages.java\nindex 460485d773..8e6c2ee895 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/80/Messages.java\n@@ -33,26 +33,26 @@ public class Messages {\n     public void info(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, s, \"\"));\n     }\n-     \n+\n     public void warn(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, s, \"\"));\n     }\n-     \n+\n     public void error(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, s, \"\"));\n     }\n-     \n+\n     public void fatal(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, s, \"\"));\n     }\n-    \n+\n     public boolean isEmpty() {\n-    \tList<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n-    \treturn fm.isEmpty();\n+    List<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n+\t\t\t\t\treturn fm.isEmpty();\n     }\n \n     public void clear() {\n         //Removed because it throws a UnsupportedOperationException on an unmodifiable list\n-    \t//FacesContext.getCurrentInstance().getMessageList().clear();\n+\t\t\t\t\t//FacesContext.getCurrentInstance().getMessageList().clear();\n     }\n }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "51",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/80/Messages.java\nindex 460485d773..a453545e88 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/80/Messages.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/80/Messages.java\n@@ -33,26 +33,26 @@ public class Messages {\n     public void info(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, s, \"\"));\n     }\n-     \n+\n     public void warn(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, s, \"\"));\n     }\n-     \n+\n     public void error(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, s, \"\"));\n     }\n-     \n+\n     public void fatal(String s) {\n         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, s, \"\"));\n     }\n-    \n+\n     public boolean isEmpty() {\n-    \tList<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n-    \treturn fm.isEmpty();\n+        List<FacesMessage> fm = FacesContext.getCurrentInstance().getMessageList();\n+\t\t\t\t\treturn fm.isEmpty();\n     }\n \n     public void clear() {\n         //Removed because it throws a UnsupportedOperationException on an unmodifiable list\n-    \t//FacesContext.getCurrentInstance().getMessageList().clear();\n+\t\t\t\t\t//FacesContext.getCurrentInstance().getMessageList().clear();\n     }\n }\n",
+            "diff_size": 7
+        }
+    ]
+}

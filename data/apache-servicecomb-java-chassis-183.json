@@ -1,0 +1,79 @@
+{
+    "error_id": "183",
+    "information": {
+        "errors": [
+            {
+                "line": "68",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 122).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "      } catch (Exception e) {\n        // Avoid information leak of user input, and add option for debug use.\n        String message = String.format(\"Parameter is not valid for operation [%s]. Parameter is [%s]. Processor is [%s].\",\n            restOperation.getOperationMeta().getMicroserviceQualifiedName(),\n            param.getParamName(),\n            param.getParamProcessor().getProcessorType());",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/183/RestCodec.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/183/RestCodec.java\nindex 24101cc55a..c186326f4f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/183/RestCodec.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/183/RestCodec.java\n@@ -38,7 +38,7 @@ public final class RestCodec {\n   }\n \n   public static void argsToRest(Object[] args, RestOperationMeta restOperation,\n-      RestClientRequest clientRequest) throws Exception {\n+                                RestClientRequest clientRequest) throws Exception {\n     int paramSize = restOperation.getParamList().size();\n     if (paramSize == 0) {\n       return;\n@@ -55,7 +55,7 @@ public final class RestCodec {\n   }\n \n   public static Object[] restToArgs(HttpServletRequest request,\n-      RestOperationMeta restOperation) throws InvocationException {\n+                                    RestOperationMeta restOperation) throws InvocationException {\n     List<RestParam> paramList = restOperation.getParamList();\n \n     Object[] paramValues = new Object[paramList.size()];\n@@ -65,10 +65,11 @@ public final class RestCodec {\n         paramValues[idx] = param.getParamProcessor().getValue(request);\n       } catch (Exception e) {\n         // Avoid information leak of user input, and add option for debug use.\n-        String message = String.format(\"Parameter is not valid for operation [%s]. Parameter is [%s]. Processor is [%s].\",\n-            restOperation.getOperationMeta().getMicroserviceQualifiedName(),\n-            param.getParamName(),\n-            param.getParamProcessor().getProcessorType());\n+        String message =\n+            String.format(\"Parameter is not valid for operation [%s]. Parameter is [%s]. Processor is [%s].\",\n+                restOperation.getOperationMeta().getMicroserviceQualifiedName(),\n+                param.getParamName(),\n+                param.getParamProcessor().getProcessorType());\n         if (DynamicPropertyFactory.getInstance().getBooleanProperty(\n             RestConst.PRINT_CODEC_ERROR_MESSGAGE, false).get()) {\n           LOG.error(message, e);\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/183/RestCodec.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/183/RestCodec.java\nindex 24101cc55a..ae50d95817 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/183/RestCodec.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/183/RestCodec.java\n@@ -82,4 +82,4 @@ public final class RestCodec {\n \n     return paramValues;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/183/RestCodec.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/183/RestCodec.java\nindex 24101cc55a..e2812d467d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/183/RestCodec.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/183/RestCodec.java\n@@ -65,7 +65,7 @@ public final class RestCodec {\n         paramValues[idx] = param.getParamProcessor().getValue(request);\n       } catch (Exception e) {\n         // Avoid information leak of user input, and add option for debug use.\n-        String message = String.format(\"Parameter is not valid for operation [%s]. Parameter is [%s]. Processor is [%s].\",\n+        Stringmessage = String.format(\"Parameter is not valid for operation [%s]. Parameter is [%s]. Processor is [%s].\",\n             restOperation.getOperationMeta().getMicroserviceQualifiedName(),\n             param.getParamName(),\n             param.getParamProcessor().getProcessorType());\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

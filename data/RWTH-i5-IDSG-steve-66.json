@@ -1,0 +1,56 @@
+{
+    "error_id": "66",
+    "information": {
+        "errors": [
+            {
+                "line": "36",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 130).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "\n    @Nullable IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId);\n    @Nullable IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId, Supplier<IdTagInfo> supplierWhenException);\n\n    List<AuthorizationData> getAuthDataOfAllTags();\n    List<AuthorizationData> getAuthData(List<String> idTagList);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/66/OcppTagService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/66/OcppTagService.java\nindex a20ff4fedf..608b10debb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/66/OcppTagService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/66/OcppTagService.java\n@@ -16,6 +16,7 @@\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n  */\n+\n package de.rwth.idsg.steve.service;\n \n import de.rwth.idsg.steve.service.dto.UnidentifiedIncomingObject;\n@@ -32,13 +33,19 @@ import java.util.function.Supplier;\n  */\n public interface OcppTagService {\n \n-    @Nullable IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId);\n-    @Nullable IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId, Supplier<IdTagInfo> supplierWhenException);\n+    @Nullable\n+    IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId);\n+\n+    @Nullable\n+    IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId, Supplier<IdTagInfo> supplierWhenException);\n \n     List<AuthorizationData> getAuthDataOfAllTags();\n+\n     List<AuthorizationData> getAuthData(List<String> idTagList);\n \n     List<UnidentifiedIncomingObject> getUnknownOcppTags();\n+\n     void removeUnknown(String idTag);\n+\n     void removeUnknown(List<String> idTagList);\n }\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/66/OcppTagService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/66/OcppTagService.java\nindex a20ff4fedf..0814ec8db3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/66/OcppTagService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/66/OcppTagService.java\n@@ -15,8 +15,7 @@\n  *\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n- */\n-package de.rwth.idsg.steve.service;\n+ */package de.rwth.idsg.steve.service;\n \n import de.rwth.idsg.steve.service.dto.UnidentifiedIncomingObject;\n import ocpp.cp._2015._10.AuthorizationData;\n@@ -41,4 +40,4 @@ public interface OcppTagService {\n     List<UnidentifiedIncomingObject> getUnknownOcppTags();\n     void removeUnknown(String idTag);\n     void removeUnknown(List<String> idTagList);\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/66/OcppTagService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/66/OcppTagService.java\nindex a20ff4fedf..3958721c47 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/66/OcppTagService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/66/OcppTagService.java\n@@ -22,7 +22,6 @@ import de.rwth.idsg.steve.service.dto.UnidentifiedIncomingObject;\n import ocpp.cp._2015._10.AuthorizationData;\n import ocpp.cs._2015._10.IdTagInfo;\n import org.jetbrains.annotations.Nullable;\n-\n import java.util.List;\n import java.util.function.Supplier;\n \n@@ -30,15 +29,19 @@ import java.util.function.Supplier;\n  * @author Sevket Goekay <goekay@dbis.rwth-aachen.de>\n  * @since 03.01.2015\n  */\n-public interface OcppTagService {\n \n-    @Nullable IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId);\n-    @Nullable IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId, Supplier<IdTagInfo> supplierWhenException);\n \n+public interface OcppTagService {\n+    @Nullable\n+    IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId);\n+\n+    @Nullable\n+    IdTagInfo getIdTagInfo(@Nullable String idTag, String askingChargeBoxId, Supplier<IdTagInfo> supplierWhenException);\n     List<AuthorizationData> getAuthDataOfAllTags();\n     List<AuthorizationData> getAuthData(List<String> idTagList);\n-\n     List<UnidentifiedIncomingObject> getUnknownOcppTags();\n+\n     void removeUnknown(String idTag);\n+\n     void removeUnknown(List<String> idTagList);\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

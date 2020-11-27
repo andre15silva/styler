@@ -1,0 +1,79 @@
+{
+    "error_id": "105",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "column": "15",
+                "severity": "warning",
+                "message": "WhitespaceAround: 'if' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "        final EventSink<ResponseEvent> responseBuffer) {\n        if (environment.retryStrategy().shouldRetry(request, environment)) {\n            if(!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n                request.observable().onError(CouchbaseCore.BACKPRESSURE_EXCEPTION);\n            }\n        } else {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/styler/105/RetryHelper.java\nindex 10aef82ff2..5da73221f6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/styler/105/RetryHelper.java\n@@ -42,7 +42,7 @@ public class RetryHelper {\n     public static void retryOrCancel(final CoreEnvironment environment, final CouchbaseRequest request,\n         final EventSink<ResponseEvent> responseBuffer) {\n         if (environment.retryStrategy().shouldRetry(request, environment)) {\n-            if(!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n+            if (!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n                 request.observable().onError(CouchbaseCore.BACKPRESSURE_EXCEPTION);\n             }\n         } else {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/intellij/105/RetryHelper.java\nindex 10aef82ff2..fd0d0a70bc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/intellij/105/RetryHelper.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package com.couchbase.client.core.retry;\n \n import com.couchbase.client.core.CouchbaseCore;\n@@ -35,14 +36,14 @@ public class RetryHelper {\n     /**\n      * Either retry or cancel a request, based on the strategy used.\n      *\n-     * @param environment the core environment for context.\n-     * @param request the request to either retry or cancel.\n+     * @param environment    the core environment for context.\n+     * @param request        the request to either retry or cancel.\n      * @param responseBuffer the response buffer where to maybe retry on.\n      */\n     public static void retryOrCancel(final CoreEnvironment environment, final CouchbaseRequest request,\n-        final EventSink<ResponseEvent> responseBuffer) {\n+                                     final EventSink<ResponseEvent> responseBuffer) {\n         if (environment.retryStrategy().shouldRetry(request, environment)) {\n-            if(!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n+            if (!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n                 request.observable().onError(CouchbaseCore.BACKPRESSURE_EXCEPTION);\n             }\n         } else {\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/naturalize/105/RetryHelper.java\nindex 10aef82ff2..25c621e7a3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/naturalize/105/RetryHelper.java\n@@ -41,13 +41,12 @@ public class RetryHelper {\n      */\n     public static void retryOrCancel(final CoreEnvironment environment, final CouchbaseRequest request,\n         final EventSink<ResponseEvent> responseBuffer) {\n-        if (environment.retryStrategy().shouldRetry(request, environment)) {\n-            if(!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n+    if (environment.retryStrategy().shouldRetry(request, environment)) {\n+            if (!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n                 request.observable().onError(CouchbaseCore.BACKPRESSURE_EXCEPTION);\n             }\n         } else {\n-            request.observable().onError(new RequestCancelledException(\"Could not dispatch request, cancelling \"\n-                + \"instead of retrying.\"));\n+            request.observable().onError(new RequestCancelledException(\"Could not dispatch request, cancelling \" + \"instead of retrying.\"));\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 152).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/codebuff/105/RetryHelper.java\nindex 10aef82ff2..5aee5c8ba7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/codebuff/105/RetryHelper.java\n@@ -30,6 +30,8 @@ import com.lmax.disruptor.RingBuffer;\n  * @author Michael Nitschinger\n  * @since 1.1.0\n  */\n+\n+\n public class RetryHelper {\n \n     /**\n@@ -39,15 +41,15 @@ public class RetryHelper {\n      * @param request the request to either retry or cancel.\n      * @param responseBuffer the response buffer where to maybe retry on.\n      */\n-    public static void retryOrCancel(final CoreEnvironment environment, final CouchbaseRequest request,\n-        final EventSink<ResponseEvent> responseBuffer) {\n+\n+\n+    public static void retryOrCancel(final CoreEnvironment environment, final CouchbaseRequest request, final EventSink<ResponseEvent> responseBuffer) {\n         if (environment.retryStrategy().shouldRetry(request, environment)) {\n-            if(!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n+            if (!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n                 request.observable().onError(CouchbaseCore.BACKPRESSURE_EXCEPTION);\n             }\n         } else {\n-            request.observable().onError(new RequestCancelledException(\"Could not dispatch request, cancelling \"\n-                + \"instead of retrying.\"));\n+            request.observable().onError(new RequestCancelledException(\"Could not dispatch request, cancelling \" + \"instead of retrying.\"));\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/styler_random/105/RetryHelper.java\nindex 10aef82ff2..5da73221f6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/styler_random/105/RetryHelper.java\n@@ -42,7 +42,7 @@ public class RetryHelper {\n     public static void retryOrCancel(final CoreEnvironment environment, final CouchbaseRequest request,\n         final EventSink<ResponseEvent> responseBuffer) {\n         if (environment.retryStrategy().shouldRetry(request, environment)) {\n-            if(!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n+            if (!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n                 request.observable().onError(CouchbaseCore.BACKPRESSURE_EXCEPTION);\n             }\n         } else {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/styler_three_grams/105/RetryHelper.java\nindex 10aef82ff2..5da73221f6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/errored/1/105/RetryHelper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-jvm-core/styler_three_grams/105/RetryHelper.java\n@@ -42,7 +42,7 @@ public class RetryHelper {\n     public static void retryOrCancel(final CoreEnvironment environment, final CouchbaseRequest request,\n         final EventSink<ResponseEvent> responseBuffer) {\n         if (environment.retryStrategy().shouldRetry(request, environment)) {\n-            if(!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n+            if (!responseBuffer.tryPublishEvent(ResponseHandler.RESPONSE_TRANSLATOR, request, request.observable())) {\n                 request.observable().onError(CouchbaseCore.BACKPRESSURE_EXCEPTION);\n             }\n         } else {\n",
+            "diff_size": 1
+        }
+    ]
+}

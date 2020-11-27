@@ -1,0 +1,107 @@
+{
+    "error_id": "67",
+    "information": {
+        "errors": [
+            {
+                "line": "121",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "                }\n            } else {\n                if (text == null) { //\u4f8b\u5982: COMMENT ON ROLE myrole IS NULL\n                    db.removeDatabaseObject(session, comment);\n                } else {\n                    comment.setCommentText(text);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "121",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "121",
+                    "column": "21",
+                    "severity": "warning",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/67/SetComment.java\nindex 03a68658a3..e04502b199 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/67/SetComment.java\n@@ -97,7 +97,7 @@ public class SetComment extends DefineCommand {\n         } else {\n             object.setComment(text);\n         }\n-        \n+\n         //\u5bf9\u4e8e\u8868\u3001\u89c6\u56fe\u3001\u7d22\u5f15\u3001\u5217\u3001\u7528\u6237\u3001\u7ea6\u675f\u7684\u6ce8\u91ca\u76f4\u63a5\u66f4\u65b0\u5230\u4ed6\u4eec\u7684\u5bf9\u8c61\u81ea\u8eab\uff0c\n         //\u5176\u4ed6\u7684\u65b0\u5efaComment\u5b9e\u4f8b\n         //\u5982: COMMENT ON ROLE myrole IS 'role comment'\n@@ -118,7 +118,7 @@ public class SetComment extends DefineCommand {\n                     db.addDatabaseObject(session, comment);\n                 }\n             } else {\n-                if (text == null) { //\u4f8b\u5982: COMMENT ON ROLE myrole IS NULL\n+                    if(text == null) { //\u4f8b\u5982: COMMENT ON ROLE myrole IS NULL\n                     db.removeDatabaseObject(session, comment);\n                 } else {\n                     comment.setCommentText(text);\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "122",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/67/SetComment.java\nindex 03a68658a3..d7294ec4aa 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/67/SetComment.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (http://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.command.ddl;\n \n import org.h2.api.ErrorCode;\n@@ -43,49 +44,49 @@ public class SetComment extends DefineCommand {\n             schemaName = session.getCurrentSchemaName();\n         }\n         switch (objectType) {\n-        case DbObject.CONSTANT:\n-            object = db.getSchema(schemaName).getConstant(objectName);\n-            break;\n-        case DbObject.CONSTRAINT:\n-            object = db.getSchema(schemaName).getConstraint(objectName);\n-            break;\n-        case DbObject.FUNCTION_ALIAS:\n-            object = db.getSchema(schemaName).findFunction(objectName);\n-            errorCode = ErrorCode.FUNCTION_ALIAS_NOT_FOUND_1;\n-            break;\n-        case DbObject.INDEX:\n-            object = db.getSchema(schemaName).getIndex(objectName);\n-            break;\n-        case DbObject.ROLE:\n-            schemaName = null;\n-            object = db.findRole(objectName);\n-            errorCode = ErrorCode.ROLE_NOT_FOUND_1;\n-            break;\n-        case DbObject.SCHEMA:\n-            schemaName = null;\n-            object = db.findSchema(objectName);\n-            errorCode = ErrorCode.SCHEMA_NOT_FOUND_1;\n-            break;\n-        case DbObject.SEQUENCE:\n-            object = db.getSchema(schemaName).getSequence(objectName);\n-            break;\n-        case DbObject.TABLE_OR_VIEW:\n-            object = db.getSchema(schemaName).getTableOrView(session, objectName);\n-            break;\n-        case DbObject.TRIGGER:\n-            object = db.getSchema(schemaName).findTrigger(objectName);\n-            errorCode = ErrorCode.TRIGGER_NOT_FOUND_1;\n-            break;\n-        case DbObject.USER:\n-            schemaName = null;\n-            object = db.getUser(objectName);\n-            break;\n-        case DbObject.USER_DATATYPE:\n-            schemaName = null;\n-            object = db.findUserDataType(objectName);\n-            errorCode = ErrorCode.USER_DATA_TYPE_ALREADY_EXISTS_1;\n-            break;\n-        default:\n+            case DbObject.CONSTANT:\n+                object = db.getSchema(schemaName).getConstant(objectName);\n+                break;\n+            case DbObject.CONSTRAINT:\n+                object = db.getSchema(schemaName).getConstraint(objectName);\n+                break;\n+            case DbObject.FUNCTION_ALIAS:\n+                object = db.getSchema(schemaName).findFunction(objectName);\n+                errorCode = ErrorCode.FUNCTION_ALIAS_NOT_FOUND_1;\n+                break;\n+            case DbObject.INDEX:\n+                object = db.getSchema(schemaName).getIndex(objectName);\n+                break;\n+            case DbObject.ROLE:\n+                schemaName = null;\n+                object = db.findRole(objectName);\n+                errorCode = ErrorCode.ROLE_NOT_FOUND_1;\n+                break;\n+            case DbObject.SCHEMA:\n+                schemaName = null;\n+                object = db.findSchema(objectName);\n+                errorCode = ErrorCode.SCHEMA_NOT_FOUND_1;\n+                break;\n+            case DbObject.SEQUENCE:\n+                object = db.getSchema(schemaName).getSequence(objectName);\n+                break;\n+            case DbObject.TABLE_OR_VIEW:\n+                object = db.getSchema(schemaName).getTableOrView(session, objectName);\n+                break;\n+            case DbObject.TRIGGER:\n+                object = db.getSchema(schemaName).findTrigger(objectName);\n+                errorCode = ErrorCode.TRIGGER_NOT_FOUND_1;\n+                break;\n+            case DbObject.USER:\n+                schemaName = null;\n+                object = db.getUser(objectName);\n+                break;\n+            case DbObject.USER_DATATYPE:\n+                schemaName = null;\n+                object = db.findUserDataType(objectName);\n+                errorCode = ErrorCode.USER_DATA_TYPE_ALREADY_EXISTS_1;\n+                break;\n+            default:\n         }\n         if (object == null) {\n             throw DbException.get(errorCode, objectName);\n@@ -97,14 +98,14 @@ public class SetComment extends DefineCommand {\n         } else {\n             object.setComment(text);\n         }\n-        \n+\n         //\u5bf9\u4e8e\u8868\u3001\u89c6\u56fe\u3001\u7d22\u5f15\u3001\u5217\u3001\u7528\u6237\u3001\u7ea6\u675f\u7684\u6ce8\u91ca\u76f4\u63a5\u66f4\u65b0\u5230\u4ed6\u4eec\u7684\u5bf9\u8c61\u81ea\u8eab\uff0c\n         //\u5176\u4ed6\u7684\u65b0\u5efaComment\u5b9e\u4f8b\n         //\u5982: COMMENT ON ROLE myrole IS 'role comment'\n         if (column || objectType == DbObject.TABLE_OR_VIEW ||\n-                objectType == DbObject.USER ||\n-                objectType == DbObject.INDEX ||\n-                objectType == DbObject.CONSTRAINT) {\n+            objectType == DbObject.USER ||\n+            objectType == DbObject.INDEX ||\n+            objectType == DbObject.CONSTRAINT) {\n             db.updateMeta(session, object);\n         } else {\n             Comment comment = db.findComment(object);\n",
+            "diff_size": 48
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "121",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/67/SetComment.java\nindex 03a68658a3..03197f710a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/67/SetComment.java\n@@ -19,6 +19,8 @@ import org.h2.table.Table;\n  * This class represents the statement\n  * COMMENT\n  */\n+\n+\n public class SetComment extends DefineCommand {\n \n     private String schemaName;\n@@ -101,16 +103,14 @@ public class SetComment extends DefineCommand {\n         //\u5bf9\u4e8e\u8868\u3001\u89c6\u56fe\u3001\u7d22\u5f15\u3001\u5217\u3001\u7528\u6237\u3001\u7ea6\u675f\u7684\u6ce8\u91ca\u76f4\u63a5\u66f4\u65b0\u5230\u4ed6\u4eec\u7684\u5bf9\u8c61\u81ea\u8eab\uff0c\n         //\u5176\u4ed6\u7684\u65b0\u5efaComment\u5b9e\u4f8b\n         //\u5982: COMMENT ON ROLE myrole IS 'role comment'\n-        if (column || objectType == DbObject.TABLE_OR_VIEW ||\n-                objectType == DbObject.USER ||\n-                objectType == DbObject.INDEX ||\n-                objectType == DbObject.CONSTRAINT) {\n+        if (column || objectType == DbObject.TABLE_OR_VIEW || objectType == DbObject.USER || objectType == DbObject.INDEX || objectType == DbObject.CONSTRAINT) {\n             db.updateMeta(session, object);\n         } else {\n             Comment comment = db.findComment(object);\n             if (comment == null) {\n                 if (text == null) {\n                     // reset a non-existing comment - nothing to do\n+\n                 } else {\n                     int id = getObjectId();\n                     comment = new Comment(db, id, object);\n@@ -129,26 +129,32 @@ public class SetComment extends DefineCommand {\n         return 0;\n     }\n \n+\n     public void setCommentExpression(Expression expr) {\n         this.expr = expr;\n     }\n \n+\n     public void setObjectName(String objectName) {\n         this.objectName = objectName;\n     }\n \n+\n     public void setObjectType(int objectType) {\n         this.objectType = objectType;\n     }\n \n+\n     public void setColumnName(String columnName) {\n         this.columnName = columnName;\n     }\n \n+\n     public void setSchemaName(String schemaName) {\n         this.schemaName = schemaName;\n     }\n \n+\n     public void setColumn(boolean column) {\n         this.column = column;\n     }\n@@ -158,4 +164,4 @@ public class SetComment extends DefineCommand {\n         return CommandInterface.COMMENT;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "121",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "121",
+                    "column": "21",
+                    "severity": "warning",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/67/SetComment.java\nindex 03a68658a3..e04502b199 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/67/SetComment.java\n@@ -97,7 +97,7 @@ public class SetComment extends DefineCommand {\n         } else {\n             object.setComment(text);\n         }\n-        \n+\n         //\u5bf9\u4e8e\u8868\u3001\u89c6\u56fe\u3001\u7d22\u5f15\u3001\u5217\u3001\u7528\u6237\u3001\u7ea6\u675f\u7684\u6ce8\u91ca\u76f4\u63a5\u66f4\u65b0\u5230\u4ed6\u4eec\u7684\u5bf9\u8c61\u81ea\u8eab\uff0c\n         //\u5176\u4ed6\u7684\u65b0\u5efaComment\u5b9e\u4f8b\n         //\u5982: COMMENT ON ROLE myrole IS 'role comment'\n@@ -118,7 +118,7 @@ public class SetComment extends DefineCommand {\n                     db.addDatabaseObject(session, comment);\n                 }\n             } else {\n-                if (text == null) { //\u4f8b\u5982: COMMENT ON ROLE myrole IS NULL\n+                    if(text == null) { //\u4f8b\u5982: COMMENT ON ROLE myrole IS NULL\n                     db.removeDatabaseObject(session, comment);\n                 } else {\n                     comment.setCommentText(text);\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "121",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "121",
+                    "column": "17",
+                    "severity": "warning",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/67/SetComment.java\nindex 03a68658a3..41f358d92e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/67/SetComment.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/67/SetComment.java\n@@ -97,7 +97,7 @@ public class SetComment extends DefineCommand {\n         } else {\n             object.setComment(text);\n         }\n-        \n+\n         //\u5bf9\u4e8e\u8868\u3001\u89c6\u56fe\u3001\u7d22\u5f15\u3001\u5217\u3001\u7528\u6237\u3001\u7ea6\u675f\u7684\u6ce8\u91ca\u76f4\u63a5\u66f4\u65b0\u5230\u4ed6\u4eec\u7684\u5bf9\u8c61\u81ea\u8eab\uff0c\n         //\u5176\u4ed6\u7684\u65b0\u5efaComment\u5b9e\u4f8b\n         //\u5982: COMMENT ON ROLE myrole IS 'role comment'\n@@ -118,7 +118,7 @@ public class SetComment extends DefineCommand {\n                     db.addDatabaseObject(session, comment);\n                 }\n             } else {\n-                if (text == null) { //\u4f8b\u5982: COMMENT ON ROLE myrole IS NULL\n+                if(text == null) { //\u4f8b\u5982: COMMENT ON ROLE myrole IS NULL\n                     db.removeDatabaseObject(session, comment);\n                 } else {\n                     comment.setCommentText(text);\n",
+            "diff_size": 2
+        }
+    ]
+}

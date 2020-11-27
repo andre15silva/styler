@@ -1,0 +1,72 @@
+{
+    "error_id": "79",
+    "information": {
+        "errors": [
+            {
+                "line": "21",
+                "column": "26",
+                "severity": "warning",
+                "message": "WhitespaceAround: '{' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "\n  @RequestMapping(value = \"\", method = RequestMethod.GET)\n  public List<Env> envs(){\n    return portalSettings.getEnvs();\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/styler/79/EnvController.java\nindex 9b7e5e87c9..16e501faf0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/styler/79/EnvController.java\n@@ -18,7 +18,7 @@ public class EnvController {\n   private PortalSettings portalSettings;\n \n   @RequestMapping(value = \"\", method = RequestMethod.GET)\n-  public List<Env> envs(){\n+  public List<Env> envs() {\n     return portalSettings.getEnvs();\n   }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/intellij/79/EnvController.java\nindex 9b7e5e87c9..16e501faf0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/intellij/79/EnvController.java\n@@ -18,7 +18,7 @@ public class EnvController {\n   private PortalSettings portalSettings;\n \n   @RequestMapping(value = \"\", method = RequestMethod.GET)\n-  public List<Env> envs(){\n+  public List<Env> envs() {\n     return portalSettings.getEnvs();\n   }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/naturalize/79/EnvController.java\nindex 9b7e5e87c9..52be20c74f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/naturalize/79/EnvController.java\n@@ -18,8 +18,8 @@ public class EnvController {\n   private PortalSettings portalSettings;\n \n   @RequestMapping(value = \"\", method = RequestMethod.GET)\n-  public List<Env> envs(){\n+  public List<Env> envs() {\n     return portalSettings.getEnvs();\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "14",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "17",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "20",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/codebuff/79/EnvController.java\nindex 9b7e5e87c9..109dc62469 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/codebuff/79/EnvController.java\n@@ -2,24 +2,20 @@ package com.ctrip.apollo.portal.controller;\n \n import com.ctrip.apollo.core.enums.Env;\n import com.ctrip.apollo.portal.PortalSettings;\n-\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestMapping;\n import org.springframework.web.bind.annotation.RequestMethod;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n @RestController\n @RequestMapping(\"/envs\")\n public class EnvController {\n+    @Autowired\n+    private PortalSettings portalSettings;\n \n-  @Autowired\n-  private PortalSettings portalSettings;\n-\n-  @RequestMapping(value = \"\", method = RequestMethod.GET)\n-  public List<Env> envs(){\n+    @RequestMapping(value = \"\", method = RequestMethod.GET)\n+    public List<Env> envs() {\n     return portalSettings.getEnvs();\n-  }\n-\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/styler_random/79/EnvController.java\nindex 9b7e5e87c9..16e501faf0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/styler_random/79/EnvController.java\n@@ -18,7 +18,7 @@ public class EnvController {\n   private PortalSettings portalSettings;\n \n   @RequestMapping(value = \"\", method = RequestMethod.GET)\n-  public List<Env> envs(){\n+  public List<Env> envs() {\n     return portalSettings.getEnvs();\n   }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/styler_three_grams/79/EnvController.java\nindex 9b7e5e87c9..16e501faf0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/errored/1/79/EnvController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/ctripcorp-apollo/styler_three_grams/79/EnvController.java\n@@ -18,7 +18,7 @@ public class EnvController {\n   private PortalSettings portalSettings;\n \n   @RequestMapping(value = \"\", method = RequestMethod.GET)\n-  public List<Env> envs(){\n+  public List<Env> envs() {\n     return portalSettings.getEnvs();\n   }\n \n",
+            "diff_size": 1
+        }
+    ]
+}

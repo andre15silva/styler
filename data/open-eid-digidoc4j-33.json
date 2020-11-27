@@ -1,0 +1,87 @@
+{
+    "error_id": "33",
+    "information": {
+        "errors": [
+            {
+                "line": "25",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 135).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "public class BDocSignatureFinalizer extends AsicESignatureFinalizer {\n\n  public BDocSignatureFinalizer(List<DataFile> dataFilesToSign, SignatureParameters signatureParameters, Configuration configuration) {\n    super(dataFilesToSign, signatureParameters, configuration);\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/33/BDocSignatureFinalizer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/intellij/33/BDocSignatureFinalizer.java\nindex 57192e95da..f0c7fdb039 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/33/BDocSignatureFinalizer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/intellij/33/BDocSignatureFinalizer.java\n@@ -22,7 +22,8 @@ import java.util.List;\n \n public class BDocSignatureFinalizer extends AsicESignatureFinalizer {\n \n-  public BDocSignatureFinalizer(List<DataFile> dataFilesToSign, SignatureParameters signatureParameters, Configuration configuration) {\n+  public BDocSignatureFinalizer(List<DataFile> dataFilesToSign, SignatureParameters signatureParameters,\n+                                Configuration configuration) {\n     super(dataFilesToSign, signatureParameters, configuration);\n   }\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/33/BDocSignatureFinalizer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/naturalize/33/BDocSignatureFinalizer.java\nindex 57192e95da..22af6a37ae 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/33/BDocSignatureFinalizer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/naturalize/33/BDocSignatureFinalizer.java\n@@ -54,4 +54,4 @@ public class BDocSignatureFinalizer extends AsicESignatureFinalizer {\n   private boolean isEpesProfile() {\n     return SignatureProfile.B_EPES == signatureParameters.getSignatureProfile();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 137).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/33/BDocSignatureFinalizer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/codebuff/33/BDocSignatureFinalizer.java\nindex 57192e95da..1347d50b71 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/33/BDocSignatureFinalizer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/codebuff/33/BDocSignatureFinalizer.java\n@@ -17,41 +17,43 @@ import org.digidoc4j.SignatureParameters;\n import org.digidoc4j.SignatureProfile;\n import org.digidoc4j.impl.asic.asice.AsicESignatureFinalizer;\n import org.digidoc4j.utils.PolicyUtils;\n-\n import java.util.List;\n \n+\n public class BDocSignatureFinalizer extends AsicESignatureFinalizer {\n \n-  public BDocSignatureFinalizer(List<DataFile> dataFilesToSign, SignatureParameters signatureParameters, Configuration configuration) {\n+    public BDocSignatureFinalizer(List<DataFile> dataFilesToSign, SignatureParameters signatureParameters, Configuration configuration) {\n     super(dataFilesToSign, signatureParameters, configuration);\n-  }\n+    }\n \n-  @Override\n-  protected void setSignaturePolicy() {\n-    if (isTimeMarkProfile() || isEpesProfile()) {\n-      Policy signaturePolicy = determineSignaturePolicy();\n-      facade.setSignaturePolicy(signaturePolicy);\n+    @Override\n+    protected void setSignaturePolicy() {\n+    if (isTimeMarkProfile()\n+        || isEpesProfile()) {\n+        Policy signaturePolicy = determineSignaturePolicy();\n+        facade.setSignaturePolicy(signaturePolicy);\n+    }\n     }\n-  }\n \n-  @Override\n-  protected void validateSignatureCompatibility() {\n+    @Override\n+    protected void validateSignatureCompatibility() {\n     // Do nothing\n-  }\n \n-  private Policy determineSignaturePolicy() {\n+    }\n+\n+    private Policy determineSignaturePolicy() {\n     Policy policyDefinedByUser = signatureParameters.getPolicy();\n     if (policyDefinedByUser != null && PolicyUtils.areAllPolicyValuesDefined(policyDefinedByUser)) {\n-      return policyDefinedByUser;\n+        return policyDefinedByUser;\n     }\n     return PolicyUtils.createBDocSignaturePolicy();\n-  }\n+    }\n \n-  private boolean isTimeMarkProfile() {\n+    private boolean isTimeMarkProfile() {\n     return SignatureProfile.LT_TM == signatureParameters.getSignatureProfile();\n-  }\n+    }\n \n-  private boolean isEpesProfile() {\n+    private boolean isEpesProfile() {\n     return SignatureProfile.B_EPES == signatureParameters.getSignatureProfile();\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "23",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 202).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/33/BDocSignatureFinalizer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/styler_three_grams/33/BDocSignatureFinalizer.java\nindex 57192e95da..62d43ae188 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/33/BDocSignatureFinalizer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/styler_three_grams/33/BDocSignatureFinalizer.java\n@@ -20,38 +20,36 @@ import org.digidoc4j.utils.PolicyUtils;\n \n import java.util.List;\n \n-public class BDocSignatureFinalizer extends AsicESignatureFinalizer {\n-\n-  public BDocSignatureFinalizer(List<DataFile> dataFilesToSign, SignatureParameters signatureParameters, Configuration configuration) {\n-    super(dataFilesToSign, signatureParameters, configuration);\n-  }\n+public class BDocSignatureFinalizer extends AsicESignatureFinalizer { publicBDocSignatureFinalizer(List<DataFile> dataFilesToSign, SignatureParameters signatureParameters, Configuration configuration) {\n+  super(dataFilesToSign, signatureParameters, configuration);\n+}\n \n-  @Override\n-  protected void setSignaturePolicy() {\n-    if (isTimeMarkProfile() || isEpesProfile()) {\n-      Policy signaturePolicy = determineSignaturePolicy();\n-      facade.setSignaturePolicy(signaturePolicy);\n-    }\n+@Override\n+protected void setSignaturePolicy() {\n+  if (isTimeMarkProfile() || isEpesProfile()) {\n+    Policy signaturePolicy = determineSignaturePolicy();\n+    facade.setSignaturePolicy(signaturePolicy);\n   }\n+}\n \n-  @Override\n-  protected void validateSignatureCompatibility() {\n-    // Do nothing\n-  }\n+@Override\n+protected void validateSignatureCompatibility() {\n+  // Do nothing\n+}\n \n-  private Policy determineSignaturePolicy() {\n-    Policy policyDefinedByUser = signatureParameters.getPolicy();\n-    if (policyDefinedByUser != null && PolicyUtils.areAllPolicyValuesDefined(policyDefinedByUser)) {\n-      return policyDefinedByUser;\n-    }\n-    return PolicyUtils.createBDocSignaturePolicy();\n+private Policy determineSignaturePolicy() {\n+  Policy policyDefinedByUser = signatureParameters.getPolicy();\n+  if (policyDefinedByUser != null && PolicyUtils.areAllPolicyValuesDefined(policyDefinedByUser)) {\n+    return policyDefinedByUser;\n   }\n+  return PolicyUtils.createBDocSignaturePolicy();\n+}\n \n-  private boolean isTimeMarkProfile() {\n-    return SignatureProfile.LT_TM == signatureParameters.getSignatureProfile();\n-  }\n+private boolean isTimeMarkProfile() {\n+  return SignatureProfile.LT_TM == signatureParameters.getSignatureProfile();\n+}\n \n-  private boolean isEpesProfile() {\n-    return SignatureProfile.B_EPES == signatureParameters.getSignatureProfile();\n-  }\n+private boolean isEpesProfile() {\n+  return SignatureProfile.B_EPES == signatureParameters.getSignatureProfile();\n+}\n }\n",
+            "diff_size": 30
+        }
+    ]
+}

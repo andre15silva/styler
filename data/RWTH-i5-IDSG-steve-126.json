@@ -1,0 +1,139 @@
+{
+    "error_id": "126",
+    "information": {
+        "errors": [
+            {
+                "line": "277",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 125).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        // https://stackoverflow.com/a/20418809\n        try {\n            for (Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();) {\n                NetworkInterface iface = ifaces.nextElement();\n                for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {\n                    InetAddress inetAddr = inetAddrs.nextElement();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "277",
+                    "column": "56",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "278",
+                    "column": "13",
+                    "severity": "error",
+                    "message": "';' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "278",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "'{' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/126/JettyServer.java\nindex b666ddc5e7..6679b57995 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/126/JettyServer.java\n@@ -274,28 +274,29 @@ public class JettyServer {\n \n         // https://stackoverflow.com/a/20418809\n         try {\n-            for (Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();) {\n-                NetworkInterface iface = ifaces.nextElement();\n-                for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {\n-                    InetAddress inetAddr = inetAddrs.nextElement();\n-                    if (!inetAddr.isLoopbackAddress() && (inetAddr instanceof Inet4Address)) {\n-                        ips.add(inetAddr.getHostAddress());\n-                    }\n-                }\n-            }\n-\n-        } catch (Exception e) {\n-            // fail silently\n-        }\n-\n-        ips.removeIf(\"0.0.0.0\"::equals);\n-\n-        if (ips.isEmpty()) {\n-            // Well, we failed to read from system, fall back to main.properties.\n-            // Better than nothing\n-            ips.add(CONFIG.getJetty().getServerHost());\n-        }\n-\n-        return ips;\n-    }\n+            for (Enumeration<NetworkInterface > ifaces =NetworkInterface.getNetworkInterfaces()\n+            ; ifaces .hasMoreElements();) {NetworkInterfaceiface\n+            = ifaces.nextElement();\n+             for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {\n+                 InetAddress inetAddr = inetAddrs.nextElement();\n+                 if (!inetAddr.isLoopbackAddress() && (inetAddr instanceof Inet4Address)) {\n+                     ips.add(inetAddr.getHostAddress());\n+                 }\n+             }\n+         }\n+\n+     } catch (Exception e) {\n+         // fail silently\n+     }\n+\n+     ips.removeIf(\"0.0.0.0\"::equals);\n+\n+     if (ips.isEmpty()) {\n+         // Well, we failed to read from system, fall back to main.properties.\n+         // Better than nothing\n+         ips.add(CONFIG.getJetty().getServerHost());\n+     }\n+\n+     return ips;\n+ }\n }\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "279",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "';' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyForIteratorPadCheck"
+                },
+                {
+                    "line": "281",
+                    "column": "114",
+                    "severity": "error",
+                    "message": "';' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyForIteratorPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/126/JettyServer.java\nindex b666ddc5e7..3e8d491a80 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/126/JettyServer.java\n@@ -16,6 +16,7 @@\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n  */\n+\n package de.rwth.idsg.steve;\n \n import de.rwth.idsg.steve.web.dto.EndpointInfo;\n@@ -130,13 +131,13 @@ public class JettyServer {\n         sslContextFactory.setKeyStorePassword(CONFIG.getJetty().getKeyStorePassword());\n         sslContextFactory.setKeyManagerPassword(CONFIG.getJetty().getKeyStorePassword());\n         sslContextFactory.setExcludeCipherSuites(\n-                \"SSL_RSA_WITH_DES_CBC_SHA\",\n-                \"SSL_DHE_RSA_WITH_DES_CBC_SHA\",\n-                \"SSL_DHE_DSS_WITH_DES_CBC_SHA\",\n-                \"SSL_RSA_EXPORT_WITH_RC4_40_MD5\",\n-                \"SSL_RSA_EXPORT_WITH_DES40_CBC_SHA\",\n-                \"SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA\",\n-                \"SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA\");\n+            \"SSL_RSA_WITH_DES_CBC_SHA\",\n+            \"SSL_DHE_RSA_WITH_DES_CBC_SHA\",\n+            \"SSL_DHE_DSS_WITH_DES_CBC_SHA\",\n+            \"SSL_RSA_EXPORT_WITH_RC4_40_MD5\",\n+            \"SSL_RSA_EXPORT_WITH_DES40_CBC_SHA\",\n+            \"SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA\",\n+            \"SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA\");\n \n         // SSL HTTP Configuration\n         HttpConfiguration httpsConfig = new HttpConfiguration(httpConfig);\n@@ -144,8 +145,8 @@ public class JettyServer {\n \n         // SSL Connector\n         ServerConnector https = new ServerConnector(server,\n-                new SslConnectionFactory(sslContextFactory, HttpVersion.HTTP_1_1.asString()),\n-                new HttpConnectionFactory(httpsConfig));\n+            new SslConnectionFactory(sslContextFactory, HttpVersion.HTTP_1_1.asString()),\n+            new HttpConnectionFactory(httpsConfig));\n         https.setHost(CONFIG.getJetty().getServerHost());\n         https.setPort(CONFIG.getJetty().getHttpsPort());\n         https.setIdleTimeout(IDLE_TIMEOUT);\n@@ -199,9 +200,9 @@ public class JettyServer {\n         }\n \n         return Arrays.stream(server.getConnectors())\n-                     .map(JettyServer::getConnectorPath)\n-                     .flatMap(Collection::stream)\n-                     .collect(Collectors.toList());\n+            .map(JettyServer::getConnectorPath)\n+            .flatMap(Collection::stream)\n+            .collect(Collectors.toList());\n     }\n \n     private static List<String> getConnectorPath(Connector c) {\n@@ -225,14 +226,14 @@ public class JettyServer {\n         String layout = \"%s://%s:%d\" + CONFIG.getContextPath();\n \n         return ips.stream()\n-                  .map(k -> String.format(layout, prefix, k, sc.getPort()))\n-                  .collect(Collectors.toList());\n+            .map(k -> String.format(layout, prefix, k, sc.getPort()))\n+            .collect(Collectors.toList());\n     }\n \n     private List<String> buildList(List<String> list, boolean replaceHttp) {\n         return list.stream()\n-                   .map(s -> getElementPrefix(s, replaceHttp))\n-                   .collect(Collectors.toList());\n+            .map(s -> getElementPrefix(s, replaceHttp))\n+            .collect(Collectors.toList());\n     }\n \n     private String getElementPrefix(String str, boolean replaceHttp) {\n@@ -274,9 +275,10 @@ public class JettyServer {\n \n         // https://stackoverflow.com/a/20418809\n         try {\n-            for (Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();) {\n+            for (Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();\n+                 ifaces.hasMoreElements(); ) {\n                 NetworkInterface iface = ifaces.nextElement();\n-                for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {\n+                for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements(); ) {\n                     InetAddress inetAddr = inetAddrs.nextElement();\n                     if (!inetAddr.isLoopbackAddress() && (inetAddr instanceof Inet4Address)) {\n                         ips.add(inetAddr.getHostAddress());\n",
+            "diff_size": 20
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/126/JettyServer.java\nindex b666ddc5e7..b345c653a6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/126/JettyServer.java\n@@ -15,8 +15,7 @@\n  *\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n- */\n-package de.rwth.idsg.steve;\n+ */package de.rwth.idsg.steve;\n \n import de.rwth.idsg.steve.web.dto.EndpointInfo;\n import lombok.extern.slf4j.Slf4j;\n@@ -199,7 +198,7 @@ public class JettyServer {\n         }\n \n         return Arrays.stream(server.getConnectors())\n-                     .map(JettyServer::getConnectorPath)\n+.map(JettyServer::getConnectorPath)\n                      .flatMap(Collection::stream)\n                      .collect(Collectors.toList());\n     }\n@@ -274,9 +273,11 @@ public class JettyServer {\n \n         // https://stackoverflow.com/a/20418809\n         try {\n-            for (Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();) {\n+            for (Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();\n+ifaces.hasMoreElements();) {\n                 NetworkInterface iface = ifaces.nextElement();\n-                for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {\n+                for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses();\n+inetAddrs.hasMoreElements();) {\n                     InetAddress inetAddr = inetAddrs.nextElement();\n                     if (!inetAddr.isLoopbackAddress() && (inetAddr instanceof Inet4Address)) {\n                         ips.add(inetAddr.getHostAddress());\n@@ -298,4 +299,4 @@ public class JettyServer {\n \n         return ips;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "277",
+                    "column": "56",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "278",
+                    "column": "13",
+                    "severity": "error",
+                    "message": "';' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "278",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "'{' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/126/JettyServer.java\nindex b666ddc5e7..6679b57995 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/126/JettyServer.java\n@@ -274,28 +274,29 @@ public class JettyServer {\n \n         // https://stackoverflow.com/a/20418809\n         try {\n-            for (Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();) {\n-                NetworkInterface iface = ifaces.nextElement();\n-                for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {\n-                    InetAddress inetAddr = inetAddrs.nextElement();\n-                    if (!inetAddr.isLoopbackAddress() && (inetAddr instanceof Inet4Address)) {\n-                        ips.add(inetAddr.getHostAddress());\n-                    }\n-                }\n-            }\n-\n-        } catch (Exception e) {\n-            // fail silently\n-        }\n-\n-        ips.removeIf(\"0.0.0.0\"::equals);\n-\n-        if (ips.isEmpty()) {\n-            // Well, we failed to read from system, fall back to main.properties.\n-            // Better than nothing\n-            ips.add(CONFIG.getJetty().getServerHost());\n-        }\n-\n-        return ips;\n-    }\n+            for (Enumeration<NetworkInterface > ifaces =NetworkInterface.getNetworkInterfaces()\n+            ; ifaces .hasMoreElements();) {NetworkInterfaceiface\n+            = ifaces.nextElement();\n+             for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {\n+                 InetAddress inetAddr = inetAddrs.nextElement();\n+                 if (!inetAddr.isLoopbackAddress() && (inetAddr instanceof Inet4Address)) {\n+                     ips.add(inetAddr.getHostAddress());\n+                 }\n+             }\n+         }\n+\n+     } catch (Exception e) {\n+         // fail silently\n+     }\n+\n+     ips.removeIf(\"0.0.0.0\"::equals);\n+\n+     if (ips.isEmpty()) {\n+         // Well, we failed to read from system, fall back to main.properties.\n+         // Better than nothing\n+         ips.add(CONFIG.getJetty().getServerHost());\n+     }\n+\n+     return ips;\n+ }\n }\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "276",
+                    "column": "13",
+                    "severity": "error",
+                    "message": "'{' at column 13 should have line break after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+                },
+                {
+                    "line": "276",
+                    "column": "15",
+                    "severity": "error",
+                    "message": "'for' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "276",
+                    "column": "54",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "276",
+                    "column": "54",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/126/JettyServer.java\nindex b666ddc5e7..9fd04d3cb1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/126/JettyServer.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/126/JettyServer.java\n@@ -273,29 +273,30 @@ public class JettyServer {\n         }\n \n         // https://stackoverflow.com/a/20418809\n-        try {\n-            for (Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();) {\n-                NetworkInterface iface = ifaces.nextElement();\n-                for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {\n-                    InetAddress inetAddr = inetAddrs.nextElement();\n-                    if (!inetAddr.isLoopbackAddress() && (inetAddr instanceof Inet4Address)) {\n-                        ips.add(inetAddr.getHostAddress());\n-                    }\n-                }\n-            }\n-\n-        } catch (Exception e) {\n-            // fail silently\n-        }\n-\n-        ips.removeIf(\"0.0.0.0\"::equals);\n-\n-        if (ips.isEmpty()) {\n-            // Well, we failed to read from system, fall back to main.properties.\n-            // Better than nothing\n-            ips.add(CONFIG.getJetty().getServerHost());\n-        }\n-\n-        return ips;\n-    }\n+        try { for(Enumeration<NetworkInterface>ifaces=NetworkInterface.getNetworkInterfaces();\n+\n+        ifaces .hasMoreElements();) {\n+             NetworkInterface iface = ifaces.nextElement();\n+             for (Enumeration<InetAddress> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements();) {\n+                 InetAddress inetAddr = inetAddrs.nextElement();\n+                 if (!inetAddr.isLoopbackAddress() && (inetAddr instanceof Inet4Address)) {\n+                     ips.add(inetAddr.getHostAddress());\n+                 }\n+             }\n+         }\n+\n+     } catch (Exception e) {\n+         // fail silently\n+     }\n+\n+     ips.removeIf(\"0.0.0.0\"::equals);\n+\n+     if (ips.isEmpty()) {\n+         // Well, we failed to read from system, fall back to main.properties.\n+         // Better than nothing\n+         ips.add(CONFIG.getJetty().getServerHost());\n+     }\n+\n+     return ips;\n+ }\n }\n",
+            "diff_size": 26
+        }
+    ]
+}

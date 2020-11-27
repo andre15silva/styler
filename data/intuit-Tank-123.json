@@ -1,0 +1,102 @@
+{
+    "error_id": "123",
+    "information": {
+        "errors": [
+            {
+                "line": "36",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 121).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * \n */\n@XmlType(name = \"variables\", propOrder = { \"allowOverride\", \"variables\" }, namespace = HarnessDataNamespace.NAMESPACE_V1)\n@XmlAccessorType(XmlAccessType.FIELD)\npublic class HDTestVariables {\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/123/HDTestVariables.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/123/HDTestVariables.java\nindex a20722941b..2e8794d775 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/123/HDTestVariables.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/123/HDTestVariables.java\n@@ -1,6 +1,7 @@\n /**\n  * Copyright 2011 Intuit Inc. All Rights Reserved\n  */\n+\n package com.intuit.tank.harness.data;\n \n /*\n@@ -29,83 +30,80 @@ import javax.xml.bind.annotation.XmlType;\n \n /**\n  * HDTestVariables\n- * \n+ *\n  * @author dangleton\n- * \n  */\n-@XmlType(name = \"variables\", propOrder = { \"allowOverride\", \"variables\" }, namespace = HarnessDataNamespace.NAMESPACE_V1)\n+@XmlType(name = \"variables\", propOrder = {\"allowOverride\", \"variables\"}, namespace = HarnessDataNamespace.NAMESPACE_V1)\n @XmlAccessorType(XmlAccessType.FIELD)\n public class HDTestVariables {\n \n-    @XmlAttribute\n-    private boolean allowOverride;\n-\n-    @XmlElementWrapper(name = \"variables\")\n-    private List<HDVariable> variables = new ArrayList<HDVariable>();\n-\n-    /**\n-     * \n-     */\n-    public HDTestVariables() {\n-        super();\n-    }\n-\n-    /**\n-     * @param allowOverride\n-     */\n-    public HDTestVariables(boolean allowOverride) {\n-        super();\n-        this.allowOverride = allowOverride;\n+  @XmlAttribute\n+  private boolean allowOverride;\n+\n+  @XmlElementWrapper(name = \"variables\")\n+  private List<HDVariable> variables = new ArrayList<HDVariable>();\n+\n+  /**\n+   *\n+   */\n+  public HDTestVariables() {\n+    super();\n+  }\n+\n+  /**\n+   * @param allowOverride\n+   */\n+  public HDTestVariables(boolean allowOverride) {\n+    super();\n+    this.allowOverride = allowOverride;\n+  }\n+\n+  /**\n+   * @param allowOverride\n+   */\n+  public HDTestVariables(boolean allowOverride, Map<String, String> vars) {\n+    super();\n+    this.allowOverride = allowOverride;\n+    addVariables(vars);\n+  }\n+\n+  /**\n+   * @return the allowOverride\n+   */\n+  public boolean isAllowOverride() {\n+    return allowOverride;\n+  }\n+\n+  /**\n+   * @param allowOverride the allowOverride to set\n+   */\n+  public void setAllowOverride(boolean allowOverride) {\n+    this.allowOverride = allowOverride;\n+  }\n+\n+  /**\n+   * @return the variables\n+   */\n+  public List<HDVariable> getVariables() {\n+    return variables;\n+  }\n+\n+  /**\n+   * @param variables the variables to set\n+   */\n+  public void setVariables(List<HDVariable> variables) {\n+    this.variables = variables;\n+  }\n+\n+  public void addVariable(String key, String value) {\n+    this.variables.add(new HDVariable(key, value));\n+  }\n+\n+  public void addVariables(Map<String, String> vars) {\n+    for (Entry<String, String> var : vars.entrySet()) {\n+      this.variables.add(new HDVariable(var.getKey(), var.getValue()));\n     }\n \n-    /**\n-     * @param allowOverride\n-     */\n-    public HDTestVariables(boolean allowOverride, Map<String, String> vars) {\n-        super();\n-        this.allowOverride = allowOverride;\n-        addVariables(vars);\n-    }\n-\n-    /**\n-     * @return the allowOverride\n-     */\n-    public boolean isAllowOverride() {\n-        return allowOverride;\n-    }\n-\n-    /**\n-     * @param allowOverride\n-     *            the allowOverride to set\n-     */\n-    public void setAllowOverride(boolean allowOverride) {\n-        this.allowOverride = allowOverride;\n-    }\n-\n-    /**\n-     * @return the variables\n-     */\n-    public List<HDVariable> getVariables() {\n-        return variables;\n-    }\n-\n-    /**\n-     * @param variables\n-     *            the variables to set\n-     */\n-    public void setVariables(List<HDVariable> variables) {\n-        this.variables = variables;\n-    }\n-\n-    public void addVariable(String key, String value) {\n-        this.variables.add(new HDVariable(key, value));\n-    }\n-\n-    public void addVariables(Map<String, String> vars) {\n-        for (Entry<String, String> var : vars.entrySet()) {\n-            this.variables.add(new HDVariable(var.getKey(), var.getValue()));\n-        }\n-\n-    }\n+  }\n \n }\n",
+            "diff_size": 118
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/123/HDTestVariables.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/123/HDTestVariables.java\nindex a20722941b..dd33286cf9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/123/HDTestVariables.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/123/HDTestVariables.java\n@@ -108,4 +108,4 @@ public class HDTestVariables {\n \n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/123/HDTestVariables.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/123/HDTestVariables.java\nindex a20722941b..83b640a258 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/123/HDTestVariables.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/123/HDTestVariables.java\n@@ -16,11 +16,12 @@ package com.intuit.tank.harness.data;\n  * #L%\n  */\n \n+\n+\n import java.util.ArrayList;\n import java.util.List;\n import java.util.Map;\n import java.util.Map.Entry;\n-\n import javax.xml.bind.annotation.XmlAccessType;\n import javax.xml.bind.annotation.XmlAccessorType;\n import javax.xml.bind.annotation.XmlAttribute;\n@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;\n  * @author dangleton\n  * \n  */\n+\n @XmlType(name = \"variables\", propOrder = { \"allowOverride\", \"variables\" }, namespace = HarnessDataNamespace.NAMESPACE_V1)\n @XmlAccessorType(XmlAccessType.FIELD)\n public class HDTestVariables {\n@@ -46,6 +48,8 @@ public class HDTestVariables {\n     /**\n      * \n      */\n+\n+\n     public HDTestVariables() {\n         super();\n     }\n@@ -53,6 +57,8 @@ public class HDTestVariables {\n     /**\n      * @param allowOverride\n      */\n+\n+\n     public HDTestVariables(boolean allowOverride) {\n         super();\n         this.allowOverride = allowOverride;\n@@ -61,6 +67,8 @@ public class HDTestVariables {\n     /**\n      * @param allowOverride\n      */\n+\n+\n     public HDTestVariables(boolean allowOverride, Map<String, String> vars) {\n         super();\n         this.allowOverride = allowOverride;\n@@ -70,6 +78,8 @@ public class HDTestVariables {\n     /**\n      * @return the allowOverride\n      */\n+\n+\n     public boolean isAllowOverride() {\n         return allowOverride;\n     }\n@@ -78,6 +88,8 @@ public class HDTestVariables {\n      * @param allowOverride\n      *            the allowOverride to set\n      */\n+\n+\n     public void setAllowOverride(boolean allowOverride) {\n         this.allowOverride = allowOverride;\n     }\n@@ -85,6 +97,8 @@ public class HDTestVariables {\n     /**\n      * @return the variables\n      */\n+\n+\n     public List<HDVariable> getVariables() {\n         return variables;\n     }\n@@ -93,19 +107,22 @@ public class HDTestVariables {\n      * @param variables\n      *            the variables to set\n      */\n+\n+\n     public void setVariables(List<HDVariable> variables) {\n         this.variables = variables;\n     }\n \n+\n     public void addVariable(String key, String value) {\n         this.variables.add(new HDVariable(key, value));\n     }\n \n+\n     public void addVariables(Map<String, String> vars) {\n         for (Entry<String, String> var : vars.entrySet()) {\n             this.variables.add(new HDVariable(var.getKey(), var.getValue()));\n         }\n-\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "36",
+                    "column": "58",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "2",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "12",
+                    "severity": "warning",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/123/HDTestVariables.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/123/HDTestVariables.java\nindex a20722941b..46f49a23cd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/123/HDTestVariables.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/123/HDTestVariables.java\n@@ -33,79 +33,81 @@ import javax.xml.bind.annotation.XmlType;\n  * @author dangleton\n  * \n  */\n-@XmlType(name = \"variables\", propOrder = { \"allowOverride\", \"variables\" }, namespace = HarnessDataNamespace.NAMESPACE_V1)\n-@XmlAccessorType(XmlAccessType.FIELD)\n-public class HDTestVariables {\n+@XmlType(name = \"variables\", propOrder = {\"allowOverride\",\"variables\"\n+},namespace= HarnessDataNamespace .NAMESPACE_V1\n+)@XmlAccessorType(XmlAccessType.FIELD)\n+ public class HDTestVariables {\n \n-    @XmlAttribute\n-    private boolean allowOverride;\n+     @XmlAttribute\n+     private boolean allowOverride;\n \n-    @XmlElementWrapper(name = \"variables\")\n-    private List<HDVariable> variables = new ArrayList<HDVariable>();\n+     @XmlElementWrapper(name = \"variables\")\n+     private List<HDVariable> variables = new ArrayList<HDVariable>();\n \n-    /**\n+     /**\n      * \n      */\n-    public HDTestVariables() {\n-        super();\n-    }\n+     public HDTestVariables() {\n+         super();\n+     }\n \n-    /**\n+     /**\n      * @param allowOverride\n      */\n-    public HDTestVariables(boolean allowOverride) {\n-        super();\n-        this.allowOverride = allowOverride;\n-    }\n+     public HDTestVariables(boolean allowOverride) {\n+         super();\n+         this.allowOverride = allowOverride;\n+     }\n \n-    /**\n+     /**\n      * @param allowOverride\n      */\n-    public HDTestVariables(boolean allowOverride, Map<String, String> vars) {\n-        super();\n-        this.allowOverride = allowOverride;\n-        addVariables(vars);\n-    }\n+     public HDTestVariables(boolean allowOverride, Map<String, String> vars) {\n+         super();\n+         this.allowOverride = allowOverride;\n+         addVariables(vars);\n+     }\n \n-    /**\n+     /**\n      * @return the allowOverride\n      */\n-    public boolean isAllowOverride() {\n-        return allowOverride;\n-    }\n+     public boolean isAllowOverride() {\n+         return allowOverride;\n+     }\n \n-    /**\n+     /**\n      * @param allowOverride\n      *            the allowOverride to set\n      */\n-    public void setAllowOverride(boolean allowOverride) {\n-        this.allowOverride = allowOverride;\n-    }\n+     public void setAllowOverride(boolean allowOverride) {\n+         this.allowOverride = allowOverride;\n+     }\n \n-    /**\n+     /**\n      * @return the variables\n      */\n-    public List<HDVariable> getVariables() {\n-        return variables;\n-    }\n+     public List<HDVariable> getVariables() {\n+         return variables;\n+     }\n \n-    /**\n+     /**\n      * @param variables\n      *            the variables to set\n      */\n-    public void setVariables(List<HDVariable> variables) {\n-        this.variables = variables;\n-    }\n+     public void setVariables(List<HDVariable> variables) {\n+         this.variables = variables;\n+     }\n \n-    public void addVariable(String key, String value) {\n-        this.variables.add(new HDVariable(key, value));\n-    }\n+     public void addVariable(String key, String value) {\n+         this.variables.add(new HDVariable(key, value));\n+     }\n \n-    public void addVariables(Map<String, String> vars) {\n-        for (Entry<String, String> var : vars.entrySet()) {\n-            this.variables.add(new HDVariable(var.getKey(), var.getValue()));\n-        }\n+     public void addVariables(Map<String, String> vars) {\n+         for (Entry<String, String> var : vars.entrySet()) {\n+             this.variables.add(new HDVariable(var.getKey(), var.getValue()));\n+         }\n \n-    }\n+     }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 49
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

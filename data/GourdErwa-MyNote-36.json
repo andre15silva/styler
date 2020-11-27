@@ -1,0 +1,64 @@
+{
+    "error_id": "36",
+    "information": {
+        "errors": [
+            {
+                "line": "18",
+                "severity": "error",
+                "message": "'annotation field def modifier' has incorrect indentation level 4, expected level should be 2.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+            }
+        ]
+    },
+    "source_code": "public @interface OnlyForTest {\n\n    String description() default \"\";\n\n}",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/errored/1/36/OnlyForTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/intellij/36/OnlyForTest.java\nindex ae9b9fe6bc..25a94793c8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/errored/1/36/OnlyForTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/intellij/36/OnlyForTest.java\n@@ -15,6 +15,6 @@ import static java.lang.annotation.ElementType.*;\n @Target(value = {FIELD, TYPE, METHOD})\n public @interface OnlyForTest {\n \n-    String description() default \"\";\n+  String description() default \"\";\n \n }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "20",
+                    "severity": "error",
+                    "message": "'annotation field def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/errored/1/36/OnlyForTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/naturalize/36/OnlyForTest.java\nindex ae9b9fe6bc..80ae074090 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/errored/1/36/OnlyForTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/naturalize/36/OnlyForTest.java\n@@ -12,9 +12,11 @@ import static java.lang.annotation.ElementType.*;\n  * @author wei.Li\n  */\n @Retention(RetentionPolicy.SOURCE)\n-@Target(value = {FIELD, TYPE, METHOD})\n+@Target(value = {\n+\n+    FIELD, TYPE, METHOD})\n public @interface OnlyForTest {\n \n     String description() default \"\";\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "column": "15",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/errored/1/36/OnlyForTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/codebuff/36/OnlyForTest.java\nindex ae9b9fe6bc..ceae5b84f3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/errored/1/36/OnlyForTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GourdErwa-MyNote/codebuff/36/OnlyForTest.java\n@@ -3,7 +3,6 @@ package com.gourd.erwa.annotation;\n import java.lang.annotation.Retention;\n import java.lang.annotation.RetentionPolicy;\n import java.lang.annotation.Target;\n-\n import static java.lang.annotation.ElementType.*;\n \n /**\n@@ -11,10 +10,10 @@ import static java.lang.annotation.ElementType.*;\n  *\n  * @author wei.Li\n  */\n-@Retention(RetentionPolicy.SOURCE)\n-@Target(value = {FIELD, TYPE, METHOD})\n-public @interface OnlyForTest {\n \n-    String description() default \"\";\n \n-}\n+@Retention(RetentionPolicy.SOURCE)\n+@Target( value= {FIELD, TYPE, METHOD})\n+public @interface OnlyForTest { String description()\n+default\"\";\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "error_id": "34",
+    "information": {
+        "errors": [
+            {
+                "line": "64",
+                "column": "11",
+                "severity": "error",
+                "message": "'if' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+            }
+        ]
+    },
+    "source_code": "            login.email()\n        );\n        if(login.accessToken() != null && !login.accessToken().isBlank()) {\n            signedUp = new Authenticated(signedUp, login.accessToken());\n        }\n        return signedUp;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler/34/BaseSelf.java\nindex 151ac18f68..878232e802 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler/34/BaseSelf.java\n@@ -61,7 +61,7 @@ abstract class BaseSelf implements Self {\n             login.provider(),\n             login.email()\n         );\n-        if(login.accessToken() != null && !login.accessToken().isBlank()) {\n+        if (login.accessToken() != null && !login.accessToken().isBlank()) {\n             signedUp = new Authenticated(signedUp, login.accessToken());\n         }\n         return signedUp;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "@param tag description should start with capital letter",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/intellij/34/BaseSelf.java\nindex 151ac18f68..de72d95112 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/intellij/34/BaseSelf.java\n@@ -20,6 +20,7 @@\n  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n  * POSSIBILITY OF SUCH DAMAGE.\n  */\n+\n package com.selfxdsd.core;\n \n import com.selfxdsd.api.*;\n@@ -27,6 +28,7 @@ import com.selfxdsd.api.storage.Storage;\n \n /**\n  * Base Self implementation.\n+ *\n  * @author Mihai Andronache (amihaiemil@gmail.com)\n  * @version $Id$\n  * @since 0.0.1\n@@ -40,6 +42,7 @@ abstract class BaseSelf implements Self {\n \n     /**\n      * Constructor.\n+     *\n      * @param storage Storage for Self.\n      */\n     BaseSelf(final Storage storage) {\n@@ -48,6 +51,7 @@ abstract class BaseSelf implements Self {\n \n     /**\n      * Get Self's storage.\n+     *\n      * @return Storage.\n      */\n     Storage storage() {\n@@ -61,7 +65,7 @@ abstract class BaseSelf implements Self {\n             login.provider(),\n             login.email()\n         );\n-        if(login.accessToken() != null && !login.accessToken().isBlank()) {\n+        if (login.accessToken() != null && !login.accessToken().isBlank()) {\n             signedUp = new Authenticated(signedUp, login.accessToken());\n         }\n         return signedUp;\n@@ -84,7 +88,8 @@ abstract class BaseSelf implements Self {\n \n         /**\n          * Ctor.\n-         * @param user User.\n+         *\n+         * @param user        User.\n          * @param accessToken Access token.\n          */\n         Authenticated(final User user, final String accessToken) {\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "60",
+                    "column": "11",
+                    "severity": "error",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/naturalize/34/BaseSelf.java\nindex 151ac18f68..b9f14233ec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/naturalize/34/BaseSelf.java\n@@ -56,11 +56,7 @@ abstract class BaseSelf implements Self {\n \n     @Override\n     public User login(final Login login) {\n-        User signedUp = this.storage.users().signUp(\n-            login.username(),\n-            login.provider(),\n-            login.email()\n-        );\n+        User signedUp = this.storage.users().signUp(login.username(), login.provider(), login.email());\n         if(login.accessToken() != null && !login.accessToken().isBlank()) {\n             signedUp = new Authenticated(signedUp, login.accessToken());\n         }\n@@ -112,5 +108,4 @@ abstract class BaseSelf implements Self {\n             return this.user.projects();\n         }\n     }\n-\n-}\n+    }\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "67",
+                    "column": "11",
+                    "severity": "error",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "67",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "67",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "'!' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 78, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 74, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/codebuff/34/BaseSelf.java\nindex 151ac18f68..2ece4435d7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/codebuff/34/BaseSelf.java\n@@ -31,17 +31,23 @@ import com.selfxdsd.api.storage.Storage;\n  * @version $Id$\n  * @since 0.0.1\n  */\n+\n+\n abstract class BaseSelf implements Self {\n \n     /**\n      * Self's storage.\n      */\n+\n+\n     private final Storage storage;\n \n     /**\n      * Constructor.\n      * @param storage Storage for Self.\n      */\n+\n+\n     BaseSelf(final Storage storage) {\n         this.storage = storage;\n     }\n@@ -50,36 +56,38 @@ abstract class BaseSelf implements Self {\n      * Get Self's storage.\n      * @return Storage.\n      */\n+\n     Storage storage() {\n         return this.storage;\n     }\n \n     @Override\n     public User login(final Login login) {\n-        User signedUp = this.storage.users().signUp(\n-            login.username(),\n-            login.provider(),\n-            login.email()\n-        );\n-        if(login.accessToken() != null && !login.accessToken().isBlank()) {\n-            signedUp = new Authenticated(signedUp, login.accessToken());\n-        }\n+        User signedUp = this.storage.users().signUp(login.username(), login.provider(), login.email());\n+        if( login.accessToken()!= null&& ! login.accessToken().isBlank()) {\n+                                                                              signedUp = new Authenticated(signedUp, login.accessToken());\n+                                                                          }\n         return signedUp;\n     }\n \n     /**\n      * User authenticated with an access token from the provider.\n      */\n+\n     static class Authenticated implements User {\n \n         /**\n          * Authenticated user.\n          */\n+\n+\n         private final User user;\n \n         /**\n          * Access token.\n          */\n+\n+\n         private final String accessToken;\n \n         /**\n@@ -87,6 +95,8 @@ abstract class BaseSelf implements Self {\n          * @param user User.\n          * @param accessToken Access token.\n          */\n+\n+\n         Authenticated(final User user, final String accessToken) {\n             this.user = user;\n             this.accessToken = accessToken;\n@@ -112,5 +122,4 @@ abstract class BaseSelf implements Self {\n             return this.user.projects();\n         }\n     }\n-\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 24
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_random/34/BaseSelf.java\nindex 151ac18f68..878232e802 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_random/34/BaseSelf.java\n@@ -61,7 +61,7 @@ abstract class BaseSelf implements Self {\n             login.provider(),\n             login.email()\n         );\n-        if(login.accessToken() != null && !login.accessToken().isBlank()) {\n+        if (login.accessToken() != null && !login.accessToken().isBlank()) {\n             signedUp = new Authenticated(signedUp, login.accessToken());\n         }\n         return signedUp;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_three_grams/34/BaseSelf.java\nindex 151ac18f68..878232e802 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/34/BaseSelf.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_three_grams/34/BaseSelf.java\n@@ -61,7 +61,7 @@ abstract class BaseSelf implements Self {\n             login.provider(),\n             login.email()\n         );\n-        if(login.accessToken() != null && !login.accessToken().isBlank()) {\n+        if (login.accessToken() != null && !login.accessToken().isBlank()) {\n             signedUp = new Authenticated(signedUp, login.accessToken());\n         }\n         return signedUp;\n",
+            "diff_size": 1
+        }
+    ]
+}

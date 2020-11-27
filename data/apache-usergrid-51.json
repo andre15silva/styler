@@ -1,0 +1,94 @@
+{
+    "error_id": "51",
+    "information": {
+        "errors": [
+            {
+                "line": "33",
+                "severity": "warning",
+                "message": "Use of @author javadoc keyword is prohibited.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": " * max(uuid)\n *\n * @author tnine\n */\npublic class IntersectionIterator extends MultiIterator {\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/51/IntersectionIterator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/51/IntersectionIterator.java\nindex 1fea546a4e..1ca7206aa5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/51/IntersectionIterator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/51/IntersectionIterator.java\n@@ -14,6 +14,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.usergrid.persistence.query.ir.result;\n \n \n@@ -35,136 +36,136 @@ import com.google.common.collect.Sets;\n public class IntersectionIterator extends MultiIterator {\n \n \n-    /**\n-     *\n-     */\n-    public IntersectionIterator( int pageSize ) {\n-        super( pageSize );\n-    }\n+  /**\n+   *\n+   */\n+  public IntersectionIterator(int pageSize) {\n+    super(pageSize);\n+  }\n \n \n-    /*\n-     * (non-Javadoc)\n-     *\n-     * @see org.apache.usergrid.persistence.query.ir.result.ResultIterator#reset()\n-     */\n-    @Override\n-    public void doReset() {\n-        for ( ResultIterator itr : iterators ) {\n-            itr.reset();\n-        }\n+  /*\n+   * (non-Javadoc)\n+   *\n+   * @see org.apache.usergrid.persistence.query.ir.result.ResultIterator#reset()\n+   */\n+  @Override\n+  public void doReset() {\n+    for (ResultIterator itr : iterators) {\n+      itr.reset();\n     }\n+  }\n \n \n-    /*\n-     * (non-Javadoc)\n-     *\n-     * @see org.apache.usergrid.persistence.query.ir.result.MergeIterator#advance()\n+  /*\n+   * (non-Javadoc)\n+   *\n+   * @see org.apache.usergrid.persistence.query.ir.result.MergeIterator#advance()\n+   */\n+  @Override\n+  protected Set<ScanColumn> advance() {\n+    /**\n+     * Advance our sub iterators until the UUID's all line up\n      */\n-    @Override\n-    protected Set<ScanColumn> advance() {\n-        /**\n-         * Advance our sub iterators until the UUID's all line up\n-         */\n-\n-        int size = iterators.size();\n \n-        if ( size == 0 ) {\n-            return null;\n-        }\n+    int size = iterators.size();\n \n-        // edge case with only 1 iterator\n-        if ( size == 1 ) {\n-\n-            ResultIterator itr = iterators.get( 0 );\n+    if (size == 0) {\n+      return null;\n+    }\n \n-            if ( !itr.hasNext() ) {\n-                return null;\n-            }\n+    // edge case with only 1 iterator\n+    if (size == 1) {\n \n-            return itr.next();\n-        }\n+      ResultIterator itr = iterators.get(0);\n \n-        // begin our tree merge of the iterators\n+      if (!itr.hasNext()) {\n+        return null;\n+      }\n \n-        return merge();\n+      return itr.next();\n     }\n \n+    // begin our tree merge of the iterators\n \n-    private Set<ScanColumn> merge() {\n+    return merge();\n+  }\n \n-        Set<ScanColumn> results = new LinkedHashSet<ScanColumn>();\n-        ResultIterator rootIterator = iterators.get( 0 );\n \n+  private Set<ScanColumn> merge() {\n+\n+    Set<ScanColumn> results = new LinkedHashSet<ScanColumn>();\n+    ResultIterator rootIterator = iterators.get(0);\n \n-        //we've matched to the end\n-        if ( !rootIterator.hasNext() ) {\n-            return null;\n-        }\n \n+    //we've matched to the end\n+    if (!rootIterator.hasNext()) {\n+      return null;\n+    }\n \n-        //purposely check size first, that way we avoid another round trip if we can\n-        while ( results.size() < pageSize && rootIterator.hasNext() ) {\n \n-            Set<ScanColumn> intersection = rootIterator.next();\n+    //purposely check size first, that way we avoid another round trip if we can\n+    while (results.size() < pageSize && rootIterator.hasNext()) {\n \n-            for ( int i = 1; i < iterators.size(); i++ ) {\n+      Set<ScanColumn> intersection = rootIterator.next();\n \n-                ResultIterator joinIterator = iterators.get( i );\n+      for (int i = 1; i < iterators.size(); i++) {\n \n-                intersection = merge( intersection, joinIterator );\n+        ResultIterator joinIterator = iterators.get(i);\n \n-                //nothing left short circuit, there is no point in advancing to further join iterators\n-                if ( intersection.size() == 0 ) {\n-                    break;\n-                }\n-            }\n+        intersection = merge(intersection, joinIterator);\n \n-            //now add the intermediate results and continue\n-            results.addAll( intersection );\n+        //nothing left short circuit, there is no point in advancing to further join iterators\n+        if (intersection.size() == 0) {\n+          break;\n         }\n+      }\n \n-        return results;\n+      //now add the intermediate results and continue\n+      results.addAll(intersection);\n     }\n \n+    return results;\n+  }\n \n-    private Set<ScanColumn> merge( Set<ScanColumn> current, ResultIterator child ) {\n \n-        Set<ScanColumn> results = new LinkedHashSet<ScanColumn>( pageSize );\n+  private Set<ScanColumn> merge(Set<ScanColumn> current, ResultIterator child) {\n \n-        while ( results.size() < pageSize ) {\n-            if ( !child.hasNext() ) {\n-                // we've iterated to the end, reset for next pass\n-                child.reset();\n-                return results;\n-            }\n+    Set<ScanColumn> results = new LinkedHashSet<ScanColumn>(pageSize);\n \n+    while (results.size() < pageSize) {\n+      if (!child.hasNext()) {\n+        // we've iterated to the end, reset for next pass\n+        child.reset();\n+        return results;\n+      }\n \n-            final Set<ScanColumn> childResults = child.next();\n \n-            final Set<ScanColumn> intersection =  Sets.intersection( current, childResults );\n+      final Set<ScanColumn> childResults = child.next();\n \n-            results.addAll( intersection );\n-        }\n+      final Set<ScanColumn> intersection = Sets.intersection(current, childResults);\n \n-        return results;\n+      results.addAll(intersection);\n     }\n \n+    return results;\n+  }\n \n-    /*\n-     * (non-Javadoc)\n-     *\n-     * @see\n-     * org.apache.usergrid.persistence.query.ir.result.ResultIterator#finalizeCursor(\n-     * org.apache.usergrid.persistence.cassandra.CursorCache)\n-     */\n-    @Override\n-    public void finalizeCursor( CursorCache cache, UUID lastLoaded ) {\n-        ResultIterator itr = iterators.get( 0 );\n \n-        //We can only create a cursor on our root level value in the intersection iterator.\n-        if ( itr != null ) {\n-            itr.finalizeCursor( cache, lastLoaded );\n-        }\n+  /*\n+   * (non-Javadoc)\n+   *\n+   * @see\n+   * org.apache.usergrid.persistence.query.ir.result.ResultIterator#finalizeCursor(\n+   * org.apache.usergrid.persistence.cassandra.CursorCache)\n+   */\n+  @Override\n+  public void finalizeCursor(CursorCache cache, UUID lastLoaded) {\n+    ResultIterator itr = iterators.get(0);\n+\n+    //We can only create a cursor on our root level value in the intersection iterator.\n+    if (itr != null) {\n+      itr.finalizeCursor(cache, lastLoaded);\n     }\n+  }\n }\n",
+            "diff_size": 133
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/51/IntersectionIterator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/51/IntersectionIterator.java\nindex 1fea546a4e..151d86c783 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/51/IntersectionIterator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/51/IntersectionIterator.java\n@@ -34,7 +34,6 @@ import com.google.common.collect.Sets;\n  */\n public class IntersectionIterator extends MultiIterator {\n \n-\n     /**\n      *\n      */\n@@ -66,8 +65,7 @@ public class IntersectionIterator extends MultiIterator {\n         /**\n          * Advance our sub iterators until the UUID's all line up\n          */\n-\n-        int size = iterators.size();\n+int size = iterators.size();\n \n         if ( size == 0 ) {\n             return null;\n@@ -96,8 +94,7 @@ public class IntersectionIterator extends MultiIterator {\n         Set<ScanColumn> results = new LinkedHashSet<ScanColumn>();\n         ResultIterator rootIterator = iterators.get( 0 );\n \n-\n-        //we've matched to the end\n+//we've matched to the end\n         if ( !rootIterator.hasNext() ) {\n             return null;\n         }\n@@ -138,11 +135,9 @@ public class IntersectionIterator extends MultiIterator {\n                 child.reset();\n                 return results;\n             }\n+final Set<ScanColumn> childResults = child.next();\n \n-\n-            final Set<ScanColumn> childResults = child.next();\n-\n-            final Set<ScanColumn> intersection =  Sets.intersection( current, childResults );\n+            final Set<ScanColumn> intersection = Sets.intersection( current, childResults );\n \n             results.addAll( intersection );\n         }\n@@ -167,4 +162,4 @@ public class IntersectionIterator extends MultiIterator {\n             itr.finalizeCursor( cache, lastLoaded );\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "31",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/51/IntersectionIterator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/51/IntersectionIterator.java\nindex 1fea546a4e..769860e317 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/51/IntersectionIterator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/51/IntersectionIterator.java\n@@ -20,9 +20,7 @@ package org.apache.usergrid.persistence.query.ir.result;\n import java.util.LinkedHashSet;\n import java.util.Set;\n import java.util.UUID;\n-\n import org.apache.usergrid.persistence.cassandra.CursorCache;\n-\n import com.google.common.collect.Sets;\n \n \n@@ -32,12 +30,15 @@ import com.google.common.collect.Sets;\n  *\n  * @author tnine\n  */\n+\n+\n public class IntersectionIterator extends MultiIterator {\n \n \n     /**\n      *\n      */\n+\n     public IntersectionIterator( int pageSize ) {\n         super( pageSize );\n     }\n@@ -48,6 +49,8 @@ public class IntersectionIterator extends MultiIterator {\n      *\n      * @see org.apache.usergrid.persistence.query.ir.result.ResultIterator#reset()\n      */\n+\n+\n     @Override\n     public void doReset() {\n         for ( ResultIterator itr : iterators ) {\n@@ -61,38 +64,34 @@ public class IntersectionIterator extends MultiIterator {\n      *\n      * @see org.apache.usergrid.persistence.query.ir.result.MergeIterator#advance()\n      */\n+\n+\n     @Override\n     protected Set<ScanColumn> advance() {\n         /**\n          * Advance our sub iterators until the UUID's all line up\n          */\n-\n         int size = iterators.size();\n-\n         if ( size == 0 ) {\n             return null;\n         }\n \n         // edge case with only 1 iterator\n         if ( size == 1 ) {\n-\n             ResultIterator itr = iterators.get( 0 );\n-\n             if ( !itr.hasNext() ) {\n                 return null;\n             }\n-\n             return itr.next();\n         }\n \n         // begin our tree merge of the iterators\n-\n         return merge();\n     }\n \n \n-    private Set<ScanColumn> merge() {\n \n+    private Set<ScanColumn> merge() {\n         Set<ScanColumn> results = new LinkedHashSet<ScanColumn>();\n         ResultIterator rootIterator = iterators.get( 0 );\n \n@@ -104,14 +103,11 @@ public class IntersectionIterator extends MultiIterator {\n \n \n         //purposely check size first, that way we avoid another round trip if we can\n-        while ( results.size() < pageSize && rootIterator.hasNext() ) {\n \n+        while ( results.size() < pageSize && rootIterator.hasNext() ) {\n             Set<ScanColumn> intersection = rootIterator.next();\n-\n             for ( int i = 1; i < iterators.size(); i++ ) {\n-\n                 ResultIterator joinIterator = iterators.get( i );\n-\n                 intersection = merge( intersection, joinIterator );\n \n                 //nothing left short circuit, there is no point in advancing to further join iterators\n@@ -123,30 +119,23 @@ public class IntersectionIterator extends MultiIterator {\n             //now add the intermediate results and continue\n             results.addAll( intersection );\n         }\n-\n         return results;\n     }\n \n \n-    private Set<ScanColumn> merge( Set<ScanColumn> current, ResultIterator child ) {\n \n+    private Set<ScanColumn> merge( Set<ScanColumn> current, ResultIterator child ) {\n         Set<ScanColumn> results = new LinkedHashSet<ScanColumn>( pageSize );\n-\n         while ( results.size() < pageSize ) {\n             if ( !child.hasNext() ) {\n                 // we've iterated to the end, reset for next pass\n                 child.reset();\n                 return results;\n             }\n-\n-\n             final Set<ScanColumn> childResults = child.next();\n-\n-            final Set<ScanColumn> intersection =  Sets.intersection( current, childResults );\n-\n+            final Set<ScanColumn> intersection = Sets.intersection( current, childResults );\n             results.addAll( intersection );\n         }\n-\n         return results;\n     }\n \n@@ -158,6 +147,8 @@ public class IntersectionIterator extends MultiIterator {\n      * org.apache.usergrid.persistence.query.ir.result.ResultIterator#finalizeCursor(\n      * org.apache.usergrid.persistence.cassandra.CursorCache)\n      */\n+\n+\n     @Override\n     public void finalizeCursor( CursorCache cache, UUID lastLoaded ) {\n         ResultIterator itr = iterators.get( 0 );\n@@ -167,4 +158,4 @@ public class IntersectionIterator extends MultiIterator {\n             itr.finalizeCursor( cache, lastLoaded );\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 35
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "32",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/51/IntersectionIterator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/51/IntersectionIterator.java\nindex 1fea546a4e..20ace21bdb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/51/IntersectionIterator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/51/IntersectionIterator.java\n@@ -25,7 +25,6 @@ import org.apache.usergrid.persistence.cassandra.CursorCache;\n \n import com.google.common.collect.Sets;\n \n-\n /**\n  * An iterator that unions 1 or more subsets. It makes the assuming that sub iterators iterate from min(uuid) to\n  * max(uuid)\n",
+            "diff_size": 1
+        }
+    ]
+}

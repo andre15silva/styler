@@ -1,0 +1,116 @@
+{
+    "error_id": "156",
+    "information": {
+        "errors": [
+            {
+                "line": "49",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 154).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<VisitDto> visits = BeanConvertUtil.covertBeanList(visitServiceDaoImpl.getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n\n        if (visits == null || visits.size() == 0) {\n            return visits;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "47",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/156/VisitInnerServiceSMOImpl.java\nindex 5fc30dda07..11271d1c84 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/156/VisitInnerServiceSMOImpl.java\n@@ -44,9 +44,7 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n         if (page != PageDto.DEFAULT_PAGE) {\n             visitDto.setPage((page - 1) * visitDto.getRow());\n             visitDto.setRow(page * visitDto.getRow());\n-        }\n-\n-        List<VisitDto> visits = BeanConvertUtil.covertBeanList(visitServiceDaoImpl.getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n+        } List<VisitDto> visits = BeanConvertUtil.covertBeanList(visitServiceDaoImpl.getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n \n         if (visits == null || visits.size() == 0) {\n             return visits;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/156/VisitInnerServiceSMOImpl.java\nindex 5fc30dda07..29185eb424 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/156/VisitInnerServiceSMOImpl.java\n@@ -28,86 +28,87 @@ import java.util.List;\n @RestController\n public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitInnerServiceSMO {\n \n-    @Autowired\n-    private IVisitServiceDao visitServiceDaoImpl;\n+  @Autowired\n+  private IVisitServiceDao visitServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<VisitDto> queryVisits(@RequestBody  VisitDto visitDto) {\n+  @Override\n+  public List<VisitDto> queryVisits(@RequestBody VisitDto visitDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = visitDto.getPage();\n+    int page = visitDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            visitDto.setPage((page - 1) * visitDto.getRow());\n-            visitDto.setRow(page * visitDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      visitDto.setPage((page - 1) * visitDto.getRow());\n+      visitDto.setRow(page * visitDto.getRow());\n+    }\n \n-        List<VisitDto> visits = BeanConvertUtil.covertBeanList(visitServiceDaoImpl.getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n+    List<VisitDto> visits = BeanConvertUtil.covertBeanList(visitServiceDaoImpl.getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n \n-        if (visits == null || visits.size() == 0) {\n-            return visits;\n-        }\n+    if (visits == null || visits.size() == 0) {\n+      return visits;\n+    }\n \n-        String[] userIds = getUserIds(visits);\n-        //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n-        List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n+    String[] userIds = getUserIds(visits);\n+    //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n+    List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n \n-        for (VisitDto visit : visits) {\n-            refreshVisit(visit, users);\n-        }\n-        return visits;\n+    for (VisitDto visit : visits) {\n+      refreshVisit(visit, users);\n     }\n-\n-    /**\n-     * \u4ece\u7528\u6237\u5217\u8868\u4e2d\u67e5\u8be2\u7528\u6237\uff0c\u5c06\u7528\u6237\u4e2d\u7684\u4fe1\u606f \u5237\u65b0\u5230 floor\u5bf9\u8c61\u4e2d\n-     *\n-     * @param visit \u5c0f\u533a\u8bbf\u5ba2\u4fe1\u606f\u4fe1\u606f\n-     * @param users \u7528\u6237\u5217\u8868\n-     */\n-    private void refreshVisit(VisitDto visit, List<UserDto> users) {\n-        for (UserDto user : users) {\n-            if (visit.getUserId().equals(user.getUserId())) {\n-                BeanConvertUtil.covertBean(user, visit);\n-            }\n-        }\n+    return visits;\n+  }\n+\n+  /**\n+   * \u4ece\u7528\u6237\u5217\u8868\u4e2d\u67e5\u8be2\u7528\u6237\uff0c\u5c06\u7528\u6237\u4e2d\u7684\u4fe1\u606f \u5237\u65b0\u5230 floor\u5bf9\u8c61\u4e2d\n+   *\n+   * @param visit \u5c0f\u533a\u8bbf\u5ba2\u4fe1\u606f\u4fe1\u606f\n+   * @param users \u7528\u6237\u5217\u8868\n+   */\n+  private void refreshVisit(VisitDto visit, List<UserDto> users) {\n+    for (UserDto user : users) {\n+      if (visit.getUserId().equals(user.getUserId())) {\n+        BeanConvertUtil.covertBean(user, visit);\n+      }\n     }\n-\n-    /**\n-     * \u83b7\u53d6\u6279\u91cfuserId\n-     *\n-     * @param visits \u5c0f\u533a\u697c\u4fe1\u606f\n-     * @return \u6279\u91cfuserIds \u4fe1\u606f\n-     */\n-    private String[] getUserIds(List<VisitDto> visits) {\n-        List<String> userIds = new ArrayList<String>();\n-        for (VisitDto visit : visits) {\n-            userIds.add(visit.getUserId());\n-        }\n-\n-        return userIds.toArray(new String[userIds.size()]);\n+  }\n+\n+  /**\n+   * \u83b7\u53d6\u6279\u91cfuserId\n+   *\n+   * @param visits \u5c0f\u533a\u697c\u4fe1\u606f\n+   * @return \u6279\u91cfuserIds \u4fe1\u606f\n+   */\n+  private String[] getUserIds(List<VisitDto> visits) {\n+    List<String> userIds = new ArrayList<String>();\n+    for (VisitDto visit : visits) {\n+      userIds.add(visit.getUserId());\n     }\n \n-    @Override\n-    public int queryVisitsCount(@RequestBody VisitDto visitDto) {\n-        return visitServiceDaoImpl.queryVisitsCount(BeanConvertUtil.beanCovertMap(visitDto));    }\n+    return userIds.toArray(new String[userIds.size()]);\n+  }\n \n-    public IVisitServiceDao getVisitServiceDaoImpl() {\n-        return visitServiceDaoImpl;\n-    }\n+  @Override\n+  public int queryVisitsCount(@RequestBody VisitDto visitDto) {\n+    return visitServiceDaoImpl.queryVisitsCount(BeanConvertUtil.beanCovertMap(visitDto));\n+  }\n \n-    public void setVisitServiceDaoImpl(IVisitServiceDao visitServiceDaoImpl) {\n-        this.visitServiceDaoImpl = visitServiceDaoImpl;\n-    }\n+  public IVisitServiceDao getVisitServiceDaoImpl() {\n+    return visitServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public void setVisitServiceDaoImpl(IVisitServiceDao visitServiceDaoImpl) {\n+    this.visitServiceDaoImpl = visitServiceDaoImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n+\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 71
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 154).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/156/VisitInnerServiceSMOImpl.java\nindex 5fc30dda07..6e46eca92b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/156/VisitInnerServiceSMOImpl.java\n@@ -110,4 +110,4 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 154).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/156/VisitInnerServiceSMOImpl.java\nindex 5fc30dda07..0b2b8e889b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/156/VisitInnerServiceSMOImpl.java\n@@ -1,10 +1,8 @@\n package com.java110.community.smo.impl;\n \n-\n import com.java110.common.util.BeanConvertUtil;\n import com.java110.community.dao.IVisitServiceDao;\n import com.java110.core.base.smo.BaseServiceSMO;\n-\n import com.java110.core.smo.user.IUserInnerServiceSMO;\n import com.java110.core.smo.visit.IVisitInnerServiceSMO;\n import com.java110.dto.PageDto;\n@@ -13,7 +11,6 @@ import com.java110.dto.visit.VisitDto;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.ArrayList;\n import java.util.List;\n \n@@ -25,6 +22,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitInnerServiceSMO {\n \n@@ -35,19 +34,16 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n     private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n     @Override\n-    public List<VisitDto> queryVisits(@RequestBody  VisitDto visitDto) {\n+    public List<VisitDto> queryVisits(@RequestBody VisitDto visitDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = visitDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             visitDto.setPage((page - 1) * visitDto.getRow());\n             visitDto.setRow(page * visitDto.getRow());\n         }\n \n         List<VisitDto> visits = BeanConvertUtil.covertBeanList(visitServiceDaoImpl.getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n-\n         if (visits == null || visits.size() == 0) {\n             return visits;\n         }\n@@ -55,10 +51,10 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n         String[] userIds = getUserIds(visits);\n         //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n         List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n-\n         for (VisitDto visit : visits) {\n             refreshVisit(visit, users);\n         }\n+\n         return visits;\n     }\n \n@@ -68,6 +64,8 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n      * @param visit \u5c0f\u533a\u8bbf\u5ba2\u4fe1\u606f\u4fe1\u606f\n      * @param users \u7528\u6237\u5217\u8868\n      */\n+\n+\n     private void refreshVisit(VisitDto visit, List<UserDto> users) {\n         for (UserDto user : users) {\n             if (visit.getUserId().equals(user.getUserId())) {\n@@ -82,6 +80,8 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n      * @param visits \u5c0f\u533a\u697c\u4fe1\u606f\n      * @return \u6279\u91cfuserIds \u4fe1\u606f\n      */\n+\n+\n     private String[] getUserIds(List<VisitDto> visits) {\n         List<String> userIds = new ArrayList<String>();\n         for (VisitDto visit : visits) {\n@@ -91,9 +91,11 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n         return userIds.toArray(new String[userIds.size()]);\n     }\n \n+\n     @Override\n     public int queryVisitsCount(@RequestBody VisitDto visitDto) {\n-        return visitServiceDaoImpl.queryVisitsCount(BeanConvertUtil.beanCovertMap(visitDto));    }\n+        return visitServiceDaoImpl.queryVisitsCount(BeanConvertUtil.beanCovertMap(visitDto));\n+    }\n \n     public IVisitServiceDao getVisitServiceDaoImpl() {\n         return visitServiceDaoImpl;\n@@ -110,4 +112,4 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "47",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/156/VisitInnerServiceSMOImpl.java\nindex 5fc30dda07..11271d1c84 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/156/VisitInnerServiceSMOImpl.java\n@@ -44,9 +44,7 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n         if (page != PageDto.DEFAULT_PAGE) {\n             visitDto.setPage((page - 1) * visitDto.getRow());\n             visitDto.setRow(page * visitDto.getRow());\n-        }\n-\n-        List<VisitDto> visits = BeanConvertUtil.covertBeanList(visitServiceDaoImpl.getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n+        } List<VisitDto> visits = BeanConvertUtil.covertBeanList(visitServiceDaoImpl.getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n \n         if (visits == null || visits.size() == 0) {\n             return visits;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "47",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "47",
+                    "column": "31",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "47",
+                    "column": "31",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/156/VisitInnerServiceSMOImpl.java\nindex 5fc30dda07..c1e3d6a8d1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/156/VisitInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/156/VisitInnerServiceSMOImpl.java\n@@ -44,9 +44,9 @@ public class VisitInnerServiceSMOImpl extends BaseServiceSMO implements IVisitIn\n         if (page != PageDto.DEFAULT_PAGE) {\n             visitDto.setPage((page - 1) * visitDto.getRow());\n             visitDto.setRow(page * visitDto.getRow());\n-        }\n+        } List<VisitDto>visits=BeanConvertUtil.covertBeanList(\n \n-        List<VisitDto> visits = BeanConvertUtil.covertBeanList(visitServiceDaoImpl.getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n+        visitServiceDaoImpl .getVisitInfo(BeanConvertUtil.beanCovertMap(visitDto)), VisitDto.class);\n \n         if (visits == null || visits.size() == 0) {\n             return visits;\n",
+            "diff_size": 2
+        }
+    ]
+}

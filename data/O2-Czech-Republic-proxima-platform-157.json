@@ -1,0 +1,97 @@
+{
+    "error_id": "157",
+    "information": {
+        "errors": [
+            {
+                "line": "31",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 92).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  public void testModelGeneration() throws Exception {\n    ModelGenerator generator =\n        new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"), false);\n    StringWriter writer = new StringWriter();\n    generator.generate(ConfigFactory.load(\"test-reference.conf\"), writer);\n    assertFalse(writer.toString().isEmpty());",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/157/ModelGeneratorTest.java\nindex 13b6521a34..d6e86e8cfc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/157/ModelGeneratorTest.java\n@@ -28,7 +28,8 @@ public class ModelGeneratorTest {\n   @Test\n   public void testModelGeneration() throws Exception {\n     ModelGenerator generator =\n-        new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"), false);\n+        new ModelGenerator(\"test\", \"Test\", newFile(\"ignored\" ),newFile(\"ignored\"\n+        ) ,false);\n     StringWriter writer = new StringWriter();\n     generator.generate(ConfigFactory.load(\"test-reference.conf\"), writer);\n     assertFalse(writer.toString().isEmpty());\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/157/ModelGeneratorTest.java\nindex 13b6521a34..8000c7f227 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/157/ModelGeneratorTest.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.generator;\n \n import static org.junit.Assert.*;\n@@ -28,7 +29,8 @@ public class ModelGeneratorTest {\n   @Test\n   public void testModelGeneration() throws Exception {\n     ModelGenerator generator =\n-        new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"), false);\n+        new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"),\n+            false);\n     StringWriter writer = new StringWriter();\n     generator.generate(ConfigFactory.load(\"test-reference.conf\"), writer);\n     assertFalse(writer.toString().isEmpty());\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 92).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/157/ModelGeneratorTest.java\nindex 13b6521a34..cf77ed219f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/157/ModelGeneratorTest.java\n@@ -29,7 +29,8 @@ public class ModelGeneratorTest {\n   public void testModelGeneration() throws Exception {\n     ModelGenerator generator =\n         new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"), false);\n-    StringWriter writer = new StringWriter();\n+\n+        StringWriter writer = new StringWriter();\n     generator.generate(ConfigFactory.load(\"test-reference.conf\"), writer);\n     assertFalse(writer.toString().isEmpty());\n     // validate we have some imports from direct submodule\n@@ -37,4 +38,4 @@ public class ModelGeneratorTest {\n     // and that we have some code related to CommitLogReader\n     assertTrue(writer.toString().contains(\"CommitLogReader\"));\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 115).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/157/ModelGeneratorTest.java\nindex 13b6521a34..e804ebac1b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/157/ModelGeneratorTest.java\n@@ -16,19 +16,19 @@\n package cz.o2.proxima.generator;\n \n import static org.junit.Assert.*;\n-\n import com.typesafe.config.ConfigFactory;\n import java.io.File;\n import java.io.StringWriter;\n import org.junit.Test;\n \n /** Briefly test {@link ModelGenerator}. */\n+\n+\n public class ModelGeneratorTest {\n \n-  @Test\n-  public void testModelGeneration() throws Exception {\n-    ModelGenerator generator =\n-        new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"), false);\n+    @Test\n+    public void testModelGeneration() throws Exception {\n+    ModelGenerator generator = new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"), false);\n     StringWriter writer = new StringWriter();\n     generator.generate(ConfigFactory.load(\"test-reference.conf\"), writer);\n     assertFalse(writer.toString().isEmpty());\n@@ -36,5 +36,5 @@ public class ModelGeneratorTest {\n     assertTrue(writer.toString().contains(\".direct.\"));\n     // and that we have some code related to CommitLogReader\n     assertTrue(writer.toString().contains(\"CommitLogReader\"));\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/157/ModelGeneratorTest.java\nindex 13b6521a34..d6e86e8cfc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/157/ModelGeneratorTest.java\n@@ -28,7 +28,8 @@ public class ModelGeneratorTest {\n   @Test\n   public void testModelGeneration() throws Exception {\n     ModelGenerator generator =\n-        new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"), false);\n+        new ModelGenerator(\"test\", \"Test\", newFile(\"ignored\" ),newFile(\"ignored\"\n+        ) ,false);\n     StringWriter writer = new StringWriter();\n     generator.generate(ConfigFactory.load(\"test-reference.conf\"), writer);\n     assertFalse(writer.toString().isEmpty());\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "'new' has incorrect indentation level 6, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/157/ModelGeneratorTest.java\nindex 13b6521a34..0fecf9410f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/157/ModelGeneratorTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/157/ModelGeneratorTest.java\n@@ -28,8 +28,8 @@ public class ModelGeneratorTest {\n   @Test\n   public void testModelGeneration() throws Exception {\n     ModelGenerator generator =\n-        new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"), false);\n-    StringWriter writer = new StringWriter();\n+      new ModelGenerator(\"test\", \"Test\", new File(\"ignored\"), new File(\"ignored\"), false);\n+  StringWriter writer = new StringWriter();\n     generator.generate(ConfigFactory.load(\"test-reference.conf\"), writer);\n     assertFalse(writer.toString().isEmpty());\n     // validate we have some imports from direct submodule\n",
+            "diff_size": 2
+        }
+    ]
+}

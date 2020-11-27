@@ -1,0 +1,160 @@
+{
+    "error_id": "154",
+    "information": {
+        "errors": [
+            {
+                "line": "47",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 128).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        String prefix = \"x\";\n        NamedParameter parameter = new NamedParameter(ScriptGroupStep.PROPERTY_SCRIPT, \"s\", script);\n        return listWithJQL(buildQlSelect(prefix) + startWhere() + buildWhereClause(Operation.IN, prefix, parameter), parameter);\n    }\n\n}",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "49",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "27",
+                    "severity": "warning",
+                    "message": "'+' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "27",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "52",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/154/ScriptGroupStepDao.java\nindex 6891917b14..d10e052be2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/154/ScriptGroupStepDao.java\n@@ -44,7 +44,13 @@ public class ScriptGroupStepDao extends BaseDao<ScriptGroupStep> {\n     public List<ScriptGroupStep> getScriptGroupsForScript(Script script) {\n         String prefix = \"x\";\n         NamedParameter parameter = new NamedParameter(ScriptGroupStep.PROPERTY_SCRIPT, \"s\", script);\n-        return listWithJQL(buildQlSelect(prefix) + startWhere() + buildWhereClause(Operation.IN, prefix, parameter), parameter);\n-    }\n+        return listWithJQL\n+\n+    (buildQlSelect(prefix)+\n+startWhere\n+\n+        () + buildWhereClause(Operation.IN, prefix, parameter), parameter);\n+     }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/154/ScriptGroupStepDao.java\nindex 6891917b14..097ae25349 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/154/ScriptGroupStepDao.java\n@@ -1,6 +1,7 @@\n /**\n  * Copyright 2011 Intuit Inc. All Rights Reserved\n  */\n+\n package com.intuit.tank.dao;\n \n /*\n@@ -23,28 +24,27 @@ import com.intuit.tank.project.ScriptGroupStep;\n \n /**\n  * ProductDao\n- * \n+ *\n  * @author dangleton\n- * \n  */\n public class ScriptGroupStepDao extends BaseDao<ScriptGroupStep> {\n \n-    /**\n-     * @param entityClass\n-     */\n-    public ScriptGroupStepDao() {\n-        super();\n-    }\n-\n-    /**\n-     * \n-     * @param script\n-     * @return\n-     */\n-    public List<ScriptGroupStep> getScriptGroupsForScript(Script script) {\n-        String prefix = \"x\";\n-        NamedParameter parameter = new NamedParameter(ScriptGroupStep.PROPERTY_SCRIPT, \"s\", script);\n-        return listWithJQL(buildQlSelect(prefix) + startWhere() + buildWhereClause(Operation.IN, prefix, parameter), parameter);\n-    }\n+  /**\n+   * @param entityClass\n+   */\n+  public ScriptGroupStepDao() {\n+    super();\n+  }\n+\n+  /**\n+   * @param script\n+   * @return\n+   */\n+  public List<ScriptGroupStep> getScriptGroupsForScript(Script script) {\n+    String prefix = \"x\";\n+    NamedParameter parameter = new NamedParameter(ScriptGroupStep.PROPERTY_SCRIPT, \"s\", script);\n+    return listWithJQL(buildQlSelect(prefix) + startWhere() + buildWhereClause(Operation.IN, prefix, parameter),\n+      parameter);\n+  }\n \n }\n",
+            "diff_size": 20
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 128).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/154/ScriptGroupStepDao.java\nindex 6891917b14..4e185ea041 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/154/ScriptGroupStepDao.java\n@@ -47,4 +47,4 @@ public class ScriptGroupStepDao extends BaseDao<ScriptGroupStep> {\n         return listWithJQL(buildQlSelect(prefix) + startWhere() + buildWhereClause(Operation.IN, prefix, parameter), parameter);\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "52",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 128).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/154/ScriptGroupStepDao.java\nindex 6891917b14..23ccfd32d9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/154/ScriptGroupStepDao.java\n@@ -16,8 +16,9 @@ package com.intuit.tank.dao;\n  * #L%\n  */\n \n-import java.util.List;\n \n+\n+import java.util.List;\n import com.intuit.tank.project.Script;\n import com.intuit.tank.project.ScriptGroupStep;\n \n@@ -27,11 +28,13 @@ import com.intuit.tank.project.ScriptGroupStep;\n  * @author dangleton\n  * \n  */\n+\n public class ScriptGroupStepDao extends BaseDao<ScriptGroupStep> {\n \n     /**\n      * @param entityClass\n      */\n+\n     public ScriptGroupStepDao() {\n         super();\n     }\n@@ -41,10 +44,11 @@ public class ScriptGroupStepDao extends BaseDao<ScriptGroupStep> {\n      * @param script\n      * @return\n      */\n+\n+\n     public List<ScriptGroupStep> getScriptGroupsForScript(Script script) {\n         String prefix = \"x\";\n         NamedParameter parameter = new NamedParameter(ScriptGroupStep.PROPERTY_SCRIPT, \"s\", script);\n         return listWithJQL(buildQlSelect(prefix) + startWhere() + buildWhereClause(Operation.IN, prefix, parameter), parameter);\n     }\n-\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "49",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "27",
+                    "severity": "warning",
+                    "message": "'+' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "27",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "52",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/154/ScriptGroupStepDao.java\nindex 6891917b14..d10e052be2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/154/ScriptGroupStepDao.java\n@@ -44,7 +44,13 @@ public class ScriptGroupStepDao extends BaseDao<ScriptGroupStep> {\n     public List<ScriptGroupStep> getScriptGroupsForScript(Script script) {\n         String prefix = \"x\";\n         NamedParameter parameter = new NamedParameter(ScriptGroupStep.PROPERTY_SCRIPT, \"s\", script);\n-        return listWithJQL(buildQlSelect(prefix) + startWhere() + buildWhereClause(Operation.IN, prefix, parameter), parameter);\n-    }\n+        return listWithJQL\n+\n+    (buildQlSelect(prefix)+\n+startWhere\n+\n+        () + buildWhereClause(Operation.IN, prefix, parameter), parameter);\n+     }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "47",
+                    "column": "84",
+                    "severity": "warning",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "48",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "48",
+                    "column": "14",
+                    "severity": "warning",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "19",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "21",
+                    "severity": "warning",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/154/ScriptGroupStepDao.java\nindex 6891917b14..599a1076f7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/154/ScriptGroupStepDao.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/154/ScriptGroupStepDao.java\n@@ -44,7 +44,10 @@ public class ScriptGroupStepDao extends BaseDao<ScriptGroupStep> {\n     public List<ScriptGroupStep> getScriptGroupsForScript(Script script) {\n         String prefix = \"x\";\n         NamedParameter parameter = new NamedParameter(ScriptGroupStep.PROPERTY_SCRIPT, \"s\", script);\n-        return listWithJQL(buildQlSelect(prefix) + startWhere() + buildWhereClause(Operation.IN, prefix, parameter), parameter);\n-    }\n+        return listWithJQL(buildQlSelect(prefix) + startWhere() + buildWhereClause (Operation\n+        . IN , prefix,\n+        parameter ) , parameter);\n+     }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 6
+        }
+    ]
+}

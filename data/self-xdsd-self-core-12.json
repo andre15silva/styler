@@ -1,0 +1,213 @@
+{
+    "error_id": "12",
+    "information": {
+        "errors": [
+            {
+                "line": "95",
+                "column": "15",
+                "severity": "error",
+                "message": "'if' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+            }
+        ]
+    },
+    "source_code": "                );\n            final int status = response.statusCode();\n            if(status == HttpURLConnection.HTTP_OK) {\n                return Json.createReader(\n                    new StringReader(response.body())\n                ).readArray();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler/12/GithubRepoInvitations.java\nindex c68327eda4..8c387108b8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler/12/GithubRepoInvitations.java\n@@ -92,7 +92,7 @@ final class GithubRepoInvitations implements Invitations {\n                     HttpResponse.BodyHandlers.ofString()\n                 );\n             final int status = response.statusCode();\n-            if(status == HttpURLConnection.HTTP_OK) {\n+            if (status == HttpURLConnection.HTTP_OK) {\n                 return Json.createReader(\n                     new StringReader(response.body())\n                 ).readArray();\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "@param tag description should start with capital letter",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/intellij/12/GithubRepoInvitations.java\nindex c68327eda4..b67c80a59a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/intellij/12/GithubRepoInvitations.java\n@@ -20,6 +20,7 @@\n  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n  * POSSIBILITY OF SUCH DAMAGE.\n  */\n+\n package com.selfxdsd.core;\n \n import com.selfxdsd.api.Invitation;\n@@ -38,12 +39,13 @@ import java.util.Iterator;\n \n /**\n  * Github Repo invitations.\n+ *\n  * @author Mihai Andronache (amihaiemil@gmail.com)\n  * @version $Id$\n- * @since 0.0.7\n  * @todo #190:30min Add an implementation of interface Invitation,\n- *  called GithubInvitation, which will take the invitation's JSON\n- *  and work with it.\n+ * called GithubInvitation, which will take the invitation's JSON\n+ * and work with it.\n+ * @since 0.0.7\n  */\n final class GithubRepoInvitations implements Invitations {\n \n@@ -59,8 +61,9 @@ final class GithubRepoInvitations implements Invitations {\n \n     /**\n      * Ctor.\n+     *\n      * @param repoInvitationsUri API uri.\n-     * @param accessToken User access token.\n+     * @param accessToken        User access token.\n      */\n     GithubRepoInvitations(\n         final URI repoInvitationsUri,\n@@ -78,6 +81,7 @@ final class GithubRepoInvitations implements Invitations {\n \n     /**\n      * Fetch invitations.\n+     *\n      * @return JsonArray.\n      */\n     private JsonArray fetchInvitations() {\n@@ -92,21 +96,21 @@ final class GithubRepoInvitations implements Invitations {\n                     HttpResponse.BodyHandlers.ofString()\n                 );\n             final int status = response.statusCode();\n-            if(status == HttpURLConnection.HTTP_OK) {\n+            if (status == HttpURLConnection.HTTP_OK) {\n                 return Json.createReader(\n                     new StringReader(response.body())\n                 ).readArray();\n             } else {\n                 throw new IllegalStateException(\n                     \"Unexpected response when fetching [\"\n-                  + this.repoInvitationsUri +\"]. \"\n-                  + \"Expected 200 OK, but got \" + status + \".\"\n+                        + this.repoInvitationsUri + \"]. \"\n+                        + \"Expected 200 OK, but got \" + status + \".\"\n                 );\n             }\n         } catch (final IOException | InterruptedException ex) {\n             throw new IllegalStateException(\n                 \"Couldn't fetch invitations + [\"\n-              + this.repoInvitationsUri.toString() +\"]\",\n+                    + this.repoInvitationsUri.toString() + \"]\",\n                 ex\n             );\n         }\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "85",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 280).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "87",
+                    "column": "15",
+                    "severity": "error",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 95).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/naturalize/12/GithubRepoInvitations.java\nindex c68327eda4..70cd9ef5c3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/naturalize/12/GithubRepoInvitations.java\n@@ -82,33 +82,19 @@ final class GithubRepoInvitations implements Invitations {\n      */\n     private JsonArray fetchInvitations() {\n         try {\n-            final HttpResponse<String> response = HttpClient.newHttpClient()\n-                .send(\n-                    HttpRequest.newBuilder()\n-                        .uri(this.repoInvitationsUri)\n-                        .header(\"Content-Type\", \"application/json\")\n-                        .headers(\"Authorization\", \"token \" + this.accessToken)\n-                        .build(),\n-                    HttpResponse.BodyHandlers.ofString()\n-                );\n+            final HttpResponse<String> response = HttpClient.newHttpClient().send(HttpRequest.newBuilder().uri(this.repoInvitationsUri).header(\"Content-Type\", \"application/json\").headers(\"Authorization\", \"token \" + this.accessToken).build(), HttpResponse.BodyHandlers.ofString());\n             final int status = response.statusCode();\n             if(status == HttpURLConnection.HTTP_OK) {\n                 return Json.createReader(\n-                    new StringReader(response.body())\n-                ).readArray();\n+                    new StringReader(response.body())).readArray();\n             } else {\n                 throw new IllegalStateException(\n-                    \"Unexpected response when fetching [\"\n-                  + this.repoInvitationsUri +\"]. \"\n-                  + \"Expected 200 OK, but got \" + status + \".\"\n-                );\n+                    \"Unexpected response when fetching [\" + this.repoInvitationsUri + \"]. \" + \"Expected 200 OK, but got \" + status + \".\");\n             }\n         } catch (final IOException | InterruptedException ex) {\n             throw new IllegalStateException(\n-                \"Couldn't fetch invitations + [\"\n-              + this.repoInvitationsUri.toString() +\"]\",\n-                ex\n+                \"Couldn't fetch invitations + [\" + this.repoInvitationsUri.toString() + \"]\", ex\n             );\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 83).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 280).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "92",
+                    "column": "15",
+                    "severity": "error",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "92",
+                    "column": "16",
+                    "severity": "error",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 56, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 98).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 115).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 52, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "column": "53",
+                    "severity": "error",
+                    "message": "'}' at column 53 should be on the same line as the next part of a multi-block statement (one that directly contains multiple blocks: if/else-if/else, do/while or try/catch/finally).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "'else' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 9, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be on the same line as the next part of a multi-block statement (one that directly contains multiple blocks: if/else-if/else, do/while or try/catch/finally).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "'catch' has incorrect indentation level 12, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 16, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 12, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/codebuff/12/GithubRepoInvitations.java\nindex c68327eda4..71e84d5dfa 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/codebuff/12/GithubRepoInvitations.java\n@@ -24,7 +24,6 @@ package com.selfxdsd.core;\n \n import com.selfxdsd.api.Invitation;\n import com.selfxdsd.api.Invitations;\n-\n import javax.json.Json;\n import javax.json.JsonArray;\n import java.io.IOException;\n@@ -45,16 +44,22 @@ import java.util.Iterator;\n  *  called GithubInvitation, which will take the invitation's JSON\n  *  and work with it.\n  */\n+\n+\n final class GithubRepoInvitations implements Invitations {\n \n     /**\n      * API uri for the repo invitations.\n      */\n+\n+\n     private final URI repoInvitationsUri;\n \n     /**\n      * User access token.\n      */\n+\n+\n     private final String accessToken;\n \n     /**\n@@ -62,10 +67,9 @@ final class GithubRepoInvitations implements Invitations {\n      * @param repoInvitationsUri API uri.\n      * @param accessToken User access token.\n      */\n-    GithubRepoInvitations(\n-        final URI repoInvitationsUri,\n-        final String accessToken\n-    ) {\n+\n+\n+    GithubRepoInvitations(final URI repoInvitationsUri, final String accessToken) {\n         this.repoInvitationsUri = repoInvitationsUri;\n         this.accessToken = accessToken;\n     }\n@@ -80,35 +84,24 @@ final class GithubRepoInvitations implements Invitations {\n      * Fetch invitations.\n      * @return JsonArray.\n      */\n+\n     private JsonArray fetchInvitations() {\n         try {\n-            final HttpResponse<String> response = HttpClient.newHttpClient()\n-                .send(\n-                    HttpRequest.newBuilder()\n-                        .uri(this.repoInvitationsUri)\n-                        .header(\"Content-Type\", \"application/json\")\n-                        .headers(\"Authorization\", \"token \" + this.accessToken)\n-                        .build(),\n-                    HttpResponse.BodyHandlers.ofString()\n-                );\n+            final HttpResponse<String> response = HttpClient.newHttpClient().send(HttpRequest.newBuilder().uri(this.repoInvitationsUri).header(\"Content-Type\", \"application/json\").headers(\"Authorization\", \"token \" + this.accessToken).build(), HttpResponse.BodyHandlers.ofString());\n             final int status = response.statusCode();\n-            if(status == HttpURLConnection.HTTP_OK) {\n-                return Json.createReader(\n-                    new StringReader(response.body())\n-                ).readArray();\n-            } else {\n-                throw new IllegalStateException(\n-                    \"Unexpected response when fetching [\"\n-                  + this.repoInvitationsUri +\"]. \"\n-                  + \"Expected 200 OK, but got \" + status + \".\"\n-                );\n-            }\n-        } catch (final IOException | InterruptedException ex) {\n-            throw new IllegalStateException(\n-                \"Couldn't fetch invitations + [\"\n-              + this.repoInvitationsUri.toString() +\"]\",\n-                ex\n-            );\n+            if( status== HttpURLConnection.HTTP_OK) {\n+                                                        return Json.createReader(new StringReader(\n+                                                                                     response.body())).readArray();\n+                                                    }\n+\n+else {\n+         throw new IllegalStateException(\n+             \"Unexpected response when fetching [\" + this.repoInvitationsUri + \"]. \" + \"Expected 200 OK, but got \" + status + \".\");\n+     }\n         }\n+\n+            catch(final IOException| InterruptedException ex) {\n+                throw new IllegalStateException(\"Couldn't fetch invitations + [\" + this.repoInvitationsUri.toString() + \"]\", ex);\n+            }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 43
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_random/12/GithubRepoInvitations.java\nindex c68327eda4..8c387108b8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_random/12/GithubRepoInvitations.java\n@@ -92,7 +92,7 @@ final class GithubRepoInvitations implements Invitations {\n                     HttpResponse.BodyHandlers.ofString()\n                 );\n             final int status = response.statusCode();\n-            if(status == HttpURLConnection.HTTP_OK) {\n+            if (status == HttpURLConnection.HTTP_OK) {\n                 return Json.createReader(\n                     new StringReader(response.body())\n                 ).readArray();\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "'(' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "column": "14",
+                    "severity": "error",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_three_grams/12/GithubRepoInvitations.java\nindex c68327eda4..298a0ba705 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/12/GithubRepoInvitations.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_three_grams/12/GithubRepoInvitations.java\n@@ -92,7 +92,8 @@ final class GithubRepoInvitations implements Invitations {\n                     HttpResponse.BodyHandlers.ofString()\n                 );\n             final int status = response.statusCode();\n-            if(status == HttpURLConnection.HTTP_OK) {\n+            if\n+            ( status == HttpURLConnection.HTTP_OK) {\n                 return Json.createReader(\n                     new StringReader(response.body())\n                 ).readArray();\n",
+            "diff_size": 2
+        }
+    ]
+}

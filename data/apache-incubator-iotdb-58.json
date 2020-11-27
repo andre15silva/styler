@@ -1,0 +1,497 @@
+{
+    "error_id": "58",
+    "information": {
+        "errors": [
+            {
+                "line": "19",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * under the License.\n */\npackage org.apache.iotdb.tsfile.read.filter.operator;\n\nimport org.apache.iotdb.tsfile.read.filter.DigestForFilter;\nimport org.apache.iotdb.tsfile.read.filter.basic.Filter;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler/58/Eq.java\nindex 21cce69dd0..9a36a024c2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler/58/Eq.java\n@@ -16,6 +16,7 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n+\n package org.apache.iotdb.tsfile.read.filter.operator;\n \n import org.apache.iotdb.tsfile.read.filter.DigestForFilter;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/intellij/58/Eq.java\nindex 21cce69dd0..9a36a024c2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/intellij/58/Eq.java\n@@ -16,6 +16,7 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n+\n package org.apache.iotdb.tsfile.read.filter.operator;\n \n import org.apache.iotdb.tsfile.read.filter.DigestForFilter;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "46",
+                    "column": "56",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '&&' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/58/Eq.java\nindex 21cce69dd0..9398e7a009 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/58/Eq.java\n@@ -29,8 +29,7 @@ import org.apache.iotdb.tsfile.read.filter.factory.FilterType;\n  * @param <T> comparable data type\n  */\n public class Eq<T extends Comparable<T>> extends UnaryFilter<T> {\n-\n-  private static final long serialVersionUID = -6668083116644568248L;\n+private static final long serialVersionUID = -6668083116644568248L;\n \n   public Eq(T value, FilterType filterType) {\n     super(value, filterType);\n@@ -44,9 +43,8 @@ public class Eq<T extends Comparable<T>> extends UnaryFilter<T> {\n       if (digest.isMinValueNull() || digest.isMaxValueNull()) {\n         return true;\n       }\n-      return value.compareTo(digest.getMinValue()) >= 0\n-          && value.compareTo(digest.getMaxValue()) <= 0;\n-    }\n+      return value.compareTo(digest.getMinValue()) >= 0&& value.compareTo(digest.getMaxValue()) <= 0;\n+  }\n   }\n \n   @Override\n@@ -89,7 +87,8 @@ public class Eq<T extends Comparable<T>> extends UnaryFilter<T> {\n \n   @Override\n   public String toString() {\n-    return getFilterType() + \" == \" + value;\n+    return getFilterType()\n+    + \" == \" + value;\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "20",
+                    "severity": "warning",
+                    "message": "'import' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "31",
+                    "column": "17",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "31",
+                    "column": "17",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "31",
+                    "column": "40",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "31",
+                    "column": "40",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "31",
+                    "column": "66",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "31",
+                    "column": "66",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "26",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '}' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "column": "30",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '>=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "42",
+                    "column": "52",
+                    "severity": "warning",
+                    "message": "'&&' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "42",
+                    "column": "52",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '&&' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "34",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '<=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "36",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "column": "53",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '>=' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "48",
+                    "column": "53",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '>=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "48",
+                    "column": "56",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '&&' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "48",
+                    "column": "96",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '<=' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "48",
+                    "column": "96",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '<=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "column": "52",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '?' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "53",
+                    "column": "58",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: ':' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "column": "17",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '>' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "60",
+                    "column": "26",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "60",
+                    "column": "33",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '<' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 49, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "72",
+                    "column": "29",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '&&' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 49, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 49, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/codebuff/58/Eq.java\nindex 21cce69dd0..a76c691e57 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/codebuff/58/Eq.java\n@@ -17,7 +17,6 @@\n  * under the License.\n  */\n package org.apache.iotdb.tsfile.read.filter.operator;\n-\n import org.apache.iotdb.tsfile.read.filter.DigestForFilter;\n import org.apache.iotdb.tsfile.read.filter.basic.Filter;\n import org.apache.iotdb.tsfile.read.filter.basic.UnaryFilter;\n@@ -28,68 +27,64 @@ import org.apache.iotdb.tsfile.read.filter.factory.FilterType;\n  *\n  * @param <T> comparable data type\n  */\n-public class Eq<T extends Comparable<T>> extends UnaryFilter<T> {\n \n-  private static final long serialVersionUID = -6668083116644568248L;\n+public class Eq < T extends Comparable < T>> extends UnaryFilter < T> {\n+\n+\n+    private static final long serialVersionUID = -6668083116644568248L;\n+\n+    public Eq(T value, FilterType filterType) {\n+super(value, filterType);}\n \n-  public Eq(T value, FilterType filterType) {\n-    super(value, filterType);\n-  }\n \n-  @Override\n-  public boolean satisfy(DigestForFilter digest) {\n-    if (filterType == FilterType.TIME_FILTER) {\n-      return ((Long) value) >= digest.getMinTime() && ((Long) value) <= digest.getMaxTime();\n+    @ Override public boolean satisfy(DigestForFilter digest) {\n+    if(filterType == FilterType.TIME_FILTER) {\n+        return ((Long) value)>= digest.getMinTime()&&\n+                   ((Long) value)<= digest.getMaxTime();\n     } else {\n-      if (digest.isMinValueNull() || digest.isMaxValueNull()) {\n-        return true;\n-      }\n-      return value.compareTo(digest.getMinValue()) >= 0\n-          && value.compareTo(digest.getMaxValue()) <= 0;\n+        if (digest.isMinValueNull()|| digest.isMaxValueNull()) {\n+               return true;\n+        }\n+        return value.compareTo(digest.getMinValue())>=0&& value.compareTo(digest.getMaxValue())<=0;\n+    }\n     }\n-  }\n \n-  @Override\n-  public boolean satisfy(long time, Object value) {\n-    Object v = filterType == FilterType.TIME_FILTER ? time : value;\n+    @ Override public boolean satisfy(long time, Object value) {\n+    Object v = filterType == FilterType.TIME_FILTER? time: value;\n     return this.value.equals(v);\n-  }\n+    }\n \n-  @Override\n-  public boolean satisfyStartEndTime(long startTime, long endTime) {\n-    if (filterType == FilterType.TIME_FILTER) {\n-      long time = (Long) value;\n-      if (time > endTime || time < startTime) {\n-        return false;\n-      }\n-      return true;\n+    @ Override public boolean satisfyStartEndTime(long startTime, long endTime) {\n+    if(filterType == FilterType.TIME_FILTER) {\n+        long time = (Long) value;\n+        if (time> endTime|| time< startTime) {\n+                                                 return false;\n+        }\n+        return true;\n     } else {\n-      return true;\n+        return true;\n+    }\n     }\n-  }\n \n-  @Override\n-  public boolean containStartEndTime(long startTime, long endTime) {\n-    if (filterType == FilterType.TIME_FILTER) {\n-      long time = (Long) value;\n-      if (time == startTime && time == endTime) {\n-        return true;\n-      } else {\n-        return false;\n-      }\n+    @ Override public boolean containStartEndTime(long startTime, long endTime) {\n+    if(filterType == FilterType.TIME_FILTER) {\n+        long time = (Long) value;\n+        if(time == startTime&& time == endTime) {\n+                                                 return true;\n+        } else {\n+                                                 return false;\n+        }\n     } else {\n-      return true;\n+        return true;\n+    }\n     }\n-  }\n \n-  @Override\n-  public Filter clone() {\n+    @ Override public Filter clone() {\n     return new Eq(value, filterType);\n-  }\n+    }\n \n-  @Override\n-  public String toString() {\n+    @ Override public String toString() {\n     return getFilterType() + \" == \" + value;\n-  }\n+    }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 56
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/58/Eq.java\nindex 21cce69dd0..9a36a024c2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/58/Eq.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/58/Eq.java\n@@ -16,6 +16,7 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n+\n package org.apache.iotdb.tsfile.read.filter.operator;\n \n import org.apache.iotdb.tsfile.read.filter.DigestForFilter;\n",
+            "diff_size": 1
+        }
+    ]
+}

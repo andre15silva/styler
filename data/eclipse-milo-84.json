@@ -1,0 +1,85 @@
+{
+    "error_id": "84",
+    "information": {
+        "errors": [
+            {
+                "line": "22",
+                "column": "34",
+                "severity": "error",
+                "message": "'}' at column 34 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "final class NodeIdConversions {\n\n    private NodeIdConversions() {}\n\n    @Nonnull\n    static ExpandedNodeId nodeIdToExpandedNodeId(@Nonnull NodeId nodeId) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'}' at column 34 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/84/NodeIdConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/84/NodeIdConversions.java\nindex 2e80a3e5ef..bb198a1746 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/84/NodeIdConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/84/NodeIdConversions.java\n@@ -19,7 +19,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;\n \n final class NodeIdConversions {\n \n-    private NodeIdConversions() {}\n+    private NodeIdConversions() {\n+    }\n \n     @Nonnull\n     static ExpandedNodeId nodeIdToExpandedNodeId(@Nonnull NodeId nodeId) {\n@@ -53,9 +54,12 @@ final class NodeIdConversions {\n     static Object implicitConversion(@Nonnull NodeId nodeId, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case ExpandedNodeId:    return nodeIdToExpandedNodeId(nodeId);\n-            case String:            return nodeIdToString(nodeId);\n-            default:                return null;\n+            case ExpandedNodeId:\n+                return nodeIdToExpandedNodeId(nodeId);\n+            case String:\n+                return nodeIdToString(nodeId);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'}' at column 34 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/84/NodeIdConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/84/NodeIdConversions.java\nindex 2e80a3e5ef..7cdd5ef7e5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/84/NodeIdConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/84/NodeIdConversions.java\n@@ -55,9 +55,10 @@ final class NodeIdConversions {\n         switch (targetType) {\n             case ExpandedNodeId:    return nodeIdToExpandedNodeId(nodeId);\n             case String:            return nodeIdToString(nodeId);\n-            default:                return null;\n+            default:\n+    return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/84/NodeIdConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/84/NodeIdConversions.java\nindex 2e80a3e5ef..26cf9703d3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/84/NodeIdConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/84/NodeIdConversions.java\n@@ -12,14 +12,14 @@ package org.eclipse.milo.opcua.sdk.server.events.conversions;\n \n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.stack.core.BuiltinDataType;\n import org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId;\n import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;\n \n final class NodeIdConversions {\n \n-    private NodeIdConversions() {}\n+    private NodeIdConversions() {\n+    }\n \n     @Nonnull\n     static ExpandedNodeId nodeIdToExpandedNodeId(@Nonnull NodeId nodeId) {\n@@ -32,13 +32,12 @@ final class NodeIdConversions {\n     }\n \n     @Nullable\n-    static Object convert(@Nonnull Object o, BuiltinDataType targetType, boolean implicit) {\n+    static Object convert(@Nonnull Object o, BuiltinDataType targetType,\n+                          boolean implicit) {\n         if (o instanceof NodeId) {\n             NodeId nodeId = (NodeId) o;\n \n-            return implicit ?\n-                implicitConversion(nodeId, targetType) :\n-                explicitConversion(nodeId, targetType);\n+            return implicit ? implicitConversion(nodeId, targetType) : explicitConversion(nodeId, targetType);\n         } else {\n             return null;\n         }\n@@ -53,11 +52,14 @@ final class NodeIdConversions {\n     static Object implicitConversion(@Nonnull NodeId nodeId, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case ExpandedNodeId:    return nodeIdToExpandedNodeId(nodeId);\n-            case String:            return nodeIdToString(nodeId);\n-            default:                return null;\n+            case ExpandedNodeId:\n+                return nodeIdToExpandedNodeId(nodeId);\n+            case String:\n+                return nodeIdToString(nodeId);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'}' at column 34 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'}' at column 34 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

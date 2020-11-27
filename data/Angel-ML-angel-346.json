@@ -1,0 +1,106 @@
+{
+    "error_id": "346",
+    "information": {
+        "errors": [
+            {
+                "line": "69",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 105).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        return;\n      default:\n        throw new RuntimeException(\"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\");\n    }\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/346/VAUpdateFunc.java\nindex d3445b3d57..7f2aff802a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/346/VAUpdateFunc.java\n@@ -66,7 +66,7 @@ public abstract class VAUpdateFunc extends UpdateFunc {\n         doUpdate((ServerSparseDoubleLongKeyRow) row, arraySlice);\n         return;\n       default:\n-        throw new RuntimeException(\"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\");\n+      throw new RuntimeException(\"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\");\n     }\n   }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/346/VAUpdateFunc.java\nindex d3445b3d57..e8d61a110b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/346/VAUpdateFunc.java\n@@ -30,49 +30,51 @@ import com.tencent.angel.ps.impl.matrix.ServerSparseDoubleLongKeyRow;\n  */\n public abstract class VAUpdateFunc extends UpdateFunc {\n \n-  public VAUpdateFunc(int matrixId, int rowId, double[] array) {\n-    super(new VAUpdateParam(matrixId, rowId, array));\n-  }\n+    public VAUpdateFunc(int matrixId, int rowId, double[] array) {\n+        super(new VAUpdateParam(matrixId, rowId, array));\n+    }\n \n-  public VAUpdateFunc() {\n-    super(null);\n-  }\n+    public VAUpdateFunc() {\n+        super(null);\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n-    ServerPartition part =\n-        PSContext.get().getMatrixPartitionManager()\n-            .getPartition(partParam.getMatrixId(), partParam.getPartKey().getPartitionId());\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n+        ServerPartition part =\n+                PSContext.get().getMatrixPartitionManager()\n+                        .getPartition(partParam.getMatrixId(),\n+                                partParam.getPartKey().getPartitionId());\n \n-    if (part != null) {\n-      VAUpdateParam.VAPartitionUpdateParam va =\n-          (VAUpdateParam.VAPartitionUpdateParam) partParam;\n-      int rowId = va.getRowId();\n-      if (Utils.withinPart(partParam.getPartKey(), new int[]{rowId})){\n-        ServerRow row = part.getRow(rowId);\n-        if (row != null) {\n-          update(row, va.getArray());\n+        if (part != null) {\n+            VAUpdateParam.VAPartitionUpdateParam va =\n+                    (VAUpdateParam.VAPartitionUpdateParam) partParam;\n+            int rowId = va.getRowId();\n+            if (Utils.withinPart(partParam.getPartKey(), new int[] {rowId})) {\n+                ServerRow row = part.getRow(rowId);\n+                if (row != null) {\n+                    update(row, va.getArray());\n+                }\n+            }\n         }\n-      }\n     }\n-  }\n \n-  private void update(ServerRow row, double[] arraySlice) {\n-    switch (row.getRowType()) {\n-      case T_DOUBLE_DENSE:\n-        doUpdate((ServerDenseDoubleRow) row, arraySlice);\n-        return;\n-      case T_DOUBLE_SPARSE_LONGKEY:\n-        doUpdate((ServerSparseDoubleLongKeyRow) row, arraySlice);\n-        return;\n-      default:\n-        throw new RuntimeException(\"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\");\n+    private void update(ServerRow row, double[] arraySlice) {\n+        switch (row.getRowType()) {\n+            case T_DOUBLE_DENSE:\n+                doUpdate((ServerDenseDoubleRow) row, arraySlice);\n+                return;\n+            case T_DOUBLE_SPARSE_LONGKEY:\n+                doUpdate((ServerSparseDoubleLongKeyRow) row, arraySlice);\n+                return;\n+            default:\n+                throw new RuntimeException(\n+                        \"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\");\n+        }\n     }\n-  }\n \n-  protected abstract void doUpdate(ServerDenseDoubleRow row, double[] arraySlice);\n+    protected abstract void doUpdate(ServerDenseDoubleRow row, double[] arraySlice);\n \n-  protected abstract void doUpdate(ServerSparseDoubleLongKeyRow row, double[] arraySlice);\n+    protected abstract void doUpdate(ServerSparseDoubleLongKeyRow row, double[] arraySlice);\n \n \n }\n",
+            "diff_size": 39
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/346/VAUpdateFunc.java\nindex d3445b3d57..a1fdd5a39f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/346/VAUpdateFunc.java\n@@ -48,7 +48,7 @@ public abstract class VAUpdateFunc extends UpdateFunc {\n       VAUpdateParam.VAPartitionUpdateParam va =\n           (VAUpdateParam.VAPartitionUpdateParam) partParam;\n       int rowId = va.getRowId();\n-      if (Utils.withinPart(partParam.getPartKey(), new int[]{rowId})){\n+      if (Utils.withinPart(partParam.getPartKey(), new int[]{rowId})) {\n         ServerRow row = part.getRow(rowId);\n         if (row != null) {\n           update(row, va.getArray());\n@@ -74,5 +74,4 @@ public abstract class VAUpdateFunc extends UpdateFunc {\n \n   protected abstract void doUpdate(ServerSparseDoubleLongKeyRow row, double[] arraySlice);\n \n-\n-}\n+  }\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 150).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/346/VAUpdateFunc.java\nindex d3445b3d57..bc5d84b792 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/346/VAUpdateFunc.java\n@@ -28,51 +28,46 @@ import com.tencent.angel.ps.impl.matrix.ServerSparseDoubleLongKeyRow;\n  * Constructor's Parameters include int `rowId` and double[] `array`, which correspond to\n  * ServerDenseDoubleRow `row` and double[] `array` in `doUpdate` interface respectively.\n  */\n+\n public abstract class VAUpdateFunc extends UpdateFunc {\n \n-  public VAUpdateFunc(int matrixId, int rowId, double[] array) {\n+    public VAUpdateFunc(int matrixId, int rowId, double[] array) {\n     super(new VAUpdateParam(matrixId, rowId, array));\n-  }\n+    }\n \n-  public VAUpdateFunc() {\n+    public VAUpdateFunc() {\n     super(null);\n-  }\n-\n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n-    ServerPartition part =\n-        PSContext.get().getMatrixPartitionManager()\n-            .getPartition(partParam.getMatrixId(), partParam.getPartKey().getPartitionId());\n+    }\n \n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n+    ServerPartition part = PSContext.get().getMatrixPartitionManager().getPartition(partParam.getMatrixId(), partParam.getPartKey().getPartitionId());\n     if (part != null) {\n-      VAUpdateParam.VAPartitionUpdateParam va =\n-          (VAUpdateParam.VAPartitionUpdateParam) partParam;\n-      int rowId = va.getRowId();\n-      if (Utils.withinPart(partParam.getPartKey(), new int[]{rowId})){\n+        VAUpdateParam.VAPartitionUpdateParam va = (VAUpdateParam.VAPartitionUpdateParam) partParam;\n+        int rowId = va.getRowId();\n+        if (Utils.withinPart(partParam.getPartKey(), new int[]{rowId})) {\n         ServerRow row = part.getRow(rowId);\n         if (row != null) {\n-          update(row, va.getArray());\n+            update(row, va.getArray());\n+        }\n         }\n-      }\n     }\n-  }\n+    }\n \n-  private void update(ServerRow row, double[] arraySlice) {\n+    private void update(ServerRow row, double[] arraySlice) {\n     switch (row.getRowType()) {\n-      case T_DOUBLE_DENSE:\n+        case T_DOUBLE_DENSE:\n         doUpdate((ServerDenseDoubleRow) row, arraySlice);\n         return;\n-      case T_DOUBLE_SPARSE_LONGKEY:\n+        case T_DOUBLE_SPARSE_LONGKEY:\n         doUpdate((ServerSparseDoubleLongKeyRow) row, arraySlice);\n         return;\n-      default:\n+        default:\n         throw new RuntimeException(\"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\");\n     }\n-  }\n-\n-  protected abstract void doUpdate(ServerDenseDoubleRow row, double[] arraySlice);\n-\n-  protected abstract void doUpdate(ServerSparseDoubleLongKeyRow row, double[] arraySlice);\n+    }\n \n+    protected abstract void doUpdate(ServerDenseDoubleRow row, double[] arraySlice);\n+    protected abstract void doUpdate(ServerSparseDoubleLongKeyRow row, double[] arraySlice);\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 34
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 189).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "69",
+                    "column": "189",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "No trailing whitespace allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/346/VAUpdateFunc.java\nindex d3445b3d57..4766b6c8a1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/346/VAUpdateFunc.java\n@@ -66,13 +66,10 @@ public abstract class VAUpdateFunc extends UpdateFunc {\n         doUpdate((ServerSparseDoubleLongKeyRow) row, arraySlice);\n         return;\n       default:\n-        throw new RuntimeException(\"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\");\n-    }\n-  }\n+        throw new RuntimeException(\"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\"); }} protected abstract void doUpdate(ServerDenseDoubleRow row, double[] arraySlice);\n \n-  protected abstract void doUpdate(ServerDenseDoubleRow row, double[] arraySlice);\n+        protected abstract void doUpdate(ServerSparseDoubleLongKeyRow row, double[] arraySlice);\n \n-  protected abstract void doUpdate(ServerSparseDoubleLongKeyRow row, double[] arraySlice);\n \n-\n-}\n+      }\n+      \n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/346/VAUpdateFunc.java\nindex d3445b3d57..7f2aff802a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/346/VAUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/346/VAUpdateFunc.java\n@@ -66,7 +66,7 @@ public abstract class VAUpdateFunc extends UpdateFunc {\n         doUpdate((ServerSparseDoubleLongKeyRow) row, arraySlice);\n         return;\n       default:\n-        throw new RuntimeException(\"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\");\n+      throw new RuntimeException(\"currently only supports T_DOUBLE_DENSE and T_DOUBLE_SPARSE_LONGKEY\");\n     }\n   }\n \n",
+            "diff_size": 1
+        }
+    ]
+}

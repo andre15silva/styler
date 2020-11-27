@@ -1,0 +1,47 @@
+{
+    "error_id": "121",
+    "information": {
+        "errors": [
+            {
+                "line": "58",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 137).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        String[] protocols = endpoints.stream().map(e -> e.getVersion().getValue()).toArray(String[]::new);\n\n        OcppWebSocketUpgrader upgradeStrategy = new OcppWebSocketUpgrader(policy, endpoints, chargePointRepository, notificationService);\n\n        DefaultHandshakeHandler handler = new DefaultHandshakeHandler(upgradeStrategy);\n        handler.setSupportedProtocols(protocols);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/121/WebSocketConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/121/WebSocketConfiguration.java\nindex 5b9ddc0efe..56268ee5a8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/121/WebSocketConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/121/WebSocketConfiguration.java\n@@ -34,12 +34,17 @@ import java.util.concurrent.TimeUnit;\n @Slf4j\n public class WebSocketConfiguration implements WebSocketConfigurer {\n \n-    @Autowired private ChargePointRepository chargePointRepository;\n-    @Autowired private NotificationService notificationService;\n+    @Autowired\n+    private ChargePointRepository chargePointRepository;\n+    @Autowired\n+    private NotificationService notificationService;\n \n-    @Autowired private Ocpp12WebSocketEndpoint ocpp12WebSocketEndpoint;\n-    @Autowired private Ocpp15WebSocketEndpoint ocpp15WebSocketEndpoint;\n-    @Autowired private Ocpp16WebSocketEndpoint ocpp16WebSocketEndpoint;\n+    @Autowired\n+    private Ocpp12WebSocketEndpoint ocpp12WebSocketEndpoint;\n+    @Autowired\n+    private Ocpp15WebSocketEndpoint ocpp15WebSocketEndpoint;\n+    @Autowired\n+    private Ocpp16WebSocketEndpoint ocpp16WebSocketEndpoint;\n \n     public static final long PING_INTERVAL = TimeUnit.MINUTES.toMinutes(15);\n     private static final long IDLE_TIMEOUT = TimeUnit.HOURS.toMillis(2);\n@@ -55,15 +60,16 @@ public class WebSocketConfiguration implements WebSocketConfigurer {\n         List<AbstractWebSocketEndpoint> endpoints = getEndpoints();\n         String[] protocols = endpoints.stream().map(e -> e.getVersion().getValue()).toArray(String[]::new);\n \n-        OcppWebSocketUpgrader upgradeStrategy = new OcppWebSocketUpgrader(policy, endpoints, chargePointRepository, notificationService);\n+        OcppWebSocketUpgrader upgradeStrategy =\n+            new OcppWebSocketUpgrader(policy, endpoints, chargePointRepository, notificationService);\n \n         DefaultHandshakeHandler handler = new DefaultHandshakeHandler(upgradeStrategy);\n         handler.setSupportedProtocols(protocols);\n \n         for (AbstractWebSocketEndpoint endpoint : endpoints) {\n             registry.addHandler(endpoint, \"/websocket/CentralSystemService/*\")\n-                    .setHandshakeHandler(handler)\n-                    .setAllowedOrigins(\"*\");\n+                .setHandshakeHandler(handler)\n+                .setAllowedOrigins(\"*\");\n         }\n     }\n \n",
+            "diff_size": 14
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

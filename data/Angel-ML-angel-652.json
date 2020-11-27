@@ -1,0 +1,100 @@
+{
+    "error_id": "652",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/652/ADMMState.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/652/ADMMState.java\nindex ecaf9b3d71..3c9497620a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/652/ADMMState.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/652/ADMMState.java\n@@ -26,52 +26,52 @@ import java.util.List;\n \n public class ADMMState {\n \n-  List<LabeledData> instances;\n-  double[] x;\n-  double[] u;\n-  Int2IntOpenHashMap global2Local;\n-  int[] local2Global;\n-  int localFeatureNum;\n+    List<LabeledData> instances;\n+    double[] x;\n+    double[] u;\n+    Int2IntOpenHashMap global2Local;\n+    int[] local2Global;\n+    int localFeatureNum;\n \n-  public ADMMState(List<LabeledData> instances) {\n-    extractFeature(instances);\n-    x = new double[localFeatureNum];\n-    u = new double[localFeatureNum];\n-    this.instances = instances;\n-  }\n+    public ADMMState(List<LabeledData> instances) {\n+        extractFeature(instances);\n+        x = new double[localFeatureNum];\n+        u = new double[localFeatureNum];\n+        this.instances = instances;\n+    }\n \n-  private void extractFeature(List<LabeledData> instances) {\n-    global2Local = new Int2IntOpenHashMap();\n+    private void extractFeature(List<LabeledData> instances) {\n+        global2Local = new Int2IntOpenHashMap();\n \n-    Int2IntOpenHashMap tempLocal2Global = new Int2IntOpenHashMap();\n-    localFeatureNum = 0;\n+        Int2IntOpenHashMap tempLocal2Global = new Int2IntOpenHashMap();\n+        localFeatureNum = 0;\n \n-    for (LabeledData instance : instances) {\n-      SparseDummyVector vector = (SparseDummyVector) instance.getX();\n-      int length = vector.getNonzero();\n-      int[] indices = vector.getIndices();\n-      for (int i = 0; i < length; i++) {\n-        int globalId = indices[i];\n+        for (LabeledData instance : instances) {\n+            SparseDummyVector vector = (SparseDummyVector) instance.getX();\n+            int length = vector.getNonzero();\n+            int[] indices = vector.getIndices();\n+            for (int i = 0; i < length; i++) {\n+                int globalId = indices[i];\n \n-        if (!global2Local.containsKey(globalId)) {\n-          tempLocal2Global.put(localFeatureNum, globalId);\n-          global2Local.put(globalId, localFeatureNum);\n-          localFeatureNum++;\n-        }\n+                if (!global2Local.containsKey(globalId)) {\n+                    tempLocal2Global.put(localFeatureNum, globalId);\n+                    global2Local.put(globalId, localFeatureNum);\n+                    localFeatureNum++;\n+                }\n \n-        indices[i] = global2Local.get(globalId);\n-      }\n-    }\n+                indices[i] = global2Local.get(globalId);\n+            }\n+        }\n \n-    local2Global = new int[localFeatureNum];\n-    ObjectIterator<Int2IntMap.Entry> iter = tempLocal2Global.int2IntEntrySet().fastIterator();\n+        local2Global = new int[localFeatureNum];\n+        ObjectIterator<Int2IntMap.Entry> iter = tempLocal2Global.int2IntEntrySet().fastIterator();\n \n-    while (iter.hasNext()) {\n-      Int2IntMap.Entry entry = iter.next();\n-      int key = entry.getIntKey();\n-      int value = entry.getIntValue();\n-      local2Global[key] = value;\n+        while (iter.hasNext()) {\n+            Int2IntMap.Entry entry = iter.next();\n+            int key = entry.getIntKey();\n+            int value = entry.getIntValue();\n+            local2Global[key] = value;\n+        }\n     }\n-  }\n \n }\n",
+            "diff_size": 39
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/652/ADMMState.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/652/ADMMState.java\nindex ecaf9b3d71..0c313bf34f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/652/ADMMState.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/652/ADMMState.java\n@@ -25,7 +25,6 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n import java.util.List;\n \n public class ADMMState {\n-\n   List<LabeledData> instances;\n   double[] x;\n   double[] u;\n@@ -74,4 +73,4 @@ public class ADMMState {\n     }\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/652/ADMMState.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/652/ADMMState.java\nindex ecaf9b3d71..ddeb101fc7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/652/ADMMState.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/652/ADMMState.java\n@@ -21,57 +21,51 @@ import com.tencent.angel.ml.math.vector.SparseDummyVector;\n import it.unimi.dsi.fastutil.ints.Int2IntMap;\n import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;\n import it.unimi.dsi.fastutil.objects.ObjectIterator;\n-\n import java.util.List;\n \n public class ADMMState {\n \n-  List<LabeledData> instances;\n-  double[] x;\n-  double[] u;\n-  Int2IntOpenHashMap global2Local;\n-  int[] local2Global;\n-  int localFeatureNum;\n+    List<LabeledData> instances;\n+    double[] x;\n+    double[] u;\n+    Int2IntOpenHashMap global2Local;\n+\n+    int[] local2Global;\n+\n+    int localFeatureNum;\n \n-  public ADMMState(List<LabeledData> instances) {\n+    public ADMMState(List<LabeledData> instances) {\n     extractFeature(instances);\n     x = new double[localFeatureNum];\n     u = new double[localFeatureNum];\n     this.instances = instances;\n-  }\n+    }\n \n-  private void extractFeature(List<LabeledData> instances) {\n+    private void extractFeature(List<LabeledData> instances) {\n     global2Local = new Int2IntOpenHashMap();\n-\n     Int2IntOpenHashMap tempLocal2Global = new Int2IntOpenHashMap();\n     localFeatureNum = 0;\n-\n     for (LabeledData instance : instances) {\n-      SparseDummyVector vector = (SparseDummyVector) instance.getX();\n-      int length = vector.getNonzero();\n-      int[] indices = vector.getIndices();\n-      for (int i = 0; i < length; i++) {\n-        int globalId = indices[i];\n-\n-        if (!global2Local.containsKey(globalId)) {\n-          tempLocal2Global.put(localFeatureNum, globalId);\n-          global2Local.put(globalId, localFeatureNum);\n-          localFeatureNum++;\n+        SparseDummyVector vector = (SparseDummyVector) instance.getX();\n+        int length = vector.getNonzero();\n+        int[] indices = vector.getIndices();\n+        for (int i = 0; i < length; i++) {\n+                                               int globalId = indices[i];\n+                                               if (!global2Local.containsKey(globalId)) {\n+            tempLocal2Global.put(localFeatureNum, globalId);\n+            global2Local.put(globalId, localFeatureNum);\n+            localFeatureNum++;\n+                                               }\n+                                               indices[i] = global2Local.get(globalId);\n         }\n-\n-        indices[i] = global2Local.get(globalId);\n-      }\n     }\n-\n     local2Global = new int[localFeatureNum];\n     ObjectIterator<Int2IntMap.Entry> iter = tempLocal2Global.int2IntEntrySet().fastIterator();\n-\n     while (iter.hasNext()) {\n-      Int2IntMap.Entry entry = iter.next();\n-      int key = entry.getIntKey();\n-      int value = entry.getIntValue();\n-      local2Global[key] = value;\n+        Int2IntMap.Entry entry = iter.next();\n+        int key = entry.getIntKey();\n+        int value = entry.getIntValue();\n+        local2Global[key] = value;\n     }\n-  }\n-\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 37
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "1",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 15.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/652/ADMMState.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/652/ADMMState.java\nindex ecaf9b3d71..2858adc9ef 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/652/ADMMState.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/652/ADMMState.java\n@@ -12,9 +12,7 @@\n  * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n  * either express or implied. See the License for the specific language governing permissions and\n  * limitations under the License.\n- */\n-\n-package com.tencent.angel.ml.algorithm.optimizer.admm;\n+ */ package com.tencent.angel.ml.algorithm.optimizer.admm;\n \n import com.tencent.angel.ml.feature.LabeledData;\n import com.tencent.angel.ml.math.vector.SparseDummyVector;\n",
+            "diff_size": 3
+        }
+    ]
+}

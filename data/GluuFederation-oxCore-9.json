@@ -1,0 +1,59 @@
+{
+    "error_id": "9",
+    "information": {
+        "errors": [
+            {
+                "line": "54",
+                "column": "1",
+                "severity": "error",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "\n    boolean delete(String key) throws EntryNotFoundException;\n\tint delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n    boolean deleteRecursively(String key) throws EntryNotFoundException, SearchException;\n\n    JsonObject lookup(String key, ScanConsistency scanConsistency, String... attributes) throws SearchException;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/9/CouchbaseOperationService.java\nindex bed400b646..4950240c58 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/9/CouchbaseOperationService.java\n@@ -51,7 +51,7 @@ public interface CouchbaseOperationService extends PersistenceOperationService {\n     boolean updateEntry(String key, List<MutationSpec> mods) throws UnsupportedOperationException, PersistenceException;\n \n     boolean delete(String key) throws EntryNotFoundException;\n-\tint delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n+int delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n     boolean deleteRecursively(String key) throws EntryNotFoundException, SearchException;\n \n     JsonObject lookup(String key, ScanConsistency scanConsistency, String... attributes) throws SearchException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/9/CouchbaseOperationService.java\nindex bed400b646..3d2435d172 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/9/CouchbaseOperationService.java\n@@ -51,18 +51,22 @@ public interface CouchbaseOperationService extends PersistenceOperationService {\n     boolean updateEntry(String key, List<MutationSpec> mods) throws UnsupportedOperationException, PersistenceException;\n \n     boolean delete(String key) throws EntryNotFoundException;\n-\tint delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n+\n+    int delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n+\n     boolean deleteRecursively(String key) throws EntryNotFoundException, SearchException;\n \n     JsonObject lookup(String key, ScanConsistency scanConsistency, String... attributes) throws SearchException;\n \n     <O> PagedResult<JsonObject> search(String key, ScanConsistency scanConsistency, Expression expression, SearchScope scope,\n-            String[] attributes, Sort[] orderBy, CouchbaseBatchOperationWraper<O> batchOperationWraper, SearchReturnDataType returnDataType,\n-            int start, int count, int pageSize) throws SearchException;\n+                                       String[] attributes, Sort[] orderBy, CouchbaseBatchOperationWraper<O> batchOperationWraper,\n+                                       SearchReturnDataType returnDataType,\n+                                       int start, int count, int pageSize) throws SearchException;\n \n     String[] createStoragePassword(String[] passwords);\n \n     boolean isBinaryAttribute(String attribute);\n+\n     boolean isCertificateAttribute(String attribute);\n \n     boolean destroy();\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 200).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/9/CouchbaseOperationService.java\nindex bed400b646..bb750b0fc8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/9/CouchbaseOperationService.java\n@@ -51,14 +51,15 @@ public interface CouchbaseOperationService extends PersistenceOperationService {\n     boolean updateEntry(String key, List<MutationSpec> mods) throws UnsupportedOperationException, PersistenceException;\n \n     boolean delete(String key) throws EntryNotFoundException;\n-\tint delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n-    boolean deleteRecursively(String key) throws EntryNotFoundException, SearchException;\n+\n+int delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n+\n+boolean deleteRecursively(String key) throws EntryNotFoundException, SearchException;\n \n     JsonObject lookup(String key, ScanConsistency scanConsistency, String... attributes) throws SearchException;\n \n     <O> PagedResult<JsonObject> search(String key, ScanConsistency scanConsistency, Expression expression, SearchScope scope,\n-            String[] attributes, Sort[] orderBy, CouchbaseBatchOperationWraper<O> batchOperationWraper, SearchReturnDataType returnDataType,\n-            int start, int count, int pageSize) throws SearchException;\n+            String[] attributes, Sort[] orderBy, CouchbaseBatchOperationWraper<O> batchOperationWraper, SearchReturnDataType returnDataType, int start, int count, int pageSize) throws SearchException;\n \n     String[] createStoragePassword(String[] passwords);\n \n@@ -67,4 +68,4 @@ public interface CouchbaseOperationService extends PersistenceOperationService {\n \n     boolean destroy();\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/9/CouchbaseOperationService.java\nindex bed400b646..4950240c58 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/9/CouchbaseOperationService.java\n@@ -51,7 +51,7 @@ public interface CouchbaseOperationService extends PersistenceOperationService {\n     boolean updateEntry(String key, List<MutationSpec> mods) throws UnsupportedOperationException, PersistenceException;\n \n     boolean delete(String key) throws EntryNotFoundException;\n-\tint delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n+int delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n     boolean deleteRecursively(String key) throws EntryNotFoundException, SearchException;\n \n     JsonObject lookup(String key, ScanConsistency scanConsistency, String... attributes) throws SearchException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/9/CouchbaseOperationService.java\nindex bed400b646..27b2f23b55 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/9/CouchbaseOperationService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/9/CouchbaseOperationService.java\n@@ -51,7 +51,8 @@ public interface CouchbaseOperationService extends PersistenceOperationService {\n     boolean updateEntry(String key, List<MutationSpec> mods) throws UnsupportedOperationException, PersistenceException;\n \n     boolean delete(String key) throws EntryNotFoundException;\n-\tint delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n+\n+    int delete(String key, ScanConsistency scanConsistency, Expression expression, int count) throws DeleteException;\n     boolean deleteRecursively(String key) throws EntryNotFoundException, SearchException;\n \n     JsonObject lookup(String key, ScanConsistency scanConsistency, String... attributes) throws SearchException;\n",
+            "diff_size": 2
+        }
+    ]
+}

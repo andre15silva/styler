@@ -1,0 +1,156 @@
+{
+    "error_id": "2",
+    "information": {
+        "errors": [
+            {
+                "line": "62",
+                "severity": "warning",
+                "message": "'method call' child has incorrect indentation level 4, expected level should be 6.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+            }
+        ]
+    },
+    "source_code": "    .groupByKey()\n    .mapValues(new ReduceFn(), Avros.strings())\n    .write(To.textFile(output));\n    p.done();\n  }\n}",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler/2/SingleUseIterableExceptionIT.java\nindex 8d070cdcef..307967e68b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler/2/SingleUseIterableExceptionIT.java\n@@ -37,14 +37,14 @@ public class SingleUseIterableExceptionIT {\n       throw new CrunchRuntimeException(\"Exception\");\n     }\n   }\n-  \n+\n   @Test\n   public void testException() throws Exception {\n     run(new MRPipeline(SingleUseIterableExceptionIT.class),\n         tmpDir.copyResourceFileName(\"shakes.txt\"),\n         tmpDir.getFileName(\"out\"));\n   }\n-  \n+\n   public static void run(MRPipeline p, String input, String output) {\n     PCollection<String> shakes = p.readTextFile(input);\n     shakes.parallelDo(new MapFn<String, Pair<String, String>>() {\n@@ -55,11 +55,11 @@ public class SingleUseIterableExceptionIT {\n         } else {\n           return Pair.of(\"__SHORT__\", input);\n         }\n-      } \n+      }\n     }, Avros.tableOf(Avros.strings(), Avros.strings()))\n     .groupByKey()\n     .mapValues(new ReduceFn(), Avros.strings())\n-    .write(To.textFile(output));\n+      .write(To.textFile(output));\n     p.done();\n   }\n }\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/intellij/2/SingleUseIterableExceptionIT.java\nindex 8d070cdcef..60f951df1d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/intellij/2/SingleUseIterableExceptionIT.java\n@@ -6,15 +6,16 @@\n  * to you under the Apache License, Version 2.0 (the\n  * \"License\"); you may not use this file except in compliance\n  * with the License.  You may obtain a copy of the License at\n- *\n- *     http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.crunch;\n \n import org.apache.crunch.impl.mr.MRPipeline;\n@@ -37,14 +38,14 @@ public class SingleUseIterableExceptionIT {\n       throw new CrunchRuntimeException(\"Exception\");\n     }\n   }\n-  \n+\n   @Test\n   public void testException() throws Exception {\n     run(new MRPipeline(SingleUseIterableExceptionIT.class),\n         tmpDir.copyResourceFileName(\"shakes.txt\"),\n         tmpDir.getFileName(\"out\"));\n   }\n-  \n+\n   public static void run(MRPipeline p, String input, String output) {\n     PCollection<String> shakes = p.readTextFile(input);\n     shakes.parallelDo(new MapFn<String, Pair<String, String>>() {\n@@ -55,11 +56,11 @@ public class SingleUseIterableExceptionIT {\n         } else {\n           return Pair.of(\"__SHORT__\", input);\n         }\n-      } \n+      }\n     }, Avros.tableOf(Avros.strings(), Avros.strings()))\n-    .groupByKey()\n-    .mapValues(new ReduceFn(), Avros.strings())\n-    .write(To.textFile(output));\n+        .groupByKey()\n+        .mapValues(new ReduceFn(), Avros.strings())\n+        .write(To.textFile(output));\n     p.done();\n   }\n }\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'object def rcurly' has incorrect indentation level 2, expected level should be one of the following: 4, 6, 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/naturalize/2/SingleUseIterableExceptionIT.java\nindex 8d070cdcef..58d6d5cb21 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/naturalize/2/SingleUseIterableExceptionIT.java\n@@ -55,11 +55,10 @@ public class SingleUseIterableExceptionIT {\n         } else {\n           return Pair.of(\"__SHORT__\", input);\n         }\n-      } \n-    }, Avros.tableOf(Avros.strings(), Avros.strings()))\n-    .groupByKey()\n+      }\n+  }, Avros.tableOf(Avros.strings(), Avros.strings())).groupByKey()\n     .mapValues(new ReduceFn(), Avros.strings())\n     .write(To.textFile(output));\n     p.done();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "29",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "warning",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 26, expected level should be one of the following: 8, 10, 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 26, expected level should be one of the following: 8, 10, 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 28, expected level should be one of the following: 10, 12, 14.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 26, expected level should be one of the following: 8, 10, 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "warning",
+                    "message": "'object def rcurly' has incorrect indentation level 0, expected level should be one of the following: 4, 6, 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/codebuff/2/SingleUseIterableExceptionIT.java\nindex 8d070cdcef..85da73be4a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/codebuff/2/SingleUseIterableExceptionIT.java\n@@ -26,40 +26,35 @@ import org.junit.Rule;\n import org.junit.Test;\n \n public class SingleUseIterableExceptionIT {\n+    @Rule\n+    public TemporaryPath tmpDir = TemporaryPaths.create();\n \n-  @Rule\n-  public TemporaryPath tmpDir = TemporaryPaths.create();\n-\n-  static class ReduceFn extends MapFn<Iterable<String>, String> {\n+    static class ReduceFn extends MapFn<Iterable<String>, String> {\n     @Override\n     public String map(Iterable<String> input) {\n-      input.iterator();\n-      throw new CrunchRuntimeException(\"Exception\");\n+        input.iterator();\n+        throw new CrunchRuntimeException(\"Exception\");\n+    }\n+    }\n+\n+    @Test\n+    public void testException() throws Exception {\n+    run(new MRPipeline(SingleUseIterableExceptionIT.class), tmpDir.copyResourceFileName(\"shakes.txt\"), tmpDir.getFileName(\"out\"));\n     }\n-  }\n-  \n-  @Test\n-  public void testException() throws Exception {\n-    run(new MRPipeline(SingleUseIterableExceptionIT.class),\n-        tmpDir.copyResourceFileName(\"shakes.txt\"),\n-        tmpDir.getFileName(\"out\"));\n-  }\n-  \n-  public static void run(MRPipeline p, String input, String output) {\n+\n+    public static void run(MRPipeline p, String input, String output) {\n     PCollection<String> shakes = p.readTextFile(input);\n     shakes.parallelDo(new MapFn<String, Pair<String, String>>() {\n-      @Override\n-      public Pair<String, String> map(String input) {\n-        if (input.length() > 5) {\n-          return Pair.of(input.substring(0, 5), input);\n-        } else {\n-          return Pair.of(\"__SHORT__\", input);\n+        @Override\n+        public Pair<String, String> map(String input) {\n+                          if (input.length() > 5) {\n+            return Pair.of(input.substring(0, 5), input);\n+                          } else {\n+                            return Pair.of(\"__SHORT__\", input);\n+                          }\n         }\n-      } \n-    }, Avros.tableOf(Avros.strings(), Avros.strings()))\n-    .groupByKey()\n-    .mapValues(new ReduceFn(), Avros.strings())\n-    .write(To.textFile(output));\n+}, Avros.tableOf(Avros.strings(), Avros.strings())).groupByKey()\n+                                                   .mapValues(new ReduceFn(), Avros.strings()).write(To.textFile(output));\n     p.done();\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 38
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_random/2/SingleUseIterableExceptionIT.java\nindex 8d070cdcef..307967e68b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_random/2/SingleUseIterableExceptionIT.java\n@@ -37,14 +37,14 @@ public class SingleUseIterableExceptionIT {\n       throw new CrunchRuntimeException(\"Exception\");\n     }\n   }\n-  \n+\n   @Test\n   public void testException() throws Exception {\n     run(new MRPipeline(SingleUseIterableExceptionIT.class),\n         tmpDir.copyResourceFileName(\"shakes.txt\"),\n         tmpDir.getFileName(\"out\"));\n   }\n-  \n+\n   public static void run(MRPipeline p, String input, String output) {\n     PCollection<String> shakes = p.readTextFile(input);\n     shakes.parallelDo(new MapFn<String, Pair<String, String>>() {\n@@ -55,11 +55,11 @@ public class SingleUseIterableExceptionIT {\n         } else {\n           return Pair.of(\"__SHORT__\", input);\n         }\n-      } \n+      }\n     }, Avros.tableOf(Avros.strings(), Avros.strings()))\n     .groupByKey()\n     .mapValues(new ReduceFn(), Avros.strings())\n-    .write(To.textFile(output));\n+      .write(To.textFile(output));\n     p.done();\n   }\n }\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_three_grams/2/SingleUseIterableExceptionIT.java\nindex 8d070cdcef..67e867a817 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/2/SingleUseIterableExceptionIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_three_grams/2/SingleUseIterableExceptionIT.java\n@@ -37,14 +37,14 @@ public class SingleUseIterableExceptionIT {\n       throw new CrunchRuntimeException(\"Exception\");\n     }\n   }\n-  \n+\n   @Test\n   public void testException() throws Exception {\n     run(new MRPipeline(SingleUseIterableExceptionIT.class),\n         tmpDir.copyResourceFileName(\"shakes.txt\"),\n         tmpDir.getFileName(\"out\"));\n   }\n-  \n+\n   public static void run(MRPipeline p, String input, String output) {\n     PCollection<String> shakes = p.readTextFile(input);\n     shakes.parallelDo(new MapFn<String, Pair<String, String>>() {\n@@ -55,11 +55,10 @@ public class SingleUseIterableExceptionIT {\n         } else {\n           return Pair.of(\"__SHORT__\", input);\n         }\n-      } \n+      }\n     }, Avros.tableOf(Avros.strings(), Avros.strings()))\n     .groupByKey()\n-    .mapValues(new ReduceFn(), Avros.strings())\n-    .write(To.textFile(output));\n+    .mapValues(new ReduceFn(), Avros.strings()).write(To.textFile(output));\n     p.done();\n   }\n }\n",
+            "diff_size": 5
+        }
+    ]
+}

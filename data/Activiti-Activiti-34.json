@@ -1,0 +1,71 @@
+{
+    "error_id": "34",
+    "information": {
+        "errors": [
+            {
+                "line": "18",
+                "severity": "error",
+                "message": "'package' has more than 1 empty lines before.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "\n\npackage org.activiti.engine.impl.cmd;\n\nimport java.io.InputStream;\nimport java.io.Serializable;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/34/GetDeploymentProcessModelCmd.java\nindex cae59c88fc..834552f7f4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/34/GetDeploymentProcessModelCmd.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.engine.impl.cmd;\n \n import java.io.InputStream;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "18",
+                    "severity": "error",
+                    "message": "'package' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/34/GetDeploymentProcessModelCmd.java\nindex cae59c88fc..f093583bf7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/34/GetDeploymentProcessModelCmd.java\n@@ -27,27 +27,25 @@ import org.activiti.engine.repository.ProcessDefinition;\n \n /**\n  * Gives access to a deployed process model, e.g., a BPMN 2.0 XML file, through a stream of bytes.\n- *\n-\n  */\n public class GetDeploymentProcessModelCmd implements Command<InputStream>, Serializable {\n \n-  private static final long serialVersionUID = 1L;\n-  protected String processDefinitionId;\n+    private static final long serialVersionUID = 1L;\n+    protected String processDefinitionId;\n+\n+    public GetDeploymentProcessModelCmd(String processDefinitionId) {\n+        if (processDefinitionId == null || processDefinitionId.length() < 1) {\n+            throw new ActivitiIllegalArgumentException(\"The process definition id is mandatory, but '\" + processDefinitionId + \"' has been provided.\");\n+        }\n+        this.processDefinitionId = processDefinitionId;\n+    }\n \n-  public GetDeploymentProcessModelCmd(String processDefinitionId) {\n-    if (processDefinitionId == null || processDefinitionId.length() < 1) {\n-      throw new ActivitiIllegalArgumentException(\"The process definition id is mandatory, but '\" + processDefinitionId + \"' has been provided.\");\n+    public InputStream execute(CommandContext commandContext) {\n+        ProcessDefinition processDefinition = commandContext.getProcessEngineConfiguration().getDeploymentManager().findDeployedProcessDefinitionById(processDefinitionId);\n+        String deploymentId = processDefinition.getDeploymentId();\n+        String resourceName = processDefinition.getResourceName();\n+        InputStream processModelStream = new GetDeploymentResourceCmd(deploymentId, resourceName).execute(commandContext);\n+        return processModelStream;\n     }\n-    this.processDefinitionId = processDefinitionId;\n-  }\n-\n-  public InputStream execute(CommandContext commandContext) {\n-    ProcessDefinition processDefinition = commandContext.getProcessEngineConfiguration().getDeploymentManager().findDeployedProcessDefinitionById(processDefinitionId);\n-    String deploymentId = processDefinition.getDeploymentId();\n-    String resourceName = processDefinition.getResourceName();\n-    InputStream processModelStream = new GetDeploymentResourceCmd(deploymentId, resourceName).execute(commandContext);\n-    return processModelStream;\n-  }\n \n }\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "18",
+                    "severity": "error",
+                    "message": "'package' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/34/GetDeploymentProcessModelCmd.java\nindex cae59c88fc..ac27c0cab0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/34/GetDeploymentProcessModelCmd.java\n@@ -19,7 +19,6 @@ package org.activiti.engine.impl.cmd;\n \n import java.io.InputStream;\n import java.io.Serializable;\n-\n import org.activiti.engine.ActivitiIllegalArgumentException;\n import org.activiti.engine.impl.interceptor.Command;\n import org.activiti.engine.impl.interceptor.CommandContext;\n@@ -30,24 +29,25 @@ import org.activiti.engine.repository.ProcessDefinition;\n  *\n \n  */\n+\n+\n public class GetDeploymentProcessModelCmd implements Command<InputStream>, Serializable {\n \n-  private static final long serialVersionUID = 1L;\n-  protected String processDefinitionId;\n+    private static final long serialVersionUID = 1L;\n+    protected String processDefinitionId;\n \n-  public GetDeploymentProcessModelCmd(String processDefinitionId) {\n+    public GetDeploymentProcessModelCmd(String processDefinitionId) {\n     if (processDefinitionId == null || processDefinitionId.length() < 1) {\n-      throw new ActivitiIllegalArgumentException(\"The process definition id is mandatory, but '\" + processDefinitionId + \"' has been provided.\");\n+        throw new ActivitiIllegalArgumentException(\"The process definition id is mandatory, but '\" + processDefinitionId + \"' has been provided.\");\n     }\n     this.processDefinitionId = processDefinitionId;\n-  }\n+    }\n \n-  public InputStream execute(CommandContext commandContext) {\n+    public InputStream execute(CommandContext commandContext) {\n     ProcessDefinition processDefinition = commandContext.getProcessEngineConfiguration().getDeploymentManager().findDeployedProcessDefinitionById(processDefinitionId);\n     String deploymentId = processDefinition.getDeploymentId();\n     String resourceName = processDefinition.getResourceName();\n     InputStream processModelStream = new GetDeploymentResourceCmd(deploymentId, resourceName).execute(commandContext);\n     return processModelStream;\n-  }\n-\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/34/GetDeploymentProcessModelCmd.java\nindex cae59c88fc..834552f7f4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/34/GetDeploymentProcessModelCmd.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.engine.impl.cmd;\n \n import java.io.InputStream;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/34/GetDeploymentProcessModelCmd.java\nindex cae59c88fc..834552f7f4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/34/GetDeploymentProcessModelCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/34/GetDeploymentProcessModelCmd.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.engine.impl.cmd;\n \n import java.io.InputStream;\n",
+            "diff_size": 1
+        }
+    ]
+}

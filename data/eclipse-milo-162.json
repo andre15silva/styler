@@ -1,0 +1,85 @@
+{
+    "error_id": "162",
+    "information": {
+        "errors": [
+            {
+                "line": "42",
+                "column": "34",
+                "severity": "error",
+                "message": "'}' at column 34 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "    }\n\n    private StringConversions() {}\n\n    @Nullable\n    static Boolean stringToBoolean(@Nonnull String s) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "42",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'}' at column 34 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/162/StringConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/162/StringConversions.java\nindex c0ad5860cb..141f25712d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/162/StringConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/162/StringConversions.java\n@@ -39,7 +39,8 @@ final class StringConversions {\n         ISO_8601_UTC_DATE_FORMAT.setTimeZone(TimeZone.getTimeZone(\"UTC\"));\n     }\n \n-    private StringConversions() {}\n+    private StringConversions() {\n+    }\n \n     @Nullable\n     static Boolean stringToBoolean(@Nonnull String s) {\n@@ -214,12 +215,18 @@ final class StringConversions {\n     static Object explicitConversion(@Nonnull String s, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case DateTime:          return stringToDateTime(s);\n-            case ExpandedNodeId:    return stringToExpandedNodeId(s);\n-            case NodeId:            return stringToNodeId(s);\n-            case LocalizedText:     return stringToLocalizedText(s);\n-            case QualifiedName:     return stringToQualifiedName(s);\n-            default:                return implicitConversion(s, targetType);\n+            case DateTime:\n+                return stringToDateTime(s);\n+            case ExpandedNodeId:\n+                return stringToExpandedNodeId(s);\n+            case NodeId:\n+                return stringToNodeId(s);\n+            case LocalizedText:\n+                return stringToLocalizedText(s);\n+            case QualifiedName:\n+                return stringToQualifiedName(s);\n+            default:\n+                return implicitConversion(s, targetType);\n         }\n         //@formatter:on\n     }\n@@ -228,19 +235,32 @@ final class StringConversions {\n     static Object implicitConversion(@Nonnull String s, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case Boolean:   return stringToBoolean(s);\n-            case Byte:      return stringToByte(s);\n-            case Double:    return stringToDouble(s);\n-            case Float:     return stringToFloat(s);\n-            case Guid:      return stringToGuid(s);\n-            case Int16:     return stringToInt16(s);\n-            case Int32:     return stringToInt32(s);\n-            case Int64:     return stringToInt64(s);\n-            case SByte:     return stringToSByte(s);\n-            case UInt16:    return stringToUInt16(s);\n-            case UInt32:    return stringToUInt32(s);\n-            case UInt64:    return stringToUInt64(s);\n-            default:        return null;\n+            case Boolean:\n+                return stringToBoolean(s);\n+            case Byte:\n+                return stringToByte(s);\n+            case Double:\n+                return stringToDouble(s);\n+            case Float:\n+                return stringToFloat(s);\n+            case Guid:\n+                return stringToGuid(s);\n+            case Int16:\n+                return stringToInt16(s);\n+            case Int32:\n+                return stringToInt32(s);\n+            case Int64:\n+                return stringToInt64(s);\n+            case SByte:\n+                return stringToSByte(s);\n+            case UInt16:\n+                return stringToUInt16(s);\n+            case UInt32:\n+                return stringToUInt32(s);\n+            case UInt64:\n+                return stringToUInt64(s);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n",
+            "diff_size": 40
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "42",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'}' at column 34 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/162/StringConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/162/StringConversions.java\nindex c0ad5860cb..c6cbb35a44 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/162/StringConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/162/StringConversions.java\n@@ -219,7 +219,8 @@ final class StringConversions {\n             case NodeId:            return stringToNodeId(s);\n             case LocalizedText:     return stringToLocalizedText(s);\n             case QualifiedName:     return stringToQualifiedName(s);\n-            default:                return implicitConversion(s, targetType);\n+            default:\n+    return implicitConversion(s, targetType);\n         }\n         //@formatter:on\n     }\n@@ -228,7 +229,8 @@ final class StringConversions {\n     static Object implicitConversion(@Nonnull String s, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case Boolean:   return stringToBoolean(s);\n+            case Boolean:\n+    return stringToBoolean(s);\n             case Byte:      return stringToByte(s);\n             case Double:    return stringToDouble(s);\n             case Float:     return stringToFloat(s);\n@@ -240,9 +242,10 @@ final class StringConversions {\n             case UInt16:    return stringToUInt16(s);\n             case UInt32:    return stringToUInt32(s);\n             case UInt64:    return stringToUInt64(s);\n-            default:        return null;\n+            default:\n+    return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/162/StringConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/162/StringConversions.java\nindex c0ad5860cb..2a62c9de14 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/162/StringConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/162/StringConversions.java\n@@ -18,7 +18,6 @@ import java.util.TimeZone;\n import java.util.UUID;\n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.stack.core.BuiltinDataType;\n import org.eclipse.milo.opcua.stack.core.types.builtin.DateTime;\n import org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId;\n@@ -39,7 +38,9 @@ final class StringConversions {\n         ISO_8601_UTC_DATE_FORMAT.setTimeZone(TimeZone.getTimeZone(\"UTC\"));\n     }\n \n-    private StringConversions() {}\n+\n+    private StringConversions() {\n+    }\n \n     @Nullable\n     static Boolean stringToBoolean(@Nonnull String s) {\n@@ -144,7 +145,6 @@ final class StringConversions {\n         }\n     }\n \n-\n     @Nullable\n     static Byte stringToSByte(@Nonnull String s) {\n         try {\n@@ -198,13 +198,12 @@ final class StringConversions {\n     }\n \n     @Nullable\n-    static Object convert(@Nonnull Object o, BuiltinDataType targetType, boolean implicit) {\n+    static Object convert(@Nonnull Object o, BuiltinDataType targetType,\n+                          boolean implicit) {\n         if (o instanceof String) {\n             String s = (String) o;\n \n-            return implicit ?\n-                implicitConversion(s, targetType) :\n-                explicitConversion(s, targetType);\n+            return implicit ? implicitConversion(s, targetType) : explicitConversion(s, targetType);\n         } else {\n             return null;\n         }\n@@ -214,12 +213,18 @@ final class StringConversions {\n     static Object explicitConversion(@Nonnull String s, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case DateTime:          return stringToDateTime(s);\n-            case ExpandedNodeId:    return stringToExpandedNodeId(s);\n-            case NodeId:            return stringToNodeId(s);\n-            case LocalizedText:     return stringToLocalizedText(s);\n-            case QualifiedName:     return stringToQualifiedName(s);\n-            default:                return implicitConversion(s, targetType);\n+            case DateTime:\n+                return stringToDateTime(s);\n+            case ExpandedNodeId:\n+                return stringToExpandedNodeId(s);\n+            case NodeId:\n+                return stringToNodeId(s);\n+            case LocalizedText:\n+                return stringToLocalizedText(s);\n+            case QualifiedName:\n+                return stringToQualifiedName(s);\n+            default:\n+                return implicitConversion(s, targetType);\n         }\n         //@formatter:on\n     }\n@@ -228,21 +233,34 @@ final class StringConversions {\n     static Object implicitConversion(@Nonnull String s, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case Boolean:   return stringToBoolean(s);\n-            case Byte:      return stringToByte(s);\n-            case Double:    return stringToDouble(s);\n-            case Float:     return stringToFloat(s);\n-            case Guid:      return stringToGuid(s);\n-            case Int16:     return stringToInt16(s);\n-            case Int32:     return stringToInt32(s);\n-            case Int64:     return stringToInt64(s);\n-            case SByte:     return stringToSByte(s);\n-            case UInt16:    return stringToUInt16(s);\n-            case UInt32:    return stringToUInt32(s);\n-            case UInt64:    return stringToUInt64(s);\n-            default:        return null;\n+            case Boolean:\n+                return stringToBoolean(s);\n+            case Byte:\n+                return stringToByte(s);\n+            case Double:\n+                return stringToDouble(s);\n+            case Float:\n+                return stringToFloat(s);\n+            case Guid:\n+                return stringToGuid(s);\n+            case Int16:\n+                return stringToInt16(s);\n+            case Int32:\n+                return stringToInt32(s);\n+            case Int64:\n+                return stringToInt64(s);\n+            case SByte:\n+                return stringToSByte(s);\n+            case UInt16:\n+                return stringToUInt16(s);\n+            case UInt32:\n+                return stringToUInt32(s);\n+            case UInt64:\n+                return stringToUInt64(s);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 49
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "42",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'}' at column 34 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "42",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'}' at column 34 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

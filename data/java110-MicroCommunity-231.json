@@ -1,0 +1,132 @@
+{
+    "error_id": "231",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 184).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<AdvertItemDto> advertItems = BeanConvertUtil.covertBeanList(advertItemServiceDaoImpl.getAdvertItemInfo(BeanConvertUtil.beanCovertMap(advertItemDto)), AdvertItemDto.class);\n\n        return advertItems;\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/231/AdvertItemInnerServiceSMOImpl.java\nindex 99f6bae8ec..f128ded11d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/231/AdvertItemInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class AdvertItemInnerServiceSMOImpl extends BaseServiceSMO implements IAd\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             advertItemDto.setPage((page - 1) * advertItemDto.getRow());\n-        }\n+        } List<AdvertItemDto>advertItems=BeanConvertUtil.\n \n-        List<AdvertItemDto> advertItems = BeanConvertUtil.covertBeanList(advertItemServiceDaoImpl.getAdvertItemInfo(BeanConvertUtil.beanCovertMap(advertItemDto)), AdvertItemDto.class);\n+        covertBeanList(advertItemServiceDaoImpl.getAdvertItemInfo(BeanConvertUtil.beanCovertMap(advertItemDto)), AdvertItemDto.class);\n \n         return advertItems;\n     }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/231/AdvertItemInnerServiceSMOImpl.java\nindex 99f6bae8ec..e99ff9e000 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/231/AdvertItemInnerServiceSMOImpl.java\n@@ -25,47 +25,48 @@ import java.util.List;\n @RestController\n public class AdvertItemInnerServiceSMOImpl extends BaseServiceSMO implements IAdvertItemInnerServiceSMO {\n \n-    @Autowired\n-    private IAdvertItemServiceDao advertItemServiceDaoImpl;\n+  @Autowired\n+  private IAdvertItemServiceDao advertItemServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<AdvertItemDto> queryAdvertItems(@RequestBody AdvertItemDto advertItemDto) {\n+  @Override\n+  public List<AdvertItemDto> queryAdvertItems(@RequestBody AdvertItemDto advertItemDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = advertItemDto.getPage();\n+    int page = advertItemDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            advertItemDto.setPage((page - 1) * advertItemDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      advertItemDto.setPage((page - 1) * advertItemDto.getRow());\n+    }\n \n-        List<AdvertItemDto> advertItems = BeanConvertUtil.covertBeanList(advertItemServiceDaoImpl.getAdvertItemInfo(BeanConvertUtil.beanCovertMap(advertItemDto)), AdvertItemDto.class);\n+    List<AdvertItemDto> advertItems =\n+      BeanConvertUtil.covertBeanList(advertItemServiceDaoImpl.getAdvertItemInfo(BeanConvertUtil.beanCovertMap(advertItemDto)), AdvertItemDto.class);\n \n-        return advertItems;\n-    }\n+    return advertItems;\n+  }\n \n \n-    @Override\n-    public int queryAdvertItemsCount(@RequestBody AdvertItemDto advertItemDto) {\n-        return advertItemServiceDaoImpl.queryAdvertItemsCount(BeanConvertUtil.beanCovertMap(advertItemDto));\n-    }\n+  @Override\n+  public int queryAdvertItemsCount(@RequestBody AdvertItemDto advertItemDto) {\n+    return advertItemServiceDaoImpl.queryAdvertItemsCount(BeanConvertUtil.beanCovertMap(advertItemDto));\n+  }\n \n-    public IAdvertItemServiceDao getAdvertItemServiceDaoImpl() {\n-        return advertItemServiceDaoImpl;\n-    }\n+  public IAdvertItemServiceDao getAdvertItemServiceDaoImpl() {\n+    return advertItemServiceDaoImpl;\n+  }\n \n-    public void setAdvertItemServiceDaoImpl(IAdvertItemServiceDao advertItemServiceDaoImpl) {\n-        this.advertItemServiceDaoImpl = advertItemServiceDaoImpl;\n-    }\n+  public void setAdvertItemServiceDaoImpl(IAdvertItemServiceDao advertItemServiceDaoImpl) {\n+    this.advertItemServiceDaoImpl = advertItemServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 31
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 184).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/231/AdvertItemInnerServiceSMOImpl.java\nindex 99f6bae8ec..342bb24ea4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/231/AdvertItemInnerServiceSMOImpl.java\n@@ -68,4 +68,4 @@ public class AdvertItemInnerServiceSMOImpl extends BaseServiceSMO implements IAd\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 184).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/231/AdvertItemInnerServiceSMOImpl.java\nindex 99f6bae8ec..9a46b8d834 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/231/AdvertItemInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.common.smo.impl;\n \n-\n import com.java110.common.dao.IAdvertItemServiceDao;\n import com.java110.core.base.smo.BaseServiceSMO;\n import com.java110.core.smo.common.IAdvertItemInnerServiceSMO;\n@@ -11,7 +10,6 @@ import com.java110.utils.util.BeanConvertUtil;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -22,6 +20,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class AdvertItemInnerServiceSMOImpl extends BaseServiceSMO implements IAdvertItemInnerServiceSMO {\n \n@@ -35,9 +35,7 @@ public class AdvertItemInnerServiceSMOImpl extends BaseServiceSMO implements IAd\n     public List<AdvertItemDto> queryAdvertItems(@RequestBody AdvertItemDto advertItemDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = advertItemDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             advertItemDto.setPage((page - 1) * advertItemDto.getRow());\n         }\n@@ -68,4 +66,4 @@ public class AdvertItemInnerServiceSMOImpl extends BaseServiceSMO implements IAd\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "39",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "115",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "38",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/231/AdvertItemInnerServiceSMOImpl.java\nindex 99f6bae8ec..727cd830fa 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/231/AdvertItemInnerServiceSMOImpl.java\n@@ -41,10 +41,8 @@ public class AdvertItemInnerServiceSMOImpl extends BaseServiceSMO implements IAd\n         if (page != PageDto.DEFAULT_PAGE) {\n             advertItemDto.setPage((page - 1) * advertItemDto.getRow());\n         }\n-\n-        List<AdvertItemDto> advertItems = BeanConvertUtil.covertBeanList(advertItemServiceDaoImpl.getAdvertItemInfo(BeanConvertUtil.beanCovertMap(advertItemDto)), AdvertItemDto.class);\n-\n-        return advertItems;\n+        List<AdvertItemDto>advertItems= BeanConvertUtil.covertBeanList(advertItemServiceDaoImpl.getAdvertItemInfo (BeanConvertUtil.\n+        beanCovertMap(advertItemDto)),AdvertItemDto.class); returnadvertItems;\n     }\n \n \n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/231/AdvertItemInnerServiceSMOImpl.java\nindex 99f6bae8ec..f128ded11d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/231/AdvertItemInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/231/AdvertItemInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class AdvertItemInnerServiceSMOImpl extends BaseServiceSMO implements IAd\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             advertItemDto.setPage((page - 1) * advertItemDto.getRow());\n-        }\n+        } List<AdvertItemDto>advertItems=BeanConvertUtil.\n \n-        List<AdvertItemDto> advertItems = BeanConvertUtil.covertBeanList(advertItemServiceDaoImpl.getAdvertItemInfo(BeanConvertUtil.beanCovertMap(advertItemDto)), AdvertItemDto.class);\n+        covertBeanList(advertItemServiceDaoImpl.getAdvertItemInfo(BeanConvertUtil.beanCovertMap(advertItemDto)), AdvertItemDto.class);\n \n         return advertItems;\n     }\n",
+            "diff_size": 2
+        }
+    ]
+}

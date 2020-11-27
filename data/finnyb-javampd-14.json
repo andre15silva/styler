@@ -1,0 +1,113 @@
+{
+    "error_id": "14",
+    "information": {
+        "errors": [
+            {
+                "line": "50",
+                "severity": "error",
+                "message": "Calls to Throwable.printStackTrace() are not allowed. Log the exception instead.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": "            MPDSongs.getSongs().add(s);\n        } catch (Exception e) {\n            e.printStackTrace();\n        }\n        song.setId(s.getId());\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Calls to Throwable.printStackTrace() are not allowed. Log the exception instead.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler/14/BaseTest.java\nindex d2e175e478..801e5f517a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler/14/BaseTest.java\n@@ -47,7 +47,7 @@ public abstract class BaseTest {\n         try {\n             MPDSongs.getSongs().add(s);\n         } catch (Exception e) {\n-            e.printStackTrace();\n+    e .printStackTrace();\n         }\n         song.setId(s.getId());\n     }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Calls to Throwable.printStackTrace() are not allowed. Log the exception instead.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/intellij/14/BaseTest.java\nindex d2e175e478..af1aa81a25 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/intellij/14/BaseTest.java\n@@ -26,10 +26,10 @@ public abstract class BaseTest {\n     static {\n         try {\n             mpd = new MPD.Builder()\n-                    .server(TestProperties.getInstance().getServer())\n-                    .port(TestProperties.getInstance().getPort())\n-                    .password(TestProperties.getInstance().getPassword())\n-                    .build();\n+                .server(TestProperties.getInstance().getServer())\n+                .port(TestProperties.getInstance().getPort())\n+                .password(TestProperties.getInstance().getPassword())\n+                .build();\n \n             DataLoader.loadData(new File(TestProperties.getInstance().getPath()));\n             for (MPDSong song : TestSongs.getSongs()) {\n@@ -54,18 +54,18 @@ public abstract class BaseTest {\n \n     public MPD getNewMpd() throws IOException, MPDConnectionException {\n         return new MPD.Builder()\n-                .server(TestProperties.getInstance().getServer())\n-                .port(TestProperties.getInstance().getPort())\n-                .password(TestProperties.getInstance().getPassword())\n-                .build();\n+            .server(TestProperties.getInstance().getServer())\n+            .port(TestProperties.getInstance().getPort())\n+            .password(TestProperties.getInstance().getPassword())\n+            .build();\n     }\n \n     public MPD getNewMpd(String password) throws IOException, MPDConnectionException {\n         return new MPD.Builder()\n-                .server(TestProperties.getInstance().getServer())\n-                .port(TestProperties.getInstance().getPort())\n-                .password(password)\n-                .build();\n+            .server(TestProperties.getInstance().getServer())\n+            .port(TestProperties.getInstance().getPort())\n+            .password(password)\n+            .build();\n     }\n \n     /**\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Calls to Throwable.printStackTrace() are not allowed. Log the exception instead.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/naturalize/14/BaseTest.java\nindex d2e175e478..e14170f953 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/naturalize/14/BaseTest.java\n@@ -30,8 +30,7 @@ public abstract class BaseTest {\n                     .port(TestProperties.getInstance().getPort())\n                     .password(TestProperties.getInstance().getPassword())\n                     .build();\n-\n-            DataLoader.loadData(new File(TestProperties.getInstance().getPath()));\n+DataLoader.loadData(new File(TestProperties.getInstance().getPath()));\n             for (MPDSong song : TestSongs.getSongs()) {\n                 loadMPDSong(song);\n             }\n@@ -95,4 +94,4 @@ public abstract class BaseTest {\n             assertTrue(found);\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Line is longer than 130 characters (found 191).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Calls to Throwable.printStackTrace() are not allowed. Log the exception instead.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 130 characters (found 188).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Line is longer than 130 characters (found 154).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/codebuff/14/BaseTest.java\nindex d2e175e478..81a7ed0c1e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/codebuff/14/BaseTest.java\n@@ -5,7 +5,6 @@ import org.bff.javampd.integrationdata.TestSongs;\n import org.bff.javampd.server.MPD;\n import org.bff.javampd.server.MPDConnectionException;\n import org.bff.javampd.song.MPDSong;\n-\n import java.io.File;\n import java.io.IOException;\n import java.util.ArrayList;\n@@ -19,19 +18,15 @@ import static org.junit.Assert.assertTrue;\n /**\n  * @author Bill\n  */\n+\n public abstract class BaseTest {\n \n     private static MPD mpd;\n-\n     static {\n         try {\n-            mpd = new MPD.Builder()\n-                    .server(TestProperties.getInstance().getServer())\n-                    .port(TestProperties.getInstance().getPort())\n-                    .password(TestProperties.getInstance().getPassword())\n-                    .build();\n-\n+            mpd = new MPD.Builder().server(TestProperties.getInstance().getServer()).port(TestProperties.getInstance().getPort()).password(TestProperties.getInstance().getPassword()).build();\n             DataLoader.loadData(new File(TestProperties.getInstance().getPath()));\n+\n             for (MPDSong song : TestSongs.getSongs()) {\n                 loadMPDSong(song);\n             }\n@@ -49,42 +44,37 @@ public abstract class BaseTest {\n         } catch (Exception e) {\n             e.printStackTrace();\n         }\n+\n         song.setId(s.getId());\n     }\n \n     public MPD getNewMpd() throws IOException, MPDConnectionException {\n-        return new MPD.Builder()\n-                .server(TestProperties.getInstance().getServer())\n-                .port(TestProperties.getInstance().getPort())\n-                .password(TestProperties.getInstance().getPassword())\n-                .build();\n+        return new MPD.Builder().server(TestProperties.getInstance().getServer()).port(TestProperties.getInstance().getPort()).password(TestProperties.getInstance().getPassword()).build();\n     }\n \n     public MPD getNewMpd(String password) throws IOException, MPDConnectionException {\n-        return new MPD.Builder()\n-                .server(TestProperties.getInstance().getServer())\n-                .port(TestProperties.getInstance().getPort())\n-                .password(password)\n-                .build();\n+        return new MPD.Builder().server(TestProperties.getInstance().getServer()).port(TestProperties.getInstance().getPort()).password(password).build();\n     }\n \n     /**\n      * @return the mpd\n      */\n+\n     public static MPD getMpd() {\n         return mpd;\n     }\n \n     public void compareSongLists(List<MPDSong> testResults, List<MPDSong> foundSongs) {\n-\n         if (testResults.isEmpty()) {\n-            assertTrue(\"Bad test criteria.  Should have a size of at least 1\", false);\n+            assertTrue(\"Bad test criteria.  Should have a size of at least 1\",\n+                false);\n         }\n \n         assertEquals(testResults.size(), foundSongs.size());\n \n         for (MPDSong song : testResults) {\n             boolean found = false;\n+\n             for (MPDSong songDb : foundSongs) {\n                 if (song.getFile().equals(songDb.getFile())) {\n                     found = true;\n@@ -95,4 +85,4 @@ public abstract class BaseTest {\n             assertTrue(found);\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "50",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should have line break before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_random/14/BaseTest.java\nindex d2e175e478..63a42c170a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_random/14/BaseTest.java\n@@ -47,52 +47,51 @@ public abstract class BaseTest {\n         try {\n             MPDSongs.getSongs().add(s);\n         } catch (Exception e) {\n-            e.printStackTrace();\n+            e.printStackTrace( ) ; } song.setId(s.getId());\n         }\n-        song.setId(s.getId());\n-    }\n \n-    public MPD getNewMpd() throws IOException, MPDConnectionException {\n-        return new MPD.Builder()\n-                .server(TestProperties.getInstance().getServer())\n-                .port(TestProperties.getInstance().getPort())\n-                .password(TestProperties.getInstance().getPassword())\n-                .build();\n-    }\n+        public MPD getNewMpd() throws IOException, MPDConnectionException {\n+            return new MPD.Builder()\n+                    .server(TestProperties.getInstance().getServer())\n+                    .port(TestProperties.getInstance().getPort())\n+                    .password(TestProperties.getInstance().getPassword())\n+                    .build();\n+        }\n \n-    public MPD getNewMpd(String password) throws IOException, MPDConnectionException {\n-        return new MPD.Builder()\n-                .server(TestProperties.getInstance().getServer())\n-                .port(TestProperties.getInstance().getPort())\n-                .password(password)\n-                .build();\n-    }\n+        public MPD getNewMpd(String password) throws IOException, MPDConnectionException {\n+            return new MPD.Builder()\n+                    .server(TestProperties.getInstance().getServer())\n+                    .port(TestProperties.getInstance().getPort())\n+                    .password(password)\n+                    .build();\n+        }\n \n-    /**\n+        /**\n      * @return the mpd\n      */\n-    public static MPD getMpd() {\n-        return mpd;\n-    }\n+        public static MPD getMpd() {\n+            return mpd;\n+        }\n \n-    public void compareSongLists(List<MPDSong> testResults, List<MPDSong> foundSongs) {\n+        public void compareSongLists(List<MPDSong> testResults, List<MPDSong> foundSongs) {\n \n-        if (testResults.isEmpty()) {\n-            assertTrue(\"Bad test criteria.  Should have a size of at least 1\", false);\n-        }\n+            if (testResults.isEmpty()) {\n+                assertTrue(\"Bad test criteria.  Should have a size of at least 1\", false);\n+            }\n \n-        assertEquals(testResults.size(), foundSongs.size());\n+            assertEquals(testResults.size(), foundSongs.size());\n \n-        for (MPDSong song : testResults) {\n-            boolean found = false;\n-            for (MPDSong songDb : foundSongs) {\n-                if (song.getFile().equals(songDb.getFile())) {\n-                    found = true;\n-                    break;\n+            for (MPDSong song : testResults) {\n+                boolean found = false;\n+                for (MPDSong songDb : foundSongs) {\n+                    if (song.getFile().equals(songDb.getFile())) {\n+                        found = true;\n+                        break;\n+                    }\n                 }\n-            }\n \n-            assertTrue(found);\n+                assertTrue(found);\n+            }\n         }\n     }\n-}\n+    \n\\ No newline at end of file\n",
+            "diff_size": 37
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Calls to Throwable.printStackTrace() are not allowed. Log the exception instead.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_three_grams/14/BaseTest.java\nindex d2e175e478..801e5f517a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/14/BaseTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_three_grams/14/BaseTest.java\n@@ -47,7 +47,7 @@ public abstract class BaseTest {\n         try {\n             MPDSongs.getSongs().add(s);\n         } catch (Exception e) {\n-            e.printStackTrace();\n+    e .printStackTrace();\n         }\n         song.setId(s.getId());\n     }\n",
+            "diff_size": 1
+        }
+    ]
+}

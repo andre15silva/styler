@@ -1,0 +1,76 @@
+{
+    "error_id": "313",
+    "information": {
+        "errors": [
+            {
+                "line": "16",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.core.common.spring.identity;\n\nimport org.activiti.api.runtime.shared.identity.UserGroupManager;\nimport org.springframework.security.core.GrantedAuthority;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/313/ActivitiUserGroupManagerImpl.java\nindex 86b3d7081c..fb21f5bfcb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/313/ActivitiUserGroupManagerImpl.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.core.common.spring.identity;\n \n import org.activiti.api.runtime.shared.identity.UserGroupManager;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/313/ActivitiUserGroupManagerImpl.java\nindex 86b3d7081c..fb21f5bfcb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/313/ActivitiUserGroupManagerImpl.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.core.common.spring.identity;\n \n import org.activiti.api.runtime.shared.identity.UserGroupManager;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 240 characters (found 247).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Line is longer than 240 characters (found 246).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/313/ActivitiUserGroupManagerImpl.java\nindex 86b3d7081c..94c8af1a1f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/313/ActivitiUserGroupManagerImpl.java\n@@ -18,33 +18,26 @@ package org.activiti.core.common.spring.identity;\n import org.activiti.api.runtime.shared.identity.UserGroupManager;\n import org.springframework.security.core.GrantedAuthority;\n import org.springframework.security.core.userdetails.UserDetailsService;\n-\n import java.util.List;\n import java.util.stream.Collectors;\n \n+\n public class ActivitiUserGroupManagerImpl implements UserGroupManager {\n \n     private final UserDetailsService userDetailsService;\n \n     public ActivitiUserGroupManagerImpl(UserDetailsService userDetailsService) {\n-        this.userDetailsService = userDetailsService;\n+    this.userDetailsService = userDetailsService;\n     }\n \n     @Override\n     public List<String> getUserGroups(String username) {\n-\n-        return userDetailsService.loadUserByUsername(username).getAuthorities().stream()\n-                .filter((GrantedAuthority a) -> a.getAuthority().startsWith(\"GROUP_\"))\n-                .map((GrantedAuthority a) -> a.getAuthority().substring(6))\n-                .collect(Collectors.toList());\n+        return userDetailsService.loadUserByUsername(username).getAuthorities().stream().filter((GrantedAuthority a) -> a.getAuthority().startsWith(\"GROUP_\")).map((GrantedAuthority a) -> a.getAuthority().substring(6)).collect(Collectors.toList());\n     }\n \n     @Override\n     public List<String> getUserRoles(String username) {\n-        return userDetailsService.loadUserByUsername(username).getAuthorities().stream()\n-                .filter((GrantedAuthority a) -> a.getAuthority().startsWith(\"ROLE_\"))\n-                .map((GrantedAuthority a) -> a.getAuthority().substring(5))\n-                .collect(Collectors.toList());\n+        return userDetailsService.loadUserByUsername(username).getAuthorities().stream().filter((GrantedAuthority a) -> a.getAuthority().startsWith(\"ROLE_\")).map((GrantedAuthority a) -> a.getAuthority().substring(5)).collect(Collectors.toList());\n     }\n \n     @Override\n@@ -56,4 +49,4 @@ public class ActivitiUserGroupManagerImpl implements UserGroupManager {\n     public List<String> getUsers() {\n         return ((ExtendedInMemoryUserDetailsManager) userDetailsService).getUsers();\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/313/ActivitiUserGroupManagerImpl.java\nindex 86b3d7081c..fb21f5bfcb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/313/ActivitiUserGroupManagerImpl.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.core.common.spring.identity;\n \n import org.activiti.api.runtime.shared.identity.UserGroupManager;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/313/ActivitiUserGroupManagerImpl.java\nindex 86b3d7081c..fb21f5bfcb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/313/ActivitiUserGroupManagerImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/313/ActivitiUserGroupManagerImpl.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.core.common.spring.identity;\n \n import org.activiti.api.runtime.shared.identity.UserGroupManager;\n",
+            "diff_size": 1
+        }
+    ]
+}

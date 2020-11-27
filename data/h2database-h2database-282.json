@@ -1,0 +1,85 @@
+{
+    "error_id": "282",
+    "information": {
+        "errors": [
+            {
+                "line": "91",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "            for (ConstraintDomain constraint : constraints) {\n                Expression checkCondition = constraint.getCheckConstraint(session, null);\n                AlterDomainAddConstraint check = new AlterDomainAddConstraint(session, targetDomain.getSchema(), //\n                        false);\n                check.setDomainName(targetDomain.getName());\n                check.setCheckExpression(checkCondition);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "91",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "99",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/282/DropDomain.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/intellij/282/DropDomain.java\nindex 1be054e9ba..a94bfe13bb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/282/DropDomain.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/intellij/282/DropDomain.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (https://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.command.ddl;\n \n import java.util.ArrayList;\n@@ -24,105 +25,113 @@ import org.h2.table.Table;\n  */\n public class DropDomain extends SchemaCommand {\n \n-    private String typeName;\n-    private boolean ifExists;\n-    private ConstraintActionType dropAction;\n+  private String typeName;\n+  private boolean ifExists;\n+  private ConstraintActionType dropAction;\n \n-    public DropDomain(Session session, Schema schema) {\n-        super(session, schema);\n-        dropAction = session.getDatabase().getSettings().dropRestrict ? ConstraintActionType.RESTRICT\n-                : ConstraintActionType.CASCADE;\n-    }\n+  public DropDomain(Session session, Schema schema) {\n+    super(session, schema);\n+    dropAction = session.getDatabase().getSettings().dropRestrict ?\n+        ConstraintActionType.RESTRICT\n+        : ConstraintActionType.CASCADE;\n+  }\n \n-    public void setIfExists(boolean ifExists) {\n-        this.ifExists = ifExists;\n-    }\n+  public void setIfExists(boolean ifExists) {\n+    this.ifExists = ifExists;\n+  }\n \n-    public void setDropAction(ConstraintActionType dropAction) {\n-        this.dropAction = dropAction;\n-    }\n+  public void setDropAction(ConstraintActionType dropAction) {\n+    this.dropAction = dropAction;\n+  }\n \n-    @Override\n-    public int update() {\n-        session.getUser().checkAdmin();\n-        session.commit(true);\n-        Schema schema = getSchema();\n-        Domain domain = schema.findDomain(typeName);\n-        if (domain == null) {\n-            if (!ifExists) {\n-                throw DbException.get(ErrorCode.DOMAIN_NOT_FOUND_1, typeName);\n-            }\n-        } else {\n-            AlterDomain.copy(session, domain, this::copyColumn, this::copyDomain);\n-            session.getDatabase().removeSchemaObject(session, domain);\n-        }\n-        return 0;\n+  @Override\n+  public int update() {\n+    session.getUser().checkAdmin();\n+    session.commit(true);\n+    Schema schema = getSchema();\n+    Domain domain = schema.findDomain(typeName);\n+    if (domain == null) {\n+      if (!ifExists) {\n+        throw DbException.get(ErrorCode.DOMAIN_NOT_FOUND_1, typeName);\n+      }\n+    } else {\n+      AlterDomain.copy(session, domain, this::copyColumn, this::copyDomain);\n+      session.getDatabase().removeSchemaObject(session, domain);\n     }\n+    return 0;\n+  }\n \n-    private boolean copyColumn(Domain domain, Column targetColumn) {\n-        Table targetTable = targetColumn.getTable();\n-        if (dropAction == ConstraintActionType.RESTRICT) {\n-            throw DbException.get(ErrorCode.CANNOT_DROP_2, typeName, targetTable.getCreateSQL());\n-        }\n-        String columnName = targetColumn.getName();\n-        ArrayList<ConstraintDomain> constraints = domain.getConstraints();\n-        if (constraints != null && !constraints.isEmpty()) {\n-            for (ConstraintDomain constraint : constraints) {\n-                Expression checkCondition = constraint.getCheckConstraint(session, columnName);\n-                AlterTableAddConstraint check = new AlterTableAddConstraint(session, targetTable.getSchema(),\n-                        CommandInterface.ALTER_TABLE_ADD_CONSTRAINT_CHECK, false);\n-                check.setTableName(targetTable.getName());\n-                check.setCheckExpression(checkCondition);\n-                check.update();\n-            }\n-        }\n-        copyExpressions(session, domain.getColumn(), targetColumn);\n-        return true;\n+  private boolean copyColumn(Domain domain, Column targetColumn) {\n+    Table targetTable = targetColumn.getTable();\n+    if (dropAction == ConstraintActionType.RESTRICT) {\n+      throw DbException\n+          .get(ErrorCode.CANNOT_DROP_2, typeName, targetTable.getCreateSQL());\n     }\n-\n-    private boolean copyDomain(Domain domain, Domain targetDomain) {\n-        if (dropAction == ConstraintActionType.RESTRICT) {\n-            throw DbException.get(ErrorCode.CANNOT_DROP_2, typeName, targetDomain.getTraceSQL());\n-        }\n-        ArrayList<ConstraintDomain> constraints = domain.getConstraints();\n-        if (constraints != null && !constraints.isEmpty()) {\n-            for (ConstraintDomain constraint : constraints) {\n-                Expression checkCondition = constraint.getCheckConstraint(session, null);\n-                AlterDomainAddConstraint check = new AlterDomainAddConstraint(session, targetDomain.getSchema(), //\n-                        false);\n-                check.setDomainName(targetDomain.getName());\n-                check.setCheckExpression(checkCondition);\n-                check.update();\n-            }\n-        }\n-        copyExpressions(session, domain.getColumn(), targetDomain.getColumn());\n-        return true;\n+    String columnName = targetColumn.getName();\n+    ArrayList<ConstraintDomain> constraints = domain.getConstraints();\n+    if (constraints != null && !constraints.isEmpty()) {\n+      for (ConstraintDomain constraint : constraints) {\n+        Expression checkCondition =\n+            constraint.getCheckConstraint(session, columnName);\n+        AlterTableAddConstraint check =\n+            new AlterTableAddConstraint(session, targetTable.getSchema(),\n+                CommandInterface.ALTER_TABLE_ADD_CONSTRAINT_CHECK, false);\n+        check.setTableName(targetTable.getName());\n+        check.setCheckExpression(checkCondition);\n+        check.update();\n+      }\n     }\n+    copyExpressions(session, domain.getColumn(), targetColumn);\n+    return true;\n+  }\n \n-    private static boolean copyExpressions(Session session, Column domainColumn, Column targetColumn) {\n-        targetColumn.setOriginalSQL(domainColumn.getOriginalSQL());\n-        targetColumn.setDomain(domainColumn.getDomain());\n-        Expression e = domainColumn.getDefaultExpression();\n-        boolean modified = false;\n-        if (e != null && targetColumn.getDefaultExpression() == null) {\n-            targetColumn.setDefaultExpression(session, e);\n-            modified = true;\n-        }\n-        e = domainColumn.getOnUpdateExpression();\n-        if (e != null && targetColumn.getOnUpdateExpression() == null) {\n-            targetColumn.setOnUpdateExpression(session, e);\n-            modified = true;\n-        }\n-        return modified;\n+  private boolean copyDomain(Domain domain, Domain targetDomain) {\n+    if (dropAction == ConstraintActionType.RESTRICT) {\n+      throw DbException\n+          .get(ErrorCode.CANNOT_DROP_2, typeName, targetDomain.getTraceSQL());\n     }\n-\n-    public void setTypeName(String name) {\n-        this.typeName = name;\n+    ArrayList<ConstraintDomain> constraints = domain.getConstraints();\n+    if (constraints != null && !constraints.isEmpty()) {\n+      for (ConstraintDomain constraint : constraints) {\n+        Expression checkCondition =\n+            constraint.getCheckConstraint(session, null);\n+        AlterDomainAddConstraint check =\n+            new AlterDomainAddConstraint(session, targetDomain.getSchema(), //\n+                false);\n+        check.setDomainName(targetDomain.getName());\n+        check.setCheckExpression(checkCondition);\n+        check.update();\n+      }\n     }\n+    copyExpressions(session, domain.getColumn(), targetDomain.getColumn());\n+    return true;\n+  }\n \n-    @Override\n-    public int getType() {\n-        return CommandInterface.DROP_DOMAIN;\n+  private static boolean copyExpressions(Session session, Column domainColumn,\n+                                         Column targetColumn) {\n+    targetColumn.setOriginalSQL(domainColumn.getOriginalSQL());\n+    targetColumn.setDomain(domainColumn.getDomain());\n+    Expression e = domainColumn.getDefaultExpression();\n+    boolean modified = false;\n+    if (e != null && targetColumn.getDefaultExpression() == null) {\n+      targetColumn.setDefaultExpression(session, e);\n+      modified = true;\n+    }\n+    e = domainColumn.getOnUpdateExpression();\n+    if (e != null && targetColumn.getOnUpdateExpression() == null) {\n+      targetColumn.setOnUpdateExpression(session, e);\n+      modified = true;\n     }\n+    return modified;\n+  }\n+\n+  public void setTypeName(String name) {\n+    this.typeName = name;\n+  }\n+\n+  @Override\n+  public int getType() {\n+    return CommandInterface.DROP_DOMAIN;\n+  }\n \n }\n",
+            "diff_size": 128
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "91",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "90",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "90",
+                    "column": "89",
+                    "severity": "warning",
+                    "message": "';' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/282/DropDomain.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_three_grams/282/DropDomain.java\nindex 1be054e9ba..94f9ad5dbc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/282/DropDomain.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_three_grams/282/DropDomain.java\n@@ -87,8 +87,7 @@ public class DropDomain extends SchemaCommand {\n         ArrayList<ConstraintDomain> constraints = domain.getConstraints();\n         if (constraints != null && !constraints.isEmpty()) {\n             for (ConstraintDomain constraint : constraints) {\n-                Expression checkCondition = constraint.getCheckConstraint(session, null);\n-                AlterDomainAddConstraint check = new AlterDomainAddConstraint(session, targetDomain.getSchema(), //\n+                Expression checkCondition = constraint.getCheckConstraint(session, null);AlterDomainAddConstraintcheck = new AlterDomainAddConstraint(session, targetDomain.getSchema(), //\n                         false);\n                 check.setDomainName(targetDomain.getName());\n                 check.setCheckExpression(checkCondition);\n",
+            "diff_size": 2
+        }
+    ]
+}

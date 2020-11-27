@@ -1,0 +1,87 @@
+{
+    "error_id": "101",
+    "information": {
+        "errors": [
+            {
+                "line": "34",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 123).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=285\");\n\n    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=287\");\n\n    public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=286\");\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/101/ReferenceNode.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/101/ReferenceNode.java\nindex 5da2b89c0b..e0515fe82d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/101/ReferenceNode.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/101/ReferenceNode.java\n@@ -31,7 +31,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;\n public class ReferenceNode extends Structure implements UaStructure {\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=285\");\n \n-    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=287\");\n+    public static final ExpandedNodeId BINARY_ENCODING_ID =\n+        ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=287\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=286\");\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/101/ReferenceNode.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/101/ReferenceNode.java\nindex 5da2b89c0b..b1765b16ab 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/101/ReferenceNode.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/101/ReferenceNode.java\n@@ -95,4 +95,4 @@ public class ReferenceNode extends Structure implements UaStructure {\n             encoder.writeExpandedNodeId(\"TargetId\", value.getTargetId());\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/101/ReferenceNode.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/101/ReferenceNode.java\nindex 5da2b89c0b..e1f09ee843 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/101/ReferenceNode.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/101/ReferenceNode.java\n@@ -29,16 +29,14 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;\n )\n @ToString\n public class ReferenceNode extends Structure implements UaStructure {\n+\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=285\");\n \n     public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=287\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=286\");\n-\n     private final NodeId referenceTypeId;\n-\n     private final Boolean isInverse;\n-\n     private final ExpandedNodeId targetId;\n \n     public ReferenceNode(NodeId referenceTypeId, Boolean isInverse, ExpandedNodeId targetId) {\n@@ -85,6 +83,7 @@ public class ReferenceNode extends Structure implements UaStructure {\n             NodeId referenceTypeId = decoder.readNodeId(\"ReferenceTypeId\");\n             Boolean isInverse = decoder.readBoolean(\"IsInverse\");\n             ExpandedNodeId targetId = decoder.readExpandedNodeId(\"TargetId\");\n+\n             return new ReferenceNode(referenceTypeId, isInverse, targetId);\n         }\n \n@@ -95,4 +94,5 @@ public class ReferenceNode extends Structure implements UaStructure {\n             encoder.writeExpandedNodeId(\"TargetId\", value.getTargetId());\n         }\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+{
+    "error_id": "147",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/147/AngelThreadFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/147/AngelThreadFactory.java\nindex ae572dcf65..04c7e9b6b0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/147/AngelThreadFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/147/AngelThreadFactory.java\n@@ -22,29 +22,29 @@ import java.util.concurrent.atomic.AtomicInteger;\n \n public class AngelThreadFactory implements ThreadFactory {\n \n-  private static final AtomicInteger poolNumber = new AtomicInteger(1);\n-  private final ThreadGroup group;\n-  private final AtomicInteger threadNumber = new AtomicInteger(1);\n-  private final String namePrefix;\n+    private static final AtomicInteger poolNumber = new AtomicInteger(1);\n+    private final ThreadGroup group;\n+    private final AtomicInteger threadNumber = new AtomicInteger(1);\n+    private final String namePrefix;\n \n-  public AngelThreadFactory(String poolName) {\n-    SecurityManager s = System.getSecurityManager();\n-    group = (s != null) ? s.getThreadGroup() :\n-        Thread.currentThread().getThreadGroup();\n-    namePrefix = \"\" + poolName +\n-        \"-thread-\";\n-  }\n-\n-  public Thread newThread(Runnable r) {\n-    Thread t = new Thread(group, r,\n-        namePrefix + threadNumber.getAndIncrement(),\n-        0);\n-    if (t.isDaemon()) {\n-      t.setDaemon(false);\n+    public AngelThreadFactory(String poolName) {\n+        SecurityManager s = System.getSecurityManager();\n+        group = (s != null) ? s.getThreadGroup() :\n+                Thread.currentThread().getThreadGroup();\n+        namePrefix = \"\" + poolName +\n+                \"-thread-\";\n     }\n-    if (t.getPriority() != Thread.NORM_PRIORITY) {\n-      t.setPriority(Thread.NORM_PRIORITY);\n+\n+    public Thread newThread(Runnable r) {\n+        Thread t = new Thread(group, r,\n+                namePrefix + threadNumber.getAndIncrement(),\n+                0);\n+        if (t.isDaemon()) {\n+            t.setDaemon(false);\n+        }\n+        if (t.getPriority() != Thread.NORM_PRIORITY) {\n+            t.setPriority(Thread.NORM_PRIORITY);\n+        }\n+        return t;\n     }\n-    return t;\n-  }\n }\n",
+            "diff_size": 32
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/147/AngelThreadFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/147/AngelThreadFactory.java\nindex ae572dcf65..49964352bf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/147/AngelThreadFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/147/AngelThreadFactory.java\n@@ -29,17 +29,13 @@ public class AngelThreadFactory implements ThreadFactory {\n \n   public AngelThreadFactory(String poolName) {\n     SecurityManager s = System.getSecurityManager();\n-    group = (s != null) ? s.getThreadGroup() :\n-        Thread.currentThread().getThreadGroup();\n-    namePrefix = \"\" + poolName +\n-        \"-thread-\";\n+    group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();\n+    namePrefix = \"\" + poolName + \"-thread-\";\n   }\n \n   public Thread newThread(Runnable r) {\n-    Thread t = new Thread(group, r,\n-        namePrefix + threadNumber.getAndIncrement(),\n-        0);\n-    if (t.isDaemon()) {\n+    Thread t = new Thread(group, r, namePrefix + threadNumber.getAndIncrement(), 0);\n+if (t.isDaemon()) {\n       t.setDaemon(false);\n     }\n     if (t.getPriority() != Thread.NORM_PRIORITY) {\n@@ -47,4 +43,4 @@ public class AngelThreadFactory implements ThreadFactory {\n     }\n     return t;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/147/AngelThreadFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/147/AngelThreadFactory.java\nindex ae572dcf65..d3a5aab65b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/147/AngelThreadFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/147/AngelThreadFactory.java\n@@ -21,30 +21,27 @@ import java.util.concurrent.ThreadFactory;\n import java.util.concurrent.atomic.AtomicInteger;\n \n public class AngelThreadFactory implements ThreadFactory {\n+    private static final AtomicInteger poolNumber = new AtomicInteger(1);\n+    private final ThreadGroup group;\n+    private final AtomicInteger threadNumber = new AtomicInteger(1);\n+    private final String namePrefix;\n \n-  private static final AtomicInteger poolNumber = new AtomicInteger(1);\n-  private final ThreadGroup group;\n-  private final AtomicInteger threadNumber = new AtomicInteger(1);\n-  private final String namePrefix;\n-\n-  public AngelThreadFactory(String poolName) {\n+    public AngelThreadFactory(String poolName) {\n     SecurityManager s = System.getSecurityManager();\n-    group = (s != null) ? s.getThreadGroup() :\n-        Thread.currentThread().getThreadGroup();\n-    namePrefix = \"\" + poolName +\n-        \"-thread-\";\n-  }\n+    group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();\n+    namePrefix = \"\" + poolName + \"-thread-\";\n+    }\n \n-  public Thread newThread(Runnable r) {\n-    Thread t = new Thread(group, r,\n-        namePrefix + threadNumber.getAndIncrement(),\n-        0);\n+    public Thread newThread(Runnable r) {\n+    Thread t = new Thread(group, r, namePrefix + threadNumber.getAndIncrement(), 0);\n     if (t.isDaemon()) {\n-      t.setDaemon(false);\n+        t.setDaemon(false);\n     }\n+\n     if (t.getPriority() != Thread.NORM_PRIORITY) {\n-      t.setPriority(Thread.NORM_PRIORITY);\n+        t.setPriority(Thread.NORM_PRIORITY);\n     }\n     return t;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

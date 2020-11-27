@@ -1,0 +1,59 @@
+{
+    "error_id": "12",
+    "information": {
+        "errors": [
+            {
+                "line": "61",
+                "column": "1",
+                "severity": "error",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "public class AuthRequest {\n\n\tprivate static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n    private static final SimpleDateFormat SIMPLE_DATA_FORMAT = new SimpleDateFormat(\"yyyy-MM-dd'T'H:mm:ss\");\n\n    static {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/12/AuthRequest.java\nindex 5853c342ad..eab8b0e097 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/12/AuthRequest.java\n@@ -58,7 +58,7 @@ import org.xml.sax.InputSource;\n  */\n public class AuthRequest {\n \n-\tprivate static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n+    private static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n     private static final SimpleDateFormat SIMPLE_DATA_FORMAT = new SimpleDateFormat(\"yyyy-MM-dd'T'H:mm:ss\");\n \n     static {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/12/AuthRequest.java\nindex 5853c342ad..060882a392 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/12/AuthRequest.java\n@@ -58,7 +58,7 @@ import org.xml.sax.InputSource;\n  */\n public class AuthRequest {\n \n-\tprivate static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n+    private static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n     private static final SimpleDateFormat SIMPLE_DATA_FORMAT = new SimpleDateFormat(\"yyyy-MM-dd'T'H:mm:ss\");\n \n     static {\n@@ -76,7 +76,7 @@ public class AuthRequest {\n     }\n \n     public String getRequest(boolean useBase64, String assertionConsumerServiceUrl)\n-            throws ParserConfigurationException, XMLStreamException, IOException, TransformerException {\n+        throws ParserConfigurationException, XMLStreamException, IOException, TransformerException {\n         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();\n         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();\n \n@@ -212,8 +212,7 @@ public class AuthRequest {\n      * This will generate the proper Redirect Query String as input for signing\n      *\n      * @param samlRequest\n-     * @param relayState\n-     *            Optional\n+     * @param relayState  Optional\n      * @return\n      * @throws Exception\n      */\n@@ -242,8 +241,7 @@ public class AuthRequest {\n      * Redirect signature requirment.\n      *\n      * @param samlRequest\n-     * @param relayState\n-     *            optional\n+     * @param relayState  optional\n      * @return\n      * @throws Exception\n      */\n@@ -272,8 +270,7 @@ public class AuthRequest {\n      * you can append to your IDP sso URL.\n      *\n      * @param assertionConsumerServiceUrl\n-     * @param relayState\n-     *            optional\n+     * @param relayState                  optional\n      * @return\n      * @throws Exception\n      */\n@@ -301,8 +298,7 @@ public class AuthRequest {\n      * for a POST SAML AuthnRequest.\n      *\n      * @param assertionConsumerServiceUrl\n-     * @param relayState\n-     *            optional\n+     * @param relayState                  optional\n      * @return\n      * @throws WSSecurityException\n      * @throws SecurityException\n@@ -314,15 +310,15 @@ public class AuthRequest {\n      * @throws ParserConfigurationException\n      */\n     public String getEnvelopedSignatureRequest(String assertionConsumerServiceUrl, String relayState)\n-            throws WSSecurityException, SecurityException, MarshallingException, org.opensaml.xml.signature.SignatureException, IOException,\n-            TransformerException, XMLStreamException, ParserConfigurationException {\n+        throws WSSecurityException, SecurityException, MarshallingException, org.opensaml.xml.signature.SignatureException, IOException,\n+        TransformerException, XMLStreamException, ParserConfigurationException {\n         String samlRequest = getRequest(false, assertionConsumerServiceUrl);\n         AuthnRequest authReq = (AuthnRequest) string2XMLObject(samlRequest);\n \n         Credential credential = this.samlSettings.getCredential();\n         org.opensaml.xml.signature.Signature signature = (org.opensaml.xml.signature.Signature) Configuration.getBuilderFactory()\n-                .getBuilder(org.opensaml.xml.signature.Signature.DEFAULT_ELEMENT_NAME)\n-                .buildObject(org.opensaml.xml.signature.Signature.DEFAULT_ELEMENT_NAME);\n+            .getBuilder(org.opensaml.xml.signature.Signature.DEFAULT_ELEMENT_NAME)\n+            .buildObject(org.opensaml.xml.signature.Signature.DEFAULT_ELEMENT_NAME);\n         signature.setSigningCredential(credential);\n         signature.setSignatureAlgorithm(this.samlSettings.getSigAlgUrl());\n         signature.setCanonicalizationAlgorithm(SignatureConstants.ALGO_ID_C14N_EXCL_OMIT_COMMENTS);\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "318",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 213).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/12/AuthRequest.java\nindex 5853c342ad..97d6fd4dde 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/12/AuthRequest.java\n@@ -58,8 +58,9 @@ import org.xml.sax.InputSource;\n  */\n public class AuthRequest {\n \n-\tprivate static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n-    private static final SimpleDateFormat SIMPLE_DATA_FORMAT = new SimpleDateFormat(\"yyyy-MM-dd'T'H:mm:ss\");\n+    private static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n+\n+private static final SimpleDateFormat SIMPLE_DATA_FORMAT = new SimpleDateFormat(\"yyyy-MM-dd'T'H:mm:ss\");\n \n     static {\n         SIMPLE_DATA_FORMAT.setTimeZone(TimeZone.getTimeZone(\"UTC\"));\n@@ -314,8 +315,7 @@ public class AuthRequest {\n      * @throws ParserConfigurationException\n      */\n     public String getEnvelopedSignatureRequest(String assertionConsumerServiceUrl, String relayState)\n-            throws WSSecurityException, SecurityException, MarshallingException, org.opensaml.xml.signature.SignatureException, IOException,\n-            TransformerException, XMLStreamException, ParserConfigurationException {\n+            throws WSSecurityException, SecurityException, MarshallingException, org.opensaml.xml.signature.SignatureException, IOException, TransformerException, XMLStreamException, ParserConfigurationException {\n         String samlRequest = getRequest(false, assertionConsumerServiceUrl);\n         AuthnRequest authReq = (AuthnRequest) string2XMLObject(samlRequest);\n \n@@ -393,4 +393,4 @@ public class AuthRequest {\n         return base64;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/12/AuthRequest.java\nindex 5853c342ad..eab8b0e097 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/12/AuthRequest.java\n@@ -58,7 +58,7 @@ import org.xml.sax.InputSource;\n  */\n public class AuthRequest {\n \n-\tprivate static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n+    private static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n     private static final SimpleDateFormat SIMPLE_DATA_FORMAT = new SimpleDateFormat(\"yyyy-MM-dd'T'H:mm:ss\");\n \n     static {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/12/AuthRequest.java\nindex 5853c342ad..c8ddc171fc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/12/AuthRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/12/AuthRequest.java\n@@ -58,7 +58,7 @@ import org.xml.sax.InputSource;\n  */\n public class AuthRequest {\n \n-\tprivate static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n+private static final Logger LOG = LoggerFactory.getLogger(AuthRequest.class);\n     private static final SimpleDateFormat SIMPLE_DATA_FORMAT = new SimpleDateFormat(\"yyyy-MM-dd'T'H:mm:ss\");\n \n     static {\n",
+            "diff_size": 1
+        }
+    ]
+}

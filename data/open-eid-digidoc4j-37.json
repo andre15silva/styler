@@ -1,0 +1,94 @@
+{
+    "error_id": "37",
+    "information": {
+        "errors": [
+            {
+                "line": "25",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 126).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * In case of some sort of webapp in a servlet container where there are multiple levels of contexts\n * the recommended way to use it is to register a {@link javax.servlet.ServletContextListener} and call\n * {@link ShutdownHook#run()} method inside {@link javax.servlet.ServletContextListener#contextDestroyed(ServletContextEvent)}\n * <p/>\n * NB! As the usage method of this hook is dependant on the system/situation and may vary,\n * so in consequence it's still in experimental status",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/37/ShutdownHook.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/intellij/37/ShutdownHook.java\nindex 15f0da7bd0..745083a691 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/37/ShutdownHook.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/intellij/37/ShutdownHook.java\n@@ -26,7 +26,7 @@ import eu.europa.esig.dss.tsl.service.TSLValidationJob;\n  * <p/>\n  * NB! As the usage method of this hook is dependant on the system/situation and may vary,\n  * so in consequence it's still in experimental status\n- *\n+ * <p>\n  * Created by Janar Rahumeel (CGI Estonia)\n  */\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/37/ShutdownHook.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/naturalize/37/ShutdownHook.java\nindex 15f0da7bd0..36dbe630c7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/37/ShutdownHook.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/naturalize/37/ShutdownHook.java\n@@ -91,4 +91,4 @@ public class ShutdownHook extends Thread {\n     }\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "23",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/37/ShutdownHook.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/codebuff/37/ShutdownHook.java\nindex 15f0da7bd0..fa9fb06694 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/errored/1/37/ShutdownHook.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/open-eid-digidoc4j/codebuff/37/ShutdownHook.java\n@@ -2,11 +2,9 @@ package org.digidoc4j;\n \n import java.lang.reflect.Field;\n import java.util.concurrent.ExecutorService;\n-\n import org.digidoc4j.impl.ConfigurationSingeltonHolder;\n import org.digidoc4j.impl.asic.tsl.LazyTslCertificateSource;\n import org.digidoc4j.impl.asic.xades.validation.ThreadPoolManager;\n-\n import eu.europa.esig.dss.tsl.service.TSLValidationJob;\n \n /**\n@@ -30,65 +28,65 @@ import eu.europa.esig.dss.tsl.service.TSLValidationJob;\n  * Created by Janar Rahumeel (CGI Estonia)\n  */\n \n+\n public class ShutdownHook extends Thread {\n \n-  @Override\n-  public void run() {\n+    @Override\n+    public void run() {\n     this.shutdownDefaultExecutorService();\n     if (ConfigurationSingeltonHolder.isInitialized()) {\n-      Configuration configuration = ConfigurationSingeltonHolder.getInstance();\n-      this.shutdownExecutorService(configuration);\n-      this.shutdownTSLValidationJob(configuration);\n+        Configuration configuration = ConfigurationSingeltonHolder.getInstance();\n+        this.shutdownExecutorService(configuration);\n+        this.shutdownTSLValidationJob(configuration);\n+    }\n     }\n-  }\n \n   /*\n    * RESTRICTED METHODS\n    */\n \n-  private void shutdownDefaultExecutorService() {\n+    private void shutdownDefaultExecutorService() {\n     ExecutorService executorService = ThreadPoolManager.getDefaultThreadExecutor();\n     if (executorService != null) {\n-      try {\n-        executorService.shutdown();\n-      } catch (Exception e) {\n-        System.err.println(String.format(\"Unable to shutdown default executor service: %s\", e.getMessage()));\n-      }\n+        try {\n+                                     executorService.shutdown();\n+        } catch (Exception e) {\n+          System.err.println(String.format(\"Unable to shutdown default executor service: %s\", e.getMessage()));\n+        }\n+    }\n     }\n-  }\n \n-  private void shutdownExecutorService(Configuration configuration) {\n+    private void shutdownExecutorService(Configuration configuration) {\n     ExecutorService executorService = configuration.getThreadExecutor();\n     if (executorService != null) {\n-      try {\n-        executorService.shutdown();\n-      } catch (Exception e) {\n-        System.err.println(String.format(\"Unable to shutdown executor service: %s\", e.getMessage()));\n-      }\n+        try {\n+                                     executorService.shutdown();\n+        } catch (Exception e) {\n+          System.err.println(String.format(\"Unable to shutdown executor service: %s\", e.getMessage()));\n+        }\n+    }\n     }\n-  }\n \n-  private void shutdownTSLValidationJob(Configuration configuration) {\n+    private void shutdownTSLValidationJob(Configuration configuration) {\n     TSLValidationJob job = null;\n     TSLCertificateSource source = configuration.getTSL();\n     if (source instanceof LazyTslCertificateSource) {\n-      job = ((LazyTslCertificateSource) source).getTslLoader().getTslValidationJob();\n+        job = ((LazyTslCertificateSource) source).getTslLoader().getTslValidationJob();\n     } else {\n       System.out.println(\"Unable to shutdown TSL validation job\");\n     }\n     if (job != null) {\n-      String name = \"executorService\";\n-      Field field;\n-      try {\n-        field = job.getClass().getDeclaredField(name);\n-        field.setAccessible(true);\n-        ((ExecutorService) field.get(job)).shutdown();\n-      } catch (NoSuchFieldException e) {\n-        System.err.println(String.format(\"Executor service field <%s> not found\", name));\n-      } catch (Exception e) {\n-        System.err.println(String.format(\"Unable to shutdown TSL validation job: %s\", e.getMessage()));\n-      }\n+        String name = \"executorService\";\n+        Field field;\n+        try {\n+                         field = job.getClass().getDeclaredField(name);\n+                         field.setAccessible(true);\n+                         ((ExecutorService) field.get(job)).shutdown();\n+        } catch (NoSuchFieldException e) {\n+          System.err.println(String.format(\"Executor service field <%s> not found\", name));\n+        } catch (Exception e) {\n+          System.err.println(String.format(\"Unable to shutdown TSL validation job: %s\", e.getMessage()));\n+        }\n     }\n-  }\n-\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 42
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

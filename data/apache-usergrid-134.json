@@ -1,0 +1,119 @@
+{
+    "error_id": "134",
+    "information": {
+        "errors": [
+            {
+                "line": "98",
+                "column": "109",
+                "severity": "warning",
+                "message": "':' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "    protected Results getHeadResults( EntityManager em ) throws Exception {\n        EntityRef ref = new SimpleEntityRef( head );\n        return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query ) :\n               em.searchConnectedEntities( ref, query );\n    }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "98",
+                    "column": "109",
+                    "severity": "warning",
+                    "message": "':' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler/134/PathQuery.java\nindex 8ffce9cb56..a50e7366fb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler/134/PathQuery.java\n@@ -96,7 +96,7 @@ public class PathQuery<E> {\n     protected Results getHeadResults( EntityManager em ) throws Exception {\n         EntityRef ref = new SimpleEntityRef( head );\n         return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query ) :\n-               em.searchConnectedEntities( ref, query );\n+em.searchConnectedEntities( ref, query );\n     }\n \n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "86",
+                    "column": "7",
+                    "severity": "warning",
+                    "message": "'}' at column 7 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "89",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "'}' at column 5 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "97",
+                    "column": "101",
+                    "severity": "warning",
+                    "message": "':' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "105",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "'}' at column 5 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/134/PathQuery.java\nindex 8ffce9cb56..2b793c4c3a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/134/PathQuery.java\n@@ -14,6 +14,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.usergrid.persistence;\n \n \n@@ -23,109 +24,106 @@ import java.util.UUID;\n \n public class PathQuery<E> {\n \n-    private PathQuery source;\n-    private Query query;\n-    private UUID head;\n+  private PathQuery source;\n+  private Query query;\n+  private UUID head;\n \n \n-    public PathQuery() {\n-    }\n+  public PathQuery() {\n+  }\n \n \n-    /**\n-     * top level\n-     *\n-     * @param head the top-level entity\n-     */\n-    public PathQuery( EntityRef head ) {\n-        this.head = head.getUuid();\n-        this.query = null;\n-    }\n+  /**\n+   * top level\n+   *\n+   * @param head the top-level entity\n+   */\n+  public PathQuery(EntityRef head) {\n+    this.head = head.getUuid();\n+    this.query = null;\n+  }\n \n \n-    /**\n-     * top level\n-     *\n-     * @param head the top-level entity\n-     * @param query the query - must have a collection or connectType value set\n-     */\n-    public PathQuery( EntityRef head, Query query ) {\n-        if ( query.getCollection() == null && query.getConnectionType() == null ) {\n-            throw new IllegalArgumentException( \"Query must have a collection or connectionType value\" );\n-        }\n-        this.head = head.getUuid();\n-        this.query = query;\n+  /**\n+   * top level\n+   *\n+   * @param head  the top-level entity\n+   * @param query the query - must have a collection or connectType value set\n+   */\n+  public PathQuery(EntityRef head, Query query) {\n+    if (query.getCollection() == null && query.getConnectionType() == null) {\n+      throw new IllegalArgumentException(\"Query must have a collection or connectionType value\");\n     }\n-\n-\n-    /**\n-     * chained\n-     *\n-     * @param source the source query we're chaining from\n-     * @param query the query - must have a collection or connectType value set\n-     */\n-    public PathQuery( PathQuery source, Query query ) {\n-        if ( query.getCollection() == null && query.getConnectionType() == null ) {\n-            throw new IllegalArgumentException( \"Query must have a collection or connectionType value\" );\n-        }\n-        this.source = source;\n-        this.query = query;\n-    }\n-\n-\n-    public PathQuery chain( Query query ) {\n-        return new PathQuery( this, query );\n+    this.head = head.getUuid();\n+    this.query = query;\n+  }\n+\n+\n+  /**\n+   * chained\n+   *\n+   * @param source the source query we're chaining from\n+   * @param query  the query - must have a collection or connectType value set\n+   */\n+  public PathQuery(PathQuery source, Query query) {\n+    if (query.getCollection() == null && query.getConnectionType() == null) {\n+      throw new IllegalArgumentException(\"Query must have a collection or connectionType value\");\n     }\n+    this.source = source;\n+    this.query = query;\n+  }\n \n \n-    public Iterator<E> iterator( EntityManager em ) {\n-        try {\n-            if ( head != null ) {\n-                return new PagingResultsIterator( getHeadResults( em ), query.getResultsLevel() );\n-            }\n-            else {\n-                return new MultiQueryIterator( em, source.uuidIterator( em ), query );\n-            }\n-        }\n-        catch ( Exception e ) {\n-            throw new RuntimeException( e );\n-        }\n-    }\n+  public PathQuery chain(Query query) {\n+    return new PathQuery(this, query);\n+  }\n \n \n-    protected Results getHeadResults( EntityManager em ) throws Exception {\n-        EntityRef ref = new SimpleEntityRef( head );\n-        return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query ) :\n-               em.searchConnectedEntities( ref, query );\n+  public Iterator<E> iterator(EntityManager em) {\n+    try {\n+      if (head != null) {\n+        return new PagingResultsIterator(getHeadResults(em), query.getResultsLevel());\n+      } else {\n+        return new MultiQueryIterator(em, source.uuidIterator(em), query);\n+      }\n+    } catch (Exception e) {\n+      throw new RuntimeException(e);\n     }\n-\n-\n-    protected Iterator uuidIterator( EntityManager em ) throws Exception {\n-        if ( head != null ) {\n-            return new PagingResultsIterator( getHeadResults( em ), Results.Level.IDS );\n-        }\n-        else {\n-            Query q = query;\n-            if ( query.getResultsLevel() != Results.Level.IDS ) { // ensure IDs level\n-                q = new Query( q );\n-                q.setResultsLevel( Results.Level.IDS );\n-            }\n-            return new MultiQueryIterator( em, source.uuidIterator( em ), q );\n-        }\n+  }\n+\n+\n+  protected Results getHeadResults(EntityManager em) throws Exception {\n+    EntityRef ref = new SimpleEntityRef(head);\n+    return (query.getCollection() != null) ? em.searchCollection(ref, query.getCollection(), query) :\n+        em.searchConnectedEntities(ref, query);\n+  }\n+\n+\n+  protected Iterator uuidIterator(EntityManager em) throws Exception {\n+    if (head != null) {\n+      return new PagingResultsIterator(getHeadResults(em), Results.Level.IDS);\n+    } else {\n+      Query q = query;\n+      if (query.getResultsLevel() != Results.Level.IDS) { // ensure IDs level\n+        q = new Query(q);\n+        q.setResultsLevel(Results.Level.IDS);\n+      }\n+      return new MultiQueryIterator(em, source.uuidIterator(em), q);\n     }\n+  }\n \n \n-    public PathQuery getSource() {\n-        return source;\n-    }\n+  public PathQuery getSource() {\n+    return source;\n+  }\n \n \n-    public UUID getHead() {\n-        return head;\n-    }\n+  public UUID getHead() {\n+    return head;\n+  }\n \n \n-    public Query getQuery() {\n-        return query;\n-    }\n+  public Query getQuery() {\n+    return query;\n+  }\n }\n",
+            "diff_size": 101
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "98",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 151).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/134/PathQuery.java\nindex 8ffce9cb56..b9cdbf82d8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/134/PathQuery.java\n@@ -95,8 +95,7 @@ public class PathQuery<E> {\n \n     protected Results getHeadResults( EntityManager em ) throws Exception {\n         EntityRef ref = new SimpleEntityRef( head );\n-        return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query ) :\n-               em.searchConnectedEntities( ref, query );\n+        return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query ) : em.searchConnectedEntities( ref, query );\n     }\n \n \n@@ -128,4 +127,4 @@ public class PathQuery<E> {\n     public Query getQuery() {\n         return query;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "104",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 151).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/134/PathQuery.java\nindex 8ffce9cb56..62d5b9e66c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/134/PathQuery.java\n@@ -37,6 +37,8 @@ public class PathQuery<E> {\n      *\n      * @param head the top-level entity\n      */\n+\n+\n     public PathQuery( EntityRef head ) {\n         this.head = head.getUuid();\n         this.query = null;\n@@ -49,6 +51,8 @@ public class PathQuery<E> {\n      * @param head the top-level entity\n      * @param query the query - must have a collection or connectType value set\n      */\n+\n+\n     public PathQuery( EntityRef head, Query query ) {\n         if ( query.getCollection() == null && query.getConnectionType() == null ) {\n             throw new IllegalArgumentException( \"Query must have a collection or connectionType value\" );\n@@ -64,6 +68,8 @@ public class PathQuery<E> {\n      * @param source the source query we're chaining from\n      * @param query the query - must have a collection or connectType value set\n      */\n+\n+\n     public PathQuery( PathQuery source, Query query ) {\n         if ( query.getCollection() == null && query.getConnectionType() == null ) {\n             throw new IllegalArgumentException( \"Query must have a collection or connectionType value\" );\n@@ -95,8 +101,7 @@ public class PathQuery<E> {\n \n     protected Results getHeadResults( EntityManager em ) throws Exception {\n         EntityRef ref = new SimpleEntityRef( head );\n-        return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query ) :\n-               em.searchConnectedEntities( ref, query );\n+        return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query ) : em.searchConnectedEntities( ref, query );\n     }\n \n \n@@ -128,4 +133,4 @@ public class PathQuery<E> {\n     public Query getQuery() {\n         return query;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "98",
+                    "column": "109",
+                    "severity": "warning",
+                    "message": "':' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_random/134/PathQuery.java\nindex 8ffce9cb56..a50e7366fb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_random/134/PathQuery.java\n@@ -96,7 +96,7 @@ public class PathQuery<E> {\n     protected Results getHeadResults( EntityManager em ) throws Exception {\n         EntityRef ref = new SimpleEntityRef( head );\n         return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query ) :\n-               em.searchConnectedEntities( ref, query );\n+em.searchConnectedEntities( ref, query );\n     }\n \n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "133",
+                    "severity": "warning",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/134/PathQuery.java\nindex 8ffce9cb56..413c68ec8e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/134/PathQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/134/PathQuery.java\n@@ -95,37 +95,39 @@ public class PathQuery<E> {\n \n     protected Results getHeadResults( EntityManager em ) throws Exception {\n         EntityRef ref = new SimpleEntityRef( head );\n-        return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query ) :\n-               em.searchConnectedEntities( ref, query );\n-    }\n-\n-\n-    protected Iterator uuidIterator( EntityManager em ) throws Exception {\n-        if ( head != null ) {\n-            return new PagingResultsIterator( getHeadResults( em ), Results.Level.IDS );\n-        }\n-        else {\n-            Query q = query;\n-            if ( query.getResultsLevel() != Results.Level.IDS ) { // ensure IDs level\n-                q = new Query( q );\n-                q.setResultsLevel( Results.Level.IDS );\n-            }\n-            return new MultiQueryIterator( em, source.uuidIterator( em ), q );\n-        }\n-    }\n-\n-\n-    public PathQuery getSource() {\n-        return source;\n-    }\n-\n-\n-    public UUID getHead() {\n-        return head;\n-    }\n-\n-\n-    public Query getQuery() {\n-        return query;\n-    }\n-}\n+        return ( query.getCollection() != null ) ? em.searchCollection( ref, query.getCollection(), query )\n+        :\n+                em.searchConnectedEntities( ref, query );\n+     }\n+\n+\n+     protected Iterator uuidIterator( EntityManager em ) throws Exception {\n+         if ( head != null ) {\n+             return new PagingResultsIterator( getHeadResults( em ), Results.Level.IDS );\n+         }\n+         else {\n+             Query q = query;\n+             if ( query.getResultsLevel() != Results.Level.IDS ) { // ensure IDs level\n+                 q = new Query( q );\n+                 q.setResultsLevel( Results.Level.IDS );\n+             }\n+             return new MultiQueryIterator( em, source.uuidIterator( em ), q );\n+         }\n+     }\n+\n+\n+     public PathQuery getSource() {\n+         return source;\n+     }\n+\n+\n+     public UUID getHead() {\n+         return head;\n+     }\n+\n+\n+     public Query getQuery() {\n+         return query;\n+     }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 36
+        }
+    ]
+}

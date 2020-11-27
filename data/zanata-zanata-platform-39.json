@@ -1,0 +1,87 @@
+{
+    "error_id": "39",
+    "information": {
+        "errors": [
+            {
+                "line": "51",
+                "severity": "error",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "\n        String display;\n        boolean ascending; // default sort\n\n        SortOption(String display, boolean ascending) {\n            this.display = display;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler/39/SortingType.java\nindex b34c2297ae..23ce0f7cec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler/39/SortingType.java\n@@ -48,6 +48,7 @@ public class SortingType implements Serializable {\n         public final static SortOption ROLE = new SortOption(\"Role\", true);\n \n         String display;\n+\n         boolean ascending; // default sort\n \n         SortOption(String display, boolean ascending) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/naturalize/39/SortingType.java\nindex b34c2297ae..bc752b464b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/naturalize/39/SortingType.java\n@@ -48,7 +48,9 @@ public class SortingType implements Serializable {\n         public final static SortOption ROLE = new SortOption(\"Role\", true);\n \n         String display;\n-        boolean ascending; // default sort\n+        boolean ascending;\n+\n+// default sort\n \n         SortOption(String display, boolean ascending) {\n             this.display = display;\n@@ -75,4 +77,4 @@ public class SortingType implements Serializable {\n     public List<SortOption> getSortOptions() {\n         return this.sortOptions;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/39/SortingType.java\nindex b34c2297ae..bae4d2a1d9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/39/SortingType.java\n@@ -8,10 +8,14 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;\n /**\n  * @author Alex Eng <a href=\"mailto:aeng@redhat.com\">aeng@redhat.com</a>\n  */\n+\n+\n public class SortingType implements Serializable {\n     private static final long serialVersionUID = -5844701953054739028L;\n+\n     @SuppressFBWarnings(value = \"SE_BAD_FIELD\")\n     private SortOption selectedSortOption = SortOption.ALPHABETICAL;\n+\n     @SuppressFBWarnings(value = \"SE_BAD_FIELD\")\n     private List<SortOption> sortOptions = Lists.newArrayList();\n \n@@ -33,24 +37,38 @@ public class SortingType implements Serializable {\n \n     public static final class SortOption {\n         public final static SortOption PERCENTAGE = new SortOption(\"Percent translated\", false);\n+\n         public final static SortOption HOURS = new SortOption(\"Hours remaining\", false);\n+\n         public final static SortOption WORDS = new SortOption(\"Words remaining\", false);\n+\n         public final static SortOption ALPHABETICAL = new SortOption(\"Alphabetical\", true);\n+\n         public final static SortOption LAST_ACTIVITY = new SortOption(\"Last activity\", false);\n+\n         public final static SortOption LAST_SOURCE_UPDATE = new SortOption(\"Last source updated\", false);\n+\n         public final static SortOption LAST_TRANSLATED = new SortOption(\"Last translated\", false);\n+\n         public final static SortOption LAST_UPDATED_BY_YOU = new SortOption(\"Last updated by you\", false);\n+\n         public final static SortOption Entry = new SortOption(\"Entry\", false);\n+\n         public final static SortOption LOCALE_ID = new SortOption(\"Locale code\", true);\n+\n         public final static SortOption MEMBERS = new SortOption(\"Members\", true);\n+\n         public final static SortOption CREATED_DATE = new SortOption(\"Created date\", true);\n+\n         public final static SortOption NAME = new SortOption(\"Name\", true);\n-        public final static SortOption ROLE = new SortOption(\"Role\", true);\n \n+        public final static SortOption ROLE = new SortOption(\"Role\", true);\n         String display;\n+\n         boolean ascending; // default sort\n \n-        SortOption(String display, boolean ascending) {\n+        SortOption(String display,\n+        boolean ascending) {\n             this.display = display;\n             this.ascending = ascending;\n         }\n@@ -75,4 +93,4 @@ public class SortingType implements Serializable {\n     public List<SortOption> getSortOptions() {\n         return this.sortOptions;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/39/SortingType.java\nindex b34c2297ae..70d7850ada 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/39/SortingType.java\n@@ -48,31 +48,32 @@ public class SortingType implements Serializable {\n         public final static SortOption ROLE = new SortOption(\"Role\", true);\n \n         String display;\n-        boolean ascending; // default sort\n-\n+        boolean ascending;\n+        // default sort\n         SortOption(String display, boolean ascending) {\n-            this.display = display;\n-            this.ascending = ascending;\n-        }\n+             this.display = display;\n+             this.ascending = ascending;\n+         }\n \n-        public String getDisplay() {\n-            return this.display;\n-        }\n+         public String getDisplay() {\n+             return this.display;\n+         }\n \n-        public boolean isAscending() {\n-            return this.ascending;\n-        }\n+         public boolean isAscending() {\n+             return this.ascending;\n+         }\n \n-        public void setAscending(final boolean ascending) {\n-            this.ascending = ascending;\n-        }\n-    }\n+         public void setAscending(final boolean ascending) {\n+             this.ascending = ascending;\n+         }\n+     }\n \n-    public SortOption getSelectedSortOption() {\n-        return this.selectedSortOption;\n-    }\n+     public SortOption getSelectedSortOption() {\n+         return this.selectedSortOption;\n+     }\n \n-    public List<SortOption> getSortOptions() {\n-        return this.sortOptions;\n-    }\n-}\n+     public List<SortOption> getSortOptions() {\n+         return this.sortOptions;\n+     }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 23
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_three_grams/39/SortingType.java\nindex b34c2297ae..23ce0f7cec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/39/SortingType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_three_grams/39/SortingType.java\n@@ -48,6 +48,7 @@ public class SortingType implements Serializable {\n         public final static SortOption ROLE = new SortOption(\"Role\", true);\n \n         String display;\n+\n         boolean ascending; // default sort\n \n         SortOption(String display, boolean ascending) {\n",
+            "diff_size": 1
+        }
+    ]
+}

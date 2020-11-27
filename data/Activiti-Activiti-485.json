@@ -1,0 +1,64 @@
+{
+    "error_id": "485",
+    "information": {
+        "errors": [
+            {
+                "line": "16",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.runtime.api.model.impl;\n\nimport org.activiti.api.process.model.BPMNSignal;\nimport org.activiti.api.process.model.builders.ProcessPayloadBuilder;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/485/ToSignalConverter.java\nindex cc0455edd3..7c19ad306b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/485/ToSignalConverter.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.model.impl;\n \n import org.activiti.api.process.model.BPMNSignal;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/485/ToSignalConverter.java\nindex cc0455edd3..7c19ad306b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/485/ToSignalConverter.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.model.impl;\n \n import org.activiti.api.process.model.BPMNSignal;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/485/ToSignalConverter.java\nindex cc0455edd3..5ce4e891d5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/485/ToSignalConverter.java\n@@ -20,29 +20,26 @@ import org.activiti.api.process.model.builders.ProcessPayloadBuilder;\n import org.activiti.api.process.model.payloads.SignalPayload;\n import org.activiti.api.runtime.model.impl.BPMNSignalImpl;\n import org.activiti.engine.delegate.event.ActivitiSignalEvent;\n-\n import java.util.HashMap;\n import java.util.Map;\n \n+\n public class ToSignalConverter {\n \n     @SuppressWarnings(\"unchecked\")\n     public BPMNSignal from(ActivitiSignalEvent internalEvent) {\n-        BPMNSignalImpl signal = new BPMNSignalImpl(internalEvent.getActivityId());\n-\n-        signal.setProcessDefinitionId(internalEvent.getProcessDefinitionId());\n-        signal.setProcessInstanceId(internalEvent.getProcessInstanceId());\n+    BPMNSignalImpl signal = new BPMNSignalImpl(internalEvent.getActivityId());\n+    signal.setProcessDefinitionId(internalEvent.getProcessDefinitionId());\n+    signal.setProcessInstanceId(internalEvent.getProcessInstanceId());\n \n-        SignalPayload signalPayload = ProcessPayloadBuilder.signal()\n-                .withName(internalEvent.getSignalName())\n-                .build();\n \n-        if (internalEvent.getSignalData() != null) {\n-            Map<String, Object> sourceVariables = (Map<String, Object>) internalEvent.getSignalData();\n-            signalPayload.setVariables(new HashMap<>(sourceVariables));\n-        }\n-        signal.setSignalPayload(signalPayload);\n-\n-        return signal;\n+    SignalPayload signalPayload = ProcessPayloadBuilder.signal().withName(internalEvent.getSignalName()).build();\n+    if (internalEvent.getSignalData() != null) {\n+        Map<String, Object> sourceVariables = (Map<String, Object>) internalEvent.getSignalData();\n+        signalPayload.setVariables(new HashMap<>(sourceVariables));\n+    }\n+    signal.setSignalPayload(signalPayload);\n+    return signal;\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 18
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/485/ToSignalConverter.java\nindex cc0455edd3..7c19ad306b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/485/ToSignalConverter.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.model.impl;\n \n import org.activiti.api.process.model.BPMNSignal;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/485/ToSignalConverter.java\nindex cc0455edd3..7c19ad306b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/485/ToSignalConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/485/ToSignalConverter.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.model.impl;\n \n import org.activiti.api.process.model.BPMNSignal;\n",
+            "diff_size": 1
+        }
+    ]
+}

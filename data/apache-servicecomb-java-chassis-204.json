@@ -1,0 +1,81 @@
+{
+    "error_id": "204",
+    "information": {
+        "errors": [
+            {
+                "line": "134",
+                "column": "109",
+                "severity": "warning",
+                "message": "'+' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "    }\n    throw new InvocationException(BAD_REQUEST,\n        \"windowTime : \" + windowTime + \" unset in servicecomb.metrics.window_time,current available are : \" +\n            Strings.join(\",\", getAppliedWindowTime().iterator()));\n  }\n}",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/204/MetricsDataSource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/204/MetricsDataSource.java\nindex 3854456aa1..f0da09762a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/204/MetricsDataSource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/204/MetricsDataSource.java\n@@ -131,7 +131,7 @@ public class MetricsDataSource {\n       return registryMonitor.measure(index, calculateLatency);\n     }\n     throw new InvocationException(BAD_REQUEST,\n-        \"windowTime : \" + windowTime + \" unset in servicecomb.metrics.window_time,current available are : \" +\n-            Strings.join(\",\", getAppliedWindowTime().iterator()));\n-  }\n+        \"windowTime : \" + windowTime + \" unset in servicecomb.metrics.window_time,current available are : \"\n+        + Strings.join(\",\", getAppliedWindowTime().iterator()));\n+}\n }\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "135",
+                    "column": "109",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/204/MetricsDataSource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/204/MetricsDataSource.java\nindex 3854456aa1..6415b2ceb9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/204/MetricsDataSource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/204/MetricsDataSource.java\n@@ -80,17 +80,18 @@ public class MetricsDataSource {\n   }\n \n \n-  /**  What's the WindowTime ?\n-   We all know there are two major type of metric :\n-   1.Time-unrelated,you can get the latest value any time immediately:\n-   Counter -> increase or decrease\n-   Guage -> set a certain one value\n-   2.Time-related,only after a centain time pass you can compute the right value,\"a centain time\" called WindowTime\n-   Max & Min -> the max value or min value in a centain time\n-   Average -> average value, the simplest algorithm is f = sum / count\n-   Rate -> like TPS,algorithm is f = sum / second\n-\n-   Will be return \"servicecomb.metrics.window_time\" setting in microservice.yaml\n+  /**\n+   * What's the WindowTime ?\n+   * We all know there are two major type of metric :\n+   * 1.Time-unrelated,you can get the latest value any time immediately:\n+   * Counter -> increase or decrease\n+   * Guage -> set a certain one value\n+   * 2.Time-related,only after a centain time pass you can compute the right value,\"a centain time\" called WindowTime\n+   * Max & Min -> the max value or min value in a centain time\n+   * Average -> average value, the simplest algorithm is f = sum / count\n+   * Rate -> like TPS,algorithm is f = sum / second\n+   * <p>\n+   * Will be return \"servicecomb.metrics.window_time\" setting in microservice.yaml\n    */\n   public List<Long> getAppliedWindowTime() {\n     return Lists.newArrayList(appliedWindowTimes.keySet());\n@@ -111,19 +112,19 @@ public class MetricsDataSource {\n    * if there is two window time set in \"servicecomb.metrics.window_time\" like 1000,2000\n    * then windowTime = 1000 will return result of the setting 1000(1 second)\n    * windowTime = 2000 will return result of the setting 2000(2 second)\n-   *\n+   * <p>\n    * there are three monitor of max,min,total\n    * 0----------1----------2----------3----------  <-time line (second)\n-   *   100,200    300,400                          <-value record\n-   *\n-   *                 \u2191 measure(1000) will return max=200 min=100 total=300\n-   *                   measure(2000) will return max=0 min=0 total=0\n-   *                             \u2191 measure(1000) will return max=300 min=400 total=700\n-   *                               measure(2000) will return max=400 min=100 total=1000\n+   * 100,200    300,400                          <-value record\n+   * <p>\n+   * \u2191 measure(1000) will return max=200 min=100 total=300\n+   * measure(2000) will return max=0 min=0 total=0\n+   * \u2191 measure(1000) will return max=300 min=400 total=700\n+   * measure(2000) will return max=400 min=100 total=1000\n    *\n-   * @param windowTime getAppliedWindowTime() item\n+   * @param windowTime       getAppliedWindowTime() item\n    * @param calculateLatency need output latency\n-   * @return Map<String               ,               Double>\n+   * @return Map<String, Double>\n    */\n   public Map<String, Double> measure(long windowTime, boolean calculateLatency) {\n     Integer index = appliedWindowTimes.get(windowTime);\n",
+            "diff_size": 21
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "48",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 151).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "132",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 164).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/204/MetricsDataSource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/204/MetricsDataSource.java\nindex 3854456aa1..670369835f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/204/MetricsDataSource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/204/MetricsDataSource.java\n@@ -45,8 +45,7 @@ public class MetricsDataSource {\n   }\n \n   private MetricsDataSource() {\n-    this.init(RegistryMonitor.getInstance(), DynamicPropertyFactory\n-        .getInstance().getStringProperty(MetricsConfig.METRICS_POLLING_TIME, \"5000\").get());\n+    this.init(RegistryMonitor.getInstance(), DynamicPropertyFactory.getInstance().getStringProperty(MetricsConfig.METRICS_POLLING_TIME, \"5000\").get());\n   }\n \n   public MetricsDataSource(RegistryMonitor registryMonitor, String pollingSettings) {\n@@ -79,8 +78,7 @@ public class MetricsDataSource {\n     }\n   }\n \n-\n-  /**  What's the WindowTime ?\n+/**  What's the WindowTime ?\n    We all know there are two major type of metric :\n    1.Time-unrelated,you can get the latest value any time immediately:\n    Counter -> increase or decrease\n@@ -131,7 +129,6 @@ public class MetricsDataSource {\n       return registryMonitor.measure(index, calculateLatency);\n     }\n     throw new InvocationException(BAD_REQUEST,\n-        \"windowTime : \" + windowTime + \" unset in servicecomb.metrics.window_time,current available are : \" +\n-            Strings.join(\",\", getAppliedWindowTime().iterator()));\n+        \"windowTime : \" + windowTime + \" unset in servicecomb.metrics.window_time,current available are : \" + Strings.join(\",\", getAppliedWindowTime().iterator()));\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/204/MetricsDataSource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/204/MetricsDataSource.java\nindex 3854456aa1..f0da09762a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/204/MetricsDataSource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/204/MetricsDataSource.java\n@@ -131,7 +131,7 @@ public class MetricsDataSource {\n       return registryMonitor.measure(index, calculateLatency);\n     }\n     throw new InvocationException(BAD_REQUEST,\n-        \"windowTime : \" + windowTime + \" unset in servicecomb.metrics.window_time,current available are : \" +\n-            Strings.join(\",\", getAppliedWindowTime().iterator()));\n-  }\n+        \"windowTime : \" + windowTime + \" unset in servicecomb.metrics.window_time,current available are : \"\n+        + Strings.join(\",\", getAppliedWindowTime().iterator()));\n+}\n }\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "134",
+                    "column": "109",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

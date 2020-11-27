@@ -1,0 +1,58 @@
+{
+    "error_id": "25",
+    "information": {
+        "errors": [
+            {
+                "line": "16",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.runtime.api.connector;\n\nimport org.activiti.api.process.model.IntegrationContext;\nimport org.activiti.api.process.runtime.connector.Connector;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/25/DefaultServiceTaskBehavior.java\nindex c4254d6408..09061b0cf6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/25/DefaultServiceTaskBehavior.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.connector;\n \n import org.activiti.api.process.model.IntegrationContext;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/25/DefaultServiceTaskBehavior.java\nindex c4254d6408..7e0c6e6e8b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/25/DefaultServiceTaskBehavior.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.connector;\n \n import org.activiti.api.process.model.IntegrationContext;\n@@ -49,7 +50,7 @@ public class DefaultServiceTaskBehavior extends AbstractBpmnActivityBehavior {\n         IntegrationContext integrationContext = connector.apply(integrationContextBuilder.from(execution));\n \n         execution.setVariables(outboundVariablesProvider.calculateOutPutVariables(buildMappingExecutionContext(execution),\n-                                                                                  integrationContext.getOutBoundVariables()));\n+                integrationContext.getOutBoundVariables()));\n \n         leave(execution);\n     }\n@@ -60,7 +61,7 @@ public class DefaultServiceTaskBehavior extends AbstractBpmnActivityBehavior {\n \n     private Connector getConnector(String implementation) {\n         return applicationContext.getBean(implementation,\n-                                          Connector.class);\n+                Connector.class);\n     }\n \n     private String getServiceTaskImplementation(DelegateExecution execution) {\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/25/DefaultServiceTaskBehavior.java\nindex c4254d6408..69e8f4cba4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/25/DefaultServiceTaskBehavior.java\n@@ -28,47 +28,45 @@ import static org.activiti.runtime.api.impl.MappingExecutionContext.buildMapping\n public class DefaultServiceTaskBehavior extends AbstractBpmnActivityBehavior {\n \n     private final ApplicationContext applicationContext;\n+\n     private final IntegrationContextBuilder integrationContextBuilder;\n+\n     private VariablesMappingProvider outboundVariablesProvider;\n \n     public DefaultServiceTaskBehavior(ApplicationContext applicationContext,\n-                                      IntegrationContextBuilder integrationContextBuilder,\n-                                      VariablesMappingProvider outboundVariablesProvider) {\n-        this.applicationContext = applicationContext;\n-        this.integrationContextBuilder = integrationContextBuilder;\n-        this.outboundVariablesProvider = outboundVariablesProvider;\n+                                      IntegrationContextBuilder integrationContextBuilder, VariablesMappingProvider outboundVariablesProvider) {\n+    this.applicationContext = applicationContext;\n+    this.integrationContextBuilder = integrationContextBuilder;\n+    this.outboundVariablesProvider = outboundVariablesProvider;\n     }\n \n     /**\n      * We have two different implementation strategy that can be executed\n      * in according if we have a connector action definition match or not.\n      **/\n+\n     @Override\n     public void execute(DelegateExecution execution) {\n-        Connector connector = getConnector(getImplementation(execution));\n-        IntegrationContext integrationContext = connector.apply(integrationContextBuilder.from(execution));\n-\n-        execution.setVariables(outboundVariablesProvider.calculateOutPutVariables(buildMappingExecutionContext(execution),\n-                                                                                  integrationContext.getOutBoundVariables()));\n-\n-        leave(execution);\n+    Connector connector = getConnector(getImplementation(execution));\n+    IntegrationContext integrationContext = connector.apply(integrationContextBuilder.from(execution));\n+    execution.setVariables(outboundVariablesProvider.calculateOutPutVariables(buildMappingExecutionContext(execution), integrationContext.getOutBoundVariables()));\n+    leave(execution);\n     }\n \n     private String getImplementation(DelegateExecution execution) {\n-        return ((ServiceTask) execution.getCurrentFlowElement()).getImplementation();\n+    return ((ServiceTask) execution.getCurrentFlowElement()).getImplementation();\n     }\n \n     private Connector getConnector(String implementation) {\n-        return applicationContext.getBean(implementation,\n-                                          Connector.class);\n+    return applicationContext.getBean(implementation, Connector.class);\n     }\n \n     private String getServiceTaskImplementation(DelegateExecution execution) {\n-        return ((ServiceTask) execution.getCurrentFlowElement()).getImplementation();\n+    return ((ServiceTask) execution.getCurrentFlowElement()).getImplementation();\n     }\n \n     public boolean hasConnectorBean(DelegateExecution execution) {\n-        String implementation = getServiceTaskImplementation(execution);\n-        return applicationContext.containsBean(implementation) && applicationContext.getBean(implementation) instanceof Connector;\n+    String implementation = getServiceTaskImplementation(execution);\n+    return applicationContext.containsBean(implementation) && applicationContext.getBean(implementation) instanceof Connector;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/25/DefaultServiceTaskBehavior.java\nindex c4254d6408..09061b0cf6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/25/DefaultServiceTaskBehavior.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.connector;\n \n import org.activiti.api.process.model.IntegrationContext;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/25/DefaultServiceTaskBehavior.java\nindex c4254d6408..09061b0cf6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/25/DefaultServiceTaskBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/25/DefaultServiceTaskBehavior.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.connector;\n \n import org.activiti.api.process.model.IntegrationContext;\n",
+            "diff_size": 1
+        }
+    ]
+}

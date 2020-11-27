@@ -1,0 +1,196 @@
+{
+    "error_id": "521",
+    "information": {
+        "errors": [
+            {
+                "line": "19",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * under the License.\n */\npackage org.apache.iotdb.db.query.externalsort;\n\nimport java.io.IOException;\nimport java.util.List;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler/521/LineMerger.java\nindex f6f8d62b06..c748fddb16 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler/521/LineMerger.java\n@@ -16,6 +16,7 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n+\n package org.apache.iotdb.db.query.externalsort;\n \n import java.io.IOException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/intellij/521/LineMerger.java\nindex f6f8d62b06..c748fddb16 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/intellij/521/LineMerger.java\n@@ -16,6 +16,7 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n+\n package org.apache.iotdb.db.query.externalsort;\n \n import java.io.IOException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/521/LineMerger.java\nindex f6f8d62b06..7ad79e09ed 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/521/LineMerger.java\n@@ -28,7 +28,6 @@ import org.apache.iotdb.db.query.externalsort.serialize.impl.FixLengthTimeValueP\n import org.apache.iotdb.db.query.reader.IPointReader;\n import org.apache.iotdb.db.query.reader.universal.PriorityMergeReader;\n \n-\n public class LineMerger {\n \n   private String tmpFilePath;\n@@ -41,16 +40,15 @@ public class LineMerger {\n \n   public IPointReader merge(List<IPointReader> prioritySeriesReaders)\n       throws IOException {\n-    IExternalSortFileSerializer serializer = new FixLengthTimeValuePairSerializer(tmpFilePath);\n+  IExternalSortFileSerializer serializer = new FixLengthTimeValuePairSerializer(tmpFilePath);\n     PriorityMergeReader reader = new PriorityMergeReader(prioritySeriesReaders, 1);\n     while (reader.hasNext()) {\n       serializer.write(reader.next());\n     }\n     reader.close();\n     serializer.close();\n-    IExternalSortFileDeserializer deserializer = new FixLengthIExternalSortFileDeserializer(\n-        tmpFilePath);\n-    QueryResourceManager.getInstance().registerTempExternalSortFile(queryId, deserializer);\n+    IExternalSortFileDeserializer deserializer = new FixLengthIExternalSortFileDeserializer(tmpFilePath);\n+QueryResourceManager.getInstance().registerTempExternalSortFile(queryId, deserializer);\n     return deserializer;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "20",
+                    "severity": "warning",
+                    "message": "'import' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "warning",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 24, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "41",
+                    "column": "58",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "41",
+                    "column": "58",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'while' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'while' child has incorrect indentation level 30, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 26, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/codebuff/521/LineMerger.java\nindex f6f8d62b06..b894b9d7b5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/codebuff/521/LineMerger.java\n@@ -17,7 +17,6 @@\n  * under the License.\n  */\n package org.apache.iotdb.db.query.externalsort;\n-\n import java.io.IOException;\n import java.util.List;\n import org.apache.iotdb.db.query.control.QueryResourceManager;\n@@ -28,29 +27,28 @@ import org.apache.iotdb.db.query.externalsort.serialize.impl.FixLengthTimeValueP\n import org.apache.iotdb.db.query.reader.IPointReader;\n import org.apache.iotdb.db.query.reader.universal.PriorityMergeReader;\n \n-\n public class LineMerger {\n \n-  private String tmpFilePath;\n-  private long queryId;\n \n-  public LineMerger(long queryId, String tmpFilePath) {\n-    this.tmpFilePath = tmpFilePath;\n-    this.queryId = queryId;\n-  }\n+    private String tmpFilePath;\n+\n \n-  public IPointReader merge(List<IPointReader> prioritySeriesReaders)\n-      throws IOException {\n+    private long queryId;\n+\n+    public LineMerger(long queryId, String tmpFilePath) {\n+this.tmpFilePath = tmpFilePath;\n+this.queryId = queryId;\n+                        } public IPointReader merge(List < IPointReader> prioritySeriesReaders) throws IOException {\n     IExternalSortFileSerializer serializer = new FixLengthTimeValuePairSerializer(tmpFilePath);\n     PriorityMergeReader reader = new PriorityMergeReader(prioritySeriesReaders, 1);\n-    while (reader.hasNext()) {\n-      serializer.write(reader.next());\n+    while(reader.hasNext()) {\n+                              serializer.write(reader.next());\n     }\n     reader.close();\n     serializer.close();\n-    IExternalSortFileDeserializer deserializer = new FixLengthIExternalSortFileDeserializer(\n-        tmpFilePath);\n+    IExternalSortFileDeserializer deserializer = new FixLengthIExternalSortFileDeserializer(tmpFilePath);\n     QueryResourceManager.getInstance().registerTempExternalSortFile(queryId, deserializer);\n     return deserializer;\n-  }\n-}\n+                          }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 21
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "package statement should not be line-wrapped.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoLineWrapCheck"
+                },
+                {
+                    "line": "20",
+                    "severity": "warning",
+                    "message": "'query' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_random/521/LineMerger.java\nindex f6f8d62b06..fefb64c250 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_random/521/LineMerger.java\n@@ -16,7 +16,8 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n-package org.apache.iotdb.db.query.externalsort;\n+package org.apache.iotdb.db.\n+query.externalsort;\n \n import java.io.IOException;\n import java.util.List;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/521/LineMerger.java\nindex f6f8d62b06..c748fddb16 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/521/LineMerger.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/521/LineMerger.java\n@@ -16,6 +16,7 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n+\n package org.apache.iotdb.db.query.externalsort;\n \n import java.io.IOException;\n",
+            "diff_size": 1
+        }
+    ]
+}

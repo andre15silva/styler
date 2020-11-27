@@ -1,0 +1,273 @@
+{
+    "error_id": "29",
+    "information": {
+        "errors": [
+            {
+                "line": "40",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 97).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "            .findAttribute(\"wildcard.*\")\n            .orElseThrow(\n                () -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n    prefix = targetAttr.toAttributePrefix();\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 12, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/29/EventDataToDummy.java\nindex d71c8b1ea1..1f3e3b9777 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/29/EventDataToDummy.java\n@@ -36,23 +36,22 @@ public class EventDataToDummy implements ElementWiseTransformation {\n     targetAttr =\n         target\n             .findAttribute(\"wildcard.*\")\n-            .orElseThrow(\n-                () -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n-    prefix = targetAttr.toAttributePrefix();\n-  }\n+            .orElseThrow(() -> newIllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n+            prefix = targetAttr.toAttributePrefix();\n+}\n \n-  @Override\n-  public int apply(StreamElement input, Collector<StreamElement> collector) {\n+@Override\n+public int apply(StreamElement input, Collector<StreamElement> collector) {\n \n-    collector.collect(\n-        StreamElement.upsert(\n-            target,\n-            targetAttr,\n-            input.getUuid(),\n-            input.getKey(),\n-            prefix + input.getStamp(),\n-            input.getStamp(),\n-            input.getValue()));\n-    return 1;\n-  }\n+  collector.collect(\n+      StreamElement.upsert(\n+          target,\n+          targetAttr,\n+          input.getUuid(),\n+          input.getKey(),\n+          prefix + input.getStamp(),\n+          input.getStamp(),\n+          input.getValue()));\n+  return 1;\n+}\n }\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/29/EventDataToDummy.java\nindex d71c8b1ea1..6f61fab402 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/29/EventDataToDummy.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.transform;\n \n import cz.o2.proxima.repository.AttributeDescriptor;\n@@ -37,7 +38,8 @@ public class EventDataToDummy implements ElementWiseTransformation {\n         target\n             .findAttribute(\"wildcard.*\")\n             .orElseThrow(\n-                () -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n+                () -> new IllegalArgumentException(\n+                    \"Missing attribute `wildcard.*` in `dummy`\"));\n     prefix = targetAttr.toAttributePrefix();\n   }\n \n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/29/EventDataToDummy.java\nindex d71c8b1ea1..ba72e44916 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/29/EventDataToDummy.java\n@@ -33,18 +33,16 @@ public class EventDataToDummy implements ElementWiseTransformation {\n     target =\n         repo.findEntity(\"dummy\")\n             .orElseThrow(() -> new IllegalStateException(\"Missing entity `dummy`\"));\n-    targetAttr =\n+targetAttr =\n         target\n             .findAttribute(\"wildcard.*\")\n-            .orElseThrow(\n-                () -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n-    prefix = targetAttr.toAttributePrefix();\n+            .orElseThrow(() -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n+prefix = targetAttr.toAttributePrefix();\n   }\n \n   @Override\n   public int apply(StreamElement input, Collector<StreamElement> collector) {\n-\n-    collector.collect(\n+  collector.collect(\n         StreamElement.upsert(\n             target,\n             targetAttr,\n@@ -53,6 +51,6 @@ public class EventDataToDummy implements ElementWiseTransformation {\n             prefix + input.getStamp(),\n             input.getStamp(),\n             input.getValue()));\n-    return 1;\n+return 1;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 109).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 145).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 160).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/29/EventDataToDummy.java\nindex d71c8b1ea1..46843a64be 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/29/EventDataToDummy.java\n@@ -22,37 +22,26 @@ import cz.o2.proxima.storage.StreamElement;\n import java.util.Map;\n \n /** Transform {@code event.data} to {@code dummy.wildcard.<stamp>}. */\n+\n+\n public class EventDataToDummy implements ElementWiseTransformation {\n \n-  EntityDescriptor target;\n-  AttributeDescriptor targetAttr;\n-  String prefix;\n-\n-  @Override\n-  public void setup(Repository repo, Map<String, Object> cfg) {\n-    target =\n-        repo.findEntity(\"dummy\")\n-            .orElseThrow(() -> new IllegalStateException(\"Missing entity `dummy`\"));\n-    targetAttr =\n-        target\n-            .findAttribute(\"wildcard.*\")\n-            .orElseThrow(\n-                () -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n+    EntityDescriptor target;\n+\n+    AttributeDescriptor targetAttr;\n+\n+    String prefix;\n+\n+    @Override\n+    public void setup(Repository repo, Map<String, Object> cfg) {\n+    target = repo.findEntity(\"dummy\").orElseThrow(() -> new IllegalStateException(\"Missing entity `dummy`\"));\n+    targetAttr = target.findAttribute(\"wildcard.*\").orElseThrow(() -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n     prefix = targetAttr.toAttributePrefix();\n-  }\n-\n-  @Override\n-  public int apply(StreamElement input, Collector<StreamElement> collector) {\n-\n-    collector.collect(\n-        StreamElement.upsert(\n-            target,\n-            targetAttr,\n-            input.getUuid(),\n-            input.getKey(),\n-            prefix + input.getStamp(),\n-            input.getStamp(),\n-            input.getValue()));\n+    }\n+\n+    @Override\n+    public int apply(StreamElement input, Collector<StreamElement> collector) {\n+    collector.collect(StreamElement.upsert(target, targetAttr, input.getUuid(), input.getKey(), prefix + input.getStamp(), input.getStamp(), input.getValue()));\n     return 1;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 32
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 12, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/29/EventDataToDummy.java\nindex d71c8b1ea1..1f3e3b9777 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/29/EventDataToDummy.java\n@@ -36,23 +36,22 @@ public class EventDataToDummy implements ElementWiseTransformation {\n     targetAttr =\n         target\n             .findAttribute(\"wildcard.*\")\n-            .orElseThrow(\n-                () -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n-    prefix = targetAttr.toAttributePrefix();\n-  }\n+            .orElseThrow(() -> newIllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n+            prefix = targetAttr.toAttributePrefix();\n+}\n \n-  @Override\n-  public int apply(StreamElement input, Collector<StreamElement> collector) {\n+@Override\n+public int apply(StreamElement input, Collector<StreamElement> collector) {\n \n-    collector.collect(\n-        StreamElement.upsert(\n-            target,\n-            targetAttr,\n-            input.getUuid(),\n-            input.getKey(),\n-            prefix + input.getStamp(),\n-            input.getStamp(),\n-            input.getValue()));\n-    return 1;\n-  }\n+  collector.collect(\n+      StreamElement.upsert(\n+          target,\n+          targetAttr,\n+          input.getUuid(),\n+          input.getKey(),\n+          prefix + input.getStamp(),\n+          input.getStamp(),\n+          input.getValue()));\n+  return 1;\n+}\n }\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 12, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/29/EventDataToDummy.java\nindex d71c8b1ea1..4320e0acec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/29/EventDataToDummy.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/29/EventDataToDummy.java\n@@ -36,23 +36,22 @@ public class EventDataToDummy implements ElementWiseTransformation {\n     targetAttr =\n         target\n             .findAttribute(\"wildcard.*\")\n-            .orElseThrow(\n-                () -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n-    prefix = targetAttr.toAttributePrefix();\n-  }\n+            .orElseThrow(() -> new IllegalArgumentException(\"Missing attribute `wildcard.*` in `dummy`\"));\n+            prefix = targetAttr.toAttributePrefix();\n+}\n \n-  @Override\n-  public int apply(StreamElement input, Collector<StreamElement> collector) {\n+@Override\n+public int apply(StreamElement input, Collector<StreamElement> collector) {\n \n-    collector.collect(\n-        StreamElement.upsert(\n-            target,\n-            targetAttr,\n-            input.getUuid(),\n-            input.getKey(),\n-            prefix + input.getStamp(),\n-            input.getStamp(),\n-            input.getValue()));\n-    return 1;\n-  }\n+  collector.collect(\n+      StreamElement.upsert(\n+          target,\n+          targetAttr,\n+          input.getUuid(),\n+          input.getKey(),\n+          prefix + input.getStamp(),\n+          input.getStamp(),\n+          input.getValue()));\n+  return 1;\n+}\n }\n",
+            "diff_size": 17
+        }
+    ]
+}

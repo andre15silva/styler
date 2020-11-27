@@ -1,0 +1,65 @@
+{
+    "error_id": "137",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.assembler;\n\nimport org.javatuples.Tuple;\nimport org.seedstack.business.internal.utils.BusinessUtils;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/137/BaseTupleAssembler.java\nindex 57d9ffd256..7549e8d06c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/137/BaseTupleAssembler.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.assembler;\n \n import org.javatuples.Tuple;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/137/BaseTupleAssembler.java\nindex 57d9ffd256..7549e8d06c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/137/BaseTupleAssembler.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.assembler;\n \n import org.javatuples.Tuple;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/137/BaseTupleAssembler.java\nindex 57d9ffd256..2dd9763ec0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/137/BaseTupleAssembler.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.assembler;\n \n import org.javatuples.Tuple;\n@@ -48,4 +49,4 @@ public abstract class BaseTupleAssembler<T extends Tuple, D> implements Assemble\n     public D createDto() {\n         return Classes.instantiateDefault(getDtoClass());\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "23",
+                    "column": "42",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/137/BaseTupleAssembler.java\nindex 57d9ffd256..776e85883a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/137/BaseTupleAssembler.java\n@@ -18,15 +18,17 @@ import org.seedstack.shed.reflect.Classes;\n  * @param <T> the tuple of aggregates type.\n  * @param <D> the dto type.\n  */\n-public abstract class BaseTupleAssembler<T extends Tuple, D> implements Assembler<T, D> {\n+\n+\n+public abstract class BaseTupleAssembler <T extends Tuple, D> implements Assembler<T, D> {\n \n     private final Class<D> dtoClass;\n \n     /**\n      * Creates an assembler with automatic resolution of its DTO class.\n      */\n-    @SuppressWarnings(\"unchecked\")\n-    public BaseTupleAssembler() {\n+\n+    @SuppressWarnings(\"unchecked\") public BaseTupleAssembler() {\n         this.dtoClass = (Class<D>) BusinessUtils.resolveGenerics(BaseTupleAssembler.class, getClass())[1];\n     }\n \n@@ -35,17 +37,20 @@ public abstract class BaseTupleAssembler<T extends Tuple, D> implements Assemble\n      *\n      * @param dtoClass the DTO class.\n      */\n+\n+\n     protected BaseTupleAssembler(Class<D> dtoClass) {\n         this.dtoClass = dtoClass;\n     }\n \n     @Override\n     public Class<D> getDtoClass() {\n-        return this.dtoClass;\n+        return this\n+            .dtoClass;\n     }\n \n     @Override\n     public D createDto() {\n         return Classes.instantiateDefault(getDtoClass());\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/137/BaseTupleAssembler.java\nindex 57d9ffd256..7549e8d06c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/137/BaseTupleAssembler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/137/BaseTupleAssembler.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.assembler;\n \n import org.javatuples.Tuple;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

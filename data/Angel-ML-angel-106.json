@@ -1,0 +1,172 @@
+{
+    "error_id": "106",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/106/CompIntFloatRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/106/CompIntFloatRowUpdateSplit.java\nindex acd614e801..4808f97e81 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/106/CompIntFloatRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/106/CompIntFloatRowUpdateSplit.java\n@@ -34,122 +34,123 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n  */\n public class CompIntFloatRowUpdateSplit extends RowUpdateSplit {\n \n-  /**\n-   * Row update split\n-   */\n-  private final IntFloatVector split;\n+    /**\n+     * Row update split\n+     */\n+    private final IntFloatVector split;\n \n-  /**\n-   * Max element number in this split\n-   */\n-  private final int maxItemNum;\n+    /**\n+     * Max element number in this split\n+     */\n+    private final int maxItemNum;\n \n-  /**\n-   * Create a new CompIntFloatRowUpdateSplit.\n-   *\n-   * @param rowIndex row index\n-   * @param split row update split\n-   * @param maxItemNum Max element number in this split\n-   */\n-  public CompIntFloatRowUpdateSplit(int rowIndex, IntFloatVector split, int maxItemNum) {\n-    super(rowIndex, RowType.T_FLOAT_DENSE, -1, -1);\n-    this.split = split;\n-    this.maxItemNum = maxItemNum;\n+    /**\n+     * Create a new CompIntFloatRowUpdateSplit.\n+     *\n+     * @param rowIndex   row index\n+     * @param split      row update split\n+     * @param maxItemNum Max element number in this split\n+     */\n+    public CompIntFloatRowUpdateSplit(int rowIndex, IntFloatVector split, int maxItemNum) {\n+        super(rowIndex, RowType.T_FLOAT_DENSE, -1, -1);\n+        this.split = split;\n+        this.maxItemNum = maxItemNum;\n \n-    if (split != null) {\n-      IntFloatVectorStorage storage = split.getStorage();\n-      if (storage instanceof IntFloatDenseVectorStorage) {\n-        rowType = RowType.T_FLOAT_DENSE_COMPONENT;\n-      } else {\n-        rowType = RowType.T_FLOAT_SPARSE_COMPONENT;\n-      }\n+        if (split != null) {\n+            IntFloatVectorStorage storage = split.getStorage();\n+            if (storage instanceof IntFloatDenseVectorStorage) {\n+                rowType = RowType.T_FLOAT_DENSE_COMPONENT;\n+            } else {\n+                rowType = RowType.T_FLOAT_SPARSE_COMPONENT;\n+            }\n+        }\n     }\n-  }\n \n-  /**\n-   * Create new empty CompIntFloatRowUpdateSplit\n-   */\n-  public CompIntFloatRowUpdateSplit() {\n-    this(-1, null, -1);\n-  }\n+    /**\n+     * Create new empty CompIntFloatRowUpdateSplit\n+     */\n+    public CompIntFloatRowUpdateSplit() {\n+        this(-1, null, -1);\n+    }\n \n-  /**\n-   * Get row update split vector\n-   *\n-   * @return row update split vector\n-   */\n-  public IntFloatVector getSplit() {\n-    return split;\n-  }\n+    /**\n+     * Get row update split vector\n+     *\n+     * @return row update split vector\n+     */\n+    public IntFloatVector getSplit() {\n+        return split;\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    IntFloatVectorStorage storage = split.getStorage();\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        super.serialize(buf);\n+        IntFloatVectorStorage storage = split.getStorage();\n \n-    if (storage instanceof IntFloatSparseVectorStorage) {\n-      buf.writeInt(storage.size());\n-      ObjectIterator<Int2FloatMap.Entry> iter = storage.entryIterator();\n-      Int2FloatMap.Entry entry;\n-      while (iter.hasNext()) {\n-        entry = iter.next();\n-        buf.writeInt(entry.getIntKey());\n-        buf.writeFloat(entry.getFloatValue());\n-      }\n-    } else if (storage instanceof IntFloatSortedVectorStorage) {\n-      buf.writeInt(storage.size());\n-      int[] indices = storage.getIndices();\n-      float[] values = storage.getValues();\n-      for (int i = 0; i < indices.length; i++) {\n-        buf.writeInt(indices[i]);\n-        buf.writeFloat(values[i]);\n-      }\n-    } else if (storage instanceof IntFloatDenseVectorStorage) {\n-      float[] values = storage.getValues();\n-      int writeSize = values.length < maxItemNum ? values.length : maxItemNum;\n-      buf.writeInt(writeSize);\n-      for (int i = 0; i < writeSize; i++) {\n-        buf.writeFloat(values[i]);\n-      }\n-    } else {\n-      throw new UnsupportedOperationException(\n-          \"unsupport split for storage \" + storage.getClass().getName());\n+        if (storage instanceof IntFloatSparseVectorStorage) {\n+            buf.writeInt(storage.size());\n+            ObjectIterator<Int2FloatMap.Entry> iter = storage.entryIterator();\n+            Int2FloatMap.Entry entry;\n+            while (iter.hasNext()) {\n+                entry = iter.next();\n+                buf.writeInt(entry.getIntKey());\n+                buf.writeFloat(entry.getFloatValue());\n+            }\n+        } else if (storage instanceof IntFloatSortedVectorStorage) {\n+            buf.writeInt(storage.size());\n+            int[] indices = storage.getIndices();\n+            float[] values = storage.getValues();\n+            for (int i = 0; i < indices.length; i++) {\n+                buf.writeInt(indices[i]);\n+                buf.writeFloat(values[i]);\n+            }\n+        } else if (storage instanceof IntFloatDenseVectorStorage) {\n+            float[] values = storage.getValues();\n+            int writeSize = values.length < maxItemNum ? values.length : maxItemNum;\n+            buf.writeInt(writeSize);\n+            for (int i = 0; i < writeSize; i++) {\n+                buf.writeFloat(values[i]);\n+            }\n+        } else {\n+            throw new UnsupportedOperationException(\n+                    \"unsupport split for storage \" + storage.getClass().getName());\n+        }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n-    super.deserialize(buf);\n-    int elemNum = buf.readInt();\n-    if (rowType == RowType.T_FLOAT_DENSE_COMPONENT) {\n-      float[] values = new float[elemNum];\n-      for (int i = 0; i < elemNum; i++) {\n-        values[i] = buf.readFloat();\n-      }\n-      vector = VFactory.denseFloatVector(values);\n-    } else if (rowType == RowType.T_FLOAT_SPARSE_COMPONENT) {\n-      vector = VFactory.sparseFloatVector(\n-          (int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n-          elemNum);\n-      for (int i = 0; i < elemNum; i++) {\n-        ((IntFloatVector) vector).set(buf.readInt(), buf.readFloat());\n-      }\n-    } else {\n-      throw new UnsupportedOperationException(\"Unsupport rowtype \" + rowType);\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n+        super.deserialize(buf);\n+        int elemNum = buf.readInt();\n+        if (rowType == RowType.T_FLOAT_DENSE_COMPONENT) {\n+            float[] values = new float[elemNum];\n+            for (int i = 0; i < elemNum; i++) {\n+                values[i] = buf.readFloat();\n+            }\n+            vector = VFactory.denseFloatVector(values);\n+        } else if (rowType == RowType.T_FLOAT_SPARSE_COMPONENT) {\n+            vector = VFactory.sparseFloatVector(\n+                    (int) (splitContext.getPartKey().getEndCol() -\n+                            splitContext.getPartKey().getStartCol()),\n+                    elemNum);\n+            for (int i = 0; i < elemNum; i++) {\n+                ((IntFloatVector) vector).set(buf.readInt(), buf.readFloat());\n+            }\n+        } else {\n+            throw new UnsupportedOperationException(\"Unsupport rowtype \" + rowType);\n+        }\n     }\n-  }\n \n-  @Override\n-  public long size() {\n-    return split.size();\n-  }\n+    @Override\n+    public long size() {\n+        return split.size();\n+    }\n \n-  @Override\n-  public int bufferLen() {\n-    if (rowType == RowType.T_FLOAT_DENSE) {\n-      return 4 + super.bufferLen() + split.getStorage().size() * 4;\n-    } else {\n-      return 4 + super.bufferLen() + split.getStorage().size() * 8;\n+    @Override\n+    public int bufferLen() {\n+        if (rowType == RowType.T_FLOAT_DENSE) {\n+            return 4 + super.bufferLen() + split.getStorage().size() * 4;\n+        } else {\n+            return 4 + super.bufferLen() + split.getStorage().size() * 8;\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 109
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 109).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "129",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/106/CompIntFloatRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/106/CompIntFloatRowUpdateSplit.java\nindex acd614e801..4e2b1a500d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/106/CompIntFloatRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/106/CompIntFloatRowUpdateSplit.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.psagent.matrix.oplog.cache;\n \n import com.tencent.angel.ml.math2.VFactory;\n@@ -112,8 +111,7 @@ public class CompIntFloatRowUpdateSplit extends RowUpdateSplit {\n         buf.writeFloat(values[i]);\n       }\n     } else {\n-      throw new UnsupportedOperationException(\n-          \"unsupport split for storage \" + storage.getClass().getName());\n+      throw new UnsupportedOperationException(\"unsupport split for storage \" + storage.getClass().getName());\n     }\n   }\n \n@@ -128,8 +126,7 @@ public class CompIntFloatRowUpdateSplit extends RowUpdateSplit {\n       }\n       vector = VFactory.denseFloatVector(values);\n     } else if (rowType == RowType.T_FLOAT_SPARSE_COMPONENT) {\n-      vector = VFactory.sparseFloatVector(\n-          (int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n+      vector = VFactory.sparseFloatVector((int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n           elemNum);\n       for (int i = 0; i < elemNum; i++) {\n         ((IntFloatVector) vector).set(buf.readInt(), buf.readFloat());\n@@ -152,4 +149,4 @@ public class CompIntFloatRowUpdateSplit extends RowUpdateSplit {\n       return 4 + super.bufferLen() + split.getStorage().size() * 8;\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 41.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 46.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 56.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 118).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 119).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 74.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 84.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "134",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 169).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "137",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/106/CompIntFloatRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/106/CompIntFloatRowUpdateSplit.java\nindex acd614e801..ed26afc2dc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/106/CompIntFloatRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/106/CompIntFloatRowUpdateSplit.java\n@@ -32,17 +32,18 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n /**\n  * Component int float row update split\n  */\n+\n public class CompIntFloatRowUpdateSplit extends RowUpdateSplit {\n \n   /**\n    * Row update split\n    */\n-  private final IntFloatVector split;\n+    private final IntFloatVector split;\n \n   /**\n    * Max element number in this split\n    */\n-  private final int maxItemNum;\n+    private final int maxItemNum;\n \n   /**\n    * Create a new CompIntFloatRowUpdateSplit.\n@@ -51,105 +52,106 @@ public class CompIntFloatRowUpdateSplit extends RowUpdateSplit {\n    * @param split row update split\n    * @param maxItemNum Max element number in this split\n    */\n-  public CompIntFloatRowUpdateSplit(int rowIndex, IntFloatVector split, int maxItemNum) {\n+\n+    public CompIntFloatRowUpdateSplit(int rowIndex, IntFloatVector split, int maxItemNum) {\n     super(rowIndex, RowType.T_FLOAT_DENSE, -1, -1);\n     this.split = split;\n     this.maxItemNum = maxItemNum;\n-\n     if (split != null) {\n-      IntFloatVectorStorage storage = split.getStorage();\n-      if (storage instanceof IntFloatDenseVectorStorage) {\n+                                                                   IntFloatVectorStorage storage = split.getStorage();\n+                                                                   if (storage instanceof IntFloatDenseVectorStorage) {\n         rowType = RowType.T_FLOAT_DENSE_COMPONENT;\n-      } else {\n-        rowType = RowType.T_FLOAT_SPARSE_COMPONENT;\n-      }\n+                                                                   } else {\n+                                                                     rowType = RowType.T_FLOAT_SPARSE_COMPONENT;\n+                                                                   }\n+    }\n     }\n-  }\n \n   /**\n    * Create new empty CompIntFloatRowUpdateSplit\n    */\n-  public CompIntFloatRowUpdateSplit() {\n+\n+    public CompIntFloatRowUpdateSplit() {\n     this(-1, null, -1);\n-  }\n+    }\n \n   /**\n    * Get row update split vector\n    *\n    * @return row update split vector\n    */\n-  public IntFloatVector getSplit() {\n+\n+    public IntFloatVector getSplit() {\n     return split;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     super.serialize(buf);\n     IntFloatVectorStorage storage = split.getStorage();\n-\n     if (storage instanceof IntFloatSparseVectorStorage) {\n-      buf.writeInt(storage.size());\n-      ObjectIterator<Int2FloatMap.Entry> iter = storage.entryIterator();\n-      Int2FloatMap.Entry entry;\n-      while (iter.hasNext()) {\n-        entry = iter.next();\n-        buf.writeInt(entry.getIntKey());\n-        buf.writeFloat(entry.getFloatValue());\n-      }\n+        buf.writeInt(storage.size());\n+        ObjectIterator<Int2FloatMap.Entry> iter = storage.entryIterator();\n+        Int2FloatMap.Entry entry;\n+        while (iter.hasNext()) {\n+                                                            entry = iter.next();\n+                                                            buf.writeInt(entry.getIntKey());\n+                                                            buf.writeFloat(entry.getFloatValue());\n+        }\n     } else if (storage instanceof IntFloatSortedVectorStorage) {\n-      buf.writeInt(storage.size());\n-      int[] indices = storage.getIndices();\n-      float[] values = storage.getValues();\n-      for (int i = 0; i < indices.length; i++) {\n-        buf.writeInt(indices[i]);\n-        buf.writeFloat(values[i]);\n-      }\n+                                           buf.writeInt(storage.size());\n+\n+                                           int[] indices = storage.getIndices();\n+                                           float[] values = storage.getValues();\n+                                           for (int i = 0; i < indices.length; i++) {\n+                                                                   buf.writeInt(indices[i]);\n+                                                                   buf.writeFloat(values[i]);\n+                                           }\n     } else if (storage instanceof IntFloatDenseVectorStorage) {\n       float[] values = storage.getValues();\n       int writeSize = values.length < maxItemNum ? values.length : maxItemNum;\n       buf.writeInt(writeSize);\n       for (int i = 0; i < writeSize; i++) {\n-        buf.writeFloat(values[i]);\n+                                                                  buf.writeFloat(values[i]);\n       }\n-    } else {\n-      throw new UnsupportedOperationException(\n-          \"unsupport split for storage \" + storage.getClass().getName());\n+           } else {\n+             throw new UnsupportedOperationException(\"unsupport split for storage \" + storage.getClass().getName());\n+           }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n     super.deserialize(buf);\n+\n     int elemNum = buf.readInt();\n     if (rowType == RowType.T_FLOAT_DENSE_COMPONENT) {\n-      float[] values = new float[elemNum];\n-      for (int i = 0; i < elemNum; i++) {\n-        values[i] = buf.readFloat();\n-      }\n-      vector = VFactory.denseFloatVector(values);\n+        float[] values = new float[elemNum];\n+        for (int i = 0; i < elemNum; i++) {\n+                                                        values[i] = buf.readFloat();\n+        }\n+        vector = VFactory.denseFloatVector(values);\n     } else if (rowType == RowType.T_FLOAT_SPARSE_COMPONENT) {\n-      vector = VFactory.sparseFloatVector(\n-          (int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n-          elemNum);\n-      for (int i = 0; i < elemNum; i++) {\n-        ((IntFloatVector) vector).set(buf.readInt(), buf.readFloat());\n-      }\n+                                             vector = VFactory.sparseFloatVector((int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n+                                                 elemNum);\n+                                             for (int i = 0; i < elemNum; i++) {\n+                                                                ((IntFloatVector) vector).set(buf.readInt(), buf.readFloat());\n+                                             }\n     } else {\n       throw new UnsupportedOperationException(\"Unsupport rowtype \" + rowType);\n     }\n-  }\n+    }\n \n-  @Override\n-  public long size() {\n+    @Override\n+    public long size() {\n     return split.size();\n-  }\n+    }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     if (rowType == RowType.T_FLOAT_DENSE) {\n-      return 4 + super.bufferLen() + split.getStorage().size() * 4;\n+        return 4 + super.bufferLen() + split.getStorage().size() * 4;\n     } else {\n       return 4 + super.bufferLen() + split.getStorage().size() * 8;\n     }\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 66
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/106/CompIntFloatRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/106/CompIntFloatRowUpdateSplit.java\nindex acd614e801..5941bd295d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/106/CompIntFloatRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/106/CompIntFloatRowUpdateSplit.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.psagent.matrix.oplog.cache;\n \n import com.tencent.angel.ml.math2.VFactory;\n",
+            "diff_size": 1
+        }
+    ]
+}

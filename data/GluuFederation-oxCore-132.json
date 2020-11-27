@@ -1,0 +1,115 @@
+{
+    "error_id": "132",
+    "information": {
+        "errors": [
+            {
+                "line": "59",
+                "column": "1",
+                "severity": "error",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "        SchemaEntry schemaEntry = schemaService.getSchema();\n        if (schemaEntry == null) {\n\t        List<String> attributeNames = new ArrayList<String>();\n\t        attributeNames.add(name);\n\t        List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n\t        AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "101",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 152).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/132/AttributeService.java\nindex 04f61976e9..68e17cd59d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/132/AttributeService.java\n@@ -56,13 +56,13 @@ public abstract class AttributeService implements Serializable {\n     public String getDefaultSaml2Uri(String name) {\n         SchemaEntry schemaEntry = schemaService.getSchema();\n         if (schemaEntry == null) {\n-\t        List<String> attributeNames = new ArrayList<String>();\n-\t        attributeNames.add(name);\n-\t        List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n-\t        AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);\n-\t        if (attributeTypeDefinition != null) {\n-\t            return String.format(\"urn:oid:%s\", attributeTypeDefinition.getOID());\n-\t        }\n+            List<String> attributeNames = new ArrayList<String>();\n+         attributeNames.add(name);\n+         List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n+         AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);\n+         if (attributeTypeDefinition != null) {\n+             return String.format(\"urn:oid:%s\", attributeTypeDefinition.getOID());\n+         }\n         }\n \n         return \"\";\n@@ -98,9 +98,9 @@ public abstract class AttributeService implements Serializable {\n \n     @SuppressWarnings(\"unchecked\")\n     public List<GluuAttribute> getAllAttributes(String baseDn) {\n-    \tBaseCacheService usedCacheService = getCacheService();\n+\t\t\t\t\tBaseCacheService usedCacheService = getCacheService();\n \n-    \tList<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME,\n+\t\t\t\t\tList<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME,\n                 OxConstants.CACHE_ATTRIBUTE_KEY_LIST);\n         if (attributeList == null) {\n             attributeList = getAllAtributesImpl(baseDn);\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/132/AttributeService.java\nindex 04f61976e9..ea3c09621e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/132/AttributeService.java\n@@ -3,6 +3,7 @@\n  *\n  * Copyright (c) 2014, Gluu\n  */\n+\n package org.gluu.service;\n \n import java.io.Serializable;\n@@ -46,7 +47,7 @@ public abstract class AttributeService implements Serializable {\n     protected LocalCacheService localCacheService;\n \n     public List<GluuAttribute> getAttributesByAttribute(String attributeName, String attributeValue, String baseDn) {\n-        String[] targetArray = new String[] { attributeValue };\n+        String[] targetArray = new String[] {attributeValue};\n         Filter filter = Filter.createSubstringFilter(attributeName, null, targetArray, null);\n         List<GluuAttribute> result = ldapEntryManager.findEntries(baseDn, GluuAttribute.class, filter);\n \n@@ -56,13 +57,13 @@ public abstract class AttributeService implements Serializable {\n     public String getDefaultSaml2Uri(String name) {\n         SchemaEntry schemaEntry = schemaService.getSchema();\n         if (schemaEntry == null) {\n-\t        List<String> attributeNames = new ArrayList<String>();\n-\t        attributeNames.add(name);\n-\t        List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n-\t        AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);\n-\t        if (attributeTypeDefinition != null) {\n-\t            return String.format(\"urn:oid:%s\", attributeTypeDefinition.getOID());\n-\t        }\n+            List<String> attributeNames = new ArrayList<String>();\n+            attributeNames.add(name);\n+            List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n+            AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);\n+            if (attributeTypeDefinition != null) {\n+                return String.format(\"urn:oid:%s\", attributeTypeDefinition.getOID());\n+            }\n         }\n \n         return \"\";\n@@ -98,10 +99,10 @@ public abstract class AttributeService implements Serializable {\n \n     @SuppressWarnings(\"unchecked\")\n     public List<GluuAttribute> getAllAttributes(String baseDn) {\n-    \tBaseCacheService usedCacheService = getCacheService();\n+        BaseCacheService usedCacheService = getCacheService();\n \n-    \tList<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME,\n-                OxConstants.CACHE_ATTRIBUTE_KEY_LIST);\n+        List<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME,\n+            OxConstants.CACHE_ATTRIBUTE_KEY_LIST);\n         if (attributeList == null) {\n             attributeList = getAllAtributesImpl(baseDn);\n             usedCacheService.put(OxConstants.CACHE_ATTRIBUTE_NAME, OxConstants.CACHE_ATTRIBUTE_KEY_LIST, attributeList);\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "60",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 159).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/132/AttributeService.java\nindex 04f61976e9..d86f9654f3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/132/AttributeService.java\n@@ -56,14 +56,14 @@ public abstract class AttributeService implements Serializable {\n     public String getDefaultSaml2Uri(String name) {\n         SchemaEntry schemaEntry = schemaService.getSchema();\n         if (schemaEntry == null) {\n-\t        List<String> attributeNames = new ArrayList<String>();\n+    List<String> attributeNames = new ArrayList<String>();\n \t        attributeNames.add(name);\n \t        List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n \t        AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);\n \t        if (attributeTypeDefinition != null) {\n \t            return String.format(\"urn:oid:%s\", attributeTypeDefinition.getOID());\n \t        }\n-        }\n+    }\n \n         return \"\";\n     }\n@@ -98,10 +98,9 @@ public abstract class AttributeService implements Serializable {\n \n     @SuppressWarnings(\"unchecked\")\n     public List<GluuAttribute> getAllAttributes(String baseDn) {\n-    \tBaseCacheService usedCacheService = getCacheService();\n+    BaseCacheService usedCacheService = getCacheService();\n \n-    \tList<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME,\n-                OxConstants.CACHE_ATTRIBUTE_KEY_LIST);\n+    \tList<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME, OxConstants.CACHE_ATTRIBUTE_KEY_LIST);\n         if (attributeList == null) {\n             attributeList = getAllAtributesImpl(baseDn);\n             usedCacheService.put(OxConstants.CACHE_ATTRIBUTE_NAME, OxConstants.CACHE_ATTRIBUTE_KEY_LIST, attributeList);\n@@ -120,4 +119,4 @@ public abstract class AttributeService implements Serializable {\n \n     public abstract String getDnForAttribute(String inum);\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "101",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 152).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/132/AttributeService.java\nindex 04f61976e9..68e17cd59d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/132/AttributeService.java\n@@ -56,13 +56,13 @@ public abstract class AttributeService implements Serializable {\n     public String getDefaultSaml2Uri(String name) {\n         SchemaEntry schemaEntry = schemaService.getSchema();\n         if (schemaEntry == null) {\n-\t        List<String> attributeNames = new ArrayList<String>();\n-\t        attributeNames.add(name);\n-\t        List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n-\t        AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);\n-\t        if (attributeTypeDefinition != null) {\n-\t            return String.format(\"urn:oid:%s\", attributeTypeDefinition.getOID());\n-\t        }\n+            List<String> attributeNames = new ArrayList<String>();\n+         attributeNames.add(name);\n+         List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n+         AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);\n+         if (attributeTypeDefinition != null) {\n+             return String.format(\"urn:oid:%s\", attributeTypeDefinition.getOID());\n+         }\n         }\n \n         return \"\";\n@@ -98,9 +98,9 @@ public abstract class AttributeService implements Serializable {\n \n     @SuppressWarnings(\"unchecked\")\n     public List<GluuAttribute> getAllAttributes(String baseDn) {\n-    \tBaseCacheService usedCacheService = getCacheService();\n+\t\t\t\t\tBaseCacheService usedCacheService = getCacheService();\n \n-    \tList<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME,\n+\t\t\t\t\tList<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME,\n                 OxConstants.CACHE_ATTRIBUTE_KEY_LIST);\n         if (attributeList == null) {\n             attributeList = getAllAtributesImpl(baseDn);\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "60",
+                    "column": "14",
+                    "severity": "error",
+                    "message": "'<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "102",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 152).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/132/AttributeService.java\nindex 04f61976e9..27d11d9c31 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/132/AttributeService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/132/AttributeService.java\n@@ -56,13 +56,14 @@ public abstract class AttributeService implements Serializable {\n     public String getDefaultSaml2Uri(String name) {\n         SchemaEntry schemaEntry = schemaService.getSchema();\n         if (schemaEntry == null) {\n-\t        List<String> attributeNames = new ArrayList<String>();\n-\t        attributeNames.add(name);\n-\t        List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n-\t        AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);\n-\t        if (attributeTypeDefinition != null) {\n-\t            return String.format(\"urn:oid:%s\", attributeTypeDefinition.getOID());\n-\t        }\n+\n+        List <String> attributeNames = new ArrayList<String>();\n+         attributeNames.add(name);\n+         List<AttributeTypeDefinition> attributeTypes = schemaService.getAttributeTypeDefinitions(schemaEntry, attributeNames);\n+         AttributeTypeDefinition attributeTypeDefinition = schemaService.getAttributeTypeDefinition(attributeTypes, name);\n+         if (attributeTypeDefinition != null) {\n+             return String.format(\"urn:oid:%s\", attributeTypeDefinition.getOID());\n+         }\n         }\n \n         return \"\";\n@@ -98,9 +99,9 @@ public abstract class AttributeService implements Serializable {\n \n     @SuppressWarnings(\"unchecked\")\n     public List<GluuAttribute> getAllAttributes(String baseDn) {\n-    \tBaseCacheService usedCacheService = getCacheService();\n+\t\t\t\t\tBaseCacheService usedCacheService = getCacheService();\n \n-    \tList<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME,\n+\t\t\t\t\tList<GluuAttribute> attributeList = (List<GluuAttribute>) usedCacheService.get(OxConstants.CACHE_ATTRIBUTE_NAME,\n                 OxConstants.CACHE_ATTRIBUTE_KEY_LIST);\n         if (attributeList == null) {\n             attributeList = getAllAtributesImpl(baseDn);\n",
+            "diff_size": 10
+        }
+    ]
+}

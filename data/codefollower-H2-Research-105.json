@@ -1,0 +1,84 @@
+{
+    "error_id": "105",
+    "information": {
+        "errors": [
+            {
+                "line": "101",
+                "column": "9",
+                "severity": "warning",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "            querySQL = selectSQL;\n        } else {\n        \t//\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n    \t\t//org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n    \t\t//\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n            ArrayList<Parameter> params = select.getParameters();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "103",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/105/CreateView.java\nindex 0107979435..12f93a197c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/105/CreateView.java\n@@ -98,9 +98,9 @@ public class CreateView extends SchemaCommand {\n         if (select == null) {\n             querySQL = selectSQL;\n         } else {\n-        \t//\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n-    \t\t//org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n-    \t\t//\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n+        //\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n+            //org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n+\t\t\t\t\t\t//\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n             ArrayList<Parameter> params = select.getParameters();\n             if (params != null && !params.isEmpty()) {\n                 throw DbException.getUnsupportedException(\"parameters in views\");\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "139",
+                    "column": "17",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/105/CreateView.java\nindex 0107979435..9592201c63 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/105/CreateView.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (https://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.command.ddl;\n \n import java.util.ArrayList;\n@@ -98,9 +99,9 @@ public class CreateView extends SchemaCommand {\n         if (select == null) {\n             querySQL = selectSQL;\n         } else {\n-        \t//\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n-    \t\t//org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n-    \t\t//\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n+            //\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n+            //org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n+            //\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n             ArrayList<Parameter> params = select.getParameters();\n             if (params != null && !params.isEmpty()) {\n                 throw DbException.getUnsupportedException(\"parameters in views\");\n@@ -157,11 +158,11 @@ public class CreateView extends SchemaCommand {\n         if (view == null) {\n             if (isTableExpression) {\n                 view = TableView.createTableViewMaybeRecursive(getSchema(), id, viewName, querySQL, null,\n-                        columnTemplatesAsStrings, session, false /* literalsChecked */, isTableExpression,\n-                        false/*isTemporary*/, db);\n+                    columnTemplatesAsStrings, session, false /* literalsChecked */, isTableExpression,\n+                    false/*isTemporary*/, db);\n             } else {\n                 view = new TableView(getSchema(), id, viewName, querySQL, null, columnTemplatesAsUnknowns, session,\n-                        false/* allow recursive */, false/* literalsChecked */, isTableExpression, false/*temporary*/);\n+                    false/* allow recursive */, false/* literalsChecked */, isTableExpression, false/*temporary*/);\n             }\n         } else {\n             // TODO support isTableExpression in replace function...\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/105/CreateView.java\nindex 0107979435..1455f22682 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/105/CreateView.java\n@@ -25,6 +25,8 @@ import org.h2.value.Value;\n  * This class represents the statement\n  * CREATE VIEW\n  */\n+\n+\n public class CreateView extends SchemaCommand {\n \n     private Query select;\n@@ -41,38 +43,47 @@ public class CreateView extends SchemaCommand {\n         super(session, schema);\n     }\n \n+\n     public void setViewName(String name) {\n         viewName = name;\n     }\n \n+\n     public void setSelect(Query select) {\n         this.select = select;\n     }\n \n+\n     public void setIfNotExists(boolean ifNotExists) {\n         this.ifNotExists = ifNotExists;\n     }\n \n+\n     public void setSelectSQL(String selectSQL) {\n         this.selectSQL = selectSQL;\n     }\n \n+\n     public void setColumnNames(String[] cols) {\n         this.columnNames = cols;\n     }\n \n+\n     public void setComment(String comment) {\n         this.comment = comment;\n     }\n \n+\n     public void setOrReplace(boolean orReplace) {\n         this.orReplace = orReplace;\n     }\n \n+\n     public void setForce(boolean force) {\n         this.force = force;\n     }\n \n+\n     public void setTableExpression(boolean isTableExpression) {\n         this.isTableExpression = isTableExpression;\n     }\n@@ -98,9 +109,9 @@ public class CreateView extends SchemaCommand {\n         if (select == null) {\n             querySQL = selectSQL;\n         } else {\n-        \t//\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n-    \t\t//org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n-    \t\t//\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n+            //\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n+            //org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n+            //\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n             ArrayList<Parameter> params = select.getParameters();\n             if (params != null && !params.isEmpty()) {\n                 throw DbException.getUnsupportedException(\"parameters in views\");\n@@ -135,7 +146,7 @@ public class CreateView extends SchemaCommand {\n ////                view = new TableView(getSchema(), id, viewName, querySQL, null,\n ////                        columnTemplates, sysSession, false);\n ////            } else {\n-////            \t//sysSession = session; //\u6211\u52a0\u4e0a\u7684\n+////                //sysSession = session; //\u6211\u52a0\u4e0a\u7684\n ////                view.replace(querySQL, columnNames, sysSession, false, force);\n ////                view.setModified();\n ////=======\n@@ -156,16 +167,16 @@ public class CreateView extends SchemaCommand {\n         }\n         if (view == null) {\n             if (isTableExpression) {\n-                view = TableView.createTableViewMaybeRecursive(getSchema(), id, viewName, querySQL, null,\n-                        columnTemplatesAsStrings, session, false /* literalsChecked */, isTableExpression,\n-                        false/*isTemporary*/, db);\n+                view = TableView.createTableViewMaybeRecursive(getSchema(), id, viewName, querySQL, null, columnTemplatesAsStrings, session, false /* literalsChecked */, isTableExpression, false/*isTemporary*/, db);\n             } else {\n-                view = new TableView(getSchema(), id, viewName, querySQL, null, columnTemplatesAsUnknowns, session,\n-                        false/* allow recursive */, false/* literalsChecked */, isTableExpression, false/*temporary*/);\n+                view = new TableView(getSchema(), id, viewName, querySQL, null, columnTemplatesAsUnknowns, session, false/* allow recursive */, false/* literalsChecked */, isTableExpression, false/*temporary*/);\n             }\n         } else {\n             // TODO support isTableExpression in replace function...\n-            view.replace(querySQL, columnTemplatesAsUnknowns, session, false, force, false);\n+            view.replace(querySQL,\n+columnTemplatesAsUnknowns,\n+session, false,\n+force, false);\n             view.setModified();\n         }\n         if (comment != null) {\n@@ -180,7 +191,6 @@ public class CreateView extends SchemaCommand {\n \n         // TODO: if we added any table expressions that aren't used by this view, detect them\n         // and drop them - otherwise they will leak and never get cleaned up.\n-\n         return 0;\n     }\n \n@@ -189,4 +199,4 @@ public class CreateView extends SchemaCommand {\n         return CommandInterface.CREATE_VIEW;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 26
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "103",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/105/CreateView.java\nindex 0107979435..12f93a197c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/105/CreateView.java\n@@ -98,9 +98,9 @@ public class CreateView extends SchemaCommand {\n         if (select == null) {\n             querySQL = selectSQL;\n         } else {\n-        \t//\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n-    \t\t//org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n-    \t\t//\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n+        //\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n+            //org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n+\t\t\t\t\t\t//\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n             ArrayList<Parameter> params = select.getParameters();\n             if (params != null && !params.isEmpty()) {\n                 throw DbException.getUnsupportedException(\"parameters in views\");\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "103",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/105/CreateView.java\nindex 0107979435..d952963ce9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/105/CreateView.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/105/CreateView.java\n@@ -98,9 +98,9 @@ public class CreateView extends SchemaCommand {\n         if (select == null) {\n             querySQL = selectSQL;\n         } else {\n-        \t//\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n-    \t\t//org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n-    \t\t//\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n+            //\u76ee\u524d\u4e0d\u652f\u6301\u53c2\u6570:\n+        //org.h2.jdbc.JdbcSQLException: Feature not supported: \"parameters in views\"; SQL statement:\n+\t\t\t\t\t\t//\u5982:CREATE OR REPLACE FORCE VIEW IF NOT EXISTS my_view (f1,f2) AS SELECT id,name FROM CreateViewTest where id=?\"\n             ArrayList<Parameter> params = select.getParameters();\n             if (params != null && !params.isEmpty()) {\n                 throw DbException.getUnsupportedException(\"parameters in views\");\n",
+            "diff_size": 3
+        }
+    ]
+}

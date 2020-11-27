@@ -1,0 +1,65 @@
+{
+    "error_id": "13",
+    "information": {
+        "errors": [
+            {
+                "line": "18",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 122).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "   * @param tmpDirFile  \u4e34\u65f6\u6587\u4ef6\u5939\u76ee\u5f55\n   */\n  public static File createTmpFile(InputStream inputStream, String name, String ext, File tmpDirFile) throws IOException {\n    File resultFile = File.createTempFile(name, '.' + ext, tmpDirFile);\n\n    resultFile.deleteOnExit();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/styler/13/FileUtils.java\nindex 234422b04b..3753cd6268 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/styler/13/FileUtils.java\n@@ -15,23 +15,25 @@ public class FileUtils {\n    * @param ext         \u6269\u5c55\u540d\n    * @param tmpDirFile  \u4e34\u65f6\u6587\u4ef6\u5939\u76ee\u5f55\n    */\n-  public static File createTmpFile(InputStream inputStream, String name, String ext, File tmpDirFile) throws IOException {\n-    File resultFile = File.createTempFile(name, '.' + ext, tmpDirFile);\n+  public static File createTmpFile(InputStream inputStream, String name, String ext, File tmpDirFile) throws\n+    IOException {\n+     File resultFile = File.createTempFile(name, '.' + ext, tmpDirFile);\n \n-    resultFile.deleteOnExit();\n-    org.apache.commons.io.FileUtils.copyInputStreamToFile(inputStream, resultFile);\n-    return resultFile;\n-  }\n+     resultFile.deleteOnExit();\n+     org.apache.commons.io.FileUtils.copyInputStreamToFile(inputStream, resultFile);\n+     return resultFile;\n+   }\n \n-  /**\n+   /**\n    * \u521b\u5efa\u4e34\u65f6\u6587\u4ef6.\n    *\n    * @param inputStream \u8f93\u5165\u6587\u4ef6\u6d41\n    * @param name        \u6587\u4ef6\u540d\n    * @param ext         \u6269\u5c55\u540d\n    */\n-  public static File createTmpFile(InputStream inputStream, String name, String ext) throws IOException {\n-    return createTmpFile(inputStream, name, ext, Files.createTempDirectory(\"weixin-java-tools-temp\").toFile());\n-  }\n+   public static File createTmpFile(InputStream inputStream, String name, String ext) throws IOException {\n+     return createTmpFile(inputStream, name, ext, Files.createTempDirectory(\"weixin-java-tools-temp\").toFile());\n+   }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/intellij/13/FileUtils.java\nindex 234422b04b..fe58ca56f5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/intellij/13/FileUtils.java\n@@ -15,7 +15,8 @@ public class FileUtils {\n    * @param ext         \u6269\u5c55\u540d\n    * @param tmpDirFile  \u4e34\u65f6\u6587\u4ef6\u5939\u76ee\u5f55\n    */\n-  public static File createTmpFile(InputStream inputStream, String name, String ext, File tmpDirFile) throws IOException {\n+  public static File createTmpFile(InputStream inputStream, String name, String ext, File tmpDirFile)\n+      throws IOException {\n     File resultFile = File.createTempFile(name, '.' + ext, tmpDirFile);\n \n     resultFile.deleteOnExit();\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "18",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/naturalize/13/FileUtils.java\nindex 234422b04b..8041d3e17d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/naturalize/13/FileUtils.java\n@@ -34,4 +34,4 @@ public class FileUtils {\n     return createTmpFile(inputStream, name, ext, Files.createTempDirectory(\"weixin-java-tools-temp\").toFile());\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 124).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/codebuff/13/FileUtils.java\nindex 234422b04b..7982ae5153 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/codebuff/13/FileUtils.java\n@@ -5,6 +5,7 @@ import java.io.IOException;\n import java.io.InputStream;\n import java.nio.file.Files;\n \n+\n public class FileUtils {\n \n   /**\n@@ -15,13 +16,12 @@ public class FileUtils {\n    * @param ext         \u6269\u5c55\u540d\n    * @param tmpDirFile  \u4e34\u65f6\u6587\u4ef6\u5939\u76ee\u5f55\n    */\n-  public static File createTmpFile(InputStream inputStream, String name, String ext, File tmpDirFile) throws IOException {\n+    public static File createTmpFile(InputStream inputStream, String name, String ext, File tmpDirFile) throws IOException {\n     File resultFile = File.createTempFile(name, '.' + ext, tmpDirFile);\n-\n     resultFile.deleteOnExit();\n     org.apache.commons.io.FileUtils.copyInputStreamToFile(inputStream, resultFile);\n     return resultFile;\n-  }\n+    }\n \n   /**\n    * \u521b\u5efa\u4e34\u65f6\u6587\u4ef6.\n@@ -30,8 +30,8 @@ public class FileUtils {\n    * @param name        \u6587\u4ef6\u540d\n    * @param ext         \u6269\u5c55\u540d\n    */\n-  public static File createTmpFile(InputStream inputStream, String name, String ext) throws IOException {\n-    return createTmpFile(inputStream, name, ext, Files.createTempDirectory(\"weixin-java-tools-temp\").toFile());\n-  }\n \n-}\n+    public static File createTmpFile(InputStream inputStream, String name, String ext) throws IOException {\n+    return createTmpFile(inputStream, name, ext, Files.createTempDirectory(\"weixin-java-tools-temp\").toFile());\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/styler_three_grams/13/FileUtils.java\nindex 234422b04b..3753cd6268 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/errored/1/13/FileUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/DarLiner-weixin-java-tools/styler_three_grams/13/FileUtils.java\n@@ -15,23 +15,25 @@ public class FileUtils {\n    * @param ext         \u6269\u5c55\u540d\n    * @param tmpDirFile  \u4e34\u65f6\u6587\u4ef6\u5939\u76ee\u5f55\n    */\n-  public static File createTmpFile(InputStream inputStream, String name, String ext, File tmpDirFile) throws IOException {\n-    File resultFile = File.createTempFile(name, '.' + ext, tmpDirFile);\n+  public static File createTmpFile(InputStream inputStream, String name, String ext, File tmpDirFile) throws\n+    IOException {\n+     File resultFile = File.createTempFile(name, '.' + ext, tmpDirFile);\n \n-    resultFile.deleteOnExit();\n-    org.apache.commons.io.FileUtils.copyInputStreamToFile(inputStream, resultFile);\n-    return resultFile;\n-  }\n+     resultFile.deleteOnExit();\n+     org.apache.commons.io.FileUtils.copyInputStreamToFile(inputStream, resultFile);\n+     return resultFile;\n+   }\n \n-  /**\n+   /**\n    * \u521b\u5efa\u4e34\u65f6\u6587\u4ef6.\n    *\n    * @param inputStream \u8f93\u5165\u6587\u4ef6\u6d41\n    * @param name        \u6587\u4ef6\u540d\n    * @param ext         \u6269\u5c55\u540d\n    */\n-  public static File createTmpFile(InputStream inputStream, String name, String ext) throws IOException {\n-    return createTmpFile(inputStream, name, ext, Files.createTempDirectory(\"weixin-java-tools-temp\").toFile());\n-  }\n+   public static File createTmpFile(InputStream inputStream, String name, String ext) throws IOException {\n+     return createTmpFile(inputStream, name, ext, Files.createTempDirectory(\"weixin-java-tools-temp\").toFile());\n+   }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 13
+        }
+    ]
+}

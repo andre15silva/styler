@@ -1,0 +1,108 @@
+{
+    "error_id": "800",
+    "information": {
+        "errors": [
+            {
+                "line": "32",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 112).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  public void partitionUpdate(PartitionUpdateParam partParam) {\n    ComputeClosenessPartParam param = (ComputeClosenessPartParam) partParam;\n    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n    int r = param.getR();\n\n    ObjectIterator<Long2ObjectMap.Entry<IElement>> iter = row.iterator();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "33",
+                    "column": "31",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/800/ComputeCloseness.java\nindex 90dc91f5f1..4bd030a776 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/800/ComputeCloseness.java\n@@ -29,8 +29,8 @@ public class ComputeCloseness extends UpdateFunc {\n   @Override\n   public void partitionUpdate(PartitionUpdateParam partParam) {\n     ComputeClosenessPartParam param = (ComputeClosenessPartParam) partParam;\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n-    int r = param.getR();\n+    ServerLongAnyRow row = (ServerLongAnyRow)psContext.getMatrixStorageManager() .getRow(param.getPartKey(\n+    ) ,0 ) ;intr= param.getR();\n \n     ObjectIterator<Long2ObjectMap.Entry<IElement>> iter = row.iterator();\n     while (iter.hasNext()) {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/800/ComputeCloseness.java\nindex 90dc91f5f1..10e7cc6266 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/800/ComputeCloseness.java\n@@ -14,30 +14,31 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n  */\n public class ComputeCloseness extends UpdateFunc {\n \n-  public ComputeCloseness(ComputeClosenessParam param) {\n-    super(param);\n-  }\n-\n-  public ComputeCloseness(int matrixId, int r) {\n-    super(new ComputeClosenessParam(matrixId, r));\n-  }\n-\n-  public ComputeCloseness() {\n-    super(null);\n-  }\n-\n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n-    ComputeClosenessPartParam param = (ComputeClosenessPartParam) partParam;\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n-    int r = param.getR();\n-\n-    ObjectIterator<Long2ObjectMap.Entry<IElement>> iter = row.iterator();\n-    while (iter.hasNext()) {\n-      HyperLogLogPlusElement hllElem = (HyperLogLogPlusElement) iter.next().getValue();\n-      if (hllElem.isActive()) {\n-        hllElem.updateCloseness(r);\n-      }\n+    public ComputeCloseness(ComputeClosenessParam param) {\n+        super(param);\n+    }\n+\n+    public ComputeCloseness(int matrixId, int r) {\n+        super(new ComputeClosenessParam(matrixId, r));\n+    }\n+\n+    public ComputeCloseness() {\n+        super(null);\n+    }\n+\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n+        ComputeClosenessPartParam param = (ComputeClosenessPartParam) partParam;\n+        ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager()\n+                .getRow(param.getPartKey(), 0);\n+        int r = param.getR();\n+\n+        ObjectIterator<Long2ObjectMap.Entry<IElement>> iter = row.iterator();\n+        while (iter.hasNext()) {\n+            HyperLogLogPlusElement hllElem = (HyperLogLogPlusElement) iter.next().getValue();\n+            if (hllElem.isActive()) {\n+                hllElem.updateCloseness(r);\n+            }\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/800/ComputeCloseness.java\nindex 90dc91f5f1..cc4ebf1ea9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/800/ComputeCloseness.java\n@@ -40,4 +40,4 @@ public class ComputeCloseness extends UpdateFunc {\n       }\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/800/ComputeCloseness.java\nindex 90dc91f5f1..799fcb883d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/800/ComputeCloseness.java\n@@ -12,32 +12,33 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n  * UpdateFunc for computing the cardinality and closeness without normalization,\n  * updating the activeness status, and switching the read/write counter\n  */\n+\n public class ComputeCloseness extends UpdateFunc {\n \n-  public ComputeCloseness(ComputeClosenessParam param) {\n+    public ComputeCloseness(ComputeClosenessParam param) {\n     super(param);\n-  }\n+    }\n \n-  public ComputeCloseness(int matrixId, int r) {\n+    public ComputeCloseness(int matrixId, int r) {\n     super(new ComputeClosenessParam(matrixId, r));\n-  }\n+    }\n \n-  public ComputeCloseness() {\n+    public ComputeCloseness() {\n     super(null);\n-  }\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n     ComputeClosenessPartParam param = (ComputeClosenessPartParam) partParam;\n     ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n     int r = param.getR();\n-\n     ObjectIterator<Long2ObjectMap.Entry<IElement>> iter = row.iterator();\n     while (iter.hasNext()) {\n-      HyperLogLogPlusElement hllElem = (HyperLogLogPlusElement) iter.next().getValue();\n-      if (hllElem.isActive()) {\n+        HyperLogLogPlusElement hllElem = (HyperLogLogPlusElement) iter.next().getValue();\n+        if (hllElem.isActive()) {\n         hllElem.updateCloseness(r);\n-      }\n+        }\n+    }\n     }\n-  }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "33",
+                    "column": "31",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/800/ComputeCloseness.java\nindex 90dc91f5f1..4bd030a776 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/800/ComputeCloseness.java\n@@ -29,8 +29,8 @@ public class ComputeCloseness extends UpdateFunc {\n   @Override\n   public void partitionUpdate(PartitionUpdateParam partParam) {\n     ComputeClosenessPartParam param = (ComputeClosenessPartParam) partParam;\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n-    int r = param.getR();\n+    ServerLongAnyRow row = (ServerLongAnyRow)psContext.getMatrixStorageManager() .getRow(param.getPartKey(\n+    ) ,0 ) ;intr= param.getR();\n \n     ObjectIterator<Long2ObjectMap.Entry<IElement>> iter = row.iterator();\n     while (iter.hasNext()) {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 185).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "31",
+                    "column": "185",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/800/ComputeCloseness.java\nindex 90dc91f5f1..2ea6d68af7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/800/ComputeCloseness.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/800/ComputeCloseness.java\n@@ -28,8 +28,7 @@ public class ComputeCloseness extends UpdateFunc {\n \n   @Override\n   public void partitionUpdate(PartitionUpdateParam partParam) {\n-    ComputeClosenessPartParam param = (ComputeClosenessPartParam) partParam;\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n+    ComputeClosenessPartParam param = (ComputeClosenessPartParam) partParam; ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n     int r = param.getR();\n \n     ObjectIterator<Long2ObjectMap.Entry<IElement>> iter = row.iterator();\n",
+            "diff_size": 2
+        }
+    ]
+}

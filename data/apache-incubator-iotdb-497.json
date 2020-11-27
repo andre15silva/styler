@@ -1,0 +1,87 @@
+{
+    "error_id": "497",
+    "information": {
+        "errors": [
+            {
+                "line": "212",
+                "severity": "warning",
+                "message": "Line is longer than 100 characters (found 101).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "\n      printlnBoth(pw,\n          \"---------------------------------- TsFile Sketch End ----------------------------------\");\n    }\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "212",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "212",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/497/TsFileSketchTool.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/497/TsFileSketchTool.java\nindex e566b77917..65228d7678 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/497/TsFileSketchTool.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/497/TsFileSketchTool.java\n@@ -16,207 +16,3 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n-/*\n-package org.apache.iotdb.db.tools;\n-\n-import java.io.FileWriter;\n-import java.io.IOException;\n-import java.io.PrintWriter;\n-import java.util.ArrayList;\n-import java.util.Comparator;\n-import java.util.List;\n-import java.util.stream.Collectors;\n-import org.apache.iotdb.tsfile.common.conf.TSFileConfig;\n-import org.apache.iotdb.tsfile.file.footer.ChunkGroupFooter;\n-import org.apache.iotdb.tsfile.file.metadata.ChunkMetaData;\n-import org.apache.iotdb.tsfile.file.metadata.TsFileMetaData;\n-import org.apache.iotdb.tsfile.fileSystem.FSFactoryProducer;\n-import org.apache.iotdb.tsfile.read.TsFileSequenceReader;\n-import org.apache.iotdb.tsfile.read.common.Chunk;\n-import org.apache.iotdb.tsfile.utils.BloomFilter;\n-\n-public class TsFileSketchTool {\n-\n-  public static void main(String[] args) throws IOException {\n-    String filename = \"test.tsfile\";\n-    String outFile = \"TsFile_sketch_view.txt\";\n-    if (args.length == 1) {\n-      filename = args[0];\n-    } else if (args.length == 2) {\n-      filename = args[0];\n-      outFile = args[1];\n-    }\n-    System.out.println(\"TsFile path:\" + filename);\n-    System.out.println(\"Sketch save path:\" + outFile);\n-    try (PrintWriter pw = new PrintWriter(new FileWriter(outFile))) {\n-      long length = FSFactoryProducer.getFSFactory().getFile(filename).length();\n-      printlnBoth(pw,\n-          \"-------------------------------- TsFile Sketch --------------------------------\");\n-      printlnBoth(pw, \"file path: \" + filename);\n-      printlnBoth(pw, \"file length: \" + length);\n-\n-      // get metadata information\n-      TsFileSequenceReader reader = new TsFileSequenceReader(filename);\n-      TsFileMetaData tsFileMetaData = reader.readFileMetadata();\n-      List<TsDeviceMetadataIndex> tsDeviceMetadataIndexSortedList = tsFileMetaData.getDeviceMap()\n-          .values()\n-          .stream()\n-          .sorted((x, y) -> (int) (x.getOffset() - y.getOffset())).collect(Collectors.toList());\n-      List<ChunkGroupMetaData> chunkGroupMetaDataTmpList = new ArrayList<>();\n-      List<TsDeviceMetadata> tsDeviceMetadataSortedList = new ArrayList<>();\n-      for (TsDeviceMetadataIndex index : tsDeviceMetadataIndexSortedList) {\n-        TsDeviceMetadata deviceMetadata = reader.readTsDeviceMetaData(index);\n-        tsDeviceMetadataSortedList.add(deviceMetadata);\n-        chunkGroupMetaDataTmpList.addAll(deviceMetadata.getChunkGroupMetaDataList());\n-      }\n-      List<ChunkGroupMetaData> chunkGroupMetaDataSortedList = chunkGroupMetaDataTmpList.stream()\n-          .sorted(Comparator.comparingLong(ChunkGroupMetaData::getStartOffsetOfChunkGroup))\n-          .collect(Collectors.toList());\n-\n-      // begin print\n-      StringBuilder str1 = new StringBuilder();\n-      for (int i = 0; i < 21; i++) {\n-        str1.append(\"|\");\n-      }\n-\n-      printlnBoth(pw, \"\");\n-      printlnBoth(pw, String.format(\"%20s\", \"POSITION\") + \"|\\tCONTENT\");\n-      printlnBoth(pw, String.format(\"%20s\", \"--------\") + \" \\t-------\");\n-      printlnBoth(pw, String.format(\"%20d\", 0) + \"|\\t[magic head] \" + reader.readHeadMagic());\n-      printlnBoth(pw,\n-          String.format(\"%20d\", TSFileConfig.MAGIC_STRING.getBytes().length)\n-              + \"|\\t[version number] \"\n-              + reader.readVersionNumber());\n-      // chunkGroup begins\n-      for (ChunkGroupMetaData chunkGroupMetaData : chunkGroupMetaDataSortedList) {\n-        printlnBoth(pw, str1.toString() + \"\\t[Chunk Group] of \"\n-            + chunkGroupMetaData.getDeviceID() + \" begins at pos \" + chunkGroupMetaData\n-            .getStartOffsetOfChunkGroup() + \", ends at pos \" + chunkGroupMetaData\n-            .getEndOffsetOfChunkGroup() + \", version:\" + chunkGroupMetaData.getVersion()\n-            + \", num of Chunks:\" + chunkGroupMetaData.getChunkMetaDataList().size());\n-        // chunk begins\n-        long chunkEndPos = 0;\n-        for (ChunkMetaData chunkMetaData : chunkGroupMetaData.getChunkMetaDataList()) {\n-          printlnBoth(pw,\n-              String.format(\"%20d\", chunkMetaData.getOffsetOfChunkHeader()) + \"|\\t[Chunk] of \"\n-                  + chunkMetaData.getMeasurementUid() + \", numOfPoints:\" + chunkMetaData\n-                  .getNumOfPoints() + \", time range:[\" + chunkMetaData.getStartTime() + \",\"\n-                  + chunkMetaData.getEndTime() + \"], tsDataType:\" + chunkMetaData.getDataType()\n-                  + \", \\n\" + String.format(\"%20s\", \"\") + \" \\t\" + chunkMetaData.getStatistics());\n-          printlnBoth(pw, String.format(\"%20s\", \"\") + \"|\\t\\t[marker] 1\");\n-          printlnBoth(pw, String.format(\"%20s\", \"\") + \"|\\t\\t[ChunkHeader]\");\n-          Chunk chunk = reader.readMemChunk(chunkMetaData);\n-          printlnBoth(pw,\n-              String.format(\"%20s\", \"\") + \"|\\t\\t\" + chunk.getHeader().getNumOfPages() + \" pages\");\n-          chunkEndPos =\n-              chunkMetaData.getOffsetOfChunkHeader() + chunk.getHeader().getSerializedSize() + chunk\n-                  .getHeader().getDataSize();\n-        }\n-        // chunkGroupFooter begins\n-        printlnBoth(pw, String.format(\"%20s\", chunkEndPos) + \"|\\t[Chunk Group Footer]\");\n-        ChunkGroupFooter chunkGroupFooter = reader.readChunkGroupFooter(chunkEndPos, false);\n-        printlnBoth(pw, String.format(\"%20s\", \"\") + \"|\\t\\t[marker] 0\");\n-        printlnBoth(pw,\n-            String.format(\"%20s\", \"\") + \"|\\t\\t[deviceID] \" + chunkGroupFooter.getDeviceID());\n-        printlnBoth(pw,\n-            String.format(\"%20s\", \"\") + \"|\\t\\t[dataSize] \" + chunkGroupFooter.getDataSize());\n-        printlnBoth(pw, String.format(\"%20s\", \"\") + \"|\\t\\t[num of chunks] \" + chunkGroupFooter\n-            .getNumberOfChunks());\n-        printlnBoth(pw, str1.toString() + \"\\t[Chunk Group] of \"\n-            + chunkGroupMetaData.getDeviceID() + \" ends\");\n-      }\n-\n-      // metadata begins\n-      if (tsDeviceMetadataIndexSortedList.isEmpty()) {\n-        printlnBoth(pw, String.format(\"%20s\",  reader.getFileMetadataPos() - 1)\n-                + \"|\\t[marker] 2\");\n-      } else {\n-        printlnBoth(pw,\n-            String.format(\"%20s\", tsDeviceMetadataIndexSortedList.get(0).getOffset() - 1)\n-                + \"|\\t[marker] 2\");\n-      }\n-      for (\n-          int i = 0; i < tsDeviceMetadataSortedList.size(); i++) {\n-        TsDeviceMetadata tsDeviceMetadata = tsDeviceMetadataSortedList.get(i);\n-        TsDeviceMetadataIndex tsDeviceMetadataIndex = tsDeviceMetadataIndexSortedList.get(i);\n-        printlnBoth(pw,\n-            String.format(\"%20s\", tsDeviceMetadataIndex.getOffset())\n-                + \"|\\t[TsDeviceMetadata] of \" + tsDeviceMetadata.getChunkGroupMetaDataList().get(0)\n-                .getDeviceID() + \", startTime:\" + tsDeviceMetadataIndex.getStartTime()\n-                + \", endTime:\"\n-                + tsDeviceMetadataIndex.getEndTime());\n-        printlnBoth(pw,\n-            String.format(\"%20s\", \"\") + \"|\\t\\t[startTime] \" + tsDeviceMetadata.getStartTime());\n-        printlnBoth(pw,\n-            String.format(\"%20s\", \"\") + \"|\\t\\t[endTime] \" + tsDeviceMetadata.getEndTime());\n-        printlnBoth(pw,\n-            String.format(\"%20s\", \"\") + \"|\\t\\t[num of ChunkGroupMetaData] \" + tsDeviceMetadata\n-                .getChunkGroupMetaDataList().size());\n-        printlnBoth(pw, String.format(\"%20s\", \"\") +\n-            \"|\\t\\t\" + tsDeviceMetadata.getChunkGroupMetaDataList().size() + \" ChunkGroupMetaData\");\n-      }\n-\n-      printlnBoth(pw, String.format(\"%20s\", reader.getFileMetadataPos()) + \"|\\t[TsFileMetaData]\");\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t[num of devices] \" + tsFileMetaData\n-              .getDeviceMap().size());\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t\" + tsFileMetaData.getDeviceMap().size()\n-              + \" key&TsDeviceMetadataIndex\");\n-      printlnBoth(pw, String.format(\"%20s\", \"\") + \"|\\t\\t[num of measurements] \" + tsFileMetaData\n-          .getMeasurementSchema().size());\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t\" + tsFileMetaData.getMeasurementSchema().size()\n-              + \" key&measurementSchema\");\n-      boolean createByIsNotNull = (tsFileMetaData.getCreatedBy() != null);\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t[createBy isNotNull] \" + createByIsNotNull);\n-      if (createByIsNotNull) {\n-        printlnBoth(pw,\n-            String.format(\"%20s\", \"\") + \"|\\t\\t[createBy] \" + tsFileMetaData.getCreatedBy());\n-      }\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t[totalChunkNum] \" + tsFileMetaData.getTotalChunkNum());\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t[invalidChunkNum] \" + tsFileMetaData\n-              .getInvalidChunkNum());\n-\n-      // bloom filter\n-      BloomFilter bloomFilter = tsFileMetaData.getBloomFilter();\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t[bloom filter bit vector byte array length] \"\n-              + bloomFilter.serialize().length);\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t[bloom filter bit vector byte array] \");\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t[bloom filter number of bits] \"\n-              + bloomFilter.getSize());\n-      printlnBoth(pw,\n-          String.format(\"%20s\", \"\") + \"|\\t\\t[bloom filter number of hash functions] \"\n-              + bloomFilter.getHashFunctionSize());\n-\n-      printlnBoth(pw,\n-          String.format(\"%20s\", (reader.getFileMetadataPos() + reader.getFileMetadataSize()))\n-              + \"|\\t[TsFileMetaDataSize] \" + reader.getFileMetadataSize());\n-\n-      printlnBoth(pw,\n-          String.format(\"%20s\", reader.getFileMetadataPos() + reader.getFileMetadataSize() + 4)\n-              + \"|\\t[magic tail] \" + reader.readTailMagic());\n-\n-      printlnBoth(pw,\n-          String.format(\"%20s\", length) + \"|\\tEND of TsFile\");\n-\n-      printlnBoth(pw, \"\");\n-\n-      printlnBoth(pw,\n-          \"---------------------------------- TsFile Sketch End ----------------------------------\");\n-    }\n-  }\n-\n-  private static void printlnBoth(PrintWriter pw, String str) {\n-    System.out.println(str);\n-    pw.println(str);\n-  }\n-\n-}\n-*/\n\\ No newline at end of file\n",
+            "diff_size": 204
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "212",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "212",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "211",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/497/TsFileSketchTool.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/497/TsFileSketchTool.java\nindex e566b77917..e182e41d9e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/497/TsFileSketchTool.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/497/TsFileSketchTool.java\n@@ -15,8 +15,7 @@\n  * KIND, either express or implied.  See the License for the\n  * specific language governing permissions and limitations\n  * under the License.\n- */\n-/*\n+ *//*\n package org.apache.iotdb.db.tools;\n \n import java.io.FileWriter;\n",
+            "diff_size": 2
+        }
+    ]
+}

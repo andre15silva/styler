@@ -1,0 +1,95 @@
+{
+    "error_id": "797",
+    "information": {
+        "errors": [
+            {
+                "line": "25",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 116).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  @Override\n  public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(partParam.getPartKey(), 0);\n    return new ScalarPartitionAggrResult(row.size());\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "24",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 184).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/797/NumNodes.java\nindex 03a36773f2..3f9e7e23cf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/797/NumNodes.java\n@@ -21,20 +21,19 @@ public class NumNodes extends GetFunc {\n   }\n \n   @Override\n-  public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(partParam.getPartKey(), 0);\n-    return new ScalarPartitionAggrResult(row.size());\n-  }\n+  public PartitionGetResult partitionGet(PartitionGetParam partParam) { ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(partParam.getPartKey(), 0);\n+  return new ScalarPartitionAggrResult(row.size());\n+}\n \n-  @Override\n-  public GetResult merge(List<PartitionGetResult> partResults) {\n-    long numNodes = 0;\n-    for (PartitionGetResult result : partResults) {\n-      if (result instanceof ScalarPartitionAggrResult) {\n-        long value = (long)((ScalarPartitionAggrResult) result).result;\n-        numNodes += value;\n-      }\n+@Override\n+public GetResult merge(List<PartitionGetResult> partResults) {\n+  long numNodes = 0;\n+  for (PartitionGetResult result : partResults) {\n+    if (result instanceof ScalarPartitionAggrResult) {\n+      long value = (long)((ScalarPartitionAggrResult) result).result;\n+      numNodes += value;\n     }\n-    return new NumNodesResult(numNodes);\n   }\n+  return new NumNodesResult(numNodes);\n+}\n }\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/797/NumNodes.java\nindex 03a36773f2..a04ef895c0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/797/NumNodes.java\n@@ -8,33 +8,34 @@ import java.util.List;\n \n public class NumNodes extends GetFunc {\n \n-  public NumNodes(int matrixId) {\n-    this(new GetParam(matrixId));\n-  }\n-\n-  public NumNodes(GetParam param) {\n-    super(param);\n-  }\n-\n-  public NumNodes() {\n-    super(null);\n-  }\n-\n-  @Override\n-  public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(partParam.getPartKey(), 0);\n-    return new ScalarPartitionAggrResult(row.size());\n-  }\n-\n-  @Override\n-  public GetResult merge(List<PartitionGetResult> partResults) {\n-    long numNodes = 0;\n-    for (PartitionGetResult result : partResults) {\n-      if (result instanceof ScalarPartitionAggrResult) {\n-        long value = (long)((ScalarPartitionAggrResult) result).result;\n-        numNodes += value;\n-      }\n+    public NumNodes(int matrixId) {\n+        this(new GetParam(matrixId));\n+    }\n+\n+    public NumNodes(GetParam param) {\n+        super(param);\n+    }\n+\n+    public NumNodes() {\n+        super(null);\n+    }\n+\n+    @Override\n+    public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n+        ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager()\n+                .getRow(partParam.getPartKey(), 0);\n+        return new ScalarPartitionAggrResult(row.size());\n+    }\n+\n+    @Override\n+    public GetResult merge(List<PartitionGetResult> partResults) {\n+        long numNodes = 0;\n+        for (PartitionGetResult result : partResults) {\n+            if (result instanceof ScalarPartitionAggrResult) {\n+                long value = (long) ((ScalarPartitionAggrResult) result).result;\n+                numNodes += value;\n+            }\n+        }\n+        return new NumNodesResult(numNodes);\n     }\n-    return new NumNodesResult(numNodes);\n-  }\n }\n",
+            "diff_size": 31
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/797/NumNodes.java\nindex 03a36773f2..2247c2a11b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/797/NumNodes.java\n@@ -37,4 +37,4 @@ public class NumNodes extends GetFunc {\n     }\n     return new NumNodesResult(numNodes);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "24",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/797/NumNodes.java\nindex 03a36773f2..e9c7a994cd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/797/NumNodes.java\n@@ -3,38 +3,38 @@ package com.tencent.angel.spark.ml.psf.hyperanf;\n import com.tencent.angel.ml.matrix.psf.aggr.enhance.ScalarPartitionAggrResult;\n import com.tencent.angel.ml.matrix.psf.get.base.*;\n import com.tencent.angel.ps.storage.vector.ServerLongAnyRow;\n-\n import java.util.List;\n \n public class NumNodes extends GetFunc {\n \n-  public NumNodes(int matrixId) {\n+    public NumNodes(int matrixId) {\n     this(new GetParam(matrixId));\n-  }\n+    }\n \n-  public NumNodes(GetParam param) {\n+    public NumNodes(GetParam param) {\n     super(param);\n-  }\n+    }\n \n-  public NumNodes() {\n+    public NumNodes() {\n     super(null);\n-  }\n+    }\n \n-  @Override\n-  public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n+    @Override\n+    public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n     ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(partParam.getPartKey(), 0);\n     return new ScalarPartitionAggrResult(row.size());\n-  }\n+    }\n \n-  @Override\n-  public GetResult merge(List<PartitionGetResult> partResults) {\n+    @Override\n+    public GetResult merge(List<PartitionGetResult> partResults) {\n     long numNodes = 0;\n     for (PartitionGetResult result : partResults) {\n-      if (result instanceof ScalarPartitionAggrResult) {\n-        long value = (long)((ScalarPartitionAggrResult) result).result;\n+        if (result instanceof ScalarPartitionAggrResult) {\n+        long value = (long) ((ScalarPartitionAggrResult) result).result;\n         numNodes += value;\n-      }\n+        }\n     }\n     return new NumNodesResult(numNodes);\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 18
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "26",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "27",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/797/NumNodes.java\nindex 03a36773f2..32f04a0750 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/797/NumNodes.java\n@@ -22,8 +22,9 @@ public class NumNodes extends GetFunc {\n \n   @Override\n   public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(partParam.getPartKey(), 0);\n-    return new ScalarPartitionAggrResult(row.size());\n+    ServerLongAnyRow row = (ServerLongAnyRow)psContext.getMatrixStorageManager().getRow\n+        (partParam.getPartKey(), 0\n+      ) ; return new ScalarPartitionAggrResult(row.size());\n   }\n \n   @Override\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "24",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 184).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/797/NumNodes.java\nindex 03a36773f2..3f9e7e23cf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/797/NumNodes.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/797/NumNodes.java\n@@ -21,20 +21,19 @@ public class NumNodes extends GetFunc {\n   }\n \n   @Override\n-  public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(partParam.getPartKey(), 0);\n-    return new ScalarPartitionAggrResult(row.size());\n-  }\n+  public PartitionGetResult partitionGet(PartitionGetParam partParam) { ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(partParam.getPartKey(), 0);\n+  return new ScalarPartitionAggrResult(row.size());\n+}\n \n-  @Override\n-  public GetResult merge(List<PartitionGetResult> partResults) {\n-    long numNodes = 0;\n-    for (PartitionGetResult result : partResults) {\n-      if (result instanceof ScalarPartitionAggrResult) {\n-        long value = (long)((ScalarPartitionAggrResult) result).result;\n-        numNodes += value;\n-      }\n+@Override\n+public GetResult merge(List<PartitionGetResult> partResults) {\n+  long numNodes = 0;\n+  for (PartitionGetResult result : partResults) {\n+    if (result instanceof ScalarPartitionAggrResult) {\n+      long value = (long)((ScalarPartitionAggrResult) result).result;\n+      numNodes += value;\n     }\n-    return new NumNodesResult(numNodes);\n   }\n+  return new NumNodesResult(numNodes);\n+}\n }\n",
+            "diff_size": 15
+        }
+    ]
+}

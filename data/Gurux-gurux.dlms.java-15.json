@@ -1,0 +1,201 @@
+{
+    "error_id": "15",
+    "information": {
+        "errors": [
+            {
+                "line": "236",
+                "severity": "warning",
+                "message": "Line is longer than 80 characters (found 92).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "            buff.setUInt8(DataType.ARRAY.getValue());\n            GXCommon.setObjectCount(sendersAndActions.size(), buff);\n            for (Entry<String, Entry<Integer, GXDLMSScriptAction>> it : sendersAndActions) {\n                buff.setUInt8(DataType.STRUCTURE.getValue());\n                buff.setUInt8(2);\n                GXCommon.setData(buff, DataType.OCTET_STRING,",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "236",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 92).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "234",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 86).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/errored/1/15/GXDLMSMessageHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/intellij/15/GXDLMSMessageHandler.java\nindex f5c7955e5a..cd8c9b29cd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/errored/1/15/GXDLMSMessageHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/intellij/15/GXDLMSMessageHandler.java\n@@ -48,252 +48,250 @@ import gurux.dlms.enums.ObjectType;\n import gurux.dlms.internal.GXCommon;\n \n public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n-    private List<Entry<GXDateTime, GXDateTime>> listeningWindow;\n-    private String[] allowedSenders;\n+  private List<Entry<GXDateTime, GXDateTime>> listeningWindow;\n+  private String[] allowedSenders;\n+  // CHECKSTYLE:OFF\n+  private final List<Entry<String, Entry<Integer, GXDLMSScriptAction>>>\n+      sendersAndActions;\n+\n+  // CHECKSTYLE:ON\n+\n+  /**\n+   * Constructor.\n+   */\n+  public GXDLMSMessageHandler() {\n+    super(ObjectType.MESSAGE_HANDLER);\n+    listeningWindow = new ArrayList<Entry<GXDateTime, GXDateTime>>();\n     // CHECKSTYLE:OFF\n-    private final List<Entry<String, Entry<Integer, GXDLMSScriptAction>>> sendersAndActions;\n+    sendersAndActions =\n+        new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n+    // CHECKSTYLE:ON\n+  }\n \n+  /**\n+   * Constructor.\n+   *\n+   * @param ln Logical Name of the object.\n+   */\n+  public GXDLMSMessageHandler(final String ln) {\n+    super(ObjectType.MESSAGE_HANDLER, ln, 0);\n+    listeningWindow = new ArrayList<Entry<GXDateTime, GXDateTime>>();\n+    // CHECKSTYLE:OFF\n+    sendersAndActions =\n+        new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n     // CHECKSTYLE:ON\n-    /**\n-     * Constructor.\n-     */\n-    public GXDLMSMessageHandler() {\n-        super(ObjectType.MESSAGE_HANDLER);\n-        listeningWindow = new ArrayList<Entry<GXDateTime, GXDateTime>>();\n-        // CHECKSTYLE:OFF\n-        sendersAndActions =\n-                new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n-        // CHECKSTYLE:ON\n-    }\n+  }\n \n-    /**\n-     * Constructor.\n-     * \n-     * @param ln\n-     *            Logical Name of the object.\n-     */\n-    public GXDLMSMessageHandler(final String ln) {\n-        super(ObjectType.MESSAGE_HANDLER, ln, 0);\n-        listeningWindow = new ArrayList<Entry<GXDateTime, GXDateTime>>();\n-        // CHECKSTYLE:OFF\n-        sendersAndActions =\n-                new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n-        // CHECKSTYLE:ON\n-    }\n+  /**\n+   * Constructor.\n+   *\n+   * @param ln Logical Name of the object.\n+   * @param sn Short Name of the object.\n+   */\n+  public GXDLMSMessageHandler(final String ln, final int sn) {\n+    super(ObjectType.MESSAGE_HANDLER, ln, sn);\n+    listeningWindow = new ArrayList<Entry<GXDateTime, GXDateTime>>();\n+    // CHECKSTYLE:OFF\n+    sendersAndActions =\n+        new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n+    // CHECKSTYLE:ON\n+  }\n \n-    /**\n-     * Constructor.\n-     * \n-     * @param ln\n-     *            Logical Name of the object.\n-     * @param sn\n-     *            Short Name of the object.\n-     */\n-    public GXDLMSMessageHandler(final String ln, final int sn) {\n-        super(ObjectType.MESSAGE_HANDLER, ln, sn);\n-        listeningWindow = new ArrayList<Entry<GXDateTime, GXDateTime>>();\n-        // CHECKSTYLE:OFF\n-        sendersAndActions =\n-                new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n-        // CHECKSTYLE:ON\n-    }\n+  /**\n+   * @return Listening Window.\n+   */\n+  public final List<Entry<GXDateTime, GXDateTime>> getListeningWindow() {\n+    return listeningWindow;\n+  }\n \n-    /**\n-     * @return Listening Window.\n-     */\n-    public final List<Entry<GXDateTime, GXDateTime>> getListeningWindow() {\n-        return listeningWindow;\n-    }\n+  /**\n+   * @return List of allowed Senders.\n+   */\n+  public final String[] getAllowedSenders() {\n+    return allowedSenders;\n+  }\n \n-    /**\n-     * @return List of allowed Senders.\n-     */\n-    public final String[] getAllowedSenders() {\n-        return allowedSenders;\n-    }\n+  /**\n+   * @param value List of allowed Senders.\n+   */\n+  public final void setAllowedSenders(final String[] value) {\n+    allowedSenders = value;\n+  }\n \n-    /**\n-     * @param value\n-     *            List of allowed Senders.\n-     */\n-    public final void setAllowedSenders(final String[] value) {\n-        allowedSenders = value;\n-    }\n+  /**\n+   * @return Contains the logical name of a \"Script table\" object and the\n+   * script selector of the script to be executed if an empty message\n+   * is received from a matching sender.\n+   */\n+  public final List<Entry<String, Entry<Integer, GXDLMSScriptAction>>>\n+  getSendersAndActions() {\n+    return sendersAndActions;\n+  }\n \n-    /**\n-     * @return Contains the logical name of a \"Script table\" object and the\n-     *         script selector of the script to be executed if an empty message\n-     *         is received from a matching sender.\n-     */\n-    public final List<Entry<String, Entry<Integer, GXDLMSScriptAction>>>\n-            getSendersAndActions() {\n-        return sendersAndActions;\n-    }\n+  @Override\n+  public final Object[] getValues() {\n+    return new Object[] {getLogicalName(), listeningWindow, allowedSenders,\n+        sendersAndActions};\n+  }\n \n-    @Override\n-    public final Object[] getValues() {\n-        return new Object[] { getLogicalName(), listeningWindow, allowedSenders,\n-                sendersAndActions };\n+  /*\n+   * Returns collection of attributes to read. If attribute is static and\n+   * already read or device is returned HW error it is not returned.\n+   */\n+  @Override\n+  public final int[] getAttributeIndexToRead() {\n+    List<Integer> attributes = new ArrayList<Integer>();\n+    // LN is static and read only once.\n+    if (getLogicalName() == null || getLogicalName().compareTo(\"\") == 0) {\n+      attributes.add(1);\n     }\n-\n-    /*\n-     * Returns collection of attributes to read. If attribute is static and\n-     * already read or device is returned HW error it is not returned.\n-     */\n-    @Override\n-    public final int[] getAttributeIndexToRead() {\n-        List<Integer> attributes = new ArrayList<Integer>();\n-        // LN is static and read only once.\n-        if (getLogicalName() == null || getLogicalName().compareTo(\"\") == 0) {\n-            attributes.add(1);\n-        }\n-        // ListeningWindow\n-        if (canRead(2)) {\n-            attributes.add(2);\n-        }\n-        // AllowedSenders\n-        if (canRead(3)) {\n-            attributes.add(3);\n-        }\n-        // SendersAndActions\n-        if (canRead(4)) {\n-            attributes.add(4);\n-        }\n-        return GXDLMSObjectHelpers.toIntArray(attributes);\n+    // ListeningWindow\n+    if (canRead(2)) {\n+      attributes.add(2);\n     }\n-\n-    /*\n-     * Returns amount of attributes.\n-     */\n-    @Override\n-    public final int getAttributeCount() {\n-        return 4;\n+    // AllowedSenders\n+    if (canRead(3)) {\n+      attributes.add(3);\n     }\n-\n-    /*\n-     * Returns amount of methods.\n-     */\n-    @Override\n-    public final int getMethodCount() {\n-        return 0;\n+    // SendersAndActions\n+    if (canRead(4)) {\n+      attributes.add(4);\n     }\n+    return GXDLMSObjectHelpers.toIntArray(attributes);\n+  }\n \n-    @Override\n-    public final DataType getDataType(final int index) {\n-        if (index == 1) {\n-            return DataType.OCTET_STRING;\n-        }\n-        // ListeningWindow\n-        if (index == 2) {\n-            return DataType.ARRAY;\n-        }\n-        // AllowedSenders\n-        if (index == 3) {\n-            return DataType.ARRAY;\n-        }\n-        // SendersAndActions\n-        if (index == 4) {\n-            return DataType.ARRAY;\n-        }\n-        throw new IllegalArgumentException(\n-                \"getDataType failed. Invalid attribute index.\");\n+  /*\n+   * Returns amount of attributes.\n+   */\n+  @Override\n+  public final int getAttributeCount() {\n+    return 4;\n+  }\n+\n+  /*\n+   * Returns amount of methods.\n+   */\n+  @Override\n+  public final int getMethodCount() {\n+    return 0;\n+  }\n+\n+  @Override\n+  public final DataType getDataType(final int index) {\n+    if (index == 1) {\n+      return DataType.OCTET_STRING;\n+    }\n+    // ListeningWindow\n+    if (index == 2) {\n+      return DataType.ARRAY;\n+    }\n+    // AllowedSenders\n+    if (index == 3) {\n+      return DataType.ARRAY;\n     }\n+    // SendersAndActions\n+    if (index == 4) {\n+      return DataType.ARRAY;\n+    }\n+    throw new IllegalArgumentException(\n+        \"getDataType failed. Invalid attribute index.\");\n+  }\n \n-    /*\n-     * Returns value of given attribute.\n-     */\n-    @Override\n-    public final Object getValue(final GXDLMSSettings settings, final int index,\n-            final int selector, final Object parameters) {\n-        if (index == 1) {\n-            return getLogicalName();\n-        }\n-        if (index == 2) {\n-            GXByteBuffer buff = new GXByteBuffer();\n-            buff.setUInt8(DataType.ARRAY.getValue());\n-            GXCommon.setObjectCount(listeningWindow.size(), buff);\n-            for (Entry<GXDateTime, GXDateTime> it : listeningWindow) {\n-                buff.setUInt8(DataType.STRUCTURE.getValue());\n-                buff.setUInt8(2);\n-                GXCommon.setData(buff, DataType.OCTET_STRING, it.getKey());\n-                GXCommon.setData(buff, DataType.OCTET_STRING, it.getValue());\n-            }\n-            return buff.array();\n-        }\n-        if (index == 3) {\n-            GXByteBuffer buff = new GXByteBuffer();\n-            buff.setUInt8(DataType.ARRAY.getValue());\n-            GXCommon.setObjectCount(allowedSenders.length, buff);\n-            for (String it : allowedSenders) {\n-                GXCommon.setData(buff, DataType.OCTET_STRING, it.getBytes());\n-            }\n-            return buff.array();\n-        }\n-        if (index == 4) {\n-            GXByteBuffer buff = new GXByteBuffer();\n-            buff.setUInt8(DataType.ARRAY.getValue());\n-            GXCommon.setObjectCount(sendersAndActions.size(), buff);\n-            for (Entry<String, Entry<Integer, GXDLMSScriptAction>> it : sendersAndActions) {\n-                buff.setUInt8(DataType.STRUCTURE.getValue());\n-                buff.setUInt8(2);\n-                GXCommon.setData(buff, DataType.OCTET_STRING,\n-                        it.getKey().getBytes());\n-                // TODO: GXCommon.SetData(buff, DataType.OCTET_STRING,\n-            }\n-            return buff.array();\n-        }\n-        throw new IllegalArgumentException(\n-                \"GetValue failed. Invalid attribute index.\");\n+  /*\n+   * Returns value of given attribute.\n+   */\n+  @Override\n+  public final Object getValue(final GXDLMSSettings settings, final int index,\n+                               final int selector, final Object parameters) {\n+    if (index == 1) {\n+      return getLogicalName();\n     }\n+    if (index == 2) {\n+      GXByteBuffer buff = new GXByteBuffer();\n+      buff.setUInt8(DataType.ARRAY.getValue());\n+      GXCommon.setObjectCount(listeningWindow.size(), buff);\n+      for (Entry<GXDateTime, GXDateTime> it : listeningWindow) {\n+        buff.setUInt8(DataType.STRUCTURE.getValue());\n+        buff.setUInt8(2);\n+        GXCommon.setData(buff, DataType.OCTET_STRING, it.getKey());\n+        GXCommon.setData(buff, DataType.OCTET_STRING, it.getValue());\n+      }\n+      return buff.array();\n+    }\n+    if (index == 3) {\n+      GXByteBuffer buff = new GXByteBuffer();\n+      buff.setUInt8(DataType.ARRAY.getValue());\n+      GXCommon.setObjectCount(allowedSenders.length, buff);\n+      for (String it : allowedSenders) {\n+        GXCommon.setData(buff, DataType.OCTET_STRING, it.getBytes());\n+      }\n+      return buff.array();\n+    }\n+    if (index == 4) {\n+      GXByteBuffer buff = new GXByteBuffer();\n+      buff.setUInt8(DataType.ARRAY.getValue());\n+      GXCommon.setObjectCount(sendersAndActions.size(), buff);\n+      for (Entry<String, Entry<Integer, GXDLMSScriptAction>> it : sendersAndActions) {\n+        buff.setUInt8(DataType.STRUCTURE.getValue());\n+        buff.setUInt8(2);\n+        GXCommon.setData(buff, DataType.OCTET_STRING,\n+            it.getKey().getBytes());\n+        // TODO: GXCommon.SetData(buff, DataType.OCTET_STRING,\n+      }\n+      return buff.array();\n+    }\n+    throw new IllegalArgumentException(\n+        \"GetValue failed. Invalid attribute index.\");\n+  }\n \n-    /*\n-     * Set value of given attribute.\n-     */\n-    @Override\n-    public final void setValue(final GXDLMSSettings settings, final int index,\n-            final Object value) {\n-        if (index == 1) {\n-            super.setValue(settings, index, value);\n-        } else if (index == 2) {\n-            listeningWindow.clear();\n-            if (value instanceof Object[]) {\n-                for (Object it : (Object[]) value) {\n-                    Object[] tmp = (Object[]) it;\n-                    GXDateTime start = (GXDateTime) GXDLMSClient\n-                            .changeType((byte[]) tmp[0], DataType.DATETIME);\n-                    GXDateTime end = (GXDateTime) GXDLMSClient\n-                            .changeType((byte[]) tmp[1], DataType.DATETIME);\n-                    listeningWindow.add(new SimpleEntry<GXDateTime, GXDateTime>(\n-                            start, end));\n-                }\n-            }\n+  /*\n+   * Set value of given attribute.\n+   */\n+  @Override\n+  public final void setValue(final GXDLMSSettings settings, final int index,\n+                             final Object value) {\n+    if (index == 1) {\n+      super.setValue(settings, index, value);\n+    } else if (index == 2) {\n+      listeningWindow.clear();\n+      if (value instanceof Object[]) {\n+        for (Object it : (Object[]) value) {\n+          Object[] tmp = (Object[]) it;\n+          GXDateTime start = (GXDateTime) GXDLMSClient\n+              .changeType((byte[]) tmp[0], DataType.DATETIME);\n+          GXDateTime end = (GXDateTime) GXDLMSClient\n+              .changeType((byte[]) tmp[1], DataType.DATETIME);\n+          listeningWindow.add(new SimpleEntry<GXDateTime, GXDateTime>(\n+              start, end));\n+        }\n+      }\n \n-        } else if (index == 3) {\n-            if (value instanceof Object[]) {\n-                List<String> tmp = new ArrayList<String>();\n-                for (Object it : (Object[]) value) {\n-                    tmp.add(new String((byte[]) it));\n-                }\n-                allowedSenders = tmp.toArray(new String[tmp.size()]);\n-            } else {\n-                allowedSenders = new String[0];\n-            }\n-        } else if (index == 4) {\n-            sendersAndActions.clear();\n-            // TODO:\n-            /*\n-             * if (value instanceof Object[]) { for (Object it : (Object[])\n-             * value) { Object[] tmp = (Object[]) it; String id = new\n-             * String((byte[]) tmp[0]); Object[] tmp2 = (Object[]) tmp[1];\n-             * KeyValuePair<int, GXDLMSScriptAction> executed_script = new\n-             * KeyValuePair<int, GXDLMSScriptAction>(Convert.ToInt32(tmp2[1],\n-             * tmp2[2])); SendersAndActions.Add(new KeyValuePair<string,\n-             * KeyValuePair<int, GXDLMSScriptAction>>(id, tmp[1] as\n-             * GXDateTime)); } }\n-             */\n-        } else {\n-            throw new IllegalArgumentException(\n-                    \"GetValue failed. Invalid attribute index.\");\n+    } else if (index == 3) {\n+      if (value instanceof Object[]) {\n+        List<String> tmp = new ArrayList<String>();\n+        for (Object it : (Object[]) value) {\n+          tmp.add(new String((byte[]) it));\n         }\n+        allowedSenders = tmp.toArray(new String[tmp.size()]);\n+      } else {\n+        allowedSenders = new String[0];\n+      }\n+    } else if (index == 4) {\n+      sendersAndActions.clear();\n+      // TODO:\n+      /*\n+       * if (value instanceof Object[]) { for (Object it : (Object[])\n+       * value) { Object[] tmp = (Object[]) it; String id = new\n+       * String((byte[]) tmp[0]); Object[] tmp2 = (Object[]) tmp[1];\n+       * KeyValuePair<int, GXDLMSScriptAction> executed_script = new\n+       * KeyValuePair<int, GXDLMSScriptAction>(Convert.ToInt32(tmp2[1],\n+       * tmp2[2])); SendersAndActions.Add(new KeyValuePair<string,\n+       * KeyValuePair<int, GXDLMSScriptAction>>(id, tmp[1] as\n+       * GXDateTime)); } }\n+       */\n+    } else {\n+      throw new IllegalArgumentException(\n+          \"GetValue failed. Invalid attribute index.\");\n     }\n+  }\n }\n\\ No newline at end of file\n",
+            "diff_size": 336
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "138",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 97).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "209",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "248",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 92).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "258",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 88).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "266",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 100).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "274",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "275",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 110).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "276",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 93).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "280",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "281",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 150).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "282",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "283",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 144).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "284",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 108).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "285",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 160).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "286",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 111).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "287",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "288",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "303",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 92).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/errored/1/15/GXDLMSMessageHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/codebuff/15/GXDLMSMessageHandler.java\nindex f5c7955e5a..9961f3f1b8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/errored/1/15/GXDLMSMessageHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/codebuff/15/GXDLMSMessageHandler.java\n@@ -38,7 +38,6 @@ import java.util.AbstractMap.SimpleEntry;\n import java.util.ArrayList;\n import java.util.List;\n import java.util.Map.Entry;\n-\n import gurux.dlms.GXByteBuffer;\n import gurux.dlms.GXDLMSClient;\n import gurux.dlms.GXDLMSSettings;\n@@ -57,12 +56,13 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n     /**\n      * Constructor.\n      */\n+\n+\n     public GXDLMSMessageHandler() {\n         super(ObjectType.MESSAGE_HANDLER);\n         listeningWindow = new ArrayList<Entry<GXDateTime, GXDateTime>>();\n         // CHECKSTYLE:OFF\n-        sendersAndActions =\n-                new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n+        sendersAndActions = new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n         // CHECKSTYLE:ON\n     }\n \n@@ -72,12 +72,13 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n      * @param ln\n      *            Logical Name of the object.\n      */\n+\n+\n     public GXDLMSMessageHandler(final String ln) {\n         super(ObjectType.MESSAGE_HANDLER, ln, 0);\n         listeningWindow = new ArrayList<Entry<GXDateTime, GXDateTime>>();\n         // CHECKSTYLE:OFF\n-        sendersAndActions =\n-                new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n+        sendersAndActions = new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n         // CHECKSTYLE:ON\n     }\n \n@@ -89,18 +90,21 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n      * @param sn\n      *            Short Name of the object.\n      */\n+\n+\n     public GXDLMSMessageHandler(final String ln, final int sn) {\n         super(ObjectType.MESSAGE_HANDLER, ln, sn);\n         listeningWindow = new ArrayList<Entry<GXDateTime, GXDateTime>>();\n         // CHECKSTYLE:OFF\n-        sendersAndActions =\n-                new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n+        sendersAndActions = new ArrayList<Entry<String, Entry<Integer, GXDLMSScriptAction>>>();\n         // CHECKSTYLE:ON\n     }\n \n     /**\n      * @return Listening Window.\n      */\n+\n+\n     public final List<Entry<GXDateTime, GXDateTime>> getListeningWindow() {\n         return listeningWindow;\n     }\n@@ -108,6 +112,8 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n     /**\n      * @return List of allowed Senders.\n      */\n+\n+\n     public final String[] getAllowedSenders() {\n         return allowedSenders;\n     }\n@@ -116,6 +122,8 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n      * @param value\n      *            List of allowed Senders.\n      */\n+\n+\n     public final void setAllowedSenders(final String[] value) {\n         allowedSenders = value;\n     }\n@@ -125,21 +133,22 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n      *         script selector of the script to be executed if an empty message\n      *         is received from a matching sender.\n      */\n-    public final List<Entry<String, Entry<Integer, GXDLMSScriptAction>>>\n-            getSendersAndActions() {\n+\n+\n+    public final List<Entry<String, Entry<Integer, GXDLMSScriptAction>>> getSendersAndActions() {\n         return sendersAndActions;\n     }\n \n     @Override\n     public final Object[] getValues() {\n-        return new Object[] { getLogicalName(), listeningWindow, allowedSenders,\n-                sendersAndActions };\n+        return new Object[] { getLogicalName(), listeningWindow, allowedSenders, sendersAndActions };\n     }\n \n     /*\n      * Returns collection of attributes to read. If attribute is static and\n      * already read or device is returned HW error it is not returned.\n      */\n+\n     @Override\n     public final int[] getAttributeIndexToRead() {\n         List<Integer> attributes = new ArrayList<Integer>();\n@@ -165,6 +174,7 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n     /*\n      * Returns amount of attributes.\n      */\n+\n     @Override\n     public final int getAttributeCount() {\n         return 4;\n@@ -173,6 +183,7 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n     /*\n      * Returns amount of methods.\n      */\n+\n     @Override\n     public final int getMethodCount() {\n         return 0;\n@@ -195,15 +206,16 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n         if (index == 4) {\n             return DataType.ARRAY;\n         }\n-        throw new IllegalArgumentException(\n-                \"getDataType failed. Invalid attribute index.\");\n+        throw new IllegalArgumentException(\"getDataType failed. Invalid attribute index.\");\n     }\n \n     /*\n      * Returns value of given attribute.\n      */\n+\n     @Override\n-    public final Object getValue(final GXDLMSSettings settings, final int index,\n+    public final Object getValue(final GXDLMSSettings settings,\n+        final int index,\n             final int selector, final Object parameters) {\n         if (index == 1) {\n             return getLogicalName();\n@@ -236,22 +248,22 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n             for (Entry<String, Entry<Integer, GXDLMSScriptAction>> it : sendersAndActions) {\n                 buff.setUInt8(DataType.STRUCTURE.getValue());\n                 buff.setUInt8(2);\n-                GXCommon.setData(buff, DataType.OCTET_STRING,\n+                GXCommon.setData(buff,\n+                        DataType.OCTET_STRING,\n                         it.getKey().getBytes());\n                 // TODO: GXCommon.SetData(buff, DataType.OCTET_STRING,\n             }\n             return buff.array();\n         }\n-        throw new IllegalArgumentException(\n-                \"GetValue failed. Invalid attribute index.\");\n+        throw new IllegalArgumentException(\"GetValue failed. Invalid attribute index.\");\n     }\n \n     /*\n      * Set value of given attribute.\n      */\n+\n     @Override\n-    public final void setValue(final GXDLMSSettings settings, final int index,\n-            final Object value) {\n+    public final void setValue(final GXDLMSSettings settings, final int index, final Object value) {\n         if (index == 1) {\n             super.setValue(settings, index, value);\n         } else if (index == 2) {\n@@ -259,27 +271,23 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n             if (value instanceof Object[]) {\n                 for (Object it : (Object[]) value) {\n                     Object[] tmp = (Object[]) it;\n-                    GXDateTime start = (GXDateTime) GXDLMSClient\n-                            .changeType((byte[]) tmp[0], DataType.DATETIME);\n-                    GXDateTime end = (GXDateTime) GXDLMSClient\n-                            .changeType((byte[]) tmp[1], DataType.DATETIME);\n-                    listeningWindow.add(new SimpleEntry<GXDateTime, GXDateTime>(\n-                            start, end));\n+                    GXDateTime start = (GXDateTime) GXDLMSClient.changeType((byte[]) tmp[0], DataType.DATETIME);\n+                    GXDateTime end = (GXDateTime) GXDLMSClient.changeType((byte[]) tmp[1], DataType.DATETIME);\n+                    listeningWindow.add(new SimpleEntry<GXDateTime, GXDateTime>(start, end));\n                 }\n             }\n-\n         } else if (index == 3) {\n-            if (value instanceof Object[]) {\n-                List<String> tmp = new ArrayList<String>();\n-                for (Object it : (Object[]) value) {\n-                    tmp.add(new String((byte[]) it));\n-                }\n-                allowedSenders = tmp.toArray(new String[tmp.size()]);\n-            } else {\n-                allowedSenders = new String[0];\n-            }\n+                                                                                                       if (value instanceof Object[]) {\n+                                                                                                           List<String> tmp = new ArrayList<String>();\n+                                                                                                           for (Object it : (Object[]) value) {\n+                                                                                                               tmp.add(new String((byte[]) it));\n+                                                                                                           }\n+                                                                                                           allowedSenders = tmp.toArray(new String[tmp.size()]);\n+                                                                                                       } else {\n+                                                                                                           allowedSenders = new String[0];\n+                                                                                                       }\n         } else if (index == 4) {\n-            sendersAndActions.clear();\n+                   sendersAndActions.clear();\n             // TODO:\n             /*\n              * if (value instanceof Object[]) { for (Object it : (Object[])\n@@ -291,9 +299,8 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n              * KeyValuePair<int, GXDLMSScriptAction>>(id, tmp[1] as\n              * GXDateTime)); } }\n              */\n-        } else {\n-            throw new IllegalArgumentException(\n-                    \"GetValue failed. Invalid attribute index.\");\n-        }\n+               } else {\n+            throw new IllegalArgumentException(\"GetValue failed. Invalid attribute index.\");\n+               }\n     }\n }\n\\ No newline at end of file\n",
+            "diff_size": 60
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "236",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "236",
+                    "column": "16",
+                    "severity": "warning",
+                    "message": "'for' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/errored/1/15/GXDLMSMessageHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/styler_random/15/GXDLMSMessageHandler.java\nindex f5c7955e5a..fd0bb875a6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/errored/1/15/GXDLMSMessageHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Gurux-gurux.dlms.java/styler_random/15/GXDLMSMessageHandler.java\n@@ -233,7 +233,7 @@ public class GXDLMSMessageHandler extends GXDLMSObject implements IGXDLMSBase {\n             GXByteBuffer buff = new GXByteBuffer();\n             buff.setUInt8(DataType.ARRAY.getValue());\n             GXCommon.setObjectCount(sendersAndActions.size(), buff);\n-            for (Entry<String, Entry<Integer, GXDLMSScriptAction>> it : sendersAndActions) {\n+            for(Entry<String, Entry<Integer, GXDLMSScriptAction>> it : sendersAndActions) {\n                 buff.setUInt8(DataType.STRUCTURE.getValue());\n                 buff.setUInt8(2);\n                 GXCommon.setData(buff, DataType.OCTET_STRING,\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "236",
+                    "severity": "warning",
+                    "message": "Line is longer than 80 characters (found 92).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,148 @@
+{
+    "error_id": "304",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/304/ParameterServerServiceTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/304/ParameterServerServiceTest.java\nindex d34adf68a2..7bb8fc27e8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/304/ParameterServerServiceTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/304/ParameterServerServiceTest.java\n@@ -50,120 +50,120 @@ import static org.junit.Assert.assertNotNull;\n \n \n public class ParameterServerServiceTest {\n-  private static final Log LOG = LogFactory.getLog(MasterServiceTest.class);\n-  private static final String LOCAL_FS = LocalFileSystem.DEFAULT_FS;\n-  private static final String TMP_PATH = System.getProperty(\"java.io.tmpdir\", \"/tmp\");\n-  private static AngelClient angelClient;\n-  private static WorkerGroupId group0Id;\n-  private static WorkerId worker0Id;\n-  private static WorkerAttemptId worker0Attempt0Id;\n-  private static TaskId task0Id;\n-  private static TaskId task1Id;\n-  private static ParameterServerId psId;\n-  private static PSAttemptId psAttempt0Id;\n-  private static LocalWorker localWorker;\n-  private static Worker worker;\n-  private static LocalMaster localMaster;\n-  private static AngelApplicationMaster master;\n-  private static Configuration conf;\n-\n-  static {\n-    PropertyConfigurator.configure(\"../conf/log4j.properties\");\n-  }\n-\n-  @Before\n-  public void setup() throws Exception {\n-    try {\n-      // set basic configuration keys\n-      conf = new Configuration();\n-      conf.setBoolean(\"mapred.mapper.new-api\", true);\n-      conf.setBoolean(AngelConf.ANGEL_JOB_OUTPUT_PATH_DELETEONEXIST, true);\n-      conf.set(AngelConf.ANGEL_TASK_USER_TASKCLASS, DummyTask.class.getName());\n-\n-      // use local deploy mode and dummy dataspliter\n-      conf.set(AngelConf.ANGEL_DEPLOY_MODE, \"LOCAL\");\n-      conf.setBoolean(AngelConf.ANGEL_AM_USE_DUMMY_DATASPLITER, true);\n-      conf.set(AngelConf.ANGEL_INPUTFORMAT_CLASS, CombineTextInputFormat.class.getName());\n-      conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, LOCAL_FS + TMP_PATH + \"/out\");\n-      conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, LOCAL_FS + TMP_PATH + \"/in\");\n-      conf.set(AngelConf.ANGEL_LOG_PATH, LOCAL_FS + TMP_PATH + \"/log\");\n-\n-      conf.setInt(AngelConf.ANGEL_WORKERGROUP_NUMBER, 1);\n-      conf.setInt(AngelConf.ANGEL_PS_NUMBER, 1);\n-      conf.setInt(AngelConf.ANGEL_WORKER_TASK_NUMBER, 2);\n-\n-      // get a angel client\n-      angelClient = AngelClientFactory.get(conf);\n-\n-      // add matrix\n-      MatrixContext mMatrix = new MatrixContext();\n-      mMatrix.setName(\"w1\");\n-      mMatrix.setRowNum(1);\n-      mMatrix.setColNum(100000);\n-      mMatrix.setMaxRowNumInBlock(1);\n-      mMatrix.setMaxColNumInBlock(50000);\n-      mMatrix.setRowType(RowType.T_INT_DENSE);\n-      mMatrix.set(MatrixConf.MATRIX_OPLOG_ENABLEFILTER, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_HOGWILD, \"true\");\n-      mMatrix.set(MatrixConf.MATRIX_AVERAGE, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_OPLOG_TYPE, \"DENSE_INT\");\n-      angelClient.addMatrix(mMatrix);\n-\n-      mMatrix = new MatrixContext();\n-      mMatrix.setName(\"w2\");\n-      mMatrix.setRowNum(1);\n-      mMatrix.setColNum(100000);\n-      mMatrix.setMaxRowNumInBlock(1);\n-      mMatrix.setMaxColNumInBlock(50000);\n-      mMatrix.setRowType(RowType.T_DOUBLE_DENSE);\n-      mMatrix.set(MatrixConf.MATRIX_OPLOG_ENABLEFILTER, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_HOGWILD, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_AVERAGE, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_OPLOG_TYPE, \"DENSE_DOUBLE\");\n-      angelClient.addMatrix(mMatrix);\n-\n-      angelClient.startPSServer();\n-      angelClient.run();\n-      Thread.sleep(5000);\n-\n-      // group0Id = new WorkerGroupId(0);\n-      // worker0Id = new WorkerId(group0Id, 0);\n-      // worker0Attempt0Id = new WorkerAttemptId(worker0Id, 0);\n-      // task0Id = new TaskId(0);\n-      // task1Id = new TaskId(1);\n-      psId = new ParameterServerId(0);\n-      psAttempt0Id = new PSAttemptId(psId, 0);\n-    } catch (Exception x) {\n-      LOG.error(\"setup failed \", x);\n-      throw x;\n+    private static final Log LOG = LogFactory.getLog(MasterServiceTest.class);\n+    private static final String LOCAL_FS = LocalFileSystem.DEFAULT_FS;\n+    private static final String TMP_PATH = System.getProperty(\"java.io.tmpdir\", \"/tmp\");\n+    private static AngelClient angelClient;\n+    private static WorkerGroupId group0Id;\n+    private static WorkerId worker0Id;\n+    private static WorkerAttemptId worker0Attempt0Id;\n+    private static TaskId task0Id;\n+    private static TaskId task1Id;\n+    private static ParameterServerId psId;\n+    private static PSAttemptId psAttempt0Id;\n+    private static LocalWorker localWorker;\n+    private static Worker worker;\n+    private static LocalMaster localMaster;\n+    private static AngelApplicationMaster master;\n+    private static Configuration conf;\n+\n+    static {\n+        PropertyConfigurator.configure(\"../conf/log4j.properties\");\n     }\n-  }\n-\n-  @Test\n-  public void testPsThreadStack() throws Exception {\n-    try {\n-      LOG.info(psAttempt0Id.toString());\n-      ParameterServer ps = LocalClusterContext.get().getPS(psAttempt0Id).getPS();\n-      ParameterServerService parameterServerService = ps.getPsService();\n-      MasterPSServiceProtos.GetThreadStackRequest request =\n-        MasterPSServiceProtos.GetThreadStackRequest.newBuilder().build();\n-      MasterPSServiceProtos.GetThreadStackResponse getThreadStackResponse =\n-        parameterServerService.psThreadStack(null, request);\n-      assertNotNull(getThreadStackResponse.getStack());\n-    } catch (Exception x) {\n-      LOG.error(\"run testPsThreadStack failed \", x);\n-      throw x;\n+\n+    @Before\n+    public void setup() throws Exception {\n+        try {\n+            // set basic configuration keys\n+            conf = new Configuration();\n+            conf.setBoolean(\"mapred.mapper.new-api\", true);\n+            conf.setBoolean(AngelConf.ANGEL_JOB_OUTPUT_PATH_DELETEONEXIST, true);\n+            conf.set(AngelConf.ANGEL_TASK_USER_TASKCLASS, DummyTask.class.getName());\n+\n+            // use local deploy mode and dummy dataspliter\n+            conf.set(AngelConf.ANGEL_DEPLOY_MODE, \"LOCAL\");\n+            conf.setBoolean(AngelConf.ANGEL_AM_USE_DUMMY_DATASPLITER, true);\n+            conf.set(AngelConf.ANGEL_INPUTFORMAT_CLASS, CombineTextInputFormat.class.getName());\n+            conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, LOCAL_FS + TMP_PATH + \"/out\");\n+            conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, LOCAL_FS + TMP_PATH + \"/in\");\n+            conf.set(AngelConf.ANGEL_LOG_PATH, LOCAL_FS + TMP_PATH + \"/log\");\n+\n+            conf.setInt(AngelConf.ANGEL_WORKERGROUP_NUMBER, 1);\n+            conf.setInt(AngelConf.ANGEL_PS_NUMBER, 1);\n+            conf.setInt(AngelConf.ANGEL_WORKER_TASK_NUMBER, 2);\n+\n+            // get a angel client\n+            angelClient = AngelClientFactory.get(conf);\n+\n+            // add matrix\n+            MatrixContext mMatrix = new MatrixContext();\n+            mMatrix.setName(\"w1\");\n+            mMatrix.setRowNum(1);\n+            mMatrix.setColNum(100000);\n+            mMatrix.setMaxRowNumInBlock(1);\n+            mMatrix.setMaxColNumInBlock(50000);\n+            mMatrix.setRowType(RowType.T_INT_DENSE);\n+            mMatrix.set(MatrixConf.MATRIX_OPLOG_ENABLEFILTER, \"false\");\n+            mMatrix.set(MatrixConf.MATRIX_HOGWILD, \"true\");\n+            mMatrix.set(MatrixConf.MATRIX_AVERAGE, \"false\");\n+            mMatrix.set(MatrixConf.MATRIX_OPLOG_TYPE, \"DENSE_INT\");\n+            angelClient.addMatrix(mMatrix);\n+\n+            mMatrix = new MatrixContext();\n+            mMatrix.setName(\"w2\");\n+            mMatrix.setRowNum(1);\n+            mMatrix.setColNum(100000);\n+            mMatrix.setMaxRowNumInBlock(1);\n+            mMatrix.setMaxColNumInBlock(50000);\n+            mMatrix.setRowType(RowType.T_DOUBLE_DENSE);\n+            mMatrix.set(MatrixConf.MATRIX_OPLOG_ENABLEFILTER, \"false\");\n+            mMatrix.set(MatrixConf.MATRIX_HOGWILD, \"false\");\n+            mMatrix.set(MatrixConf.MATRIX_AVERAGE, \"false\");\n+            mMatrix.set(MatrixConf.MATRIX_OPLOG_TYPE, \"DENSE_DOUBLE\");\n+            angelClient.addMatrix(mMatrix);\n+\n+            angelClient.startPSServer();\n+            angelClient.run();\n+            Thread.sleep(5000);\n+\n+            // group0Id = new WorkerGroupId(0);\n+            // worker0Id = new WorkerId(group0Id, 0);\n+            // worker0Attempt0Id = new WorkerAttemptId(worker0Id, 0);\n+            // task0Id = new TaskId(0);\n+            // task1Id = new TaskId(1);\n+            psId = new ParameterServerId(0);\n+            psAttempt0Id = new PSAttemptId(psId, 0);\n+        } catch (Exception x) {\n+            LOG.error(\"setup failed \", x);\n+            throw x;\n+        }\n+    }\n+\n+    @Test\n+    public void testPsThreadStack() throws Exception {\n+        try {\n+            LOG.info(psAttempt0Id.toString());\n+            ParameterServer ps = LocalClusterContext.get().getPS(psAttempt0Id).getPS();\n+            ParameterServerService parameterServerService = ps.getPsService();\n+            MasterPSServiceProtos.GetThreadStackRequest request =\n+                    MasterPSServiceProtos.GetThreadStackRequest.newBuilder().build();\n+            MasterPSServiceProtos.GetThreadStackResponse getThreadStackResponse =\n+                    parameterServerService.psThreadStack(null, request);\n+            assertNotNull(getThreadStackResponse.getStack());\n+        } catch (Exception x) {\n+            LOG.error(\"run testPsThreadStack failed \", x);\n+            throw x;\n+        }\n     }\n-  }\n-\n-  @After\n-  public void stop() throws Exception {\n-    try {\n-      LOG.info(\"stop local cluster\");\n-      angelClient.stop();\n-    } catch (Exception x) {\n-      LOG.error(\"stop failed \", x);\n-      throw x;\n+\n+    @After\n+    public void stop() throws Exception {\n+        try {\n+            LOG.info(\"stop local cluster\");\n+            angelClient.stop();\n+        } catch (Exception x) {\n+            LOG.error(\"stop failed \", x);\n+            throw x;\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 181
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "149",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 128).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/304/ParameterServerServiceTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/304/ParameterServerServiceTest.java\nindex d34adf68a2..6fcb9b9ecd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/304/ParameterServerServiceTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/304/ParameterServerServiceTest.java\n@@ -145,10 +145,8 @@ public class ParameterServerServiceTest {\n       LOG.info(psAttempt0Id.toString());\n       ParameterServer ps = LocalClusterContext.get().getPS(psAttempt0Id).getPS();\n       ParameterServerService parameterServerService = ps.getPsService();\n-      MasterPSServiceProtos.GetThreadStackRequest request =\n-        MasterPSServiceProtos.GetThreadStackRequest.newBuilder().build();\n-      MasterPSServiceProtos.GetThreadStackResponse getThreadStackResponse =\n-        parameterServerService.psThreadStack(null, request);\n+      MasterPSServiceProtos.GetThreadStackRequest request = MasterPSServiceProtos.GetThreadStackRequest.newBuilder().build();\n+      MasterPSServiceProtos.GetThreadStackResponse getThreadStackResponse = parameterServerService.psThreadStack(null, request);\n       assertNotNull(getThreadStackResponse.getStack());\n     } catch (Exception x) {\n       LOG.error(\"run testPsThreadStack failed \", x);\n@@ -166,4 +164,4 @@ public class ParameterServerServiceTest {\n       throw x;\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 76.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 82.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 93.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 96.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "128",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 129.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "143",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 127).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/304/ParameterServerServiceTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/304/ParameterServerServiceTest.java\nindex d34adf68a2..336284d9e8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/304/ParameterServerServiceTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/304/ParameterServerServiceTest.java\n@@ -45,125 +45,119 @@ import org.apache.log4j.PropertyConfigurator;\n import org.junit.After;\n import org.junit.Before;\n import org.junit.Test;\n-\n import static org.junit.Assert.assertNotNull;\n \n-\n public class ParameterServerServiceTest {\n-  private static final Log LOG = LogFactory.getLog(MasterServiceTest.class);\n-  private static final String LOCAL_FS = LocalFileSystem.DEFAULT_FS;\n-  private static final String TMP_PATH = System.getProperty(\"java.io.tmpdir\", \"/tmp\");\n-  private static AngelClient angelClient;\n-  private static WorkerGroupId group0Id;\n-  private static WorkerId worker0Id;\n-  private static WorkerAttemptId worker0Attempt0Id;\n-  private static TaskId task0Id;\n-  private static TaskId task1Id;\n-  private static ParameterServerId psId;\n-  private static PSAttemptId psAttempt0Id;\n-  private static LocalWorker localWorker;\n-  private static Worker worker;\n-  private static LocalMaster localMaster;\n-  private static AngelApplicationMaster master;\n-  private static Configuration conf;\n-\n-  static {\n+    private static final Log LOG = LogFactory.getLog(MasterServiceTest.class);\n+    private static final String LOCAL_FS = LocalFileSystem.DEFAULT_FS;\n+    private static final String TMP_PATH = System.getProperty(\"java.io.tmpdir\", \"/tmp\");\n+    private static AngelClient angelClient;\n+    private static WorkerGroupId group0Id;\n+    private static WorkerId worker0Id;\n+    private static WorkerAttemptId worker0Attempt0Id;\n+    private static TaskId task0Id;\n+    private static TaskId task1Id;\n+    private static ParameterServerId psId;\n+    private static PSAttemptId psAttempt0Id;\n+    private static LocalWorker localWorker;\n+    private static Worker worker;\n+    private static LocalMaster localMaster;\n+    private static AngelApplicationMaster master;\n+    private static Configuration conf;\n+\n+    static {\n     PropertyConfigurator.configure(\"../conf/log4j.properties\");\n-  }\n+    }\n \n-  @Before\n-  public void setup() throws Exception {\n+    @Before\n+    public void setup() throws Exception {\n     try {\n       // set basic configuration keys\n-      conf = new Configuration();\n-      conf.setBoolean(\"mapred.mapper.new-api\", true);\n-      conf.setBoolean(AngelConf.ANGEL_JOB_OUTPUT_PATH_DELETEONEXIST, true);\n-      conf.set(AngelConf.ANGEL_TASK_USER_TASKCLASS, DummyTask.class.getName());\n+        conf = new Configuration();\n+        conf.setBoolean(\"mapred.mapper.new-api\", true);\n+        conf.setBoolean(AngelConf.ANGEL_JOB_OUTPUT_PATH_DELETEONEXIST, true);\n+        conf.set(AngelConf.ANGEL_TASK_USER_TASKCLASS, DummyTask.class.getName());\n \n       // use local deploy mode and dummy dataspliter\n-      conf.set(AngelConf.ANGEL_DEPLOY_MODE, \"LOCAL\");\n-      conf.setBoolean(AngelConf.ANGEL_AM_USE_DUMMY_DATASPLITER, true);\n-      conf.set(AngelConf.ANGEL_INPUTFORMAT_CLASS, CombineTextInputFormat.class.getName());\n-      conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, LOCAL_FS + TMP_PATH + \"/out\");\n-      conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, LOCAL_FS + TMP_PATH + \"/in\");\n-      conf.set(AngelConf.ANGEL_LOG_PATH, LOCAL_FS + TMP_PATH + \"/log\");\n-\n-      conf.setInt(AngelConf.ANGEL_WORKERGROUP_NUMBER, 1);\n-      conf.setInt(AngelConf.ANGEL_PS_NUMBER, 1);\n-      conf.setInt(AngelConf.ANGEL_WORKER_TASK_NUMBER, 2);\n+        conf.set(AngelConf.ANGEL_DEPLOY_MODE, \"LOCAL\");\n+        conf.setBoolean(AngelConf.ANGEL_AM_USE_DUMMY_DATASPLITER, true);\n+        conf.set(AngelConf.ANGEL_INPUTFORMAT_CLASS, CombineTextInputFormat.class.getName());\n+        conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, LOCAL_FS + TMP_PATH + \"/out\");\n+        conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, LOCAL_FS + TMP_PATH + \"/in\");\n+        conf.set(AngelConf.ANGEL_LOG_PATH, LOCAL_FS + TMP_PATH + \"/log\");\n+        conf.setInt(AngelConf.ANGEL_WORKERGROUP_NUMBER, 1);\n+        conf.setInt(AngelConf.ANGEL_PS_NUMBER, 1);\n+        conf.setInt(AngelConf.ANGEL_WORKER_TASK_NUMBER, 2);\n \n       // get a angel client\n-      angelClient = AngelClientFactory.get(conf);\n+        angelClient = AngelClientFactory.get(conf);\n \n       // add matrix\n-      MatrixContext mMatrix = new MatrixContext();\n-      mMatrix.setName(\"w1\");\n-      mMatrix.setRowNum(1);\n-      mMatrix.setColNum(100000);\n-      mMatrix.setMaxRowNumInBlock(1);\n-      mMatrix.setMaxColNumInBlock(50000);\n-      mMatrix.setRowType(RowType.T_INT_DENSE);\n-      mMatrix.set(MatrixConf.MATRIX_OPLOG_ENABLEFILTER, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_HOGWILD, \"true\");\n-      mMatrix.set(MatrixConf.MATRIX_AVERAGE, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_OPLOG_TYPE, \"DENSE_INT\");\n-      angelClient.addMatrix(mMatrix);\n-\n-      mMatrix = new MatrixContext();\n-      mMatrix.setName(\"w2\");\n-      mMatrix.setRowNum(1);\n-      mMatrix.setColNum(100000);\n-      mMatrix.setMaxRowNumInBlock(1);\n-      mMatrix.setMaxColNumInBlock(50000);\n-      mMatrix.setRowType(RowType.T_DOUBLE_DENSE);\n-      mMatrix.set(MatrixConf.MATRIX_OPLOG_ENABLEFILTER, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_HOGWILD, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_AVERAGE, \"false\");\n-      mMatrix.set(MatrixConf.MATRIX_OPLOG_TYPE, \"DENSE_DOUBLE\");\n-      angelClient.addMatrix(mMatrix);\n-\n-      angelClient.startPSServer();\n-      angelClient.run();\n-      Thread.sleep(5000);\n+        MatrixContext mMatrix = new MatrixContext();\n+        mMatrix.setName(\"w1\");\n+        mMatrix.setRowNum(1);\n+        mMatrix.setColNum(100000);\n+        mMatrix.setMaxRowNumInBlock(1);\n+        mMatrix.setMaxColNumInBlock(50000);\n+        mMatrix.setRowType(RowType.T_INT_DENSE);\n+        mMatrix.set(MatrixConf.MATRIX_OPLOG_ENABLEFILTER, \"false\");\n+        mMatrix.set(MatrixConf.MATRIX_HOGWILD, \"true\");\n+        mMatrix.set(MatrixConf.MATRIX_AVERAGE, \"false\");\n+        mMatrix.set(MatrixConf.MATRIX_OPLOG_TYPE, \"DENSE_INT\");\n+        angelClient.addMatrix(mMatrix);\n+        mMatrix = new MatrixContext();\n+        mMatrix.setName(\"w2\");\n+        mMatrix.setRowNum(1);\n+        mMatrix.setColNum(100000);\n+        mMatrix.setMaxRowNumInBlock(1);\n+        mMatrix.setMaxColNumInBlock(50000);\n+        mMatrix.setRowType(RowType.T_DOUBLE_DENSE);\n+        mMatrix.set(MatrixConf.MATRIX_OPLOG_ENABLEFILTER, \"false\");\n+        mMatrix.set(MatrixConf.MATRIX_HOGWILD, \"false\");\n+        mMatrix.set(MatrixConf.MATRIX_AVERAGE, \"false\");\n+        mMatrix.set(MatrixConf.MATRIX_OPLOG_TYPE, \"DENSE_DOUBLE\");\n+        angelClient.addMatrix(mMatrix);\n+        angelClient.startPSServer();\n+        angelClient.run();\n+        Thread.sleep(5000);\n \n       // group0Id = new WorkerGroupId(0);\n       // worker0Id = new WorkerId(group0Id, 0);\n       // worker0Attempt0Id = new WorkerAttemptId(worker0Id, 0);\n       // task0Id = new TaskId(0);\n       // task1Id = new TaskId(1);\n-      psId = new ParameterServerId(0);\n-      psAttempt0Id = new PSAttemptId(psId, 0);\n+        psId = new ParameterServerId(0);\n+        psAttempt0Id = new PSAttemptId(psId, 0);\n     } catch (Exception x) {\n       LOG.error(\"setup failed \", x);\n       throw x;\n     }\n-  }\n+    }\n \n-  @Test\n-  public void testPsThreadStack() throws Exception {\n+    @Test\n+    public void testPsThreadStack() throws Exception {\n     try {\n-      LOG.info(psAttempt0Id.toString());\n-      ParameterServer ps = LocalClusterContext.get().getPS(psAttempt0Id).getPS();\n-      ParameterServerService parameterServerService = ps.getPsService();\n-      MasterPSServiceProtos.GetThreadStackRequest request =\n-        MasterPSServiceProtos.GetThreadStackRequest.newBuilder().build();\n-      MasterPSServiceProtos.GetThreadStackResponse getThreadStackResponse =\n-        parameterServerService.psThreadStack(null, request);\n-      assertNotNull(getThreadStackResponse.getStack());\n+        LOG.info(psAttempt0Id.toString());\n+        ParameterServer ps = LocalClusterContext.get().getPS(psAttempt0Id).getPS();\n+        ParameterServerService parameterServerService = ps.getPsService();\n+        MasterPSServiceProtos.GetThreadStackRequest request = MasterPSServiceProtos.GetThreadStackRequest.newBuilder().build();\n+        MasterPSServiceProtos.GetThreadStackResponse getThreadStackResponse = parameterServerService.psThreadStack(null, request);\n+        assertNotNull(getThreadStackResponse.getStack());\n     } catch (Exception x) {\n       LOG.error(\"run testPsThreadStack failed \", x);\n       throw x;\n     }\n-  }\n+    }\n \n-  @After\n-  public void stop() throws Exception {\n+    @After\n+    public void stop() throws Exception {\n     try {\n-      LOG.info(\"stop local cluster\");\n-      angelClient.stop();\n+        LOG.info(\"stop local cluster\");\n+        angelClient.stop();\n     } catch (Exception x) {\n       LOG.error(\"stop failed \", x);\n       throw x;\n     }\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 88
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

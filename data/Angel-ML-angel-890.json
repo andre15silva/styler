@@ -1,0 +1,108 @@
+{
+    "error_id": "890",
+    "information": {
+        "errors": [
+            {
+                "line": "22",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 112).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  public void partitionUpdate(PartitionUpdateParam partParam) {\n    InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam;\n    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n\n    long[] nodeIds = param.getNodeIds();\n    IntFloatVector[] feats = param.getFeats();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "21",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 179).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "21",
+                    "column": "179",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/890/InitNodeFeats.java\nindex f47acb3b15..ec6b97a9b9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/890/InitNodeFeats.java\n@@ -18,8 +18,7 @@ public class InitNodeFeats extends UpdateFunc {\n \n   @Override\n   public void partitionUpdate(PartitionUpdateParam partParam) {\n-    InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam;\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n+    InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam; ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n \n     long[] nodeIds = param.getNodeIds();\n     IntFloatVector[] feats = param.getFeats();\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/890/InitNodeFeats.java\nindex f47acb3b15..38b4084078 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/890/InitNodeFeats.java\n@@ -8,35 +8,36 @@ import com.tencent.angel.ps.storage.vector.ServerLongAnyRow;\n \n public class InitNodeFeats extends UpdateFunc {\n \n-  public InitNodeFeats(InitNodeFeatsParam param) {\n-    super(param);\n-  }\n-\n-  public InitNodeFeats() {\n-    this(null);\n-  }\n-\n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n-    InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam;\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n-\n-    long[] nodeIds = param.getNodeIds();\n-    IntFloatVector[] feats = param.getFeats();\n-\n-    try {\n-      row.startWrite();\n-      for (int i = 0; i < nodeIds.length; i++) {\n-        Node node = (Node) row.get(nodeIds[i]);\n-        if (node == null) {\n-          node = new Node();\n-          row.set(nodeIds[i], node);\n-        }\n+    public InitNodeFeats(InitNodeFeatsParam param) {\n+        super(param);\n+    }\n \n-        node.setFeats(feats[i]);\n-      }\n-    } finally {\n-      row.endWrite();\n+    public InitNodeFeats() {\n+        this(null);\n+    }\n+\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n+        InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam;\n+        ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager()\n+                .getRow(param.getPartKey(), 0);\n+\n+        long[] nodeIds = param.getNodeIds();\n+        IntFloatVector[] feats = param.getFeats();\n+\n+        try {\n+            row.startWrite();\n+            for (int i = 0; i < nodeIds.length; i++) {\n+                Node node = (Node) row.get(nodeIds[i]);\n+                if (node == null) {\n+                    node = new Node();\n+                    row.set(nodeIds[i], node);\n+                }\n+\n+                node.setFeats(feats[i]);\n+            }\n+        } finally {\n+            row.endWrite();\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 52
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "22",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/890/InitNodeFeats.java\nindex f47acb3b15..26f4cb4b34 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/890/InitNodeFeats.java\n@@ -20,11 +20,9 @@ public class InitNodeFeats extends UpdateFunc {\n   public void partitionUpdate(PartitionUpdateParam partParam) {\n     InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam;\n     ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n-\n-    long[] nodeIds = param.getNodeIds();\n+long[] nodeIds = param.getNodeIds();\n     IntFloatVector[] feats = param.getFeats();\n-\n-    try {\n+try {\n       row.startWrite();\n       for (int i = 0; i < nodeIds.length; i++) {\n         Node node = (Node) row.get(nodeIds[i]);\n@@ -39,4 +37,4 @@ public class InitNodeFeats extends UpdateFunc {\n       row.endWrite();\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "22",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/890/InitNodeFeats.java\nindex f47acb3b15..a588ce382f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/890/InitNodeFeats.java\n@@ -8,35 +8,33 @@ import com.tencent.angel.ps.storage.vector.ServerLongAnyRow;\n \n public class InitNodeFeats extends UpdateFunc {\n \n-  public InitNodeFeats(InitNodeFeatsParam param) {\n+    public InitNodeFeats(InitNodeFeatsParam param) {\n     super(param);\n-  }\n+    }\n \n-  public InitNodeFeats() {\n+    public InitNodeFeats() {\n     this(null);\n-  }\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n     InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam;\n     ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n-\n     long[] nodeIds = param.getNodeIds();\n     IntFloatVector[] feats = param.getFeats();\n-\n     try {\n-      row.startWrite();\n-      for (int i = 0; i < nodeIds.length; i++) {\n+        row.startWrite();\n+        for (int i = 0; i < nodeIds.length; i++) {\n         Node node = (Node) row.get(nodeIds[i]);\n         if (node == null) {\n-          node = new Node();\n-          row.set(nodeIds[i], node);\n+            node = new Node();\n+            row.set(nodeIds[i], node);\n         }\n-\n         node.setFeats(feats[i]);\n-      }\n+        }\n     } finally {\n       row.endWrite();\n     }\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "22",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "23",
+                    "column": "48",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/890/InitNodeFeats.java\nindex f47acb3b15..2f529c82f3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/890/InitNodeFeats.java\n@@ -19,9 +19,8 @@ public class InitNodeFeats extends UpdateFunc {\n   @Override\n   public void partitionUpdate(PartitionUpdateParam partParam) {\n     InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam;\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n-\n-    long[] nodeIds = param.getNodeIds();\n+    ServerLongAnyRow row = (ServerLongAnyRow)psContext.getMatrixStorageManager() .getRow(param.getPartKey(\n+    ) ,0 ) ;long[] nodeIds = param.getNodeIds();\n     IntFloatVector[] feats = param.getFeats();\n \n     try {\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "21",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 179).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "21",
+                    "column": "179",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/890/InitNodeFeats.java\nindex f47acb3b15..ec6b97a9b9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/890/InitNodeFeats.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/890/InitNodeFeats.java\n@@ -18,8 +18,7 @@ public class InitNodeFeats extends UpdateFunc {\n \n   @Override\n   public void partitionUpdate(PartitionUpdateParam partParam) {\n-    InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam;\n-    ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n+    InitNodeFeatsPartParam param = (InitNodeFeatsPartParam) partParam; ServerLongAnyRow row = (ServerLongAnyRow) psContext.getMatrixStorageManager().getRow(param.getPartKey(), 0);\n \n     long[] nodeIds = param.getNodeIds();\n     IntFloatVector[] feats = param.getFeats();\n",
+            "diff_size": 2
+        }
+    ]
+}

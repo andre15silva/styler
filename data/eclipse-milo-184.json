@@ -1,0 +1,87 @@
+{
+    "error_id": "184",
+    "information": {
+        "errors": [
+            {
+                "line": "34",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 123).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=698\");\n\n    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=700\");\n\n    public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=699\");\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/184/HistoryUpdateRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/184/HistoryUpdateRequest.java\nindex fbb521c951..d91a4e2905 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/184/HistoryUpdateRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/184/HistoryUpdateRequest.java\n@@ -31,7 +31,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.ExtensionObject;\n public class HistoryUpdateRequest extends Structure implements UaRequestMessage {\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=698\");\n \n-    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=700\");\n+    public static final ExpandedNodeId BINARY_ENCODING_ID =\n+        ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=700\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=699\");\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/184/HistoryUpdateRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/184/HistoryUpdateRequest.java\nindex fbb521c951..71d6c8519d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/184/HistoryUpdateRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/184/HistoryUpdateRequest.java\n@@ -87,4 +87,4 @@ public class HistoryUpdateRequest extends Structure implements UaRequestMessage\n             encoder.writeExtensionObjectArray(\"HistoryUpdateDetails\", value.getHistoryUpdateDetails());\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/184/HistoryUpdateRequest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/184/HistoryUpdateRequest.java\nindex fbb521c951..3cf60fa44c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/184/HistoryUpdateRequest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/184/HistoryUpdateRequest.java\n@@ -29,14 +29,13 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.ExtensionObject;\n )\n @ToString\n public class HistoryUpdateRequest extends Structure implements UaRequestMessage {\n+\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=698\");\n \n     public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=700\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=699\");\n-\n     private final RequestHeader requestHeader;\n-\n     private final ExtensionObject[] historyUpdateDetails;\n \n     public HistoryUpdateRequest(RequestHeader requestHeader, ExtensionObject[] historyUpdateDetails) {\n@@ -77,14 +76,15 @@ public class HistoryUpdateRequest extends Structure implements UaRequestMessage\n         public HistoryUpdateRequest decode(SerializationContext context, UaDecoder decoder) {\n             RequestHeader requestHeader = (RequestHeader) decoder.readStruct(\"RequestHeader\", RequestHeader.TYPE_ID);\n             ExtensionObject[] historyUpdateDetails = decoder.readExtensionObjectArray(\"HistoryUpdateDetails\");\n+\n             return new HistoryUpdateRequest(requestHeader, historyUpdateDetails);\n         }\n \n         @Override\n-        public void encode(SerializationContext context, UaEncoder encoder,\n-                           HistoryUpdateRequest value) {\n+        public void encode(SerializationContext context, UaEncoder encoder, HistoryUpdateRequest value) {\n             encoder.writeStruct(\"RequestHeader\", value.getRequestHeader(), RequestHeader.TYPE_ID);\n             encoder.writeExtensionObjectArray(\"HistoryUpdateDetails\", value.getHistoryUpdateDetails());\n         }\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

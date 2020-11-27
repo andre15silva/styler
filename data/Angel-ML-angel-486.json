@@ -1,0 +1,95 @@
+{
+    "error_id": "486",
+    "information": {
+        "errors": [
+            {
+                "line": "28",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 104).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    List<RowUpdateSplit> updates = param.getUpdates();\n    for (RowUpdateSplit update: updates) {\n      ServerRow row = psContext.getMatrixStorageManager().getRow(param.getPartKey(), update.getRowId());\n      try {\n        row.startWrite();\n        Vector vector = getVector(param.getMatrixId(), update.getRowId(), param.getPartKey());",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "29",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/486/Sub.java\nindex 3a343692ce..48b84cd077 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/486/Sub.java\n@@ -25,7 +25,9 @@ public class Sub extends IncrementRows {\n     PartIncrementRowsParam param = (PartIncrementRowsParam) partParam;\n     List<RowUpdateSplit> updates = param.getUpdates();\n     for (RowUpdateSplit update: updates) {\n-      ServerRow row = psContext.getMatrixStorageManager().getRow(param.getPartKey(), update.getRowId());\n+      ServerRow row = psContext.getMatrixStorageManager().getRow(param\n+          .getPartKey(),update.getRowId (\n+        ) ) ;\n       try {\n         row.startWrite();\n         Vector vector = getVector(param.getMatrixId(), update.getRowId(), param.getPartKey());\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/486/Sub.java\nindex 3a343692ce..a7d5b97800 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/486/Sub.java\n@@ -12,27 +12,29 @@ import java.util.List;\n \n public class Sub extends IncrementRows {\n \n-  public Sub(IncrementRowsParam param) {\n-    super(param);\n-  }\n+    public Sub(IncrementRowsParam param) {\n+        super(param);\n+    }\n \n-  public Sub(){\n-    this(null);\n-  }\n+    public Sub() {\n+        this(null);\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n-    PartIncrementRowsParam param = (PartIncrementRowsParam) partParam;\n-    List<RowUpdateSplit> updates = param.getUpdates();\n-    for (RowUpdateSplit update: updates) {\n-      ServerRow row = psContext.getMatrixStorageManager().getRow(param.getPartKey(), update.getRowId());\n-      try {\n-        row.startWrite();\n-        Vector vector = getVector(param.getMatrixId(), update.getRowId(), param.getPartKey());\n-        vector.isub(update.getVector());\n-      } finally {\n-        row.endWrite();\n-      }\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n+        PartIncrementRowsParam param = (PartIncrementRowsParam) partParam;\n+        List<RowUpdateSplit> updates = param.getUpdates();\n+        for (RowUpdateSplit update : updates) {\n+            ServerRow row = psContext.getMatrixStorageManager()\n+                    .getRow(param.getPartKey(), update.getRowId());\n+            try {\n+                row.startWrite();\n+                Vector vector =\n+                        getVector(param.getMatrixId(), update.getRowId(), param.getPartKey());\n+                vector.isub(update.getVector());\n+            } finally {\n+                row.endWrite();\n+            }\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 23
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/486/Sub.java\nindex 3a343692ce..88eacfd4d2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/486/Sub.java\n@@ -16,7 +16,7 @@ public class Sub extends IncrementRows {\n     super(param);\n   }\n \n-  public Sub(){\n+  public Sub() {\n     this(null);\n   }\n \n@@ -35,4 +35,4 @@ public class Sub extends IncrementRows {\n       }\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 132).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/486/Sub.java\nindex 3a343692ce..e0408752b6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/486/Sub.java\n@@ -7,32 +7,32 @@ import com.tencent.angel.ml.matrix.psf.update.update.IncrementRowsParam;\n import com.tencent.angel.ml.matrix.psf.update.update.PartIncrementRowsParam;\n import com.tencent.angel.ps.storage.vector.ServerRow;\n import com.tencent.angel.psagent.matrix.oplog.cache.RowUpdateSplit;\n-\n import java.util.List;\n \n public class Sub extends IncrementRows {\n \n-  public Sub(IncrementRowsParam param) {\n+    public Sub(IncrementRowsParam param) {\n     super(param);\n-  }\n+    }\n \n-  public Sub(){\n+    public Sub() {\n     this(null);\n-  }\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n     PartIncrementRowsParam param = (PartIncrementRowsParam) partParam;\n     List<RowUpdateSplit> updates = param.getUpdates();\n-    for (RowUpdateSplit update: updates) {\n-      ServerRow row = psContext.getMatrixStorageManager().getRow(param.getPartKey(), update.getRowId());\n-      try {\n-        row.startWrite();\n-        Vector vector = getVector(param.getMatrixId(), update.getRowId(), param.getPartKey());\n-        vector.isub(update.getVector());\n-      } finally {\n-        row.endWrite();\n-      }\n+    for (RowUpdateSplit update : updates) {\n+        ServerRow row = psContext.getMatrixStorageManager().getRow(param.getPartKey(), update.getRowId());\n+        try {\n+                                              row.startWrite();\n+                                              Vector vector = getVector(param.getMatrixId(), update.getRowId(), param.getPartKey());\n+                                              vector.isub(update.getVector());\n+        } finally {\n+          row.endWrite();\n+        }\n     }\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "29",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/486/Sub.java\nindex 3a343692ce..48b84cd077 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/486/Sub.java\n@@ -25,7 +25,9 @@ public class Sub extends IncrementRows {\n     PartIncrementRowsParam param = (PartIncrementRowsParam) partParam;\n     List<RowUpdateSplit> updates = param.getUpdates();\n     for (RowUpdateSplit update: updates) {\n-      ServerRow row = psContext.getMatrixStorageManager().getRow(param.getPartKey(), update.getRowId());\n+      ServerRow row = psContext.getMatrixStorageManager().getRow(param\n+          .getPartKey(),update.getRowId (\n+        ) ) ;\n       try {\n         row.startWrite();\n         Vector vector = getVector(param.getMatrixId(), update.getRowId(), param.getPartKey());\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/486/Sub.java\nindex 3a343692ce..7b81eca9f1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/486/Sub.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/486/Sub.java\n@@ -24,15 +24,14 @@ public class Sub extends IncrementRows {\n   public void partitionUpdate(PartitionUpdateParam partParam) {\n     PartIncrementRowsParam param = (PartIncrementRowsParam) partParam;\n     List<RowUpdateSplit> updates = param.getUpdates();\n-    for (RowUpdateSplit update: updates) {\n-      ServerRow row = psContext.getMatrixStorageManager().getRow(param.getPartKey(), update.getRowId());\n-      try {\n-        row.startWrite();\n-        Vector vector = getVector(param.getMatrixId(), update.getRowId(), param.getPartKey());\n-        vector.isub(update.getVector());\n-      } finally {\n-        row.endWrite();\n-      }\n+    for (RowUpdateSplit update: updates) { ServerRow row = psContext.getMatrixStorageManager().getRow(param.getPartKey(), update.getRowId());\n+    try {\n+      row.startWrite();\n+      Vector vector = getVector(param.getMatrixId(), update.getRowId(), param.getPartKey());\n+      vector.isub(update.getVector());\n+    } finally {\n+      row.endWrite();\n     }\n   }\n }\n+}\n",
+            "diff_size": 10
+        }
+    ]
+}

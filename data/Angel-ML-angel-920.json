@@ -1,0 +1,94 @@
+{
+    "error_id": "920",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/920/PartInitNodeFeatsParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/920/PartInitNodeFeatsParam.java\nindex bf4725c5c5..67fc3f520c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/920/PartInitNodeFeatsParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/920/PartInitNodeFeatsParam.java\n@@ -14,6 +14,7 @@\n  * the License.\n  *\n  */\n+\n package com.tencent.angel.graph.client.initnodefeats2;\n \n import com.tencent.angel.PartitionKey;\n@@ -24,74 +25,75 @@ import io.netty.buffer.ByteBuf;\n \n public class PartInitNodeFeatsParam extends PartitionUpdateParam {\n \n-  private long[] nodeIds;\n-  private IntFloatVector[] feats;\n-  int startIndex;\n-  int endIndex;\n+    private long[] nodeIds;\n+    private IntFloatVector[] feats;\n+    int startIndex;\n+    int endIndex;\n \n-  public PartInitNodeFeatsParam(int matrixId, PartitionKey partKey,\n-      long[] nodeIds, IntFloatVector[] feats, int startIndex, int endIndex) {\n-    super(matrixId, partKey);\n-    this.nodeIds = nodeIds;\n-    this.feats = feats;\n-    this.startIndex = startIndex;\n-    this.endIndex = endIndex;\n-  }\n+    public PartInitNodeFeatsParam(int matrixId, PartitionKey partKey,\n+                                  long[] nodeIds, IntFloatVector[] feats, int startIndex,\n+                                  int endIndex) {\n+        super(matrixId, partKey);\n+        this.nodeIds = nodeIds;\n+        this.feats = feats;\n+        this.startIndex = startIndex;\n+        this.endIndex = endIndex;\n+    }\n \n-  public PartInitNodeFeatsParam() {\n-    this(-1, null, null, null, -1, -1);\n-  }\n+    public PartInitNodeFeatsParam() {\n+        this(-1, null, null, null, -1, -1);\n+    }\n \n-  public long[] getNodeIds() {\n-    return nodeIds;\n-  }\n+    public long[] getNodeIds() {\n+        return nodeIds;\n+    }\n \n-  public IntFloatVector[] getFeats() {\n-    return feats;\n-  }\n+    public IntFloatVector[] getFeats() {\n+        return feats;\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    int writeIndex = buf.writerIndex();\n-    int writeNum = 0;\n-    buf.writeInt(0);\n-    for (int i = startIndex; i < endIndex; i++) {\n-      if (feats[i] == null || feats[i].getSize() == 0) {\n-        continue;\n-      }\n-      buf.writeLong(nodeIds[i]);\n-      NodeUtils.serialize(feats[i], buf);\n-      writeNum++;\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        super.serialize(buf);\n+        int writeIndex = buf.writerIndex();\n+        int writeNum = 0;\n+        buf.writeInt(0);\n+        for (int i = startIndex; i < endIndex; i++) {\n+            if (feats[i] == null || feats[i].getSize() == 0) {\n+                continue;\n+            }\n+            buf.writeLong(nodeIds[i]);\n+            NodeUtils.serialize(feats[i], buf);\n+            writeNum++;\n+        }\n+        buf.setInt(writeIndex, writeNum);\n     }\n-    buf.setInt(writeIndex, writeNum);\n-  }\n \n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n-    super.deserialize(buf);\n-    int len = buf.readInt();\n-    nodeIds = new long[len];\n-    feats = new IntFloatVector[len];\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n+        super.deserialize(buf);\n+        int len = buf.readInt();\n+        nodeIds = new long[len];\n+        feats = new IntFloatVector[len];\n \n-    for (int i = 0; i < len; i++) {\n-      nodeIds[i] = buf.readLong();\n-      feats[i] = NodeUtils.deserialize(buf);\n+        for (int i = 0; i < len; i++) {\n+            nodeIds[i] = buf.readLong();\n+            feats[i] = NodeUtils.deserialize(buf);\n+        }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n-    int len = super.bufferLen();\n-    len += 4;\n-    for (int i = startIndex; i < endIndex; i++) {\n-      if (feats[i] != null && feats[i].getSize() != 0) {\n-        len += 8;\n-        len += NodeUtils.dataLen(feats[i]);\n-      }\n+    @Override\n+    public int bufferLen() {\n+        int len = super.bufferLen();\n+        len += 4;\n+        for (int i = startIndex; i < endIndex; i++) {\n+            if (feats[i] != null && feats[i].getSize() != 0) {\n+                len += 8;\n+                len += NodeUtils.dataLen(feats[i]);\n+            }\n \n+        }\n+        return len;\n     }\n-    return len;\n-  }\n }\n",
+            "diff_size": 64
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/920/PartInitNodeFeatsParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/920/PartInitNodeFeatsParam.java\nindex bf4725c5c5..a736f5dd90 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/920/PartInitNodeFeatsParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/920/PartInitNodeFeatsParam.java\n@@ -30,7 +30,7 @@ public class PartInitNodeFeatsParam extends PartitionUpdateParam {\n   int endIndex;\n \n   public PartInitNodeFeatsParam(int matrixId, PartitionKey partKey,\n-      long[] nodeIds, IntFloatVector[] feats, int startIndex, int endIndex) {\n+long[] nodeIds, IntFloatVector[] feats, int startIndex, int endIndex) {\n     super(matrixId, partKey);\n     this.nodeIds = nodeIds;\n     this.feats = feats;\n@@ -67,8 +67,7 @@ public class PartInitNodeFeatsParam extends PartitionUpdateParam {\n     buf.setInt(writeIndex, writeNum);\n   }\n \n-\n-  @Override\n+@Override\n   public void deserialize(ByteBuf buf) {\n     super.deserialize(buf);\n     int len = buf.readInt();\n@@ -94,4 +93,4 @@ public class PartInitNodeFeatsParam extends PartitionUpdateParam {\n     }\n     return len;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/920/PartInitNodeFeatsParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/920/PartInitNodeFeatsParam.java\nindex bf4725c5c5..9079487e2c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/920/PartInitNodeFeatsParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/920/PartInitNodeFeatsParam.java\n@@ -23,75 +23,79 @@ import com.tencent.angel.ml.matrix.psf.update.base.PartitionUpdateParam;\n import io.netty.buffer.ByteBuf;\n \n public class PartInitNodeFeatsParam extends PartitionUpdateParam {\n+    private long[] nodeIds;\n+    private IntFloatVector[] feats;\n \n-  private long[] nodeIds;\n-  private IntFloatVector[] feats;\n-  int startIndex;\n-  int endIndex;\n+    int startIndex;\n \n-  public PartInitNodeFeatsParam(int matrixId, PartitionKey partKey,\n-      long[] nodeIds, IntFloatVector[] feats, int startIndex, int endIndex) {\n+    int endIndex;\n+\n+    public PartInitNodeFeatsParam(int matrixId,\n+                                  PartitionKey partKey,\n+                                  long[] nodeIds,\n+                                  IntFloatVector[] feats,\n+                                  int startIndex, int endIndex) {\n     super(matrixId, partKey);\n     this.nodeIds = nodeIds;\n     this.feats = feats;\n     this.startIndex = startIndex;\n     this.endIndex = endIndex;\n-  }\n+    }\n \n-  public PartInitNodeFeatsParam() {\n+    public PartInitNodeFeatsParam() {\n     this(-1, null, null, null, -1, -1);\n-  }\n+    }\n \n-  public long[] getNodeIds() {\n+    public long[] getNodeIds() {\n     return nodeIds;\n-  }\n+    }\n \n-  public IntFloatVector[] getFeats() {\n+    public IntFloatVector[] getFeats() {\n     return feats;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     super.serialize(buf);\n+\n     int writeIndex = buf.writerIndex();\n     int writeNum = 0;\n     buf.writeInt(0);\n     for (int i = startIndex; i < endIndex; i++) {\n-      if (feats[i] == null || feats[i].getSize() == 0) {\n+        if (feats[i] == null || feats[i].getSize() == 0) {\n         continue;\n-      }\n-      buf.writeLong(nodeIds[i]);\n-      NodeUtils.serialize(feats[i], buf);\n-      writeNum++;\n+        }\n+        buf.writeLong(nodeIds[i]);\n+        NodeUtils.serialize(feats[i], buf);\n+        writeNum++;\n     }\n     buf.setInt(writeIndex, writeNum);\n-  }\n-\n+    }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n     super.deserialize(buf);\n+\n     int len = buf.readInt();\n     nodeIds = new long[len];\n     feats = new IntFloatVector[len];\n-\n     for (int i = 0; i < len; i++) {\n-      nodeIds[i] = buf.readLong();\n-      feats[i] = NodeUtils.deserialize(buf);\n+        nodeIds[i] = buf.readLong();\n+        feats[i] = NodeUtils.deserialize(buf);\n+    }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     int len = super.bufferLen();\n     len += 4;\n     for (int i = startIndex; i < endIndex; i++) {\n-      if (feats[i] != null && feats[i].getSize() != 0) {\n+        if (feats[i] != null && feats[i].getSize() != 0) {\n         len += 8;\n         len += NodeUtils.dataLen(feats[i]);\n-      }\n-\n+        }\n     }\n     return len;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 46
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

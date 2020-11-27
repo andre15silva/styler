@@ -1,0 +1,184 @@
+{
+    "error_id": "454",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/454/LocationManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/454/LocationManager.java\nindex 82d0c36863..31d6a8e3e2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/454/LocationManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/454/LocationManager.java\n@@ -27,123 +27,133 @@ import java.util.concurrent.ConcurrentHashMap;\n  * Location manager\n  */\n public class LocationManager {\n-  /**\n-   * Master location\n-   */\n-  private volatile Location masterLocation;\n-\n-  /**\n-   * PS locations\n-   */\n-  private final Map<ParameterServerId, Location> psIdToLocMap;\n-\n-  /**\n-   * Worker locations\n-   */\n-  private final Map<WorkerId, Location> workerIdToLocMap;\n-\n-  /**\n-   * All ps ids\n-   */\n-  private volatile ParameterServerId [] psIds;\n-\n-  /**\n-   * Create a location manager\n-   */\n-  public LocationManager(){\n-    this.masterLocation = null;\n-    this.psIdToLocMap = new ConcurrentHashMap<>();\n-    this.workerIdToLocMap = new ConcurrentHashMap<>();\n-  }\n-\n-  /**\n-   * Get master location\n-   * @return master location\n-   */\n-  public Location getMasterLocation() {\n-    return masterLocation;\n-  }\n-\n-  /**\n-   * Get a ps location\n-   * @param psId ps id\n-   * @return ps location\n-   */\n-  public Location getPsLocation(ParameterServerId psId) {\n-    return psIdToLocMap.get(psId);\n-  }\n-\n-  /**\n-   * Get a worker location\n-   * @param workerId worker id\n-   * @return worker location\n-   */\n-  public Location getWorkerLocation(WorkerId workerId) {\n-    return workerIdToLocMap.get(workerId);\n-  }\n-\n-  /**\n-   * Set master location\n-   * @param masterLocation master location\n-   */\n-  public void setMasterLocation(Location masterLocation) {\n-    this.masterLocation = masterLocation;\n-  }\n-\n-  /**\n-   * Set a ps location\n-   * @param psId ps id\n-   * @param loc ps location\n-   */\n-  public void setPsLocation(ParameterServerId psId, Location loc) {\n-    if(loc == null) {\n-      psIdToLocMap.remove(psId);\n-    } else {\n-      psIdToLocMap.put(psId, loc);\n+    /**\n+     * Master location\n+     */\n+    private volatile Location masterLocation;\n+\n+    /**\n+     * PS locations\n+     */\n+    private final Map<ParameterServerId, Location> psIdToLocMap;\n+\n+    /**\n+     * Worker locations\n+     */\n+    private final Map<WorkerId, Location> workerIdToLocMap;\n+\n+    /**\n+     * All ps ids\n+     */\n+    private volatile ParameterServerId[] psIds;\n+\n+    /**\n+     * Create a location manager\n+     */\n+    public LocationManager() {\n+        this.masterLocation = null;\n+        this.psIdToLocMap = new ConcurrentHashMap<>();\n+        this.workerIdToLocMap = new ConcurrentHashMap<>();\n+    }\n+\n+    /**\n+     * Get master location\n+     *\n+     * @return master location\n+     */\n+    public Location getMasterLocation() {\n+        return masterLocation;\n+    }\n+\n+    /**\n+     * Get a ps location\n+     *\n+     * @param psId ps id\n+     * @return ps location\n+     */\n+    public Location getPsLocation(ParameterServerId psId) {\n+        return psIdToLocMap.get(psId);\n+    }\n+\n+    /**\n+     * Get a worker location\n+     *\n+     * @param workerId worker id\n+     * @return worker location\n+     */\n+    public Location getWorkerLocation(WorkerId workerId) {\n+        return workerIdToLocMap.get(workerId);\n+    }\n+\n+    /**\n+     * Set master location\n+     *\n+     * @param masterLocation master location\n+     */\n+    public void setMasterLocation(Location masterLocation) {\n+        this.masterLocation = masterLocation;\n+    }\n+\n+    /**\n+     * Set a ps location\n+     *\n+     * @param psId ps id\n+     * @param loc  ps location\n+     */\n+    public void setPsLocation(ParameterServerId psId, Location loc) {\n+        if (loc == null) {\n+            psIdToLocMap.remove(psId);\n+        } else {\n+            psIdToLocMap.put(psId, loc);\n+        }\n+    }\n+\n+    /**\n+     * Set worker location\n+     *\n+     * @param workerId worker id\n+     * @param loc      worker location\n+     */\n+    public void setWorkerLocation(WorkerId workerId, Location loc) {\n+        workerIdToLocMap.put(workerId, loc);\n+    }\n+\n+    /**\n+     * Set all ps ids\n+     *\n+     * @param psIds all ps ids\n+     */\n+    public void setPsIds(ParameterServerId[] psIds) {\n+        this.psIds = psIds;\n+    }\n+\n+    /**\n+     * Get all ps ids\n+     *\n+     * @return all ps ids\n+     */\n+    public ParameterServerId[] getPsIds() {\n+        return psIds;\n+    }\n+\n+    public void setPSAgentLocation(PSAgentId psAgentId, Location location) {\n+    }\n+\n+    /**\n+     * Are all pss registered\n+     *\n+     * @return true mean all pss have registered to master\n+     */\n+    public boolean isAllPsRegisted() {\n+        return (psIds != null) && (psIds.length == psIdToLocMap.size());\n+    }\n+\n+    /**\n+     * Get all ps locations\n+     *\n+     * @return all ps locations\n+     */\n+    public Map<ParameterServerId, Location> getPsLocations() {\n+        return psIdToLocMap;\n     }\n-  }\n-\n-  /**\n-   * Set worker location\n-   * @param workerId worker id\n-   * @param loc worker location\n-   */\n-  public void setWorkerLocation(WorkerId workerId, Location loc) {\n-    workerIdToLocMap.put(workerId, loc);\n-  }\n-\n-  /**\n-   * Set all ps ids\n-   * @param psIds all ps ids\n-   */\n-  public void setPsIds(ParameterServerId[] psIds) {\n-    this.psIds = psIds;\n-  }\n-\n-  /**\n-   * Get all ps ids\n-   * @return all ps ids\n-   */\n-  public ParameterServerId[] getPsIds() {\n-    return psIds;\n-  }\n-\n-  public void setPSAgentLocation(PSAgentId psAgentId, Location location) {\n-  }\n-\n-  /**\n-   * Are all pss registered\n-   * @return true mean all pss have registered to master\n-   */\n-  public boolean isAllPsRegisted() {\n-    return (psIds != null) && (psIds.length == psIdToLocMap.size());\n-  }\n-\n-  /**\n-   * Get all ps locations\n-   * @return all ps locations\n-   */\n-  public Map<ParameterServerId, Location> getPsLocations() {\n-    return psIdToLocMap;\n-  }\n }\n",
+            "diff_size": 173
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/454/LocationManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/454/LocationManager.java\nindex 82d0c36863..2293149674 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/454/LocationManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/454/LocationManager.java\n@@ -45,12 +45,12 @@ public class LocationManager {\n   /**\n    * All ps ids\n    */\n-  private volatile ParameterServerId [] psIds;\n+  private volatile ParameterServerId[] psIds;\n \n   /**\n    * Create a location manager\n    */\n-  public LocationManager(){\n+  public LocationManager() {\n     this.masterLocation = null;\n     this.psIdToLocMap = new ConcurrentHashMap<>();\n     this.workerIdToLocMap = new ConcurrentHashMap<>();\n@@ -146,4 +146,4 @@ public class LocationManager {\n   public Map<ParameterServerId, Location> getPsLocations() {\n     return psIdToLocMap;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 33.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 38.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 43.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 48.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 54.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 65.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 75.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 85.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 94.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 104.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 118.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 127.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "131",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 136.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "142",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 147.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "151",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 156.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/454/LocationManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/454/LocationManager.java\nindex 82d0c36863..0d5773dd7a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/454/LocationManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/454/LocationManager.java\n@@ -19,131 +19,142 @@ package com.tencent.angel.common.location;\n import com.tencent.angel.ps.ParameterServerId;\n import com.tencent.angel.psagent.PSAgentId;\n import com.tencent.angel.worker.WorkerId;\n-\n import java.util.*;\n import java.util.concurrent.ConcurrentHashMap;\n \n /**\n  * Location manager\n  */\n+\n public class LocationManager {\n   /**\n    * Master location\n    */\n-  private volatile Location masterLocation;\n+    private volatile Location masterLocation;\n \n   /**\n    * PS locations\n    */\n-  private final Map<ParameterServerId, Location> psIdToLocMap;\n+    private final Map<ParameterServerId, Location> psIdToLocMap;\n \n   /**\n    * Worker locations\n    */\n-  private final Map<WorkerId, Location> workerIdToLocMap;\n+    private final Map<WorkerId, Location> workerIdToLocMap;\n \n   /**\n    * All ps ids\n    */\n-  private volatile ParameterServerId [] psIds;\n+    private volatile ParameterServerId[] psIds;\n \n   /**\n    * Create a location manager\n    */\n-  public LocationManager(){\n+\n+    public LocationManager() {\n     this.masterLocation = null;\n     this.psIdToLocMap = new ConcurrentHashMap<>();\n     this.workerIdToLocMap = new ConcurrentHashMap<>();\n-  }\n+    }\n \n   /**\n    * Get master location\n    * @return master location\n    */\n-  public Location getMasterLocation() {\n+\n+    public Location getMasterLocation() {\n     return masterLocation;\n-  }\n+    }\n \n   /**\n    * Get a ps location\n    * @param psId ps id\n    * @return ps location\n    */\n-  public Location getPsLocation(ParameterServerId psId) {\n+\n+    public Location getPsLocation(ParameterServerId psId) {\n     return psIdToLocMap.get(psId);\n-  }\n+    }\n \n   /**\n    * Get a worker location\n    * @param workerId worker id\n    * @return worker location\n    */\n-  public Location getWorkerLocation(WorkerId workerId) {\n+\n+    public Location getWorkerLocation(WorkerId workerId) {\n     return workerIdToLocMap.get(workerId);\n-  }\n+    }\n \n   /**\n    * Set master location\n    * @param masterLocation master location\n    */\n-  public void setMasterLocation(Location masterLocation) {\n+\n+    public void setMasterLocation(Location masterLocation) {\n     this.masterLocation = masterLocation;\n-  }\n+    }\n \n   /**\n    * Set a ps location\n    * @param psId ps id\n    * @param loc ps location\n    */\n-  public void setPsLocation(ParameterServerId psId, Location loc) {\n-    if(loc == null) {\n-      psIdToLocMap.remove(psId);\n+\n+    public void setPsLocation(ParameterServerId psId, Location loc) {\n+    if (loc == null) {\n+        psIdToLocMap.remove(psId);\n     } else {\n       psIdToLocMap.put(psId, loc);\n     }\n-  }\n+    }\n \n   /**\n    * Set worker location\n    * @param workerId worker id\n    * @param loc worker location\n    */\n-  public void setWorkerLocation(WorkerId workerId, Location loc) {\n+\n+    public void setWorkerLocation(WorkerId workerId, Location loc) {\n     workerIdToLocMap.put(workerId, loc);\n-  }\n+    }\n \n   /**\n    * Set all ps ids\n    * @param psIds all ps ids\n    */\n-  public void setPsIds(ParameterServerId[] psIds) {\n+\n+    public void setPsIds(ParameterServerId[] psIds) {\n     this.psIds = psIds;\n-  }\n+    }\n \n   /**\n    * Get all ps ids\n    * @return all ps ids\n    */\n-  public ParameterServerId[] getPsIds() {\n+\n+    public ParameterServerId[] getPsIds() {\n     return psIds;\n-  }\n+    }\n \n-  public void setPSAgentLocation(PSAgentId psAgentId, Location location) {\n-  }\n+    public void setPSAgentLocation(PSAgentId psAgentId, Location location) {}\n \n   /**\n    * Are all pss registered\n    * @return true mean all pss have registered to master\n    */\n-  public boolean isAllPsRegisted() {\n+\n+    public boolean isAllPsRegisted() {\n     return (psIds != null) && (psIds.length == psIdToLocMap.size());\n-  }\n+    }\n \n   /**\n    * Get all ps locations\n    * @return all ps locations\n    */\n-  public Map<ParameterServerId, Location> getPsLocations() {\n+\n+    public Map<ParameterServerId, Location> getPsLocations() {\n     return psIdToLocMap;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 45
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

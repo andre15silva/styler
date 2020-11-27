@@ -1,0 +1,116 @@
+{
+    "error_id": "182",
+    "information": {
+        "errors": [
+            {
+                "line": "43",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 173).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<MenuGroupDto> menuGroups = BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n\n\n        return menuGroups;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 175).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "41",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/182/MenuInnerServiceSMOImpl.java\nindex 7199a1eb3f..20ee877815 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/182/MenuInnerServiceSMOImpl.java\n@@ -38,9 +38,7 @@ public class MenuInnerServiceSMOImpl extends BaseServiceSMO implements IMenuInne\n         if (page != PageDto.DEFAULT_PAGE) {\n             menuGroupDto.setPage((page - 1) * menuGroupDto.getRow());\n             menuGroupDto.setRow(page * menuGroupDto.getRow());\n-        }\n-\n-        List<MenuGroupDto> menuGroups = BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n+        } List<MenuGroupDto> menuGroups = BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n \n \n         return menuGroups;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/182/MenuInnerServiceSMOImpl.java\nindex 7199a1eb3f..911b5a1d50 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/182/MenuInnerServiceSMOImpl.java\n@@ -24,53 +24,55 @@ import java.util.List;\n @RestController\n public class MenuInnerServiceSMOImpl extends BaseServiceSMO implements IMenuInnerServiceSMO {\n \n-    @Autowired\n-    private IMenuServiceDao menuServiceDaoImpl;\n+  @Autowired\n+  private IMenuServiceDao menuServiceDaoImpl;\n \n \n-    @Override\n-    public List<MenuGroupDto> queryMenuGroups(@RequestBody  MenuGroupDto menuGroupDto) {\n+  @Override\n+  public List<MenuGroupDto> queryMenuGroups(@RequestBody MenuGroupDto menuGroupDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = menuGroupDto.getPage();\n+    int page = menuGroupDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            menuGroupDto.setPage((page - 1) * menuGroupDto.getRow());\n-            menuGroupDto.setRow(page * menuGroupDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      menuGroupDto.setPage((page - 1) * menuGroupDto.getRow());\n+      menuGroupDto.setRow(page * menuGroupDto.getRow());\n+    }\n \n-        List<MenuGroupDto> menuGroups = BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n+    List<MenuGroupDto> menuGroups =\n+      BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n \n \n-        return menuGroups;\n-    }\n+    return menuGroups;\n+  }\n \n-    @Override\n-    public int updateMenuGroup(@RequestBody MenuGroupDto menuGroupDto) {\n-        return menuServiceDaoImpl.updateMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto));\n-    }\n+  @Override\n+  public int updateMenuGroup(@RequestBody MenuGroupDto menuGroupDto) {\n+    return menuServiceDaoImpl.updateMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto));\n+  }\n \n-    @Override\n-    public int saveMenuGroup(@RequestBody MenuGroupDto menuGroupDto) {\n-        return menuServiceDaoImpl.saveMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto));\n-    }\n+  @Override\n+  public int saveMenuGroup(@RequestBody MenuGroupDto menuGroupDto) {\n+    return menuServiceDaoImpl.saveMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto));\n+  }\n \n-    @Override\n-    public int deleteMenuGroup(@RequestBody MenuGroupDto menuGroupDto) {\n-        menuGroupDto.setStatusCd(\"1\");\n-        return menuServiceDaoImpl.updateMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto));\n-    }\n+  @Override\n+  public int deleteMenuGroup(@RequestBody MenuGroupDto menuGroupDto) {\n+    menuGroupDto.setStatusCd(\"1\");\n+    return menuServiceDaoImpl.updateMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto));\n+  }\n \n-    @Override\n-    public int queryMenuGroupsCount(@RequestBody MenuGroupDto menuGroupDto) {\n-        return menuServiceDaoImpl.queryMenuGroupsCount(BeanConvertUtil.beanCovertMap(menuGroupDto));    }\n+  @Override\n+  public int queryMenuGroupsCount(@RequestBody MenuGroupDto menuGroupDto) {\n+    return menuServiceDaoImpl.queryMenuGroupsCount(BeanConvertUtil.beanCovertMap(menuGroupDto));\n+  }\n \n-    public IMenuServiceDao getMenuServiceDaoImpl() {\n-        return menuServiceDaoImpl;\n-    }\n+  public IMenuServiceDao getMenuServiceDaoImpl() {\n+    return menuServiceDaoImpl;\n+  }\n \n-    public void setMenuServiceDaoImpl(IMenuServiceDao menuServiceDaoImpl) {\n-        this.menuServiceDaoImpl = menuServiceDaoImpl;\n-    }\n+  public void setMenuServiceDaoImpl(IMenuServiceDao menuServiceDaoImpl) {\n+    this.menuServiceDaoImpl = menuServiceDaoImpl;\n+  }\n }\n",
+            "diff_size": 37
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 173).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/182/MenuInnerServiceSMOImpl.java\nindex 7199a1eb3f..8fbc5c7973 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/182/MenuInnerServiceSMOImpl.java\n@@ -42,8 +42,7 @@ public class MenuInnerServiceSMOImpl extends BaseServiceSMO implements IMenuInne\n \n         List<MenuGroupDto> menuGroups = BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n \n-\n-        return menuGroups;\n+return menuGroups;\n     }\n \n     @Override\n@@ -73,4 +72,4 @@ public class MenuInnerServiceSMOImpl extends BaseServiceSMO implements IMenuInne\n     public void setMenuServiceDaoImpl(IMenuServiceDao menuServiceDaoImpl) {\n         this.menuServiceDaoImpl = menuServiceDaoImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 173).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/182/MenuInnerServiceSMOImpl.java\nindex 7199a1eb3f..5b34b12dd2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/182/MenuInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.community.smo.impl;\n \n-\n import com.java110.common.util.BeanConvertUtil;\n import com.java110.community.dao.IMenuServiceDao;\n import com.java110.core.base.smo.BaseServiceSMO;\n@@ -10,7 +9,6 @@ import com.java110.dto.menuGroup.MenuGroupDto;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -21,20 +19,19 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class MenuInnerServiceSMOImpl extends BaseServiceSMO implements IMenuInnerServiceSMO {\n \n     @Autowired\n     private IMenuServiceDao menuServiceDaoImpl;\n \n-\n     @Override\n-    public List<MenuGroupDto> queryMenuGroups(@RequestBody  MenuGroupDto menuGroupDto) {\n+    public List<MenuGroupDto> queryMenuGroups(@RequestBody MenuGroupDto menuGroupDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = menuGroupDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             menuGroupDto.setPage((page - 1) * menuGroupDto.getRow());\n             menuGroupDto.setRow(page * menuGroupDto.getRow());\n@@ -42,29 +39,33 @@ public class MenuInnerServiceSMOImpl extends BaseServiceSMO implements IMenuInne\n \n         List<MenuGroupDto> menuGroups = BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n \n-\n         return menuGroups;\n     }\n \n+\n     @Override\n     public int updateMenuGroup(@RequestBody MenuGroupDto menuGroupDto) {\n         return menuServiceDaoImpl.updateMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto));\n     }\n \n+\n     @Override\n     public int saveMenuGroup(@RequestBody MenuGroupDto menuGroupDto) {\n         return menuServiceDaoImpl.saveMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto));\n     }\n \n+\n     @Override\n     public int deleteMenuGroup(@RequestBody MenuGroupDto menuGroupDto) {\n         menuGroupDto.setStatusCd(\"1\");\n         return menuServiceDaoImpl.updateMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto));\n     }\n \n+\n     @Override\n     public int queryMenuGroupsCount(@RequestBody MenuGroupDto menuGroupDto) {\n-        return menuServiceDaoImpl.queryMenuGroupsCount(BeanConvertUtil.beanCovertMap(menuGroupDto));    }\n+        return menuServiceDaoImpl.queryMenuGroupsCount(BeanConvertUtil.beanCovertMap(menuGroupDto));\n+    }\n \n     public IMenuServiceDao getMenuServiceDaoImpl() {\n         return menuServiceDaoImpl;\n@@ -73,4 +74,4 @@ public class MenuInnerServiceSMOImpl extends BaseServiceSMO implements IMenuInne\n     public void setMenuServiceDaoImpl(IMenuServiceDao menuServiceDaoImpl) {\n         this.menuServiceDaoImpl = menuServiceDaoImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 175).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "41",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/182/MenuInnerServiceSMOImpl.java\nindex 7199a1eb3f..20ee877815 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/182/MenuInnerServiceSMOImpl.java\n@@ -38,9 +38,7 @@ public class MenuInnerServiceSMOImpl extends BaseServiceSMO implements IMenuInne\n         if (page != PageDto.DEFAULT_PAGE) {\n             menuGroupDto.setPage((page - 1) * menuGroupDto.getRow());\n             menuGroupDto.setRow(page * menuGroupDto.getRow());\n-        }\n-\n-        List<MenuGroupDto> menuGroups = BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n+        } List<MenuGroupDto> menuGroups = BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n \n \n         return menuGroups;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "41",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "41",
+                    "column": "39",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "41",
+                    "column": "39",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/182/MenuInnerServiceSMOImpl.java\nindex 7199a1eb3f..d482a2b820 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/182/MenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/182/MenuInnerServiceSMOImpl.java\n@@ -38,9 +38,9 @@ public class MenuInnerServiceSMOImpl extends BaseServiceSMO implements IMenuInne\n         if (page != PageDto.DEFAULT_PAGE) {\n             menuGroupDto.setPage((page - 1) * menuGroupDto.getRow());\n             menuGroupDto.setRow(page * menuGroupDto.getRow());\n-        }\n+        } List<MenuGroupDto>menuGroups=BeanConvertUtil.covertBeanList(\n \n-        List<MenuGroupDto> menuGroups = BeanConvertUtil.covertBeanList(menuServiceDaoImpl.getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n+        menuServiceDaoImpl .getMenuGroupInfo(BeanConvertUtil.beanCovertMap(menuGroupDto)), MenuGroupDto.class);\n \n \n         return menuGroups;\n",
+            "diff_size": 2
+        }
+    ]
+}

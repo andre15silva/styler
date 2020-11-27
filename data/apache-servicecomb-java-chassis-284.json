@@ -1,0 +1,75 @@
+{
+    "error_id": "284",
+    "information": {
+        "errors": [
+            {
+                "line": "44",
+                "column": "102",
+                "severity": "warning",
+                "message": "'+' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "      return new LongMetricValue(this.getKey(), this.getValue() + value.getValue(), this.getDimensions());\n    }\n    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() +\n        \" target key :\" + this.getKey());\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/284/LongMetricValue.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/284/LongMetricValue.java\nindex 84babff527..7e410d7e5c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/284/LongMetricValue.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/284/LongMetricValue.java\n@@ -41,22 +41,22 @@ public class LongMetricValue extends MetricValue<Long> {\n     if (this.getKey().equals(value.getKey())) {\n       return new LongMetricValue(this.getKey(), this.getValue() + value.getValue(), this.getDimensions());\n     }\n-    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() +\n-        \" target key :\" + this.getKey());\n-  }\n+    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey()\n+        + \" target key :\" + this.getKey());\n+}\n \n-  public static List<LongMetricValue> merge(List<LongMetricValue> source, List<LongMetricValue> target) {\n-    Map<String, LongMetricValue> finalValues = new HashMap<>();\n-    for (LongMetricValue t : target) {\n-      finalValues.put(t.getKey(), t);\n-    }\n-    for (LongMetricValue s : source) {\n-      if (finalValues.containsKey(s.getKey())) {\n-        finalValues.put(s.getKey(), finalValues.get(s.getKey()).merge(s));\n-      } else {\n-        finalValues.put(s.getKey(), s);\n-      }\n+public static List<LongMetricValue> merge(List<LongMetricValue> source, List<LongMetricValue> target) {\n+  Map<String, LongMetricValue> finalValues = new HashMap<>();\n+  for (LongMetricValue t : target) {\n+    finalValues.put(t.getKey(), t);\n+  }\n+  for (LongMetricValue s : source) {\n+    if (finalValues.containsKey(s.getKey())) {\n+      finalValues.put(s.getKey(), finalValues.get(s.getKey()).merge(s));\n+    } else {\n+      finalValues.put(s.getKey(), s);\n     }\n-    return new ArrayList<>(finalValues.values());\n   }\n+  return new ArrayList<>(finalValues.values());\n+}\n }\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "102",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/284/LongMetricValue.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/284/LongMetricValue.java\nindex 84babff527..17792caed3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/284/LongMetricValue.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/284/LongMetricValue.java\n@@ -32,8 +32,8 @@ public class LongMetricValue extends MetricValue<Long> {\n   }\n \n   public LongMetricValue(@JsonProperty(\"key\") String key,\n-      @JsonProperty(\"value\") Long value,\n-      @JsonProperty(\"dimensions\") Map<String, String> dimensions) {\n+                         @JsonProperty(\"value\") Long value,\n+                         @JsonProperty(\"dimensions\") Map<String, String> dimensions) {\n     super(key, value, dimensions);\n   }\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 136).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/284/LongMetricValue.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/284/LongMetricValue.java\nindex 84babff527..f125e0ba7c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/284/LongMetricValue.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/284/LongMetricValue.java\n@@ -32,8 +32,7 @@ public class LongMetricValue extends MetricValue<Long> {\n   }\n \n   public LongMetricValue(@JsonProperty(\"key\") String key,\n-      @JsonProperty(\"value\") Long value,\n-      @JsonProperty(\"dimensions\") Map<String, String> dimensions) {\n+      @JsonProperty(\"value\") Long value, @JsonProperty(\"dimensions\") Map<String, String> dimensions) {\n     super(key, value, dimensions);\n   }\n \n@@ -41,8 +40,7 @@ public class LongMetricValue extends MetricValue<Long> {\n     if (this.getKey().equals(value.getKey())) {\n       return new LongMetricValue(this.getKey(), this.getValue() + value.getValue(), this.getDimensions());\n     }\n-    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() +\n-        \" target key :\" + this.getKey());\n+    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() + \" target key :\" + this.getKey());\n   }\n \n   public static List<LongMetricValue> merge(List<LongMetricValue> source, List<LongMetricValue> target) {\n@@ -59,4 +57,4 @@ public class LongMetricValue extends MetricValue<Long> {\n     }\n     return new ArrayList<>(finalValues.values());\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/284/LongMetricValue.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/284/LongMetricValue.java\nindex 84babff527..7e410d7e5c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/284/LongMetricValue.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/284/LongMetricValue.java\n@@ -41,22 +41,22 @@ public class LongMetricValue extends MetricValue<Long> {\n     if (this.getKey().equals(value.getKey())) {\n       return new LongMetricValue(this.getKey(), this.getValue() + value.getValue(), this.getDimensions());\n     }\n-    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() +\n-        \" target key :\" + this.getKey());\n-  }\n+    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey()\n+        + \" target key :\" + this.getKey());\n+}\n \n-  public static List<LongMetricValue> merge(List<LongMetricValue> source, List<LongMetricValue> target) {\n-    Map<String, LongMetricValue> finalValues = new HashMap<>();\n-    for (LongMetricValue t : target) {\n-      finalValues.put(t.getKey(), t);\n-    }\n-    for (LongMetricValue s : source) {\n-      if (finalValues.containsKey(s.getKey())) {\n-        finalValues.put(s.getKey(), finalValues.get(s.getKey()).merge(s));\n-      } else {\n-        finalValues.put(s.getKey(), s);\n-      }\n+public static List<LongMetricValue> merge(List<LongMetricValue> source, List<LongMetricValue> target) {\n+  Map<String, LongMetricValue> finalValues = new HashMap<>();\n+  for (LongMetricValue t : target) {\n+    finalValues.put(t.getKey(), t);\n+  }\n+  for (LongMetricValue s : source) {\n+    if (finalValues.containsKey(s.getKey())) {\n+      finalValues.put(s.getKey(), finalValues.get(s.getKey()).merge(s));\n+    } else {\n+      finalValues.put(s.getKey(), s);\n     }\n-    return new ArrayList<>(finalValues.values());\n   }\n+  return new ArrayList<>(finalValues.values());\n+}\n }\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "102",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

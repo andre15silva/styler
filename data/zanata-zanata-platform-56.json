@@ -1,0 +1,67 @@
+{
+    "error_id": "56",
+    "information": {
+        "errors": [
+            {
+                "line": "57",
+                "column": "23",
+                "severity": "error",
+                "message": "'=' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "\n        // Compute the hmac on input data bytes\n        byte[] rawHmac=  getHmacSha1(key).doFinal(valueToDigest);\n        return Base64.encodeBase64String(rawHmac);\n    }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler/56/HmacUtil.java\nindex 2d8633a9f9..e543d92ea4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler/56/HmacUtil.java\n@@ -54,7 +54,7 @@ public class HmacUtil {\n             throws IllegalArgumentException {\n \n         // Compute the hmac on input data bytes\n-        byte[] rawHmac=  getHmacSha1(key).doFinal(valueToDigest);\n+        byte[] rawHmac = getHmacSha1(key).doFinal(valueToDigest);\n         return Base64.encodeBase64String(rawHmac);\n     }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/intellij/56/HmacUtil.java\nindex 2d8633a9f9..c09ba977d3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/intellij/56/HmacUtil.java\n@@ -40,21 +40,21 @@ public class HmacUtil {\n      * Generate SHA with given key and valueToDigest.\n      * All values will using UTF-8 encoding.\n      *\n-     * @param key - key for generate sha\n+     * @param key           - key for generate sha\n      * @param valueToDigest - value for generate sha\n      * @throws IllegalArgumentException\n      */\n     public static String hmacSha1(final String key, final String valueToDigest)\n-            throws IllegalArgumentException {\n+        throws IllegalArgumentException {\n         return hmacSha1(StringUtils.getBytesUtf8(key),\n-                StringUtils.getBytesUtf8(valueToDigest));\n+            StringUtils.getBytesUtf8(valueToDigest));\n     }\n \n     public static String hmacSha1(final byte[] key, final byte[] valueToDigest)\n-            throws IllegalArgumentException {\n+        throws IllegalArgumentException {\n \n         // Compute the hmac on input data bytes\n-        byte[] rawHmac=  getHmacSha1(key).doFinal(valueToDigest);\n+        byte[] rawHmac = getHmacSha1(key).doFinal(valueToDigest);\n         return Base64.encodeBase64String(rawHmac);\n     }\n \n@@ -65,7 +65,7 @@ public class HmacUtil {\n \n     // Get an hmac_sha1 Mac instance and initialize with the signing key\n     private static Mac\n-            getInitializedMac(final String algorithm, final byte[] key) {\n+    getInitializedMac(final String algorithm, final byte[] key) {\n \n         if (key == null) {\n             throw new IllegalArgumentException(\"Null key\");\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/56/HmacUtil.java\nindex 2d8633a9f9..d3064dd295 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/56/HmacUtil.java\n@@ -23,7 +23,6 @@ package org.zanata.util;\n \n import org.apache.commons.codec.binary.Base64;\n import org.apache.commons.codec.binary.StringUtils;\n-\n import javax.crypto.Mac;\n import javax.crypto.spec.SecretKeySpec;\n import java.security.InvalidKeyException;\n@@ -32,8 +31,9 @@ import java.security.NoSuchAlgorithmException;\n /**\n  * @author Alex Eng <a href=\"mailto:aeng@redhat.com\">aeng@redhat.com</a>\n  */\n-public class HmacUtil {\n \n+\n+public class HmacUtil {\n     private static final String HMAC_SHA1_ALGORITHM = \"HmacSHA1\";\n \n     /**\n@@ -44,33 +44,34 @@ public class HmacUtil {\n      * @param valueToDigest - value for generate sha\n      * @throws IllegalArgumentException\n      */\n-    public static String hmacSha1(final String key, final String valueToDigest)\n-            throws IllegalArgumentException {\n+\n+    public static String hmacSha1(final String key,\n+        final String valueToDigest) throws IllegalArgumentException {\n         return hmacSha1(StringUtils.getBytesUtf8(key),\n-                StringUtils.getBytesUtf8(valueToDigest));\n+StringUtils.getBytesUtf8(valueToDigest));\n     }\n \n-    public static String hmacSha1(final byte[] key, final byte[] valueToDigest)\n-            throws IllegalArgumentException {\n+    public static String hmacSha1(final byte[] key,\n+        final byte[] valueToDigest) throws IllegalArgumentException {\n \n         // Compute the hmac on input data bytes\n-        byte[] rawHmac=  getHmacSha1(key).doFinal(valueToDigest);\n+        byte[] rawHmac = getHmacSha1(key).doFinal(valueToDigest);\n         return Base64.encodeBase64String(rawHmac);\n     }\n \n     // Get an hmac_sha1 key from the raw key bytes\n+\n     private static Mac getHmacSha1(final byte[] key) {\n         return getInitializedMac(HMAC_SHA1_ALGORITHM, key);\n     }\n \n     // Get an hmac_sha1 Mac instance and initialize with the signing key\n-    private static Mac\n-            getInitializedMac(final String algorithm, final byte[] key) {\n \n+    private static Mac getInitializedMac(final String algorithm,\n+        final byte[] key) {\n         if (key == null) {\n             throw new IllegalArgumentException(\"Null key\");\n         }\n-\n         try {\n             final SecretKeySpec keySpec = new SecretKeySpec(key, algorithm);\n             final Mac mac = Mac.getInstance(algorithm);\n@@ -82,5 +83,4 @@ public class HmacUtil {\n             throw new IllegalArgumentException(e);\n         }\n     }\n-}\n-\n+}\n\\ No newline at end of file\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/56/HmacUtil.java\nindex 2d8633a9f9..e543d92ea4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/56/HmacUtil.java\n@@ -54,7 +54,7 @@ public class HmacUtil {\n             throws IllegalArgumentException {\n \n         // Compute the hmac on input data bytes\n-        byte[] rawHmac=  getHmacSha1(key).doFinal(valueToDigest);\n+        byte[] rawHmac = getHmacSha1(key).doFinal(valueToDigest);\n         return Base64.encodeBase64String(rawHmac);\n     }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "57",
+                    "column": "23",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "57",
+                    "column": "23",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_three_grams/56/HmacUtil.java\nindex 2d8633a9f9..b4b11dc3df 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/56/HmacUtil.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_three_grams/56/HmacUtil.java\n@@ -54,7 +54,7 @@ public class HmacUtil {\n             throws IllegalArgumentException {\n \n         // Compute the hmac on input data bytes\n-        byte[] rawHmac=  getHmacSha1(key).doFinal(valueToDigest);\n+        byte[] rawHmac=getHmacSha1(key).doFinal(valueToDigest);\n         return Base64.encodeBase64String(rawHmac);\n     }\n \n",
+            "diff_size": 1
+        }
+    ]
+}

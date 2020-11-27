@@ -1,0 +1,84 @@
+{
+    "error_id": "14",
+    "information": {
+        "errors": [
+            {
+                "line": "36",
+                "column": "1",
+                "severity": "error",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "    private Properties properties;\n\n\tprivate final ReentrantLock reloadLock = new ReentrantLock();\n\tprivate boolean isReload = false;\n\n    public FileConfiguration(String fileName) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/14/FileConfiguration.java\nindex 036d4bce29..42e2b2d1f6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/14/FileConfiguration.java\n@@ -33,7 +33,7 @@ public class FileConfiguration {\n     private PropertiesConfiguration propertiesConfiguration;\n     private Properties properties;\n \n-\tprivate final ReentrantLock reloadLock = new ReentrantLock();\n+    private final ReentrantLock reloadLock = new ReentrantLock();\n \tprivate boolean isReload = false;\n \n     public FileConfiguration(String fileName) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/14/FileConfiguration.java\nindex 036d4bce29..023e3ef0c2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/14/FileConfiguration.java\n@@ -33,8 +33,8 @@ public class FileConfiguration {\n     private PropertiesConfiguration propertiesConfiguration;\n     private Properties properties;\n \n-\tprivate final ReentrantLock reloadLock = new ReentrantLock();\n-\tprivate boolean isReload = false;\n+    private final ReentrantLock reloadLock = new ReentrantLock();\n+    private boolean isReload = false;\n \n     public FileConfiguration(String fileName) {\n         this(fileName, false);\n@@ -55,35 +55,35 @@ public class FileConfiguration {\n     public FileConfiguration(String fileName, PropertiesConfiguration propertiesConfiguration) {\n         this.fileName = fileName;\n         this.isResource = false;\n-\t\tthis.propertiesConfiguration = propertiesConfiguration;\n+        this.propertiesConfiguration = propertiesConfiguration;\n \n-\t\tthis.loaded = true;\n+        this.loaded = true;\n     }\n \n-\tprotected void loadProperties() {\n-\t\ttry {\n-\t\t\tthis.propertiesConfiguration = new PropertiesConfiguration(this.fileName);\n-\t\t\tthis.loaded = true;\n-\t\t} catch (ConfigurationException ex) {\n-\t\t\tLOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n-\t\t} catch (Exception e) {\n-\t\t\tLOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n-\t\t\tLOG.error(e.getMessage(), e);\n-\t\t}\n-\t}\n-\n-\tprotected void loadResourceProperties() {\n-\t\tLOG.debug(String.format(\"Loading '%s' configuration file from resources\", this.fileName));\n-\t\ttry {\n-\t\t\tthis.propertiesConfiguration = new PropertiesConfiguration(this.fileName);\n-\t\t\tthis.loaded = true;\n-\t\t} catch (ConfigurationException ex) {\n-\t\t\tLOG.error(String.format(\"Failed to load '%s' configuration file from resources\", this.fileName));\n-\t\t} catch (Exception e) {\n-\t\t\tLOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n-\t\t\tLOG.error(e.getMessage(), e);\n-\t\t}\n-\t}\n+    protected void loadProperties() {\n+        try {\n+            this.propertiesConfiguration = new PropertiesConfiguration(this.fileName);\n+            this.loaded = true;\n+        } catch (ConfigurationException ex) {\n+            LOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n+        } catch (Exception e) {\n+            LOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n+            LOG.error(e.getMessage(), e);\n+        }\n+    }\n+\n+    protected void loadResourceProperties() {\n+        LOG.debug(String.format(\"Loading '%s' configuration file from resources\", this.fileName));\n+        try {\n+            this.propertiesConfiguration = new PropertiesConfiguration(this.fileName);\n+            this.loaded = true;\n+        } catch (ConfigurationException ex) {\n+            LOG.error(String.format(\"Failed to load '%s' configuration file from resources\", this.fileName));\n+        } catch (Exception e) {\n+            LOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n+            LOG.error(e.getMessage(), e);\n+        }\n+    }\n \n     public void reload() {\n         this.isReload = true;\n",
+            "diff_size": 28
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "36",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/14/FileConfiguration.java\nindex 036d4bce29..4aa3cb0566 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/14/FileConfiguration.java\n@@ -32,11 +32,10 @@ public class FileConfiguration {\n \n     private PropertiesConfiguration propertiesConfiguration;\n     private Properties properties;\n-\n-\tprivate final ReentrantLock reloadLock = new ReentrantLock();\n+private final ReentrantLock reloadLock = new ReentrantLock();\n \tprivate boolean isReload = false;\n \n-    public FileConfiguration(String fileName) {\n+public FileConfiguration(String fileName) {\n         this(fileName, false);\n     }\n \n@@ -55,37 +54,37 @@ public class FileConfiguration {\n     public FileConfiguration(String fileName, PropertiesConfiguration propertiesConfiguration) {\n         this.fileName = fileName;\n         this.isResource = false;\n-\t\tthis.propertiesConfiguration = propertiesConfiguration;\n+this.propertiesConfiguration = propertiesConfiguration;\n \n \t\tthis.loaded = true;\n     }\n \n-\tprotected void loadProperties() {\n-\t\ttry {\n-\t\t\tthis.propertiesConfiguration = new PropertiesConfiguration(this.fileName);\n+protected void loadProperties() {\n+    try {\n+    this.propertiesConfiguration = new PropertiesConfiguration(this.fileName);\n \t\t\tthis.loaded = true;\n-\t\t} catch (ConfigurationException ex) {\n-\t\t\tLOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n-\t\t} catch (Exception e) {\n-\t\t\tLOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n+    } catch (ConfigurationException ex) {\n+    LOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n+    } catch (Exception e) {\n+    LOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n \t\t\tLOG.error(e.getMessage(), e);\n-\t\t}\n-\t}\n+    }\n+    }\n \n \tprotected void loadResourceProperties() {\n-\t\tLOG.debug(String.format(\"Loading '%s' configuration file from resources\", this.fileName));\n+    LOG.debug(String.format(\"Loading '%s' configuration file from resources\", this.fileName));\n \t\ttry {\n-\t\t\tthis.propertiesConfiguration = new PropertiesConfiguration(this.fileName);\n+    this.propertiesConfiguration = new PropertiesConfiguration(this.fileName);\n \t\t\tthis.loaded = true;\n-\t\t} catch (ConfigurationException ex) {\n-\t\t\tLOG.error(String.format(\"Failed to load '%s' configuration file from resources\", this.fileName));\n-\t\t} catch (Exception e) {\n-\t\t\tLOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n+    } catch (ConfigurationException ex) {\n+    LOG.error(String.format(\"Failed to load '%s' configuration file from resources\", this.fileName));\n+    } catch (Exception e) {\n+    LOG.error(String.format(\"Failed to load '%s' configuration file from config folder\", this.fileName));\n \t\t\tLOG.error(e.getMessage(), e);\n-\t\t}\n-\t}\n+    }\n+    }\n \n-    public void reload() {\n+public void reload() {\n         this.isReload = true;\n \n         reloadLock.lock(); // block until condition holds\n@@ -269,4 +268,4 @@ public class FileConfiguration {\n         return propertiesConfiguration;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 23
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/14/FileConfiguration.java\nindex 036d4bce29..42e2b2d1f6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/14/FileConfiguration.java\n@@ -33,7 +33,7 @@ public class FileConfiguration {\n     private PropertiesConfiguration propertiesConfiguration;\n     private Properties properties;\n \n-\tprivate final ReentrantLock reloadLock = new ReentrantLock();\n+    private final ReentrantLock reloadLock = new ReentrantLock();\n \tprivate boolean isReload = false;\n \n     public FileConfiguration(String fileName) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/14/FileConfiguration.java\nindex 036d4bce29..42e2b2d1f6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/14/FileConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/14/FileConfiguration.java\n@@ -33,7 +33,7 @@ public class FileConfiguration {\n     private PropertiesConfiguration propertiesConfiguration;\n     private Properties properties;\n \n-\tprivate final ReentrantLock reloadLock = new ReentrantLock();\n+    private final ReentrantLock reloadLock = new ReentrantLock();\n \tprivate boolean isReload = false;\n \n     public FileConfiguration(String fileName) {\n",
+            "diff_size": 1
+        }
+    ]
+}

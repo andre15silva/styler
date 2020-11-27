@@ -1,0 +1,100 @@
+{
+    "error_id": "8",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/8/BufferedBitSetReader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/8/BufferedBitSetReader.java\nindex 1f6a9fc319..7e4293973e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/8/BufferedBitSetReader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/8/BufferedBitSetReader.java\n@@ -19,56 +19,56 @@ package com.tencent.angel.spark.ml.tree.util;\n \n public class BufferedBitSetReader {\n \n-  //private final ByteBuffer bytes;\n-  private final byte[] bytes;\n-  private int readIndexH;\n-  private int readMaskH;\n-  private int readBufferH;\n-  private int readIndexT;\n-  private int readMaskT;\n-  private int readBufferT;\n+    //private final ByteBuffer bytes;\n+    private final byte[] bytes;\n+    private int readIndexH;\n+    private int readMaskH;\n+    private int readBufferH;\n+    private int readIndexT;\n+    private int readMaskT;\n+    private int readBufferT;\n \n-  public BufferedBitSetReader(byte[] bytes, int numBits) {\n-    //public BufferedBitSetReader(ByteBuffer bytes, int numBits) {\n-    this.bytes = bytes;\n-    //int capacity = bytes.capacity() * 8;\n-    //readIndexT = bytes.capacity() - 1;\n-    int capacity = bytes.length * 8;\n-    this.readIndexT = bytes.length - 1;\n-    for (int i = numBits; i < capacity; i++) {\n-      readTail();\n+    public BufferedBitSetReader(byte[] bytes, int numBits) {\n+        //public BufferedBitSetReader(ByteBuffer bytes, int numBits) {\n+        this.bytes = bytes;\n+        //int capacity = bytes.capacity() * 8;\n+        //readIndexT = bytes.capacity() - 1;\n+        int capacity = bytes.length * 8;\n+        this.readIndexT = bytes.length - 1;\n+        for (int i = numBits; i < capacity; i++) {\n+            readTail();\n+        }\n     }\n-  }\n \n-  public boolean readHead() {\n-    if (readMaskH == 0) {\n-      readBufferH = readFromBuffer(readIndexH++);\n-      readMaskH = 0b10000000;\n+    public boolean readHead() {\n+        if (readMaskH == 0) {\n+            readBufferH = readFromBuffer(readIndexH++);\n+            readMaskH = 0b10000000;\n+        }\n+        boolean bit = (readBufferH & readMaskH) > 0;\n+        readMaskH >>= 1;\n+        return bit;\n     }\n-    boolean bit = (readBufferH & readMaskH) > 0;\n-    readMaskH >>= 1;\n-    return bit;\n-  }\n \n-  public boolean readTail() {\n-    if (readMaskT == 0) {\n-      readBufferT = readFromBuffer(readIndexT--);\n-      readMaskT = 0b00000001;\n+    public boolean readTail() {\n+        if (readMaskT == 0) {\n+            readBufferT = readFromBuffer(readIndexT--);\n+            readMaskT = 0b00000001;\n+        }\n+        boolean bit = (readBufferT & readMaskT) > 0;\n+        readMaskT = (readMaskT << 1) & 0b11111111;\n+        return bit;\n     }\n-    boolean bit = (readBufferT & readMaskT) > 0;\n-    readMaskT = (readMaskT << 1) & 0b11111111;\n-    return bit;\n-  }\n \n-  public boolean read(int index) {\n-    int x = index >> 3;\n-    int y = index & 0b111;\n-    byte b = readFromBuffer(x);\n-    return ((b >> (7 - y)) & 0x1) == 1;\n-  }\n+    public boolean read(int index) {\n+        int x = index >> 3;\n+        int y = index & 0b111;\n+        byte b = readFromBuffer(x);\n+        return ((b >> (7 - y)) & 0x1) == 1;\n+    }\n \n-  public byte readFromBuffer(int index) {\n-    //return bytes.get(index);\n-    return bytes[index];\n-  }\n+    public byte readFromBuffer(int index) {\n+        //return bytes.get(index);\n+        return bytes[index];\n+    }\n }\n",
+            "diff_size": 53
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/8/BufferedBitSetReader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/8/BufferedBitSetReader.java\nindex 1f6a9fc319..9f762fcc21 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/8/BufferedBitSetReader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/8/BufferedBitSetReader.java\n@@ -71,4 +71,4 @@ public class BufferedBitSetReader {\n     //return bytes.get(index);\n     return bytes[index];\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "23",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 24.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/8/BufferedBitSetReader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/8/BufferedBitSetReader.java\nindex 1f6a9fc319..ae847e71f7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/8/BufferedBitSetReader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/8/BufferedBitSetReader.java\n@@ -17,58 +17,62 @@\n \n package com.tencent.angel.spark.ml.tree.util;\n \n+\n public class BufferedBitSetReader {\n \n   //private final ByteBuffer bytes;\n-  private final byte[] bytes;\n-  private int readIndexH;\n-  private int readMaskH;\n-  private int readBufferH;\n-  private int readIndexT;\n-  private int readMaskT;\n-  private int readBufferT;\n+    private final byte[] bytes;\n+    private int readIndexH;\n+    private int readMaskH;\n+    private int readBufferH;\n+    private int readIndexT;\n+    private int readMaskT;\n+    private int readBufferT;\n \n-  public BufferedBitSetReader(byte[] bytes, int numBits) {\n+    public BufferedBitSetReader(byte[] bytes, int numBits) {\n     //public BufferedBitSetReader(ByteBuffer bytes, int numBits) {\n     this.bytes = bytes;\n     //int capacity = bytes.capacity() * 8;\n     //readIndexT = bytes.capacity() - 1;\n+\n     int capacity = bytes.length * 8;\n     this.readIndexT = bytes.length - 1;\n     for (int i = numBits; i < capacity; i++) {\n-      readTail();\n+        readTail();\n+    }\n     }\n-  }\n \n-  public boolean readHead() {\n+    public boolean readHead() {\n     if (readMaskH == 0) {\n-      readBufferH = readFromBuffer(readIndexH++);\n-      readMaskH = 0b10000000;\n+        readBufferH = readFromBuffer(readIndexH++);\n+        readMaskH = 0b10000000;\n     }\n+\n     boolean bit = (readBufferH & readMaskH) > 0;\n     readMaskH >>= 1;\n     return bit;\n-  }\n+    }\n \n-  public boolean readTail() {\n+    public boolean readTail() {\n     if (readMaskT == 0) {\n-      readBufferT = readFromBuffer(readIndexT--);\n-      readMaskT = 0b00000001;\n+        readBufferT = readFromBuffer(readIndexT--);\n+        readMaskT = 0b00000001;\n     }\n+\n     boolean bit = (readBufferT & readMaskT) > 0;\n     readMaskT = (readMaskT << 1) & 0b11111111;\n     return bit;\n-  }\n+    }\n \n-  public boolean read(int index) {\n+    public boolean read(int index) {\n     int x = index >> 3;\n     int y = index & 0b111;\n     byte b = readFromBuffer(x);\n     return ((b >> (7 - y)) & 0x1) == 1;\n-  }\n+    }\n \n-  public byte readFromBuffer(int index) {\n+    public byte readFromBuffer(int index) {\n     //return bytes.get(index);\n     return bytes[index];\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 28
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

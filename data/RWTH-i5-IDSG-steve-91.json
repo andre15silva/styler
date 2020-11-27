@@ -1,0 +1,67 @@
+{
+    "error_id": "91",
+    "information": {
+        "errors": [
+            {
+                "line": "25",
+                "severity": "error",
+                "message": "Line has trailing spaces.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": "    @ChargeBoxId\n    private String chargeBoxId;\n    \n    private Address address;\n\n    @Range(min = -90, max = 90, message = \"Latitude must be between {min} and {max}\")",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/91/ChargePointForm.java\nindex 11e592c1e3..682e02fa69 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/91/ChargePointForm.java\n@@ -22,7 +22,7 @@ public class ChargePointForm {\n     @NotBlank(message = \"ChargeBox ID is required\")\n     @ChargeBoxId\n     private String chargeBoxId;\n-    \n+\n     private Address address;\n \n     @Range(min = -90, max = 90, message = \"Latitude must be between {min} and {max}\")\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/91/ChargePointForm.java\nindex 11e592c1e3..682e02fa69 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/91/ChargePointForm.java\n@@ -22,7 +22,7 @@ public class ChargePointForm {\n     @NotBlank(message = \"ChargeBox ID is required\")\n     @ChargeBoxId\n     private String chargeBoxId;\n-    \n+\n     private Address address;\n \n     @Range(min = -90, max = 90, message = \"Latitude must be between {min} and {max}\")\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/91/ChargePointForm.java\nindex 11e592c1e3..78bd0e7557 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/91/ChargePointForm.java\n@@ -22,10 +22,10 @@ public class ChargePointForm {\n     @NotBlank(message = \"ChargeBox ID is required\")\n     @ChargeBoxId\n     private String chargeBoxId;\n-    \n-    private Address address;\n \n-    @Range(min = -90, max = 90, message = \"Latitude must be between {min} and {max}\")\n+private Address address;\n+\n+@Range(min = -90, max = 90, message = \"Latitude must be between {min} and {max}\")\n     private BigDecimal locationLatitude;\n \n     @Range(min = -180, max = 180, message = \"Longitude must be between {min} and {max}\")\n@@ -33,4 +33,4 @@ public class ChargePointForm {\n \n     private String description;\n     private String note;\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/91/ChargePointForm.java\nindex 11e592c1e3..a7891ff2a9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/91/ChargePointForm.java\n@@ -5,32 +5,27 @@ import lombok.Getter;\n import lombok.Setter;\n import org.hibernate.validator.constraints.NotBlank;\n import org.hibernate.validator.constraints.Range;\n-\n import java.math.BigDecimal;\n \n /**\n  * @author Sevket Goekay <goekay@dbis.rwth-aachen.de>\n  * @since 18.12.2014\n  */\n+\n+\n @Getter\n @Setter\n public class ChargePointForm {\n \n     // Internal database id\n     private Integer chargeBoxPk;\n-\n     @NotBlank(message = \"ChargeBox ID is required\")\n-    @ChargeBoxId\n-    private String chargeBoxId;\n-    \n+    @ChargeBoxId private String chargeBoxId;\n     private Address address;\n-\n     @Range(min = -90, max = 90, message = \"Latitude must be between {min} and {max}\")\n     private BigDecimal locationLatitude;\n-\n     @Range(min = -180, max = 180, message = \"Longitude must be between {min} and {max}\")\n     private BigDecimal locationLongitude;\n-\n     private String description;\n     private String note;\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/91/ChargePointForm.java\nindex 11e592c1e3..682e02fa69 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/91/ChargePointForm.java\n@@ -22,7 +22,7 @@ public class ChargePointForm {\n     @NotBlank(message = \"ChargeBox ID is required\")\n     @ChargeBoxId\n     private String chargeBoxId;\n-    \n+\n     private Address address;\n \n     @Range(min = -90, max = 90, message = \"Latitude must be between {min} and {max}\")\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "24",
+                    "column": "32",
+                    "severity": "error",
+                    "message": "';' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "24",
+                    "column": "32",
+                    "severity": "error",
+                    "message": "';' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/91/ChargePointForm.java\nindex 11e592c1e3..aa8eaf9bec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/91/ChargePointForm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/91/ChargePointForm.java\n@@ -21,9 +21,7 @@ public class ChargePointForm {\n \n     @NotBlank(message = \"ChargeBox ID is required\")\n     @ChargeBoxId\n-    private String chargeBoxId;\n-    \n-    private Address address;\n+    private String chargeBoxId ;privateAddress address;\n \n     @Range(min = -90, max = 90, message = \"Latitude must be between {min} and {max}\")\n     private BigDecimal locationLatitude;\n",
+            "diff_size": 3
+        }
+    ]
+}

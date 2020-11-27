@@ -1,0 +1,94 @@
+{
+    "error_id": "23",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/23/RMSELoss.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/23/RMSELoss.java\nindex 5bd4440edf..8a0edefeb1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/23/RMSELoss.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/23/RMSELoss.java\n@@ -25,81 +25,81 @@ import com.tencent.angel.spark.ml.tree.util.Maths;\n @Singleton\n public class RMSELoss implements BinaryLoss, MultiLoss {\n \n-  private static RMSELoss instance;\n-\n-  private RMSELoss() {\n-  }\n-\n-  @Override\n-  public Kind getKind() {\n-    return Kind.RMSE;\n-  }\n-\n-  @Override\n-  public EvalMetric.Kind defaultEvalMetric() {\n-    return EvalMetric.Kind.RMSE;\n-  }\n-\n-  @Override\n-  public double firOrderGrad(float pred, float label) {\n-    return pred - label;\n-  }\n-\n-  @Override\n-  public double secOrderGrad(float pred, float label) {\n-    return 1.0;\n-  }\n-\n-  @Override\n-  public double secOrderGrad(float pred, float label, double firGrad) {\n-    return 1.0;\n-  }\n-\n-  @Override\n-  public double[] firOrderGrad(float[] pred, float label) {\n-    int numLabel = pred.length;\n-    int trueLabel = (int) label;\n-    double[] grad = new double[numLabel];\n-    for (int i = 0; i < numLabel; i++) {\n-      grad[i] = pred[i] - (trueLabel == i ? 1 : 0);\n+    private static RMSELoss instance;\n+\n+    private RMSELoss() {\n+    }\n+\n+    @Override\n+    public Kind getKind() {\n+        return Kind.RMSE;\n+    }\n+\n+    @Override\n+    public EvalMetric.Kind defaultEvalMetric() {\n+        return EvalMetric.Kind.RMSE;\n     }\n-    return grad;\n-  }\n-\n-  @Override\n-  public double[] secOrderGradDiag(float[] pred, float label) {\n-    int numLabel = pred.length;\n-    double[] hess = new double[numLabel];\n-    Arrays.fill(hess, 1.0);\n-    return hess;\n-  }\n-\n-  @Override\n-  public double[] secOrderGradDiag(float[] pred, float label, double[] firGrad) {\n-    return secOrderGradDiag(pred, label);\n-  }\n-\n-  @Override\n-  public double[] secOrderGradFull(float[] pred, float label) {\n-    int numLabel = pred.length;\n-    int size = (numLabel + 1) * numLabel / 2;\n-    double[] hess = new double[size];\n-    for (int i = 0; i < numLabel; i++) {\n-      int t = Maths.indexOfLowerTriangularMatrix(i, i);\n-      hess[t] = 1.0;\n+\n+    @Override\n+    public double firOrderGrad(float pred, float label) {\n+        return pred - label;\n+    }\n+\n+    @Override\n+    public double secOrderGrad(float pred, float label) {\n+        return 1.0;\n+    }\n+\n+    @Override\n+    public double secOrderGrad(float pred, float label, double firGrad) {\n+        return 1.0;\n     }\n-    return hess;\n-  }\n \n-  @Override\n-  public double[] secOrderGradFull(float[] pred, float label, double[] firGrad) {\n-    return secOrderGradFull(pred, label);\n-  }\n+    @Override\n+    public double[] firOrderGrad(float[] pred, float label) {\n+        int numLabel = pred.length;\n+        int trueLabel = (int) label;\n+        double[] grad = new double[numLabel];\n+        for (int i = 0; i < numLabel; i++) {\n+            grad[i] = pred[i] - (trueLabel == i ? 1 : 0);\n+        }\n+        return grad;\n+    }\n+\n+    @Override\n+    public double[] secOrderGradDiag(float[] pred, float label) {\n+        int numLabel = pred.length;\n+        double[] hess = new double[numLabel];\n+        Arrays.fill(hess, 1.0);\n+        return hess;\n+    }\n+\n+    @Override\n+    public double[] secOrderGradDiag(float[] pred, float label, double[] firGrad) {\n+        return secOrderGradDiag(pred, label);\n+    }\n+\n+    @Override\n+    public double[] secOrderGradFull(float[] pred, float label) {\n+        int numLabel = pred.length;\n+        int size = (numLabel + 1) * numLabel / 2;\n+        double[] hess = new double[size];\n+        for (int i = 0; i < numLabel; i++) {\n+            int t = Maths.indexOfLowerTriangularMatrix(i, i);\n+            hess[t] = 1.0;\n+        }\n+        return hess;\n+    }\n+\n+    @Override\n+    public double[] secOrderGradFull(float[] pred, float label, double[] firGrad) {\n+        return secOrderGradFull(pred, label);\n+    }\n \n-  public static RMSELoss getInstance() {\n-    if (instance == null) {\n-      instance = new RMSELoss();\n+    public static RMSELoss getInstance() {\n+        if (instance == null) {\n+            instance = new RMSELoss();\n+        }\n+        return instance;\n     }\n-    return instance;\n-  }\n }\n",
+            "diff_size": 110
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/23/RMSELoss.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/23/RMSELoss.java\nindex 5bd4440edf..0e5825b09d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/23/RMSELoss.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/23/RMSELoss.java\n@@ -102,4 +102,4 @@ public class RMSELoss implements BinaryLoss, MultiLoss {\n     }\n     return instance;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/23/RMSELoss.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/23/RMSELoss.java\nindex 5bd4440edf..2e4b77d44d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/23/RMSELoss.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/23/RMSELoss.java\n@@ -22,84 +22,80 @@ import java.util.Arrays;\n import javax.inject.Singleton;\n import com.tencent.angel.spark.ml.tree.util.Maths;\n \n-@Singleton\n-public class RMSELoss implements BinaryLoss, MultiLoss {\n+@Singleton public class RMSELoss implements BinaryLoss, MultiLoss {\n+    private static RMSELoss instance;\n+    private RMSELoss() {}\n \n-  private static RMSELoss instance;\n-\n-  private RMSELoss() {\n-  }\n-\n-  @Override\n-  public Kind getKind() {\n+    @Override\n+    public Kind getKind() {\n     return Kind.RMSE;\n-  }\n+    }\n \n-  @Override\n-  public EvalMetric.Kind defaultEvalMetric() {\n+    @Override\n+    public EvalMetric.Kind defaultEvalMetric() {\n     return EvalMetric.Kind.RMSE;\n-  }\n+    }\n \n-  @Override\n-  public double firOrderGrad(float pred, float label) {\n+    @Override\n+    public double firOrderGrad(float pred, float label) {\n     return pred - label;\n-  }\n+    }\n \n-  @Override\n-  public double secOrderGrad(float pred, float label) {\n+    @Override\n+    public double secOrderGrad(float pred, float label) {\n     return 1.0;\n-  }\n+    }\n \n-  @Override\n-  public double secOrderGrad(float pred, float label, double firGrad) {\n+    @Override\n+    public double secOrderGrad(float pred, float label, double firGrad) {\n     return 1.0;\n-  }\n+    }\n \n-  @Override\n-  public double[] firOrderGrad(float[] pred, float label) {\n+    @Override\n+    public double[] firOrderGrad(float[] pred, float label) {\n     int numLabel = pred.length;\n     int trueLabel = (int) label;\n     double[] grad = new double[numLabel];\n     for (int i = 0; i < numLabel; i++) {\n-      grad[i] = pred[i] - (trueLabel == i ? 1 : 0);\n+        grad[i] = pred[i] - (trueLabel == i ? 1 : 0);\n     }\n     return grad;\n-  }\n+    }\n \n-  @Override\n-  public double[] secOrderGradDiag(float[] pred, float label) {\n+    @Override\n+    public double[] secOrderGradDiag(float[] pred, float label) {\n     int numLabel = pred.length;\n     double[] hess = new double[numLabel];\n     Arrays.fill(hess, 1.0);\n     return hess;\n-  }\n+    }\n \n-  @Override\n-  public double[] secOrderGradDiag(float[] pred, float label, double[] firGrad) {\n+    @Override\n+    public double[] secOrderGradDiag(float[] pred, float label, double[] firGrad) {\n     return secOrderGradDiag(pred, label);\n-  }\n+    }\n \n-  @Override\n-  public double[] secOrderGradFull(float[] pred, float label) {\n+    @Override\n+    public double[] secOrderGradFull(float[] pred, float label) {\n     int numLabel = pred.length;\n     int size = (numLabel + 1) * numLabel / 2;\n     double[] hess = new double[size];\n     for (int i = 0; i < numLabel; i++) {\n-      int t = Maths.indexOfLowerTriangularMatrix(i, i);\n-      hess[t] = 1.0;\n+        int t = Maths.indexOfLowerTriangularMatrix(i, i);\n+        hess[t] = 1.0;\n     }\n     return hess;\n-  }\n+    }\n \n-  @Override\n-  public double[] secOrderGradFull(float[] pred, float label, double[] firGrad) {\n+    @Override\n+    public double[] secOrderGradFull(float[] pred, float label, double[] firGrad) {\n     return secOrderGradFull(pred, label);\n-  }\n+    }\n \n-  public static RMSELoss getInstance() {\n+    public static RMSELoss getInstance() {\n     if (instance == null) {\n-      instance = new RMSELoss();\n+        instance = new RMSELoss();\n     }\n     return instance;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 45
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

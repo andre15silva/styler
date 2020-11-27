@@ -1,0 +1,199 @@
+{
+    "error_id": "0",
+    "information": {
+        "errors": [
+            {
+                "line": "14",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 131).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "\n\n  public FTRLThresholdInit(boolean inplace, double alpha, double beta, double lambda1, double lambda2, double mean, double stdev) {\n    setInplace(inplace);\n    setKeepStorage(Constant.keepStorage);\n    this.alpha = alpha;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "12",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/0/FTRLThresholdInit.java\nindex 8efc40c1cc..dd7ef1098a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/0/FTRLThresholdInit.java\n@@ -9,8 +9,6 @@ public class FTRLThresholdInit extends Binary {\n   private double alpha, beta, lambda1, lambda2;\n   private double mean, stdev;\n   private Random random;\n-\n-\n   public FTRLThresholdInit(boolean inplace, double alpha, double beta, double lambda1, double lambda2, double mean, double stdev) {\n     setInplace(inplace);\n     setKeepStorage(Constant.keepStorage);\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/0/FTRLThresholdInit.java\nindex 8efc40c1cc..98455a651c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/0/FTRLThresholdInit.java\n@@ -6,128 +6,129 @@ import java.util.Random;\n \n public class FTRLThresholdInit extends Binary {\n \n-  private double alpha, beta, lambda1, lambda2;\n-  private double mean, stdev;\n-  private Random random;\n-\n-\n-  public FTRLThresholdInit(boolean inplace, double alpha, double beta, double lambda1, double lambda2, double mean, double stdev) {\n-    setInplace(inplace);\n-    setKeepStorage(Constant.keepStorage);\n-    this.alpha = alpha;\n-    this.beta = beta;\n-    this.lambda1 = lambda1;\n-    this.lambda2 = lambda2;\n-    this.mean = mean;\n-    this.stdev = stdev;\n-    this.random = new Random(System.currentTimeMillis());\n-  }\n-\n-  @Override\n-  public OpType getOpType() {\n-    return OpType.UNION;\n-  }\n-\n-  @Override\n-  public double apply(double zVal, double nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+    private double alpha, beta, lambda1, lambda2;\n+    private double mean, stdev;\n+    private Random random;\n+\n+\n+    public FTRLThresholdInit(boolean inplace, double alpha, double beta, double lambda1,\n+                             double lambda2, double mean, double stdev) {\n+        setInplace(inplace);\n+        setKeepStorage(Constant.keepStorage);\n+        this.alpha = alpha;\n+        this.beta = beta;\n+        this.lambda1 = lambda1;\n+        this.lambda2 = lambda2;\n+        this.mean = mean;\n+        this.stdev = stdev;\n+        this.random = new Random(System.currentTimeMillis());\n     }\n-    return result;\n-  }\n-\n-  @Override\n-  public double apply(double zVal, float nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+\n+    @Override\n+    public OpType getOpType() {\n+        return OpType.UNION;\n+    }\n+\n+    @Override\n+    public double apply(double zVal, double nVal) {\n+        if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return result;\n     }\n-    return result;\n-  }\n-\n-  public double apply(double zVal, long nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+\n+    @Override\n+    public double apply(double zVal, float nVal) {\n+        if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return result;\n+    }\n+\n+    public double apply(double zVal, long nVal) {\n+        if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return result;\n     }\n-    return result;\n-  }\n-\n-  public double apply(double zVal, int nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+\n+    public double apply(double zVal, int nVal) {\n+        if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return result;\n     }\n-    return result;\n-  }\n-\n-  public float apply(float zVal, float nVal) {\n-    if (nVal == 0.0f) return (float) (mean + random.nextGaussian() * stdev);\n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+\n+    public float apply(float zVal, float nVal) {\n+        if (nVal == 0.0f) return (float) (mean + random.nextGaussian() * stdev);\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return (float) result;\n     }\n-    return (float) result;\n-  }\n-\n-  public float apply(float zVal, long nVal) {\n-    if (nVal == 0L) return (float) (mean + random.nextGaussian() * stdev);\n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+\n+    public float apply(float zVal, long nVal) {\n+        if (nVal == 0L) return (float) (mean + random.nextGaussian() * stdev);\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return (float) result;\n     }\n-    return (float) result;\n-  }\n \n-  public float apply(float zVal, int nVal) {\n-    if (nVal == 0) return (float) (mean + random.nextGaussian() * stdev);\n+    public float apply(float zVal, int nVal) {\n+        if (nVal == 0) return (float) (mean + random.nextGaussian() * stdev);\n \n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return (float) result;\n     }\n-    return (float) result;\n-  }\n-\n-  public long apply(long zVal, long nVal) {\n-    if (nVal == 0L) return (long) (mean + random.nextGaussian() * stdev);\n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+\n+    public long apply(long zVal, long nVal) {\n+        if (nVal == 0L) return (long) (mean + random.nextGaussian() * stdev);\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return (long) result;\n     }\n-    return (long) result;\n-  }\n-\n-  public long apply(long zVal, int nVal) {\n-    if (nVal == 0) return (long) (mean + random.nextGaussian() * stdev);\n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+\n+    public long apply(long zVal, int nVal) {\n+        if (nVal == 0) return (long) (mean + random.nextGaussian() * stdev);\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return (long) result;\n     }\n-    return (long) result;\n-  }\n-\n-  public int apply(int zVal, int nVal) {\n-    if (nVal == 0) return (int) (mean + random.nextGaussian() * stdev);\n-    double result = 0.0;\n-    if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+\n+    public int apply(int zVal, int nVal) {\n+        if (nVal == 0) return (int) (mean + random.nextGaussian() * stdev);\n+        double result = 0.0;\n+        if (Math.abs(zVal) > lambda1) {\n+            result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n+                    - Math.signum(zVal) * lambda1);\n+        }\n+        return (int) result;\n     }\n-    return (int) result;\n-  }\n }\n",
+            "diff_size": 130
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "14",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "119",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "129",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/0/FTRLThresholdInit.java\nindex 8efc40c1cc..db2c911320 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/0/FTRLThresholdInit.java\n@@ -30,104 +30,104 @@ public class FTRLThresholdInit extends Binary {\n \n   @Override\n   public double apply(double zVal, double nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+    if (nVal == 0.0)\n+  return mean + random.nextGaussian() * stdev;\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return result;\n   }\n \n   @Override\n   public double apply(double zVal, float nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+    if (nVal == 0.0)\n+  return mean + random.nextGaussian() * stdev;\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return result;\n   }\n \n   public double apply(double zVal, long nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+    if (nVal == 0.0)\n+  return mean + random.nextGaussian() * stdev;\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return result;\n   }\n \n   public double apply(double zVal, int nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+    if (nVal == 0.0)\n+  return mean + random.nextGaussian() * stdev;\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return result;\n   }\n \n   public float apply(float zVal, float nVal) {\n-    if (nVal == 0.0f) return (float) (mean + random.nextGaussian() * stdev);\n+    if (nVal == 0.0f)\n+  return (float) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (float) result;\n   }\n \n   public float apply(float zVal, long nVal) {\n-    if (nVal == 0L) return (float) (mean + random.nextGaussian() * stdev);\n+    if (nVal == 0L)\n+  return (float) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (float) result;\n   }\n \n   public float apply(float zVal, int nVal) {\n-    if (nVal == 0) return (float) (mean + random.nextGaussian() * stdev);\n+    if (nVal == 0)\n+  return (float) (mean + random.nextGaussian() * stdev);\n \n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (float) result;\n   }\n \n   public long apply(long zVal, long nVal) {\n-    if (nVal == 0L) return (long) (mean + random.nextGaussian() * stdev);\n+    if (nVal == 0L)\n+  return (long) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (long) result;\n   }\n \n   public long apply(long zVal, int nVal) {\n-    if (nVal == 0) return (long) (mean + random.nextGaussian() * stdev);\n+    if (nVal == 0)\n+  return (long) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (long) result;\n   }\n \n   public int apply(int zVal, int nVal) {\n-    if (nVal == 0) return (int) (mean + random.nextGaussian() * stdev);\n+    if (nVal == 0)\n+  return (int) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (int) result;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 41
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 133).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "115",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/0/FTRLThresholdInit.java\nindex 8efc40c1cc..67f1f12fec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/0/FTRLThresholdInit.java\n@@ -1,17 +1,14 @@\n package com.tencent.angel.ml.math2.ufuncs.expression;\n \n import com.tencent.angel.ml.math2.utils.Constant;\n-\n import java.util.Random;\n \n public class FTRLThresholdInit extends Binary {\n+    private double alpha, beta, lambda1, lambda2;\n+    private double mean, stdev;\n+    private Random random;\n \n-  private double alpha, beta, lambda1, lambda2;\n-  private double mean, stdev;\n-  private Random random;\n-\n-\n-  public FTRLThresholdInit(boolean inplace, double alpha, double beta, double lambda1, double lambda2, double mean, double stdev) {\n+    public FTRLThresholdInit(boolean inplace, double alpha, double beta, double lambda1, double lambda2, double mean, double stdev) {\n     setInplace(inplace);\n     setKeepStorage(Constant.keepStorage);\n     this.alpha = alpha;\n@@ -21,113 +18,113 @@ public class FTRLThresholdInit extends Binary {\n     this.mean = mean;\n     this.stdev = stdev;\n     this.random = new Random(System.currentTimeMillis());\n-  }\n+    }\n \n-  @Override\n-  public OpType getOpType() {\n+    @Override\n+    public OpType getOpType() {\n     return OpType.UNION;\n-  }\n+    }\n \n-  @Override\n-  public double apply(double zVal, double nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+    @Override\n+    public double apply(double zVal, double nVal) {\n+    if (nVal == 0.0)\n+        return mean + random.nextGaussian() * stdev;\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return result;\n-  }\n+    }\n \n-  @Override\n-  public double apply(double zVal, float nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+    @Override\n+    public double apply(double zVal, float nVal) {\n+    if (nVal == 0.0)\n+        return mean + random.nextGaussian() * stdev;\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return result;\n-  }\n+    }\n \n-  public double apply(double zVal, long nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+    public double apply(double zVal, long nVal) {\n+    if (nVal == 0.0)\n+        return mean + random.nextGaussian() * stdev;\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return result;\n-  }\n+    }\n \n-  public double apply(double zVal, int nVal) {\n-    if (nVal == 0.0) return mean + random.nextGaussian() * stdev;\n+    public double apply(double zVal, int nVal) {\n+    if (nVal == 0.0)\n+        return mean + random.nextGaussian() * stdev;\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return result;\n-  }\n+    }\n \n-  public float apply(float zVal, float nVal) {\n-    if (nVal == 0.0f) return (float) (mean + random.nextGaussian() * stdev);\n+    public float apply(float zVal, float nVal) {\n+    if (nVal == 0.0f)\n+        return (float) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (float) result;\n-  }\n+    }\n \n-  public float apply(float zVal, long nVal) {\n-    if (nVal == 0L) return (float) (mean + random.nextGaussian() * stdev);\n+    public float apply(float zVal, long nVal) {\n+    if (nVal == 0L)\n+        return (float) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (float) result;\n-  }\n-\n-  public float apply(float zVal, int nVal) {\n-    if (nVal == 0) return (float) (mean + random.nextGaussian() * stdev);\n+    }\n \n+    public float apply(float zVal, int nVal) {\n+    if (nVal == 0)\n+        return (float) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (float) result;\n-  }\n+    }\n \n-  public long apply(long zVal, long nVal) {\n-    if (nVal == 0L) return (long) (mean + random.nextGaussian() * stdev);\n+    public long apply(long zVal, long nVal) {\n+    if (nVal == 0L)\n+        return (long) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (long) result;\n-  }\n+    }\n \n-  public long apply(long zVal, int nVal) {\n-    if (nVal == 0) return (long) (mean + random.nextGaussian() * stdev);\n+    public long apply(long zVal, int nVal) {\n+    if (nVal == 0)\n+        return (long) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (long) result;\n-  }\n+    }\n \n-  public int apply(int zVal, int nVal) {\n-    if (nVal == 0) return (int) (mean + random.nextGaussian() * stdev);\n+    public int apply(int zVal, int nVal) {\n+    if (nVal == 0)\n+        return (int) (mean + random.nextGaussian() * stdev);\n     double result = 0.0;\n     if (Math.abs(zVal) > lambda1) {\n-      result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal\n-        - Math.signum(zVal) * lambda1);\n+        result = (-1) * (1.0 / (lambda2 + (beta + Math.sqrt(nVal)) / alpha)) * (zVal - Math.signum(zVal) * lambda1);\n     }\n     return (int) result;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 81
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "12",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/0/FTRLThresholdInit.java\nindex 8efc40c1cc..dd7ef1098a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/0/FTRLThresholdInit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/0/FTRLThresholdInit.java\n@@ -9,8 +9,6 @@ public class FTRLThresholdInit extends Binary {\n   private double alpha, beta, lambda1, lambda2;\n   private double mean, stdev;\n   private Random random;\n-\n-\n   public FTRLThresholdInit(boolean inplace, double alpha, double beta, double lambda1, double lambda2, double mean, double stdev) {\n     setInplace(inplace);\n     setKeepStorage(Constant.keepStorage);\n",
+            "diff_size": 2
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+{
+    "error_id": "32",
+    "information": {
+        "errors": [
+            {
+                "line": "151",
+                "severity": "error",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "        registerServiceImpl.mergeAccounts(currentUser.getAccount(),\n                getObsoleteAccount());\n        setObsoleteAccount(null); // reset the obsolete account\n        facesMessages.addGlobal(\"Your accounts have been merged.\");\n    }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "151",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler/32/AccountMergeAction.java\nindex 92143bead8..d3b5f48048 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler/32/AccountMergeAction.java\n@@ -148,7 +148,7 @@ public class AccountMergeAction implements Serializable {\n     public void mergeAccounts() {\n         registerServiceImpl.mergeAccounts(currentUser.getAccount(),\n                 getObsoleteAccount());\n-        setObsoleteAccount(null); // reset the obsolete account\n+                setObsoleteAccount(null); // reset the obsolete account\n         facesMessages.addGlobal(\"Your accounts have been merged.\");\n     }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "152",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/intellij/32/AccountMergeAction.java\nindex 92143bead8..61207e5f52 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/intellij/32/AccountMergeAction.java\n@@ -18,6 +18,7 @@\n  * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA, or see the FSF\n  * site: http://www.fsf.org.\n  */\n+\n package org.zanata.action;\n \n import static javax.faces.application.FacesMessage.SEVERITY_ERROR;\n@@ -46,7 +47,7 @@ import org.zanata.util.Synchronized;\n \n /**\n  * @author Carlos Munoz\n- *         <a href=\"mailto:camunoz@redhat.com\">camunoz@redhat.com</a>\n+ * <a href=\"mailto:camunoz@redhat.com\">camunoz@redhat.com</a>\n  */\n @Named(\"accountMergeAction\")\n @ViewScoped\n@@ -114,10 +115,10 @@ public class AccountMergeAction implements Serializable {\n             }\n             if (providerType == OpenIdProviderType.Generic) {\n                 authenticationManager.openIdAuthenticate(openId, providerType,\n-                        new AccountMergeAuthCallback(accountDAO, obsoleteHolder));\n+                    new AccountMergeAuthCallback(accountDAO, obsoleteHolder));\n             } else {\n                 authenticationManager.openIdAuthenticate(providerType,\n-                        new AccountMergeAuthCallback(accountDAO, obsoleteHolder));\n+                    new AccountMergeAuthCallback(accountDAO, obsoleteHolder));\n             }\n         }\n     }\n@@ -133,12 +134,12 @@ public class AccountMergeAction implements Serializable {\n         if (obsoleteAccount != null) {\n             if (obsoleteAccount.getId() == null) {\n                 facesMessages.addGlobal(SEVERITY_ERROR,\n-                        \"Could not find an account for that user.\");\n+                    \"Could not find an account for that user.\");\n                 valid = false;\n             } else if (currentUser.getAccount().getId()\n-                    .equals(obsoleteAccount.getId())) {\n+                .equals(obsoleteAccount.getId())) {\n                 facesMessages.addGlobal(SEVERITY_ERROR,\n-                        \"You are attempting to merge the same account.\");\n+                    \"You are attempting to merge the same account.\");\n                 valid = false;\n             }\n         }\n@@ -147,7 +148,7 @@ public class AccountMergeAction implements Serializable {\n \n     public void mergeAccounts() {\n         registerServiceImpl.mergeAccounts(currentUser.getAccount(),\n-                getObsoleteAccount());\n+            getObsoleteAccount());\n         setObsoleteAccount(null); // reset the obsolete account\n         facesMessages.addGlobal(\"Your accounts have been merged.\");\n     }\n@@ -159,7 +160,7 @@ public class AccountMergeAction implements Serializable {\n     }\n \n     static class AccountMergeAuthCallback\n-            implements OpenIdAuthCallback, Serializable {\n+        implements OpenIdAuthCallback, Serializable {\n \n         private static final long serialVersionUID = 1L;\n         private AccountDAO accountDAO;\n@@ -175,7 +176,7 @@ public class AccountMergeAction implements Serializable {\n             if (result.isAuthenticated()) {\n                 obsoleteHolder.account = ObjectUtils.firstNonNull(accountDAO\n                         .getByCredentialsId(result.getAuthenticatedId()),\n-                        new HAccount());\n+                    new HAccount());\n             }\n         }\n \n",
+            "diff_size": 10
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/naturalize/32/AccountMergeAction.java\nindex 92143bead8..b3190e5010 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/naturalize/32/AccountMergeAction.java\n@@ -148,7 +148,8 @@ public class AccountMergeAction implements Serializable {\n     public void mergeAccounts() {\n         registerServiceImpl.mergeAccounts(currentUser.getAccount(),\n                 getObsoleteAccount());\n-        setObsoleteAccount(null); // reset the obsolete account\n+        setObsoleteAccount(null);\n+// reset the obsolete account\n         facesMessages.addGlobal(\"Your accounts have been merged.\");\n     }\n \n@@ -192,4 +193,4 @@ public class AccountMergeAction implements Serializable {\n     public void setOpenId(final String openId) {\n         this.openId = openId;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "160",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/32/AccountMergeAction.java\nindex 92143bead8..1d384f636b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/32/AccountMergeAction.java\n@@ -21,6 +21,7 @@\n package org.zanata.action;\n \n import static javax.faces.application.FacesMessage.SEVERITY_ERROR;\n+\n import java.io.Serializable;\n import javax.annotation.Nullable;\n import javax.enterprise.context.SessionScoped;\n@@ -29,7 +30,6 @@ import javax.enterprise.inject.Model;\n import javax.faces.bean.ViewScoped;\n import javax.inject.Inject;\n import javax.inject.Named;\n-\n import org.apache.commons.lang3.ObjectUtils;\n import org.apache.deltaspike.jpa.api.transaction.Transactional;\n import org.zanata.dao.AccountDAO;\n@@ -48,39 +48,47 @@ import org.zanata.util.Synchronized;\n  * @author Carlos Munoz\n  *         <a href=\"mailto:camunoz@redhat.com\">camunoz@redhat.com</a>\n  */\n+\n+\n @Named(\"accountMergeAction\")\n @ViewScoped\n @Model\n @Transactional\n public class AccountMergeAction implements Serializable {\n-\n     @SessionScoped\n     @Synchronized\n     static class ObsoleteHolder implements Serializable {\n-\n         private static final long serialVersionUID = 1L;\n+\n         @Nullable\n         HAccount account;\n     }\n \n     private static final long serialVersionUID = 1L;\n+\n     @Inject\n     private CurrentUser currentUser;\n+\n     @Inject\n     private FacesMessages facesMessages;\n+\n     @Inject\n     private AuthenticationManager authenticationManager;\n+\n     @Inject\n     private RegisterService registerServiceImpl;\n     private String openId = \"http://\";\n+\n     @Inject\n     private ObsoleteHolder obsolete;\n     private boolean accountsValid;\n+\n     @Inject\n     private ZanataIdentity zanataIdentity;\n \n     @Inject\n     private AccountDAO accountDAO;\n+\n     @Inject\n     private ObsoleteHolder obsoleteHolder;\n \n@@ -105,6 +113,7 @@ public class AccountMergeAction implements Serializable {\n     public void loginToMergingAccount(String provider) {\n         if (provider.equalsIgnoreCase(\"Internal\")) {\n             // no implementation for internal account merging yet\n+\n         } else {\n             OpenIdProviderType providerType;\n             try {\n@@ -113,11 +122,12 @@ public class AccountMergeAction implements Serializable {\n                 providerType = OpenIdProviderType.Generic;\n             }\n             if (providerType == OpenIdProviderType.Generic) {\n-                authenticationManager.openIdAuthenticate(openId, providerType,\n-                        new AccountMergeAuthCallback(accountDAO, obsoleteHolder));\n+                authenticationManager.openIdAuthenticate(openId,\n+providerType,\n+   new AccountMergeAuthCallback(accountDAO, obsoleteHolder));\n             } else {\n                 authenticationManager.openIdAuthenticate(providerType,\n-                        new AccountMergeAuthCallback(accountDAO, obsoleteHolder));\n+                    new AccountMergeAuthCallback(accountDAO, obsoleteHolder));\n             }\n         }\n     }\n@@ -133,12 +143,12 @@ public class AccountMergeAction implements Serializable {\n         if (obsoleteAccount != null) {\n             if (obsoleteAccount.getId() == null) {\n                 facesMessages.addGlobal(SEVERITY_ERROR,\n-                        \"Could not find an account for that user.\");\n+                    \"Could not find an account for that user.\");\n                 valid = false;\n             } else if (currentUser.getAccount().getId()\n-                    .equals(obsoleteAccount.getId())) {\n+                                               .equals(obsoleteAccount.getId())) {\n                 facesMessages.addGlobal(SEVERITY_ERROR,\n-                        \"You are attempting to merge the same account.\");\n+                    \"You are attempting to merge the same account.\");\n                 valid = false;\n             }\n         }\n@@ -146,8 +156,7 @@ public class AccountMergeAction implements Serializable {\n     }\n \n     public void mergeAccounts() {\n-        registerServiceImpl.mergeAccounts(currentUser.getAccount(),\n-                getObsoleteAccount());\n+        registerServiceImpl.mergeAccounts(currentUser.getAccount(), getObsoleteAccount());\n         setObsoleteAccount(null); // reset the obsolete account\n         facesMessages.addGlobal(\"Your accounts have been merged.\");\n     }\n@@ -158,9 +167,7 @@ public class AccountMergeAction implements Serializable {\n         return \"cancel\";\n     }\n \n-    static class AccountMergeAuthCallback\n-            implements OpenIdAuthCallback, Serializable {\n-\n+    static class AccountMergeAuthCallback implements OpenIdAuthCallback, Serializable {\n         private static final long serialVersionUID = 1L;\n         private AccountDAO accountDAO;\n         private ObsoleteHolder obsoleteHolder;\n@@ -173,9 +180,8 @@ public class AccountMergeAction implements Serializable {\n         @Override\n         public void afterOpenIdAuth(OpenIdAuthenticationResult result) {\n             if (result.isAuthenticated()) {\n-                obsoleteHolder.account = ObjectUtils.firstNonNull(accountDAO\n-                        .getByCredentialsId(result.getAuthenticatedId()),\n-                        new HAccount());\n+                obsoleteHolder.account = ObjectUtils.firstNonNull(accountDAO.getByCredentialsId(result.getAuthenticatedId()),\n+                                                                  new HAccount());\n             }\n         }\n \n@@ -192,4 +198,4 @@ public class AccountMergeAction implements Serializable {\n     public void setOpenId(final String openId) {\n         this.openId = openId;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 31
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "151",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "151",
+                    "column": "33",
+                    "severity": "error",
+                    "message": "';' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/32/AccountMergeAction.java\nindex 92143bead8..bf58f9da8a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/32/AccountMergeAction.java\n@@ -148,8 +148,8 @@ public class AccountMergeAction implements Serializable {\n     public void mergeAccounts() {\n         registerServiceImpl.mergeAccounts(currentUser.getAccount(),\n                 getObsoleteAccount());\n-        setObsoleteAccount(null); // reset the obsolete account\n-        facesMessages.addGlobal(\"Your accounts have been merged.\");\n+        setObsoleteAccount(null);// reset the obsolete account facesMessages.\n+        addGlobal(\"Your accounts have been merged.\");\n     }\n \n     public String cancel() {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "151",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_three_grams/32/AccountMergeAction.java\nindex 92143bead8..d3b5f48048 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/32/AccountMergeAction.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_three_grams/32/AccountMergeAction.java\n@@ -148,7 +148,7 @@ public class AccountMergeAction implements Serializable {\n     public void mergeAccounts() {\n         registerServiceImpl.mergeAccounts(currentUser.getAccount(),\n                 getObsoleteAccount());\n-        setObsoleteAccount(null); // reset the obsolete account\n+                setObsoleteAccount(null); // reset the obsolete account\n         facesMessages.addGlobal(\"Your accounts have been merged.\");\n     }\n \n",
+            "diff_size": 1
+        }
+    ]
+}

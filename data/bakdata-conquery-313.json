@@ -1,0 +1,267 @@
+{
+    "error_id": "313",
+    "information": {
+        "errors": [
+            {
+                "line": "33",
+                "column": "9",
+                "severity": "warning",
+                "message": "'}' at column 3 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "\t\t\tShardResult result = context.getQueryExecutor().execute(new QueryPlanContextImpl(context), query);\n\t\t\tresult.getFuture().addListener(()->result.send(context), MoreExecutors.directExecutor());\n\t\t} catch(Exception e) {\n\t\t\tShardResult result = new ShardResult();\n\t\t\tresult.setFinishTime(LocalDateTime.now());\n\t\t\tresult.setQueryId(query.getId());",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "33",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 3 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/313/ExecuteQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/313/ExecuteQuery.java\nindex 03941efd22..5b3ba517fa 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/313/ExecuteQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/313/ExecuteQuery.java\n@@ -19,23 +19,27 @@ import lombok.NoArgsConstructor;\n import lombok.Setter;\n import lombok.ToString;\n \n-@CPSType(id=\"EXECUTE_QUERY\", base=NamespacedMessage.class)\n-@AllArgsConstructor @NoArgsConstructor @Getter @Setter @ToString(callSuper=true)\n+@CPSType(id = \"EXECUTE_QUERY\", base = NamespacedMessage.class)\n+@AllArgsConstructor\n+@NoArgsConstructor\n+@Getter\n+@Setter\n+@ToString(callSuper = true)\n public class ExecuteQuery extends WorkerMessage {\n \n-\tprivate ManagedQuery query;\n+    private ManagedQuery query;\n \n-\t@Override\n-\tpublic void react(Worker context) throws Exception {\n-\t\ttry {\n-\t\t\tShardResult result = context.getQueryExecutor().execute(new QueryPlanContextImpl(context), query);\n-\t\t\tresult.getFuture().addListener(()->result.send(context), MoreExecutors.directExecutor());\n-\t\t} catch(Exception e) {\n-\t\t\tShardResult result = new ShardResult();\n-\t\t\tresult.setFinishTime(LocalDateTime.now());\n-\t\t\tresult.setQueryId(query.getId());\n-\t\t\tresult.setResults(Collections.singletonList(EntityResult.failed(-1, e)));\n-\t\t\tcontext.send(new CollectQueryResult(result));\n-\t\t}\n-\t}\n+    @Override\n+    public void react(Worker context) throws Exception {\n+        try {\n+            ShardResult result = context.getQueryExecutor().execute(new QueryPlanContextImpl(context), query);\n+            result.getFuture().addListener(() -> result.send(context), MoreExecutors.directExecutor());\n+        } catch (Exception e) {\n+            ShardResult result = new ShardResult();\n+            result.setFinishTime(LocalDateTime.now());\n+            result.setQueryId(query.getId());\n+            result.setResults(Collections.singletonList(EntityResult.failed(-1, e)));\n+            context.send(new CollectQueryResult(result));\n+        }\n+    }\n }\n",
+            "diff_size": 20
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "warning",
+                    "message": "'catch' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/313/ExecuteQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/313/ExecuteQuery.java\nindex 03941efd22..98795c27c1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/313/ExecuteQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/313/ExecuteQuery.java\n@@ -30,7 +30,8 @@ public class ExecuteQuery extends WorkerMessage {\n \t\ttry {\n \t\t\tShardResult result = context.getQueryExecutor().execute(new QueryPlanContextImpl(context), query);\n \t\t\tresult.getFuture().addListener(()->result.send(context), MoreExecutors.directExecutor());\n-\t\t} catch(Exception e) {\n+\t\t}\n+catch(Exception e) {\n \t\t\tShardResult result = new ShardResult();\n \t\t\tresult.setFinishTime(LocalDateTime.now());\n \t\t\tresult.setQueryId(query.getId());\n@@ -38,4 +39,4 @@ public class ExecuteQuery extends WorkerMessage {\n \t\t\tcontext.send(new CollectQueryResult(result));\n \t\t}\n \t}\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/313/ExecuteQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/313/ExecuteQuery.java\nindex 03941efd22..7abb50e291 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/313/ExecuteQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/313/ExecuteQuery.java\n@@ -2,7 +2,6 @@ package com.bakdata.conquery.models.messages.namespaces.specific;\n \n import java.time.LocalDateTime;\n import java.util.Collections;\n-\n import com.bakdata.conquery.io.cps.CPSType;\n import com.bakdata.conquery.models.messages.namespaces.NamespacedMessage;\n import com.bakdata.conquery.models.messages.namespaces.WorkerMessage;\n@@ -12,30 +11,33 @@ import com.bakdata.conquery.models.query.results.EntityResult;\n import com.bakdata.conquery.models.query.results.ShardResult;\n import com.bakdata.conquery.models.worker.Worker;\n import com.google.common.util.concurrent.MoreExecutors;\n-\n import lombok.AllArgsConstructor;\n import lombok.Getter;\n import lombok.NoArgsConstructor;\n import lombok.Setter;\n import lombok.ToString;\n \n-@CPSType(id=\"EXECUTE_QUERY\", base=NamespacedMessage.class)\n-@AllArgsConstructor @NoArgsConstructor @Getter @Setter @ToString(callSuper=true)\n+@CPSType(id= \"EXECUTE_QUERY\", base= NamespacedMessage.class)\n+@AllArgsConstructor\n+@NoArgsConstructor\n+@Getter\n+@Setter\n+@ToString(callSuper=true)\n public class ExecuteQuery extends WorkerMessage {\n \n-\tprivate ManagedQuery query;\n-\n-\t@Override\n-\tpublic void react(Worker context) throws Exception {\n-\t\ttry {\n-\t\t\tShardResult result = context.getQueryExecutor().execute(new QueryPlanContextImpl(context), query);\n-\t\t\tresult.getFuture().addListener(()->result.send(context), MoreExecutors.directExecutor());\n-\t\t} catch(Exception e) {\n-\t\t\tShardResult result = new ShardResult();\n-\t\t\tresult.setFinishTime(LocalDateTime.now());\n-\t\t\tresult.setQueryId(query.getId());\n-\t\t\tresult.setResults(Collections.singletonList(EntityResult.failed(-1, e)));\n-\t\t\tcontext.send(new CollectQueryResult(result));\n-\t\t}\n-\t}\n-}\n+    private ManagedQuery query;\n+    @Override\n+    public void react(Worker context) throws Exception {\n+        try {\n+            ShardResult result = context.getQueryExecutor().execute(new QueryPlanContextImpl(context), query);\n+            result.getFuture().addListener(()->result.send(context), MoreExecutors.directExecutor());\n+        }\n+        catch (Exception e) {\n+            ShardResult result = new ShardResult();\n+            result.setFinishTime(LocalDateTime.now());\n+            result.setQueryId(query.getId());\n+            result.setResults(Collections.singletonList(EntityResult.failed(-1, e)));\n+            context.send(new CollectQueryResult(result));\n+        }\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 24
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "33",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 3 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "33",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 3 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

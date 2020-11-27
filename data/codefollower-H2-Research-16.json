@@ -1,0 +1,78 @@
+{
+    "error_id": "16",
+    "information": {
+        "errors": [
+            {
+                "line": "189",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "     * @return the list of fully qualified file names\n     */\n    public static List<String> newDirectoryStream(String path) { //\u6587\u4ef6\u548c\u76ee\u5f55\u540d\u90fd\u4f1a\u5217\u51fa\u6765\n        List<FilePath> list = FilePath.get(path).newDirectoryStream();\n        int len = list.size();\n        List<String> result = new ArrayList<>(len);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "189",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/16/FileUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/16/FileUtils.java\nindex f8de2eb7c1..98777c46dd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/16/FileUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/16/FileUtils.java\n@@ -186,7 +186,7 @@ public class FileUtils {\n      * @param path the directory\n      * @return the list of fully qualified file names\n      */\n-    public static List<String> newDirectoryStream(String path) { //\u6587\u4ef6\u548c\u76ee\u5f55\u540d\u90fd\u4f1a\u5217\u51fa\u6765\n+            public static List<String> newDirectoryStream(String path) { //\u6587\u4ef6\u548c\u76ee\u5f55\u540d\u90fd\u4f1a\u5217\u51fa\u6765\n         List<FilePath> list = FilePath.get(path).newDirectoryStream();\n         int len = list.size();\n         List<String> result = new ArrayList<>(len);\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "190",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/16/FileUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/16/FileUtils.java\nindex f8de2eb7c1..8156c6472d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/16/FileUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/16/FileUtils.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (https://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.store.fs;\n \n import java.io.EOFException;\n@@ -37,21 +38,21 @@ public class FileUtils {\n      * {@link StandardOpenOption#CREATE}.\n      */\n     public static final Set<? extends OpenOption> RW = Collections\n-            .unmodifiableSet(EnumSet.of(StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.CREATE));\n+        .unmodifiableSet(EnumSet.of(StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.CREATE));\n \n     /**\n      * {@link StandardOpenOption#READ}, {@link StandardOpenOption#WRITE},\n      * {@link StandardOpenOption#CREATE}, and {@link StandardOpenOption#SYNC}.\n      */\n     public static final Set<? extends OpenOption> RWS = Collections.unmodifiableSet(EnumSet.of(StandardOpenOption.READ,\n-            StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.SYNC));\n+        StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.SYNC));\n \n     /**\n      * {@link StandardOpenOption#READ}, {@link StandardOpenOption#WRITE},\n      * {@link StandardOpenOption#CREATE}, and {@link StandardOpenOption#DSYNC}.\n      */\n     public static final Set<? extends OpenOption> RWD = Collections.unmodifiableSet(EnumSet.of(StandardOpenOption.READ,\n-            StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.DSYNC));\n+        StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.DSYNC));\n \n     /**\n      * No file attributes.\n@@ -137,11 +138,11 @@ public class FileUtils {\n      */\n     public static boolean isAbsolute(String fileName) {\n         return FilePath.get(fileName).isAbsolute()\n-                // Allows Windows to recognize \"/path\" as absolute.\n-                // Makes the same configuration work on all platforms.\n-                || fileName.startsWith(File.pathSeparator)\n-                // Just in case of non-normalized path on Windows\n-                || fileName.startsWith(\"/\");\n+            // Allows Windows to recognize \"/path\" as absolute.\n+            // Makes the same configuration work on all platforms.\n+            || fileName.startsWith(File.pathSeparator)\n+            // Just in case of non-normalized path on Windows\n+            || fileName.startsWith(\"/\");\n     }\n \n     /**\n@@ -240,11 +241,11 @@ public class FileUtils {\n      * <code>java.nio.channels.FileChannel.open</code>.\n      *\n      * @param fileName the file name\n-     * @param mode the access mode. Supported are r, rw, rws, rwd\n+     * @param mode     the access mode. Supported are r, rw, rws, rwd\n      * @return the file object\n      */\n     public static FileChannel open(String fileName, String mode)\n-            throws IOException {\n+        throws IOException {\n         return FilePath.get(fileName).open(mode);\n     }\n \n@@ -257,7 +258,7 @@ public class FileUtils {\n      * @return the input stream\n      */\n     public static InputStream newInputStream(String fileName)\n-            throws IOException {\n+        throws IOException {\n         return FilePath.get(fileName).newInputStream();\n     }\n \n@@ -267,12 +268,12 @@ public class FileUtils {\n      * <code>java.nio.file.Path.newOutputStream</code>.\n      *\n      * @param fileName the file name\n-     * @param append if true, the file will grow, if false, the file will be\n-     *            truncated first\n+     * @param append   if true, the file will grow, if false, the file will be\n+     *                 truncated first\n      * @return the output stream\n      */\n     public static OutputStream newOutputStream(String fileName, boolean append)\n-            throws IOException {\n+        throws IOException {\n         return FilePath.get(fileName).newOutputStream(append);\n     }\n \n@@ -316,7 +317,7 @@ public class FileUtils {\n     /**\n      * Delete a directory or file and all subdirectories and files.\n      *\n-     * @param path the path\n+     * @param path    the path\n      * @param tryOnly whether errors should  be ignored\n      */\n     public static void deleteRecursive(String path, boolean tryOnly) {\n@@ -372,14 +373,14 @@ public class FileUtils {\n     /**\n      * Create a new temporary file.\n      *\n-     * @param prefix the prefix of the file name (including directory name if\n-     *            required)\n-     * @param suffix the suffix\n+     * @param prefix    the prefix of the file name (including directory name if\n+     *                  required)\n+     * @param suffix    the suffix\n      * @param inTempDir if the file should be stored in the temporary directory\n      * @return the name of the created file\n      */\n     public static String createTempFile(String prefix, String suffix,\n-            boolean inTempDir) throws IOException {\n+                                        boolean inTempDir) throws IOException {\n         return FilePath.get(prefix).createTempFile(suffix, inTempDir).toString();\n     }\n \n@@ -388,10 +389,10 @@ public class FileUtils {\n      * or throw an EOFException if not successful.\n      *\n      * @param channel the file channel\n-     * @param dst the byte buffer\n+     * @param dst     the byte buffer\n      */\n     public static void readFully(FileChannel channel, ByteBuffer dst)\n-            throws IOException {\n+        throws IOException {\n         do {\n             int r = channel.read(dst);\n             if (r < 0) {\n@@ -404,10 +405,10 @@ public class FileUtils {\n      * Fully write to the file. This will write all remaining bytes.\n      *\n      * @param channel the file channel\n-     * @param src the byte buffer\n+     * @param src     the byte buffer\n      */\n     public static void writeFully(FileChannel channel, ByteBuffer src)\n-            throws IOException {\n+        throws IOException {\n         do {\n             channel.write(src);\n         } while (src.remaining() > 0);\n@@ -416,20 +417,20 @@ public class FileUtils {\n     public static Set<? extends OpenOption> modeToOptions(String mode) {\n         Set<? extends OpenOption> options;\n         switch (mode) {\n-        case \"r\":\n-            options = R;\n-            break;\n-        case \"rw\":\n-            options = RW;\n-            break;\n-        case \"rws\":\n-            options = RWS;\n-            break;\n-        case \"rwd\":\n-            options = RWD;\n-            break;\n-        default:\n-            throw new IllegalArgumentException(mode);\n+            case \"r\":\n+                options = R;\n+                break;\n+            case \"rw\":\n+                options = RW;\n+                break;\n+            case \"rws\":\n+                options = RWS;\n+                break;\n+            case \"rwd\":\n+                options = RWD;\n+                break;\n+            default:\n+                throw new IllegalArgumentException(mode);\n         }\n         return options;\n     }\n",
+            "diff_size": 38
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "189",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/16/FileUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/16/FileUtils.java\nindex f8de2eb7c1..98777c46dd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/16/FileUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/16/FileUtils.java\n@@ -186,7 +186,7 @@ public class FileUtils {\n      * @param path the directory\n      * @return the list of fully qualified file names\n      */\n-    public static List<String> newDirectoryStream(String path) { //\u6587\u4ef6\u548c\u76ee\u5f55\u540d\u90fd\u4f1a\u5217\u51fa\u6765\n+            public static List<String> newDirectoryStream(String path) { //\u6587\u4ef6\u548c\u76ee\u5f55\u540d\u90fd\u4f1a\u5217\u51fa\u6765\n         List<FilePath> list = FilePath.get(path).newDirectoryStream();\n         int len = list.size();\n         List<String> result = new ArrayList<>(len);\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "188",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/16/FileUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/16/FileUtils.java\nindex f8de2eb7c1..e924de2b7d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/16/FileUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/16/FileUtils.java\n@@ -185,8 +185,7 @@ public class FileUtils {\n      *\n      * @param path the directory\n      * @return the list of fully qualified file names\n-     */\n-    public static List<String> newDirectoryStream(String path) { //\u6587\u4ef6\u548c\u76ee\u5f55\u540d\u90fd\u4f1a\u5217\u51fa\u6765\n+     */public static List<String> newDirectoryStream(String path) { //\u6587\u4ef6\u548c\u76ee\u5f55\u540d\u90fd\u4f1a\u5217\u51fa\u6765\n         List<FilePath> list = FilePath.get(path).newDirectoryStream();\n         int len = list.size();\n         List<String> result = new ArrayList<>(len);\n",
+            "diff_size": 2
+        }
+    ]
+}

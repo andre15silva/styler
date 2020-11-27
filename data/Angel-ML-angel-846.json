@@ -1,0 +1,91 @@
+{
+    "error_id": "846",
+    "information": {
+        "errors": [
+            {
+                "line": "20",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 101).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "   * @param rowType  row type\n   */\n  public CompSparseIntRowUpdateSplit(SparseIntVector split, int rowIndex, MLProtos.RowType rowType) {\n    super(rowIndex, rowType, -1, -1);\n    this.split = split;\n  }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/846/CompSparseIntRowUpdateSplit.java\nindex 6e142314fb..de90286087 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/846/CompSparseIntRowUpdateSplit.java\n@@ -17,29 +17,29 @@ public class CompSparseIntRowUpdateSplit extends RowUpdateSplit{\n    * @param rowIndex row index\n    * @param rowType  row type\n    */\n-  public CompSparseIntRowUpdateSplit(SparseIntVector split, int rowIndex, MLProtos.RowType rowType) {\n-    super(rowIndex, rowType, -1, -1);\n-    this.split = split;\n-  }\n+  public CompSparseIntRowUpdateSplit(SparseIntVector split, int rowIndex, MLProtos .RowType rowType\n+    ){super(rowIndex, rowType, -1, -1);\n+  this.split = split;\n+}\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    buf.writeInt(split.size());\n-    LOG.debug(\"double size = \" + split.size());\n+@Override\n+public void serialize(ByteBuf buf) {\n+  super.serialize(buf);\n+  buf.writeInt(split.size());\n+  LOG.debug(\"double size = \" + split.size());\n \n-    ObjectIterator<Int2IntMap.Entry>\n-      iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n-    Int2IntMap.Entry entry = null;\n-    while(iter.hasNext()) {\n-      entry = iter.next();\n-      buf.writeInt(entry.getIntKey());\n-      buf.writeInt(entry.getIntValue());\n-    }\n+  ObjectIterator<Int2IntMap.Entry>\n+    iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n+  Int2IntMap.Entry entry = null;\n+  while(iter.hasNext()) {\n+    entry = iter.next();\n+    buf.writeInt(entry.getIntKey());\n+    buf.writeInt(entry.getIntValue());\n   }\n+}\n \n-  @Override\n-  public int bufferLen() {\n-    return super.bufferLen() + split.size() * 8;\n-  }\n+@Override\n+public int bufferLen() {\n+  return super.bufferLen() + split.size() * 8;\n+}\n }\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/846/CompSparseIntRowUpdateSplit.java\nindex 6e142314fb..8598186863 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/846/CompSparseIntRowUpdateSplit.java\n@@ -9,37 +9,39 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n /**\n  * Row split of component sparse int row update.\n  */\n-public class CompSparseIntRowUpdateSplit extends RowUpdateSplit{\n-  private SparseIntVector split;\n-  /**\n-   * Create a new CompSparseIntRowUpdateSplit.\n-   *\n-   * @param rowIndex row index\n-   * @param rowType  row type\n-   */\n-  public CompSparseIntRowUpdateSplit(SparseIntVector split, int rowIndex, MLProtos.RowType rowType) {\n-    super(rowIndex, rowType, -1, -1);\n-    this.split = split;\n-  }\n+public class CompSparseIntRowUpdateSplit extends RowUpdateSplit {\n+    private SparseIntVector split;\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    buf.writeInt(split.size());\n-    LOG.debug(\"double size = \" + split.size());\n+    /**\n+     * Create a new CompSparseIntRowUpdateSplit.\n+     *\n+     * @param rowIndex row index\n+     * @param rowType  row type\n+     */\n+    public CompSparseIntRowUpdateSplit(SparseIntVector split, int rowIndex,\n+                                       MLProtos.RowType rowType) {\n+        super(rowIndex, rowType, -1, -1);\n+        this.split = split;\n+    }\n+\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        super.serialize(buf);\n+        buf.writeInt(split.size());\n+        LOG.debug(\"double size = \" + split.size());\n \n-    ObjectIterator<Int2IntMap.Entry>\n-      iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n-    Int2IntMap.Entry entry = null;\n-    while(iter.hasNext()) {\n-      entry = iter.next();\n-      buf.writeInt(entry.getIntKey());\n-      buf.writeInt(entry.getIntValue());\n+        ObjectIterator<Int2IntMap.Entry>\n+                iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n+        Int2IntMap.Entry entry = null;\n+        while (iter.hasNext()) {\n+            entry = iter.next();\n+            buf.writeInt(entry.getIntKey());\n+            buf.writeInt(entry.getIntValue());\n+        }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n-    return super.bufferLen() + split.size() * 8;\n-  }\n+    @Override\n+    public int bufferLen() {\n+        return super.bufferLen() + split.size() * 8;\n+    }\n }\n",
+            "diff_size": 42
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "20",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/846/CompSparseIntRowUpdateSplit.java\nindex 6e142314fb..6ef0bc68b1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/846/CompSparseIntRowUpdateSplit.java\n@@ -9,7 +9,7 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n /**\n  * Row split of component sparse int row update.\n  */\n-public class CompSparseIntRowUpdateSplit extends RowUpdateSplit{\n+public class CompSparseIntRowUpdateSplit extends RowUpdateSplit {\n   private SparseIntVector split;\n   /**\n    * Create a new CompSparseIntRowUpdateSplit.\n@@ -28,10 +28,9 @@ public class CompSparseIntRowUpdateSplit extends RowUpdateSplit{\n     buf.writeInt(split.size());\n     LOG.debug(\"double size = \" + split.size());\n \n-    ObjectIterator<Int2IntMap.Entry>\n-      iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n+    ObjectIterator<Int2IntMap.Entry> iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n     Int2IntMap.Entry entry = null;\n-    while(iter.hasNext()) {\n+    while (iter.hasNext()) {\n       entry = iter.next();\n       buf.writeInt(entry.getIntKey());\n       buf.writeInt(entry.getIntValue());\n@@ -42,4 +41,4 @@ public class CompSparseIntRowUpdateSplit extends RowUpdateSplit{\n   public int bufferLen() {\n     return super.bufferLen() + split.size() * 8;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "15",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 22.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "22",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/846/CompSparseIntRowUpdateSplit.java\nindex 6e142314fb..98b5f80aee 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/846/CompSparseIntRowUpdateSplit.java\n@@ -9,37 +9,38 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n /**\n  * Row split of component sparse int row update.\n  */\n-public class CompSparseIntRowUpdateSplit extends RowUpdateSplit{\n-  private SparseIntVector split;\n+\n+public class CompSparseIntRowUpdateSplit extends RowUpdateSplit {\n+    private SparseIntVector split;\n   /**\n    * Create a new CompSparseIntRowUpdateSplit.\n    *\n    * @param rowIndex row index\n    * @param rowType  row type\n    */\n-  public CompSparseIntRowUpdateSplit(SparseIntVector split, int rowIndex, MLProtos.RowType rowType) {\n+\n+    public CompSparseIntRowUpdateSplit(SparseIntVector split, int rowIndex, MLProtos.RowType rowType) {\n     super(rowIndex, rowType, -1, -1);\n     this.split = split;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     super.serialize(buf);\n     buf.writeInt(split.size());\n     LOG.debug(\"double size = \" + split.size());\n-\n-    ObjectIterator<Int2IntMap.Entry>\n-      iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n+    ObjectIterator<Int2IntMap.Entry> iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n     Int2IntMap.Entry entry = null;\n-    while(iter.hasNext()) {\n-      entry = iter.next();\n-      buf.writeInt(entry.getIntKey());\n-      buf.writeInt(entry.getIntValue());\n+    while (iter.hasNext()) {\n+        entry = iter.next();\n+        buf.writeInt(entry.getIntKey());\n+        buf.writeInt(entry.getIntValue());\n+    }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     return super.bufferLen() + split.size() * 8;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/846/CompSparseIntRowUpdateSplit.java\nindex 6e142314fb..de90286087 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/846/CompSparseIntRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/846/CompSparseIntRowUpdateSplit.java\n@@ -17,29 +17,29 @@ public class CompSparseIntRowUpdateSplit extends RowUpdateSplit{\n    * @param rowIndex row index\n    * @param rowType  row type\n    */\n-  public CompSparseIntRowUpdateSplit(SparseIntVector split, int rowIndex, MLProtos.RowType rowType) {\n-    super(rowIndex, rowType, -1, -1);\n-    this.split = split;\n-  }\n+  public CompSparseIntRowUpdateSplit(SparseIntVector split, int rowIndex, MLProtos .RowType rowType\n+    ){super(rowIndex, rowType, -1, -1);\n+  this.split = split;\n+}\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    buf.writeInt(split.size());\n-    LOG.debug(\"double size = \" + split.size());\n+@Override\n+public void serialize(ByteBuf buf) {\n+  super.serialize(buf);\n+  buf.writeInt(split.size());\n+  LOG.debug(\"double size = \" + split.size());\n \n-    ObjectIterator<Int2IntMap.Entry>\n-      iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n-    Int2IntMap.Entry entry = null;\n-    while(iter.hasNext()) {\n-      entry = iter.next();\n-      buf.writeInt(entry.getIntKey());\n-      buf.writeInt(entry.getIntValue());\n-    }\n+  ObjectIterator<Int2IntMap.Entry>\n+    iter = split.getIndexToValueMap().int2IntEntrySet().fastIterator();\n+  Int2IntMap.Entry entry = null;\n+  while(iter.hasNext()) {\n+    entry = iter.next();\n+    buf.writeInt(entry.getIntKey());\n+    buf.writeInt(entry.getIntValue());\n   }\n+}\n \n-  @Override\n-  public int bufferLen() {\n-    return super.bufferLen() + split.size() * 8;\n-  }\n+@Override\n+public int bufferLen() {\n+  return super.bufferLen() + split.size() * 8;\n+}\n }\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "20",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

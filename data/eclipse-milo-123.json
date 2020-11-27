@@ -1,0 +1,85 @@
+{
+    "error_id": "123",
+    "information": {
+        "errors": [
+            {
+                "line": "20",
+                "column": "36",
+                "severity": "error",
+                "message": "'}' at column 36 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "public class DocumentBuilderUtil {\n\n    private DocumentBuilderUtil() {}\n\n    /**\n     * A shared {@link DocumentBuilderFactory} that has been configured securely to prevent XXE attacks.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "20",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/123/DocumentBuilderUtil.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/123/DocumentBuilderUtil.java\nindex 652ea6ad91..dca3aba1f2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/123/DocumentBuilderUtil.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/123/DocumentBuilderUtil.java\n@@ -17,7 +17,8 @@ import org.slf4j.LoggerFactory;\n \n public class DocumentBuilderUtil {\n \n-    private DocumentBuilderUtil() {}\n+    private DocumentBuilderUtil() {\n+    }\n \n     /**\n      * A shared {@link DocumentBuilderFactory} that has been configured securely to prevent XXE attacks.\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "20",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/123/DocumentBuilderUtil.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/123/DocumentBuilderUtil.java\nindex 652ea6ad91..c6b525a18e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/123/DocumentBuilderUtil.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/123/DocumentBuilderUtil.java\n@@ -49,4 +49,4 @@ public class DocumentBuilderUtil {\n         }\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/123/DocumentBuilderUtil.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/123/DocumentBuilderUtil.java\nindex 652ea6ad91..8fba07474e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/123/DocumentBuilderUtil.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/123/DocumentBuilderUtil.java\n@@ -12,16 +12,17 @@ package org.eclipse.milo.opcua.stack.core.util;\n \n import javax.xml.XMLConstants;\n import javax.xml.parsers.DocumentBuilderFactory;\n-\n import org.slf4j.LoggerFactory;\n \n public class DocumentBuilderUtil {\n \n-    private DocumentBuilderUtil() {}\n+    private DocumentBuilderUtil() {\n+    }\n \n     /**\n      * A shared {@link DocumentBuilderFactory} that has been configured securely to prevent XXE attacks.\n      */\n+\n     public static final DocumentBuilderFactory SHARED_FACTORY = DocumentBuilderFactory.newInstance();\n \n     static {\n@@ -32,7 +33,6 @@ public class DocumentBuilderUtil {\n         // https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet\n         SHARED_FACTORY.setExpandEntityReferences(false);\n         SHARED_FACTORY.setXIncludeAware(false);\n-\n         trySetFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);\n         trySetFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true);\n         trySetFeature(\"http://xml.org/sax/features/external-general-entities\", false);\n@@ -40,13 +40,13 @@ public class DocumentBuilderUtil {\n         trySetFeature(\"http://apache.org/xml/features/nonvalidating/load-external-dtd\", false);\n     }\n \n-    private static void trySetFeature(String feature, boolean value) {\n+    private static void trySetFeature(String feature,\n+                                      boolean value) {\n         try {\n             SHARED_FACTORY.setFeature(feature, value);\n         } catch (Exception e) {\n-            LoggerFactory.getLogger(DocumentBuilderUtil.class)\n-                .debug(\"Error configuring feature: \" + feature, e);\n+            LoggerFactory.getLogger(DocumentBuilderUtil.class).debug(\"Error configuring feature: \" + feature, e);\n         }\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "20",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "20",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

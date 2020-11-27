@@ -1,0 +1,83 @@
+{
+    "error_id": "63",
+    "information": {
+        "errors": [
+            {
+                "line": "18",
+                "severity": "error",
+                "message": "'package' has more than 1 empty lines before.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "\n\npackage org.activiti.engine.impl.variable;\n\nimport org.activiti.engine.ActivitiException;\nimport org.activiti.engine.impl.context.Context;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/63/JPAEntityVariableType.java\nindex 37ba9359d2..314abf767c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/63/JPAEntityVariableType.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.engine.impl.variable;\n \n import org.activiti.engine.ActivitiException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "18",
+                    "severity": "error",
+                    "message": "'package' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/63/JPAEntityVariableType.java\nindex 37ba9359d2..1f1e6f5d9b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/63/JPAEntityVariableType.java\n@@ -22,72 +22,70 @@ import org.activiti.engine.impl.context.Context;\n \n /**\n  * Variable type capable of storing reference to JPA-entities. Only JPA-Entities which are configured by annotations are supported. Use of compound primary keys is not supported.\n- *\n-\n  */\n public class JPAEntityVariableType implements VariableType, CacheableVariable {\n \n-  public static final String TYPE_NAME = \"jpa-entity\";\n+    public static final String TYPE_NAME = \"jpa-entity\";\n \n-  private JPAEntityMappings mappings;\n+    private JPAEntityMappings mappings;\n \n-  private boolean forceCacheable;\n+    private boolean forceCacheable;\n \n-  public JPAEntityVariableType() {\n-    mappings = new JPAEntityMappings();\n-  }\n+    public JPAEntityVariableType() {\n+        mappings = new JPAEntityMappings();\n+    }\n \n-  public String getTypeName() {\n-    return TYPE_NAME;\n-  }\n+    public String getTypeName() {\n+        return TYPE_NAME;\n+    }\n \n-  public boolean isCachable() {\n-    return forceCacheable;\n-  }\n+    public boolean isCachable() {\n+        return forceCacheable;\n+    }\n \n-  public boolean isAbleToStore(Object value) {\n-    if (value == null) {\n-      return true;\n+    public boolean isAbleToStore(Object value) {\n+        if (value == null) {\n+            return true;\n+        }\n+        return mappings.isJPAEntity(value);\n     }\n-    return mappings.isJPAEntity(value);\n-  }\n-\n-  public void setValue(Object value, ValueFields valueFields) {\n-    EntityManagerSession entityManagerSession = Context.getCommandContext().getSession(EntityManagerSession.class);\n-    if (entityManagerSession == null) {\n-      throw new ActivitiException(\"Cannot set JPA variable: \" + EntityManagerSession.class + \" not configured\");\n-    } else {\n-      // Before we set the value we must flush all pending changes from\n-      // the entitymanager\n-      // If we don't do this, in some cases the primary key will not yet\n-      // be set in the object\n-      // which will cause exceptions down the road.\n-      entityManagerSession.flush();\n+\n+    public void setValue(Object value, ValueFields valueFields) {\n+        EntityManagerSession entityManagerSession = Context.getCommandContext().getSession(EntityManagerSession.class);\n+        if (entityManagerSession == null) {\n+            throw new ActivitiException(\"Cannot set JPA variable: \" + EntityManagerSession.class + \" not configured\");\n+        } else {\n+            // Before we set the value we must flush all pending changes from\n+            // the entitymanager\n+            // If we don't do this, in some cases the primary key will not yet\n+            // be set in the object\n+            // which will cause exceptions down the road.\n+            entityManagerSession.flush();\n+        }\n+\n+        if (value != null) {\n+            String className = mappings.getJPAClassString(value);\n+            String idString = mappings.getJPAIdString(value);\n+            valueFields.setTextValue(className);\n+            valueFields.setTextValue2(idString);\n+        } else {\n+            valueFields.setTextValue(null);\n+            valueFields.setTextValue2(null);\n+        }\n     }\n \n-    if (value != null) {\n-      String className = mappings.getJPAClassString(value);\n-      String idString = mappings.getJPAIdString(value);\n-      valueFields.setTextValue(className);\n-      valueFields.setTextValue2(idString);\n-    } else {\n-      valueFields.setTextValue(null);\n-      valueFields.setTextValue2(null);\n+    public Object getValue(ValueFields valueFields) {\n+        if (valueFields.getTextValue() != null && valueFields.getTextValue2() != null) {\n+            return mappings.getJPAEntity(valueFields.getTextValue(), valueFields.getTextValue2());\n+        }\n+        return null;\n     }\n-  }\n \n-  public Object getValue(ValueFields valueFields) {\n-    if (valueFields.getTextValue() != null && valueFields.getTextValue2() != null) {\n-      return mappings.getJPAEntity(valueFields.getTextValue(), valueFields.getTextValue2());\n+    /**\n+     * Force the value to be cacheable.\n+     */\n+    public void setForceCacheable(boolean forceCachedValue) {\n+        this.forceCacheable = forceCachedValue;\n     }\n-    return null;\n-  }\n-\n-  /**\n-   * Force the value to be cacheable.\n-   */\n-  public void setForceCacheable(boolean forceCachedValue) {\n-    this.forceCacheable = forceCachedValue;\n-  }\n \n }\n",
+            "diff_size": 65
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "18",
+                    "severity": "error",
+                    "message": "'package' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 67.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 93.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/63/JPAEntityVariableType.java\nindex 37ba9359d2..d4f3afc5d6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/63/JPAEntityVariableType.java\n@@ -25,69 +25,73 @@ import org.activiti.engine.impl.context.Context;\n  *\n \n  */\n+\n+\n public class JPAEntityVariableType implements VariableType, CacheableVariable {\n \n-  public static final String TYPE_NAME = \"jpa-entity\";\n+    public static final String TYPE_NAME = \"jpa-entity\";\n \n-  private JPAEntityMappings mappings;\n+    private JPAEntityMappings mappings;\n \n-  private boolean forceCacheable;\n+    private boolean forceCacheable;\n \n-  public JPAEntityVariableType() {\n+    public JPAEntityVariableType() {\n     mappings = new JPAEntityMappings();\n-  }\n+    }\n \n-  public String getTypeName() {\n+    public String getTypeName() {\n     return TYPE_NAME;\n-  }\n+    }\n \n-  public boolean isCachable() {\n+    public boolean isCachable() {\n     return forceCacheable;\n-  }\n+    }\n \n-  public boolean isAbleToStore(Object value) {\n+    public boolean isAbleToStore(Object value) {\n     if (value == null) {\n-      return true;\n+        return true;\n     }\n     return mappings.isJPAEntity(value);\n-  }\n+    }\n \n-  public void setValue(Object value, ValueFields valueFields) {\n+    public void setValue(Object value, ValueFields valueFields) {\n     EntityManagerSession entityManagerSession = Context.getCommandContext().getSession(EntityManagerSession.class);\n     if (entityManagerSession == null) {\n-      throw new ActivitiException(\"Cannot set JPA variable: \" + EntityManagerSession.class + \" not configured\");\n+        throw new ActivitiException(\"Cannot set JPA variable: \" + EntityManagerSession.class + \" not configured\");\n     } else {\n       // Before we set the value we must flush all pending changes from\n       // the entitymanager\n       // If we don't do this, in some cases the primary key will not yet\n       // be set in the object\n       // which will cause exceptions down the road.\n-      entityManagerSession.flush();\n+        entityManagerSession.flush();\n     }\n \n     if (value != null) {\n-      String className = mappings.getJPAClassString(value);\n-      String idString = mappings.getJPAIdString(value);\n-      valueFields.setTextValue(className);\n-      valueFields.setTextValue2(idString);\n+        String className = mappings.getJPAClassString(value);\n+        String idString = mappings.getJPAIdString(value);\n+        valueFields.setTextValue(className);\n+        valueFields.setTextValue2(idString);\n     } else {\n-      valueFields.setTextValue(null);\n-      valueFields.setTextValue2(null);\n+        valueFields.setTextValue(null);\n+        valueFields.setTextValue2(null);\n+    }\n     }\n-  }\n \n-  public Object getValue(ValueFields valueFields) {\n+    public Object getValue(ValueFields valueFields) {\n     if (valueFields.getTextValue() != null && valueFields.getTextValue2() != null) {\n-      return mappings.getJPAEntity(valueFields.getTextValue(), valueFields.getTextValue2());\n+        return mappings.getJPAEntity(valueFields.getTextValue(),\n+                                     valueFields.getTextValue2());\n     }\n     return null;\n-  }\n+    }\n \n   /**\n    * Force the value to be cacheable.\n    */\n-  public void setForceCacheable(boolean forceCachedValue) {\n+\n+    public void setForceCacheable(boolean forceCachedValue) {\n     this.forceCacheable = forceCachedValue;\n-  }\n+    }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/63/JPAEntityVariableType.java\nindex 37ba9359d2..314abf767c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/63/JPAEntityVariableType.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.engine.impl.variable;\n \n import org.activiti.engine.ActivitiException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/63/JPAEntityVariableType.java\nindex 37ba9359d2..314abf767c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/63/JPAEntityVariableType.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/63/JPAEntityVariableType.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.engine.impl.variable;\n \n import org.activiti.engine.ActivitiException;\n",
+            "diff_size": 1
+        }
+    ]
+}

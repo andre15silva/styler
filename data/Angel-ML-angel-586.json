@@ -1,0 +1,100 @@
+{
+    "error_id": "586",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/586/PushPathTailPartitionParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/586/PushPathTailPartitionParam.java\nindex 558fc48830..8a6c791a70 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/586/PushPathTailPartitionParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/586/PushPathTailPartitionParam.java\n@@ -14,6 +14,7 @@\n  * the License.\n  *\n  */\n+\n package com.tencent.angel.graph.client.node2vec.updatefuncs.pushpathtail;\n \n import com.tencent.angel.PartitionKey;\n@@ -22,62 +23,62 @@ import io.netty.buffer.ByteBuf;\n import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;\n \n public class PushPathTailPartitionParam extends PartitionUpdateParamWithIds {\n-  private Long2LongOpenHashMap pathTail;\n+    private Long2LongOpenHashMap pathTail;\n \n-  public PushPathTailPartitionParam(int matrixId, PartitionKey partKey,\n-                                    Long2LongOpenHashMap pathTail,\n-                                    long[] nodeIds, int startIndex, int endIndex) {\n-    super(matrixId, partKey, nodeIds, startIndex, endIndex);\n-    this.pathTail = pathTail;\n-  }\n+    public PushPathTailPartitionParam(int matrixId, PartitionKey partKey,\n+                                      Long2LongOpenHashMap pathTail,\n+                                      long[] nodeIds, int startIndex, int endIndex) {\n+        super(matrixId, partKey, nodeIds, startIndex, endIndex);\n+        this.pathTail = pathTail;\n+    }\n \n-  public PushPathTailPartitionParam() {\n-    super();\n-  }\n+    public PushPathTailPartitionParam() {\n+        super();\n+    }\n \n-  public Long2LongOpenHashMap getPathTail() {\n-    return pathTail;\n-  }\n+    public Long2LongOpenHashMap getPathTail() {\n+        return pathTail;\n+    }\n \n-  public void setPathTail(Long2LongOpenHashMap pathTail) {\n-    this.pathTail = pathTail;\n-  }\n+    public void setPathTail(Long2LongOpenHashMap pathTail) {\n+        this.pathTail = pathTail;\n+    }\n \n-  @Override\n-  protected void clear() {\n-    super.clear();\n-    pathTail = null;\n-  }\n+    @Override\n+    protected void clear() {\n+        super.clear();\n+        pathTail = null;\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    for (int i = startIdx; i < endIdx; i++) {\n-      long key = keyIds[i];\n-      buf.writeLong(key);\n-      buf.writeLong(pathTail.get(key));\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        super.serialize(buf);\n+        for (int i = startIdx; i < endIdx; i++) {\n+            long key = keyIds[i];\n+            buf.writeLong(key);\n+            buf.writeLong(pathTail.get(key));\n+        }\n+        clear();\n     }\n-    clear();\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n-    super.deserialize(buf);\n-    int size = endIdx - startIdx;\n-    pathTail = new Long2LongOpenHashMap(size);\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n+        super.deserialize(buf);\n+        int size = endIdx - startIdx;\n+        pathTail = new Long2LongOpenHashMap(size);\n \n-    for (int i = 0; i < size; i++) {\n-      long key = buf.readLong();\n-      long value = buf.readLong();\n-      pathTail.put(key, value);\n+        for (int i = 0; i < size; i++) {\n+            long key = buf.readLong();\n+            long value = buf.readLong();\n+            pathTail.put(key, value);\n+        }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n-    int len = super.bufferLen();\n-    len += 16 * (endIdx - startIdx);\n-    return len;\n-  }\n+    @Override\n+    public int bufferLen() {\n+        int len = super.bufferLen();\n+        len += 16 * (endIdx - startIdx);\n+        return len;\n+    }\n \n }\n",
+            "diff_size": 50
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/586/PushPathTailPartitionParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/586/PushPathTailPartitionParam.java\nindex 558fc48830..79c0376e95 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/586/PushPathTailPartitionParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/586/PushPathTailPartitionParam.java\n@@ -24,10 +24,9 @@ import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;\n public class PushPathTailPartitionParam extends PartitionUpdateParamWithIds {\n   private Long2LongOpenHashMap pathTail;\n \n-  public PushPathTailPartitionParam(int matrixId, PartitionKey partKey,\n-                                    Long2LongOpenHashMap pathTail,\n+  public PushPathTailPartitionParam(int matrixId, PartitionKey partKey, Long2LongOpenHashMap pathTail,\n                                     long[] nodeIds, int startIndex, int endIndex) {\n-    super(matrixId, partKey, nodeIds, startIndex, endIndex);\n+  super(matrixId, partKey, nodeIds, startIndex, endIndex);\n     this.pathTail = pathTail;\n   }\n \n@@ -80,4 +79,4 @@ public class PushPathTailPartitionParam extends PartitionUpdateParamWithIds {\n     return len;\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/586/PushPathTailPartitionParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/586/PushPathTailPartitionParam.java\nindex 558fc48830..07221ba2a9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/586/PushPathTailPartitionParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/586/PushPathTailPartitionParam.java\n@@ -22,62 +22,63 @@ import io.netty.buffer.ByteBuf;\n import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;\n \n public class PushPathTailPartitionParam extends PartitionUpdateParamWithIds {\n-  private Long2LongOpenHashMap pathTail;\n+    private Long2LongOpenHashMap pathTail;\n \n-  public PushPathTailPartitionParam(int matrixId, PartitionKey partKey,\n-                                    Long2LongOpenHashMap pathTail,\n-                                    long[] nodeIds, int startIndex, int endIndex) {\n+    public PushPathTailPartitionParam(int matrixId,\n+                                      PartitionKey partKey,\n+                                      Long2LongOpenHashMap pathTail,\n+                                      long[] nodeIds,\n+                                      int startIndex, int endIndex) {\n     super(matrixId, partKey, nodeIds, startIndex, endIndex);\n     this.pathTail = pathTail;\n-  }\n+    }\n \n-  public PushPathTailPartitionParam() {\n+    public PushPathTailPartitionParam() {\n     super();\n-  }\n+    }\n \n-  public Long2LongOpenHashMap getPathTail() {\n+    public Long2LongOpenHashMap getPathTail() {\n     return pathTail;\n-  }\n+    }\n \n-  public void setPathTail(Long2LongOpenHashMap pathTail) {\n+    public void setPathTail(Long2LongOpenHashMap pathTail) {\n     this.pathTail = pathTail;\n-  }\n+    }\n \n-  @Override\n-  protected void clear() {\n+    @Override\n+    protected void clear() {\n     super.clear();\n     pathTail = null;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     super.serialize(buf);\n     for (int i = startIdx; i < endIdx; i++) {\n-      long key = keyIds[i];\n-      buf.writeLong(key);\n-      buf.writeLong(pathTail.get(key));\n+        long key = keyIds[i];\n+        buf.writeLong(key);\n+        buf.writeLong(pathTail.get(key));\n     }\n     clear();\n-  }\n+    }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n     super.deserialize(buf);\n+\n     int size = endIdx - startIdx;\n     pathTail = new Long2LongOpenHashMap(size);\n-\n     for (int i = 0; i < size; i++) {\n-      long key = buf.readLong();\n-      long value = buf.readLong();\n-      pathTail.put(key, value);\n+        long key = buf.readLong();\n+        long value = buf.readLong();\n+        pathTail.put(key, value);\n+    }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     int len = super.bufferLen();\n     len += 16 * (endIdx - startIdx);\n     return len;\n-  }\n-\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 36
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

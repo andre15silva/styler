@@ -1,0 +1,118 @@
+{
+    "error_id": "320",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/320/GetHyperLogLogPartResult.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/320/GetHyperLogLogPartResult.java\nindex 11daf10cc7..8ca284b325 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/320/GetHyperLogLogPartResult.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/320/GetHyperLogLogPartResult.java\n@@ -14,6 +14,7 @@\n  * the License.\n  *\n  */\n+\n package com.tencent.angel.graph.psf.hyperanf;\n \n import com.clearspring.analytics.stream.cardinality.HyperLogLogPlus;\n@@ -27,67 +28,67 @@ import java.io.IOException;\n \n public class GetHyperLogLogPartResult extends PartitionGetResult {\n \n-  private Long2ObjectOpenHashMap<HyperLogLogPlus> logs;\n+    private Long2ObjectOpenHashMap<HyperLogLogPlus> logs;\n \n-  public GetHyperLogLogPartResult(Long2ObjectOpenHashMap<HyperLogLogPlus> logs) {\n-    this.logs = logs;\n-  }\n+    public GetHyperLogLogPartResult(Long2ObjectOpenHashMap<HyperLogLogPlus> logs) {\n+        this.logs = logs;\n+    }\n \n-  public GetHyperLogLogPartResult() {\n-    this.logs = new Long2ObjectOpenHashMap<>();\n-  }\n+    public GetHyperLogLogPartResult() {\n+        this.logs = new Long2ObjectOpenHashMap<>();\n+    }\n \n-  public Long2ObjectOpenHashMap<HyperLogLogPlus> getLogs() {\n-    return logs;\n-  }\n+    public Long2ObjectOpenHashMap<HyperLogLogPlus> getLogs() {\n+        return logs;\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf output) {\n-    output.writeInt(logs.size());\n-    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it =\n-      logs.long2ObjectEntrySet().fastIterator();\n-    try {\n-      while (it.hasNext()) {\n-        Long2ObjectMap.Entry<HyperLogLogPlus> entry = it.next();\n-        output.writeLong(entry.getLongKey());\n-        byte[] bytes = entry.getValue().getBytes();\n-        output.writeInt(bytes.length);\n-        output.writeBytes(bytes);\n-      }\n-    } catch (IOException e) {\n-      e.printStackTrace();\n+    @Override\n+    public void serialize(ByteBuf output) {\n+        output.writeInt(logs.size());\n+        ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it =\n+                logs.long2ObjectEntrySet().fastIterator();\n+        try {\n+            while (it.hasNext()) {\n+                Long2ObjectMap.Entry<HyperLogLogPlus> entry = it.next();\n+                output.writeLong(entry.getLongKey());\n+                byte[] bytes = entry.getValue().getBytes();\n+                output.writeInt(bytes.length);\n+                output.writeBytes(bytes);\n+            }\n+        } catch (IOException e) {\n+            e.printStackTrace();\n+        }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf input) {\n-    int size = input.readInt();\n-    logs = new Long2ObjectOpenHashMap<>();\n-    try {\n-      for (int i = 0; i < size; i++) {\n-        long key = input.readLong();\n-        int len = input.readInt();\n-        byte[] bytes = new byte[len];\n-        input.readBytes(bytes);\n-        HyperLogLogPlus plus = HyperLogLogPlus.Builder.build(bytes);\n-        logs.put(key, plus);\n-      }\n-    } catch (IOException e) {\n-      e.printStackTrace();\n+    @Override\n+    public void deserialize(ByteBuf input) {\n+        int size = input.readInt();\n+        logs = new Long2ObjectOpenHashMap<>();\n+        try {\n+            for (int i = 0; i < size; i++) {\n+                long key = input.readLong();\n+                int len = input.readInt();\n+                byte[] bytes = new byte[len];\n+                input.readBytes(bytes);\n+                HyperLogLogPlus plus = HyperLogLogPlus.Builder.build(bytes);\n+                logs.put(key, plus);\n+            }\n+        } catch (IOException e) {\n+            e.printStackTrace();\n+        }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n-    int len = 4;\n-    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it =\n-      logs.long2ObjectEntrySet().fastIterator();\n-    while (it.hasNext()) {\n-      Long2ObjectMap.Entry<HyperLogLogPlus> entry = it.next();\n-      len += 8;\n-      len += 4;\n-      len += entry.getValue().sizeof();\n+    @Override\n+    public int bufferLen() {\n+        int len = 4;\n+        ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it =\n+                logs.long2ObjectEntrySet().fastIterator();\n+        while (it.hasNext()) {\n+            Long2ObjectMap.Entry<HyperLogLogPlus> entry = it.next();\n+            len += 8;\n+            len += 4;\n+            len += entry.getValue().sizeof();\n+        }\n+        return len;\n     }\n-    return len;\n-  }\n }\n",
+            "diff_size": 59
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/320/GetHyperLogLogPartResult.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/320/GetHyperLogLogPartResult.java\nindex 11daf10cc7..7e1c7c309c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/320/GetHyperLogLogPartResult.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/320/GetHyperLogLogPartResult.java\n@@ -44,9 +44,8 @@ public class GetHyperLogLogPartResult extends PartitionGetResult {\n   @Override\n   public void serialize(ByteBuf output) {\n     output.writeInt(logs.size());\n-    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it =\n-      logs.long2ObjectEntrySet().fastIterator();\n-    try {\n+    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it = logs.long2ObjectEntrySet().fastIterator();\n+try {\n       while (it.hasNext()) {\n         Long2ObjectMap.Entry<HyperLogLogPlus> entry = it.next();\n         output.writeLong(entry.getLongKey());\n@@ -80,9 +79,8 @@ public class GetHyperLogLogPartResult extends PartitionGetResult {\n   @Override\n   public int bufferLen() {\n     int len = 4;\n-    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it =\n-      logs.long2ObjectEntrySet().fastIterator();\n-    while (it.hasNext()) {\n+    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it = logs.long2ObjectEntrySet().fastIterator();\n+while (it.hasNext()) {\n       Long2ObjectMap.Entry<HyperLogLogPlus> entry = it.next();\n       len += 8;\n       len += 4;\n@@ -90,4 +88,4 @@ public class GetHyperLogLogPartResult extends PartitionGetResult {\n     }\n     return len;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/320/GetHyperLogLogPartResult.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/320/GetHyperLogLogPartResult.java\nindex 11daf10cc7..b16f56ccfc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/320/GetHyperLogLogPartResult.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/320/GetHyperLogLogPartResult.java\n@@ -22,72 +22,69 @@ import io.netty.buffer.ByteBuf;\n import it.unimi.dsi.fastutil.longs.Long2ObjectMap;\n import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;\n import it.unimi.dsi.fastutil.objects.ObjectIterator;\n-\n import java.io.IOException;\n \n public class GetHyperLogLogPartResult extends PartitionGetResult {\n+    private Long2ObjectOpenHashMap<HyperLogLogPlus> logs;\n \n-  private Long2ObjectOpenHashMap<HyperLogLogPlus> logs;\n-\n-  public GetHyperLogLogPartResult(Long2ObjectOpenHashMap<HyperLogLogPlus> logs) {\n+    public GetHyperLogLogPartResult(Long2ObjectOpenHashMap<HyperLogLogPlus> logs) {\n     this.logs = logs;\n-  }\n+    }\n \n-  public GetHyperLogLogPartResult() {\n+    public GetHyperLogLogPartResult() {\n     this.logs = new Long2ObjectOpenHashMap<>();\n-  }\n+    }\n \n-  public Long2ObjectOpenHashMap<HyperLogLogPlus> getLogs() {\n+    public Long2ObjectOpenHashMap<HyperLogLogPlus> getLogs() {\n     return logs;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf output) {\n+    @Override\n+    public void serialize(ByteBuf output) {\n     output.writeInt(logs.size());\n-    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it =\n-      logs.long2ObjectEntrySet().fastIterator();\n+    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it = logs.long2ObjectEntrySet().fastIterator();\n     try {\n-      while (it.hasNext()) {\n+        while (it.hasNext()) {\n         Long2ObjectMap.Entry<HyperLogLogPlus> entry = it.next();\n         output.writeLong(entry.getLongKey());\n         byte[] bytes = entry.getValue().getBytes();\n         output.writeInt(bytes.length);\n         output.writeBytes(bytes);\n-      }\n+        }\n     } catch (IOException e) {\n       e.printStackTrace();\n     }\n-  }\n+    }\n \n-  @Override\n-  public void deserialize(ByteBuf input) {\n+    @Override\n+    public void deserialize(ByteBuf input) {\n     int size = input.readInt();\n     logs = new Long2ObjectOpenHashMap<>();\n     try {\n-      for (int i = 0; i < size; i++) {\n+        for (int i = 0; i < size; i++) {\n         long key = input.readLong();\n         int len = input.readInt();\n         byte[] bytes = new byte[len];\n         input.readBytes(bytes);\n         HyperLogLogPlus plus = HyperLogLogPlus.Builder.build(bytes);\n         logs.put(key, plus);\n-      }\n+        }\n     } catch (IOException e) {\n       e.printStackTrace();\n     }\n-  }\n+    }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     int len = 4;\n-    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it =\n-      logs.long2ObjectEntrySet().fastIterator();\n+    ObjectIterator<Long2ObjectMap.Entry<HyperLogLogPlus>> it = logs.long2ObjectEntrySet().fastIterator();\n     while (it.hasNext()) {\n-      Long2ObjectMap.Entry<HyperLogLogPlus> entry = it.next();\n-      len += 8;\n-      len += 4;\n-      len += entry.getValue().sizeof();\n+        Long2ObjectMap.Entry<HyperLogLogPlus> entry = it.next();\n+        len += 8;\n+        len += 4;\n+        len += entry.getValue().sizeof();\n     }\n     return len;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

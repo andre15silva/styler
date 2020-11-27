@@ -1,0 +1,85 @@
+{
+    "error_id": "11",
+    "information": {
+        "errors": [
+            {
+                "line": "22",
+                "column": "42",
+                "severity": "error",
+                "message": "'}' at column 42 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "final class ExpandedNodeIdConversions {\n\n    private ExpandedNodeIdConversions() {}\n\n    @Nullable\n    static NodeId expandedNodeIdToNodeId(@Nonnull ExpandedNodeId e) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "42",
+                    "severity": "error",
+                    "message": "'}' at column 42 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/11/ExpandedNodeIdConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/11/ExpandedNodeIdConversions.java\nindex 2ee165421d..2a8433e6b6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/11/ExpandedNodeIdConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/11/ExpandedNodeIdConversions.java\n@@ -19,7 +19,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;\n \n final class ExpandedNodeIdConversions {\n \n-    private ExpandedNodeIdConversions() {}\n+    private ExpandedNodeIdConversions() {\n+    }\n \n     @Nullable\n     static NodeId expandedNodeIdToNodeId(@Nonnull ExpandedNodeId e) {\n@@ -48,8 +49,10 @@ final class ExpandedNodeIdConversions {\n     static Object explicitConversion(@Nonnull ExpandedNodeId eni, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case NodeId:    return expandedNodeIdToNodeId(eni);\n-            default:        return implicitConversion(eni, targetType);\n+            case NodeId:\n+                return expandedNodeIdToNodeId(eni);\n+            default:\n+                return implicitConversion(eni, targetType);\n         }\n         //@formatter:on\n     }\n@@ -58,8 +61,10 @@ final class ExpandedNodeIdConversions {\n     static Object implicitConversion(@Nonnull ExpandedNodeId eni, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:    return expandedNodeIdToString(eni);\n-            default:        return null;\n+            case String:\n+                return expandedNodeIdToString(eni);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "42",
+                    "severity": "error",
+                    "message": "'}' at column 42 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/11/ExpandedNodeIdConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/11/ExpandedNodeIdConversions.java\nindex 2ee165421d..edd2e162fb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/11/ExpandedNodeIdConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/11/ExpandedNodeIdConversions.java\n@@ -49,7 +49,8 @@ final class ExpandedNodeIdConversions {\n         //@formatter:off\n         switch (targetType) {\n             case NodeId:    return expandedNodeIdToNodeId(eni);\n-            default:        return implicitConversion(eni, targetType);\n+            default:\n+    return implicitConversion(eni, targetType);\n         }\n         //@formatter:on\n     }\n@@ -59,9 +60,10 @@ final class ExpandedNodeIdConversions {\n         //@formatter:off\n         switch (targetType) {\n             case String:    return expandedNodeIdToString(eni);\n-            default:        return null;\n+            default:\n+    return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/11/ExpandedNodeIdConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/11/ExpandedNodeIdConversions.java\nindex 2ee165421d..4cde370803 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/11/ExpandedNodeIdConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/11/ExpandedNodeIdConversions.java\n@@ -12,14 +12,14 @@ package org.eclipse.milo.opcua.sdk.server.events.conversions;\n \n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.stack.core.BuiltinDataType;\n import org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId;\n import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;\n \n final class ExpandedNodeIdConversions {\n \n-    private ExpandedNodeIdConversions() {}\n+    private ExpandedNodeIdConversions() {\n+    }\n \n     @Nullable\n     static NodeId expandedNodeIdToNodeId(@Nonnull ExpandedNodeId e) {\n@@ -32,13 +32,12 @@ final class ExpandedNodeIdConversions {\n     }\n \n     @Nullable\n-    static Object convert(@Nonnull Object o, BuiltinDataType targetType, boolean implicit) {\n+    static Object convert(@Nonnull Object o, BuiltinDataType targetType,\n+                          boolean implicit) {\n         if (o instanceof ExpandedNodeId) {\n             ExpandedNodeId eni = (ExpandedNodeId) o;\n \n-            return implicit ?\n-                implicitConversion(eni, targetType) :\n-                explicitConversion(eni, targetType);\n+            return implicit ? implicitConversion(eni, targetType) : explicitConversion(eni, targetType);\n         } else {\n             return null;\n         }\n@@ -48,8 +47,10 @@ final class ExpandedNodeIdConversions {\n     static Object explicitConversion(@Nonnull ExpandedNodeId eni, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case NodeId:    return expandedNodeIdToNodeId(eni);\n-            default:        return implicitConversion(eni, targetType);\n+            case NodeId:\n+                return expandedNodeIdToNodeId(eni);\n+            default:\n+                return implicitConversion(eni, targetType);\n         }\n         //@formatter:on\n     }\n@@ -58,10 +59,12 @@ final class ExpandedNodeIdConversions {\n     static Object implicitConversion(@Nonnull ExpandedNodeId eni, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:    return expandedNodeIdToString(eni);\n-            default:        return null;\n+            case String:\n+                return expandedNodeIdToString(eni);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "42",
+                    "severity": "error",
+                    "message": "'}' at column 42 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "22",
+                    "column": "42",
+                    "severity": "error",
+                    "message": "'}' at column 42 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

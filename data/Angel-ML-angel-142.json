@@ -1,0 +1,130 @@
+{
+    "error_id": "142",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/142/QuantifyFloatParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/142/QuantifyFloatParam.java\nindex 48dc26a6e5..3f3837291c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/142/QuantifyFloatParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/142/QuantifyFloatParam.java\n@@ -31,91 +31,92 @@ import java.util.List;\n \n public class QuantifyFloatParam extends UpdateParam {\n \n-  private final int rowId;\n-  private final float[] array;\n-  private int numBits;\n-\n-  public QuantifyFloatParam(int matrixId, int rowId, float[] array, int numBits) {\n-    super(matrixId, false);\n-    this.rowId = rowId;\n-    this.array = array;\n-    this.numBits = numBits;\n-  }\n-\n-  @Override public List<PartitionUpdateParam> split() {\n-    List<PartitionKey> partList =\n-        PSAgentContext.get().getMatrixMetaManager().getPartitions(matrixId, rowId);\n-\n-    int size = partList.size();\n-    List<PartitionUpdateParam> partParams = new ArrayList<>(size);\n-    for (PartitionKey part : partList) {\n-      if (rowId < part.getStartRow() || rowId >= part.getEndRow()) {\n-        throw new RuntimeException(\"Wrong rowId!\");\n-      }\n-      partParams.add(\n-          new QuantifyFloatPartParam(matrixId, part, rowId, (int) part.getStartCol(),\n-              (int) part.getEndCol(), array, numBits));\n-    }\n-\n-    return partParams;\n-  }\n-\n-  public static class QuantifyFloatPartParam extends PartitionUpdateParam {\n-\n-    private int rowId;\n-    private int start;\n-    private int end;\n-    private float[] array;\n-    private float[] arraySlice;\n+    private final int rowId;\n+    private final float[] array;\n     private int numBits;\n \n-    public QuantifyFloatPartParam(int matrixId, PartitionKey partKey,\n-        int rowId, int start, int end, float[] array, int numBits) {\n-      super(matrixId, partKey, false);\n-      this.rowId = rowId;\n-      this.start = start;\n-      this.end = end;\n-      this.array = array;\n-      this.numBits = numBits;\n-    }\n-\n-    public QuantifyFloatPartParam() {\n-      super();\n-    }\n-\n-    @Override\n-    public void serialize(ByteBuf buf) {\n-      super.serialize(buf);\n-      buf.writeInt(rowId);\n-      JCompressUtils.Quantification.serializeFloat(buf, array, start, end, numBits);\n-    }\n-\n-    @Override\n-    public void deserialize(ByteBuf buf) {\n-      super.deserialize(buf);\n-      rowId = buf.readInt();\n-      arraySlice = JCompressUtils.Quantification.deserializeFloat(buf);\n+    public QuantifyFloatParam(int matrixId, int rowId, float[] array, int numBits) {\n+        super(matrixId, false);\n+        this.rowId = rowId;\n+        this.array = array;\n+        this.numBits = numBits;\n     }\n \n     @Override\n-    public int bufferLen() {\n-\n-      return super.bufferLen() + 20 + (int) Math.ceil((end - start) * numBits / 8);\n+    public List<PartitionUpdateParam> split() {\n+        List<PartitionKey> partList =\n+                PSAgentContext.get().getMatrixMetaManager().getPartitions(matrixId, rowId);\n+\n+        int size = partList.size();\n+        List<PartitionUpdateParam> partParams = new ArrayList<>(size);\n+        for (PartitionKey part : partList) {\n+            if (rowId < part.getStartRow() || rowId >= part.getEndRow()) {\n+                throw new RuntimeException(\"Wrong rowId!\");\n+            }\n+            partParams.add(\n+                    new QuantifyFloatPartParam(matrixId, part, rowId, (int) part.getStartCol(),\n+                            (int) part.getEndCol(), array, numBits));\n+        }\n+\n+        return partParams;\n     }\n \n-    public int getRowId() {\n-      return rowId;\n-    }\n-\n-    public float[] getArraySlice() {\n-      return arraySlice;\n-    }\n-\n-    @Override\n-    public String toString() {\n-      return \"QuantifyDoublePartUParam [rowId=\" + rowId + \", numBits=\" + numBits\n-          + \", toString()=\" + super.toString() + \"]\";\n+    public static class QuantifyFloatPartParam extends PartitionUpdateParam {\n+\n+        private int rowId;\n+        private int start;\n+        private int end;\n+        private float[] array;\n+        private float[] arraySlice;\n+        private int numBits;\n+\n+        public QuantifyFloatPartParam(int matrixId, PartitionKey partKey,\n+                                      int rowId, int start, int end, float[] array, int numBits) {\n+            super(matrixId, partKey, false);\n+            this.rowId = rowId;\n+            this.start = start;\n+            this.end = end;\n+            this.array = array;\n+            this.numBits = numBits;\n+        }\n+\n+        public QuantifyFloatPartParam() {\n+            super();\n+        }\n+\n+        @Override\n+        public void serialize(ByteBuf buf) {\n+            super.serialize(buf);\n+            buf.writeInt(rowId);\n+            JCompressUtils.Quantification.serializeFloat(buf, array, start, end, numBits);\n+        }\n+\n+        @Override\n+        public void deserialize(ByteBuf buf) {\n+            super.deserialize(buf);\n+            rowId = buf.readInt();\n+            arraySlice = JCompressUtils.Quantification.deserializeFloat(buf);\n+        }\n+\n+        @Override\n+        public int bufferLen() {\n+\n+            return super.bufferLen() + 20 + (int) Math.ceil((end - start) * numBits / 8);\n+        }\n+\n+        public int getRowId() {\n+            return rowId;\n+        }\n+\n+        public float[] getArraySlice() {\n+            return arraySlice;\n+        }\n+\n+        @Override\n+        public String toString() {\n+            return \"QuantifyDoublePartUParam [rowId=\" + rowId + \", numBits=\" + numBits\n+                    + \", toString()=\" + super.toString() + \"]\";\n+        }\n     }\n-  }\n }\n \n",
+            "diff_size": 135
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 127).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/142/QuantifyFloatParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/142/QuantifyFloatParam.java\nindex 48dc26a6e5..a826eb1b54 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/142/QuantifyFloatParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/142/QuantifyFloatParam.java\n@@ -17,7 +17,6 @@ package com.tencent.angel.ml.psf.compress;\n  *\n  */\n \n-\n import com.tencent.angel.PartitionKey;\n import com.tencent.angel.ml.core.utils.JCompressUtils;\n import com.tencent.angel.ml.matrix.psf.update.base.PartitionUpdateParam;\n@@ -42,7 +41,8 @@ public class QuantifyFloatParam extends UpdateParam {\n     this.numBits = numBits;\n   }\n \n-  @Override public List<PartitionUpdateParam> split() {\n+  @Override\n+public List<PartitionUpdateParam> split() {\n     List<PartitionKey> partList =\n         PSAgentContext.get().getMatrixMetaManager().getPartitions(matrixId, rowId);\n \n@@ -53,9 +53,8 @@ public class QuantifyFloatParam extends UpdateParam {\n         throw new RuntimeException(\"Wrong rowId!\");\n       }\n       partParams.add(\n-          new QuantifyFloatPartParam(matrixId, part, rowId, (int) part.getStartCol(),\n-              (int) part.getEndCol(), array, numBits));\n-    }\n+          new QuantifyFloatPartParam(matrixId, part, rowId, (int) part.getStartCol(), (int) part.getEndCol(), array, numBits));\n+  }\n \n     return partParams;\n   }\n@@ -69,8 +68,7 @@ public class QuantifyFloatParam extends UpdateParam {\n     private float[] arraySlice;\n     private int numBits;\n \n-    public QuantifyFloatPartParam(int matrixId, PartitionKey partKey,\n-        int rowId, int start, int end, float[] array, int numBits) {\n+    public QuantifyFloatPartParam(int matrixId, PartitionKey partKey, int rowId, int start, int end, float[] array, int numBits) {\n       super(matrixId, partKey, false);\n       this.rowId = rowId;\n       this.start = start;\n@@ -99,8 +97,7 @@ public class QuantifyFloatParam extends UpdateParam {\n \n     @Override\n     public int bufferLen() {\n-\n-      return super.bufferLen() + 20 + (int) Math.ceil((end - start) * numBits / 8);\n+  return super.bufferLen() + 20 + (int) Math.ceil((end - start) * numBits / 8);\n     }\n \n     public int getRowId() {\n@@ -117,5 +114,4 @@ public class QuantifyFloatParam extends UpdateParam {\n           + \", toString()=\" + super.toString() + \"]\";\n     }\n   }\n-}\n-\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 109).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/142/QuantifyFloatParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/142/QuantifyFloatParam.java\nindex 48dc26a6e5..af57f4f22e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/142/QuantifyFloatParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/142/QuantifyFloatParam.java\n@@ -17,51 +17,42 @@ package com.tencent.angel.ml.psf.compress;\n  *\n  */\n \n-\n import com.tencent.angel.PartitionKey;\n import com.tencent.angel.ml.core.utils.JCompressUtils;\n import com.tencent.angel.ml.matrix.psf.update.base.PartitionUpdateParam;\n import com.tencent.angel.ml.matrix.psf.update.base.UpdateParam;\n import com.tencent.angel.psagent.PSAgentContext;\n import io.netty.buffer.ByteBuf;\n-\n import java.util.ArrayList;\n import java.util.List;\n \n-\n public class QuantifyFloatParam extends UpdateParam {\n+    private final int rowId;\n+    private final float[] array;\n+    private int numBits;\n \n-  private final int rowId;\n-  private final float[] array;\n-  private int numBits;\n-\n-  public QuantifyFloatParam(int matrixId, int rowId, float[] array, int numBits) {\n+    public QuantifyFloatParam(int matrixId, int rowId, float[] array, int numBits) {\n     super(matrixId, false);\n     this.rowId = rowId;\n     this.array = array;\n     this.numBits = numBits;\n-  }\n-\n-  @Override public List<PartitionUpdateParam> split() {\n-    List<PartitionKey> partList =\n-        PSAgentContext.get().getMatrixMetaManager().getPartitions(matrixId, rowId);\n+    }\n \n+    @Override\n+    public List<PartitionUpdateParam> split() {\n+    List<PartitionKey> partList = PSAgentContext.get().getMatrixMetaManager().getPartitions(matrixId, rowId);\n     int size = partList.size();\n     List<PartitionUpdateParam> partParams = new ArrayList<>(size);\n     for (PartitionKey part : partList) {\n-      if (rowId < part.getStartRow() || rowId >= part.getEndRow()) {\n+        if (rowId < part.getStartRow() || rowId >= part.getEndRow()) {\n         throw new RuntimeException(\"Wrong rowId!\");\n-      }\n-      partParams.add(\n-          new QuantifyFloatPartParam(matrixId, part, rowId, (int) part.getStartCol(),\n-              (int) part.getEndCol(), array, numBits));\n+        }\n+        partParams.add(new QuantifyFloatPartParam(matrixId, part, rowId, (int) part.getStartCol(), (int) part.getEndCol(), array, numBits));\n     }\n-\n     return partParams;\n-  }\n-\n-  public static class QuantifyFloatPartParam extends PartitionUpdateParam {\n+    }\n \n+    public static class QuantifyFloatPartParam extends PartitionUpdateParam {\n     private int rowId;\n     private int start;\n     private int end;\n@@ -69,53 +60,50 @@ public class QuantifyFloatParam extends UpdateParam {\n     private float[] arraySlice;\n     private int numBits;\n \n-    public QuantifyFloatPartParam(int matrixId, PartitionKey partKey,\n-        int rowId, int start, int end, float[] array, int numBits) {\n-      super(matrixId, partKey, false);\n-      this.rowId = rowId;\n-      this.start = start;\n-      this.end = end;\n-      this.array = array;\n-      this.numBits = numBits;\n+    public QuantifyFloatPartParam(int matrixId, PartitionKey partKey, int rowId, int start, int end, float[] array, int numBits) {\n+        super(matrixId, partKey, false);\n+        this.rowId = rowId;\n+        this.start = start;\n+        this.end = end;\n+        this.array = array;\n+        this.numBits = numBits;\n     }\n \n     public QuantifyFloatPartParam() {\n-      super();\n+        super();\n     }\n \n     @Override\n     public void serialize(ByteBuf buf) {\n-      super.serialize(buf);\n-      buf.writeInt(rowId);\n-      JCompressUtils.Quantification.serializeFloat(buf, array, start, end, numBits);\n+        super.serialize(buf);\n+        buf.writeInt(rowId);\n+        JCompressUtils.Quantification.serializeFloat(buf, array, start, end, numBits);\n     }\n \n     @Override\n     public void deserialize(ByteBuf buf) {\n-      super.deserialize(buf);\n-      rowId = buf.readInt();\n-      arraySlice = JCompressUtils.Quantification.deserializeFloat(buf);\n+        super.deserialize(buf);\n+        rowId = buf.readInt();\n+        arraySlice = JCompressUtils.Quantification.deserializeFloat(buf);\n     }\n \n     @Override\n     public int bufferLen() {\n-\n-      return super.bufferLen() + 20 + (int) Math.ceil((end - start) * numBits / 8);\n+        return super.bufferLen() + 20 + (int) Math.ceil((end - start) * numBits / 8);\n     }\n \n     public int getRowId() {\n-      return rowId;\n+        return rowId;\n     }\n \n     public float[] getArraySlice() {\n-      return arraySlice;\n+        return arraySlice;\n     }\n \n     @Override\n     public String toString() {\n-      return \"QuantifyDoublePartUParam [rowId=\" + rowId + \", numBits=\" + numBits\n-          + \", toString()=\" + super.toString() + \"]\";\n+        return \"QuantifyDoublePartUParam [rowId=\" + rowId + \", numBits=\" + numBits + \", toString()=\" + super.toString() + \"]\";\n+    }\n     }\n-  }\n-}\n \n+}\n\\ No newline at end of file\n",
+            "diff_size": 53
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

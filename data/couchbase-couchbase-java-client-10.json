@@ -1,0 +1,176 @@
+{
+    "error_id": "10",
+    "information": {
+        "errors": [
+            {
+                "line": "47",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 121).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        ResponseStatus status) throws Exception {\n        if (!TranscoderUtils.hasJsonFlags(flags)) {\n            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \"\n                + \"id \" + id + \", could not decode.\");\n        }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler/10/RawJsonTranscoder.java\nindex 5aad233313..66a4cb4be7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler/10/RawJsonTranscoder.java\n@@ -44,7 +44,8 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n     protected RawJsonDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n         ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasJsonFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \"\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags\n+            ) + \") indicate non-JSON document for \"\n                 + \"id \" + id + \", could not decode.\");\n         }\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/intellij/10/RawJsonTranscoder.java\nindex 5aad233313..e3851eb6b6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/intellij/10/RawJsonTranscoder.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package com.couchbase.client.java.transcoder;\n \n import com.couchbase.client.core.lang.Tuple;\n@@ -42,10 +43,11 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n \n     @Override\n     protected RawJsonDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+                                       ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasJsonFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \"\n-                + \"id \" + id + \", could not decode.\");\n+            throw new TranscodingException(\n+                \"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \"\n+                    + \"id \" + id + \", could not decode.\");\n         }\n \n         String converted = content.toString(CharsetUtil.UTF_8);\n@@ -59,7 +61,7 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n \n     @Override\n     public RawJsonDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n+                                       MutationToken mutationToken) {\n         return RawJsonDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n",
+            "diff_size": 6
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/naturalize/10/RawJsonTranscoder.java\nindex 5aad233313..5e3082f862 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/naturalize/10/RawJsonTranscoder.java\n@@ -36,13 +36,11 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n     protected Tuple2<ByteBuf, Integer> doEncode(RawJsonDocument document) throws Exception {\n         return Tuple.create(\n             TranscoderUtils.encodeStringAsUtf8(document.content()),\n-            TranscoderUtils.JSON_COMPAT_FLAGS\n-        );\n+            TranscoderUtils.JSON_COMPAT_FLAGS);\n     }\n \n     @Override\n-    protected RawJsonDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+    protected RawJsonDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags, ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasJsonFlags(flags)) {\n             throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \"\n                 + \"id \" + id + \", could not decode.\");\n@@ -58,8 +56,7 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n     }\n \n     @Override\n-    public RawJsonDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n+    public RawJsonDocument newDocument(String id, int expiry, String content, long cas, MutationToken mutationToken) {\n         return RawJsonDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n@@ -67,4 +64,4 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n     public Class<RawJsonDocument> documentType() {\n         return RawJsonDocument.class;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 160).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/codebuff/10/RawJsonTranscoder.java\nindex 5aad233313..519e9f0d97 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/codebuff/10/RawJsonTranscoder.java\n@@ -30,8 +30,9 @@ import com.couchbase.client.java.error.TranscodingException;\n  * @author Michael Nitschinger\n  * @since 2.0\n  */\n-public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, String> {\n \n+\n+public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, String> {\n     @Override\n     protected Tuple2<ByteBuf, Integer> doEncode(RawJsonDocument document) throws Exception {\n         return Tuple.create(\n@@ -41,13 +42,10 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n     }\n \n     @Override\n-    protected RawJsonDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+    protected RawJsonDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags, ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasJsonFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \"\n-                + \"id \" + id + \", could not decode.\");\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \" + \"id \" + id + \", could not decode.\");\n         }\n-\n         String converted = content.toString(CharsetUtil.UTF_8);\n         return newDocument(id, expiry, converted, cas);\n     }\n@@ -58,8 +56,7 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n     }\n \n     @Override\n-    public RawJsonDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n+    public RawJsonDocument newDocument(String id, int expiry, String content, long cas, MutationToken mutationToken) {\n         return RawJsonDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n@@ -67,4 +64,4 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n     public Class<RawJsonDocument> documentType() {\n         return RawJsonDocument.class;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_random/10/RawJsonTranscoder.java\nindex 5aad233313..66a4cb4be7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_random/10/RawJsonTranscoder.java\n@@ -44,7 +44,8 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n     protected RawJsonDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n         ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasJsonFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \"\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags\n+            ) + \") indicate non-JSON document for \"\n                 + \"id \" + id + \", could not decode.\");\n         }\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "column": "51",
+                    "severity": "warning",
+                    "message": "'{' at column 51 should have line break after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 4, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_three_grams/10/RawJsonTranscoder.java\nindex 5aad233313..271e36b290 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/10/RawJsonTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_three_grams/10/RawJsonTranscoder.java\n@@ -43,28 +43,28 @@ public class RawJsonTranscoder extends AbstractTranscoder<RawJsonDocument, Strin\n     @Override\n     protected RawJsonDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n         ResponseStatus status) throws Exception {\n-        if (!TranscoderUtils.hasJsonFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \"\n-                + \"id \" + id + \", could not decode.\");\n-        }\n+        if (!TranscoderUtils.hasJsonFlags(flags)) { throw\n+    new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-JSON document for \"\n+             + \"id \" + id + \", could not decode.\");\n+     }\n \n-        String converted = content.toString(CharsetUtil.UTF_8);\n-        return newDocument(id, expiry, converted, cas);\n-    }\n+     String converted = content.toString(CharsetUtil.UTF_8);\n+     return newDocument(id, expiry, converted, cas);\n+ }\n \n-    @Override\n-    public RawJsonDocument newDocument(String id, int expiry, String content, long cas) {\n-        return RawJsonDocument.create(id, expiry, content, cas);\n-    }\n+ @Override\n+ public RawJsonDocument newDocument(String id, int expiry, String content, long cas) {\n+     return RawJsonDocument.create(id, expiry, content, cas);\n+ }\n \n-    @Override\n-    public RawJsonDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n-        return RawJsonDocument.create(id, expiry, content, cas, mutationToken);\n-    }\n+ @Override\n+ public RawJsonDocument newDocument(String id, int expiry, String content, long cas,\n+     MutationToken mutationToken) {\n+     return RawJsonDocument.create(id, expiry, content, cas, mutationToken);\n+ }\n \n-    @Override\n-    public Class<RawJsonDocument> documentType() {\n-        return RawJsonDocument.class;\n-    }\n+ @Override\n+ public Class<RawJsonDocument> documentType() {\n+     return RawJsonDocument.class;\n+ }\n }\n",
+            "diff_size": 20
+        }
+    ]
+}

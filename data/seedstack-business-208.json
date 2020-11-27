@@ -1,0 +1,58 @@
+{
+    "error_id": "208",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.finder;\n\nimport java.util.List;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/208/Result.java\nindex ebf952b79f..424c33755d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/208/Result.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.finder;\n \n import java.util.List;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/208/Result.java\nindex ebf952b79f..424c33755d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/208/Result.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.finder;\n \n import java.util.List;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/208/Result.java\nindex ebf952b79f..9d872f4034 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/208/Result.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.finder;\n \n import java.util.List;\n@@ -21,6 +22,7 @@ import java.util.List;\n  */\n @Deprecated\n public final class Result<I> {\n+\n     private final List<I> list;\n     private final long fullSize;\n     private final long offset;\n@@ -86,4 +88,4 @@ public final class Result<I> {\n     public long getOffset() {\n         return this.offset;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/208/Result.java\nindex ebf952b79f..00747f009e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/208/Result.java\n@@ -19,8 +19,11 @@ import java.util.List;\n  *\n  * @param <I> the representation type\n  */\n+\n+\n @Deprecated\n public final class Result<I> {\n+\n     private final List<I> list;\n     private final long fullSize;\n     private final long offset;\n@@ -32,6 +35,8 @@ public final class Result<I> {\n      * @param offset   the offset\n      * @param fullSize the total number of item available\n      */\n+\n+\n     public Result(List<I> list, long offset, long fullSize) {\n         this.list = list;\n         this.offset = offset;\n@@ -47,6 +52,8 @@ public final class Result<I> {\n      * @param <I>             the item type\n      * @return the result range\n      */\n+\n+\n     public static <I> Result<I> rangeResult(List<I> result, long offset, long fullRequestSize) {\n         return new Result<>(result, offset, fullRequestSize);\n     }\n@@ -56,8 +63,11 @@ public final class Result<I> {\n      *\n      * @return the list of items\n      */\n+\n+\n     public List<I> getResult() {\n-        return this.list;\n+        return this\n+            .list;\n     }\n \n     /**\n@@ -65,8 +75,12 @@ public final class Result<I> {\n      *\n      * @return the number of item returned\n      */\n+\n+\n     public int getSize() {\n-        return this.list.size();\n+        return this\n+            .list\n+.size();\n     }\n \n     /**\n@@ -74,8 +88,11 @@ public final class Result<I> {\n      *\n      * @return the total number of item available\n      */\n+\n+\n     public long getFullSize() {\n-        return this.fullSize;\n+        return this\n+            .fullSize;\n     }\n \n     /**\n@@ -83,7 +100,10 @@ public final class Result<I> {\n      *\n      * @return the offset\n      */\n+\n+\n     public long getOffset() {\n-        return this.offset;\n+        return this\n+            .offset;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/208/Result.java\nindex ebf952b79f..424c33755d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/208/Result.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/208/Result.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.finder;\n \n import java.util.List;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

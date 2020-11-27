@@ -1,0 +1,75 @@
+{
+    "error_id": "191",
+    "information": {
+        "errors": [
+            {
+                "line": "36",
+                "column": "17",
+                "severity": "error",
+                "message": "'(' should be on the previous line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+            }
+        ]
+    },
+    "source_code": "                .append(\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n        Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append\n                (\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n        System.out.println(o);\n\n        MongoDBUtils.replaceDotsInKeys(o);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler/191/MongoDBUtilsTest.java\nindex 6ac618637e..1c2ce76ba7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler/191/MongoDBUtilsTest.java\n@@ -32,17 +32,17 @@ public class MongoDBUtilsTest extends MongoDBAdaptorTest {\n \n         Document original = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\")))\n                 .append(\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n-        Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append\n-                (\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n-        System.out.println(o);\n+        Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append(\n+                \"key\", new Document(\"key....k\", \"value...2.2.2\"));\n+System.out.println(o);\n \n-        MongoDBUtils.replaceDotsInKeys(o);\n-        System.out.println(o);\n+MongoDBUtils.replaceDotsInKeys(o);\n+System.out.println(o);\n \n-        MongoDBUtils.restoreDotsInKeys(o);\n-        System.out.println(o);\n+MongoDBUtils.restoreDotsInKeys(o);\n+System.out.println(o);\n \n-        Assert.assertEquals(original, o);\n+Assert.assertEquals(original, o);\n \n-    }\n+}\n }\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "36",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/intellij/191/MongoDBUtilsTest.java\nindex 6ac618637e..7df1a690e6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/intellij/191/MongoDBUtilsTest.java\n@@ -26,23 +26,23 @@ import java.util.Arrays;\n  * Created by pfurio on 3/3/16.\n  */\n public class MongoDBUtilsTest extends MongoDBAdaptorTest {\n-    /////////// Other tests\n-    @Test\n-    public void replaceDots() {\n+  /////////// Other tests\n+  @Test\n+  public void replaceDots() {\n \n-        Document original = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\")))\n-                .append(\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n-        Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append\n-                (\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n-        System.out.println(o);\n+    Document original = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\")))\n+        .append(\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n+    Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append\n+        (\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n+    System.out.println(o);\n \n-        MongoDBUtils.replaceDotsInKeys(o);\n-        System.out.println(o);\n+    MongoDBUtils.replaceDotsInKeys(o);\n+    System.out.println(o);\n \n-        MongoDBUtils.restoreDotsInKeys(o);\n-        System.out.println(o);\n+    MongoDBUtils.restoreDotsInKeys(o);\n+    System.out.println(o);\n \n-        Assert.assertEquals(original, o);\n+    Assert.assertEquals(original, o);\n \n-    }\n+  }\n }\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 173).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/naturalize/191/MongoDBUtilsTest.java\nindex 6ac618637e..2e39303922 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/naturalize/191/MongoDBUtilsTest.java\n@@ -32,8 +32,7 @@ public class MongoDBUtilsTest extends MongoDBAdaptorTest {\n \n         Document original = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\")))\n                 .append(\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n-        Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append\n-                (\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n+        Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append(\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n         System.out.println(o);\n \n         MongoDBUtils.replaceDotsInKeys(o);\n@@ -45,4 +44,4 @@ public class MongoDBUtilsTest extends MongoDBAdaptorTest {\n         Assert.assertEquals(original, o);\n \n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler_random/191/MongoDBUtilsTest.java\nindex 6ac618637e..1c2ce76ba7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler_random/191/MongoDBUtilsTest.java\n@@ -32,17 +32,17 @@ public class MongoDBUtilsTest extends MongoDBAdaptorTest {\n \n         Document original = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\")))\n                 .append(\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n-        Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append\n-                (\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n-        System.out.println(o);\n+        Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append(\n+                \"key\", new Document(\"key....k\", \"value...2.2.2\"));\n+System.out.println(o);\n \n-        MongoDBUtils.replaceDotsInKeys(o);\n-        System.out.println(o);\n+MongoDBUtils.replaceDotsInKeys(o);\n+System.out.println(o);\n \n-        MongoDBUtils.restoreDotsInKeys(o);\n-        System.out.println(o);\n+MongoDBUtils.restoreDotsInKeys(o);\n+System.out.println(o);\n \n-        Assert.assertEquals(original, o);\n+Assert.assertEquals(original, o);\n \n-    }\n+}\n }\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "36",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'(' should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler_three_grams/191/MongoDBUtilsTest.java\nindex 6ac618637e..46e75d6541 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/191/MongoDBUtilsTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler_three_grams/191/MongoDBUtilsTest.java\n@@ -33,7 +33,7 @@ public class MongoDBUtilsTest extends MongoDBAdaptorTest {\n         Document original = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\")))\n                 .append(\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n         Document o = new Document(\"o.o\", 4).append(\"4.4\", Arrays.asList(1, 3, 4, new Document(\"933.44\", \"df.sdf\"))).append\n-                (\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n+        (\"key\", new Document(\"key....k\", \"value...2.2.2\"));\n         System.out.println(o);\n \n         MongoDBUtils.replaceDotsInKeys(o);\n",
+            "diff_size": 1
+        }
+    ]
+}

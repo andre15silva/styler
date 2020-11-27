@@ -1,0 +1,208 @@
+{
+    "error_id": "11",
+    "information": {
+        "errors": [
+            {
+                "line": "39",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 123).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        ResponseStatus status) throws Exception {\n        if (!TranscoderUtils.hasStringFlags(flags)) {\n            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-String document for \"\n                + \"id \" + id + \", could not decode.\");\n        }\n        return newDocument(id, expiry, content.toString(CharsetUtil.UTF_8), cas);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "39",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/11/StringTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/intellij/11/StringTranscoder.java\nindex b1375ca887..5de11accee 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/11/StringTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/intellij/11/StringTranscoder.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package com.couchbase.client.java.transcoder;\n \n import com.couchbase.client.core.lang.Tuple;\n@@ -34,10 +35,11 @@ public class StringTranscoder extends AbstractTranscoder<StringDocument, String>\n \n     @Override\n     protected StringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+                                      ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasStringFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-String document for \"\n-                + \"id \" + id + \", could not decode.\");\n+            throw new TranscodingException(\n+                \"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-String document for \"\n+                    + \"id \" + id + \", could not decode.\");\n         }\n         return newDocument(id, expiry, content.toString(CharsetUtil.UTF_8), cas);\n     }\n@@ -57,7 +59,7 @@ public class StringTranscoder extends AbstractTranscoder<StringDocument, String>\n \n     @Override\n     public StringDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n+                                      MutationToken mutationToken) {\n         return StringDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n",
+            "diff_size": 6
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/11/StringTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/naturalize/11/StringTranscoder.java\nindex b1375ca887..3349c68e76 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/11/StringTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/naturalize/11/StringTranscoder.java\n@@ -33,12 +33,11 @@ import com.couchbase.client.java.error.TranscodingException;\n public class StringTranscoder extends AbstractTranscoder<StringDocument, String> {\n \n     @Override\n-    protected StringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+    protected StringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags, ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasStringFlags(flags)) {\n             throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-String document for \"\n                 + \"id \" + id + \", could not decode.\");\n-        }\n+    }\n         return newDocument(id, expiry, content.toString(CharsetUtil.UTF_8), cas);\n     }\n \n@@ -46,8 +45,7 @@ public class StringTranscoder extends AbstractTranscoder<StringDocument, String>\n     protected Tuple2<ByteBuf, Integer> doEncode(StringDocument document) throws Exception {\n         return Tuple.create(\n             TranscoderUtils.encodeStringAsUtf8(document.content()),\n-            TranscoderUtils.STRING_COMMON_FLAGS\n-        );\n+            TranscoderUtils.STRING_COMMON_FLAGS);\n     }\n \n     @Override\n@@ -56,8 +54,7 @@ public class StringTranscoder extends AbstractTranscoder<StringDocument, String>\n     }\n \n     @Override\n-    public StringDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n+    public StringDocument newDocument(String id, int expiry, String content, long cas, MutationToken mutationToken) {\n         return StringDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n@@ -65,4 +62,4 @@ public class StringTranscoder extends AbstractTranscoder<StringDocument, String>\n     public Class<StringDocument> documentType() {\n         return StringDocument.class;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "37",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 162).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/11/StringTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/codebuff/11/StringTranscoder.java\nindex b1375ca887..3f12cb0b57 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/11/StringTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/codebuff/11/StringTranscoder.java\n@@ -30,14 +30,13 @@ import com.couchbase.client.java.error.TranscodingException;\n  * @author Michael Nitschinger\n  * @since 2.0\n  */\n-public class StringTranscoder extends AbstractTranscoder<StringDocument, String> {\n \n+\n+public class StringTranscoder extends AbstractTranscoder<StringDocument, String> {\n     @Override\n-    protected StringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+    protected StringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags, ResponseStatus status) throws Exception {\n         if (!TranscoderUtils.hasStringFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-String document for \"\n-                + \"id \" + id + \", could not decode.\");\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-String document for \" + \"id \" + id + \", could not decode.\");\n         }\n         return newDocument(id, expiry, content.toString(CharsetUtil.UTF_8), cas);\n     }\n@@ -56,8 +55,7 @@ public class StringTranscoder extends AbstractTranscoder<StringDocument, String>\n     }\n \n     @Override\n-    public StringDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n+    public StringDocument newDocument(String id, int expiry, String content, long cas, MutationToken mutationToken) {\n         return StringDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n@@ -65,4 +63,4 @@ public class StringTranscoder extends AbstractTranscoder<StringDocument, String>\n     public Class<StringDocument> documentType() {\n         return StringDocument.class;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "39",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "38",
+                    "column": "53",
+                    "severity": "warning",
+                    "message": "'{' at column 53 should have line break after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/11/StringTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_three_grams/11/StringTranscoder.java\nindex b1375ca887..4a68c2246b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/11/StringTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_three_grams/11/StringTranscoder.java\n@@ -35,34 +35,34 @@ public class StringTranscoder extends AbstractTranscoder<StringDocument, String>\n     @Override\n     protected StringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n         ResponseStatus status) throws Exception {\n-        if (!TranscoderUtils.hasStringFlags(flags)) {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-String document for \"\n-                + \"id \" + id + \", could not decode.\");\n-        }\n-        return newDocument(id, expiry, content.toString(CharsetUtil.UTF_8), cas);\n-    }\n+        if (!TranscoderUtils.hasStringFlags(flags)) { throw\n+        new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non-String document for \"\n+             + \"id \" + id + \", could not decode.\");\n+     }\n+     return newDocument(id, expiry, content.toString(CharsetUtil.UTF_8), cas);\n+ }\n \n-    @Override\n-    protected Tuple2<ByteBuf, Integer> doEncode(StringDocument document) throws Exception {\n-        return Tuple.create(\n-            TranscoderUtils.encodeStringAsUtf8(document.content()),\n-            TranscoderUtils.STRING_COMMON_FLAGS\n-        );\n-    }\n+ @Override\n+ protected Tuple2<ByteBuf, Integer> doEncode(StringDocument document) throws Exception {\n+     return Tuple.create(\n+         TranscoderUtils.encodeStringAsUtf8(document.content()),\n+         TranscoderUtils.STRING_COMMON_FLAGS\n+     );\n+ }\n \n-    @Override\n-    public StringDocument newDocument(String id, int expiry, String content, long cas) {\n-        return StringDocument.create(id, expiry, content, cas);\n-    }\n+ @Override\n+ public StringDocument newDocument(String id, int expiry, String content, long cas) {\n+     return StringDocument.create(id, expiry, content, cas);\n+ }\n \n-    @Override\n-    public StringDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n-        return StringDocument.create(id, expiry, content, cas, mutationToken);\n-    }\n+ @Override\n+ public StringDocument newDocument(String id, int expiry, String content, long cas,\n+     MutationToken mutationToken) {\n+     return StringDocument.create(id, expiry, content, cas, mutationToken);\n+ }\n \n-    @Override\n-    public Class<StringDocument> documentType() {\n-        return StringDocument.class;\n-    }\n+ @Override\n+ public Class<StringDocument> documentType() {\n+     return StringDocument.class;\n+ }\n }\n",
+            "diff_size": 26
+        }
+    ]
+}

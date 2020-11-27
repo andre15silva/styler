@@ -1,0 +1,130 @@
+{
+    "error_id": "449",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/449/AdamUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/449/AdamUpdateFunc.java\nindex 10ab91def2..400f956e25 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/449/AdamUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/449/AdamUpdateFunc.java\n@@ -27,67 +27,69 @@ import org.apache.commons.logging.LogFactory;\n \n public class AdamUpdateFunc extends OptMMUpdateFunc {\n \n-  private static final Log LOG = LogFactory.getLog(AdamUpdateFunc.class);\n-\n-  public AdamUpdateFunc() {\n-    super();\n-  }\n-\n-  public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta, double lr,\n-      double regParam, int iteration) {\n-    this(matId, factor, gamma, epsilon, beta, lr, regParam, iteration, 1);\n-  }\n-\n-  public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta, double lr,\n-      double regParam, int iteration, int batchSize) {\n-    super(matId, new int[]{factor},\n-        new double[]{gamma, epsilon, beta, lr, regParam, iteration, batchSize});\n-  }\n-\n-  @Override\n-  public void update(ServerPartition partition, int factor, double[] scalars) {\n-    double gamma = scalars[0];\n-    double epsilon = scalars[1];\n-    double beta = scalars[2];\n-    double lr = scalars[3];\n-    double regParam = scalars[4];\n-    double epoch = scalars[5];\n-    double batchSize = scalars[6];\n-\n-    if (epoch == 0) {\n-      epoch = 1;\n+    private static final Log LOG = LogFactory.getLog(AdamUpdateFunc.class);\n+\n+    public AdamUpdateFunc() {\n+        super();\n     }\n \n-    double powBeta = Math.pow(beta, epoch);\n-    double powGamma = Math.pow(gamma, epoch);\n+    public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta,\n+                          double lr,\n+                          double regParam, int iteration) {\n+        this(matId, factor, gamma, epsilon, beta, lr, regParam, iteration, 1);\n+    }\n \n-    for (int f = 0; f < factor; f++) {\n-      ServerRow gradientServerRow = partition.getRow(f + 3 * factor);\n-      try {\n-        gradientServerRow.startWrite();\n-        Vector weight = partition.getRow(f).getSplit();\n-        Vector velocity = partition.getRow(f + factor).getSplit();\n-        Vector square = partition.getRow(f + 2 * factor).getSplit();\n-        Vector gradient = gradientServerRow.getSplit();\n+    public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta,\n+                          double lr,\n+                          double regParam, int iteration, int batchSize) {\n+        super(matId, new int[] {factor},\n+                new double[] {gamma, epsilon, beta, lr, regParam, iteration, batchSize});\n+    }\n \n-        if (batchSize > 1) {\n-          gradient.idiv(batchSize);\n+    @Override\n+    public void update(ServerPartition partition, int factor, double[] scalars) {\n+        double gamma = scalars[0];\n+        double epsilon = scalars[1];\n+        double beta = scalars[2];\n+        double lr = scalars[3];\n+        double regParam = scalars[4];\n+        double epoch = scalars[5];\n+        double batchSize = scalars[6];\n+\n+        if (epoch == 0) {\n+            epoch = 1;\n         }\n \n-        if (regParam != 0.0) {\n-          gradient.iaxpy(weight, regParam);\n+        double powBeta = Math.pow(beta, epoch);\n+        double powGamma = Math.pow(gamma, epoch);\n+\n+        for (int f = 0; f < factor; f++) {\n+            ServerRow gradientServerRow = partition.getRow(f + 3 * factor);\n+            try {\n+                gradientServerRow.startWrite();\n+                Vector weight = partition.getRow(f).getSplit();\n+                Vector velocity = partition.getRow(f + factor).getSplit();\n+                Vector square = partition.getRow(f + 2 * factor).getSplit();\n+                Vector gradient = gradientServerRow.getSplit();\n+\n+                if (batchSize > 1) {\n+                    gradient.idiv(batchSize);\n+                }\n+\n+                if (regParam != 0.0) {\n+                    gradient.iaxpy(weight, regParam);\n+                }\n+\n+                OptFuncs.iexpsmoothing(velocity, gradient, beta);\n+                OptFuncs.iexpsmoothing2(square, gradient, gamma);\n+\n+                Vector delta = OptFuncs.adamdelta(velocity, square, powBeta, powGamma);\n+                weight.iaxpy(delta, -lr);\n+                gradient.clear();\n+            } finally {\n+                gradientServerRow.endWrite();\n+            }\n         }\n-\n-        OptFuncs.iexpsmoothing(velocity, gradient, beta);\n-        OptFuncs.iexpsmoothing2(square, gradient, gamma);\n-\n-        Vector delta = OptFuncs.adamdelta(velocity, square, powBeta, powGamma);\n-        weight.iaxpy(delta, -lr);\n-        gradient.clear();\n-      } finally {\n-        gradientServerRow.endWrite();\n-      }\n     }\n-  }\n \n }\n",
+            "diff_size": 94
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 134).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 149).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 108).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/449/AdamUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/449/AdamUpdateFunc.java\nindex 10ab91def2..90f6391a07 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/449/AdamUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/449/AdamUpdateFunc.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.psf.optimizer;\n \n import com.tencent.angel.ml.math2.ufuncs.OptFuncs;\n@@ -33,15 +32,12 @@ public class AdamUpdateFunc extends OptMMUpdateFunc {\n     super();\n   }\n \n-  public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta, double lr,\n-      double regParam, int iteration) {\n-    this(matId, factor, gamma, epsilon, beta, lr, regParam, iteration, 1);\n+  public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta, double lr, double regParam, int iteration) {\n+  this(matId, factor, gamma, epsilon, beta, lr, regParam, iteration, 1);\n   }\n \n-  public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta, double lr,\n-      double regParam, int iteration, int batchSize) {\n-    super(matId, new int[]{factor},\n-        new double[]{gamma, epsilon, beta, lr, regParam, iteration, batchSize});\n+  public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta, double lr, double regParam, int iteration, int batchSize) {\n+    super(matId, new int[]{factor}, new double[]{gamma, epsilon, beta, lr, regParam, iteration, batchSize});\n   }\n \n   @Override\n@@ -90,4 +86,4 @@ public class AdamUpdateFunc extends OptMMUpdateFunc {\n     }\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 108).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/449/AdamUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/449/AdamUpdateFunc.java\nindex 10ab91def2..734b71cdbc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/449/AdamUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/449/AdamUpdateFunc.java\n@@ -26,26 +26,35 @@ import org.apache.commons.logging.Log;\n import org.apache.commons.logging.LogFactory;\n \n public class AdamUpdateFunc extends OptMMUpdateFunc {\n+    private static final Log LOG = LogFactory.getLog(AdamUpdateFunc.class);\n \n-  private static final Log LOG = LogFactory.getLog(AdamUpdateFunc.class);\n-\n-  public AdamUpdateFunc() {\n+    public AdamUpdateFunc() {\n     super();\n-  }\n+    }\n \n-  public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta, double lr,\n-      double regParam, int iteration) {\n+    public AdamUpdateFunc(int matId,\n+                          int factor,\n+                          double gamma,\n+                          double epsilon,\n+                          double beta,\n+                          double lr,\n+                          double regParam, int iteration) {\n     this(matId, factor, gamma, epsilon, beta, lr, regParam, iteration, 1);\n-  }\n+    }\n \n-  public AdamUpdateFunc(int matId, int factor, double gamma, double epsilon, double beta, double lr,\n-      double regParam, int iteration, int batchSize) {\n-    super(matId, new int[]{factor},\n-        new double[]{gamma, epsilon, beta, lr, regParam, iteration, batchSize});\n-  }\n+    public AdamUpdateFunc(int matId,\n+                          int factor,\n+                          double gamma,\n+                          double epsilon,\n+                          double beta,\n+                          double lr,\n+                          double regParam,\n+                          int iteration, int batchSize) {\n+    super(matId, new int[]{factor}, new double[]{gamma, epsilon, beta, lr, regParam, iteration, batchSize});\n+    }\n \n-  @Override\n-  public void update(ServerPartition partition, int factor, double[] scalars) {\n+    @Override\n+    public void update(ServerPartition partition, int factor, double[] scalars) {\n     double gamma = scalars[0];\n     double epsilon = scalars[1];\n     double beta = scalars[2];\n@@ -53,41 +62,36 @@ public class AdamUpdateFunc extends OptMMUpdateFunc {\n     double regParam = scalars[4];\n     double epoch = scalars[5];\n     double batchSize = scalars[6];\n-\n     if (epoch == 0) {\n-      epoch = 1;\n+        epoch = 1;\n     }\n \n     double powBeta = Math.pow(beta, epoch);\n     double powGamma = Math.pow(gamma, epoch);\n-\n     for (int f = 0; f < factor; f++) {\n-      ServerRow gradientServerRow = partition.getRow(f + 3 * factor);\n-      try {\n-        gradientServerRow.startWrite();\n-        Vector weight = partition.getRow(f).getSplit();\n-        Vector velocity = partition.getRow(f + factor).getSplit();\n-        Vector square = partition.getRow(f + 2 * factor).getSplit();\n-        Vector gradient = gradientServerRow.getSplit();\n-\n-        if (batchSize > 1) {\n-          gradient.idiv(batchSize);\n-        }\n-\n-        if (regParam != 0.0) {\n-          gradient.iaxpy(weight, regParam);\n+        ServerRow gradientServerRow = partition.getRow(f + 3 * factor);\n+        try {\n+                                         gradientServerRow.startWrite();\n+                                         Vector weight = partition.getRow(f).getSplit();\n+                                         Vector velocity = partition.getRow(f + factor).getSplit();\n+                                         Vector square = partition.getRow(f + 2 * factor).getSplit();\n+                                         Vector gradient = gradientServerRow.getSplit();\n+                                         if (batchSize > 1) {\n+            gradient.idiv(batchSize);\n+                                         }\n+\n+                                         if (regParam != 0.0) {\n+            gradient.iaxpy(weight, regParam);\n+                                         }\n+                                         OptFuncs.iexpsmoothing(velocity, gradient, beta);\n+                                         OptFuncs.iexpsmoothing2(square, gradient, gamma);\n+                                         Vector delta = OptFuncs.adamdelta(velocity, square, powBeta, powGamma);\n+                                         weight.iaxpy(delta, -lr);\n+                                         gradient.clear();\n+        } finally {\n+          gradientServerRow.endWrite();\n         }\n-\n-        OptFuncs.iexpsmoothing(velocity, gradient, beta);\n-        OptFuncs.iexpsmoothing2(square, gradient, gamma);\n-\n-        Vector delta = OptFuncs.adamdelta(velocity, square, powBeta, powGamma);\n-        weight.iaxpy(delta, -lr);\n-        gradient.clear();\n-      } finally {\n-        gradientServerRow.endWrite();\n-      }\n     }\n-  }\n+    }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 61
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/449/AdamUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/449/AdamUpdateFunc.java\nindex 10ab91def2..11b5d0e5d5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/449/AdamUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/449/AdamUpdateFunc.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.psf.optimizer;\n \n import com.tencent.angel.ml.math2.ufuncs.OptFuncs;\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,184 @@
+{
+    "error_id": "673",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/673/PartitionGetRowParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/673/PartitionGetRowParam.java\nindex c9ba200f52..b3b3f80dd2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/673/PartitionGetRowParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/673/PartitionGetRowParam.java\n@@ -24,156 +24,156 @@ import io.netty.buffer.ByteBuf;\n  * The parameter of partition get row.\n  */\n public class PartitionGetRowParam implements Serialize {\n-  private int matrixId;\n-  private PartitionKey partKey;\n-  private int rowIndex;\n-  private int clock;\n-  private boolean bypassMode;\n-\n-  /**\n-   * Creates a new partition parameter.\n-   *\n-   * @param matrixId   the matrix id\n-   * @param partKey    the part key\n-   * @param rowIndex   the row index\n-   * @param clock      the clock\n-   * @param bypassMode the bypass mode\n-   */\n-  public PartitionGetRowParam(int matrixId, PartitionKey partKey, int rowIndex, int clock,\n-      boolean bypassMode) {\n-    this.matrixId = matrixId;\n-    this.partKey = partKey;\n-    this.rowIndex = rowIndex;\n-    this.clock = clock;\n-    this.bypassMode = bypassMode;\n-  }\n-\n-  /**\n-   * Creates a new partition parameter by default\n-   */\n-  public PartitionGetRowParam() {\n-    this(0, null, 0, -1, false);\n-  }\n-\n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    buf.writeInt(matrixId);\n-    buf.writeInt(rowIndex);\n-    buf.writeInt(clock);\n-    buf.writeBoolean(bypassMode);\n-    if (partKey != null) {\n-      partKey.serialize(buf);\n+    private int matrixId;\n+    private PartitionKey partKey;\n+    private int rowIndex;\n+    private int clock;\n+    private boolean bypassMode;\n+\n+    /**\n+     * Creates a new partition parameter.\n+     *\n+     * @param matrixId   the matrix id\n+     * @param partKey    the part key\n+     * @param rowIndex   the row index\n+     * @param clock      the clock\n+     * @param bypassMode the bypass mode\n+     */\n+    public PartitionGetRowParam(int matrixId, PartitionKey partKey, int rowIndex, int clock,\n+                                boolean bypassMode) {\n+        this.matrixId = matrixId;\n+        this.partKey = partKey;\n+        this.rowIndex = rowIndex;\n+        this.clock = clock;\n+        this.bypassMode = bypassMode;\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n-    matrixId = buf.readInt();\n-    rowIndex = buf.readInt();\n-    clock = buf.readInt();\n-    bypassMode = buf.readBoolean();\n+    /**\n+     * Creates a new partition parameter by default\n+     */\n+    public PartitionGetRowParam() {\n+        this(0, null, 0, -1, false);\n+    }\n+\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        buf.writeInt(matrixId);\n+        buf.writeInt(rowIndex);\n+        buf.writeInt(clock);\n+        buf.writeBoolean(bypassMode);\n+        if (partKey != null) {\n+            partKey.serialize(buf);\n+        }\n+    }\n+\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n+        matrixId = buf.readInt();\n+        rowIndex = buf.readInt();\n+        clock = buf.readInt();\n+        bypassMode = buf.readBoolean();\n+\n+        if (buf.isReadable()) {\n+            if (partKey == null) {\n+                partKey = new PartitionKey();\n+            }\n+\n+            partKey.deserialize(buf);\n+        }\n+    }\n+\n+    @Override\n+    public int bufferLen() {\n+        return 16 + ((partKey != null) ? partKey.bufferLen() : 0);\n+    }\n+\n+    /**\n+     * Gets matrix id.\n+     *\n+     * @return the matrix id\n+     */\n+    public int getMatrixId() {\n+        return matrixId;\n+    }\n+\n+    /**\n+     * Gets part key.\n+     *\n+     * @return the part key\n+     */\n+    public PartitionKey getPartKey() {\n+        return partKey;\n+    }\n \n-    if (buf.isReadable()) {\n-      if (partKey == null) {\n-        partKey = new PartitionKey();\n-      }\n+    /**\n+     * Sets matrix id.\n+     *\n+     * @param matrixId the matrix id\n+     */\n+    public void setMatrixId(int matrixId) {\n+        this.matrixId = matrixId;\n+    }\n+\n+    /**\n+     * Sets part key.\n+     *\n+     * @param partKey the part key\n+     */\n+    public void setPartKey(PartitionKey partKey) {\n+        this.partKey = partKey;\n+    }\n+\n+    /**\n+     * Gets clock.\n+     *\n+     * @return the clock\n+     */\n+    public int getClock() {\n+        return clock;\n+    }\n+\n+    /**\n+     * Is bypass mode boolean.\n+     *\n+     * @return the boolean\n+     */\n+    public boolean isBypassMode() {\n+        return bypassMode;\n+    }\n+\n+    /**\n+     * Sets clock.\n+     *\n+     * @param clock the clock\n+     */\n+    public void setClock(int clock) {\n+        this.clock = clock;\n+    }\n+\n+    /**\n+     * Sets bypass mode.\n+     *\n+     * @param bypassMode the bypass mode\n+     */\n+    public void setBypassMode(boolean bypassMode) {\n+        this.bypassMode = bypassMode;\n+    }\n+\n+    /**\n+     * Gets row index.\n+     *\n+     * @return the row index\n+     */\n+    public int getRowIndex() {\n+        return rowIndex;\n+    }\n \n-      partKey.deserialize(buf);\n+    /**\n+     * Sets row index.\n+     *\n+     * @param rowIndex the row index\n+     */\n+    public void setRowIndex(int rowIndex) {\n+        this.rowIndex = rowIndex;\n     }\n-  }\n-\n-  @Override\n-  public int bufferLen() {\n-    return 16 + ((partKey != null) ? partKey.bufferLen() : 0);\n-  }\n-\n-  /**\n-   * Gets matrix id.\n-   *\n-   * @return the matrix id\n-   */\n-  public int getMatrixId() {\n-    return matrixId;\n-  }\n-\n-  /**\n-   * Gets part key.\n-   *\n-   * @return the part key\n-   */\n-  public PartitionKey getPartKey() {\n-    return partKey;\n-  }\n-\n-  /**\n-   * Sets matrix id.\n-   *\n-   * @param matrixId the matrix id\n-   */\n-  public void setMatrixId(int matrixId) {\n-    this.matrixId = matrixId;\n-  }\n-\n-  /**\n-   * Sets part key.\n-   *\n-   * @param partKey the part key\n-   */\n-  public void setPartKey(PartitionKey partKey) {\n-    this.partKey = partKey;\n-  }\n-\n-  /**\n-   * Gets clock.\n-   *\n-   * @return the clock\n-   */\n-  public int getClock() {\n-    return clock;\n-  }\n-\n-  /**\n-   * Is bypass mode boolean.\n-   *\n-   * @return the boolean\n-   */\n-  public boolean isBypassMode() {\n-    return bypassMode;\n-  }\n-\n-  /**\n-   * Sets clock.\n-   *\n-   * @param clock the clock\n-   */\n-  public void setClock(int clock) {\n-    this.clock = clock;\n-  }\n-\n-  /**\n-   * Sets bypass mode.\n-   *\n-   * @param bypassMode the bypass mode\n-   */\n-  public void setBypassMode(boolean bypassMode) {\n-    this.bypassMode = bypassMode;\n-  }\n-\n-  /**\n-   * Gets row index.\n-   *\n-   * @return the row index\n-   */\n-  public int getRowIndex() {\n-    return rowIndex;\n-  }\n-\n-  /**\n-   * Sets row index.\n-   *\n-   * @param rowIndex the row index\n-   */\n-  public void setRowIndex(int rowIndex) {\n-    this.rowIndex = rowIndex;\n-  }\n }\n",
+            "diff_size": 261
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/673/PartitionGetRowParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/673/PartitionGetRowParam.java\nindex c9ba200f52..fd977217c6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/673/PartitionGetRowParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/673/PartitionGetRowParam.java\n@@ -39,8 +39,7 @@ public class PartitionGetRowParam implements Serialize {\n    * @param clock      the clock\n    * @param bypassMode the bypass mode\n    */\n-  public PartitionGetRowParam(int matrixId, PartitionKey partKey, int rowIndex, int clock,\n-      boolean bypassMode) {\n+  public PartitionGetRowParam(int matrixId, PartitionKey partKey, int rowIndex, int clock, boolean bypassMode) {\n     this.matrixId = matrixId;\n     this.partKey = partKey;\n     this.rowIndex = rowIndex;\n@@ -176,4 +175,4 @@ public class PartitionGetRowParam implements Serialize {\n   public void setRowIndex(int rowIndex) {\n     this.rowIndex = rowIndex;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 44.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 56.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 96.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 106.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 116.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "120",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 126.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "130",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 136.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "140",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 146.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "150",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 156.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "160",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 166.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "170",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 176.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "180",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 186.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/673/PartitionGetRowParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/673/PartitionGetRowParam.java\nindex c9ba200f52..64fc6f87ff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/673/PartitionGetRowParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/673/PartitionGetRowParam.java\n@@ -23,12 +23,13 @@ import io.netty.buffer.ByteBuf;\n /**\n  * The parameter of partition get row.\n  */\n+\n public class PartitionGetRowParam implements Serialize {\n-  private int matrixId;\n-  private PartitionKey partKey;\n-  private int rowIndex;\n-  private int clock;\n-  private boolean bypassMode;\n+    private int matrixId;\n+    private PartitionKey partKey;\n+    private int rowIndex;\n+    private int clock;\n+    private boolean bypassMode;\n \n   /**\n    * Creates a new partition parameter.\n@@ -39,141 +40,151 @@ public class PartitionGetRowParam implements Serialize {\n    * @param clock      the clock\n    * @param bypassMode the bypass mode\n    */\n-  public PartitionGetRowParam(int matrixId, PartitionKey partKey, int rowIndex, int clock,\n-      boolean bypassMode) {\n+\n+    public PartitionGetRowParam(int matrixId, PartitionKey partKey, int rowIndex, int clock, boolean bypassMode) {\n     this.matrixId = matrixId;\n     this.partKey = partKey;\n     this.rowIndex = rowIndex;\n     this.clock = clock;\n     this.bypassMode = bypassMode;\n-  }\n+    }\n \n   /**\n    * Creates a new partition parameter by default\n    */\n-  public PartitionGetRowParam() {\n+\n+    public PartitionGetRowParam() {\n     this(0, null, 0, -1, false);\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     buf.writeInt(matrixId);\n     buf.writeInt(rowIndex);\n     buf.writeInt(clock);\n     buf.writeBoolean(bypassMode);\n     if (partKey != null) {\n-      partKey.serialize(buf);\n+        partKey.serialize(buf);\n+    }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n     matrixId = buf.readInt();\n     rowIndex = buf.readInt();\n     clock = buf.readInt();\n     bypassMode = buf.readBoolean();\n-\n     if (buf.isReadable()) {\n-      if (partKey == null) {\n+        if (partKey == null) {\n         partKey = new PartitionKey();\n-      }\n-\n-      partKey.deserialize(buf);\n+        }\n+        partKey.deserialize(buf);\n+    }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     return 16 + ((partKey != null) ? partKey.bufferLen() : 0);\n-  }\n+    }\n \n   /**\n    * Gets matrix id.\n    *\n    * @return the matrix id\n    */\n-  public int getMatrixId() {\n+\n+    public int getMatrixId() {\n     return matrixId;\n-  }\n+    }\n \n   /**\n    * Gets part key.\n    *\n    * @return the part key\n    */\n-  public PartitionKey getPartKey() {\n+\n+    public PartitionKey getPartKey() {\n     return partKey;\n-  }\n+    }\n \n   /**\n    * Sets matrix id.\n    *\n    * @param matrixId the matrix id\n    */\n-  public void setMatrixId(int matrixId) {\n+\n+    public void setMatrixId(int matrixId) {\n     this.matrixId = matrixId;\n-  }\n+    }\n \n   /**\n    * Sets part key.\n    *\n    * @param partKey the part key\n    */\n-  public void setPartKey(PartitionKey partKey) {\n+\n+    public void setPartKey(PartitionKey partKey) {\n     this.partKey = partKey;\n-  }\n+    }\n \n   /**\n    * Gets clock.\n    *\n    * @return the clock\n    */\n-  public int getClock() {\n+\n+    public int getClock() {\n     return clock;\n-  }\n+    }\n \n   /**\n    * Is bypass mode boolean.\n    *\n    * @return the boolean\n    */\n-  public boolean isBypassMode() {\n+\n+    public boolean isBypassMode() {\n     return bypassMode;\n-  }\n+    }\n \n   /**\n    * Sets clock.\n    *\n    * @param clock the clock\n    */\n-  public void setClock(int clock) {\n+\n+    public void setClock(int clock) {\n     this.clock = clock;\n-  }\n+    }\n \n   /**\n    * Sets bypass mode.\n    *\n    * @param bypassMode the bypass mode\n    */\n-  public void setBypassMode(boolean bypassMode) {\n+\n+    public void setBypassMode(boolean bypassMode) {\n     this.bypassMode = bypassMode;\n-  }\n+    }\n \n   /**\n    * Gets row index.\n    *\n    * @return the row index\n    */\n-  public int getRowIndex() {\n+\n+    public int getRowIndex() {\n     return rowIndex;\n-  }\n+    }\n \n   /**\n    * Sets row index.\n    *\n    * @param rowIndex the row index\n    */\n-  public void setRowIndex(int rowIndex) {\n+\n+    public void setRowIndex(int rowIndex) {\n     this.rowIndex = rowIndex;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 60
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "1",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 15.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/673/PartitionGetRowParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/673/PartitionGetRowParam.java\nindex c9ba200f52..5147005431 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/673/PartitionGetRowParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/673/PartitionGetRowParam.java\n@@ -12,9 +12,7 @@\n  * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n  * either express or implied. See the License for the specific language governing permissions and\n  * limitations under the License.\n- */\n-\n-package com.tencent.angel.ml.matrix.udf.getrow;\n+ */ package com.tencent.angel.ml.matrix.udf.getrow;\n \n import com.tencent.angel.PartitionKey;\n import com.tencent.angel.common.Serialize;\n",
+            "diff_size": 3
+        }
+    ]
+}

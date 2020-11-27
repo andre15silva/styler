@@ -1,0 +1,123 @@
+{
+    "error_id": "23",
+    "information": {
+        "errors": [
+            {
+                "line": "46",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 172).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<RoomAttrDto> roomAttrs = BeanConvertUtil.covertBeanList(roomAttrServiceDaoImpl.getRoomAttrInfo(BeanConvertUtil.beanCovertMap(roomAttrDto)), RoomAttrDto.class);\n\n        return roomAttrs;\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 173).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/23/RoomAttrInnerServiceSMOImpl.java\nindex 2caac99b02..2e3835dcf6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/23/RoomAttrInnerServiceSMOImpl.java\n@@ -1,4 +1,3 @@\n-\n package com.java110.community.smo.impl;\n \n \n@@ -41,9 +40,7 @@ public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoom\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             roomAttrDto.setPage((page - 1) * roomAttrDto.getRow());\n-        }\n-\n-        List<RoomAttrDto> roomAttrs = BeanConvertUtil.covertBeanList(roomAttrServiceDaoImpl.getRoomAttrInfo(BeanConvertUtil.beanCovertMap(roomAttrDto)), RoomAttrDto.class);\n+        } List<RoomAttrDto>roomAttrs = BeanConvertUtil.covertBeanList(roomAttrServiceDaoImpl.getRoomAttrInfo(BeanConvertUtil.beanCovertMap(roomAttrDto)), RoomAttrDto.class);\n \n         return roomAttrs;\n     }\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/23/RoomAttrInnerServiceSMOImpl.java\nindex 2caac99b02..a0a0abf00f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/23/RoomAttrInnerServiceSMOImpl.java\n@@ -26,48 +26,48 @@ import java.util.List;\n @RestController\n public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoomAttrInnerServiceSMO {\n \n-    @Autowired\n-    private IRoomAttrServiceDao roomAttrServiceDaoImpl;\n+  @Autowired\n+  private IRoomAttrServiceDao roomAttrServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<RoomAttrDto> queryRoomAttrs(@RequestBody RoomAttrDto roomAttrDto) {\n+  @Override\n+  public List<RoomAttrDto> queryRoomAttrs(@RequestBody RoomAttrDto roomAttrDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = roomAttrDto.getPage();\n+    int page = roomAttrDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            roomAttrDto.setPage((page - 1) * roomAttrDto.getRow());\n-        }\n-\n-        List<RoomAttrDto> roomAttrs = BeanConvertUtil.covertBeanList(roomAttrServiceDaoImpl.getRoomAttrInfo(BeanConvertUtil.beanCovertMap(roomAttrDto)), RoomAttrDto.class);\n-\n-        return roomAttrs;\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      roomAttrDto.setPage((page - 1) * roomAttrDto.getRow());\n     }\n \n+    List<RoomAttrDto> roomAttrs =\n+      BeanConvertUtil.covertBeanList(roomAttrServiceDaoImpl.getRoomAttrInfo(BeanConvertUtil.beanCovertMap(roomAttrDto)), RoomAttrDto.class);\n \n+    return roomAttrs;\n+  }\n \n-    @Override\n-    public int queryRoomAttrsCount(@RequestBody RoomAttrDto roomAttrDto) {\n-        return roomAttrServiceDaoImpl.queryRoomAttrsCount(BeanConvertUtil.beanCovertMap(roomAttrDto));\n-    }\n \n-    public IRoomAttrServiceDao getRoomAttrServiceDaoImpl() {\n-        return roomAttrServiceDaoImpl;\n-    }\n+  @Override\n+  public int queryRoomAttrsCount(@RequestBody RoomAttrDto roomAttrDto) {\n+    return roomAttrServiceDaoImpl.queryRoomAttrsCount(BeanConvertUtil.beanCovertMap(roomAttrDto));\n+  }\n \n-    public void setRoomAttrServiceDaoImpl(IRoomAttrServiceDao roomAttrServiceDaoImpl) {\n-        this.roomAttrServiceDaoImpl = roomAttrServiceDaoImpl;\n-    }\n+  public IRoomAttrServiceDao getRoomAttrServiceDaoImpl() {\n+    return roomAttrServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public void setRoomAttrServiceDaoImpl(IRoomAttrServiceDao roomAttrServiceDaoImpl) {\n+    this.roomAttrServiceDaoImpl = roomAttrServiceDaoImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n+\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 40
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 172).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/23/RoomAttrInnerServiceSMOImpl.java\nindex 2caac99b02..3063f1df17 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/23/RoomAttrInnerServiceSMOImpl.java\n@@ -48,9 +48,7 @@ public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoom\n         return roomAttrs;\n     }\n \n-\n-\n-    @Override\n+@Override\n     public int queryRoomAttrsCount(@RequestBody RoomAttrDto roomAttrDto) {\n         return roomAttrServiceDaoImpl.queryRoomAttrsCount(BeanConvertUtil.beanCovertMap(roomAttrDto));\n     }\n@@ -70,4 +68,4 @@ public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoom\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 172).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/23/RoomAttrInnerServiceSMOImpl.java\nindex 2caac99b02..f559413fa9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/23/RoomAttrInnerServiceSMOImpl.java\n@@ -1,7 +1,6 @@\n \n package com.java110.community.smo.impl;\n \n-\n import com.java110.common.util.BeanConvertUtil;\n import com.java110.community.dao.IRoomAttrServiceDao;\n import com.java110.core.base.smo.BaseServiceSMO;\n@@ -12,7 +11,6 @@ import com.java110.dto.RoomAttrDto;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -23,6 +21,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoomAttrInnerServiceSMO {\n \n@@ -36,9 +36,7 @@ public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoom\n     public List<RoomAttrDto> queryRoomAttrs(@RequestBody RoomAttrDto roomAttrDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = roomAttrDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             roomAttrDto.setPage((page - 1) * roomAttrDto.getRow());\n         }\n@@ -49,7 +47,6 @@ public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoom\n     }\n \n \n-\n     @Override\n     public int queryRoomAttrsCount(@RequestBody RoomAttrDto roomAttrDto) {\n         return roomAttrServiceDaoImpl.queryRoomAttrsCount(BeanConvertUtil.beanCovertMap(roomAttrDto));\n@@ -70,4 +67,4 @@ public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoom\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "92",
+                    "severity": "error",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "37",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "56",
+                    "severity": "error",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "57",
+                    "severity": "error",
+                    "message": "';' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/23/RoomAttrInnerServiceSMOImpl.java\nindex 2caac99b02..c9c103251d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/23/RoomAttrInnerServiceSMOImpl.java\n@@ -1,4 +1,3 @@\n-\n package com.java110.community.smo.impl;\n \n \n@@ -42,10 +41,8 @@ public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoom\n         if (page != PageDto.DEFAULT_PAGE) {\n             roomAttrDto.setPage((page - 1) * roomAttrDto.getRow());\n         }\n-\n-        List<RoomAttrDto> roomAttrs = BeanConvertUtil.covertBeanList(roomAttrServiceDaoImpl.getRoomAttrInfo(BeanConvertUtil.beanCovertMap(roomAttrDto)), RoomAttrDto.class);\n-\n-        return roomAttrs;\n+        List<RoomAttrDto> roomAttrs = BeanConvertUtil.covertBeanList(roomAttrServiceDaoImpl. getRoomAttrInfo(BeanConvertUtil\n+        .beanCovertMap(roomAttrDto)),RoomAttrDto.class );returnroomAttrs;\n     }\n \n \n",
+            "diff_size": 5
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 173).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/23/RoomAttrInnerServiceSMOImpl.java\nindex 2caac99b02..2e3835dcf6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/23/RoomAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/23/RoomAttrInnerServiceSMOImpl.java\n@@ -1,4 +1,3 @@\n-\n package com.java110.community.smo.impl;\n \n \n@@ -41,9 +40,7 @@ public class RoomAttrInnerServiceSMOImpl extends BaseServiceSMO implements IRoom\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             roomAttrDto.setPage((page - 1) * roomAttrDto.getRow());\n-        }\n-\n-        List<RoomAttrDto> roomAttrs = BeanConvertUtil.covertBeanList(roomAttrServiceDaoImpl.getRoomAttrInfo(BeanConvertUtil.beanCovertMap(roomAttrDto)), RoomAttrDto.class);\n+        } List<RoomAttrDto>roomAttrs = BeanConvertUtil.covertBeanList(roomAttrServiceDaoImpl.getRoomAttrInfo(BeanConvertUtil.beanCovertMap(roomAttrDto)), RoomAttrDto.class);\n \n         return roomAttrs;\n     }\n",
+            "diff_size": 4
+        }
+    ]
+}

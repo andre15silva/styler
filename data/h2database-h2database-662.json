@@ -1,0 +1,85 @@
+{
+    "error_id": "662",
+    "information": {
+        "errors": [
+            {
+                "line": "82",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "    @Override\n    public StringBuilder getUnenclosedSQL(StringBuilder builder, int sqlFlags) {\n        return isArray //\n                ? writeExpressions(builder.append(\"ARRAY [\"), list, sqlFlags).append(']')\n                : writeExpressions(builder.append(\"ROW (\"), list, sqlFlags).append(')');\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "82",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/662/ExpressionList.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler/662/ExpressionList.java\nindex c03e0a8e70..f4123a560f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/662/ExpressionList.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler/662/ExpressionList.java\n@@ -79,7 +79,7 @@ public class ExpressionList extends Expression {\n \n     @Override\n     public StringBuilder getUnenclosedSQL(StringBuilder builder, int sqlFlags) {\n-        return isArray //\n+    returnisArray //\n                 ? writeExpressions(builder.append(\"ARRAY [\"), list, sqlFlags).append(']')\n                 : writeExpressions(builder.append(\"ROW (\"), list, sqlFlags).append(')');\n     }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "86",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/662/ExpressionList.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/intellij/662/ExpressionList.java\nindex c03e0a8e70..a3a4c5a3f3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/662/ExpressionList.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/intellij/662/ExpressionList.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (https://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.expression;\n \n import org.h2.engine.Session;\n@@ -21,128 +22,132 @@ import org.h2.value.ValueRow;\n  */\n public class ExpressionList extends Expression {\n \n-    private final Expression[] list;\n-    private final boolean isArray;\n-    private TypeInfo type;\n-\n-    public ExpressionList(Expression[] list, boolean isArray) {\n-        this.list = list;\n-        this.isArray = isArray;\n-    }\n-\n-    @Override\n-    public Value getValue(Session session) {\n-        Value[] v = new Value[list.length];\n-        for (int i = 0; i < list.length; i++) {\n-            v[i] = list[i].getValue(session);\n-        }\n-        return isArray ? ValueArray.get((TypeInfo) type.getExtTypeInfo(), v, session) : ValueRow.get(v);\n-    }\n-\n-    @Override\n-    public TypeInfo getType() {\n-        return type;\n-    }\n-\n-    @Override\n-    public void mapColumns(ColumnResolver resolver, int level, int state) {\n-        for (Expression e : list) {\n-            e.mapColumns(resolver, level, state);\n-        }\n-    }\n+  private final Expression[] list;\n+  private final boolean isArray;\n+  private TypeInfo type;\n \n-    @Override\n-    public Expression optimize(Session session) {\n-        boolean allConst = true;\n-        int count = list.length;\n-        for (int i = 0; i < count; i++) {\n-            Expression e = list[i].optimize(session);\n-            if (!e.isConstant()) {\n-                allConst = false;\n-            }\n-            list[i] = e;\n-        }\n-        type = isArray ? TypeInfo.getTypeInfo(Value.ARRAY, list.length, 0, TypeInfo.getHigherType(list))\n-                : TypeInfo.getTypeInfo(Value.ROW, 0, 0, new ExtTypeInfoRow(list));\n-        if (allConst) {\n-            return ValueExpression.get(getValue(session));\n-        }\n-        return this;\n-    }\n+  public ExpressionList(Expression[] list, boolean isArray) {\n+    this.list = list;\n+    this.isArray = isArray;\n+  }\n \n-    @Override\n-    public void setEvaluatable(TableFilter tableFilter, boolean b) {\n-        for (Expression e : list) {\n-            e.setEvaluatable(tableFilter, b);\n-        }\n+  @Override\n+  public Value getValue(Session session) {\n+    Value[] v = new Value[list.length];\n+    for (int i = 0; i < list.length; i++) {\n+      v[i] = list[i].getValue(session);\n     }\n-\n-    @Override\n-    public StringBuilder getUnenclosedSQL(StringBuilder builder, int sqlFlags) {\n-        return isArray //\n-                ? writeExpressions(builder.append(\"ARRAY [\"), list, sqlFlags).append(']')\n-                : writeExpressions(builder.append(\"ROW (\"), list, sqlFlags).append(')');\n+    return isArray ?\n+        ValueArray.get((TypeInfo) type.getExtTypeInfo(), v, session) :\n+        ValueRow.get(v);\n+  }\n+\n+  @Override\n+  public TypeInfo getType() {\n+    return type;\n+  }\n+\n+  @Override\n+  public void mapColumns(ColumnResolver resolver, int level, int state) {\n+    for (Expression e : list) {\n+      e.mapColumns(resolver, level, state);\n     }\n-\n-    @Override\n-    public void updateAggregate(Session session, int stage) {\n-        for (Expression e : list) {\n-            e.updateAggregate(session, stage);\n-        }\n+  }\n+\n+  @Override\n+  public Expression optimize(Session session) {\n+    boolean allConst = true;\n+    int count = list.length;\n+    for (int i = 0; i < count; i++) {\n+      Expression e = list[i].optimize(session);\n+      if (!e.isConstant()) {\n+        allConst = false;\n+      }\n+      list[i] = e;\n     }\n-\n-    @Override\n-    public boolean isEverything(ExpressionVisitor visitor) {\n-        for (Expression e : list) {\n-            if (!e.isEverything(visitor)) {\n-                return false;\n-            }\n-        }\n-        return true;\n+    type = isArray ? TypeInfo\n+        .getTypeInfo(Value.ARRAY, list.length, 0, TypeInfo.getHigherType(list))\n+        : TypeInfo.getTypeInfo(Value.ROW, 0, 0, new ExtTypeInfoRow(list));\n+    if (allConst) {\n+      return ValueExpression.get(getValue(session));\n     }\n+    return this;\n+  }\n \n-    @Override\n-    public int getCost() {\n-        int cost = 1;\n-        for (Expression e : list) {\n-            cost += e.getCost();\n-        }\n-        return cost;\n+  @Override\n+  public void setEvaluatable(TableFilter tableFilter, boolean b) {\n+    for (Expression e : list) {\n+      e.setEvaluatable(tableFilter, b);\n     }\n-\n-    @Override\n-    public Expression[] getExpressionColumns(Session session) {\n-        ExpressionColumn[] expr = new ExpressionColumn[list.length];\n-        for (int i = 0; i < list.length; i++) {\n-            Expression e = list[i];\n-            Column col = new Column(\"C\" + (i + 1), e.getType());\n-            expr[i] = new ExpressionColumn(session.getDatabase(), col);\n-        }\n-        return expr;\n+  }\n+\n+  @Override\n+  public StringBuilder getUnenclosedSQL(StringBuilder builder, int sqlFlags) {\n+    return isArray //\n+        ?\n+        writeExpressions(builder.append(\"ARRAY [\"), list, sqlFlags).append(']')\n+        : writeExpressions(builder.append(\"ROW (\"), list, sqlFlags).append(')');\n+  }\n+\n+  @Override\n+  public void updateAggregate(Session session, int stage) {\n+    for (Expression e : list) {\n+      e.updateAggregate(session, stage);\n     }\n-\n-    @Override\n-    public boolean isConstant() {\n-        for (Expression e : list) {\n-            if (!e.isConstant()) {\n-                return false;\n-            }\n-        }\n-        return true;\n+  }\n+\n+  @Override\n+  public boolean isEverything(ExpressionVisitor visitor) {\n+    for (Expression e : list) {\n+      if (!e.isEverything(visitor)) {\n+        return false;\n+      }\n     }\n-\n-    @Override\n-    public int getSubexpressionCount() {\n-        return list.length;\n+    return true;\n+  }\n+\n+  @Override\n+  public int getCost() {\n+    int cost = 1;\n+    for (Expression e : list) {\n+      cost += e.getCost();\n     }\n-\n-    @Override\n-    public Expression getSubexpression(int index) {\n-        return list[index];\n+    return cost;\n+  }\n+\n+  @Override\n+  public Expression[] getExpressionColumns(Session session) {\n+    ExpressionColumn[] expr = new ExpressionColumn[list.length];\n+    for (int i = 0; i < list.length; i++) {\n+      Expression e = list[i];\n+      Column col = new Column(\"C\" + (i + 1), e.getType());\n+      expr[i] = new ExpressionColumn(session.getDatabase(), col);\n     }\n-\n-    public boolean isArray() {\n-        return isArray;\n+    return expr;\n+  }\n+\n+  @Override\n+  public boolean isConstant() {\n+    for (Expression e : list) {\n+      if (!e.isConstant()) {\n+        return false;\n+      }\n     }\n+    return true;\n+  }\n+\n+  @Override\n+  public int getSubexpressionCount() {\n+    return list.length;\n+  }\n+\n+  @Override\n+  public Expression getSubexpression(int index) {\n+    return list[index];\n+  }\n+\n+  public boolean isArray() {\n+    return isArray;\n+  }\n \n }\n",
+            "diff_size": 163
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "82",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "83",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "':' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/662/ExpressionList.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_random/662/ExpressionList.java\nindex c03e0a8e70..bcf67b233d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/662/ExpressionList.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_random/662/ExpressionList.java\n@@ -79,70 +79,69 @@ public class ExpressionList extends Expression {\n \n     @Override\n     public StringBuilder getUnenclosedSQL(StringBuilder builder, int sqlFlags) {\n-        return isArray //\n-                ? writeExpressions(builder.append(\"ARRAY [\"), list, sqlFlags).append(']')\n-                : writeExpressions(builder.append(\"ROW (\"), list, sqlFlags).append(')');\n-    }\n+    returnisArray//?writeExpressions(builder.append(\"ARRAY [\"), list, sqlFlags).append(']')\n+        : writeExpressions(builder.append(\"ROW (\"), list, sqlFlags).append(')');\n+}\n \n-    @Override\n-    public void updateAggregate(Session session, int stage) {\n-        for (Expression e : list) {\n-            e.updateAggregate(session, stage);\n-        }\n+@Override\n+public void updateAggregate(Session session, int stage) {\n+    for (Expression e : list) {\n+        e.updateAggregate(session, stage);\n     }\n+}\n \n-    @Override\n-    public boolean isEverything(ExpressionVisitor visitor) {\n-        for (Expression e : list) {\n-            if (!e.isEverything(visitor)) {\n-                return false;\n-            }\n+@Override\n+public boolean isEverything(ExpressionVisitor visitor) {\n+    for (Expression e : list) {\n+        if (!e.isEverything(visitor)) {\n+            return false;\n         }\n-        return true;\n     }\n+    return true;\n+}\n \n-    @Override\n-    public int getCost() {\n-        int cost = 1;\n-        for (Expression e : list) {\n-            cost += e.getCost();\n-        }\n-        return cost;\n+@Override\n+public int getCost() {\n+    int cost = 1;\n+    for (Expression e : list) {\n+        cost += e.getCost();\n     }\n+    return cost;\n+}\n \n-    @Override\n-    public Expression[] getExpressionColumns(Session session) {\n-        ExpressionColumn[] expr = new ExpressionColumn[list.length];\n-        for (int i = 0; i < list.length; i++) {\n-            Expression e = list[i];\n-            Column col = new Column(\"C\" + (i + 1), e.getType());\n-            expr[i] = new ExpressionColumn(session.getDatabase(), col);\n-        }\n-        return expr;\n+@Override\n+public Expression[] getExpressionColumns(Session session) {\n+    ExpressionColumn[] expr = new ExpressionColumn[list.length];\n+    for (int i = 0; i < list.length; i++) {\n+        Expression e = list[i];\n+        Column col = new Column(\"C\" + (i + 1), e.getType());\n+        expr[i] = new ExpressionColumn(session.getDatabase(), col);\n     }\n+    return expr;\n+}\n \n-    @Override\n-    public boolean isConstant() {\n-        for (Expression e : list) {\n-            if (!e.isConstant()) {\n-                return false;\n-            }\n+@Override\n+public boolean isConstant() {\n+    for (Expression e : list) {\n+        if (!e.isConstant()) {\n+            return false;\n         }\n-        return true;\n     }\n+    return true;\n+}\n \n-    @Override\n-    public int getSubexpressionCount() {\n-        return list.length;\n-    }\n+@Override\n+public int getSubexpressionCount() {\n+    return list.length;\n+}\n \n-    @Override\n-    public Expression getSubexpression(int index) {\n-        return list[index];\n-    }\n+@Override\n+public Expression getSubexpression(int index) {\n+    return list[index];\n+}\n \n-    public boolean isArray() {\n-        return isArray;\n-    }\n+public boolean isArray() {\n+    return isArray;\n+}\n \n }\n",
+            "diff_size": 59
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "82",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/662/ExpressionList.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_three_grams/662/ExpressionList.java\nindex c03e0a8e70..f4123a560f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/662/ExpressionList.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_three_grams/662/ExpressionList.java\n@@ -79,7 +79,7 @@ public class ExpressionList extends Expression {\n \n     @Override\n     public StringBuilder getUnenclosedSQL(StringBuilder builder, int sqlFlags) {\n-        return isArray //\n+    returnisArray //\n                 ? writeExpressions(builder.append(\"ARRAY [\"), list, sqlFlags).append(']')\n                 : writeExpressions(builder.append(\"ROW (\"), list, sqlFlags).append(')');\n     }\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "error_id": "880",
+    "information": {
+        "errors": [
+            {
+                "line": "76",
+                "severity": "error",
+                "message": "'METHOD_DEF' has more than 1 empty lines before.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "\n\n    @Override\n    protected void configure(HttpSecurity http) throws Exception {\n        http\n                .csrf().disable()",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/880/DemoApplicationConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/880/DemoApplicationConfiguration.java\nindex f31c533cb1..4379d1ff3e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/880/DemoApplicationConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/880/DemoApplicationConfiguration.java\n@@ -72,7 +72,6 @@ public class DemoApplicationConfiguration extends WebSecurityConfigurerAdapter {\n         return inMemoryUserDetailsManager;\n     }\n \n-\n     @Override\n     protected void configure(HttpSecurity http) throws Exception {\n         http\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Line is longer than 240 characters (found 377).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/880/DemoApplicationConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/880/DemoApplicationConfiguration.java\nindex f31c533cb1..e3d2c92c59 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/880/DemoApplicationConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/880/DemoApplicationConfiguration.java\n@@ -31,7 +31,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;\n import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;\n import org.springframework.security.crypto.password.PasswordEncoder;\n import org.springframework.security.provisioning.InMemoryUserDetailsManager;\n-\n import java.util.Arrays;\n import java.util.List;\n import java.util.stream.Collectors;\n@@ -50,44 +49,23 @@ public class DemoApplicationConfiguration extends WebSecurityConfigurerAdapter {\n \n     @Bean\n     public UserDetailsService myUserDetailsService() {\n-\n-        InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();\n-\n-        String[][] usersGroupsAndRoles = {\n-                {\"salaboy\", \"password\", \"ROLE_ACTIVITI_USER\", \"GROUP_activitiTeam\"},\n-                {\"ryandawsonuk\", \"password\", \"ROLE_ACTIVITI_USER\", \"GROUP_activitiTeam\"},\n-                {\"erdemedeiros\", \"password\", \"ROLE_ACTIVITI_USER\", \"GROUP_activitiTeam\"},\n-                {\"other\", \"password\", \"ROLE_ACTIVITI_USER\", \"GROUP_otherTeam\"},\n-                {\"admin\", \"password\", \"ROLE_ACTIVITI_ADMIN\"},\n-        };\n-\n-        for (String[] user : usersGroupsAndRoles) {\n-            List<String> authoritiesStrings = Arrays.asList(Arrays.copyOfRange(user, 2, user.length));\n-            logger.info(\"> Registering new user: \" + user[0] + \" with the following Authorities[\" + authoritiesStrings + \"]\");\n-            inMemoryUserDetailsManager.createUser(new User(user[0], passwordEncoder().encode(user[1]),\n-                    authoritiesStrings.stream().map(s -> new SimpleGrantedAuthority(s)).collect(Collectors.toList())));\n-        }\n-\n-\n-        return inMemoryUserDetailsManager;\n+    InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();\n+    String[][] usersGroupsAndRoles = { { \"salaboy\", \"password\", \"ROLE_ACTIVITI_USER\", \"GROUP_activitiTeam\" }, { \"ryandawsonuk\", \"password\", \"ROLE_ACTIVITI_USER\", \"GROUP_activitiTeam\" }, { \"erdemedeiros\", \"password\", \"ROLE_ACTIVITI_USER\", \"GROUP_activitiTeam\" }, { \"other\", \"password\", \"ROLE_ACTIVITI_USER\", \"GROUP_otherTeam\" }, { \"admin\", \"password\", \"ROLE_ACTIVITI_ADMIN\" },};\n+    for (String[] user : usersGroupsAndRoles) {\n+        List<String> authoritiesStrings = Arrays.asList(Arrays.copyOfRange(user, 2, user.length));\n+        logger.info(\"> Registering new user: \" + user[0] + \" with the following Authorities[\" + authoritiesStrings + \"]\");\n+        inMemoryUserDetailsManager.createUser(new User(user[0], passwordEncoder().encode(user[1]), authoritiesStrings.stream().map(s -> new SimpleGrantedAuthority(s)).collect(Collectors.toList())));\n+    }\n+    return inMemoryUserDetailsManager;\n     }\n-\n \n     @Override\n     protected void configure(HttpSecurity http) throws Exception {\n-        http\n-                .csrf().disable()\n-                .authorizeRequests()\n-                .anyRequest()\n-                .authenticated()\n-                .and()\n-                .httpBasic();\n-\n-\n+    http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic();\n     }\n \n     @Bean\n     public PasswordEncoder passwordEncoder() {\n         return new BCryptPasswordEncoder();\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 32
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/880/DemoApplicationConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/880/DemoApplicationConfiguration.java\nindex f31c533cb1..4379d1ff3e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/880/DemoApplicationConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/880/DemoApplicationConfiguration.java\n@@ -72,7 +72,6 @@ public class DemoApplicationConfiguration extends WebSecurityConfigurerAdapter {\n         return inMemoryUserDetailsManager;\n     }\n \n-\n     @Override\n     protected void configure(HttpSecurity http) throws Exception {\n         http\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/880/DemoApplicationConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/880/DemoApplicationConfiguration.java\nindex f31c533cb1..4379d1ff3e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/880/DemoApplicationConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/880/DemoApplicationConfiguration.java\n@@ -72,7 +72,6 @@ public class DemoApplicationConfiguration extends WebSecurityConfigurerAdapter {\n         return inMemoryUserDetailsManager;\n     }\n \n-\n     @Override\n     protected void configure(HttpSecurity http) throws Exception {\n         http\n",
+            "diff_size": 1
+        }
+    ]
+}

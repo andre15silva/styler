@@ -1,0 +1,544 @@
+{
+    "error_id": "102",
+    "information": {
+        "errors": [
+            {
+                "line": "97",
+                "severity": "warning",
+                "message": "Line is longer than 100 characters (found 115).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "      return messages;\n    } catch (Exception e) {\n      String message = \"Unable to parse \" + new String(rawMessage, StandardCharsets.UTF_8) + \": \" + e.getMessage();\n      LOG.error(message, e);\n      throw new IllegalStateException(message, e);\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "97",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "97",
+                    "column": "140",
+                    "severity": "warning",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/styler/102/BasicFireEyeParser.java\nindex 0b2c73ee0a..40e065efec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/styler/102/BasicFireEyeParser.java\n@@ -94,8 +94,7 @@ public class BasicFireEyeParser extends BasicParser {\n       messages.add(toReturn);\n       return messages;\n     } catch (Exception e) {\n-      String message = \"Unable to parse \" + new String(rawMessage, StandardCharsets.UTF_8) + \": \" + e.getMessage();\n-      LOG.error(message, e);\n+      String message = \"Unable to parse \" + new String(rawMessage, StandardCharsets.UTF_8) + \": \" + e.getMessage(); LOG . error(message, e);\n       throw new IllegalStateException(message, e);\n     }\n   }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "98",
+                    "column": "99",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/intellij/102/BasicFireEyeParser.java\nindex 0b2c73ee0a..dbe4fcc145 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/intellij/102/BasicFireEyeParser.java\n@@ -38,16 +38,15 @@ import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n \n \n-\n public class BasicFireEyeParser extends BasicParser {\n \n   private static final long serialVersionUID = 6328907550159134550L;\n   protected static final Logger LOG = LoggerFactory\n-          .getLogger(MethodHandles.lookup().lookupClass());\n+      .getLogger(MethodHandles.lookup().lookupClass());\n \n \n   private static final String tsRegex = \"([a-zA-Z]{3})\\\\s+(\\\\d+)\\\\s+(\\\\d+\\\\:\\\\d+\\\\:\\\\d+)\"\n-          + \"\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\";\n+      + \"\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\";\n   private static final Pattern tsPattern = Pattern.compile(tsRegex);\n   private static final String syslogPriorityRegex = \"<[1-9][0-9]*>\";\n   private static final Pattern syslogPriorityPattern = Pattern.compile(syslogPriorityRegex);\n@@ -55,10 +54,12 @@ public class BasicFireEyeParser extends BasicParser {\n   private static final Pattern nvPattern = Pattern.compile(nvRegex);\n \n   @Override\n-  public void configure(Map<String, Object> parserConfig) {}\n+  public void configure(Map<String, Object> parserConfig) {\n+  }\n \n   @Override\n-  public void init() {}\n+  public void init() {\n+  }\n \n \n   @Override\n@@ -94,7 +95,8 @@ public class BasicFireEyeParser extends BasicParser {\n       messages.add(toReturn);\n       return messages;\n     } catch (Exception e) {\n-      String message = \"Unable to parse \" + new String(rawMessage, StandardCharsets.UTF_8) + \": \" + e.getMessage();\n+      String message = \"Unable to parse \" + new String(rawMessage, StandardCharsets.UTF_8) + \": \" +\n+          e.getMessage();\n       LOG.error(message, e);\n       throw new IllegalStateException(message, e);\n     }\n@@ -168,13 +170,13 @@ public class BasicFireEyeParser extends BasicParser {\n   private Multimap<String, String> formatMain(String in) {\n     Multimap<String, String> multiMap = ArrayListMultimap.create();\n     String input = in.replaceAll(\"cn3\", \"dst_port\")\n-            .replaceAll(\"cs5\", \"cncHost\").replaceAll(\"proto\", \"protocol\")\n-            .replaceAll(\"rt=\", \"timestamp=\").replaceAll(\"cs1\", \"malware\")\n-            .replaceAll(\"dst=\", \"dst_ip=\")\n-            .replaceAll(\"shost\", \"src_hostname\")\n-            .replaceAll(\"dmac\", \"dst_mac\").replaceAll(\"smac\", \"src_mac\")\n-            .replaceAll(\"spt\", \"src_port\")\n-            .replaceAll(\"\\\\bsrc\\\\b\", \"src_ip\");\n+        .replaceAll(\"cs5\", \"cncHost\").replaceAll(\"proto\", \"protocol\")\n+        .replaceAll(\"rt=\", \"timestamp=\").replaceAll(\"cs1\", \"malware\")\n+        .replaceAll(\"dst=\", \"dst_ip=\")\n+        .replaceAll(\"shost\", \"src_hostname\")\n+        .replaceAll(\"dmac\", \"dst_mac\").replaceAll(\"smac\", \"src_mac\")\n+        .replaceAll(\"spt\", \"src_port\")\n+        .replaceAll(\"\\\\bsrc\\\\b\", \"src_ip\");\n     String[] tokens = input.split(\"\\\\|\");\n \n     if (tokens.length > 0) {\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 128).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "column": "23",
+                    "severity": "warning",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "59",
+                    "column": "35",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 69.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "warning",
+                    "message": "'while' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "column": "14",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'while' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "warning",
+                    "message": "'while rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 49, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 82.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 115).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "108",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "warning",
+                    "message": "Annotation 'SuppressWarnings' should be alone on line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationLocationCheck"
+                },
+                {
+                    "line": "110",
+                    "column": "23",
+                    "severity": "warning",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "110",
+                    "column": "35",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "123",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "warning",
+                    "message": "'for' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 32, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "126",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 32, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "127",
+                    "severity": "warning",
+                    "message": "'for rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "135",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "138",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "141",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "147",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "149",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "151",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 353).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "154",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "155",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "warning",
+                    "message": "'while' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "column": "14",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'while' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "warning",
+                    "message": "'while' child has incorrect indentation level 31, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "158",
+                    "severity": "warning",
+                    "message": "'while' child has incorrect indentation level 31, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "159",
+                    "severity": "warning",
+                    "message": "'while rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "162",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/codebuff/102/BasicFireEyeParser.java\nindex 0b2c73ee0a..674fb92ad6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/codebuff/102/BasicFireEyeParser.java\n@@ -37,89 +37,77 @@ import org.json.simple.JSONObject;\n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n \n-\n-\n public class BasicFireEyeParser extends BasicParser {\n \n-  private static final long serialVersionUID = 6328907550159134550L;\n-  protected static final Logger LOG = LoggerFactory\n-          .getLogger(MethodHandles.lookup().lookupClass());\n-\n-\n-  private static final String tsRegex = \"([a-zA-Z]{3})\\\\s+(\\\\d+)\\\\s+(\\\\d+\\\\:\\\\d+\\\\:\\\\d+)\"\n-          + \"\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\";\n-  private static final Pattern tsPattern = Pattern.compile(tsRegex);\n-  private static final String syslogPriorityRegex = \"<[1-9][0-9]*>\";\n-  private static final Pattern syslogPriorityPattern = Pattern.compile(syslogPriorityRegex);\n-  private static final String nvRegex = \"([\\\\w\\\\d]+)=([^=]*)(?=\\\\s*\\\\w+=|\\\\s*$) \";\n-  private static final Pattern nvPattern = Pattern.compile(nvRegex);\n-\n-  @Override\n-  public void configure(Map<String, Object> parserConfig) {}\n-\n-  @Override\n-  public void init() {}\n+    private static final long serialVersionUID = 6328907550159134550L;\n+    protected static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());\n+    private static final String tsRegex = \"([a-zA-Z]{3})\\\\s+(\\\\d+)\\\\s+(\\\\d+\\\\:\\\\d+\\\\:\\\\d+)\" + \"\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\";\n+    private static final Pattern tsPattern = Pattern.compile(tsRegex);\n+    private static final String syslogPriorityRegex = \"<[1-9][0-9]*>\";\n+    private static final Pattern syslogPriorityPattern = Pattern.compile(syslogPriorityRegex);\n+    private static final String nvRegex = \"([\\\\w\\\\d]+)=([^=]*)(?=\\\\s*\\\\w+=|\\\\s*$) \";\n+    private static final Pattern nvPattern = Pattern.compile(nvRegex);\n+    @Override\n+    public void configure(Map<String, Object> parserConfig) {\n+    }\n \n+    @Override\n+    public void init() {\n+    }\n \n-  @Override\n-  @SuppressWarnings(\"unchecked\")\n-  public List<JSONObject> parse(byte[] rawMessage) {\n+    @Override\n+    @SuppressWarnings( \"unchecked\" )\n+    public List<JSONObject> parse(byte[] rawMessage) {\n     String toParse;\n     List<JSONObject> messages = new ArrayList<>();\n     try {\n-\n-      toParse = new String(rawMessage, StandardCharsets.UTF_8);\n+        toParse = new String(rawMessage, StandardCharsets.UTF_8);\n \n       // because we support what is basically a malformed syslog 3164 message having\n       // some form of text before the PRIORITY, we need to use the priority as\n       // a delimiter\n-      Matcher m = syslogPriorityPattern.matcher(toParse);\n-\n-      String delimiter = \"\";\n-\n-      while (m.find()) {\n+        Matcher m = syslogPriorityPattern.matcher(toParse);\n+        String delimiter = \"\";\n+        while(m.find()) {\n         delimiter = m.group();\n-      }\n-\n-      if (!StringUtils.isBlank(delimiter)) {\n+        }\n+        if (!StringUtils.isBlank(delimiter)) {\n         String[] tokens = toParse.split(delimiter);\n         if (tokens.length > 1) {\n-          toParse = delimiter + tokens[1];\n+                                                 toParse = delimiter + tokens[1];\n+        }\n         }\n-      }\n \n       // parse the main message\n-      JSONObject toReturn = parseMessage(toParse);\n-      toReturn.put(\"timestamp\", getTimeStamp(toParse));\n-      messages.add(toReturn);\n-      return messages;\n+        JSONObject toReturn = parseMessage(toParse);\n+        toReturn.put(\"timestamp\", getTimeStamp(toParse));\n+        messages.add(toReturn);\n+        return messages;\n     } catch (Exception e) {\n       String message = \"Unable to parse \" + new String(rawMessage, StandardCharsets.UTF_8) + \": \" + e.getMessage();\n       LOG.error(message, e);\n       throw new IllegalStateException(message, e);\n     }\n-  }\n+    }\n \n-  private long getTimeStamp(String toParse) throws ParseException {\n+    private long getTimeStamp(String toParse) throws ParseException {\n     long timestamp = 0;\n     String month;\n     String day;\n     String time;\n     Matcher tsMatcher = tsPattern.matcher(toParse);\n     if (tsMatcher.find()) {\n-      month = tsMatcher.group(1);\n-      day = tsMatcher.group(2);\n-      time = tsMatcher.group(3);\n-      timestamp = ParserUtils.convertToEpoch(month, day, time, true);\n+        month = tsMatcher.group(1);\n+        day = tsMatcher.group(2);\n+        time = tsMatcher.group(3);\n+        timestamp = ParserUtils.convertToEpoch(month, day, time, true);\n     } else {\n       LOG.warn(\"Unable to find timestamp in message: {}\", toParse);\n     }\n     return timestamp;\n-  }\n-\n-  @SuppressWarnings(\"unchecked\")\n-  private JSONObject parseMessage(String toParse) {\n+    }\n \n+    @SuppressWarnings( \"unchecked\" ) private JSONObject parseMessage(String toParse) {\n     JSONObject toReturn = new JSONObject();\n     String[] messageTokens = toParse.split(\"\\\\s+\");\n     String id = messageTokens[4];\n@@ -128,64 +116,48 @@ public class BasicFireEyeParser extends BasicParser {\n     // determine how we can split the message and how many multi part\n     // messages can there be.\n     // The message itself will be stored in the response.\n-\n     String[] tokens = id.split(\"\\\\.\");\n     if (tokens.length == 2) {\n-\n-      String[] array = Arrays.copyOfRange(messageTokens, 1, messageTokens.length - 1);\n-      String syslog = Joiner.on(\" \").join(array);\n-\n-      Multimap<String, String> multiMap = formatMain(syslog);\n-\n-      for (String key : multiMap.keySet()) {\n-        String value = Joiner.on(\",\").join(multiMap.get(key));\n-        toReturn.put(key, value.trim());\n-      }\n+        String[] array = Arrays.copyOfRange(messageTokens, 1, messageTokens.length - 1);\n+        String syslog = Joiner.on(\" \").join(array);\n+        Multimap<String, String> multiMap = formatMain(syslog);\n+        for (String key : multiMap.keySet()) {\n+                                String value = Joiner.on(\",\").join(multiMap.get(key));\n+                                toReturn.put(key, value.trim());\n+        }\n     }\n-\n     toReturn.put(\"original_string\", toParse);\n-\n     final String ipSrcAddr = (String) toReturn.get(\"dvc\");\n     final String ipSrcPort = (String) toReturn.get(\"src_port\");\n     final String ipDstDddr = (String) toReturn.get(\"dst_ip\");\n     final String ipDstPort = (String) toReturn.get(\"dst_port\");\n-\n     if (ipSrcAddr != null) {\n-      toReturn.put(\"ip_src_addr\", ipSrcAddr);\n+        toReturn.put(\"ip_src_addr\", ipSrcAddr);\n     }\n     if (ipSrcPort != null) {\n-      toReturn.put(\"ip_src_port\", ipSrcPort);\n+        toReturn.put(\"ip_src_port\", ipSrcPort);\n     }\n     if (ipDstDddr != null) {\n-      toReturn.put(\"ip_dst_addr\", ipDstDddr);\n+        toReturn.put(\"ip_dst_addr\", ipDstDddr);\n     }\n     if (ipDstPort != null) {\n-      toReturn.put(\"ip_dst_port\", ipDstPort);\n+        toReturn.put(\"ip_dst_port\", ipDstPort);\n     }\n     return toReturn;\n-  }\n+    }\n \n-  private Multimap<String, String> formatMain(String in) {\n+    private Multimap<String, String> formatMain(String in) {\n     Multimap<String, String> multiMap = ArrayListMultimap.create();\n-    String input = in.replaceAll(\"cn3\", \"dst_port\")\n-            .replaceAll(\"cs5\", \"cncHost\").replaceAll(\"proto\", \"protocol\")\n-            .replaceAll(\"rt=\", \"timestamp=\").replaceAll(\"cs1\", \"malware\")\n-            .replaceAll(\"dst=\", \"dst_ip=\")\n-            .replaceAll(\"shost\", \"src_hostname\")\n-            .replaceAll(\"dmac\", \"dst_mac\").replaceAll(\"smac\", \"src_mac\")\n-            .replaceAll(\"spt\", \"src_port\")\n-            .replaceAll(\"\\\\bsrc\\\\b\", \"src_ip\");\n+    String input = in.replaceAll(\"cn3\",\"dst_port\").replaceAll(\"cs5\",\"cncHost\").replaceAll(\"proto\",\"protocol\").replaceAll(\"rt=\",\"timestamp=\").replaceAll(\"cs1\",\"malware\").replaceAll(\"dst=\",\"dst_ip=\").replaceAll(\"shost\",\"src_hostname\").replaceAll(\"dmac\",\"dst_mac\").replaceAll(\"smac\",\"src_mac\").replaceAll(\"spt\",\"src_port\").replaceAll(\"\\\\bsrc\\\\b\",\"src_ip\");\n     String[] tokens = input.split(\"\\\\|\");\n-\n     if (tokens.length > 0) {\n-      String message = tokens[tokens.length - 1];\n-      Matcher m = nvPattern.matcher(message);\n-\n-      while (m.find()) {\n-        String[] str = m.group().split(\"=\");\n-        multiMap.put(str[0], str[1]);\n-      }\n+        String message = tokens[tokens.length - 1];\n+        Matcher m = nvPattern.matcher(message);\n+        while(m.find()) {\n+                               String[] str = m.group().split(\"=\");\n+                               multiMap.put(str[0], str[1]);\n+        }\n     }\n     return multiMap;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 92
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "97",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 113).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "97",
+                    "column": "44",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '+' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "97",
+                    "column": "90",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "97",
+                    "column": "92",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '+' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "97",
+                    "column": "100",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '+' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "column": "34",
+                    "severity": "warning",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/styler_random/102/BasicFireEyeParser.java\nindex 0b2c73ee0a..7727880a21 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/styler_random/102/BasicFireEyeParser.java\n@@ -94,8 +94,8 @@ public class BasicFireEyeParser extends BasicParser {\n       messages.add(toReturn);\n       return messages;\n     } catch (Exception e) {\n-      String message = \"Unable to parse \" + new String(rawMessage, StandardCharsets.UTF_8) + \": \" + e.getMessage();\n-      LOG.error(message, e);\n+      String message = \"Unable to parse \" +newString(rawMessage, StandardCharsets . UTF_8 )+ \": \" +e.getMessage()\n+          ; LOG.error(message, e);\n       throw new IllegalStateException(message, e);\n     }\n   }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "97",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "97",
+                    "column": "140",
+                    "severity": "warning",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/styler_three_grams/102/BasicFireEyeParser.java\nindex 0b2c73ee0a..40e065efec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/errored/1/102/BasicFireEyeParser.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-metron/styler_three_grams/102/BasicFireEyeParser.java\n@@ -94,8 +94,7 @@ public class BasicFireEyeParser extends BasicParser {\n       messages.add(toReturn);\n       return messages;\n     } catch (Exception e) {\n-      String message = \"Unable to parse \" + new String(rawMessage, StandardCharsets.UTF_8) + \": \" + e.getMessage();\n-      LOG.error(message, e);\n+      String message = \"Unable to parse \" + new String(rawMessage, StandardCharsets.UTF_8) + \": \" + e.getMessage(); LOG . error(message, e);\n       throw new IllegalStateException(message, e);\n     }\n   }\n",
+            "diff_size": 2
+        }
+    ]
+}

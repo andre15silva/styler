@@ -1,0 +1,160 @@
+{
+    "error_id": "22",
+    "information": {
+        "errors": [
+            {
+                "line": "32",
+                "column": "9",
+                "severity": "error",
+                "message": "'}' at column 9 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "        {\n            throw new IllegalArgumentException( \"Source ids must be in range 0-16383. Got: \" + sourceId );\n        } else\n        {\n            return shiftToMsb( sourceId );\n        }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "32",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "28",
+                    "column": "37",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "28",
+                    "column": "51",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "30",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "30",
+                    "column": "53",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "32",
+                    "column": "47",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "32",
+                    "column": "103",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "33",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "39",
+                    "column": "35",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "39",
+                    "column": "46",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "29",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "53",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/22/SourceTagging.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/intellij/22/SourceTagging.java\nindex 6e6933c630..79835490cd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/22/SourceTagging.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/intellij/22/SourceTagging.java\n@@ -17,6 +17,7 @@\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <http://www.gnu.org/licenses/>.\n  */\n+\n package org.neo4j.fabric.stream;\n \n public class SourceTagging\n@@ -24,23 +25,23 @@ public class SourceTagging\n     private static final int ID_MAX_BITS = 50;\n     private static final long TAG_MAX_VALUE = 0x3FFF;\n \n-    public static long makeSourceTag( long sourceId )\n+    public static long makeSourceTag(long sourceId)\n     {\n-        if ( sourceId < 0 || TAG_MAX_VALUE < sourceId )\n+        if (sourceId < 0 || TAG_MAX_VALUE < sourceId)\n         {\n-            throw new IllegalArgumentException( \"Source ids must be in range 0-16383. Got: \" + sourceId );\n+            throw new IllegalArgumentException(\"Source ids must be in range 0-16383. Got: \" + sourceId);\n         } else\n         {\n-            return shiftToMsb( sourceId );\n+            return shiftToMsb(sourceId);\n         }\n     }\n \n-    private static long shiftToMsb( long value )\n+    private static long shiftToMsb(long value)\n     {\n         return value << ID_MAX_BITS;\n     }\n \n-    public static long tagId( long id, long sourceTag )\n+    public static long tagId(long id, long sourceTag)\n     {\n         return id | sourceTag;\n     }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/22/SourceTagging.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/naturalize/22/SourceTagging.java\nindex 6e6933c630..d5e4892591 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/22/SourceTagging.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/naturalize/22/SourceTagging.java\n@@ -29,7 +29,8 @@ public class SourceTagging\n         if ( sourceId < 0 || TAG_MAX_VALUE < sourceId )\n         {\n             throw new IllegalArgumentException( \"Source ids must be in range 0-16383. Got: \" + sourceId );\n-        } else\n+        }\n+else\n         {\n             return shiftToMsb( sourceId );\n         }\n@@ -44,4 +45,4 @@ public class SourceTagging\n     {\n         return id | sourceTag;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "32",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "31",
+                    "column": "108",
+                    "severity": "error",
+                    "message": "'}' at column 108 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/22/SourceTagging.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/styler_three_grams/22/SourceTagging.java\nindex 6e6933c630..6ea0cd5cb5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/22/SourceTagging.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/styler_three_grams/22/SourceTagging.java\n@@ -28,20 +28,20 @@ public class SourceTagging\n     {\n         if ( sourceId < 0 || TAG_MAX_VALUE < sourceId )\n         {\n-            throw new IllegalArgumentException( \"Source ids must be in range 0-16383. Got: \" + sourceId );\n-        } else\n-        {\n-            return shiftToMsb( sourceId );\n+            throw new IllegalArgumentException( \"Source ids must be in range 0-16383. Got: \" + sourceId ); } else\n+            {\n+                return shiftToMsb( sourceId );\n+            }\n         }\n-    }\n \n-    private static long shiftToMsb( long value )\n-    {\n-        return value << ID_MAX_BITS;\n-    }\n+        private static long shiftToMsb( long value )\n+        {\n+            return value << ID_MAX_BITS;\n+        }\n \n-    public static long tagId( long id, long sourceTag )\n-    {\n-        return id | sourceTag;\n+        public static long tagId( long id, long sourceTag )\n+        {\n+            return id | sourceTag;\n+        }\n     }\n-}\n+    \n\\ No newline at end of file\n",
+            "diff_size": 14
+        }
+    ]
+}

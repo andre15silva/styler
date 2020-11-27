@@ -1,0 +1,94 @@
+{
+    "error_id": "47",
+    "information": {
+        "errors": [
+            {
+                "line": "71",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "            }\n\n            view.lock(session, true, true); //\u4ec0\u4e48\u90fd\u6ca1\u505a\n            session.getDatabase().removeSchemaObject(session, view);\n        }\n        return 0;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "71",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/47/DropView.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/47/DropView.java\nindex 59c392e42e..1ba6aaebeb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/47/DropView.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/47/DropView.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (http://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.command.ddl;\n \n import org.h2.api.ErrorCode;\n@@ -30,8 +31,8 @@ public class DropView extends SchemaCommand {\n     public DropView(Session session, Schema schema) {\n         super(session, schema);\n         dropAction = session.getDatabase().getSettings().dropRestrict ?\n-                ConstraintReferential.RESTRICT :\n-                ConstraintReferential.CASCADE;\n+            ConstraintReferential.RESTRICT :\n+            ConstraintReferential.CASCADE;\n     }\n \n     public void setIfExists(boolean b) {\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/47/DropView.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/naturalize/47/DropView.java\nindex 59c392e42e..63b41c85c1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/47/DropView.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/naturalize/47/DropView.java\n@@ -68,7 +68,8 @@ public class DropView extends SchemaCommand {\n                 }\n             }\n \n-            view.lock(session, true, true); //\u4ec0\u4e48\u90fd\u6ca1\u505a\n+            view.lock(session, true, true);\n+//\u4ec0\u4e48\u90fd\u6ca1\u505a\n             session.getDatabase().removeSchemaObject(session, view);\n         }\n         return 0;\n@@ -79,4 +80,4 @@ public class DropView extends SchemaCommand {\n         return CommandInterface.DROP_VIEW;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/47/DropView.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/47/DropView.java\nindex 59c392e42e..51c8a27ac4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/47/DropView.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/47/DropView.java\n@@ -21,6 +21,8 @@ import org.h2.table.TableView;\n  * This class represents the statement\n  * DROP VIEW\n  */\n+\n+\n public class DropView extends SchemaCommand {\n \n     private String viewName;\n@@ -29,19 +31,20 @@ public class DropView extends SchemaCommand {\n \n     public DropView(Session session, Schema schema) {\n         super(session, schema);\n-        dropAction = session.getDatabase().getSettings().dropRestrict ?\n-                ConstraintReferential.RESTRICT :\n-                ConstraintReferential.CASCADE;\n+        dropAction = session.getDatabase().getSettings().dropRestrict ? ConstraintReferential.RESTRICT : ConstraintReferential.CASCADE;\n     }\n \n+\n     public void setIfExists(boolean b) {\n         ifExists = b;\n     }\n \n+\n     public void setDropAction(int dropAction) {\n         this.dropAction = dropAction;\n     }\n \n+\n     public void setViewName(String viewName) {\n         this.viewName = viewName;\n     }\n@@ -59,7 +62,6 @@ public class DropView extends SchemaCommand {\n                 throw DbException.get(ErrorCode.VIEW_NOT_FOUND_1, viewName);\n             }\n             session.getUser().checkRight(view, Right.ALL);\n-\n             if (dropAction == ConstraintReferential.RESTRICT) {\n                 for (DbObject child : view.getChildren()) {\n                     if (child instanceof TableView) {\n@@ -67,7 +69,6 @@ public class DropView extends SchemaCommand {\n                     }\n                 }\n             }\n-\n             view.lock(session, true, true); //\u4ec0\u4e48\u90fd\u6ca1\u505a\n             session.getDatabase().removeSchemaObject(session, view);\n         }\n@@ -79,4 +80,4 @@ public class DropView extends SchemaCommand {\n         return CommandInterface.DROP_VIEW;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "69",
+                    "column": "13",
+                    "severity": "warning",
+                    "message": "'}' at column 13 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/47/DropView.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/47/DropView.java\nindex 59c392e42e..d6eca4a024 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/47/DropView.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/47/DropView.java\n@@ -66,9 +66,7 @@ public class DropView extends SchemaCommand {\n                         throw DbException.get(ErrorCode.CANNOT_DROP_2, viewName, child.getName());\n                     }\n                 }\n-            }\n-\n-            view.lock(session, true, true); //\u4ec0\u4e48\u90fd\u6ca1\u505a\n+            }view.lock(session, true, true); //\u4ec0\u4e48\u90fd\u6ca1\u505a\n             session.getDatabase().removeSchemaObject(session, view);\n         }\n         return 0;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "71",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

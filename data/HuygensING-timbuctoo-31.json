@@ -1,0 +1,228 @@
+{
+    "error_id": "31",
+    "information": {
+        "errors": [
+            {
+                "line": "154",
+                "column": "36",
+                "severity": "error",
+                "message": "WhitespaceAround: '->' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "    @Override\n    public void send(Object object) {\n      receiverList.forEach(receiver-> receiver.accept(object));\n    }\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler/31/HandleServiceTest.java\nindex 091cbdbc3c..d0cb9d54ae 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler/31/HandleServiceTest.java\n@@ -151,7 +151,7 @@ public class HandleServiceTest {\n \n     @Override\n     public void send(Object object) {\n-      receiverList.forEach(receiver-> receiver.accept(object));\n+      receiverList.forEach(receiver -> receiver.accept(object));\n     }\n   }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/intellij/31/HandleServiceTest.java\nindex 091cbdbc3c..1cd8baf7e2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/intellij/31/HandleServiceTest.java\n@@ -40,7 +40,7 @@ public class HandleServiceTest {\n   @Test\n   public void savePidGeneratesPersistedIdSuccessfully() throws Exception {\n     DataSetRepository dataSetRepository = mock(DataSetRepository.class);\n-    DataSet dataSet  = mock(DataSet.class);\n+    DataSet dataSet = mock(DataSet.class);\n     DataSetMetaData dataSetMetaData = createMockDataSetMetaData();\n     given(dataSet.getMetadata()).willReturn(dataSetMetaData);\n \n@@ -67,7 +67,7 @@ public class HandleServiceTest {\n \n     QueueManager queueManager = mock(QueueManager.class);\n     QueueCreator queueCreator = new NonQueueQueueCreator();\n-    given(queueManager.createQueue(any(),anyString())).willReturn(queueCreator);\n+    given(queueManager.createQueue(any(), anyString())).willReturn(queueCreator);\n \n     PersistenceManager persistenceManager = createMockPersistenceManager();\n \n@@ -98,7 +98,7 @@ public class HandleServiceTest {\n \n   private RdfIoFactory createMockRdfIoFactory(RdfPatchSerializer saver) {\n     RdfIoFactory rdfIoFactory = mock(RdfIoFactory.class);\n-    given(rdfIoFactory.makeRdfPatchSerializer(any(),anyString())).willReturn(saver);\n+    given(rdfIoFactory.makeRdfPatchSerializer(any(), anyString())).willReturn(saver);\n     return rdfIoFactory;\n   }\n \n@@ -142,7 +142,7 @@ public class HandleServiceTest {\n     }\n   }\n \n-  private static class NonQueueQueueSender implements  QueueSender {\n+  private static class NonQueueQueueSender implements QueueSender {\n     private final List<Consumer> receiverList;\n \n     public NonQueueQueueSender(List<Consumer> receiverList) {\n@@ -151,7 +151,7 @@ public class HandleServiceTest {\n \n     @Override\n     public void send(Object object) {\n-      receiverList.forEach(receiver-> receiver.accept(object));\n+      receiverList.forEach(receiver -> receiver.accept(object));\n     }\n   }\n \n",
+            "diff_size": 5
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/naturalize/31/HandleServiceTest.java\nindex 091cbdbc3c..da3a2a02e5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/naturalize/31/HandleServiceTest.java\n@@ -40,7 +40,7 @@ public class HandleServiceTest {\n   @Test\n   public void savePidGeneratesPersistedIdSuccessfully() throws Exception {\n     DataSetRepository dataSetRepository = mock(DataSetRepository.class);\n-    DataSet dataSet  = mock(DataSet.class);\n+    DataSet dataSet = mock(DataSet.class);\n     DataSetMetaData dataSetMetaData = createMockDataSetMetaData();\n     given(dataSet.getMetadata()).willReturn(dataSetMetaData);\n \n@@ -57,8 +57,7 @@ public class HandleServiceTest {\n       null,\n       executor,\n       rdfIoFactory,\n-      null\n-    );\n+      null);\n     given(dataSet.getImportManager()).willReturn(importManager);\n \n     User user = User.create(\"testDisplayName\", \"testDataSetId\");\n@@ -67,7 +66,8 @@ public class HandleServiceTest {\n \n     QueueManager queueManager = mock(QueueManager.class);\n     QueueCreator queueCreator = new NonQueueQueueCreator();\n-    given(queueManager.createQueue(any(),anyString())).willReturn(queueCreator);\n+    given(queueManager.createQueue(any(),\n+anyString())).willReturn(queueCreator);\n \n     PersistenceManager persistenceManager = createMockPersistenceManager();\n \n@@ -86,8 +86,7 @@ public class HandleServiceTest {\n       \"testPersistentUrl\",\n       RdfConstants.STRING,\n       null,\n-      null\n-    );\n+      null);\n   }\n \n   private RdfPatchSerializer createMockRdfPatchSerializer() {\n@@ -98,7 +97,8 @@ public class HandleServiceTest {\n \n   private RdfIoFactory createMockRdfIoFactory(RdfPatchSerializer saver) {\n     RdfIoFactory rdfIoFactory = mock(RdfIoFactory.class);\n-    given(rdfIoFactory.makeRdfPatchSerializer(any(),anyString())).willReturn(saver);\n+    given(rdfIoFactory.makeRdfPatchSerializer(any(),\n+anyString())).willReturn(saver);\n     return rdfIoFactory;\n   }\n \n@@ -142,7 +142,7 @@ public class HandleServiceTest {\n     }\n   }\n \n-  private static class NonQueueQueueSender implements  QueueSender {\n+  private static class NonQueueQueueSender implements QueueSender {\n     private final List<Consumer> receiverList;\n \n     public NonQueueQueueSender(List<Consumer> receiverList) {\n@@ -151,7 +151,7 @@ public class HandleServiceTest {\n \n     @Override\n     public void send(Object object) {\n-      receiverList.forEach(receiver-> receiver.accept(object));\n+      receiverList.forEach(receiver -> receiver.accept(object));\n     }\n   }\n \n@@ -168,4 +168,4 @@ public class HandleServiceTest {\n       return logList;\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "116",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "120",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "error",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "126",
+                    "severity": "error",
+                    "message": "'ctor def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "131",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "133",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "135",
+                    "severity": "error",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "138",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "140",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "145",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "147",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/codebuff/31/HandleServiceTest.java\nindex 091cbdbc3c..6b58ab5f01 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/codebuff/31/HandleServiceTest.java\n@@ -1,6 +1,5 @@\n package nl.knaw.huygens.timbuctoo.v5.redirectionservice;\n \n-\n import nl.knaw.huygens.persistence.PersistenceException;\n import nl.knaw.huygens.persistence.PersistenceManager;\n import nl.knaw.huygens.timbuctoo.core.dto.EntityLookup;\n@@ -18,7 +17,6 @@ import nl.knaw.huygens.timbuctoo.v5.rdfio.RdfPatchSerializer;\n import nl.knaw.huygens.timbuctoo.v5.security.dto.User;\n import nl.knaw.huygens.timbuctoo.v5.util.RdfConstants;\n import org.junit.Test;\n-\n import java.io.IOException;\n import java.net.URI;\n import java.nio.charset.Charset;\n@@ -37,135 +35,114 @@ import static org.mockito.Mockito.mock;\n import static org.mockito.Mockito.verify;\n \n public class HandleServiceTest {\n-  @Test\n-  public void savePidGeneratesPersistedIdSuccessfully() throws Exception {\n+    @Test\n+    public void savePidGeneratesPersistedIdSuccessfully() throws Exception {\n     DataSetRepository dataSetRepository = mock(DataSetRepository.class);\n-    DataSet dataSet  = mock(DataSet.class);\n+    DataSet dataSet = mock(DataSet.class);\n     DataSetMetaData dataSetMetaData = createMockDataSetMetaData();\n     given(dataSet.getMetadata()).willReturn(dataSetMetaData);\n-\n     RdfPatchSerializer saver = createMockRdfPatchSerializer();\n     RdfIoFactory rdfIoFactory = createMockRdfIoFactory(saver);\n-\n     JsonDataStore<LogList> logListStore = new LogListJsonDataStore();\n     ExecutorService executor = Executors.newFixedThreadPool(10);\n-\n-    ImportManager importManager = new ImportManager(\n-      logListStore,\n-      null,\n-      null,\n-      null,\n-      executor,\n-      rdfIoFactory,\n-      null\n-    );\n+    ImportManager importManager = new ImportManager(logListStore, null, null, null, executor, rdfIoFactory, null);\n     given(dataSet.getImportManager()).willReturn(importManager);\n-\n     User user = User.create(\"testDisplayName\", \"testDataSetId\");\n-    given(dataSetRepository.getDataSet(user, \"testOwnerId\", \"testDataSetId\"))\n-      .willReturn(Optional.of(dataSet));\n-\n+    given(dataSetRepository.getDataSet(user, \"testOwnerId\", \"testDataSetId\")).willReturn(Optional.of(dataSet));\n     QueueManager queueManager = mock(QueueManager.class);\n     QueueCreator queueCreator = new NonQueueQueueCreator();\n-    given(queueManager.createQueue(any(),anyString())).willReturn(queueCreator);\n-\n+    given(queueManager.createQueue(any(), anyString())).willReturn(queueCreator);\n     PersistenceManager persistenceManager = createMockPersistenceManager();\n-\n     final HandleService handleService = new HandleService(persistenceManager, queueManager, dataSetRepository);\n     EntityLookup entityLookup = createMockEntityLookup(user);\n-    RedirectionServiceParameters redirectionServiceParameters = new RedirectionServiceParameters(\n-      URI.create(\"redirectionUri\"),\n-      entityLookup\n-    );\n-\n+    RedirectionServiceParameters redirectionServiceParameters = new RedirectionServiceParameters(URI.create(\"redirectionUri\"), entityLookup);\n     handleService.savePid(redirectionServiceParameters);\n-\n     verify(saver).onQuad(\n-      \"testEntityUri\",\n-      RdfConstants.timPredicate(\"persistentUri\"),\n-      \"testPersistentUrl\",\n-      RdfConstants.STRING,\n-      null,\n-      null\n+        \"testEntityUri\",\n+        RdfConstants.timPredicate(\"persistentUri\"),\n+        \"testPersistentUrl\",\n+        RdfConstants.STRING,\n+        null,\n+        null\n     );\n-  }\n+    }\n \n-  private RdfPatchSerializer createMockRdfPatchSerializer() {\n+    private RdfPatchSerializer createMockRdfPatchSerializer() {\n     RdfPatchSerializer saver = mock(RdfPatchSerializer.class);\n     given(saver.getCharset()).willReturn(Charset.defaultCharset());\n     return saver;\n-  }\n+    }\n \n-  private RdfIoFactory createMockRdfIoFactory(RdfPatchSerializer saver) {\n+    private RdfIoFactory createMockRdfIoFactory(RdfPatchSerializer saver) {\n     RdfIoFactory rdfIoFactory = mock(RdfIoFactory.class);\n-    given(rdfIoFactory.makeRdfPatchSerializer(any(),anyString())).willReturn(saver);\n+    given(rdfIoFactory.makeRdfPatchSerializer(any(), anyString())).willReturn(saver);\n     return rdfIoFactory;\n-  }\n+    }\n \n-  private PersistenceManager createMockPersistenceManager() throws PersistenceException {\n+    private PersistenceManager createMockPersistenceManager() throws PersistenceException {\n     PersistenceManager persistenceManager = mock(PersistenceManager.class);\n     given(persistenceManager.persistURL(anyString())).willReturn(\"testPersistentId\");\n     given(persistenceManager.getPersistentURL(anyString())).willReturn(\"testPersistentUrl\");\n     return persistenceManager;\n-  }\n+    }\n \n-  private EntityLookup createMockEntityLookup(User user) {\n+    private EntityLookup createMockEntityLookup(User user) {\n     EntityLookup entityLookup = mock(EntityLookup.class);\n     given(entityLookup.getDataSetId()).willReturn(Optional.of(\"testOwnerId__testDataSetId\"));\n     given(entityLookup.getUser()).willReturn(Optional.of(user));\n     given(entityLookup.getUri()).willReturn(Optional.of(\"testEntityUri\"));\n     return entityLookup;\n-  }\n+    }\n \n-  private DataSetMetaData createMockDataSetMetaData() {\n+    private DataSetMetaData createMockDataSetMetaData() {\n     DataSetMetaData dataSetMetaData = mock(DataSetMetaData.class);\n     given(dataSetMetaData.getDataSetId()).willReturn(\"testDataSetId\");\n     given(dataSetMetaData.getOwnerId()).willReturn(\"testOwnerId\");\n     given(dataSetMetaData.getBaseUri()).willReturn(\"testOwnerId__testDataSetId\");\n     return dataSetMetaData;\n-  }\n+    }\n+\n+    private static class NonQueueQueueCreator<T> implements QueueCreator<T> {\n \n-  private static class NonQueueQueueCreator<T> implements QueueCreator<T> {\n     List<QueueSender> queueSenderList = new ArrayList<>();\n     List<Consumer> receiverList = new ArrayList<>();\n-\n     @Override\n     public void registerReceiver(Consumer consumer) {\n-      receiverList.add(consumer);\n+        receiverList.add(consumer);\n     }\n \n     @Override\n     public QueueSender createSender() {\n-      QueueSender queueSender = new NonQueueQueueSender(receiverList);\n-      queueSenderList.add(queueSender);\n-      return queueSender;\n+        QueueSender queueSender = new NonQueueQueueSender(receiverList);\n+        queueSenderList.add(queueSender);\n+        return queueSender;\n+    }\n     }\n-  }\n \n-  private static class NonQueueQueueSender implements  QueueSender {\n+    private static class NonQueueQueueSender implements QueueSender {\n     private final List<Consumer> receiverList;\n \n     public NonQueueQueueSender(List<Consumer> receiverList) {\n-      this.receiverList = receiverList;\n+        this.receiverList = receiverList;\n     }\n \n     @Override\n     public void send(Object object) {\n-      receiverList.forEach(receiver-> receiver.accept(object));\n+        receiverList.forEach(receiver -> receiver.accept(object));\n+    }\n     }\n-  }\n \n-  private static class LogListJsonDataStore implements JsonDataStore<LogList> {\n-    LogList logList = new LogList();\n+    private static class LogListJsonDataStore implements JsonDataStore<LogList> {\n \n+    LogList logList = new LogList();\n     @Override\n     public void updateData(Function<LogList, LogList> mutator) throws IOException {\n-      mutator.apply(logList);\n+        mutator.apply(logList);\n     }\n \n     @Override\n     public LogList getData() {\n-      return logList;\n+        return logList;\n+    }\n     }\n-  }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 71
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_random/31/HandleServiceTest.java\nindex 091cbdbc3c..d0cb9d54ae 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_random/31/HandleServiceTest.java\n@@ -151,7 +151,7 @@ public class HandleServiceTest {\n \n     @Override\n     public void send(Object object) {\n-      receiverList.forEach(receiver-> receiver.accept(object));\n+      receiverList.forEach(receiver -> receiver.accept(object));\n     }\n   }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_three_grams/31/HandleServiceTest.java\nindex 091cbdbc3c..d0cb9d54ae 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/31/HandleServiceTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_three_grams/31/HandleServiceTest.java\n@@ -151,7 +151,7 @@ public class HandleServiceTest {\n \n     @Override\n     public void send(Object object) {\n-      receiverList.forEach(receiver-> receiver.accept(object));\n+      receiverList.forEach(receiver -> receiver.accept(object));\n     }\n   }\n \n",
+            "diff_size": 1
+        }
+    ]
+}

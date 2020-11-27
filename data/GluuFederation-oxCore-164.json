@@ -1,0 +1,84 @@
+{
+    "error_id": "164",
+    "information": {
+        "errors": [
+            {
+                "line": "129",
+                "column": "9",
+                "severity": "error",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "        String applicationBaseDn = buildDn(null, null, applicationType);\n        if (!containsBranch(applicationBaseDn)) {\n        \t// Create ou=appliance_inum branch if needed\n        \tString applianceBaseDn = buildDn(null, null, null);\n        \tif (!containsBranch(applianceBaseDn)) {\n        \t\tcreateBranch(applianceBaseDn, applianceInum());",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "130",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/164/MetricService.java\nindex 574707c461..92ecc15f38 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/164/MetricService.java\n@@ -126,12 +126,11 @@ public abstract class MetricService implements Serializable {\n         // Create ou=application_type branch if needed\n         String applicationBaseDn = buildDn(null, null, applicationType);\n         if (!containsBranch(applicationBaseDn)) {\n-        \t// Create ou=appliance_inum branch if needed\n-        \tString applianceBaseDn = buildDn(null, null, null);\n-        \tif (!containsBranch(applianceBaseDn)) {\n-        \t\tcreateBranch(applianceBaseDn, applianceInum());\n-        \t}\n-        \tcreateBranch(applicationBaseDn, applicationType.getValue());\n+        // Create ou=appliance_inum branch if neededString applianceBaseDn = buildDn(null, null, null);\n+\t\t\t\t\t\t\t\t\tif (!containsBranch(applianceBaseDn)) {\n+\t\t\t\t\t\t\t\t\t\tcreateBranch(applianceBaseDn, applianceInum());\n+\t\t\t\t\t\t\t\t\t}\n+\t\t\t\t\t\t\t\t\tcreateBranch(applicationBaseDn, applicationType.getValue());\n         }\n     }\n \n",
+            "diff_size": 6
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/164/MetricService.java\nindex 574707c461..06172fb6d3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/164/MetricService.java\n@@ -126,12 +126,12 @@ public abstract class MetricService implements Serializable {\n         // Create ou=application_type branch if needed\n         String applicationBaseDn = buildDn(null, null, applicationType);\n         if (!containsBranch(applicationBaseDn)) {\n-        \t// Create ou=appliance_inum branch if needed\n-        \tString applianceBaseDn = buildDn(null, null, null);\n-        \tif (!containsBranch(applianceBaseDn)) {\n-        \t\tcreateBranch(applianceBaseDn, applianceInum());\n-        \t}\n-        \tcreateBranch(applicationBaseDn, applicationType.getValue());\n+            // Create ou=appliance_inum branch if needed\n+            String applianceBaseDn = buildDn(null, null, null);\n+            if (!containsBranch(applianceBaseDn)) {\n+                createBranch(applianceBaseDn, applianceInum());\n+            }\n+            createBranch(applicationBaseDn, applicationType.getValue());\n         }\n     }\n \n@@ -170,7 +170,8 @@ public abstract class MetricService implements Serializable {\n     }\n \n     public Map<MetricType, List<? extends MetricEntry>> findMetricEntry(ApplicationType applicationType, String applianceInum,\n-            List<MetricType> metricTypes, Date startDate, Date endDate, String... returnAttributes) {\n+                                                                        List<MetricType> metricTypes, Date startDate, Date endDate,\n+                                                                        String... returnAttributes) {\n         prepareBranch(null, applicationType);\n \n         Map<MetricType, List<? extends MetricEntry>> result = new HashMap<MetricType, List<? extends MetricEntry>>();\n@@ -204,7 +205,7 @@ public abstract class MetricService implements Serializable {\n                 Filter filter = Filter.createANDFilter(metricTypeFilters);\n \n                 List<? extends MetricEntry> metricTypeMonthResult = (List<? extends MetricEntry>) ldapEntryManager.findEntries(metricDn,\n-                        metricType.getMetricEntryType(), filter, returnAttributes);\n+                    metricType.getMetricEntryType(), filter, returnAttributes);\n                 metricTypeResult.addAll(metricTypeMonthResult);\n             }\n             // Sort entries to avoid calculation errors\n@@ -217,26 +218,26 @@ public abstract class MetricService implements Serializable {\n     }\n \n     public List<MetricEntry> getExpiredMetricEntries(DefaultBatchOperation<MetricEntry> batchOperation, String baseDnForPeriod, Date expirationDate,\n-            int count, int chunkSize) {\n+                                                     int count, int chunkSize) {\n         Filter expiratioFilter = Filter.createLessOrEqualFilter(\"oxStartDate\", ldapEntryManager.encodeTime(expirationDate));\n \n         List<MetricEntry> metricEntries = ldapEntryManager.findEntries(baseDnForPeriod, MetricEntry.class, expiratioFilter, SearchScope.SUB,\n-                new String[] { \"uniqueIdentifier\" }, batchOperation, 0, count, chunkSize);\n+            new String[] {\"uniqueIdentifier\"}, batchOperation, 0, count, chunkSize);\n \n         return metricEntries;\n     }\n \n     public List<SimpleBranch> findAllPeriodBranches(DefaultBatchOperation<SimpleBranch> batchOperation, ApplicationType applicationType,\n-            String applianceInum, int count, int chunkSize) {\n+                                                    String applianceInum, int count, int chunkSize) {\n         String baseDn = buildDn(null, null, applicationType, applianceInum);\n \n         Filter skipRootDnFilter = Filter.createNOTFilter(Filter.createEqualityFilter(\"ou\", applicationType.getValue()));\n-        return ldapEntryManager.findEntries(baseDn, SimpleBranch.class, skipRootDnFilter, SearchScope.SUB, new String[] { \"ou\" }, batchOperation, 0,\n-                count, chunkSize);\n+        return ldapEntryManager.findEntries(baseDn, SimpleBranch.class, skipRootDnFilter, SearchScope.SUB, new String[] {\"ou\"}, batchOperation, 0,\n+            count, chunkSize);\n     }\n \n     public void removeExpiredMetricEntries(final Date expirationDate, final ApplicationType applicationType, final String applianceInum, int count,\n-            int chunkSize) {\n+                                           int chunkSize) {\n         createApplicationBaseBranch(getApplicationType());\n \n         final Set<String> keepBaseDnForPeriod = getBaseDnForPeriod(applicationType, applianceInum, expirationDate, new Date());\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "130",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/164/MetricService.java\nindex 574707c461..228fe81fa5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/164/MetricService.java\n@@ -126,13 +126,13 @@ public abstract class MetricService implements Serializable {\n         // Create ou=application_type branch if needed\n         String applicationBaseDn = buildDn(null, null, applicationType);\n         if (!containsBranch(applicationBaseDn)) {\n-        \t// Create ou=appliance_inum branch if needed\n+    // Create ou=appliance_inum branch if needed\n         \tString applianceBaseDn = buildDn(null, null, null);\n         \tif (!containsBranch(applianceBaseDn)) {\n-        \t\tcreateBranch(applianceBaseDn, applianceInum());\n-        \t}\n+    createBranch(applianceBaseDn, applianceInum());\n+    }\n         \tcreateBranch(applicationBaseDn, applicationType.getValue());\n-        }\n+    }\n     }\n \n     public void add(List<MetricEntry> metricEntries, Date creationTime) {\n@@ -395,4 +395,4 @@ public abstract class MetricService implements Serializable {\n     public abstract boolean isMetricReporterEnabled();\n \n     public abstract ApplicationType getApplicationType();\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "130",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/164/MetricService.java\nindex 574707c461..92ecc15f38 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/164/MetricService.java\n@@ -126,12 +126,11 @@ public abstract class MetricService implements Serializable {\n         // Create ou=application_type branch if needed\n         String applicationBaseDn = buildDn(null, null, applicationType);\n         if (!containsBranch(applicationBaseDn)) {\n-        \t// Create ou=appliance_inum branch if needed\n-        \tString applianceBaseDn = buildDn(null, null, null);\n-        \tif (!containsBranch(applianceBaseDn)) {\n-        \t\tcreateBranch(applianceBaseDn, applianceInum());\n-        \t}\n-        \tcreateBranch(applicationBaseDn, applicationType.getValue());\n+        // Create ou=appliance_inum branch if neededString applianceBaseDn = buildDn(null, null, null);\n+\t\t\t\t\t\t\t\t\tif (!containsBranch(applianceBaseDn)) {\n+\t\t\t\t\t\t\t\t\t\tcreateBranch(applianceBaseDn, applianceInum());\n+\t\t\t\t\t\t\t\t\t}\n+\t\t\t\t\t\t\t\t\tcreateBranch(applicationBaseDn, applicationType.getValue());\n         }\n     }\n \n",
+            "diff_size": 6
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "131",
+                    "column": "1",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/164/MetricService.java\nindex 574707c461..06b87eed9c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/164/MetricService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/164/MetricService.java\n@@ -126,12 +126,12 @@ public abstract class MetricService implements Serializable {\n         // Create ou=application_type branch if needed\n         String applicationBaseDn = buildDn(null, null, applicationType);\n         if (!containsBranch(applicationBaseDn)) {\n-        \t// Create ou=appliance_inum branch if needed\n-        \tString applianceBaseDn = buildDn(null, null, null);\n-        \tif (!containsBranch(applianceBaseDn)) {\n-        \t\tcreateBranch(applianceBaseDn, applianceInum());\n-        \t}\n-        \tcreateBranch(applicationBaseDn, applicationType.getValue());\n+\n+        // Create ou=appliance_inum branch if needed String applianceBaseDn = buildDn(null, null, null);\n+\t\t\t\t\t\t\t\t\tif (!containsBranch(applianceBaseDn)) {\n+\t\t\t\t\t\t\t\t\t\tcreateBranch(applianceBaseDn, applianceInum());\n+\t\t\t\t\t\t\t\t\t}\n+\t\t\t\t\t\t\t\t\tcreateBranch(applicationBaseDn, applicationType.getValue());\n         }\n     }\n \n",
+            "diff_size": 6
+        }
+    ]
+}

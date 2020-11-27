@@ -1,0 +1,106 @@
+{
+    "error_id": "31",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/31/AdjustParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/31/AdjustParam.java\nindex a0b62f6275..9fd0003510 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/31/AdjustParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/31/AdjustParam.java\n@@ -14,6 +14,7 @@\n  * the License.\n  *\n  */\n+\n package com.tencent.angel.spark.ml.psf.embedding.line;\n \n import com.tencent.angel.PartitionKey;\n@@ -27,43 +28,44 @@ import java.util.List;\n \n public class AdjustParam extends UpdateParam {\n \n-  private byte[] dataBuf;\n-  private int bufLength;\n+    private byte[] dataBuf;\n+    private int bufLength;\n \n-  public AdjustParam(int matrixId,\n-                     int seed,\n-                     int negative,\n-                     int partitionId,\n-                     float[] gradient,\n-                     int[] src,\n-                     int[] dst) {\n-    super(matrixId);\n-    this.bufLength = 12 + src.length * 8 + gradient.length * 4;\n-    this.dataBuf = new byte[bufLength];\n-    ByteBuffer wrapper = ByteBuffer.wrap(this.dataBuf);\n-    wrapper.putInt(seed);\n-    wrapper.putInt(partitionId);\n-    wrapper.putInt(src.length);\n-    int inc = 0;\n-    for (int a = 0; a < src.length; a++) {\n-      wrapper.putInt(src[a]);\n-      wrapper.putInt(dst[a]);\n-      for (int b = 0; b < negative + 1; b++) {\n-        wrapper.putFloat(gradient[inc++]);\n-      }\n+    public AdjustParam(int matrixId,\n+                       int seed,\n+                       int negative,\n+                       int partitionId,\n+                       float[] gradient,\n+                       int[] src,\n+                       int[] dst) {\n+        super(matrixId);\n+        this.bufLength = 12 + src.length * 8 + gradient.length * 4;\n+        this.dataBuf = new byte[bufLength];\n+        ByteBuffer wrapper = ByteBuffer.wrap(this.dataBuf);\n+        wrapper.putInt(seed);\n+        wrapper.putInt(partitionId);\n+        wrapper.putInt(src.length);\n+        int inc = 0;\n+        for (int a = 0; a < src.length; a++) {\n+            wrapper.putInt(src[a]);\n+            wrapper.putInt(dst[a]);\n+            for (int b = 0; b < negative + 1; b++) {\n+                wrapper.putFloat(gradient[inc++]);\n+            }\n+        }\n     }\n-  }\n \n-  @Override\n-  public List<PartitionUpdateParam> split() {\n-    List<PartitionKey> pkeys = PSAgentContext.get().getMatrixMetaManager()\n-        .getPartitions(matrixId);\n-    List<PartitionUpdateParam> params = new ArrayList<>();\n-    for (PartitionKey pkey : pkeys) {\n-      AdjustPartitionParam partParam = new AdjustPartitionParam(matrixId, pkey, dataBuf, bufLength);\n-      params.add(partParam);\n+    @Override\n+    public List<PartitionUpdateParam> split() {\n+        List<PartitionKey> pkeys = PSAgentContext.get().getMatrixMetaManager()\n+                .getPartitions(matrixId);\n+        List<PartitionUpdateParam> params = new ArrayList<>();\n+        for (PartitionKey pkey : pkeys) {\n+            AdjustPartitionParam partParam =\n+                    new AdjustPartitionParam(matrixId, pkey, dataBuf, bufLength);\n+            params.add(partParam);\n+        }\n+        return params;\n     }\n-    return params;\n-  }\n }\n \n",
+            "diff_size": 39
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/31/AdjustParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/31/AdjustParam.java\nindex a0b62f6275..98d079d4e7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/31/AdjustParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/31/AdjustParam.java\n@@ -30,14 +30,12 @@ public class AdjustParam extends UpdateParam {\n   private byte[] dataBuf;\n   private int bufLength;\n \n-  public AdjustParam(int matrixId,\n-                     int seed,\n+  public AdjustParam(int matrixId, int seed,\n                      int negative,\n-                     int partitionId,\n-                     float[] gradient,\n+                     int partitionId, float[] gradient,\n                      int[] src,\n                      int[] dst) {\n-    super(matrixId);\n+  super(matrixId);\n     this.bufLength = 12 + src.length * 8 + gradient.length * 4;\n     this.dataBuf = new byte[bufLength];\n     ByteBuffer wrapper = ByteBuffer.wrap(this.dataBuf);\n@@ -58,12 +56,11 @@ public class AdjustParam extends UpdateParam {\n   public List<PartitionUpdateParam> split() {\n     List<PartitionKey> pkeys = PSAgentContext.get().getMatrixMetaManager()\n         .getPartitions(matrixId);\n-    List<PartitionUpdateParam> params = new ArrayList<>();\n+List<PartitionUpdateParam> params = new ArrayList<>();\n     for (PartitionKey pkey : pkeys) {\n       AdjustPartitionParam partParam = new AdjustPartitionParam(matrixId, pkey, dataBuf, bufLength);\n       params.add(partParam);\n     }\n     return params;\n   }\n-}\n-\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 119).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/31/AdjustParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/31/AdjustParam.java\nindex a0b62f6275..1a67ee23e8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/31/AdjustParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/31/AdjustParam.java\n@@ -20,23 +20,15 @@ import com.tencent.angel.PartitionKey;\n import com.tencent.angel.ml.matrix.psf.update.base.PartitionUpdateParam;\n import com.tencent.angel.ml.matrix.psf.update.base.UpdateParam;\n import com.tencent.angel.psagent.PSAgentContext;\n-\n import java.nio.ByteBuffer;\n import java.util.ArrayList;\n import java.util.List;\n \n public class AdjustParam extends UpdateParam {\n+    private byte[] dataBuf;\n+    private int bufLength;\n \n-  private byte[] dataBuf;\n-  private int bufLength;\n-\n-  public AdjustParam(int matrixId,\n-                     int seed,\n-                     int negative,\n-                     int partitionId,\n-                     float[] gradient,\n-                     int[] src,\n-                     int[] dst) {\n+    public AdjustParam(int matrixId, int seed, int negative, int partitionId, float[] gradient, int[] src, int[] dst) {\n     super(matrixId);\n     this.bufLength = 12 + src.length * 8 + gradient.length * 4;\n     this.dataBuf = new byte[bufLength];\n@@ -44,26 +36,26 @@ public class AdjustParam extends UpdateParam {\n     wrapper.putInt(seed);\n     wrapper.putInt(partitionId);\n     wrapper.putInt(src.length);\n+\n     int inc = 0;\n     for (int a = 0; a < src.length; a++) {\n-      wrapper.putInt(src[a]);\n-      wrapper.putInt(dst[a]);\n-      for (int b = 0; b < negative + 1; b++) {\n-        wrapper.putFloat(gradient[inc++]);\n-      }\n+        wrapper.putInt(src[a]);\n+        wrapper.putInt(dst[a]);\n+        for (int b = 0; b < negative + 1; b++) {\n+                                             wrapper.putFloat(gradient[inc++]);\n+        }\n+    }\n     }\n-  }\n \n-  @Override\n-  public List<PartitionUpdateParam> split() {\n-    List<PartitionKey> pkeys = PSAgentContext.get().getMatrixMetaManager()\n-        .getPartitions(matrixId);\n+    @Override\n+    public List<PartitionUpdateParam> split() {\n+    List<PartitionKey> pkeys = PSAgentContext.get().getMatrixMetaManager().getPartitions(matrixId);\n     List<PartitionUpdateParam> params = new ArrayList<>();\n     for (PartitionKey pkey : pkeys) {\n-      AdjustPartitionParam partParam = new AdjustPartitionParam(matrixId, pkey, dataBuf, bufLength);\n-      params.add(partParam);\n+        AdjustPartitionParam partParam = new AdjustPartitionParam(matrixId, pkey, dataBuf, bufLength);\n+        params.add(partParam);\n     }\n     return params;\n-  }\n-}\n+    }\n \n+}\n\\ No newline at end of file\n",
+            "diff_size": 30
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

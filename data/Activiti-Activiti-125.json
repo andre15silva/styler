@@ -1,0 +1,77 @@
+{
+    "error_id": "125",
+    "information": {
+        "errors": [
+            {
+                "line": "18",
+                "severity": "error",
+                "message": "'package' has more than 1 empty lines before.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "\n\npackage org.activiti.engine.impl.bpmn.listener;\n\nimport org.activiti.engine.ActivitiIllegalArgumentException;\nimport org.activiti.engine.delegate.CustomPropertiesResolver;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/125/ExpressionCustomPropertiesResolver.java\nindex a0622f159d..c8b77c5042 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/125/ExpressionCustomPropertiesResolver.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.engine.impl.bpmn.listener;\n \n import org.activiti.engine.ActivitiIllegalArgumentException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "18",
+                    "severity": "error",
+                    "message": "'package' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/125/ExpressionCustomPropertiesResolver.java\nindex a0622f159d..2891955275 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/125/ExpressionCustomPropertiesResolver.java\n@@ -26,31 +26,29 @@ import java.util.Map;\n \n /**\n  * An {@link CustomPropertiesResolver} that evaluates a {@link Expression} when notified.\n- *\n-\n  */\n public class ExpressionCustomPropertiesResolver implements CustomPropertiesResolver {\n \n-  protected Expression expression;\n+    protected Expression expression;\n \n-  public ExpressionCustomPropertiesResolver(Expression expression) {\n-    this.expression = expression;\n-  }\n+    public ExpressionCustomPropertiesResolver(Expression expression) {\n+        this.expression = expression;\n+    }\n+\n+    @Override\n+    public Map<String, Object> getCustomPropertiesMap(DelegateExecution execution) {\n+        Object expressionValue = expression.getValue(execution);\n+        if (expressionValue instanceof Map) {\n+            return (Map<String, Object>) expressionValue;\n+        } else {\n+            throw new ActivitiIllegalArgumentException(\"Custom properties resolver expression \" + expression + \" did not return a Map<String, Object>\");\n+        }\n+    }\n \n-  @Override\n-  public Map<String, Object> getCustomPropertiesMap(DelegateExecution execution) {\n-    Object expressionValue = expression.getValue(execution);\n-    if (expressionValue instanceof Map) {\n-      return (Map<String, Object>) expressionValue;\n-    } else {\n-      throw new ActivitiIllegalArgumentException(\"Custom properties resolver expression \" + expression + \" did not return a Map<String, Object>\");\n+    /**\n+     * returns the expression text for this execution listener. Comes in handy if you want to check which listeners you already have.\n+     */\n+    public String getExpressionText() {\n+        return expression.getExpressionText();\n     }\n-  }\n-\n-  /**\n-   * returns the expression text for this execution listener. Comes in handy if you want to check which listeners you already have.\n-   */\n-  public String getExpressionText() {\n-    return expression.getExpressionText();\n-  }\n }\n",
+            "diff_size": 31
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "18",
+                    "severity": "error",
+                    "message": "'package' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 55.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/125/ExpressionCustomPropertiesResolver.java\nindex a0622f159d..f033e30e48 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/125/ExpressionCustomPropertiesResolver.java\n@@ -21,7 +21,6 @@ import org.activiti.engine.ActivitiIllegalArgumentException;\n import org.activiti.engine.delegate.CustomPropertiesResolver;\n import org.activiti.engine.delegate.DelegateExecution;\n import org.activiti.engine.delegate.Expression;\n-\n import java.util.Map;\n \n /**\n@@ -29,28 +28,31 @@ import java.util.Map;\n  *\n \n  */\n+\n+\n public class ExpressionCustomPropertiesResolver implements CustomPropertiesResolver {\n \n-  protected Expression expression;\n+    protected Expression expression;\n \n-  public ExpressionCustomPropertiesResolver(Expression expression) {\n+    public ExpressionCustomPropertiesResolver(Expression expression) {\n     this.expression = expression;\n-  }\n+    }\n \n-  @Override\n-  public Map<String, Object> getCustomPropertiesMap(DelegateExecution execution) {\n+    @Override\n+    public Map<String, Object> getCustomPropertiesMap(DelegateExecution execution) {\n     Object expressionValue = expression.getValue(execution);\n     if (expressionValue instanceof Map) {\n-      return (Map<String, Object>) expressionValue;\n+        return (Map<String, Object>) expressionValue;\n     } else {\n       throw new ActivitiIllegalArgumentException(\"Custom properties resolver expression \" + expression + \" did not return a Map<String, Object>\");\n     }\n-  }\n+    }\n \n   /**\n    * returns the expression text for this execution listener. Comes in handy if you want to check which listeners you already have.\n    */\n-  public String getExpressionText() {\n+\n+    public String getExpressionText() {\n     return expression.getExpressionText();\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/125/ExpressionCustomPropertiesResolver.java\nindex a0622f159d..c8b77c5042 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/125/ExpressionCustomPropertiesResolver.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.engine.impl.bpmn.listener;\n \n import org.activiti.engine.ActivitiIllegalArgumentException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/125/ExpressionCustomPropertiesResolver.java\nindex a0622f159d..c8b77c5042 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/125/ExpressionCustomPropertiesResolver.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/125/ExpressionCustomPropertiesResolver.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.engine.impl.bpmn.listener;\n \n import org.activiti.engine.ActivitiIllegalArgumentException;\n",
+            "diff_size": 1
+        }
+    ]
+}

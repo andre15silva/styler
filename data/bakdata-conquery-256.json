@@ -1,0 +1,596 @@
+{
+    "error_id": "256",
+    "information": {
+        "errors": [
+            {
+                "line": "63",
+                "severity": "warning",
+                "message": "trailing whitespaces",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+            }
+        ]
+    },
+    "source_code": "\t\t\t\tgroups = patch.getGroups().stream().map(id -> storage.getGroup(id)).collect(Collectors.toList());\n\t\t\t}\n\t\t\telse {\t\t\t\t\n\t\t\t\tgroups = AuthorizationHelper.getGroupsOf(user, storage);\n\t\t\t}\n\t\t\tfor(Group group : groups) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/256/MetaDataPatch.java\nindex c6b3f86f6b..9242d61be3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/256/MetaDataPatch.java\n@@ -31,7 +31,7 @@ public class MetaDataPatch {\n \tprivate String label;\n \tprivate Boolean shared;\n \tprivate List<GroupId> groups;\n-\t\n+\n \n \n \t/**\n@@ -46,9 +46,9 @@ public class MetaDataPatch {\n \t * @param permissionCreator\tA function that produces a {@link Permission} that targets the given instance (e.g QueryPermission, FormConfigPermission).\n \t */\n \tpublic static <ID extends IId<?>, INST extends Taggable & Shareable & Labelable & Identifiable<? extends ID>> void patchIdentifialble(MasterMetaStorage storage, User user, INST instance, MetaDataPatch patch, PermissionCreator<ID> permissionCreator) {\n-\t\t\n+\n \t\tConsumer<MetaDataPatch> patchConsumerChain = QueryUtils.getNoOpEntryPoint();\n-\t\t\n+\n \t\tif(patch.getTags() != null && user.isPermitted(permissionCreator.apply(Ability.TAG.asSet(), instance.getId()))) {\n \t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.tagger());\n \t\t}\n@@ -60,7 +60,7 @@ public class MetaDataPatch {\n \t\t\tif(patch.getGroups() != null) {\n \t\t\t\tgroups = patch.getGroups().stream().map(id -> storage.getGroup(id)).collect(Collectors.toList());\n \t\t\t}\n-\t\t\telse {\t\t\t\t\n+\t\t\telse {\n \t\t\t\tgroups = AuthorizationHelper.getGroupsOf(user, storage);\n \t\t\t}\n \t\t\tfor(Group group : groups) {\n@@ -71,9 +71,9 @@ public class MetaDataPatch {\n \t\tpatchConsumerChain.accept(patch);\n \t}\n \n-\t\n+\n \t@FunctionalInterface\n \tpublic interface PermissionCreator<ID extends IId<?>> extends BiFunction<Set<Ability>,ID, ConqueryPermission> {\n-\t\t\n+\n \t}\n }\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "column": "13",
+                    "severity": "warning",
+                    "message": "'}' at column 13 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/256/MetaDataPatch.java\nindex c6b3f86f6b..366008e4b4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/256/MetaDataPatch.java\n@@ -27,53 +27,53 @@ import org.apache.shiro.authz.Permission;\n @Builder\n public class MetaDataPatch {\n \n-\tprivate String[] tags;\n-\tprivate String label;\n-\tprivate Boolean shared;\n-\tprivate List<GroupId> groups;\n-\t\n+    private String[] tags;\n+    private String label;\n+    private Boolean shared;\n+    private List<GroupId> groups;\n \n \n-\t/**\n-\t * Patches the given {@link Identifiable} by checking if the user holds the necessary Permission for that operation.\n-\t * Hence the patched instance must have a corresponding {@link Permission}-type.\n-\t * Tagging and Labeling only alters the state of the instance while sharing also alters the state of {@link Group}s.\n-\t * @param <INST>\tType of the instance that is patched\n-\t * @param storage\tStorage that persists the instance and also auth information.\n-\t * @param user\t\tThe user on whose behalf the patch is executed\n-\t * @param instance\tThe instance to patch\n-\t * @param patch\t\tThe patch that is applied to the instance\n-\t * @param permissionCreator\tA function that produces a {@link Permission} that targets the given instance (e.g QueryPermission, FormConfigPermission).\n-\t */\n-\tpublic static <ID extends IId<?>, INST extends Taggable & Shareable & Labelable & Identifiable<? extends ID>> void patchIdentifialble(MasterMetaStorage storage, User user, INST instance, MetaDataPatch patch, PermissionCreator<ID> permissionCreator) {\n-\t\t\n-\t\tConsumer<MetaDataPatch> patchConsumerChain = QueryUtils.getNoOpEntryPoint();\n-\t\t\n-\t\tif(patch.getTags() != null && user.isPermitted(permissionCreator.apply(Ability.TAG.asSet(), instance.getId()))) {\n-\t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.tagger());\n-\t\t}\n-\t\tif(patch.getLabel() != null && user.isPermitted(permissionCreator.apply(Ability.LABEL.asSet(), instance.getId()))) {\n-\t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.labeler());\n-\t\t}\n-\t\tif(patch.getShared() != null && user.isPermitted(permissionCreator.apply(Ability.SHARE.asSet(), instance.getId()))) {\n-\t\t\tList<Group> groups;\n-\t\t\tif(patch.getGroups() != null) {\n-\t\t\t\tgroups = patch.getGroups().stream().map(id -> storage.getGroup(id)).collect(Collectors.toList());\n-\t\t\t}\n-\t\t\telse {\t\t\t\t\n-\t\t\t\tgroups = AuthorizationHelper.getGroupsOf(user, storage);\n-\t\t\t}\n-\t\t\tfor(Group group : groups) {\n-\t\t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.sharer(storage, user, group, permissionCreator));\n+    /**\n+     * Patches the given {@link Identifiable} by checking if the user holds the necessary Permission for that operation.\n+     * Hence the patched instance must have a corresponding {@link Permission}-type.\n+     * Tagging and Labeling only alters the state of the instance while sharing also alters the state of {@link Group}s.\n+     *\n+     * @param <INST>            Type of the instance that is patched\n+     * @param storage           Storage that persists the instance and also auth information.\n+     * @param user              The user on whose behalf the patch is executed\n+     * @param instance          The instance to patch\n+     * @param patch             The patch that is applied to the instance\n+     * @param permissionCreator A function that produces a {@link Permission} that targets the given instance (e.g QueryPermission, FormConfigPermission).\n+     */\n+    public static <ID extends IId<?>, INST extends Taggable & Shareable & Labelable & Identifiable<? extends ID>> void patchIdentifialble(MasterMetaStorage storage, User user, INST instance, MetaDataPatch patch,\n+                                                                                                                                          PermissionCreator<ID> permissionCreator) {\n \n-\t\t\t}\n-\t\t}\n-\t\tpatchConsumerChain.accept(patch);\n-\t}\n+        Consumer<MetaDataPatch> patchConsumerChain = QueryUtils.getNoOpEntryPoint();\n \n-\t\n-\t@FunctionalInterface\n-\tpublic interface PermissionCreator<ID extends IId<?>> extends BiFunction<Set<Ability>,ID, ConqueryPermission> {\n-\t\t\n-\t}\n+        if (patch.getTags() != null && user.isPermitted(permissionCreator.apply(Ability.TAG.asSet(), instance.getId()))) {\n+            patchConsumerChain = patchConsumerChain.andThen(instance.tagger());\n+        }\n+        if (patch.getLabel() != null && user.isPermitted(permissionCreator.apply(Ability.LABEL.asSet(), instance.getId()))) {\n+            patchConsumerChain = patchConsumerChain.andThen(instance.labeler());\n+        }\n+        if (patch.getShared() != null && user.isPermitted(permissionCreator.apply(Ability.SHARE.asSet(), instance.getId()))) {\n+            List<Group> groups;\n+            if (patch.getGroups() != null) {\n+                groups = patch.getGroups().stream().map(id -> storage.getGroup(id)).collect(Collectors.toList());\n+            } else {\n+                groups = AuthorizationHelper.getGroupsOf(user, storage);\n+            }\n+            for (Group group : groups) {\n+                patchConsumerChain = patchConsumerChain.andThen(instance.sharer(storage, user, group, permissionCreator));\n+\n+            }\n+        }\n+        patchConsumerChain.accept(patch);\n+    }\n+\n+\n+    @FunctionalInterface\n+    public interface PermissionCreator<ID extends IId<?>> extends BiFunction<Set<Ability>, ID, ConqueryPermission> {\n+\n+    }\n }\n",
+            "diff_size": 66
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 4, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 4, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "warning",
+                    "message": "'for rcurly' has incorrect indentation level 4, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "'class def rcurly' has incorrect indentation level 12, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/256/MetaDataPatch.java\nindex c6b3f86f6b..3bd3be73f2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/256/MetaDataPatch.java\n@@ -31,8 +31,6 @@ public class MetaDataPatch {\n \tprivate String label;\n \tprivate Boolean shared;\n \tprivate List<GroupId> groups;\n-\t\n-\n \n \t/**\n \t * Patches the given {@link Identifiable} by checking if the user holds the necessary Permission for that operation.\n@@ -46,8 +44,7 @@ public class MetaDataPatch {\n \t * @param permissionCreator\tA function that produces a {@link Permission} that targets the given instance (e.g QueryPermission, FormConfigPermission).\n \t */\n \tpublic static <ID extends IId<?>, INST extends Taggable & Shareable & Labelable & Identifiable<? extends ID>> void patchIdentifialble(MasterMetaStorage storage, User user, INST instance, MetaDataPatch patch, PermissionCreator<ID> permissionCreator) {\n-\t\t\n-\t\tConsumer<MetaDataPatch> patchConsumerChain = QueryUtils.getNoOpEntryPoint();\n+\tConsumer<MetaDataPatch> patchConsumerChain = QueryUtils.getNoOpEntryPoint();\n \t\t\n \t\tif(patch.getTags() != null && user.isPermitted(permissionCreator.apply(Ability.TAG.asSet(), instance.getId()))) {\n \t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.tagger());\n@@ -60,20 +57,20 @@ public class MetaDataPatch {\n \t\t\tif(patch.getGroups() != null) {\n \t\t\t\tgroups = patch.getGroups().stream().map(id -> storage.getGroup(id)).collect(Collectors.toList());\n \t\t\t}\n-\t\t\telse {\t\t\t\t\n-\t\t\t\tgroups = AuthorizationHelper.getGroupsOf(user, storage);\n-\t\t\t}\n+\t\t\telse {\n+\tgroups = AuthorizationHelper.getGroupsOf(user, storage);\n+\t}\n \t\t\tfor(Group group : groups) {\n \t\t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.sharer(storage, user, group, permissionCreator));\n-\n-\t\t\t}\n+\t}\n \t\t}\n \t\tpatchConsumerChain.accept(patch);\n \t}\n \n \t\n \t@FunctionalInterface\n-\tpublic interface PermissionCreator<ID extends IId<?>> extends BiFunction<Set<Ability>,ID, ConqueryPermission> {\n-\t\t\n+\tpublic interface PermissionCreator<ID extends IId<?>> extends BiFunction<Set<Ability>, ID, ConqueryPermission> {\n+\n \t}\n-}\n+\n+\t\t\t}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Comment indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/256/MetaDataPatch.java\nindex c6b3f86f6b..f4b472b92e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/256/MetaDataPatch.java\n@@ -5,7 +5,6 @@ import java.util.Set;\n import java.util.function.BiFunction;\n import java.util.function.Consumer;\n import java.util.stream.Collectors;\n-\n import com.bakdata.conquery.io.xodus.MasterMetaStorage;\n import com.bakdata.conquery.models.auth.AuthorizationHelper;\n import com.bakdata.conquery.models.auth.entities.Group;\n@@ -27,53 +26,54 @@ import org.apache.shiro.authz.Permission;\n @Builder\n public class MetaDataPatch {\n \n-\tprivate String[] tags;\n-\tprivate String label;\n-\tprivate Boolean shared;\n-\tprivate List<GroupId> groups;\n-\t\n+    private String[] tags;\n+    private String label;\n+    private Boolean shared;\n+    private List<GroupId> groups;\n+    \n+\n+\n+    /**\n+     * Patches the given {@link Identifiable} by checking if the user holds the necessary Permission for that operation.\n+     * Hence the patched instance must have a corresponding {@link Permission}-type.\n+     * Tagging and Labeling only alters the state of the instance while sharing also alters the state of {@link Group}s.\n+     * @param <INST>    Type of the instance that is patched\n+     * @param storage   Storage that persists the instance and also auth information.\n+     * @param user      The user on whose behalf the patch is executed\n+     * @param instance  The instance to patch\n+     * @param patch     The patch that is applied to the instance\n+     * @param permissionCreator A function that produces a {@link Permission} that targets the given instance (e.g QueryPermission, FormConfigPermission).\n+     */\n+\n+    public static <ID extends IId<?>, INST extends Taggable&Shareable&Labelable&Identifiable<? extends ID>> void patchIdentifialble(MasterMetaStorage storage, User user, INST instance, MetaDataPatch patch, PermissionCreator<ID> permissionCreator) {\n+        Consumer<MetaDataPatch> patchConsumerChain = QueryUtils.getNoOpEntryPoint();\n+        if(patch.getTags() != null && user.isPermitted(permissionCreator.apply(Ability.TAG.asSet(), instance.getId()))) {\n+            patchConsumerChain = patchConsumerChain.andThen(instance.tagger());\n+        }\n \n+        if(patch.getLabel() != null && user.isPermitted(permissionCreator.apply(Ability.LABEL.asSet(), instance.getId()))) {\n+            patchConsumerChain = patchConsumerChain.andThen(instance.labeler());\n+        }\n \n-\t/**\n-\t * Patches the given {@link Identifiable} by checking if the user holds the necessary Permission for that operation.\n-\t * Hence the patched instance must have a corresponding {@link Permission}-type.\n-\t * Tagging and Labeling only alters the state of the instance while sharing also alters the state of {@link Group}s.\n-\t * @param <INST>\tType of the instance that is patched\n-\t * @param storage\tStorage that persists the instance and also auth information.\n-\t * @param user\t\tThe user on whose behalf the patch is executed\n-\t * @param instance\tThe instance to patch\n-\t * @param patch\t\tThe patch that is applied to the instance\n-\t * @param permissionCreator\tA function that produces a {@link Permission} that targets the given instance (e.g QueryPermission, FormConfigPermission).\n-\t */\n-\tpublic static <ID extends IId<?>, INST extends Taggable & Shareable & Labelable & Identifiable<? extends ID>> void patchIdentifialble(MasterMetaStorage storage, User user, INST instance, MetaDataPatch patch, PermissionCreator<ID> permissionCreator) {\n-\t\t\n-\t\tConsumer<MetaDataPatch> patchConsumerChain = QueryUtils.getNoOpEntryPoint();\n-\t\t\n-\t\tif(patch.getTags() != null && user.isPermitted(permissionCreator.apply(Ability.TAG.asSet(), instance.getId()))) {\n-\t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.tagger());\n-\t\t}\n-\t\tif(patch.getLabel() != null && user.isPermitted(permissionCreator.apply(Ability.LABEL.asSet(), instance.getId()))) {\n-\t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.labeler());\n-\t\t}\n-\t\tif(patch.getShared() != null && user.isPermitted(permissionCreator.apply(Ability.SHARE.asSet(), instance.getId()))) {\n-\t\t\tList<Group> groups;\n-\t\t\tif(patch.getGroups() != null) {\n-\t\t\t\tgroups = patch.getGroups().stream().map(id -> storage.getGroup(id)).collect(Collectors.toList());\n-\t\t\t}\n-\t\t\telse {\t\t\t\t\n-\t\t\t\tgroups = AuthorizationHelper.getGroupsOf(user, storage);\n-\t\t\t}\n-\t\t\tfor(Group group : groups) {\n-\t\t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.sharer(storage, user, group, permissionCreator));\n+        if(patch.getShared() != null && user.isPermitted(permissionCreator.apply(Ability.SHARE.asSet(), instance.getId()))) {\n+            List<Group> groups;\n+            if(patch.getGroups() != null) {\n+                groups = patch.getGroups().stream()\n+                                          .map(id->storage.getGroup(id))\n+                                          .collect(Collectors.toList());\n+            }\n+            else {\n+                groups = AuthorizationHelper.getGroupsOf(user, storage);\n+            }\n \n-\t\t\t}\n-\t\t}\n-\t\tpatchConsumerChain.accept(patch);\n-\t}\n+            for(Group group : groups) {\n+                patchConsumerChain = patchConsumerChain.andThen(instance.sharer(storage, user, group, permissionCreator));\n+            }\n+        }\n+        patchConsumerChain.accept(patch);\n+    }\n \n-\t\n-\t@FunctionalInterface\n-\tpublic interface PermissionCreator<ID extends IId<?>> extends BiFunction<Set<Ability>,ID, ConqueryPermission> {\n-\t\t\n-\t}\n-}\n+    @FunctionalInterface\n+    public interface PermissionCreator<ID extends IId<?>> extends BiFunction<Set<Ability>, ID, ConqueryPermission> {\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 71
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/256/MetaDataPatch.java\nindex c6b3f86f6b..9242d61be3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/256/MetaDataPatch.java\n@@ -31,7 +31,7 @@ public class MetaDataPatch {\n \tprivate String label;\n \tprivate Boolean shared;\n \tprivate List<GroupId> groups;\n-\t\n+\n \n \n \t/**\n@@ -46,9 +46,9 @@ public class MetaDataPatch {\n \t * @param permissionCreator\tA function that produces a {@link Permission} that targets the given instance (e.g QueryPermission, FormConfigPermission).\n \t */\n \tpublic static <ID extends IId<?>, INST extends Taggable & Shareable & Labelable & Identifiable<? extends ID>> void patchIdentifialble(MasterMetaStorage storage, User user, INST instance, MetaDataPatch patch, PermissionCreator<ID> permissionCreator) {\n-\t\t\n+\n \t\tConsumer<MetaDataPatch> patchConsumerChain = QueryUtils.getNoOpEntryPoint();\n-\t\t\n+\n \t\tif(patch.getTags() != null && user.isPermitted(permissionCreator.apply(Ability.TAG.asSet(), instance.getId()))) {\n \t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.tagger());\n \t\t}\n@@ -60,7 +60,7 @@ public class MetaDataPatch {\n \t\t\tif(patch.getGroups() != null) {\n \t\t\t\tgroups = patch.getGroups().stream().map(id -> storage.getGroup(id)).collect(Collectors.toList());\n \t\t\t}\n-\t\t\telse {\t\t\t\t\n+\t\t\telse {\n \t\t\t\tgroups = AuthorizationHelper.getGroupsOf(user, storage);\n \t\t\t}\n \t\t\tfor(Group group : groups) {\n@@ -71,9 +71,9 @@ public class MetaDataPatch {\n \t\tpatchConsumerChain.accept(patch);\n \t}\n \n-\t\n+\n \t@FunctionalInterface\n \tpublic interface PermissionCreator<ID extends IId<?>> extends BiFunction<Set<Ability>,ID, ConqueryPermission> {\n-\t\t\n+\n \t}\n }\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/256/MetaDataPatch.java\nindex c6b3f86f6b..9242d61be3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/256/MetaDataPatch.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/256/MetaDataPatch.java\n@@ -31,7 +31,7 @@ public class MetaDataPatch {\n \tprivate String label;\n \tprivate Boolean shared;\n \tprivate List<GroupId> groups;\n-\t\n+\n \n \n \t/**\n@@ -46,9 +46,9 @@ public class MetaDataPatch {\n \t * @param permissionCreator\tA function that produces a {@link Permission} that targets the given instance (e.g QueryPermission, FormConfigPermission).\n \t */\n \tpublic static <ID extends IId<?>, INST extends Taggable & Shareable & Labelable & Identifiable<? extends ID>> void patchIdentifialble(MasterMetaStorage storage, User user, INST instance, MetaDataPatch patch, PermissionCreator<ID> permissionCreator) {\n-\t\t\n+\n \t\tConsumer<MetaDataPatch> patchConsumerChain = QueryUtils.getNoOpEntryPoint();\n-\t\t\n+\n \t\tif(patch.getTags() != null && user.isPermitted(permissionCreator.apply(Ability.TAG.asSet(), instance.getId()))) {\n \t\t\tpatchConsumerChain = patchConsumerChain.andThen(instance.tagger());\n \t\t}\n@@ -60,7 +60,7 @@ public class MetaDataPatch {\n \t\t\tif(patch.getGroups() != null) {\n \t\t\t\tgroups = patch.getGroups().stream().map(id -> storage.getGroup(id)).collect(Collectors.toList());\n \t\t\t}\n-\t\t\telse {\t\t\t\t\n+\t\t\telse {\n \t\t\t\tgroups = AuthorizationHelper.getGroupsOf(user, storage);\n \t\t\t}\n \t\t\tfor(Group group : groups) {\n@@ -71,9 +71,9 @@ public class MetaDataPatch {\n \t\tpatchConsumerChain.accept(patch);\n \t}\n \n-\t\n+\n \t@FunctionalInterface\n \tpublic interface PermissionCreator<ID extends IId<?>> extends BiFunction<Set<Ability>,ID, ConqueryPermission> {\n-\t\t\n+\n \t}\n }\n",
+            "diff_size": 6
+        }
+    ]
+}

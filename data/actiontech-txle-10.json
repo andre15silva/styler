@@ -1,0 +1,99 @@
+{
+    "error_id": "10",
+    "information": {
+        "errors": [
+            {
+                "line": "194",
+                "column": "3",
+                "severity": "error",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "            return originalDataList;\n        } finally {\n//\t\t\ttry {\n//\t\t\t\tif (connection != null) {\n//\t\t\t\t\tconnection.close();\n//\t\t\t\t}",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "194",
+                    "column": "15",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/styler/10/MySqlUpdateHandler.java\nindex 24375af600..6aff297835 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/styler/10/MySqlUpdateHandler.java\n@@ -191,7 +191,7 @@ public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n             }\n             return originalDataList;\n         } finally {\n-//\t\t\ttry {\n+            //\t\t\ttry {\n //\t\t\t\tif (connection != null) {\n //\t\t\t\t\tconnection.close();\n //\t\t\t\t}\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "194",
+                    "column": "3",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "194",
+                    "severity": "error",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "194",
+                    "column": "3",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/naturalize/10/MySqlUpdateHandler.java\nindex 24375af600..e8eb04e3ec 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/naturalize/10/MySqlUpdateHandler.java\n@@ -191,12 +191,8 @@ public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n             }\n             return originalDataList;\n         } finally {\n-//\t\t\ttry {\n-//\t\t\t\tif (connection != null) {\n-//\t\t\t\t\tconnection.close();\n-//\t\t\t\t}\n-//\t\t\t} finally {\n-            if (preparedStatement != null) {\n+//\t\t\ttry \n+if (preparedStatement != null) {\n                 preparedStatement.close();\n             }\n //\t\t\t}\n@@ -219,4 +215,4 @@ public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n         return originalDataList;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/codebuff/10/MySqlUpdateHandler.java\nindex 24375af600..b9e07d26f6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/codebuff/10/MySqlUpdateHandler.java\n@@ -16,12 +16,11 @@ import org.apache.servicecomb.saga.omega.context.ApplicationContextUtil;\n import org.apache.servicecomb.saga.omega.transaction.monitor.AutoCompensableSqlMetrics;\n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n-\n import java.sql.*;\n import java.util.*;\n \n-public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n \n+public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n     private static volatile MySqlUpdateHandler mySqlUpdateHandler = null;\n     private static final Logger LOG = LoggerFactory.getLogger(MySqlUpdateHandler.class);\n \n@@ -49,12 +48,18 @@ public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n \n             // 2.take conditions out\n             // select * ... by where ... ps: having, etc.\n+\n             SQLExpr where = updateStatement.getWhere();\n             // It doesn't matter, even though the 'where-sql' contains a line break.\n             String whereSql = where.toString();\n-            LOG.debug(TxleConstants.logDebugPrefixWithTime() + \"currentThreadId: [{}] - table: [{}] - where: [{}].\", Thread.currentThread().getId(), tableName, whereSql);\n+            LOG.debug(\n+                TxleConstants.logDebugPrefixWithTime() + \"currentThreadId: [{}] - table: [{}] - where: [{}].\",\n+Thread.currentThread().getId(),\n+tableName,\n+whereSql);\n \n             // 3.take primary-key name\n+\n             String primaryKeyColumnName = this.parsePrimaryKeyColumnName(delegate, sqlStatement, tableName);\n \n             // 4.take the original data out and put a lock on data.\n@@ -72,6 +77,7 @@ public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n                 LOG.debug(TxleConstants.logDebugPrefixWithTime() + \"Did not save compensation info to table 'Txle_Undo_Log' due to the executeSql's result hadn't any effect to data. localTxId: [{}], server: [{}].\", localTxId, server);\n                 return true;\n             }\n+\n             StringBuffer ids = new StringBuffer();\n             originalDataList.forEach(map -> {\n                 if (ids.length() == 0) {\n@@ -119,9 +125,9 @@ public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n         StringBuffer compensateSqls = new StringBuffer();\n         for (Map<String, Object> dataMap : newDataList) {\n             this.resetColumnValueByDBType(columnNameType, dataMap);\n+\n             String setColumns = constructSetColumns(updateSetItemList, dataMap);\n             String whereSqlForCompensation = this.constructWhereSqlForCompensation(dataMap);\n-\n             String compensateSql = String.format(\"UPDATE %s SET %s WHERE %s\" + TxleConstants.ACTION_SQL + \";\", tableName, setColumns, whereSqlForCompensation);\n             if (compensateSqls.length() == 0) {\n                 compensateSqls.append(compensateSql);\n@@ -129,94 +135,91 @@ public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n                 compensateSqls.append(\"\\n\" + compensateSql);\n             }\n         }\n-\n         return compensateSqls.toString();\n     }\n \n     private String constructSetColumns(List<SQLUpdateSetItem> updateSetItemList, Map<String, Object> dataMap) {\n-        StringBuffer setColumns = new StringBuffer();\n-        for (SQLUpdateSetItem setItem : updateSetItemList) {\n-            String column = setItem.getColumn().toString();\n-            if (setColumns.length() == 0) {\n-                setColumns.append(column + \" = \" + dataMap.get(column));\n-            } else {\n-                setColumns.append(\", \" + column + \" = \" + dataMap.get(column));\n-            }\n+    StringBuffer setColumns = new StringBuffer();\n+    for (SQLUpdateSetItem setItem : updateSetItemList) {\n+        String column = setItem.getColumn().toString();\n+        if (setColumns.length() == 0) {\n+            setColumns.append(column + \" = \" + dataMap.get(column));\n+        } else {\n+            setColumns.append(\", \" + column + \" = \" + dataMap.get(column));\n         }\n-        return setColumns.toString();\n+    }\n+    return setColumns.toString();\n     }\n \n     private List<Map<String, Object>> selectNewDataList(PreparedStatement delegate, MySqlUpdateStatement updateStatement, String tableName, String primaryKeyColumnName, String whereSql) throws SQLException {\n-        Connection connection = null;\n-        PreparedStatement preparedStatement = null;\n-        try {\n-            List<SQLUpdateSetItem> updateSetItemList = updateStatement.getItems();\n-            if (updateSetItemList == null || updateSetItemList.isEmpty()) {\n-                throw new SQLException(\"Have no set-item for update SQL.\");\n-            }\n+    Connection connection = null;\n+    PreparedStatement preparedStatement = null;\n+    try {\n+        List<SQLUpdateSetItem> updateSetItemList = updateStatement.getItems();\n+        if (updateSetItemList == null || updateSetItemList.isEmpty()) {\n+            throw new SQLException(\"Have no set-item for update SQL.\");\n+        }\n \n-            StringBuffer newColumnValues = new StringBuffer();\n-            for (SQLUpdateSetItem setItem : updateSetItemList) {\n-                String columnValue = setItem.getValue().toString();\n-                if (newColumnValues.length() > 0) {\n-                    newColumnValues.append(\", \");\n-                }\n-                newColumnValues.append(columnValue + \" n_c_v_\" + setItem.getColumn().toString());\n+        StringBuffer newColumnValues = new StringBuffer();\n+        for (SQLUpdateSetItem setItem : updateSetItemList) {\n+            String columnValue = setItem.getValue().toString();\n+            if (newColumnValues.length() > 0) {\n+                newColumnValues.append(\", \");\n             }\n+            newColumnValues.append(columnValue + \" n_c_v_\" + setItem.getColumn().toString());\n+        }\n \n             // 'FOR UPDATE' is needed to lock data.\n-            String originalDataSql = String.format(\"SELECT T.*, %s FROM %s T WHERE %s FOR UPDATE\" + TxleConstants.ACTION_SQL, newColumnValues, tableName, whereSql);\n-            LOG.debug(TxleConstants.logDebugPrefixWithTime() + \"currentThreadId: [{}] - originalDataSql: [{}].\", Thread.currentThread().getId(), originalDataSql);\n+\n+        String originalDataSql = String.format(\"SELECT T.*, %s FROM %s T WHERE %s FOR UPDATE\" + TxleConstants.ACTION_SQL, newColumnValues, tableName, whereSql);\n+        LOG.debug(TxleConstants.logDebugPrefixWithTime() + \"currentThreadId: [{}] - originalDataSql: [{}].\", Thread.currentThread().getId(), originalDataSql);\n \n             // start to mark duration for business sql By Gannalyo.\n-            ApplicationContextUtil.getApplicationContext().getBean(AutoCompensableSqlMetrics.class).startMarkSQLDurationAndCount(originalDataSql, false);\n+        ApplicationContextUtil.getApplicationContext().getBean(AutoCompensableSqlMetrics.class).startMarkSQLDurationAndCount(originalDataSql, false);\n+        connection = delegate.getConnection();\n+        preparedStatement = connection.prepareStatement(originalDataSql);\n \n-            connection = delegate.getConnection();\n-            preparedStatement = connection.prepareStatement(originalDataSql);\n-            List<Map<String, Object>> originalDataList = new ArrayList<Map<String, Object>>();\n-            ResultSet dataResultSet = preparedStatement.executeQuery();\n+        List<Map<String, Object>> originalDataList = new ArrayList<Map<String, Object>>();\n+        ResultSet dataResultSet = preparedStatement.executeQuery();\n \n             // end mark duration for maintaining sql By Gannalyo.\n-            ApplicationContextUtil.getApplicationContext().getBean(AutoCompensableSqlMetrics.class).endMarkSQLDuration();\n-\n-            while (dataResultSet.next()) {\n-                Map<String, Object> dataMap = new HashMap<String, Object>();\n-                ResultSetMetaData metaData = dataResultSet.getMetaData();\n-                for (int i = 1; i <= metaData.getColumnCount(); i++) {\n-                    String column = metaData.getColumnName(i);\n-                    dataMap.put(column, dataResultSet.getObject(column));\n-                }\n-\n-                originalDataList.add(dataMap);\n-            }\n-            return originalDataList;\n-        } finally {\n-//\t\t\ttry {\n-//\t\t\t\tif (connection != null) {\n-//\t\t\t\t\tconnection.close();\n-//\t\t\t\t}\n-//\t\t\t} finally {\n-            if (preparedStatement != null) {\n-                preparedStatement.close();\n+        ApplicationContextUtil.getApplicationContext().getBean(AutoCompensableSqlMetrics.class).endMarkSQLDuration();\n+        while (dataResultSet.next()) {\n+            Map<String, Object> dataMap = new HashMap<String, Object>();\n+            ResultSetMetaData metaData = dataResultSet.getMetaData();\n+            for (int i = 1; i <= metaData.getColumnCount(); i++) {\n+                String column = metaData.getColumnName(i);\n+                dataMap.put(column, dataResultSet.getObject(column));\n             }\n-//\t\t\t}\n+            originalDataList.add(dataMap);\n+        }\n+        return originalDataList;\n+    } finally {\n+//          try {\n+//              if (connection != null) {\n+//                  connection.close();\n+//              }\n+//          } finally {\n+        if (preparedStatement != null) {\n+            preparedStatement.close();\n         }\n+//          }\n+    }\n     }\n \n     private List<Map<String, Object>> selectOriginalData(List<Map<String, Object>> newDataList) {\n-        List<Map<String, Object>> originalDataList = new ArrayList<>();\n-        for (Map<String, Object> newDataMap : newDataList) {\n-            Map<String, Object> originalDataMap = new HashMap<>();\n-            Iterator<Map.Entry<String, Object>> iterator = newDataMap.entrySet().iterator();\n-            while (iterator.hasNext()) {\n-                Map.Entry<String, Object> entry = iterator.next();\n-                if (!entry.getKey().startsWith(\"n_c_v_\")) {\n-                    originalDataMap.put(entry.getKey(), newDataMap.get(entry.getValue()));\n-                }\n+    List<Map<String, Object>> originalDataList = new ArrayList<>();\n+    for (Map<String, Object> newDataMap : newDataList) {\n+        Map<String, Object> originalDataMap = new HashMap<>();\n+        Iterator<Map.Entry<String, Object>> iterator = newDataMap.entrySet().iterator();\n+        while (iterator.hasNext()) {\n+            Map.Entry<String, Object> entry = iterator.next();\n+            if (!entry.getKey().startsWith(\"n_c_v_\")) {\n+                originalDataMap.put(entry.getKey(), newDataMap.get(entry.getValue()));\n             }\n-            originalDataList.add(originalDataMap);\n         }\n-        return originalDataList;\n+        originalDataList.add(originalDataMap);\n     }\n-\n-}\n+    return originalDataList;\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 98
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "194",
+                    "column": "11",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/styler_random/10/MySqlUpdateHandler.java\nindex 24375af600..789c3e8101 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/styler_random/10/MySqlUpdateHandler.java\n@@ -191,8 +191,7 @@ public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n             }\n             return originalDataList;\n         } finally {\n-//\t\t\ttry {\n-//\t\t\t\tif (connection != null) {\n+        //\t\t\ttry {//\t\t\t\tif (connection != null) {\n //\t\t\t\t\tconnection.close();\n //\t\t\t\t}\n //\t\t\t} finally {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "194",
+                    "column": "15",
+                    "severity": "error",
+                    "message": "File contains tab characters (this is the first instance).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/styler_three_grams/10/MySqlUpdateHandler.java\nindex 24375af600..6aff297835 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/errored/1/10/MySqlUpdateHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/actiontech-txle/styler_three_grams/10/MySqlUpdateHandler.java\n@@ -191,7 +191,7 @@ public class MySqlUpdateHandler extends AutoCompensateUpdateHandler {\n             }\n             return originalDataList;\n         } finally {\n-//\t\t\ttry {\n+            //\t\t\ttry {\n //\t\t\t\tif (connection != null) {\n //\t\t\t\t\tconnection.close();\n //\t\t\t\t}\n",
+            "diff_size": 1
+        }
+    ]
+}

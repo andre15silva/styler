@@ -1,0 +1,64 @@
+{
+    "error_id": "464",
+    "information": {
+        "errors": [
+            {
+                "line": "16",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.runtime.api.event.internal;\n\nimport org.activiti.api.process.model.events.BPMNTimerRetriesDecrementedEvent;\nimport org.activiti.api.process.runtime.events.listener.BPMNElementEventListener;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/464/TimerRetriesDecrementedListenerDelegate.java\nindex cd1aafe74d..5069726dde 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/464/TimerRetriesDecrementedListenerDelegate.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.event.internal;\n \n import org.activiti.api.process.model.events.BPMNTimerRetriesDecrementedEvent;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/464/TimerRetriesDecrementedListenerDelegate.java\nindex cd1aafe74d..5069726dde 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/464/TimerRetriesDecrementedListenerDelegate.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.event.internal;\n \n import org.activiti.api.process.model.events.BPMNTimerRetriesDecrementedEvent;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/464/TimerRetriesDecrementedListenerDelegate.java\nindex cd1aafe74d..8720001819 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/464/TimerRetriesDecrementedListenerDelegate.java\n@@ -20,33 +20,31 @@ import org.activiti.api.process.runtime.events.listener.BPMNElementEventListener\n import org.activiti.engine.delegate.event.ActivitiEvent;\n import org.activiti.engine.delegate.event.ActivitiEventListener;\n import org.activiti.runtime.api.event.impl.ToTimerRetriesDecrementedConverter;\n-\n import java.util.List;\n \n+\n public class TimerRetriesDecrementedListenerDelegate implements ActivitiEventListener {\n \n     private List<BPMNElementEventListener<BPMNTimerRetriesDecrementedEvent>> processRuntimeEventListeners;\n \n     private ToTimerRetriesDecrementedConverter converter;\n \n-    public TimerRetriesDecrementedListenerDelegate(List<BPMNElementEventListener<BPMNTimerRetriesDecrementedEvent>> processRuntimeEventListeners,\n-                                                   ToTimerRetriesDecrementedConverter converter) {\n-        this.processRuntimeEventListeners = processRuntimeEventListeners;\n-        this.converter = converter;\n+    public TimerRetriesDecrementedListenerDelegate(List<BPMNElementEventListener<BPMNTimerRetriesDecrementedEvent>> processRuntimeEventListeners, ToTimerRetriesDecrementedConverter converter) {\n+    this.processRuntimeEventListeners = processRuntimeEventListeners;\n+    this.converter = converter;\n     }\n \n     @Override\n     public void onEvent(ActivitiEvent event) {\n-        converter.from(event)\n-                .ifPresent(convertedEvent -> {\n-                    for (BPMNElementEventListener<BPMNTimerRetriesDecrementedEvent> listener : processRuntimeEventListeners) {\n-                        listener.onEvent(convertedEvent);\n-                    }\n-                });\n+    converter.from(event).ifPresent(convertedEvent -> {\n+                             for (BPMNElementEventListener<BPMNTimerRetriesDecrementedEvent> listener : processRuntimeEventListeners) {\n+                                 listener.onEvent(convertedEvent);\n+                             }\n+                         });\n     }\n \n     @Override\n     public boolean isFailOnException() {\n         return false;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/464/TimerRetriesDecrementedListenerDelegate.java\nindex cd1aafe74d..5069726dde 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/464/TimerRetriesDecrementedListenerDelegate.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.event.internal;\n \n import org.activiti.api.process.model.events.BPMNTimerRetriesDecrementedEvent;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/464/TimerRetriesDecrementedListenerDelegate.java\nindex cd1aafe74d..5069726dde 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/464/TimerRetriesDecrementedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/464/TimerRetriesDecrementedListenerDelegate.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.event.internal;\n \n import org.activiti.api.process.model.events.BPMNTimerRetriesDecrementedEvent;\n",
+            "diff_size": 1
+        }
+    ]
+}

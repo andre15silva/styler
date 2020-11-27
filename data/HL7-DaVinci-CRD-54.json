@@ -1,0 +1,235 @@
+{
+    "error_id": "54",
+    "information": {
+        "errors": [
+            {
+                "line": "70",
+                "severity": "warning",
+                "message": "'METHOD_DEF' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "   * @return the data from the repository\n   */\n  @CrossOrigin\n  @GetMapping(\"/api/data/{id}\")\n  public CoverageRequirementRule getRule(@PathVariable long id) {\n    Optional<CoverageRequirementRule> rule = repository.findById(id);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/54/DataController.java\nindex 1385f4385a..ff22e698b4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler/54/DataController.java\n@@ -67,6 +67,7 @@ public class DataController {\n    * @param id the id of the desired data.\n    * @return the data from the repository\n    */\n+\n   @CrossOrigin\n   @GetMapping(\"/api/data/{id}\")\n   public CoverageRequirementRule getRule(@PathVariable long id) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/54/DataController.java\nindex 1385f4385a..af9db620b7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/54/DataController.java\n@@ -36,9 +36,6 @@ import org.springframework.web.bind.annotation.RestController;\n import org.springframework.web.servlet.support.ServletUriComponentsBuilder;\n \n \n-\n-\n-\n /**\n  * Provides the REST interface that can be interacted with at [base]/api/data.\n  */\n@@ -62,8 +59,10 @@ public class DataController {\n   public Iterable<CoverageRequirementRule> showAll() {\n     return repository.findAll();\n   }\n+\n   /**\n    * Gets some data from the repository.\n+   *\n    * @param id the id of the desired data.\n    * @return the data from the repository\n    */\n@@ -81,6 +80,7 @@ public class DataController {\n \n   /**\n    * Allows post requests to add data to the repository.\n+   *\n    * @param rule the object to put into the repository\n    * @return the response from the server\n    */\n@@ -100,13 +100,14 @@ public class DataController {\n \n   /**\n    * Allows updated of data through the REST API.\n+   *\n    * @param rule the new data\n-   * @param id the id of the data to be replaced\n+   * @param id   the id of the data to be replaced\n    * @return the response from the server\n    */\n   @PutMapping(\"/api/data/{id}\")\n   public ResponseEntity<Object> updateRule(@RequestBody CoverageRequirementRule rule,\n-      @PathVariable long id) {\n+                                           @PathVariable long id) {\n     Optional<CoverageRequirementRule> datumOptional = repository.findById(id);\n \n     if (!datumOptional.isPresent()) {\n@@ -128,7 +129,6 @@ public class DataController {\n   }\n \n \n-\n   @CrossOrigin\n   @RequestMapping(value = \"/api/testing\", method = RequestMethod.POST)\n   public String testingApi(@RequestBody Object object) {\n@@ -137,6 +137,4 @@ public class DataController {\n   }\n \n \n-\n-\n }\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "62",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 0, expected is 2, indentation should be the same level as line 67.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "135",
+                    "severity": "warning",
+                    "message": "'class def rcurly' has incorrect indentation level 2, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/54/DataController.java\nindex 1385f4385a..008578783c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/naturalize/54/DataController.java\n@@ -35,10 +35,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;\n import org.springframework.web.bind.annotation.RestController;\n import org.springframework.web.servlet.support.ServletUriComponentsBuilder;\n \n-\n-\n-\n-\n /**\n  * Provides the REST interface that can be interacted with at [base]/api/data.\n  */\n@@ -62,7 +58,8 @@ public class DataController {\n   public Iterable<CoverageRequirementRule> showAll() {\n     return repository.findAll();\n   }\n-  /**\n+\n+/**\n    * Gets some data from the repository.\n    * @param id the id of the desired data.\n    * @return the data from the repository\n@@ -135,8 +132,4 @@ public class DataController {\n     System.out.println(object);\n     return \"Thanks for posting\";\n   }\n-\n-\n-\n-\n-}\n+  }\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 71.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 88.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 110.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "115",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "120",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "123",
+                    "severity": "warning",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "warning",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "warning",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "128",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "131",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "134",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "139",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/54/DataController.java\nindex 1385f4385a..598a374a4f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/54/DataController.java\n@@ -7,7 +7,6 @@ import com.google.gson.JsonParser;\n import org.hl7.davinci.endpoint.Application;\n import org.hl7.davinci.endpoint.database.CoverageRequirementRule;\n import org.hl7.davinci.endpoint.database.DataRepository;\n-\n import java.io.FileReader;\n import java.io.FileWriter;\n import java.io.IOException;\n@@ -18,7 +17,6 @@ import java.security.Principal;\n import java.util.Objects;\n import java.util.Optional;\n import java.util.logging.Logger;\n-\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.http.HttpStatus;\n import org.springframework.http.ResponseEntity;\n@@ -42,61 +40,64 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;\n /**\n  * Provides the REST interface that can be interacted with at [base]/api/data.\n  */\n+\n+\n @RestController\n public class DataController {\n-  private static Logger logger = Logger.getLogger(Application.class.getName());\n+    private static Logger logger = Logger.getLogger(Application.class.getName());\n \n \n-  @Autowired\n-  private DataRepository repository;\n+    @Autowired\n+    private DataRepository repository;\n \n-  @Autowired\n-  public DataController(DataRepository repository) {\n+    @Autowired\n+    public DataController(DataRepository repository) {\n     this.repository = repository;\n-\n-  }\n+    }\n \n \n-  @GetMapping(value = \"/api/data\")\n-  @CrossOrigin\n-  public Iterable<CoverageRequirementRule> showAll() {\n+    @GetMapping(value = \"/api/data\")\n+    @CrossOrigin\n+    public Iterable<CoverageRequirementRule> showAll() {\n     return repository.findAll();\n-  }\n+    }\n   /**\n    * Gets some data from the repository.\n    * @param id the id of the desired data.\n    * @return the data from the repository\n    */\n-  @CrossOrigin\n-  @GetMapping(\"/api/data/{id}\")\n-  public CoverageRequirementRule getRule(@PathVariable long id) {\n-    Optional<CoverageRequirementRule> rule = repository.findById(id);\n \n+\n+    @CrossOrigin\n+    @GetMapping(\"/api/data/{id}\")\n+    public CoverageRequirementRule getRule(@PathVariable long id) {\n+    Optional<CoverageRequirementRule> rule = repository.findById(id);\n     if (!rule.isPresent()) {\n-      throw new RuleNotFoundException();\n+        throw new RuleNotFoundException();\n     }\n-\n     return rule.get();\n-  }\n+    }\n \n   /**\n    * Allows post requests to add data to the repository.\n    * @param rule the object to put into the repository\n    * @return the response from the server\n    */\n-  @PostMapping(\"/api/data\")\n-  public ResponseEntity<Object> addRule(@RequestBody CoverageRequirementRule rule) {\n+\n+\n+    @PostMapping(\"/api/data\")\n+    public ResponseEntity<Object> addRule(@RequestBody CoverageRequirementRule rule) {\n     CoverageRequirementRule savedDatum = repository.save(rule);\n-    URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(\"/{id}\")\n-        .buildAndExpand(savedDatum.getId()).toUri();\n+    URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(\"/{id}\").buildAndExpand(savedDatum.getId()).toUri();\n     return ResponseEntity.created(location).build();\n-  }\n+    }\n \n-  @DeleteMapping(\"/api/data/{id}\")\n-  public long deleteRule(@PathVariable long id) {\n+\n+    @DeleteMapping(\"/api/data/{id}\")\n+    public long deleteRule(@PathVariable long id) {\n     repository.deleteById(id);\n     return id;\n-  }\n+    }\n \n   /**\n    * Allows updated of data through the REST API.\n@@ -104,39 +105,36 @@ public class DataController {\n    * @param id the id of the data to be replaced\n    * @return the response from the server\n    */\n-  @PutMapping(\"/api/data/{id}\")\n-  public ResponseEntity<Object> updateRule(@RequestBody CoverageRequirementRule rule,\n-      @PathVariable long id) {\n-    Optional<CoverageRequirementRule> datumOptional = repository.findById(id);\n \n+\n+    @PutMapping(\"/api/data/{id}\")\n+    public ResponseEntity<Object> updateRule(@RequestBody CoverageRequirementRule rule,\n+                                             @PathVariable long id) {\n+    Optional<CoverageRequirementRule> datumOptional = repository.findById(id);\n     if (!datumOptional.isPresent()) {\n-      return ResponseEntity.notFound().build();\n+        return ResponseEntity.notFound().build();\n     }\n     rule.setId(id);\n     repository.save(rule);\n     return ResponseEntity.noContent().build();\n-  }\n+    }\n \n-  @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = \"No such rule\")  // 404\n-  public class RuleNotFoundException extends RuntimeException {\n-  }\n \n-  @GetMapping(\"/user/me\")\n-  public Principal user(Principal principal) {\n+    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = \"No such rule\")  // 404\n+    public class RuleNotFoundException extends RuntimeException {\n+    }\n \n-    return principal;\n-  }\n \n+    @GetMapping(\"/user/me\")\n+    public Principal user(Principal principal) {\n+    return principal;\n+    }\n \n \n-  @CrossOrigin\n-  @RequestMapping(value = \"/api/testing\", method = RequestMethod.POST)\n-  public String testingApi(@RequestBody Object object) {\n+    @CrossOrigin\n+    @RequestMapping(value = \"/api/testing\", method = RequestMethod.POST)\n+    public String testingApi(@RequestBody Object object) {\n     System.out.println(object);\n     return \"Thanks for posting\";\n-  }\n-\n-\n-\n-\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 70
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/54/DataController.java\nindex 1385f4385a..ff22e698b4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/54/DataController.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/styler_random/54/DataController.java\n@@ -67,6 +67,7 @@ public class DataController {\n    * @param id the id of the desired data.\n    * @return the data from the repository\n    */\n+\n   @CrossOrigin\n   @GetMapping(\"/api/data/{id}\")\n   public CoverageRequirementRule getRule(@PathVariable long id) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

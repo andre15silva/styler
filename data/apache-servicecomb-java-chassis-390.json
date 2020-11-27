@@ -1,0 +1,87 @@
+{
+    "error_id": "390",
+    "information": {
+        "errors": [
+            {
+                "line": "50",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 123).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    MicroserviceInstance instance1 = new MicroserviceInstance();\n    instance1.setInstanceId(\"1234\");\n    ServiceCombServer mockedServer = new ServiceCombServer(transport, new CacheEndpoint(\"rest:127.0.0.1:8889\", instance1));\n    Object key = Mockito.mock(Object.class);\n    LoadBalancerStats stats = mock(LoadBalancerStats.class);\n    Mockito.when(mockedLb.getLoadBalancerStats()).thenReturn(stats);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/390/TestSessionSticknessRule.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/390/TestSessionSticknessRule.java\nindex 72fd94830d..58e61d3998 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/390/TestSessionSticknessRule.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/390/TestSessionSticknessRule.java\n@@ -47,7 +47,8 @@ public class TestSessionSticknessRule {\n     Transport transport = mock(Transport.class);\n     MicroserviceInstance instance1 = new MicroserviceInstance();\n     instance1.setInstanceId(\"1234\");\n-    ServiceCombServer mockedServer = new ServiceCombServer(transport, new CacheEndpoint(\"rest:127.0.0.1:8889\", instance1));\n+    ServiceCombServer mockedServer =\n+        new ServiceCombServer(transport, new CacheEndpoint(\"rest:127.0.0.1:8889\", instance1));\n     Object key = Mockito.mock(Object.class);\n     LoadBalancerStats stats = mock(LoadBalancerStats.class);\n     Mockito.when(mockedLb.getLoadBalancerStats()).thenReturn(stats);\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/390/TestSessionSticknessRule.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/390/TestSessionSticknessRule.java\nindex 72fd94830d..2aff9b5cfb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/390/TestSessionSticknessRule.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/390/TestSessionSticknessRule.java\n@@ -69,8 +69,7 @@ public class TestSessionSticknessRule {\n \n   @Test\n   public void testServerWithoutTimeoutAndWithThreshold() {\n-\n-    boolean status = true;\n+  boolean status = true;\n \n     SessionStickinessRule ss = new SessionStickinessRule();\n \n@@ -87,8 +86,7 @@ public class TestSessionSticknessRule {\n         return false;\n       }\n     };\n-\n-    new MockUp<SessionStickinessRule>() {\n+new MockUp<SessionStickinessRule>() {\n \n       @Mock\n       private boolean isErrorThresholdMet() {\n@@ -106,8 +104,7 @@ public class TestSessionSticknessRule {\n \n   @Test\n   public void testServerWithTimeout() {\n-\n-    boolean status = true;\n+  boolean status = true;\n \n     SessionStickinessRule ss = new SessionStickinessRule();\n \n@@ -136,8 +133,7 @@ public class TestSessionSticknessRule {\n \n   @Test\n   public void testServerWithoutTimeoutException() {\n-\n-    boolean status = true;\n+  boolean status = true;\n \n     SessionStickinessRule ss = new SessionStickinessRule();\n \n@@ -165,8 +161,7 @@ public class TestSessionSticknessRule {\n \n   @Test\n   public void testServerWithoutTimeoutAndThreshold() {\n-\n-    boolean status = true;\n+  boolean status = true;\n \n     SessionStickinessRule ss = new SessionStickinessRule();\n \n@@ -183,8 +178,7 @@ public class TestSessionSticknessRule {\n         return false;\n       }\n     };\n-\n-    new MockUp<SessionStickinessRule>() {\n+new MockUp<SessionStickinessRule>() {\n \n       @Mock\n       private boolean isErrorThresholdMet() {\n@@ -202,8 +196,7 @@ public class TestSessionSticknessRule {\n \n   @Test\n   public void testServerWithActualServerObj() {\n-\n-    boolean status = true;\n+  boolean status = true;\n     SessionStickinessRule ss = new SessionStickinessRule();\n \n     Object key = new Object();\n@@ -221,8 +214,7 @@ public class TestSessionSticknessRule {\n \n   @Test\n   public void testServerWithKey() {\n-\n-    boolean status = true;\n+  boolean status = true;\n     SessionStickinessRule ss = new SessionStickinessRule();\n \n     Object key = new Object();\n@@ -233,4 +225,4 @@ public class TestSessionSticknessRule {\n     }\n     Assert.assertTrue(status);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "50",
+                    "column": "69",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "51",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "';' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/390/TestSessionSticknessRule.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/390/TestSessionSticknessRule.java\nindex 72fd94830d..ec390c6687 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/390/TestSessionSticknessRule.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/390/TestSessionSticknessRule.java\n@@ -47,8 +47,8 @@ public class TestSessionSticknessRule {\n     Transport transport = mock(Transport.class);\n     MicroserviceInstance instance1 = new MicroserviceInstance();\n     instance1.setInstanceId(\"1234\");\n-    ServiceCombServer mockedServer = new ServiceCombServer(transport, new CacheEndpoint(\"rest:127.0.0.1:8889\", instance1));\n-    Object key = Mockito.mock(Object.class);\n+    ServiceCombServer mockedServer = newServiceCombServer(transport,newCacheEndpoint(\"rest:127.0.0.1:8889\", instance1))\n+; Object key = Mockito.mock(Object.class);\n     LoadBalancerStats stats = mock(LoadBalancerStats.class);\n     Mockito.when(mockedLb.getLoadBalancerStats()).thenReturn(stats);\n     Deencapsulation.invoke(rule, \"chooseServerWhenTimeout\", key);\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,188 @@
+{
+    "error_id": "111",
+    "information": {
+        "errors": [
+            {
+                "line": "76",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 94).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  @Override\n  public InputStream reader() {\n    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName()).getObjectContent();\n  }\n\n  @Override",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/111/S3BlobPath.java\nindex 9bf4859376..019e1c966a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/111/S3BlobPath.java\n@@ -73,7 +73,10 @@ public class S3BlobPath extends BlobPath<S3BlobPath.S3Blob> {\n \n   @Override\n   public InputStream reader() {\n-    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName()).getObjectContent();\n+    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName(\n+  )\n+\n+    ).getObjectContent();\n   }\n \n   @Override\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/111/S3BlobPath.java\nindex 9bf4859376..e0555e71fe 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/111/S3BlobPath.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.direct.s3;\n \n import com.amazonaws.services.s3.model.S3Object;\n@@ -40,7 +41,8 @@ public class S3BlobPath extends BlobPath<S3BlobPath.S3Blob> {\n \n   public static class S3Blob implements BlobBase {\n \n-    @Getter private final String name;\n+    @Getter\n+    private final String name;\n     private final S3FileSystem fs;\n \n     @VisibleForTesting\n@@ -73,7 +75,8 @@ public class S3BlobPath extends BlobPath<S3BlobPath.S3Blob> {\n \n   @Override\n   public InputStream reader() {\n-    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName()).getObjectContent();\n+    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName())\n+        .getObjectContent();\n   }\n \n   @Override\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 94).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/111/S3BlobPath.java\nindex 9bf4859376..ce2206a851 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/111/S3BlobPath.java\n@@ -85,4 +85,4 @@ public class S3BlobPath extends BlobPath<S3BlobPath.S3Blob> {\n   public void delete() {\n     ((S3Client) getFileSystem()).deleteObject(getBlob().getName());\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "'ctor def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "'ctor def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/111/S3BlobPath.java\nindex 9bf4859376..662ca4538d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/111/S3BlobPath.java\n@@ -31,58 +31,58 @@ import lombok.ToString;\n import lombok.extern.slf4j.Slf4j;\n \n /** A {@link Path} representation of a remote blob in S3. */\n+\n+\n @Internal\n @ToString\n @Slf4j\n public class S3BlobPath extends BlobPath<S3BlobPath.S3Blob> {\n \n-  private static final long serialVersionUID = 1L;\n-\n-  public static class S3Blob implements BlobBase {\n+    private static final long serialVersionUID = 1L;\n+    public static class S3Blob implements BlobBase {\n \n     @Getter private final String name;\n     private final S3FileSystem fs;\n \n-    @VisibleForTesting\n-    S3Blob(String name, S3FileSystem fs) {\n-      this.name = Objects.requireNonNull(name);\n-      this.fs = fs;\n+    @VisibleForTesting S3Blob(String name, S3FileSystem fs) {\n+        this.name = Objects.requireNonNull(name);\n+        this.fs = fs;\n     }\n \n     @Override\n     public long getSize() {\n-      try (final S3Object object = fs.getObject(name)) {\n+        try (final S3Object object = fs.getObject(name)) {\n         return object.getObjectMetadata().getContentLength();\n-      } catch (IOException e) {\n-        return 0L;\n-      }\n+        } catch (IOException e) {\n+          return 0L;\n+        }\n+    }\n     }\n-  }\n \n-  public static S3BlobPath of(Context context, S3FileSystem fs, String name) {\n+    public static S3BlobPath of(Context context, S3FileSystem fs, String name) {\n     return new S3BlobPath(context, fs, new S3Blob(name, fs));\n-  }\n+    }\n \n-  private final Context context;\n+    private final Context context;\n \n-  @VisibleForTesting\n-  S3BlobPath(Context context, S3FileSystem fs, S3Blob blob) {\n+    @VisibleForTesting S3BlobPath(Context context, S3FileSystem fs, S3Blob blob) {\n     super(fs, blob);\n     this.context = Objects.requireNonNull(context);\n-  }\n+    }\n \n-  @Override\n-  public InputStream reader() {\n-    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName()).getObjectContent();\n-  }\n+    @Override\n+    public InputStream reader() {\n+    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName())\n+                                           .getObjectContent();\n+    }\n \n-  @Override\n-  public OutputStream writer() {\n+    @Override\n+    public OutputStream writer() {\n     return ((S3Client) getFileSystem()).putObject(getBlobName());\n-  }\n+    }\n \n-  @Override\n-  public void delete() {\n+    @Override\n+    public void delete() {\n     ((S3Client) getFileSystem()).deleteObject(getBlob().getName());\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "76",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/111/S3BlobPath.java\nindex 9bf4859376..ebf490aa39 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/111/S3BlobPath.java\n@@ -73,7 +73,10 @@ public class S3BlobPath extends BlobPath<S3BlobPath.S3Blob> {\n \n   @Override\n   public InputStream reader() {\n-    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName()).getObjectContent();\n+    return ((S3FileSystem)getFileSystem ()).getObject( getBlob().getName()\n+  )\n+\n+    .getObjectContent();\n   }\n \n   @Override\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/111/S3BlobPath.java\nindex 9bf4859376..019e1c966a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/111/S3BlobPath.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/111/S3BlobPath.java\n@@ -73,7 +73,10 @@ public class S3BlobPath extends BlobPath<S3BlobPath.S3Blob> {\n \n   @Override\n   public InputStream reader() {\n-    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName()).getObjectContent();\n+    return ((S3FileSystem) getFileSystem()).getObject(getBlob().getName(\n+  )\n+\n+    ).getObjectContent();\n   }\n \n   @Override\n",
+            "diff_size": 4
+        }
+    ]
+}

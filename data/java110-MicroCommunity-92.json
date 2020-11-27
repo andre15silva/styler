@@ -1,0 +1,73 @@
+{
+    "error_id": "92",
+    "information": {
+        "errors": [
+            {
+                "line": "56",
+                "column": "91",
+                "severity": "error",
+                "message": "';' is preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+            }
+        ]
+    },
+    "source_code": "        paramIn.putAll(paramMap);\n\n        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\" ;\n\n\n        ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/92/AuditComplaintSMOImpl.java\nindex 678cc5b25e..bf498025d9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/92/AuditComplaintSMOImpl.java\n@@ -53,7 +53,7 @@ public class AuditComplaintSMOImpl extends AbstractComponentSMO implements IAudi\n         Map paramMap = BeanConvertUtil.beanCovertMap(result);\n         paramIn.putAll(paramMap);\n \n-        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\" ;\n+        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\";\n \n \n         ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/92/AuditComplaintSMOImpl.java\nindex 678cc5b25e..e1557670be 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/92/AuditComplaintSMOImpl.java\n@@ -24,50 +24,50 @@ import java.util.Map;\n @Service(\"auditComplaintSMOImpl\")\n public class AuditComplaintSMOImpl extends AbstractComponentSMO implements IAuditComplaintSMO {\n \n-    @Autowired\n-    private RestTemplate restTemplate;\n+  @Autowired\n+  private RestTemplate restTemplate;\n \n-    @Override\n-    public ResponseEntity<String> auditComplaint(IPageData pd) throws SMOException {\n-        return businessProcess(pd);\n-    }\n+  @Override\n+  public ResponseEntity<String> auditComplaint(IPageData pd) throws SMOException {\n+    return businessProcess(pd);\n+  }\n \n-    @Override\n-    protected void validate(IPageData pd, JSONObject paramIn) {\n-        Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u5fc5\u586b\uff0c\u8bf7\u6c42\u62a5\u6587\u4e2d\u672a\u5305\u542b\u5c0f\u533a\u4fe1\u606f\");\n-        Assert.hasKeyAndValue(paramIn, \"complaintId\", \"\u6295\u8bc9ID\u4e0d\u80fd\u4e3a\u7a7a\");\n-        Assert.hasKeyAndValue(paramIn, \"taskId\", \"\u5fc5\u586b\uff0c\u8bf7\u6c42\u62a5\u6587\u4e2d\u672a\u5305\u542b\u4efb\u52a1ID\");\n-        Assert.hasKeyAndValue(paramIn, \"state\", \"\u5fc5\u586b\uff0c\u8bf7\u6c42\u62a5\u6587\u4e2d\u672a\u5305\u542b\u72b6\u6001\");\n-        Assert.hasKeyAndValue(paramIn, \"remark\", \"\u5fc5\u586b\uff0c\u8bf7\u6c42\u62a5\u6587\u4e2d\u672a\u5305\u542b\u5ba1\u6838\u4fe1\u606f\");\n+  @Override\n+  protected void validate(IPageData pd, JSONObject paramIn) {\n+    Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u5fc5\u586b\uff0c\u8bf7\u6c42\u62a5\u6587\u4e2d\u672a\u5305\u542b\u5c0f\u533a\u4fe1\u606f\");\n+    Assert.hasKeyAndValue(paramIn, \"complaintId\", \"\u6295\u8bc9ID\u4e0d\u80fd\u4e3a\u7a7a\");\n+    Assert.hasKeyAndValue(paramIn, \"taskId\", \"\u5fc5\u586b\uff0c\u8bf7\u6c42\u62a5\u6587\u4e2d\u672a\u5305\u542b\u4efb\u52a1ID\");\n+    Assert.hasKeyAndValue(paramIn, \"state\", \"\u5fc5\u586b\uff0c\u8bf7\u6c42\u62a5\u6587\u4e2d\u672a\u5305\u542b\u72b6\u6001\");\n+    Assert.hasKeyAndValue(paramIn, \"remark\", \"\u5fc5\u586b\uff0c\u8bf7\u6c42\u62a5\u6587\u4e2d\u672a\u5305\u542b\u5ba1\u6838\u4fe1\u606f\");\n \n \n-        //super.validatePageInfo(pd);\n+    //super.validatePageInfo(pd);\n \n-        super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_AUDIT_COMPLAINT);\n-    }\n+    super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_AUDIT_COMPLAINT);\n+  }\n \n-    @Override\n-    protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n-        ComponentValidateResult result = super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n+  @Override\n+  protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n+    ComponentValidateResult result = super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n \n-        Map paramMap = BeanConvertUtil.beanCovertMap(result);\n-        paramIn.putAll(paramMap);\n+    Map paramMap = BeanConvertUtil.beanCovertMap(result);\n+    paramIn.putAll(paramMap);\n \n-        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\" ;\n+    String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\";\n \n \n-        ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n-                apiUrl,\n-                HttpMethod.POST);\n+    ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n+      apiUrl,\n+      HttpMethod.POST);\n \n-        return responseEntity;\n-    }\n+    return responseEntity;\n+  }\n \n-    public RestTemplate getRestTemplate() {\n-        return restTemplate;\n-    }\n+  public RestTemplate getRestTemplate() {\n+    return restTemplate;\n+  }\n \n-    public void setRestTemplate(RestTemplate restTemplate) {\n-        this.restTemplate = restTemplate;\n-    }\n+  public void setRestTemplate(RestTemplate restTemplate) {\n+    this.restTemplate = restTemplate;\n+  }\n }\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/92/AuditComplaintSMOImpl.java\nindex 678cc5b25e..1451176c64 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/92/AuditComplaintSMOImpl.java\n@@ -15,12 +15,13 @@ import org.springframework.http.HttpMethod;\n import org.springframework.http.ResponseEntity;\n import org.springframework.stereotype.Service;\n import org.springframework.web.client.RestTemplate;\n-\n import java.util.Map;\n \n /**\n  * \u67e5\u8be2complaint\u670d\u52a1\u7c7b\n  */\n+\n+\n @Service(\"auditComplaintSMOImpl\")\n public class AuditComplaintSMOImpl extends AbstractComponentSMO implements IAuditComplaintSMO {\n \n@@ -32,6 +33,7 @@ public class AuditComplaintSMOImpl extends AbstractComponentSMO implements IAudi\n         return businessProcess(pd);\n     }\n \n+\n     @Override\n     protected void validate(IPageData pd, JSONObject paramIn) {\n         Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u5fc5\u586b\uff0c\u8bf7\u6c42\u62a5\u6587\u4e2d\u672a\u5305\u542b\u5c0f\u533a\u4fe1\u606f\");\n@@ -43,22 +45,19 @@ public class AuditComplaintSMOImpl extends AbstractComponentSMO implements IAudi\n \n         //super.validatePageInfo(pd);\n \n+\n         super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_AUDIT_COMPLAINT);\n     }\n \n+\n     @Override\n     protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n         ComponentValidateResult result = super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n-\n         Map paramMap = BeanConvertUtil.beanCovertMap(result);\n         paramIn.putAll(paramMap);\n \n-        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\" ;\n-\n-\n-        ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n-                apiUrl,\n-                HttpMethod.POST);\n+        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\";\n+        ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(), apiUrl, HttpMethod.POST);\n \n         return responseEntity;\n     }\n@@ -70,4 +69,4 @@ public class AuditComplaintSMOImpl extends AbstractComponentSMO implements IAudi\n     public void setRestTemplate(RestTemplate restTemplate) {\n         this.restTemplate = restTemplate;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/92/AuditComplaintSMOImpl.java\nindex 678cc5b25e..bf498025d9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/92/AuditComplaintSMOImpl.java\n@@ -53,7 +53,7 @@ public class AuditComplaintSMOImpl extends AbstractComponentSMO implements IAudi\n         Map paramMap = BeanConvertUtil.beanCovertMap(result);\n         paramIn.putAll(paramMap);\n \n-        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\" ;\n+        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\";\n \n \n         ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 195).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "56",
+                    "column": "91",
+                    "severity": "error",
+                    "message": "';' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "56",
+                    "column": "91",
+                    "severity": "error",
+                    "message": "';' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/92/AuditComplaintSMOImpl.java\nindex 678cc5b25e..cbb4ee16e0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/92/AuditComplaintSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/92/AuditComplaintSMOImpl.java\n@@ -53,10 +53,7 @@ public class AuditComplaintSMOImpl extends AbstractComponentSMO implements IAudi\n         Map paramMap = BeanConvertUtil.beanCovertMap(result);\n         paramIn.putAll(paramMap);\n \n-        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\" ;\n-\n-\n-        ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n+        String apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/complaint.auditComplaint\" ;ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n                 apiUrl,\n                 HttpMethod.POST);\n \n",
+            "diff_size": 4
+        }
+    ]
+}

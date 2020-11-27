@@ -1,0 +1,118 @@
+{
+    "error_id": "566",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/566/SparseServerRowsStorage.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/566/SparseServerRowsStorage.java\nindex 2f6f2449c7..bf326e7883 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/566/SparseServerRowsStorage.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/566/SparseServerRowsStorage.java\n@@ -34,146 +34,146 @@ import java.util.Map.Entry;\n  */\n public class SparseServerRowsStorage extends ServerRowsStorage {\n \n-  /**\n-   *  <row id, server row> map\n-   */\n-  private Map<Integer, ServerRow> data;\n-\n-  public SparseServerRowsStorage(int rowIdOffset, int rowNum) {\n-    super(rowIdOffset);\n-    data = new HashMap<>(rowNum);\n-  }\n-\n-  @Override\n-  public void init() {\n-\n-  }\n-\n-  @Override\n-  public ServerRow getRow(int index) {\n-    return data.get(index);\n-  }\n-\n-  @Override\n-  public List<ServerRow> getRows(List<Integer> rowIds) {\n-    List<ServerRow> rows = new ArrayList<>(rowIds.size());\n-    for (int rowId : rowIds) {\n-      rows.add(getRow(rowId));\n+    /**\n+     * <row id, server row> map\n+     */\n+    private Map<Integer, ServerRow> data;\n+\n+    public SparseServerRowsStorage(int rowIdOffset, int rowNum) {\n+        super(rowIdOffset);\n+        data = new HashMap<>(rowNum);\n     }\n-    return rows;\n-  }\n-\n-  @Override\n-  public void putRow(int index, ServerRow row) {\n-    data.put(index, row);\n-  }\n-\n-  @Override\n-  public void putRows(List<Integer> rowIds, List<ServerRow> rows) {\n-    assert rowIds.size() == rows.size();\n-    int size = rowIds.size();\n-    for (int i = 0; i < size; i++) {\n-      putRow(rowIds.get(i), rows.get(i));\n+\n+    @Override\n+    public void init() {\n+\n+    }\n+\n+    @Override\n+    public ServerRow getRow(int index) {\n+        return data.get(index);\n+    }\n+\n+    @Override\n+    public List<ServerRow> getRows(List<Integer> rowIds) {\n+        List<ServerRow> rows = new ArrayList<>(rowIds.size());\n+        for (int rowId : rowIds) {\n+            rows.add(getRow(rowId));\n+        }\n+        return rows;\n     }\n-  }\n-\n-  @Override\n-  public int getRowNum() {\n-    return data.size();\n-  }\n-\n-  @Override\n-  public boolean hasRow(int index) {\n-    return data.containsKey(index);\n-  }\n-\n-  @Override\n-  public Iterator<Entry<Integer, ServerRow>> iterator() {\n-    return data.entrySet().iterator();\n-  }\n-\n-  @Override\n-  public void reset() {\n-    for (Entry<Integer, ServerRow> entry : data.entrySet()) {\n-      if (entry.getValue() != null) {\n-        entry.getValue().reset();\n-      }\n+\n+    @Override\n+    public void putRow(int index, ServerRow row) {\n+        data.put(index, row);\n     }\n-  }\n \n-  @Override\n-  public long getElemNum() {\n-    long num = 0L;\n-    for(ServerRow row : data.values()) {\n-      num += row.size();\n+    @Override\n+    public void putRows(List<Integer> rowIds, List<ServerRow> rows) {\n+        assert rowIds.size() == rows.size();\n+        int size = rowIds.size();\n+        for (int i = 0; i < size; i++) {\n+            putRow(rowIds.get(i), rows.get(i));\n+        }\n     }\n-    return num;\n-  }\n-\n-  @Override\n-  public void serialize(ByteBuf output) {\n-    super.serialize(output);\n-    // Map size\n-    output.writeInt(data.size());\n-    int writeIndex = output.writerIndex();\n-\n-    // Actual write size\n-    output.writeInt(0);\n-    int writeRowNum = 0;\n-\n-    // Rows data\n-    for(Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n-      if(rowEntry.getValue() != null) {\n-        // Row id\n-        output.writeInt(rowEntry.getKey());\n-        // Row type\n-        output.writeInt(rowEntry.getValue().getRowType().getNumber());\n-        // Row data\n-        rowEntry.getValue().serialize(output);\n-        writeRowNum++;\n-\n-      }\n+\n+    @Override\n+    public int getRowNum() {\n+        return data.size();\n     }\n \n-    output.setInt(writeIndex, writeRowNum);\n-  }\n-\n-  @Override\n-  public void deserialize(ByteBuf input) {\n-    super.deserialize(input);\n-    // Array size\n-    input.readInt();\n-\n-    // Actual write row number\n-    int writeRowNum = input.readInt();\n-    data = new HashMap<>(writeRowNum);\n-\n-    // Rows data\n-    for(int i = 0; i < writeRowNum; i++) {\n-      // Row id\n-      int index = input.readInt();\n-      // Create empty server row\n-      ServerRow row = ServerRowFactory.createEmptyServerRow(RowType.valueOf(input.readInt()));\n-      // Row data\n-      row.deserialize(input);\n-      data.put(index, row);\n+    @Override\n+    public boolean hasRow(int index) {\n+        return data.containsKey(index);\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n-    int len = 0;\n-    len += super.bufferLen();\n-    len += 8;\n+    @Override\n+    public Iterator<Entry<Integer, ServerRow>> iterator() {\n+        return data.entrySet().iterator();\n+    }\n \n-    // Rows data\n-    for(Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n-      if(rowEntry.getValue() != null) {\n-        len += 8;\n-        len += rowEntry.getValue().bufferLen();\n-      }\n+    @Override\n+    public void reset() {\n+        for (Entry<Integer, ServerRow> entry : data.entrySet()) {\n+            if (entry.getValue() != null) {\n+                entry.getValue().reset();\n+            }\n+        }\n     }\n \n-    return len;\n-  }\n+    @Override\n+    public long getElemNum() {\n+        long num = 0L;\n+        for (ServerRow row : data.values()) {\n+            num += row.size();\n+        }\n+        return num;\n+    }\n+\n+    @Override\n+    public void serialize(ByteBuf output) {\n+        super.serialize(output);\n+        // Map size\n+        output.writeInt(data.size());\n+        int writeIndex = output.writerIndex();\n+\n+        // Actual write size\n+        output.writeInt(0);\n+        int writeRowNum = 0;\n+\n+        // Rows data\n+        for (Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n+            if (rowEntry.getValue() != null) {\n+                // Row id\n+                output.writeInt(rowEntry.getKey());\n+                // Row type\n+                output.writeInt(rowEntry.getValue().getRowType().getNumber());\n+                // Row data\n+                rowEntry.getValue().serialize(output);\n+                writeRowNum++;\n+\n+            }\n+        }\n+\n+        output.setInt(writeIndex, writeRowNum);\n+    }\n+\n+    @Override\n+    public void deserialize(ByteBuf input) {\n+        super.deserialize(input);\n+        // Array size\n+        input.readInt();\n+\n+        // Actual write row number\n+        int writeRowNum = input.readInt();\n+        data = new HashMap<>(writeRowNum);\n+\n+        // Rows data\n+        for (int i = 0; i < writeRowNum; i++) {\n+            // Row id\n+            int index = input.readInt();\n+            // Create empty server row\n+            ServerRow row = ServerRowFactory.createEmptyServerRow(RowType.valueOf(input.readInt()));\n+            // Row data\n+            row.deserialize(input);\n+            data.put(index, row);\n+        }\n+    }\n+\n+    @Override\n+    public int bufferLen() {\n+        int len = 0;\n+        len += super.bufferLen();\n+        len += 8;\n+\n+        // Rows data\n+        for (Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n+            if (rowEntry.getValue() != null) {\n+                len += 8;\n+                len += rowEntry.getValue().bufferLen();\n+            }\n+        }\n+\n+        return len;\n+    }\n }\n",
+            "diff_size": 210
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/566/SparseServerRowsStorage.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/566/SparseServerRowsStorage.java\nindex 2f6f2449c7..9db3d50fc4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/566/SparseServerRowsStorage.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/566/SparseServerRowsStorage.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ps.storage.partition.storage;\n \n import com.tencent.angel.ml.matrix.RowType;\n@@ -104,7 +103,7 @@ public class SparseServerRowsStorage extends ServerRowsStorage {\n   @Override\n   public long getElemNum() {\n     long num = 0L;\n-    for(ServerRow row : data.values()) {\n+    for (ServerRow row : data.values()) {\n       num += row.size();\n     }\n     return num;\n@@ -122,7 +121,7 @@ public class SparseServerRowsStorage extends ServerRowsStorage {\n     int writeRowNum = 0;\n \n     // Rows data\n-    for(Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n+    for (Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n       if(rowEntry.getValue() != null) {\n         // Row id\n         output.writeInt(rowEntry.getKey());\n@@ -131,8 +130,7 @@ public class SparseServerRowsStorage extends ServerRowsStorage {\n         // Row data\n         rowEntry.getValue().serialize(output);\n         writeRowNum++;\n-\n-      }\n+  }\n     }\n \n     output.setInt(writeIndex, writeRowNum);\n@@ -149,7 +147,7 @@ public class SparseServerRowsStorage extends ServerRowsStorage {\n     data = new HashMap<>(writeRowNum);\n \n     // Rows data\n-    for(int i = 0; i < writeRowNum; i++) {\n+    for (int i = 0; i < writeRowNum; i++) {\n       // Row id\n       int index = input.readInt();\n       // Create empty server row\n@@ -167,7 +165,7 @@ public class SparseServerRowsStorage extends ServerRowsStorage {\n     len += 8;\n \n     // Rows data\n-    for(Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n+    for (Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n       if(rowEntry.getValue() != null) {\n         len += 8;\n         len += rowEntry.getValue().bufferLen();\n@@ -176,4 +174,4 @@ public class SparseServerRowsStorage extends ServerRowsStorage {\n \n     return len;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 41.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "154",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 155.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 157.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "158",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 159.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/566/SparseServerRowsStorage.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/566/SparseServerRowsStorage.java\nindex 2f6f2449c7..2c993d34d0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/566/SparseServerRowsStorage.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/566/SparseServerRowsStorage.java\n@@ -32,98 +32,100 @@ import java.util.Map.Entry;\n /**\n  * Row-based matrix partition storage, it use a <row id, server row> map as inner storage\n  */\n+\n public class SparseServerRowsStorage extends ServerRowsStorage {\n \n   /**\n    *  <row id, server row> map\n    */\n-  private Map<Integer, ServerRow> data;\n+    private Map<Integer, ServerRow> data;\n \n-  public SparseServerRowsStorage(int rowIdOffset, int rowNum) {\n+    public SparseServerRowsStorage(int rowIdOffset, int rowNum) {\n     super(rowIdOffset);\n     data = new HashMap<>(rowNum);\n-  }\n-\n-  @Override\n-  public void init() {\n+    }\n \n-  }\n+    @Override\n+    public void init() {}\n \n-  @Override\n-  public ServerRow getRow(int index) {\n+    @Override\n+    public ServerRow getRow(int index) {\n     return data.get(index);\n-  }\n+    }\n \n-  @Override\n-  public List<ServerRow> getRows(List<Integer> rowIds) {\n+    @Override\n+    public List<ServerRow> getRows(List<Integer> rowIds) {\n     List<ServerRow> rows = new ArrayList<>(rowIds.size());\n     for (int rowId : rowIds) {\n-      rows.add(getRow(rowId));\n+        rows.add(getRow(rowId));\n     }\n     return rows;\n-  }\n+    }\n \n-  @Override\n-  public void putRow(int index, ServerRow row) {\n+    @Override\n+    public void putRow(int index, ServerRow row) {\n     data.put(index, row);\n-  }\n+    }\n \n-  @Override\n-  public void putRows(List<Integer> rowIds, List<ServerRow> rows) {\n+    @Override\n+    public void putRows(List<Integer> rowIds, List<ServerRow> rows) {\n     assert rowIds.size() == rows.size();\n+\n     int size = rowIds.size();\n     for (int i = 0; i < size; i++) {\n-      putRow(rowIds.get(i), rows.get(i));\n+        putRow(rowIds.get(i), rows.get(i));\n+    }\n     }\n-  }\n \n-  @Override\n-  public int getRowNum() {\n+    @Override\n+    public int getRowNum() {\n     return data.size();\n-  }\n+    }\n \n-  @Override\n-  public boolean hasRow(int index) {\n+    @Override\n+    public boolean hasRow(int index) {\n     return data.containsKey(index);\n-  }\n+    }\n \n-  @Override\n-  public Iterator<Entry<Integer, ServerRow>> iterator() {\n+    @Override\n+    public Iterator<Entry<Integer, ServerRow>> iterator() {\n     return data.entrySet().iterator();\n-  }\n+    }\n \n-  @Override\n-  public void reset() {\n+    @Override\n+    public void reset() {\n     for (Entry<Integer, ServerRow> entry : data.entrySet()) {\n-      if (entry.getValue() != null) {\n+        if (entry.getValue() != null) {\n         entry.getValue().reset();\n-      }\n+        }\n+    }\n     }\n-  }\n \n-  @Override\n-  public long getElemNum() {\n+    @Override\n+    public long getElemNum() {\n     long num = 0L;\n-    for(ServerRow row : data.values()) {\n-      num += row.size();\n+    for (ServerRow row : data.values()) {\n+        num += row.size();\n     }\n     return num;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf output) {\n+    @Override\n+    public void serialize(ByteBuf output) {\n     super.serialize(output);\n     // Map size\n     output.writeInt(data.size());\n+\n     int writeIndex = output.writerIndex();\n \n     // Actual write size\n     output.writeInt(0);\n+\n     int writeRowNum = 0;\n \n     // Rows data\n-    for(Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n-      if(rowEntry.getValue() != null) {\n+    for (Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n+        if (rowEntry.getValue() != null) {\n         // Row id\n         output.writeInt(rowEntry.getKey());\n         // Row type\n@@ -131,49 +133,48 @@ public class SparseServerRowsStorage extends ServerRowsStorage {\n         // Row data\n         rowEntry.getValue().serialize(output);\n         writeRowNum++;\n-\n-      }\n+        }\n     }\n-\n     output.setInt(writeIndex, writeRowNum);\n-  }\n+    }\n \n-  @Override\n-  public void deserialize(ByteBuf input) {\n+    @Override\n+    public void deserialize(ByteBuf input) {\n     super.deserialize(input);\n     // Array size\n     input.readInt();\n \n     // Actual write row number\n+\n     int writeRowNum = input.readInt();\n     data = new HashMap<>(writeRowNum);\n \n     // Rows data\n-    for(int i = 0; i < writeRowNum; i++) {\n+    for (int i = 0; i < writeRowNum; i++) {\n       // Row id\n-      int index = input.readInt();\n+        int index = input.readInt();\n       // Create empty server row\n-      ServerRow row = ServerRowFactory.createEmptyServerRow(RowType.valueOf(input.readInt()));\n+        ServerRow row = ServerRowFactory.createEmptyServerRow(RowType.valueOf(input.readInt()));\n       // Row data\n-      row.deserialize(input);\n-      data.put(index, row);\n+        row.deserialize(input);\n+        data.put(index, row);\n+    }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     int len = 0;\n     len += super.bufferLen();\n     len += 8;\n \n     // Rows data\n-    for(Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n-      if(rowEntry.getValue() != null) {\n+    for (Entry<Integer, ServerRow> rowEntry : data.entrySet()) {\n+        if (rowEntry.getValue() != null) {\n         len += 8;\n         len += rowEntry.getValue().bufferLen();\n-      }\n+        }\n     }\n-\n     return len;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 74
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/566/SparseServerRowsStorage.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/566/SparseServerRowsStorage.java\nindex 2f6f2449c7..fd21ea42eb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/566/SparseServerRowsStorage.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/566/SparseServerRowsStorage.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ps.storage.partition.storage;\n \n import com.tencent.angel.ml.matrix.RowType;\n",
+            "diff_size": 1
+        }
+    ]
+}

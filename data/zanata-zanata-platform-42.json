@@ -1,0 +1,94 @@
+{
+    "error_id": "42",
+    "information": {
+        "errors": [
+            {
+                "line": "43",
+                "severity": "error",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "        List<String> contents = Collections.nCopies(nPlurals, \"\");\n        hTarget.setContents(contents);\n        hTarget.setVersionNum(0); // incremented when content is set\n        textFlow.getTargets().put(hLocale.getId(), hTarget);\n        new TargetTransformer(extensions).transform(incomingTarget,\n                hTarget);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/42/TranslationMergeFirstTran.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/intellij/42/TranslationMergeFirstTran.java\nindex b606069862..44d7e9d665 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/42/TranslationMergeFirstTran.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/intellij/42/TranslationMergeFirstTran.java\n@@ -16,8 +16,9 @@ import com.google.common.base.Preconditions;\n /**\n  * This strategy is used when HTextFlowTarget does not exist yet, regardless\n  * of the selected merge-type.\n+ *\n  * @author Patrick Huang <a\n- *         href=\"mailto:pahuang@redhat.com\">pahuang@redhat.com</a>\n+ * href=\"mailto:pahuang@redhat.com\">pahuang@redhat.com</a>\n  */\n public class TranslationMergeFirstTran implements TranslationMergeService {\n     private static final long serialVersionUID = -2380476843887300315L;\n@@ -26,7 +27,7 @@ public class TranslationMergeFirstTran implements TranslationMergeService {\n     private final HTextFlow textFlow;\n \n     public TranslationMergeFirstTran(int nPlurals, HLocale hLocale,\n-            HTextFlow textFlow) {\n+                                     HTextFlow textFlow) {\n         this.nPlurals = nPlurals;\n         this.hLocale = hLocale;\n         this.textFlow = textFlow;\n@@ -34,16 +35,16 @@ public class TranslationMergeFirstTran implements TranslationMergeService {\n \n     @Override\n     public boolean merge(TextFlowTarget incomingTarget,\n-            HTextFlowTarget hTarget, Set<String> extensions) {\n+                         HTextFlowTarget hTarget, Set<String> extensions) {\n         Preconditions.checkArgument(hTarget == null,\n-                \"This merge service only handles null HTextFlowTarget\");\n+            \"This merge service only handles null HTextFlowTarget\");\n         hTarget = new HTextFlowTarget(textFlow, hLocale);\n         List<String> contents = Collections.nCopies(nPlurals, \"\");\n         hTarget.setContents(contents);\n         hTarget.setVersionNum(0); // incremented when content is set\n         textFlow.getTargets().put(hLocale.getId(), hTarget);\n         new TargetTransformer(extensions).transform(incomingTarget,\n-                hTarget);\n+            hTarget);\n         if (incomingTarget.getState().isTranslated()) {\n             hTarget.setState(ContentState.Translated);\n         }\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/42/TranslationMergeFirstTran.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/naturalize/42/TranslationMergeFirstTran.java\nindex b606069862..056d91ba45 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/42/TranslationMergeFirstTran.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/naturalize/42/TranslationMergeFirstTran.java\n@@ -40,7 +40,8 @@ public class TranslationMergeFirstTran implements TranslationMergeService {\n         hTarget = new HTextFlowTarget(textFlow, hLocale);\n         List<String> contents = Collections.nCopies(nPlurals, \"\");\n         hTarget.setContents(contents);\n-        hTarget.setVersionNum(0); // incremented when content is set\n+        hTarget.setVersionNum(0);\n+// incremented when content is set\n         textFlow.getTargets().put(hLocale.getId(), hTarget);\n         new TargetTransformer(extensions).transform(incomingTarget,\n                 hTarget);\n@@ -50,4 +51,4 @@ public class TranslationMergeFirstTran implements TranslationMergeService {\n         return true;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/42/TranslationMergeFirstTran.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/42/TranslationMergeFirstTran.java\nindex b606069862..9ce96c8733 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/42/TranslationMergeFirstTran.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/42/TranslationMergeFirstTran.java\n@@ -3,7 +3,6 @@ package org.zanata.service.impl;\n import java.util.Collections;\n import java.util.List;\n import java.util.Set;\n-\n import org.zanata.common.ContentState;\n import org.zanata.model.HLocale;\n import org.zanata.model.HTextFlow;\n@@ -19,35 +18,33 @@ import com.google.common.base.Preconditions;\n  * @author Patrick Huang <a\n  *         href=\"mailto:pahuang@redhat.com\">pahuang@redhat.com</a>\n  */\n+\n+\n public class TranslationMergeFirstTran implements TranslationMergeService {\n     private static final long serialVersionUID = -2380476843887300315L;\n     private final int nPlurals;\n     private final HLocale hLocale;\n     private final HTextFlow textFlow;\n \n-    public TranslationMergeFirstTran(int nPlurals, HLocale hLocale,\n-            HTextFlow textFlow) {\n+    public TranslationMergeFirstTran(int nPlurals, HLocale hLocale, HTextFlow textFlow) {\n         this.nPlurals = nPlurals;\n         this.hLocale = hLocale;\n         this.textFlow = textFlow;\n     }\n \n     @Override\n-    public boolean merge(TextFlowTarget incomingTarget,\n-            HTextFlowTarget hTarget, Set<String> extensions) {\n+    public boolean merge(TextFlowTarget incomingTarget, HTextFlowTarget hTarget, Set<String> extensions) {\n         Preconditions.checkArgument(hTarget == null,\n-                \"This merge service only handles null HTextFlowTarget\");\n+            \"This merge service only handles null HTextFlowTarget\");\n         hTarget = new HTextFlowTarget(textFlow, hLocale);\n         List<String> contents = Collections.nCopies(nPlurals, \"\");\n         hTarget.setContents(contents);\n         hTarget.setVersionNum(0); // incremented when content is set\n         textFlow.getTargets().put(hLocale.getId(), hTarget);\n-        new TargetTransformer(extensions).transform(incomingTarget,\n-                hTarget);\n+        new TargetTransformer(extensions).transform(incomingTarget, hTarget);\n         if (incomingTarget.getState().isTranslated()) {\n             hTarget.setState(ContentState.Translated);\n         }\n         return true;\n     }\n-\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "33",
+                    "severity": "error",
+                    "message": "';' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/42/TranslationMergeFirstTran.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/42/TranslationMergeFirstTran.java\nindex b606069862..da0edee793 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/42/TranslationMergeFirstTran.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/42/TranslationMergeFirstTran.java\n@@ -40,7 +40,7 @@ public class TranslationMergeFirstTran implements TranslationMergeService {\n         hTarget = new HTextFlowTarget(textFlow, hLocale);\n         List<String> contents = Collections.nCopies(nPlurals, \"\");\n         hTarget.setContents(contents);\n-        hTarget.setVersionNum(0); // incremented when content is set\n+        hTarget.setVersionNum(0);// incremented when content is set\n         textFlow.getTargets().put(hLocale.getId(), hTarget);\n         new TargetTransformer(extensions).transform(incomingTarget,\n                 hTarget);\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

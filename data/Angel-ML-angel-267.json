@@ -1,0 +1,226 @@
+{
+    "error_id": "267",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/267/MatrixMetaManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/267/MatrixMetaManager.java\nindex ad4fde84ea..c656d0e41b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/267/MatrixMetaManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/267/MatrixMetaManager.java\n@@ -27,235 +27,248 @@ import java.util.concurrent.ConcurrentHashMap;\n  * The matrix meta manager.\n  */\n public class MatrixMetaManager {\n-  /**\n-   * Matrix id to matrix meta map\n-   */\n-  private final ConcurrentHashMap<Integer, MatrixMeta> matrixIdToMetaMap;\n+    /**\n+     * Matrix id to matrix meta map\n+     */\n+    private final ConcurrentHashMap<Integer, MatrixMeta> matrixIdToMetaMap;\n \n-  /**\n-   * Matrix name to matrix id map\n-   */\n-  private final ConcurrentHashMap<String, Integer> matrixNameToIdMap;\n+    /**\n+     * Matrix name to matrix id map\n+     */\n+    private final ConcurrentHashMap<String, Integer> matrixNameToIdMap;\n \n-  /**\n-   * Creates a new matrix meta manager.\n-   */\n-  public MatrixMetaManager() {\n-    this.matrixIdToMetaMap = new ConcurrentHashMap<>();\n-    this.matrixNameToIdMap = new ConcurrentHashMap<>();\n-  }\n-\n-  /**\n-   * Add matrixes.\n-   *\n-   * @param matrixMetas the matrix metas\n-   */\n-  public void addMatrices(List<MatrixMeta> matrixMetas) {\n-    int size = matrixMetas.size();\n-    for(int i = 0; i < size; i++) {\n-      addMatrix(matrixMetas.get(i));\n+    /**\n+     * Creates a new matrix meta manager.\n+     */\n+    public MatrixMetaManager() {\n+        this.matrixIdToMetaMap = new ConcurrentHashMap<>();\n+        this.matrixNameToIdMap = new ConcurrentHashMap<>();\n     }\n-  }\n \n-  /**\n-   * Add matrix.\n-   *\n-   * @param matrixMeta the matrix meta\n-   */\n-  public void addMatrix(MatrixMeta matrixMeta) {\n-    this.matrixIdToMetaMap.putIfAbsent(matrixMeta.getId(), matrixMeta);\n-    this.matrixNameToIdMap.putIfAbsent(matrixMeta.getName(), matrixMeta.getId());\n-  }\n+    /**\n+     * Add matrixes.\n+     *\n+     * @param matrixMetas the matrix metas\n+     */\n+    public void addMatrices(List<MatrixMeta> matrixMetas) {\n+        int size = matrixMetas.size();\n+        for (int i = 0; i < size; i++) {\n+            addMatrix(matrixMetas.get(i));\n+        }\n+    }\n \n-  /**\n-   * Remove a matrix\n-   * @param matrixId matrix id\n-   */\n-  public void removeMatrix(int matrixId) {\n-    MatrixMeta meta = matrixIdToMetaMap.remove(matrixId);\n-    if(meta != null) {\n-      matrixNameToIdMap.remove(meta.getName());\n+    /**\n+     * Add matrix.\n+     *\n+     * @param matrixMeta the matrix meta\n+     */\n+    public void addMatrix(MatrixMeta matrixMeta) {\n+        this.matrixIdToMetaMap.putIfAbsent(matrixMeta.getId(), matrixMeta);\n+        this.matrixNameToIdMap.putIfAbsent(matrixMeta.getName(), matrixMeta.getId());\n     }\n-  }\n \n-  /**\n-   * Gets matrix id.\n-   *\n-   * @param matrixName the matrix name\n-   * @return the matrix id\n-   */\n-  public int getMatrixId(String matrixName) {\n-    if (matrixNameToIdMap.containsKey(matrixName)) {\n-      return matrixNameToIdMap.get(matrixName);\n-    } else {\n-      return -1;\n+    /**\n+     * Remove a matrix\n+     *\n+     * @param matrixId matrix id\n+     */\n+    public void removeMatrix(int matrixId) {\n+        MatrixMeta meta = matrixIdToMetaMap.remove(matrixId);\n+        if (meta != null) {\n+            matrixNameToIdMap.remove(meta.getName());\n+        }\n     }\n-  }\n \n-  /**\n-   * Gets matrix meta.\n-   *\n-   * @param matrixId the matrix id\n-   * @return the matrix meta\n-   */\n-  public MatrixMeta getMatrixMeta(int matrixId) {\n-    return matrixIdToMetaMap.get(matrixId);\n-  }\n+    /**\n+     * Gets matrix id.\n+     *\n+     * @param matrixName the matrix name\n+     * @return the matrix id\n+     */\n+    public int getMatrixId(String matrixName) {\n+        if (matrixNameToIdMap.containsKey(matrixName)) {\n+            return matrixNameToIdMap.get(matrixName);\n+        } else {\n+            return -1;\n+        }\n+    }\n \n-  /**\n-   * Gets matrix meta.\n-   *\n-   * @param matrixName the matrix name\n-   * @return the matrix meta\n-   */\n-  public MatrixMeta getMatrixMeta(String matrixName) {\n-    int matrixId = getMatrixId(matrixName);\n-    if(matrixId == -1) {\n-      return null;\n-    } else {\n-      return matrixIdToMetaMap.get(matrixId);\n+    /**\n+     * Gets matrix meta.\n+     *\n+     * @param matrixId the matrix id\n+     * @return the matrix meta\n+     */\n+    public MatrixMeta getMatrixMeta(int matrixId) {\n+        return matrixIdToMetaMap.get(matrixId);\n     }\n-  }\n \n-  /**\n-   * Gets matrix ids.\n-   *\n-   * @return the matrix ids\n-   */\n-  public Set<Integer> getMatrixIds() {\n-    return matrixIdToMetaMap.keySet();\n-  }\n+    /**\n+     * Gets matrix meta.\n+     *\n+     * @param matrixName the matrix name\n+     * @return the matrix meta\n+     */\n+    public MatrixMeta getMatrixMeta(String matrixName) {\n+        int matrixId = getMatrixId(matrixName);\n+        if (matrixId == -1) {\n+            return null;\n+        } else {\n+            return matrixIdToMetaMap.get(matrixId);\n+        }\n+    }\n \n-  /**\n-   * Gets matrix names.\n-   *\n-   * @return the matrix names\n-   */\n-  public Set<String> getMatrixNames() {\n-    return matrixNameToIdMap.keySet();\n-  }\n+    /**\n+     * Gets matrix ids.\n+     *\n+     * @return the matrix ids\n+     */\n+    public Set<Integer> getMatrixIds() {\n+        return matrixIdToMetaMap.keySet();\n+    }\n \n-  /**\n-   * Is a matrix exist\n-   * @param matrixName matrix name\n-   * @return true means exist\n-   */\n-  public boolean exists(String matrixName) {\n-    return matrixNameToIdMap.containsKey(matrixName);\n-  }\n+    /**\n+     * Gets matrix names.\n+     *\n+     * @return the matrix names\n+     */\n+    public Set<String> getMatrixNames() {\n+        return matrixNameToIdMap.keySet();\n+    }\n \n-  /**\n-   * Is a matrix exist\n-   * @param matrixId matrix id\n-   * @return true means exist\n-   */\n-  public boolean exists(int matrixId) { return matrixIdToMetaMap.containsKey(matrixId); }\n+    /**\n+     * Is a matrix exist\n+     *\n+     * @param matrixName matrix name\n+     * @return true means exist\n+     */\n+    public boolean exists(String matrixName) {\n+        return matrixNameToIdMap.containsKey(matrixName);\n+    }\n \n-  /**\n-   * Get all matrices meta\n-   * @return all matrices meta\n-   */\n-  public Map<Integer,MatrixMeta> getMatrixMetas() {\n-    return matrixIdToMetaMap;\n-  }\n+    /**\n+     * Is a matrix exist\n+     *\n+     * @param matrixId matrix id\n+     * @return true means exist\n+     */\n+    public boolean exists(int matrixId) {\n+        return matrixIdToMetaMap.containsKey(matrixId);\n+    }\n \n-  /**\n-   * Get the stored pss for a matrix partition\n-   * @param matrixId matrix id\n-   * @param partId partition id\n-   * @return the stored pss\n-   */\n-  public List<ParameterServerId> getPss(int matrixId, int partId) {\n-    MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n-      return null;\n+    /**\n+     * Get all matrices meta\n+     *\n+     * @return all matrices meta\n+     */\n+    public Map<Integer, MatrixMeta> getMatrixMetas() {\n+        return matrixIdToMetaMap;\n     }\n \n-    return matrixMeta.getPss(partId);\n-  }\n+    /**\n+     * Get the stored pss for a matrix partition\n+     *\n+     * @param matrixId matrix id\n+     * @param partId   partition id\n+     * @return the stored pss\n+     */\n+    public List<ParameterServerId> getPss(int matrixId, int partId) {\n+        MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n+        if (matrixMeta == null) {\n+            return null;\n+        }\n \n-  /**\n-   * Remove the matrix\n-   * @param matrixName matrix name\n-   */\n-  public void removeMatrix(String matrixName) {\n-    if(matrixNameToIdMap.containsKey(matrixName)) {\n-      int matrixId = matrixNameToIdMap.remove(matrixName);\n-      matrixIdToMetaMap.remove(matrixId);\n+        return matrixMeta.getPss(partId);\n     }\n-  }\n \n-  /**\n-   * Remove all matrices\n-   */\n-  public void clear() {\n-    matrixIdToMetaMap.clear();\n-    matrixNameToIdMap.clear();\n-  }\n+    /**\n+     * Remove the matrix\n+     *\n+     * @param matrixName matrix name\n+     */\n+    public void removeMatrix(String matrixName) {\n+        if (matrixNameToIdMap.containsKey(matrixName)) {\n+            int matrixId = matrixNameToIdMap.remove(matrixName);\n+            matrixIdToMetaMap.remove(matrixId);\n+        }\n+    }\n \n-  /**\n-   * Get the master stored ps for a matrix partition\n-   * @param matrixId matrix id\n-   * @param partId partition id\n-   * @return the master stored ps\n-   */\n-  public ParameterServerId getMasterPs(int matrixId, int partId) {\n-    MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n-      return null;\n+    /**\n+     * Remove all matrices\n+     */\n+    public void clear() {\n+        matrixIdToMetaMap.clear();\n+        matrixNameToIdMap.clear();\n     }\n \n-    return matrixMeta.getMasterPs(partId);\n-  }\n+    /**\n+     * Get the master stored ps for a matrix partition\n+     *\n+     * @param matrixId matrix id\n+     * @param partId   partition id\n+     * @return the master stored ps\n+     */\n+    public ParameterServerId getMasterPs(int matrixId, int partId) {\n+        MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n+        if (matrixMeta == null) {\n+            return null;\n+        }\n \n-  /**\n-   * Remove matrices\n-   * @param matrixIds matrix ids\n-   */\n-  public void removeMatrices(List<Integer> matrixIds) {\n-    int size = matrixIds.size();\n-    for(int i = 0; i < size; i++) {\n-      removeMatrix(matrixIds.get(i));\n+        return matrixMeta.getMasterPs(partId);\n     }\n-  }\n \n-  /**\n-   * Remove the stored ps for all matrix partitions\n-   * @param psId ps id\n-   */\n-  public void removePs(ParameterServerId psId) {\n-    for(MatrixMeta matrixMeta : matrixIdToMetaMap.values()) {\n-      matrixMeta.removePs(psId);\n+    /**\n+     * Remove matrices\n+     *\n+     * @param matrixIds matrix ids\n+     */\n+    public void removeMatrices(List<Integer> matrixIds) {\n+        int size = matrixIds.size();\n+        for (int i = 0; i < size; i++) {\n+            removeMatrix(matrixIds.get(i));\n+        }\n     }\n-  }\n \n-  /**\n-   * Set the stored pss for a matrix partition\n-   * @param matrixId matrix id\n-   * @param partId partition id\n-   * @param psIds the stored pss\n-   */\n-  public void setPss(int matrixId, int partId, List<ParameterServerId> psIds) {\n-    MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n-      return;\n+    /**\n+     * Remove the stored ps for all matrix partitions\n+     *\n+     * @param psId ps id\n+     */\n+    public void removePs(ParameterServerId psId) {\n+        for (MatrixMeta matrixMeta : matrixIdToMetaMap.values()) {\n+            matrixMeta.removePs(psId);\n+        }\n     }\n \n-    matrixMeta.setPss(partId, psIds);\n-  }\n+    /**\n+     * Set the stored pss for a matrix partition\n+     *\n+     * @param matrixId matrix id\n+     * @param partId   partition id\n+     * @param psIds    the stored pss\n+     */\n+    public void setPss(int matrixId, int partId, List<ParameterServerId> psIds) {\n+        MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n+        if (matrixMeta == null) {\n+            return;\n+        }\n \n-  /**\n-   * Add a the stored ps for a matrix partition\n-   * @param matrixId matrix id\n-   * @param partId\n-   * @param psId ps id\n-   */\n-  public void addPs(int matrixId, int partId, ParameterServerId psId) {\n-    MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n-      return;\n+        matrixMeta.setPss(partId, psIds);\n     }\n \n-    matrixMeta.addPs(partId, psId);\n-  }\n+    /**\n+     * Add a the stored ps for a matrix partition\n+     *\n+     * @param matrixId matrix id\n+     * @param partId\n+     * @param psId     ps id\n+     */\n+    public void addPs(int matrixId, int partId, ParameterServerId psId) {\n+        MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n+        if (matrixMeta == null) {\n+            return;\n+        }\n+\n+        matrixMeta.addPs(partId, psId);\n+    }\n }\n",
+            "diff_size": 263
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/267/MatrixMetaManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/267/MatrixMetaManager.java\nindex ad4fde84ea..8e80fdd050 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/267/MatrixMetaManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/267/MatrixMetaManager.java\n@@ -52,7 +52,7 @@ public class MatrixMetaManager {\n    */\n   public void addMatrices(List<MatrixMeta> matrixMetas) {\n     int size = matrixMetas.size();\n-    for(int i = 0; i < size; i++) {\n+    for (int i = 0; i < size; i++) {\n       addMatrix(matrixMetas.get(i));\n     }\n   }\n@@ -73,7 +73,7 @@ public class MatrixMetaManager {\n    */\n   public void removeMatrix(int matrixId) {\n     MatrixMeta meta = matrixIdToMetaMap.remove(matrixId);\n-    if(meta != null) {\n+    if (meta != null) {\n       matrixNameToIdMap.remove(meta.getName());\n     }\n   }\n@@ -110,7 +110,7 @@ public class MatrixMetaManager {\n    */\n   public MatrixMeta getMatrixMeta(String matrixName) {\n     int matrixId = getMatrixId(matrixName);\n-    if(matrixId == -1) {\n+    if (matrixId == -1) {\n       return null;\n     } else {\n       return matrixIdToMetaMap.get(matrixId);\n@@ -149,13 +149,15 @@ public class MatrixMetaManager {\n    * @param matrixId matrix id\n    * @return true means exist\n    */\n-  public boolean exists(int matrixId) { return matrixIdToMetaMap.containsKey(matrixId); }\n+  public boolean exists(int matrixId) {\n+  return matrixIdToMetaMap.containsKey(matrixId);\n+  }\n \n   /**\n    * Get all matrices meta\n    * @return all matrices meta\n    */\n-  public Map<Integer,MatrixMeta> getMatrixMetas() {\n+  public Map<Integer, MatrixMeta> getMatrixMetas() {\n     return matrixIdToMetaMap;\n   }\n \n@@ -167,7 +169,7 @@ public class MatrixMetaManager {\n    */\n   public List<ParameterServerId> getPss(int matrixId, int partId) {\n     MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n+    if (matrixMeta == null) {\n       return null;\n     }\n \n@@ -201,7 +203,7 @@ public class MatrixMetaManager {\n    */\n   public ParameterServerId getMasterPs(int matrixId, int partId) {\n     MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n+    if (matrixMeta == null) {\n       return null;\n     }\n \n@@ -214,7 +216,7 @@ public class MatrixMetaManager {\n    */\n   public void removeMatrices(List<Integer> matrixIds) {\n     int size = matrixIds.size();\n-    for(int i = 0; i < size; i++) {\n+    for (int i = 0; i < size; i++) {\n       removeMatrix(matrixIds.get(i));\n     }\n   }\n@@ -224,7 +226,7 @@ public class MatrixMetaManager {\n    * @param psId ps id\n    */\n   public void removePs(ParameterServerId psId) {\n-    for(MatrixMeta matrixMeta : matrixIdToMetaMap.values()) {\n+    for (MatrixMeta matrixMeta : matrixIdToMetaMap.values()) {\n       matrixMeta.removePs(psId);\n     }\n   }\n@@ -237,7 +239,7 @@ public class MatrixMetaManager {\n    */\n   public void setPss(int matrixId, int partId, List<ParameterServerId> psIds) {\n     MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n+    if (matrixMeta == null) {\n       return;\n     }\n \n@@ -252,10 +254,10 @@ public class MatrixMetaManager {\n    */\n   public void addPs(int matrixId, int partId, ParameterServerId psId) {\n     MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n+    if (matrixMeta == null) {\n       return;\n     }\n \n     matrixMeta.addPs(partId, psId);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 33.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 38.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 44.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 55.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 68.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 78.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 92.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 107.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 118.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "127",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 133.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "137",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 143.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "147",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 153.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 163.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "167",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 172.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "176",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 183.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "191",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 196.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "203",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 207.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "212",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 219.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "227",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 232.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "239",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 244.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "250",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 257.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "265",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 272.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/267/MatrixMetaManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/267/MatrixMetaManager.java\nindex ad4fde84ea..bd548aefa9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/267/MatrixMetaManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/267/MatrixMetaManager.java\n@@ -17,7 +17,6 @@\n package com.tencent.angel.ml.matrix;\n \n import com.tencent.angel.ps.ParameterServerId;\n-\n import java.util.List;\n import java.util.Map;\n import java.util.Set;\n@@ -26,57 +25,62 @@ import java.util.concurrent.ConcurrentHashMap;\n /**\n  * The matrix meta manager.\n  */\n+\n public class MatrixMetaManager {\n   /**\n    * Matrix id to matrix meta map\n    */\n-  private final ConcurrentHashMap<Integer, MatrixMeta> matrixIdToMetaMap;\n+    private final ConcurrentHashMap<Integer, MatrixMeta> matrixIdToMetaMap;\n \n   /**\n    * Matrix name to matrix id map\n    */\n-  private final ConcurrentHashMap<String, Integer> matrixNameToIdMap;\n+    private final ConcurrentHashMap<String, Integer> matrixNameToIdMap;\n \n   /**\n    * Creates a new matrix meta manager.\n    */\n-  public MatrixMetaManager() {\n+\n+    public MatrixMetaManager() {\n     this.matrixIdToMetaMap = new ConcurrentHashMap<>();\n     this.matrixNameToIdMap = new ConcurrentHashMap<>();\n-  }\n+    }\n \n   /**\n    * Add matrixes.\n    *\n    * @param matrixMetas the matrix metas\n    */\n-  public void addMatrices(List<MatrixMeta> matrixMetas) {\n+\n+    public void addMatrices(List<MatrixMeta> matrixMetas) {\n     int size = matrixMetas.size();\n-    for(int i = 0; i < size; i++) {\n-      addMatrix(matrixMetas.get(i));\n+    for (int i = 0; i < size; i++) {\n+        addMatrix(matrixMetas.get(i));\n+    }\n     }\n-  }\n \n   /**\n    * Add matrix.\n    *\n    * @param matrixMeta the matrix meta\n    */\n-  public void addMatrix(MatrixMeta matrixMeta) {\n+\n+    public void addMatrix(MatrixMeta matrixMeta) {\n     this.matrixIdToMetaMap.putIfAbsent(matrixMeta.getId(), matrixMeta);\n     this.matrixNameToIdMap.putIfAbsent(matrixMeta.getName(), matrixMeta.getId());\n-  }\n+    }\n \n   /**\n    * Remove a matrix\n    * @param matrixId matrix id\n    */\n-  public void removeMatrix(int matrixId) {\n+\n+    public void removeMatrix(int matrixId) {\n     MatrixMeta meta = matrixIdToMetaMap.remove(matrixId);\n-    if(meta != null) {\n-      matrixNameToIdMap.remove(meta.getName());\n+    if (meta != null) {\n+        matrixNameToIdMap.remove(meta.getName());\n+    }\n     }\n-  }\n \n   /**\n    * Gets matrix id.\n@@ -84,13 +88,14 @@ public class MatrixMetaManager {\n    * @param matrixName the matrix name\n    * @return the matrix id\n    */\n-  public int getMatrixId(String matrixName) {\n+\n+    public int getMatrixId(String matrixName) {\n     if (matrixNameToIdMap.containsKey(matrixName)) {\n-      return matrixNameToIdMap.get(matrixName);\n+        return matrixNameToIdMap.get(matrixName);\n     } else {\n       return -1;\n     }\n-  }\n+    }\n \n   /**\n    * Gets matrix meta.\n@@ -98,9 +103,10 @@ public class MatrixMetaManager {\n    * @param matrixId the matrix id\n    * @return the matrix meta\n    */\n-  public MatrixMeta getMatrixMeta(int matrixId) {\n+\n+    public MatrixMeta getMatrixMeta(int matrixId) {\n     return matrixIdToMetaMap.get(matrixId);\n-  }\n+    }\n \n   /**\n    * Gets matrix meta.\n@@ -108,56 +114,64 @@ public class MatrixMetaManager {\n    * @param matrixName the matrix name\n    * @return the matrix meta\n    */\n-  public MatrixMeta getMatrixMeta(String matrixName) {\n+\n+    public MatrixMeta getMatrixMeta(String matrixName) {\n     int matrixId = getMatrixId(matrixName);\n-    if(matrixId == -1) {\n-      return null;\n+    if (matrixId == -1) {\n+        return null;\n     } else {\n       return matrixIdToMetaMap.get(matrixId);\n     }\n-  }\n+    }\n \n   /**\n    * Gets matrix ids.\n    *\n    * @return the matrix ids\n    */\n-  public Set<Integer> getMatrixIds() {\n+\n+    public Set<Integer> getMatrixIds() {\n     return matrixIdToMetaMap.keySet();\n-  }\n+    }\n \n   /**\n    * Gets matrix names.\n    *\n    * @return the matrix names\n    */\n-  public Set<String> getMatrixNames() {\n+\n+    public Set<String> getMatrixNames() {\n     return matrixNameToIdMap.keySet();\n-  }\n+    }\n \n   /**\n    * Is a matrix exist\n    * @param matrixName matrix name\n    * @return true means exist\n    */\n-  public boolean exists(String matrixName) {\n+\n+    public boolean exists(String matrixName) {\n     return matrixNameToIdMap.containsKey(matrixName);\n-  }\n+    }\n \n   /**\n    * Is a matrix exist\n    * @param matrixId matrix id\n    * @return true means exist\n    */\n-  public boolean exists(int matrixId) { return matrixIdToMetaMap.containsKey(matrixId); }\n+\n+    public boolean exists(int matrixId) {\n+    return matrixIdToMetaMap.containsKey(matrixId);\n+    }\n \n   /**\n    * Get all matrices meta\n    * @return all matrices meta\n    */\n-  public Map<Integer,MatrixMeta> getMatrixMetas() {\n+\n+    public Map<Integer, MatrixMeta> getMatrixMetas() {\n     return matrixIdToMetaMap;\n-  }\n+    }\n \n   /**\n    * Get the stored pss for a matrix partition\n@@ -165,33 +179,35 @@ public class MatrixMetaManager {\n    * @param partId partition id\n    * @return the stored pss\n    */\n-  public List<ParameterServerId> getPss(int matrixId, int partId) {\n+\n+    public List<ParameterServerId> getPss(int matrixId, int partId) {\n     MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n-      return null;\n+    if (matrixMeta == null) {\n+        return null;\n     }\n-\n     return matrixMeta.getPss(partId);\n-  }\n+    }\n \n   /**\n    * Remove the matrix\n    * @param matrixName matrix name\n    */\n-  public void removeMatrix(String matrixName) {\n-    if(matrixNameToIdMap.containsKey(matrixName)) {\n-      int matrixId = matrixNameToIdMap.remove(matrixName);\n-      matrixIdToMetaMap.remove(matrixId);\n+\n+    public void removeMatrix(String matrixName) {\n+    if (matrixNameToIdMap.containsKey(matrixName)) {\n+        int matrixId = matrixNameToIdMap.remove(matrixName);\n+        matrixIdToMetaMap.remove(matrixId);\n+    }\n     }\n-  }\n \n   /**\n    * Remove all matrices\n    */\n-  public void clear() {\n+\n+    public void clear() {\n     matrixIdToMetaMap.clear();\n     matrixNameToIdMap.clear();\n-  }\n+    }\n \n   /**\n    * Get the master stored ps for a matrix partition\n@@ -199,35 +215,37 @@ public class MatrixMetaManager {\n    * @param partId partition id\n    * @return the master stored ps\n    */\n-  public ParameterServerId getMasterPs(int matrixId, int partId) {\n+\n+    public ParameterServerId getMasterPs(int matrixId, int partId) {\n     MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n-      return null;\n+    if (matrixMeta == null) {\n+        return null;\n     }\n-\n     return matrixMeta.getMasterPs(partId);\n-  }\n+    }\n \n   /**\n    * Remove matrices\n    * @param matrixIds matrix ids\n    */\n-  public void removeMatrices(List<Integer> matrixIds) {\n+\n+    public void removeMatrices(List<Integer> matrixIds) {\n     int size = matrixIds.size();\n-    for(int i = 0; i < size; i++) {\n-      removeMatrix(matrixIds.get(i));\n+    for (int i = 0; i < size; i++) {\n+        removeMatrix(matrixIds.get(i));\n+    }\n     }\n-  }\n \n   /**\n    * Remove the stored ps for all matrix partitions\n    * @param psId ps id\n    */\n-  public void removePs(ParameterServerId psId) {\n-    for(MatrixMeta matrixMeta : matrixIdToMetaMap.values()) {\n-      matrixMeta.removePs(psId);\n+\n+    public void removePs(ParameterServerId psId) {\n+    for (MatrixMeta matrixMeta : matrixIdToMetaMap.values()) {\n+        matrixMeta.removePs(psId);\n+    }\n     }\n-  }\n \n   /**\n    * Set the stored pss for a matrix partition\n@@ -235,14 +253,14 @@ public class MatrixMetaManager {\n    * @param partId partition id\n    * @param psIds the stored pss\n    */\n-  public void setPss(int matrixId, int partId, List<ParameterServerId> psIds) {\n+\n+    public void setPss(int matrixId, int partId, List<ParameterServerId> psIds) {\n     MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n-      return;\n+    if (matrixMeta == null) {\n+        return;\n     }\n-\n     matrixMeta.setPss(partId, psIds);\n-  }\n+    }\n \n   /**\n    * Add a the stored ps for a matrix partition\n@@ -250,12 +268,13 @@ public class MatrixMetaManager {\n    * @param partId\n    * @param psId ps id\n    */\n-  public void addPs(int matrixId, int partId, ParameterServerId psId) {\n+\n+    public void addPs(int matrixId, int partId, ParameterServerId psId) {\n     MatrixMeta matrixMeta = matrixIdToMetaMap.get(matrixId);\n-    if(matrixMeta == null) {\n-      return;\n+    if (matrixMeta == null) {\n+        return;\n     }\n-\n     matrixMeta.addPs(partId, psId);\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 98
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

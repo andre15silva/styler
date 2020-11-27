@@ -1,0 +1,2250 @@
+{
+    "error_id": "13",
+    "information": {
+        "errors": [
+            {
+                "line": "101",
+                "column": "13",
+                "severity": "error",
+                "message": "'try' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "    private <T> T doTransaction(final ClientSession session, final MorphiaTransaction<T> body) {\n        return session.withTransaction(() -> {\n            try(MorphiaSession morphiaSession = new MorphiaSessionImpl(session, mongoClient, database, mapper, indexHelper, queryFactory)) {\n                return body.execute(morphiaSession);\n            }\n        });",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "101",
+                    "column": "13",
+                    "severity": "error",
+                    "message": "'try' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/13/DatastoreImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/intellij/13/DatastoreImpl.java\nindex 4507be22e6..660ae9c15d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/13/DatastoreImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/intellij/13/DatastoreImpl.java\n@@ -92,13 +92,14 @@ public class DatastoreImpl implements AdvancedDatastore {\n     }\n \n     @Override\n-    public <T> T  withTransaction(final MorphiaTransaction<T> transaction, final ClientSessionOptions options) {\n+    public <T> T withTransaction(final MorphiaTransaction<T> transaction, final ClientSessionOptions options) {\n         return doTransaction(mongoClient.startSession(options), transaction);\n     }\n \n     private <T> T doTransaction(final ClientSession session, final MorphiaTransaction<T> body) {\n         return session.withTransaction(() -> {\n-            try(MorphiaSession morphiaSession = new MorphiaSessionImpl(session, mongoClient, database, mapper, indexHelper, queryFactory)) {\n+            try (\n+                MorphiaSession morphiaSession = new MorphiaSessionImpl(session, mongoClient, database, mapper, indexHelper, queryFactory)) {\n                 return body.execute(morphiaSession);\n             }\n         });\n@@ -153,7 +154,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n                 final CappedAt cap = mc.getEntityAnnotation().cap();\n                 final String collName = mc.getCollectionName();\n                 final CreateCollectionOptions dbCapOpts = new CreateCollectionOptions()\n-                                                              .capped(true);\n+                    .capped(true);\n                 if (cap.value() > 0) {\n                     dbCapOpts.sizeInBytes(cap.value());\n                 }\n@@ -167,7 +168,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n                         LOG.debug(\"MongoCollection already exists and is capped already; doing nothing. \" + dbResult);\n                     } else {\n                         LOG.warn(\"MongoCollection already exists with same name(\" + collName\n-                                 + \") and is not capped; not creating capped version!\");\n+                            + \") and is not capped; not creating capped version!\");\n                     }\n                 } else {\n                     getDatabase().createCollection(collName, dbCapOpts);\n@@ -219,7 +220,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n             ((Document) id).remove(mapper.getOptions().getDiscriminatorKey());\n         }\n         return find(clazz).filter(\"_id\", id)\n-                          .first(new FindOptions().limit(1));\n+            .first(new FindOptions().limit(1));\n     }\n \n     @Override\n@@ -245,8 +246,8 @@ public class DatastoreImpl implements AdvancedDatastore {\n                 objIds.add(key.getId());\n             }\n             final List kindResults = find(entry.getKey()).disableValidation().filter(\"_id in\", objIds)\n-                                                         .execute()\n-                                                         .toList();\n+                .execute()\n+                .toList();\n             entities.addAll(kindResults);\n         }\n \n@@ -319,8 +320,8 @@ public class DatastoreImpl implements AdvancedDatastore {\n         final Query<T> query = (Query<T>) find(entity.getClass()).filter(\"_id\", id);\n         if (!tryVersionedUpdate(collection, entity, options, mc)) {\n             UpdateResult execute = query.update()\n-                                        .set(entity)\n-                                        .execute(new UpdateOptions().writeConcern(options.writeConcern()));\n+                .set(entity)\n+                .execute(new UpdateOptions().writeConcern(options.writeConcern()));\n             if (execute.getModifiedCount() != 1) {\n                 throw new UpdateException(\"Nothing updated\");\n             }\n@@ -359,8 +360,8 @@ public class DatastoreImpl implements AdvancedDatastore {\n             collection.insertMany(entities, options.getOptions());\n         } else {\n             InsertOneOptions insertOneOptions = new InsertOneOptions()\n-                                                    .bypassDocumentValidation(options.getBypassDocumentValidation())\n-                                                    .writeConcern(options.getWriteConcern());\n+                .bypassDocumentValidation(options.getBypassDocumentValidation())\n+                .writeConcern(options.getWriteConcern());\n             for (final T entity : entities) {\n                 save(entity, insertOneOptions);\n             }\n@@ -387,8 +388,8 @@ public class DatastoreImpl implements AdvancedDatastore {\n     public MongoCollection enforceWriteConcern(final MongoCollection collection, final Class type, final WriteConcern option) {\n         WriteConcern applied = option != null ? option : mapper.getWriteConcern(type);\n         return applied != null\n-               ? collection.withWriteConcern(applied)\n-               : collection;\n+            ? collection.withWriteConcern(applied)\n+            : collection;\n     }\n \n     /**\n@@ -447,7 +448,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n     @Override\n     public <T> void insert(final T entity) {\n         insert(entity, new InsertOneOptions()\n-                           .writeConcern(mapper.getWriteConcern(entity.getClass())));\n+            .writeConcern(mapper.getWriteConcern(entity.getClass())));\n     }\n \n     @Override\n@@ -481,7 +482,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n     protected <T> void insert(final MongoCollection collection, final T entity, final InsertOneOptions options) {\n         setInitialVersion(mapper.getMappedClass(entity.getClass()).getVersionField(), entity);\n         mapper.enforceWriteConcern(collection, entity.getClass())\n-              .insertOne(entity, options.getOptions());\n+            .insertOne(entity, options.getOptions());\n     }\n \n     private <T> void save(final MongoCollection collection, final T entity, final InsertOneOptions options) {\n@@ -513,7 +514,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n             try {\n                 updateVersion(entity, versionField, newVersion);\n                 options.apply(collection)\n-                       .insertOne(entity, options.getOptions());\n+                    .insertOne(entity, options.getOptions());\n             } catch (MongoWriteException e) {\n                 updateVersion(entity, versionField, oldVersion);\n                 throw new ConcurrentModificationException(format(\"Entity of class %s (id='%s') was concurrently saved.\",\n@@ -521,13 +522,13 @@ public class DatastoreImpl implements AdvancedDatastore {\n             }\n         } else if (idValue != null) {\n             final UpdateResult res = find(collection.getNamespace().getCollectionName())\n-                                         .filter(\"_id\", idValue)\n-                                         .filter(versionField.getMappedFieldName(), oldVersion)\n-                                         .update()\n-                                         .set(entity)\n-                                         .execute(new UpdateOptions()\n-                                                      .bypassDocumentValidation(options.getBypassDocumentValidation())\n-                                                      .writeConcern(options.getWriteConcern()));\n+                .filter(\"_id\", idValue)\n+                .filter(versionField.getMappedFieldName(), oldVersion)\n+                .update()\n+                .set(entity)\n+                .execute(new UpdateOptions()\n+                    .bypassDocumentValidation(options.getBypassDocumentValidation())\n+                    .writeConcern(options.getWriteConcern()));\n \n             if (res.getModifiedCount() != 1) {\n                 throw new ConcurrentModificationException(format(\"Entity of class %s (id='%s',version='%d') was concurrently updated.\",\n@@ -540,21 +541,21 @@ public class DatastoreImpl implements AdvancedDatastore {\n     }\n \n     protected <T> void saveDocument(final T entity,\n-                                  final MongoCollection<T> collection,\n-                                  final InsertOneOptions options) {\n+                                    final MongoCollection<T> collection,\n+                                    final InsertOneOptions options) {\n         Object id = mapper.getMappedClass(entity.getClass()).getIdField().getFieldValue(entity);\n         if (id == null) {\n             if (options.clientSession() == null) {\n                 options.apply(collection)\n-                       .insertOne(entity, options.getOptions());\n+                    .insertOne(entity, options.getOptions());\n             } else {\n                 options.apply(collection)\n-                       .insertOne(options.clientSession(), entity, options.getOptions());\n+                    .insertOne(options.clientSession(), entity, options.getOptions());\n             }\n         } else {\n             ReplaceOptions updateOptions = new ReplaceOptions()\n-                                               .bypassDocumentValidation(options.getBypassDocumentValidation())\n-                                               .upsert(true);\n+                .bypassDocumentValidation(options.getBypassDocumentValidation())\n+                .upsert(true);\n             MongoCollection<T> updated = collection;\n             if (options.writeConcern() != null) {\n                 updated = collection.withWriteConcern(options.writeConcern());\n@@ -595,17 +596,17 @@ public class DatastoreImpl implements AdvancedDatastore {\n             String collectionName = mc.getCollectionName();\n             try {\n                 getDatabase().runCommand(new Document(\"collMod\", collectionName)\n-                                             .append(\"validator\", parse(validation.value()))\n-                                             .append(\"validationLevel\", validation.level().getValue())\n-                                             .append(\"validationAction\", validation.action().getValue()));\n+                    .append(\"validator\", parse(validation.value()))\n+                    .append(\"validationLevel\", validation.level().getValue())\n+                    .append(\"validationAction\", validation.action().getValue()));\n             } catch (MongoCommandException e) {\n                 if (e.getCode() == 26) {\n                     getDatabase().createCollection(collectionName,\n                         new CreateCollectionOptions()\n                             .validationOptions(new ValidationOptions()\n-                                                   .validator(parse(validation.value()))\n-                                                   .validationLevel(validation.level())\n-                                                   .validationAction(validation.action())));\n+                                .validator(parse(validation.value()))\n+                                .validationLevel(validation.level())\n+                                .validationAction(validation.action())));\n                 } else {\n                     throw e;\n                 }\n",
+            "diff_size": 36
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 0, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "363",
+                    "severity": "error",
+                    "message": "'for' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "530",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "556",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "599",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 4, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/13/DatastoreImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/naturalize/13/DatastoreImpl.java\nindex 4507be22e6..b173f3d9b4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/13/DatastoreImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/naturalize/13/DatastoreImpl.java\n@@ -92,13 +92,13 @@ public class DatastoreImpl implements AdvancedDatastore {\n     }\n \n     @Override\n-    public <T> T  withTransaction(final MorphiaTransaction<T> transaction, final ClientSessionOptions options) {\n+    public <T> T withTransaction(final MorphiaTransaction<T> transaction, final ClientSessionOptions options) {\n         return doTransaction(mongoClient.startSession(options), transaction);\n     }\n \n     private <T> T doTransaction(final ClientSession session, final MorphiaTransaction<T> body) {\n         return session.withTransaction(() -> {\n-            try(MorphiaSession morphiaSession = new MorphiaSessionImpl(session, mongoClient, database, mapper, indexHelper, queryFactory)) {\n+            try (MorphiaSession morphiaSession = new MorphiaSessionImpl(session, mongoClient, database, mapper, indexHelper, queryFactory)) {\n                 return body.execute(morphiaSession);\n             }\n         });\n@@ -152,9 +152,8 @@ public class DatastoreImpl implements AdvancedDatastore {\n             if (mc.getEntityAnnotation() != null && mc.getEntityAnnotation().cap().value() > 0) {\n                 final CappedAt cap = mc.getEntityAnnotation().cap();\n                 final String collName = mc.getCollectionName();\n-                final CreateCollectionOptions dbCapOpts = new CreateCollectionOptions()\n-                                                              .capped(true);\n-                if (cap.value() > 0) {\n+                final CreateCollectionOptions dbCapOpts = new CreateCollectionOptions().capped(true);\n+if (cap.value() > 0) {\n                     dbCapOpts.sizeInBytes(cap.value());\n                 }\n                 if (cap.count() > 0) {\n@@ -361,7 +360,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n             InsertOneOptions insertOneOptions = new InsertOneOptions()\n                                                     .bypassDocumentValidation(options.getBypassDocumentValidation())\n                                                     .writeConcern(options.getWriteConcern());\n-            for (final T entity : entities) {\n+for (final T entity : entities) {\n                 save(entity, insertOneOptions);\n             }\n         }\n@@ -528,8 +527,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n                                          .execute(new UpdateOptions()\n                                                       .bypassDocumentValidation(options.getBypassDocumentValidation())\n                                                       .writeConcern(options.getWriteConcern()));\n-\n-            if (res.getModifiedCount() != 1) {\n+if (res.getModifiedCount() != 1) {\n                 throw new ConcurrentModificationException(format(\"Entity of class %s (id='%s',version='%d') was concurrently updated.\",\n                     entity.getClass().getName(), idValue, oldVersion));\n             }\n@@ -555,7 +553,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n             ReplaceOptions updateOptions = new ReplaceOptions()\n                                                .bypassDocumentValidation(options.getBypassDocumentValidation())\n                                                .upsert(true);\n-            MongoCollection<T> updated = collection;\n+MongoCollection<T> updated = collection;\n             if (options.writeConcern() != null) {\n                 updated = collection.withWriteConcern(options.writeConcern());\n             }\n@@ -598,7 +596,7 @@ public class DatastoreImpl implements AdvancedDatastore {\n                                              .append(\"validator\", parse(validation.value()))\n                                              .append(\"validationLevel\", validation.level().getValue())\n                                              .append(\"validationAction\", validation.action().getValue()));\n-            } catch (MongoCommandException e) {\n+    } catch (MongoCommandException e) {\n                 if (e.getCode() == 26) {\n                     getDatabase().createCollection(collectionName,\n                         new CreateCollectionOptions()\n@@ -612,4 +610,4 @@ public class DatastoreImpl implements AdvancedDatastore {\n             }\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "101",
+                    "column": "13",
+                    "severity": "error",
+                    "message": "'try' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 175).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "100",
+                    "column": "46",
+                    "severity": "error",
+                    "message": "'{' at column 46 should have line break after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+                },
+                {
+                    "line": "100",
+                    "column": "48",
+                    "severity": "error",
+                    "message": "'try' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "115",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "123",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "127",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "129",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "130",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "139",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "141",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "142",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "143",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "145",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "147",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "149",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "150",
+                    "severity": "error",
+                    "message": "'for' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "151",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "152",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "154",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "158",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "159",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "160",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "161",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "162",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "163",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "164",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "165",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "166",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 20, expected level should be 24.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "167",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "168",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 20, expected level should be 24.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "170",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "171",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "172",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "174",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "175",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "176",
+                    "severity": "error",
+                    "message": "'for rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "177",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "179",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "181",
+                    "severity": "error",
+                    "message": "'for' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "182",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "183",
+                    "severity": "error",
+                    "message": "'for rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "184",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "186",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "188",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "189",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "190",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "191",
+                    "severity": "error",
+                    "message": "'for' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "192",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "193",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "194",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "195",
+                    "severity": "error",
+                    "message": "'for rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "196",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "198",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "200",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "201",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "203",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "205",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "206",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "208",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "210",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "211",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "212",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "213",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "214",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "216",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "217",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "218",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "219",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "220",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "222",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "224",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "228",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "229",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "230",
+                    "severity": "error",
+                    "message": "'for' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "231",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "233",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "234",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "235",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "236",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "237",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "238",
+                    "severity": "error",
+                    "message": "'for rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "239",
+                    "severity": "error",
+                    "message": "'for' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "240",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "242",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "243",
+                    "severity": "error",
+                    "message": "'for' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "244",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "245",
+                    "severity": "error",
+                    "message": "'for rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "246",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "249",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "250",
+                    "severity": "error",
+                    "message": "'for rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "253",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "254",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "256",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "258",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "259",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "261",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "262",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "263",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "264",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "265",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "266",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "267",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "268",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "270",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "271",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "272",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "273",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "274",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "275",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "276",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "278",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "280",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "281",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "283",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "287",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "288",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "290",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "292",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "293",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "295",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "297",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "298",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "300",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "302",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "303",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "305",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "307",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "308",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "309",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "310",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "312",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "313",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "315",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "316",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "318",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "319",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "320",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "323",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "324",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "325",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "326",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "328",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "329",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "331",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "333",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "334",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "336",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "338",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "339",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "340",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "342",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "344",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "345",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "347",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "350",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "351",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "352",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "353",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "354",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "356",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "357",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "358",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "359",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "360",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "363",
+                    "severity": "error",
+                    "message": "'for' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "364",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "365",
+                    "severity": "error",
+                    "message": "'for rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "366",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "367",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "368",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "370",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "372",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "373",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "374",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "376",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "378",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "379",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "380",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "382",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "383",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "384",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "386",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "387",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "388",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "389",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 11, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "390",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 11, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "391",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "398",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "399",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "400",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "402",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "404",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "405",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "407",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "409",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "410",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "412",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "414",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "415",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "417",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "419",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "420",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "421",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "422",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "423",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "425",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "427",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "428",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "429",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "430",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "431",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "432",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "434",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "436",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "437",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "438",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "439",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "441",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "443",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "444",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "446",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "448",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "450",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "452",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "454",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "455",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "457",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "459",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "460",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "461",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "462",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "463",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "464",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "465",
+                    "severity": "error",
+                    "message": "'for' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "466",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "467",
+                    "severity": "error",
+                    "message": "'for rcurly' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "468",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "470",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "471",
+                    "severity": "error",
+                    "message": "'method call' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "472",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "473",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "475",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "477",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "478",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "480",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "481",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "482",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "483",
+                    "severity": "error",
+                    "message": "'method call' child has incorrect indentation level 10, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "484",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "486",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "487",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "488",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "489",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "491",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "493",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "494",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "495",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "496",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "498",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "500",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "501",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "502",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "504",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "505",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "506",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "508",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "509",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "511",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "512",
+                    "severity": "error",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "513",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "514",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "515",
+                    "severity": "error",
+                    "message": "'method call' child has incorrect indentation level 19, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "516",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "517",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "518",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "520",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "521",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "522",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "531",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "532",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "534",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "535",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "536",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "538",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "539",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "541",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "544",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "545",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "546",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "547",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "548",
+                    "severity": "error",
+                    "message": "'method call' child has incorrect indentation level 19, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "549",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "550",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "551",
+                    "severity": "error",
+                    "message": "'method call' child has incorrect indentation level 19, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "552",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "553",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "554",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "557",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "558",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "559",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "560",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "561",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "562",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "563",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "564",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "565",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "566",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "567",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "569",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "570",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "571",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "573",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "574",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "575",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "576",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "577",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "578",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "579",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "580",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "581",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "582",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "584",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "585",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "586",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "588",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "589",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "590",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "592",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "593",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "594",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "595",
+                    "severity": "error",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "596",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "600",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "601",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "602",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "608",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "609",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 16, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "610",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 12, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "611",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "612",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "613",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/13/DatastoreImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_three_grams/13/DatastoreImpl.java\nindex 4507be22e6..ac95d80d28 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/13/DatastoreImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_three_grams/13/DatastoreImpl.java\n@@ -97,519 +97,518 @@ public class DatastoreImpl implements AdvancedDatastore {\n     }\n \n     private <T> T doTransaction(final ClientSession session, final MorphiaTransaction<T> body) {\n-        return session.withTransaction(() -> {\n-            try(MorphiaSession morphiaSession = new MorphiaSessionImpl(session, mongoClient, database, mapper, indexHelper, queryFactory)) {\n-                return body.execute(morphiaSession);\n-            }\n-        });\n-    }\n+        return session.withTransaction(() -> { try(MorphiaSession morphiaSession = new MorphiaSessionImpl(session, mongoClient, database, mapper, indexHelper, queryFactory)) {\n+            return body.execute(morphiaSession);\n+        }\n+    });\n+}\n \n-    /**\n+/**\n      * @param source the initial type/collection to aggregate against\n      * @return a new query bound to the kind (a specific {@link MongoCollection})\n      */\n-    @Override\n-    public AggregationPipeline createAggregation(final Class source) {\n-        return new AggregationPipelineImpl(this, getCollection(source), source);\n-    }\n+@Override\n+public AggregationPipeline createAggregation(final Class source) {\n+    return new AggregationPipelineImpl(this, getCollection(source), source);\n+}\n \n-    @Override\n-    public <T> Query<T> find(final Class<T> clazz) {\n-        return newQuery(clazz);\n-    }\n+@Override\n+public <T> Query<T> find(final Class<T> clazz) {\n+    return newQuery(clazz);\n+}\n \n-    /**\n+/**\n      * @return the Mapper used by this Datastore\n      */\n-    public Mapper getMapper() {\n-        return mapper;\n-    }\n+public Mapper getMapper() {\n+    return mapper;\n+}\n \n-    @Override\n-    public <T> DeleteResult delete(final T entity) {\n-        return delete(entity, new DeleteOptions().writeConcern(mapper.getWriteConcern(entity.getClass())));\n-    }\n+@Override\n+public <T> DeleteResult delete(final T entity) {\n+    return delete(entity, new DeleteOptions().writeConcern(mapper.getWriteConcern(entity.getClass())));\n+}\n \n-    /**\n+/**\n      * Deletes the given entity (by @Id), with the WriteConcern\n      *\n      * @param entity  the entity to delete\n      * @param options the options to use when deleting\n      * @return results of the delete\n      */\n-    @Override\n-    public <T> DeleteResult delete(final T entity, final DeleteOptions options) {\n-        if (entity instanceof Class<?>) {\n-            throw new MappingException(\"Did you mean to delete all documents? -- delete(ds.createQuery(???.class))\");\n-        }\n-        return find(entity.getClass()).filter(\"_id\", mapper.getId(entity)).remove(options);\n+@Override\n+public <T> DeleteResult delete(final T entity, final DeleteOptions options) {\n+    if (entity instanceof Class<?>) {\n+        throw new MappingException(\"Did you mean to delete all documents? -- delete(ds.createQuery(???.class))\");\n     }\n+    return find(entity.getClass()).filter(\"_id\", mapper.getId(entity)).remove(options);\n+}\n \n-    @Override\n-    public void ensureCaps() {\n-        List<String> collectionNames = database.listCollectionNames().into(new ArrayList<>());\n-        for (final MappedClass mc : mapper.getMappedClasses()) {\n-            if (mc.getEntityAnnotation() != null && mc.getEntityAnnotation().cap().value() > 0) {\n-                final CappedAt cap = mc.getEntityAnnotation().cap();\n-                final String collName = mc.getCollectionName();\n-                final CreateCollectionOptions dbCapOpts = new CreateCollectionOptions()\n-                                                              .capped(true);\n-                if (cap.value() > 0) {\n-                    dbCapOpts.sizeInBytes(cap.value());\n-                }\n-                if (cap.count() > 0) {\n-                    dbCapOpts.maxDocuments(cap.count());\n-                }\n-                final MongoDatabase database = getDatabase();\n-                if (collectionNames.contains(collName)) {\n-                    final Document dbResult = database.runCommand(new Document(\"collstats\", collName));\n-                    if (dbResult.getBoolean(\"capped\")) {\n-                        LOG.debug(\"MongoCollection already exists and is capped already; doing nothing. \" + dbResult);\n-                    } else {\n-                        LOG.warn(\"MongoCollection already exists with same name(\" + collName\n-                                 + \") and is not capped; not creating capped version!\");\n-                    }\n+@Override\n+public void ensureCaps() {\n+    List<String> collectionNames = database.listCollectionNames().into(new ArrayList<>());\n+    for (final MappedClass mc : mapper.getMappedClasses()) {\n+        if (mc.getEntityAnnotation() != null && mc.getEntityAnnotation().cap().value() > 0) {\n+            final CappedAt cap = mc.getEntityAnnotation().cap();\n+            final String collName = mc.getCollectionName();\n+            final CreateCollectionOptions dbCapOpts = new CreateCollectionOptions()\n+                                                          .capped(true);\n+            if (cap.value() > 0) {\n+                dbCapOpts.sizeInBytes(cap.value());\n+            }\n+            if (cap.count() > 0) {\n+                dbCapOpts.maxDocuments(cap.count());\n+            }\n+            final MongoDatabase database = getDatabase();\n+            if (collectionNames.contains(collName)) {\n+                final Document dbResult = database.runCommand(new Document(\"collstats\", collName));\n+                if (dbResult.getBoolean(\"capped\")) {\n+                    LOG.debug(\"MongoCollection already exists and is capped already; doing nothing. \" + dbResult);\n                 } else {\n-                    getDatabase().createCollection(collName, dbCapOpts);\n-                    LOG.debug(\"Created capped MongoCollection (\" + collName + \") with opts \" + dbCapOpts);\n+                    LOG.warn(\"MongoCollection already exists with same name(\" + collName\n+                             + \") and is not capped; not creating capped version!\");\n                 }\n+            } else {\n+                getDatabase().createCollection(collName, dbCapOpts);\n+                LOG.debug(\"Created capped MongoCollection (\" + collName + \") with opts \" + dbCapOpts);\n             }\n         }\n     }\n+}\n \n-    @Override\n-    public void enableDocumentValidation() {\n-        for (final MappedClass mc : mapper.getMappedClasses()) {\n-            process(mc, mc.getAnnotation(Validation.class));\n-        }\n+@Override\n+public void enableDocumentValidation() {\n+    for (final MappedClass mc : mapper.getMappedClasses()) {\n+        process(mc, mc.getAnnotation(Validation.class));\n     }\n+}\n \n-    @Override\n-    public void ensureIndexes() {\n-        if (mapper.getMappedClasses().isEmpty()) {\n-            Sofia.logNoMappedClasses();\n-        }\n-        for (final MappedClass mc : mapper.getMappedClasses()) {\n-            if (mc.getEntityAnnotation() != null) {\n-                indexHelper.createIndex(getCollection(mc.getType()), mc);\n-            }\n+@Override\n+public void ensureIndexes() {\n+    if (mapper.getMappedClasses().isEmpty()) {\n+        Sofia.logNoMappedClasses();\n+    }\n+    for (final MappedClass mc : mapper.getMappedClasses()) {\n+        if (mc.getEntityAnnotation() != null) {\n+            indexHelper.createIndex(getCollection(mc.getType()), mc);\n         }\n     }\n+}\n \n-    @Override\n-    public <T> void ensureIndexes(final Class<T> clazz) {\n-        indexHelper.createIndex(getCollection(clazz), mapper.getMappedClass(clazz));\n-    }\n+@Override\n+public <T> void ensureIndexes(final Class<T> clazz) {\n+    indexHelper.createIndex(getCollection(clazz), mapper.getMappedClass(clazz));\n+}\n \n-    @Override\n-    public <T, V> Query<T> get(final Class<T> clazz, final Iterable<V> ids) {\n-        return find(clazz).disableValidation().filter(\"_id\" + \" in\", ids).enableValidation();\n-    }\n+@Override\n+public <T, V> Query<T> get(final Class<T> clazz, final Iterable<V> ids) {\n+    return find(clazz).disableValidation().filter(\"_id\" + \" in\", ids).enableValidation();\n+}\n \n-    @Override\n-    public <T> T getByKey(final Class<T> clazz, final Key<T> key) {\n-        final String collectionName = mapper.getMappedClass(clazz).getCollectionName();\n-        final String keyCollection = mapper.updateCollection(key);\n-        if (!collectionName.equals(keyCollection)) {\n-            throw new RuntimeException(\"collection names don't match for key and class: \" + collectionName + \" != \" + keyCollection);\n-        }\n+@Override\n+public <T> T getByKey(final Class<T> clazz, final Key<T> key) {\n+    final String collectionName = mapper.getMappedClass(clazz).getCollectionName();\n+    final String keyCollection = mapper.updateCollection(key);\n+    if (!collectionName.equals(keyCollection)) {\n+        throw new RuntimeException(\"collection names don't match for key and class: \" + collectionName + \" != \" + keyCollection);\n+    }\n \n-        Object id = key.getId();\n-        if (id instanceof Document) {\n-            ((Document) id).remove(mapper.getOptions().getDiscriminatorKey());\n-        }\n-        return find(clazz).filter(\"_id\", id)\n-                          .first(new FindOptions().limit(1));\n+    Object id = key.getId();\n+    if (id instanceof Document) {\n+        ((Document) id).remove(mapper.getOptions().getDiscriminatorKey());\n     }\n+    return find(clazz).filter(\"_id\", id)\n+                      .first(new FindOptions().limit(1));\n+}\n \n-    @Override\n-    @SuppressWarnings({\"rawtypes\", \"unchecked\"})\n-    public <T> List<T> getByKeys(final Class<T> clazz, final Iterable<Key<T>> keys) {\n+@Override\n+@SuppressWarnings({\"rawtypes\", \"unchecked\"})\n+public <T> List<T> getByKeys(final Class<T> clazz, final Iterable<Key<T>> keys) {\n \n-        final Map<String, List<Key>> kindMap = new HashMap<>();\n-        final List<T> entities = new ArrayList<>();\n-        for (final Key<?> key : keys) {\n-            mapper.updateCollection(key);\n+    final Map<String, List<Key>> kindMap = new HashMap<>();\n+    final List<T> entities = new ArrayList<>();\n+    for (final Key<?> key : keys) {\n+        mapper.updateCollection(key);\n \n-            if (kindMap.containsKey(key.getCollection())) {\n-                kindMap.get(key.getCollection()).add(key);\n-            } else {\n-                kindMap.put(key.getCollection(), new ArrayList<>(singletonList((Key) key)));\n-            }\n+        if (kindMap.containsKey(key.getCollection())) {\n+            kindMap.get(key.getCollection()).add(key);\n+        } else {\n+            kindMap.put(key.getCollection(), new ArrayList<>(singletonList((Key) key)));\n         }\n-        for (final Map.Entry<String, List<Key>> entry : kindMap.entrySet()) {\n-            final List<Key> kindKeys = entry.getValue();\n+    }\n+    for (final Map.Entry<String, List<Key>> entry : kindMap.entrySet()) {\n+        final List<Key> kindKeys = entry.getValue();\n \n-            final List<Object> objIds = new ArrayList<>();\n-            for (final Key key : kindKeys) {\n-                objIds.add(key.getId());\n-            }\n-            final List kindResults = find(entry.getKey()).disableValidation().filter(\"_id in\", objIds)\n-                                                         .execute()\n-                                                         .toList();\n-            entities.addAll(kindResults);\n+        final List<Object> objIds = new ArrayList<>();\n+        for (final Key key : kindKeys) {\n+            objIds.add(key.getId());\n         }\n-\n-        // TODO: order them based on the incoming Keys.\n-        return entities;\n+        final List kindResults = find(entry.getKey()).disableValidation().filter(\"_id in\", objIds)\n+                                                     .execute()\n+                                                     .toList();\n+        entities.addAll(kindResults);\n     }\n \n-    @Override\n-    public <T> List<T> getByKeys(final Iterable<Key<T>> keys) {\n-        return getByKeys(null, keys);\n-    }\n+    // TODO: order them based on the incoming Keys.\n+    return entities;\n+}\n \n-    public <T> MongoCollection<T> getCollection(final Class<T> type) {\n-        MappedClass mappedClass = mapper.getMappedClass(type);\n-        if (mappedClass == null) {\n-            throw new MappingException(Sofia.notMappable(type.getName()));\n-        }\n-        if (mappedClass.getCollectionName() == null) {\n-            throw new MappingException(Sofia.noMappedCollection(type.getName()));\n-        }\n+@Override\n+public <T> List<T> getByKeys(final Iterable<Key<T>> keys) {\n+    return getByKeys(null, keys);\n+}\n \n-        MongoCollection<T> collection = null;\n-        if (mappedClass.getEntityAnnotation() != null) {\n-            collection = getDatabase().getCollection(mappedClass.getCollectionName(), type);\n-            collection = enforceWriteConcern(collection, type, null);\n-        }\n-        return collection;\n+public <T> MongoCollection<T> getCollection(final Class<T> type) {\n+    MappedClass mappedClass = mapper.getMappedClass(type);\n+    if (mappedClass == null) {\n+        throw new MappingException(Sofia.notMappable(type.getName()));\n     }\n-\n-    @Override\n-    public MongoDatabase getDatabase() {\n-        return database;\n+    if (mappedClass.getCollectionName() == null) {\n+        throw new MappingException(Sofia.noMappedCollection(type.getName()));\n     }\n \n-    @Override\n-    @Deprecated\n-    // use mapper instead.\n-    public <T> Key<T> getKey(final T entity) {\n-        return mapper.getKey(entity);\n+    MongoCollection<T> collection = null;\n+    if (mappedClass.getEntityAnnotation() != null) {\n+        collection = getDatabase().getCollection(mappedClass.getCollectionName(), type);\n+        collection = enforceWriteConcern(collection, type, null);\n     }\n+    return collection;\n+}\n \n-    @Override\n-    public QueryFactory getQueryFactory() {\n-        return queryFactory;\n-    }\n+@Override\n+public MongoDatabase getDatabase() {\n+    return database;\n+}\n \n-    @Override\n-    public void setQueryFactory(final QueryFactory queryFactory) {\n-        this.queryFactory = queryFactory;\n-    }\n+@Override\n+@Deprecated\n+// use mapper instead.\n+public <T> Key<T> getKey(final T entity) {\n+    return mapper.getKey(entity);\n+}\n \n-    @Override\n-    public <T> T merge(final T entity) {\n-        return merge(entity, new InsertOneOptions());\n-    }\n+@Override\n+public QueryFactory getQueryFactory() {\n+    return queryFactory;\n+}\n \n-    @Override\n-    public <T> T merge(final T entity, final InsertOneOptions options) {\n-        final Object id = mapper.getId(entity);\n-        if (id == null) {\n-            throw new MappingException(\"Could not get id for \" + entity.getClass().getName());\n-        }\n+@Override\n+public void setQueryFactory(final QueryFactory queryFactory) {\n+    this.queryFactory = queryFactory;\n+}\n \n-        final Document document = mapper.toDocument(entity);\n-        document.remove(\"_id\");\n+@Override\n+public <T> T merge(final T entity) {\n+    return merge(entity, new InsertOneOptions());\n+}\n \n-        final MappedClass mc = mapper.getMappedClass(entity.getClass());\n-        final MongoCollection collection = getCollection(entity.getClass());\n+@Override\n+public <T> T merge(final T entity, final InsertOneOptions options) {\n+    final Object id = mapper.getId(entity);\n+    if (id == null) {\n+        throw new MappingException(\"Could not get id for \" + entity.getClass().getName());\n+    }\n \n-        final Query<T> query = (Query<T>) find(entity.getClass()).filter(\"_id\", id);\n-        if (!tryVersionedUpdate(collection, entity, options, mc)) {\n-            UpdateResult execute = query.update()\n-                                        .set(entity)\n-                                        .execute(new UpdateOptions().writeConcern(options.writeConcern()));\n-            if (execute.getModifiedCount() != 1) {\n-                throw new UpdateException(\"Nothing updated\");\n-            }\n-        }\n+    final Document document = mapper.toDocument(entity);\n+    document.remove(\"_id\");\n \n-        return query.first();\n-    }\n+    final MappedClass mc = mapper.getMappedClass(entity.getClass());\n+    final MongoCollection collection = getCollection(entity.getClass());\n \n-    @Override\n-    public <T> void merge(final T entity, final WriteConcern wc) {\n-        merge(entity, new InsertOneOptions().writeConcern(wc));\n+    final Query<T> query = (Query<T>) find(entity.getClass()).filter(\"_id\", id);\n+    if (!tryVersionedUpdate(collection, entity, options, mc)) {\n+        UpdateResult execute = query.update()\n+                                    .set(entity)\n+                                    .execute(new UpdateOptions().writeConcern(options.writeConcern()));\n+        if (execute.getModifiedCount() != 1) {\n+            throw new UpdateException(\"Nothing updated\");\n+        }\n     }\n \n-    @SuppressWarnings(\"unchecked\")\n-    public <T> Query<T> queryByExample(final T example) {\n-        final Class<T> type = (Class<T>) example.getClass();\n-        return newQuery(type, mapper.toDocument(example));\n-    }\n+    return query.first();\n+}\n \n-    @Override\n-    public <T> List<T> save(final List<T> entities) {\n-        return save(entities, new InsertManyOptions());\n-    }\n+@Override\n+public <T> void merge(final T entity, final WriteConcern wc) {\n+    merge(entity, new InsertOneOptions().writeConcern(wc));\n+}\n \n-    @Override\n-    @SuppressWarnings(\"unchecked\")\n-    public <T> List<T> save(final List<T> entities, final InsertManyOptions options) {\n-        if (entities.isEmpty()) {\n-            return List.of();\n-        }\n-        Class<?> first = entities.get(0).getClass();\n-        boolean allMatch = entities.stream().map(e -> e.getClass()).allMatch(c -> c.equals(first));\n+@SuppressWarnings(\"unchecked\")\n+public <T> Query<T> queryByExample(final T example) {\n+    final Class<T> type = (Class<T>) example.getClass();\n+    return newQuery(type, mapper.toDocument(example));\n+}\n \n-        if (allMatch) {\n-            MongoCollection<T> collection = (MongoCollection<T>) getCollection(entities.get(0).getClass());\n-            collection.insertMany(entities, options.getOptions());\n-        } else {\n-            InsertOneOptions insertOneOptions = new InsertOneOptions()\n-                                                    .bypassDocumentValidation(options.getBypassDocumentValidation())\n-                                                    .writeConcern(options.getWriteConcern());\n-            for (final T entity : entities) {\n-                save(entity, insertOneOptions);\n-            }\n-        }\n-        return entities;\n-    }\n+@Override\n+public <T> List<T> save(final List<T> entities) {\n+    return save(entities, new InsertManyOptions());\n+}\n \n-    @Override\n-    public <T> T save(final T entity) {\n-        save(entity, new InsertOneOptions());\n-        return entity;\n+@Override\n+@SuppressWarnings(\"unchecked\")\n+public <T> List<T> save(final List<T> entities, final InsertManyOptions options) {\n+    if (entities.isEmpty()) {\n+        return List.of();\n+    }\n+    Class<?> first = entities.get(0).getClass();\n+    boolean allMatch = entities.stream().map(e -> e.getClass()).allMatch(c -> c.equals(first));\n+\n+    if (allMatch) {\n+        MongoCollection<T> collection = (MongoCollection<T>) getCollection(entities.get(0).getClass());\n+        collection.insertMany(entities, options.getOptions());\n+    } else {\n+        InsertOneOptions insertOneOptions = new InsertOneOptions()\n+                                                .bypassDocumentValidation(options.getBypassDocumentValidation())\n+                                                .writeConcern(options.getWriteConcern());\n+        for (final T entity : entities) {\n+            save(entity, insertOneOptions);\n+        }\n     }\n+    return entities;\n+}\n \n-    @Override\n-    public <T> T save(final T entity, final InsertOneOptions options) {\n-        if (entity == null) {\n-            throw new UpdateException(\"Can not persist a null entity\");\n-        }\n+@Override\n+public <T> T save(final T entity) {\n+    save(entity, new InsertOneOptions());\n+    return entity;\n+}\n \n-        save(getCollection(entity.getClass()), entity, options);\n-        return entity;\n+@Override\n+public <T> T save(final T entity, final InsertOneOptions options) {\n+    if (entity == null) {\n+        throw new UpdateException(\"Can not persist a null entity\");\n     }\n \n-    public MongoCollection enforceWriteConcern(final MongoCollection collection, final Class type, final WriteConcern option) {\n-        WriteConcern applied = option != null ? option : mapper.getWriteConcern(type);\n-        return applied != null\n-               ? collection.withWriteConcern(applied)\n-               : collection;\n-    }\n+    save(getCollection(entity.getClass()), entity, options);\n+    return entity;\n+}\n+\n+public MongoCollection enforceWriteConcern(final MongoCollection collection, final Class type, final WriteConcern option) {\n+    WriteConcern applied = option != null ? option : mapper.getWriteConcern(type);\n+    return applied != null\n+           ? collection.withWriteConcern(applied)\n+           : collection;\n+}\n \n-    /**\n+/**\n      * Sets the Mapper this Datastore uses\n      *\n      * @param mapper the new Mapper\n      */\n-    public void setMapper(final Mapper mapper) {\n-        this.mapper = mapper;\n-    }\n+public void setMapper(final Mapper mapper) {\n+    this.mapper = mapper;\n+}\n \n-    @Override\n-    public AggregationPipeline createAggregation(final String collection, final Class<?> clazz) {\n-        return new AggregationPipelineImpl(this, getDatabase().getCollection(collection), clazz);\n-    }\n+@Override\n+public AggregationPipeline createAggregation(final String collection, final Class<?> clazz) {\n+    return new AggregationPipelineImpl(this, getDatabase().getCollection(collection), clazz);\n+}\n \n-    @Override\n-    public <T> Query<T> createQuery(final String collection, final Class<T> type) {\n-        return newQuery(type);\n-    }\n+@Override\n+public <T> Query<T> createQuery(final String collection, final Class<T> type) {\n+    return newQuery(type);\n+}\n \n-    @Override\n-    public <T> Query<T> createQuery(final Class<T> clazz, final Document q) {\n-        return newQuery(clazz, q);\n-    }\n+@Override\n+public <T> Query<T> createQuery(final Class<T> clazz, final Document q) {\n+    return newQuery(clazz, q);\n+}\n \n-    @Override\n-    public <T, V> DBRef createRef(final Class<T> clazz, final V id) {\n-        if (id == null) {\n-            throw new MappingException(\"Could not get id for \" + clazz.getName());\n-        }\n-        return new DBRef(getCollection(clazz).getNamespace().getCollectionName(), id);\n+@Override\n+public <T, V> DBRef createRef(final Class<T> clazz, final V id) {\n+    if (id == null) {\n+        throw new MappingException(\"Could not get id for \" + clazz.getName());\n     }\n+    return new DBRef(getCollection(clazz).getNamespace().getCollectionName(), id);\n+}\n \n-    @Override\n-    public <T> DBRef createRef(final T entity) {\n-        final Object id = mapper.getId(entity);\n-        if (id == null) {\n-            throw new MappingException(\"Could not get id for \" + entity.getClass().getName());\n-        }\n-        return createRef(entity.getClass(), id);\n+@Override\n+public <T> DBRef createRef(final T entity) {\n+    final Object id = mapper.getId(entity);\n+    if (id == null) {\n+        throw new MappingException(\"Could not get id for \" + entity.getClass().getName());\n     }\n+    return createRef(entity.getClass(), id);\n+}\n \n-    @Override\n-    public <T> UpdateOperations<T> createUpdateOperations(final Class<T> type, final Document ops) {\n-        final UpdateOpsImpl<T> upOps = (UpdateOpsImpl<T>) createUpdateOperations(type);\n-        upOps.setOps(ops);\n-        return upOps;\n-    }\n+@Override\n+public <T> UpdateOperations<T> createUpdateOperations(final Class<T> type, final Document ops) {\n+    final UpdateOpsImpl<T> upOps = (UpdateOpsImpl<T>) createUpdateOperations(type);\n+    upOps.setOps(ops);\n+    return upOps;\n+}\n \n-    @Override\n-    public <T> Query<T> find(final String collection) {\n-        return newQuery(mapper.getClassFromCollection(collection));\n-    }\n+@Override\n+public <T> Query<T> find(final String collection) {\n+    return newQuery(mapper.getClassFromCollection(collection));\n+}\n \n-    @Override\n-    public <T> void insert(final T entity) {\n-        insert(entity, new InsertOneOptions()\n-                           .writeConcern(mapper.getWriteConcern(entity.getClass())));\n-    }\n+@Override\n+public <T> void insert(final T entity) {\n+    insert(entity, new InsertOneOptions()\n+                       .writeConcern(mapper.getWriteConcern(entity.getClass())));\n+}\n \n-    @Override\n-    public <T> void insert(final T entity, final InsertOneOptions options) {\n-        insert(getCollection(entity.getClass()), entity, options);\n-    }\n+@Override\n+public <T> void insert(final T entity, final InsertOneOptions options) {\n+    insert(getCollection(entity.getClass()), entity, options);\n+}\n \n-    @Override\n-    public <T> void insert(final List<T> entities, final InsertManyOptions options) {\n-        if (!entities.isEmpty()) {\n-            Class<?> type = entities.get(0).getClass();\n-            MappedClass mappedClass = mapper.getMappedClass(type);\n-            final MongoCollection collection = getCollection(type);\n-            MappedField versionField = mappedClass.getVersionField();\n-            if (versionField != null) {\n-                for (final T entity : entities) {\n-                    setInitialVersion(versionField, entity);\n-                }\n+@Override\n+public <T> void insert(final List<T> entities, final InsertManyOptions options) {\n+    if (!entities.isEmpty()) {\n+        Class<?> type = entities.get(0).getClass();\n+        MappedClass mappedClass = mapper.getMappedClass(type);\n+        final MongoCollection collection = getCollection(type);\n+        MappedField versionField = mappedClass.getVersionField();\n+        if (versionField != null) {\n+            for (final T entity : entities) {\n+                setInitialVersion(versionField, entity);\n             }\n-\n-            enforceWriteConcern(collection, type, options.getWriteConcern())\n-                .insertMany(entities, options.getOptions());\n         }\n-    }\n \n-    @Override\n-    public <T> Query<T> queryByExample(final String collection, final T ex) {\n-        return queryByExample(ex);\n+        enforceWriteConcern(collection, type, options.getWriteConcern())\n+            .insertMany(entities, options.getOptions());\n     }\n+}\n+\n+@Override\n+public <T> Query<T> queryByExample(final String collection, final T ex) {\n+    return queryByExample(ex);\n+}\n+\n+protected <T> void insert(final MongoCollection collection, final T entity, final InsertOneOptions options) {\n+    setInitialVersion(mapper.getMappedClass(entity.getClass()).getVersionField(), entity);\n+    mapper.enforceWriteConcern(collection, entity.getClass())\n+          .insertOne(entity, options.getOptions());\n+}\n \n-    protected <T> void insert(final MongoCollection collection, final T entity, final InsertOneOptions options) {\n-        setInitialVersion(mapper.getMappedClass(entity.getClass()).getVersionField(), entity);\n-        mapper.enforceWriteConcern(collection, entity.getClass())\n-              .insertOne(entity, options.getOptions());\n+private <T> void save(final MongoCollection collection, final T entity, final InsertOneOptions options) {\n+    if (entity == null) {\n+        throw new UpdateException(\"Can not persist a null entity\");\n     }\n \n-    private <T> void save(final MongoCollection collection, final T entity, final InsertOneOptions options) {\n-        if (entity == null) {\n-            throw new UpdateException(\"Can not persist a null entity\");\n-        }\n+    final MappedClass mc = mapper.getMappedClass(entity.getClass());\n \n-        final MappedClass mc = mapper.getMappedClass(entity.getClass());\n+    if (!tryVersionedUpdate(collection, entity, options, mc)) {\n+        saveDocument(entity, collection, options);\n+    }\n+}\n \n-        if (!tryVersionedUpdate(collection, entity, options, mc)) {\n-            saveDocument(entity, collection, options);\n-        }\n+private <T> boolean tryVersionedUpdate(final MongoCollection collection, final T entity,\n+                                       final InsertOneOptions options, final MappedClass mc) {\n+    if (mc.getVersionField() == null) {\n+        return false;\n     }\n \n-    private <T> boolean tryVersionedUpdate(final MongoCollection collection, final T entity,\n-                                           final InsertOneOptions options, final MappedClass mc) {\n-        if (mc.getVersionField() == null) {\n-            return false;\n-        }\n+    MappedField idField = mc.getIdField();\n+    final Object idValue = idField.getFieldValue(entity);\n+    final MappedField versionField = mc.getVersionField();\n \n-        MappedField idField = mc.getIdField();\n-        final Object idValue = idField.getFieldValue(entity);\n-        final MappedField versionField = mc.getVersionField();\n-\n-        Long oldVersion = (Long) versionField.getFieldValue(entity);\n-        long newVersion = oldVersion == null ? 1L : oldVersion + 1;\n-\n-        if (newVersion == 1) {\n-            try {\n-                updateVersion(entity, versionField, newVersion);\n-                options.apply(collection)\n-                       .insertOne(entity, options.getOptions());\n-            } catch (MongoWriteException e) {\n-                updateVersion(entity, versionField, oldVersion);\n-                throw new ConcurrentModificationException(format(\"Entity of class %s (id='%s') was concurrently saved.\",\n-                    entity.getClass().getName(), idValue));\n-            }\n-        } else if (idValue != null) {\n-            final UpdateResult res = find(collection.getNamespace().getCollectionName())\n-                                         .filter(\"_id\", idValue)\n-                                         .filter(versionField.getMappedFieldName(), oldVersion)\n-                                         .update()\n-                                         .set(entity)\n-                                         .execute(new UpdateOptions()\n-                                                      .bypassDocumentValidation(options.getBypassDocumentValidation())\n-                                                      .writeConcern(options.getWriteConcern()));\n-\n-            if (res.getModifiedCount() != 1) {\n-                throw new ConcurrentModificationException(format(\"Entity of class %s (id='%s',version='%d') was concurrently updated.\",\n-                    entity.getClass().getName(), idValue, oldVersion));\n-            }\n+    Long oldVersion = (Long) versionField.getFieldValue(entity);\n+    long newVersion = oldVersion == null ? 1L : oldVersion + 1;\n+\n+    if (newVersion == 1) {\n+        try {\n             updateVersion(entity, versionField, newVersion);\n+            options.apply(collection)\n+                   .insertOne(entity, options.getOptions());\n+        } catch (MongoWriteException e) {\n+            updateVersion(entity, versionField, oldVersion);\n+            throw new ConcurrentModificationException(format(\"Entity of class %s (id='%s') was concurrently saved.\",\n+                entity.getClass().getName(), idValue));\n         }\n-\n-        return true;\n+    } else if (idValue != null) {\n+        final UpdateResult res = find(collection.getNamespace().getCollectionName())\n+                                     .filter(\"_id\", idValue)\n+                                     .filter(versionField.getMappedFieldName(), oldVersion)\n+                                     .update()\n+                                     .set(entity)\n+                                     .execute(new UpdateOptions()\n+                                                  .bypassDocumentValidation(options.getBypassDocumentValidation())\n+                                                  .writeConcern(options.getWriteConcern()));\n+\n+        if (res.getModifiedCount() != 1) {\n+            throw new ConcurrentModificationException(format(\"Entity of class %s (id='%s',version='%d') was concurrently updated.\",\n+                entity.getClass().getName(), idValue, oldVersion));\n+        }\n+        updateVersion(entity, versionField, newVersion);\n     }\n \n-    protected <T> void saveDocument(final T entity,\n-                                  final MongoCollection<T> collection,\n-                                  final InsertOneOptions options) {\n-        Object id = mapper.getMappedClass(entity.getClass()).getIdField().getFieldValue(entity);\n-        if (id == null) {\n-            if (options.clientSession() == null) {\n-                options.apply(collection)\n-                       .insertOne(entity, options.getOptions());\n-            } else {\n-                options.apply(collection)\n-                       .insertOne(options.clientSession(), entity, options.getOptions());\n-            }\n+    return true;\n+}\n+\n+protected <T> void saveDocument(final T entity,\n+                              final MongoCollection<T> collection,\n+                              final InsertOneOptions options) {\n+    Object id = mapper.getMappedClass(entity.getClass()).getIdField().getFieldValue(entity);\n+    if (id == null) {\n+        if (options.clientSession() == null) {\n+            options.apply(collection)\n+                   .insertOne(entity, options.getOptions());\n         } else {\n-            ReplaceOptions updateOptions = new ReplaceOptions()\n-                                               .bypassDocumentValidation(options.getBypassDocumentValidation())\n-                                               .upsert(true);\n-            MongoCollection<T> updated = collection;\n-            if (options.writeConcern() != null) {\n-                updated = collection.withWriteConcern(options.writeConcern());\n-            }\n-            if (options.clientSession() == null) {\n-                updated.replaceOne(new Document(\"_id\", id), entity, updateOptions);\n-            } else {\n-                updated.replaceOne(options.clientSession(), new Document(\"_id\", id), entity, updateOptions);\n-            }\n+            options.apply(collection)\n+                   .insertOne(options.clientSession(), entity, options.getOptions());\n+        }\n+    } else {\n+        ReplaceOptions updateOptions = new ReplaceOptions()\n+                                           .bypassDocumentValidation(options.getBypassDocumentValidation())\n+                                           .upsert(true);\n+        MongoCollection<T> updated = collection;\n+        if (options.writeConcern() != null) {\n+            updated = collection.withWriteConcern(options.writeConcern());\n+        }\n+        if (options.clientSession() == null) {\n+            updated.replaceOne(new Document(\"_id\", id), entity, updateOptions);\n+        } else {\n+            updated.replaceOne(options.clientSession(), new Document(\"_id\", id), entity, updateOptions);\n         }\n     }\n+}\n \n-    private <T> void updateVersion(final T entity, final MappedField field, final Long newVersion) {\n-        field.setFieldValue(entity, newVersion);\n-    }\n+private <T> void updateVersion(final T entity, final MappedField field, final Long newVersion) {\n+    field.setFieldValue(entity, newVersion);\n+}\n \n-    private <T> void setInitialVersion(final MappedField versionField, final T entity) {\n-        if (versionField != null) {\n-            Object value = versionField.getFieldValue(entity);\n-            if (value != null && !value.equals(0)) {\n-                throw new ValidationException(Sofia.versionManuallySet());\n-            } else {\n-                versionField.setFieldValue(entity, 1L);\n-            }\n+private <T> void setInitialVersion(final MappedField versionField, final T entity) {\n+    if (versionField != null) {\n+        Object value = versionField.getFieldValue(entity);\n+        if (value != null && !value.equals(0)) {\n+            throw new ValidationException(Sofia.versionManuallySet());\n+        } else {\n+            versionField.setFieldValue(entity, 1L);\n         }\n     }\n+}\n \n-    protected <T> Query<T> newQuery(final Class<T> type, final Document query) {\n-        return getQueryFactory().createQuery(this, type, query);\n-    }\n+protected <T> Query<T> newQuery(final Class<T> type, final Document query) {\n+    return getQueryFactory().createQuery(this, type, query);\n+}\n \n-    protected <T> Query<T> newQuery(final Class<T> type) {\n-        return getQueryFactory().createQuery(this, type);\n-    }\n+protected <T> Query<T> newQuery(final Class<T> type) {\n+    return getQueryFactory().createQuery(this, type);\n+}\n \n-    void process(final MappedClass mc, final Validation validation) {\n-        if (validation != null) {\n-            String collectionName = mc.getCollectionName();\n-            try {\n-                getDatabase().runCommand(new Document(\"collMod\", collectionName)\n-                                             .append(\"validator\", parse(validation.value()))\n-                                             .append(\"validationLevel\", validation.level().getValue())\n-                                             .append(\"validationAction\", validation.action().getValue()));\n-            } catch (MongoCommandException e) {\n-                if (e.getCode() == 26) {\n-                    getDatabase().createCollection(collectionName,\n-                        new CreateCollectionOptions()\n-                            .validationOptions(new ValidationOptions()\n-                                                   .validator(parse(validation.value()))\n-                                                   .validationLevel(validation.level())\n-                                                   .validationAction(validation.action())));\n-                } else {\n-                    throw e;\n-                }\n+void process(final MappedClass mc, final Validation validation) {\n+    if (validation != null) {\n+        String collectionName = mc.getCollectionName();\n+        try {\n+            getDatabase().runCommand(new Document(\"collMod\", collectionName)\n+                                         .append(\"validator\", parse(validation.value()))\n+                                         .append(\"validationLevel\", validation.level().getValue())\n+                                         .append(\"validationAction\", validation.action().getValue()));\n+        } catch (MongoCommandException e) {\n+            if (e.getCode() == 26) {\n+                getDatabase().createCollection(collectionName,\n+                    new CreateCollectionOptions()\n+                        .validationOptions(new ValidationOptions()\n+                                               .validator(parse(validation.value()))\n+                                               .validationLevel(validation.level())\n+                                               .validationAction(validation.action())));\n+            } else {\n+                throw e;\n             }\n         }\n     }\n }\n+}\n",
+            "diff_size": 498
+        }
+    ]
+}

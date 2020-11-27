@@ -1,0 +1,58 @@
+{
+    "error_id": "377",
+    "information": {
+        "errors": [
+            {
+                "line": "16",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.runtime.api.impl;\n\nimport java.util.List;\nimport java.util.Map;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/377/MappingAwareCallActivityBehavior.java\nindex 09d855c591..f88644ba93 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/377/MappingAwareCallActivityBehavior.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.impl;\n \n import java.util.List;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/377/MappingAwareCallActivityBehavior.java\nindex 09d855c591..feddad24c5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/377/MappingAwareCallActivityBehavior.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.impl;\n \n import java.util.List;\n@@ -37,7 +38,7 @@ public class MappingAwareCallActivityBehavior extends CallActivityBehavior {\n                                             VariablesMappingProvider mappingProvider,\n                                             ProcessVariablesInitiator processVariablesInitiator) {\n         super(processDefinitionKey,\n-              mapExceptions);\n+                mapExceptions);\n         this.mappingProvider = mappingProvider;\n         this.processVariablesInitiator = processVariablesInitiator;\n     }\n@@ -47,7 +48,7 @@ public class MappingAwareCallActivityBehavior extends CallActivityBehavior {\n                                             VariablesMappingProvider mappingProvider,\n                                             ProcessVariablesInitiator processVariablesInitiator) {\n         super(processDefinitionExpression,\n-              mapExceptions);\n+                mapExceptions);\n         this.mappingProvider = mappingProvider;\n         this.processVariablesInitiator = processVariablesInitiator;\n     }\n@@ -58,13 +59,13 @@ public class MappingAwareCallActivityBehavior extends CallActivityBehavior {\n \n         Map<String, Object> inputVariables = mappingProvider.calculateInputVariables(execution);\n         return processVariablesInitiator.calculateVariablesFromExtensionFile(processDefinition,\n-                                                                                                  inputVariables);\n+                inputVariables);\n     }\n \n     @Override\n     protected Map<String, Object> calculateOutBoundVariables(DelegateExecution execution,\n                                                              Map<String, Object> availableVariables) {\n         return mappingProvider.calculateOutPutVariables(buildMappingExecutionContext(execution),\n-                                                        availableVariables);\n+                availableVariables);\n     }\n }\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/377/MappingAwareCallActivityBehavior.java\nindex 09d855c591..31aab441e5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/377/MappingAwareCallActivityBehavior.java\n@@ -17,7 +17,6 @@ package org.activiti.runtime.api.impl;\n \n import java.util.List;\n import java.util.Map;\n-\n import org.activiti.bpmn.model.MapExceptionEntry;\n import org.activiti.engine.delegate.DelegateExecution;\n import org.activiti.engine.delegate.Expression;\n@@ -30,41 +29,34 @@ import static org.activiti.runtime.api.impl.MappingExecutionContext.buildMapping\n public class MappingAwareCallActivityBehavior extends CallActivityBehavior {\n \n     private VariablesMappingProvider mappingProvider;\n+\n     private ProcessVariablesInitiator processVariablesInitiator;\n \n     public MappingAwareCallActivityBehavior(String processDefinitionKey,\n                                             List<MapExceptionEntry> mapExceptions,\n-                                            VariablesMappingProvider mappingProvider,\n-                                            ProcessVariablesInitiator processVariablesInitiator) {\n-        super(processDefinitionKey,\n-              mapExceptions);\n-        this.mappingProvider = mappingProvider;\n-        this.processVariablesInitiator = processVariablesInitiator;\n+                                            VariablesMappingProvider mappingProvider, ProcessVariablesInitiator processVariablesInitiator) {\n+    super(processDefinitionKey, mapExceptions);\n+    this.mappingProvider = mappingProvider;\n+    this.processVariablesInitiator = processVariablesInitiator;\n     }\n \n     public MappingAwareCallActivityBehavior(Expression processDefinitionExpression,\n                                             List<MapExceptionEntry> mapExceptions,\n-                                            VariablesMappingProvider mappingProvider,\n-                                            ProcessVariablesInitiator processVariablesInitiator) {\n-        super(processDefinitionExpression,\n-              mapExceptions);\n-        this.mappingProvider = mappingProvider;\n-        this.processVariablesInitiator = processVariablesInitiator;\n+                                            VariablesMappingProvider mappingProvider, ProcessVariablesInitiator processVariablesInitiator) {\n+    super(processDefinitionExpression, mapExceptions);\n+    this.mappingProvider = mappingProvider;\n+    this.processVariablesInitiator = processVariablesInitiator;\n     }\n \n     @Override\n-    protected Map<String, Object> calculateInboundVariables(DelegateExecution execution,\n-                                                            ProcessDefinition processDefinition) {\n-\n-        Map<String, Object> inputVariables = mappingProvider.calculateInputVariables(execution);\n-        return processVariablesInitiator.calculateVariablesFromExtensionFile(processDefinition,\n-                                                                                                  inputVariables);\n+    protected Map<String, Object> calculateInboundVariables(DelegateExecution execution, ProcessDefinition processDefinition) {\n+    Map<String, Object> inputVariables = mappingProvider.calculateInputVariables(execution);\n+    return processVariablesInitiator.calculateVariablesFromExtensionFile(processDefinition, inputVariables);\n     }\n \n     @Override\n-    protected Map<String, Object> calculateOutBoundVariables(DelegateExecution execution,\n-                                                             Map<String, Object> availableVariables) {\n+    protected Map<String, Object> calculateOutBoundVariables(DelegateExecution execution, Map<String, Object> availableVariables) {\n         return mappingProvider.calculateOutPutVariables(buildMappingExecutionContext(execution),\n                                                         availableVariables);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 23
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/377/MappingAwareCallActivityBehavior.java\nindex 09d855c591..f88644ba93 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/377/MappingAwareCallActivityBehavior.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.impl;\n \n import java.util.List;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/377/MappingAwareCallActivityBehavior.java\nindex 09d855c591..f88644ba93 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/377/MappingAwareCallActivityBehavior.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/377/MappingAwareCallActivityBehavior.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.impl;\n \n import java.util.List;\n",
+            "diff_size": 1
+        }
+    ]
+}

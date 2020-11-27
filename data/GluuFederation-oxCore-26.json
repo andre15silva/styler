@@ -1,0 +1,172 @@
+{
+    "error_id": "26",
+    "information": {
+        "errors": [
+            {
+                "line": "44",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 155).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "            } else {\n                // default maxAttempts and timeouts are taken from jedis constants\n                pool = new JedisCluster(hosts(getRedisConfiguration().getServers()), 2000, 2000, 5, redisConfiguration.getDecryptedPassword(), poolConfig);\n            }\n\n            testConnection();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 155).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/26/RedisClusterProvider.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/26/RedisClusterProvider.java\nindex b35c78251d..5f700ab71f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/26/RedisClusterProvider.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/26/RedisClusterProvider.java\n@@ -41,7 +41,8 @@ public class RedisClusterProvider extends AbstractRedisProvider {\n                 pool = new JedisCluster(hosts(getRedisConfiguration().getServers()), poolConfig);\n             } else {\n                 // default maxAttempts and timeouts are taken from jedis constants\n-                pool = new JedisCluster(hosts(getRedisConfiguration().getServers()), 2000, 2000, 5, redisConfiguration.getDecryptedPassword(), poolConfig);\n+                pool = new JedisCluster(hosts(getRedisConfiguration().getServers()), 2000, 2000, 5, redisConfiguration.getDecryptedPassword(),\n+                    poolConfig);\n             }\n \n             testConnection();\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 155).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/26/RedisClusterProvider.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/26/RedisClusterProvider.java\nindex b35c78251d..744c18c8dc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/26/RedisClusterProvider.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/26/RedisClusterProvider.java\n@@ -115,4 +115,4 @@ public class RedisClusterProvider extends AbstractRedisProvider {\n     public void clear() {\n         LOG.trace(\"clear not allowed for cluster deployments\");\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 155).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/26/RedisClusterProvider.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/codebuff/26/RedisClusterProvider.java\nindex b35c78251d..e2da96b230 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/26/RedisClusterProvider.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/codebuff/26/RedisClusterProvider.java\n@@ -4,12 +4,10 @@ import java.io.IOException;\n import java.io.Serializable;\n import java.util.HashSet;\n import java.util.Set;\n-\n import org.apache.commons.lang.SerializationUtils;\n import org.apache.commons.lang.StringUtils;\n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n-\n import redis.clients.jedis.HostAndPort;\n import redis.clients.jedis.JedisCluster;\n import redis.clients.jedis.JedisPoolConfig;\n@@ -19,10 +17,11 @@ import redis.clients.jedis.JedisPoolConfig;\n  *\n  * @author yuriyz\n  */\n+\n+\n public class RedisClusterProvider extends AbstractRedisProvider {\n \n     private static final Logger LOG = LoggerFactory.getLogger(RedisClusterProvider.class);\n-\n     private JedisCluster pool;\n \n     public RedisClusterProvider(RedisConfiguration redisConfiguration) {\n@@ -32,7 +31,6 @@ public class RedisClusterProvider extends AbstractRedisProvider {\n     public void create() {\n         try {\n             LOG.debug(\"Starting RedisClusterProvider ... configuration:\" + getRedisConfiguration());\n-\n             JedisPoolConfig poolConfig = new JedisPoolConfig();\n             poolConfig.setMaxTotal(1000);\n             poolConfig.setMinIdle(2);\n@@ -43,7 +41,6 @@ public class RedisClusterProvider extends AbstractRedisProvider {\n                 // default maxAttempts and timeouts are taken from jedis constants\n                 pool = new JedisCluster(hosts(getRedisConfiguration().getServers()), 2000, 2000, 5, redisConfiguration.getDecryptedPassword(), poolConfig);\n             }\n-\n             testConnection();\n             LOG.debug(\"RedisClusterProvider started.\");\n         } catch (Exception e) {\n@@ -54,7 +51,6 @@ public class RedisClusterProvider extends AbstractRedisProvider {\n \n     public static Set<HostAndPort> hosts(String servers) {\n         final String[] serverWithPorts = StringUtils.split(servers.trim(), \",\");\n-\n         Set<HostAndPort> set = new HashSet<HostAndPort>();\n         for (String serverWithPort : serverWithPorts) {\n             final String[] split = serverWithPort.trim().split(\":\");\n@@ -62,19 +58,18 @@ public class RedisClusterProvider extends AbstractRedisProvider {\n             int port = Integer.parseInt(split[1].trim());\n             set.add(new HostAndPort(host, port));\n         }\n+\n         return set;\n     }\n \n     public void destroy() {\n         LOG.debug(\"Destroying RedisClusterProvider\");\n-\n         try {\n             pool.close();\n         } catch (IOException e) {\n             LOG.error(\"Failed to destroy RedisClusterProvider\", e);\n             return;\n         }\n-\n         LOG.debug(\"Destroyed RedisClusterProvider\");\n     }\n \n@@ -90,12 +85,15 @@ public class RedisClusterProvider extends AbstractRedisProvider {\n         if (value != null && value.length > 0) {\n             deserialized = SerializationUtils.deserialize(value);\n         }\n+\n         return deserialized;\n     }\n \n     @Override\n     public void put(int expirationInSeconds, String key, Object object) {\n-        String status = pool.setex(key.getBytes(), expirationInSeconds, SerializationUtils.serialize((Serializable) object));\n+        String status = pool.setex(key.getBytes(),\n+            expirationInSeconds,\n+                SerializationUtils.serialize((Serializable) object));\n         LOG.trace(\"put - key: \" + key + \", status: \" + status);\n     }\n \n@@ -115,4 +113,5 @@ public class RedisClusterProvider extends AbstractRedisProvider {\n     public void clear() {\n         LOG.trace(\"clear not allowed for cluster deployments\");\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "45",
+                    "column": "21",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "21",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "37",
+                    "severity": "error",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "69",
+                    "severity": "error",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "82",
+                    "severity": "error",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "82",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "84",
+                    "severity": "error",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "86",
+                    "severity": "error",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "87",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "92",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "97",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "47",
+                    "column": "17",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/26/RedisClusterProvider.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/26/RedisClusterProvider.java\nindex b35c78251d..72d3d51db3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/26/RedisClusterProvider.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/26/RedisClusterProvider.java\n@@ -41,7 +41,10 @@ public class RedisClusterProvider extends AbstractRedisProvider {\n                 pool = new JedisCluster(hosts(getRedisConfiguration().getServers()), poolConfig);\n             } else {\n                 // default maxAttempts and timeouts are taken from jedis constants\n-                pool = new JedisCluster(hosts(getRedisConfiguration().getServers()), 2000, 2000, 5, redisConfiguration.getDecryptedPassword(), poolConfig);\n+\n+                pool=newJedisCluster( hosts (getRedisConfiguration(). getServers ( ) ),2000,2000,5\n+\n+                , redisConfiguration.getDecryptedPassword(), poolConfig);\n             }\n \n             testConnection();\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 155).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

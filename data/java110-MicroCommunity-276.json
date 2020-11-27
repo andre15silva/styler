@@ -1,0 +1,111 @@
+{
+    "error_id": "276",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 166).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<FeeAttrDto> feeAttrs = BeanConvertUtil.covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n\n\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/276/FeeAttrInnerServiceSMOImpl.java\nindex b0e5c67341..6f6d9adc53 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/276/FeeAttrInnerServiceSMOImpl.java\n@@ -40,33 +40,38 @@ public class FeeAttrInnerServiceSMOImpl extends BaseServiceSMO implements IFeeAt\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             feeAttrDto.setPage((page - 1) * feeAttrDto.getRow());\n-        }\n+        } List<FeeAttrDto>feeAttrs\n \n-        List<FeeAttrDto> feeAttrs = BeanConvertUtil.covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n \n \n+        =\n \n-        return feeAttrs;\n-    }\n+        BeanConvertUtil .covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n \n \n-    @Override\n-    public int queryFeeAttrsCount(@RequestBody FeeAttrDto feeAttrDto) {\n-        return feeAttrServiceDaoImpl.queryFeeAttrsCount(BeanConvertUtil.beanCovertMap(feeAttrDto));    }\n \n-    public IFeeAttrServiceDao getFeeAttrServiceDaoImpl() {\n-        return feeAttrServiceDaoImpl;\n-    }\n+          return feeAttrs;\n+      }\n+\n+\n+      @Override\n+      public int queryFeeAttrsCount(@RequestBody FeeAttrDto feeAttrDto) {\n+          return feeAttrServiceDaoImpl.queryFeeAttrsCount(BeanConvertUtil.beanCovertMap(feeAttrDto));    }\n+\n+      public IFeeAttrServiceDao getFeeAttrServiceDaoImpl() {\n+          return feeAttrServiceDaoImpl;\n+      }\n \n-    public void setFeeAttrServiceDaoImpl(IFeeAttrServiceDao feeAttrServiceDaoImpl) {\n-        this.feeAttrServiceDaoImpl = feeAttrServiceDaoImpl;\n-    }\n+      public void setFeeAttrServiceDaoImpl(IFeeAttrServiceDao feeAttrServiceDaoImpl) {\n+          this.feeAttrServiceDaoImpl = feeAttrServiceDaoImpl;\n+      }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+      public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+          return userInnerServiceSMOImpl;\n+      }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n-}\n+      public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+          this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+      }\n+  }\n+  \n\\ No newline at end of file\n",
+            "diff_size": 30
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/276/FeeAttrInnerServiceSMOImpl.java\nindex b0e5c67341..8dca8e8e0a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/276/FeeAttrInnerServiceSMOImpl.java\n@@ -25,48 +25,49 @@ import java.util.List;\n @RestController\n public class FeeAttrInnerServiceSMOImpl extends BaseServiceSMO implements IFeeAttrInnerServiceSMO {\n \n-    @Autowired\n-    private IFeeAttrServiceDao feeAttrServiceDaoImpl;\n+  @Autowired\n+  private IFeeAttrServiceDao feeAttrServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<FeeAttrDto> queryFeeAttrs(@RequestBody  FeeAttrDto feeAttrDto) {\n+  @Override\n+  public List<FeeAttrDto> queryFeeAttrs(@RequestBody FeeAttrDto feeAttrDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = feeAttrDto.getPage();\n+    int page = feeAttrDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            feeAttrDto.setPage((page - 1) * feeAttrDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      feeAttrDto.setPage((page - 1) * feeAttrDto.getRow());\n+    }\n \n-        List<FeeAttrDto> feeAttrs = BeanConvertUtil.covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n+    List<FeeAttrDto> feeAttrs =\n+      BeanConvertUtil.covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n \n \n+    return feeAttrs;\n+  }\n \n-        return feeAttrs;\n-    }\n \n+  @Override\n+  public int queryFeeAttrsCount(@RequestBody FeeAttrDto feeAttrDto) {\n+    return feeAttrServiceDaoImpl.queryFeeAttrsCount(BeanConvertUtil.beanCovertMap(feeAttrDto));\n+  }\n \n-    @Override\n-    public int queryFeeAttrsCount(@RequestBody FeeAttrDto feeAttrDto) {\n-        return feeAttrServiceDaoImpl.queryFeeAttrsCount(BeanConvertUtil.beanCovertMap(feeAttrDto));    }\n+  public IFeeAttrServiceDao getFeeAttrServiceDaoImpl() {\n+    return feeAttrServiceDaoImpl;\n+  }\n \n-    public IFeeAttrServiceDao getFeeAttrServiceDaoImpl() {\n-        return feeAttrServiceDaoImpl;\n-    }\n+  public void setFeeAttrServiceDaoImpl(IFeeAttrServiceDao feeAttrServiceDaoImpl) {\n+    this.feeAttrServiceDaoImpl = feeAttrServiceDaoImpl;\n+  }\n \n-    public void setFeeAttrServiceDaoImpl(IFeeAttrServiceDao feeAttrServiceDaoImpl) {\n-        this.feeAttrServiceDaoImpl = feeAttrServiceDaoImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n-\n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 37
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 166).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/276/FeeAttrInnerServiceSMOImpl.java\nindex b0e5c67341..f0e7947026 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/276/FeeAttrInnerServiceSMOImpl.java\n@@ -44,9 +44,7 @@ public class FeeAttrInnerServiceSMOImpl extends BaseServiceSMO implements IFeeAt\n \n         List<FeeAttrDto> feeAttrs = BeanConvertUtil.covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n \n-\n-\n-        return feeAttrs;\n+return feeAttrs;\n     }\n \n \n@@ -69,4 +67,4 @@ public class FeeAttrInnerServiceSMOImpl extends BaseServiceSMO implements IFeeAt\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 166).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/276/FeeAttrInnerServiceSMOImpl.java\nindex b0e5c67341..e2cf93972f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/276/FeeAttrInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.fee.smo.impl;\n \n-\n import com.java110.utils.util.BeanConvertUtil;\n import com.java110.fee.dao.IFeeAttrServiceDao;\n import com.java110.core.base.smo.BaseServiceSMO;\n@@ -11,7 +10,6 @@ import com.java110.dto.fee.FeeAttrDto;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -22,6 +20,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class FeeAttrInnerServiceSMOImpl extends BaseServiceSMO implements IFeeAttrInnerServiceSMO {\n \n@@ -32,27 +32,24 @@ public class FeeAttrInnerServiceSMOImpl extends BaseServiceSMO implements IFeeAt\n     private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n     @Override\n-    public List<FeeAttrDto> queryFeeAttrs(@RequestBody  FeeAttrDto feeAttrDto) {\n+    public List<FeeAttrDto> queryFeeAttrs(@RequestBody FeeAttrDto feeAttrDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = feeAttrDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             feeAttrDto.setPage((page - 1) * feeAttrDto.getRow());\n         }\n \n         List<FeeAttrDto> feeAttrs = BeanConvertUtil.covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n \n-\n-\n         return feeAttrs;\n     }\n \n \n     @Override\n     public int queryFeeAttrsCount(@RequestBody FeeAttrDto feeAttrDto) {\n-        return feeAttrServiceDaoImpl.queryFeeAttrsCount(BeanConvertUtil.beanCovertMap(feeAttrDto));    }\n+        return feeAttrServiceDaoImpl.queryFeeAttrsCount(BeanConvertUtil.beanCovertMap(feeAttrDto));\n+    }\n \n     public IFeeAttrServiceDao getFeeAttrServiceDaoImpl() {\n         return feeAttrServiceDaoImpl;\n@@ -69,4 +66,4 @@ public class FeeAttrInnerServiceSMOImpl extends BaseServiceSMO implements IFeeAt\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "89",
+                    "severity": "error",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "55",
+                    "severity": "error",
+                    "message": "';' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "55",
+                    "severity": "error",
+                    "message": "';' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/276/FeeAttrInnerServiceSMOImpl.java\nindex b0e5c67341..95666749f3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/276/FeeAttrInnerServiceSMOImpl.java\n@@ -41,12 +41,8 @@ public class FeeAttrInnerServiceSMOImpl extends BaseServiceSMO implements IFeeAt\n         if (page != PageDto.DEFAULT_PAGE) {\n             feeAttrDto.setPage((page - 1) * feeAttrDto.getRow());\n         }\n-\n-        List<FeeAttrDto> feeAttrs = BeanConvertUtil.covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n-\n-\n-\n-        return feeAttrs;\n+        List<FeeAttrDto> feeAttrs = BeanConvertUtil.covertBeanList(feeAttrServiceDaoImpl. getFeeAttrInfo(BeanConvertUtil\n+        .beanCovertMap(feeAttrDto)),FeeAttrDto.class) ;returnfeeAttrs;\n     }\n \n \n",
+            "diff_size": 6
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/276/FeeAttrInnerServiceSMOImpl.java\nindex b0e5c67341..6f6d9adc53 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/276/FeeAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/276/FeeAttrInnerServiceSMOImpl.java\n@@ -40,33 +40,38 @@ public class FeeAttrInnerServiceSMOImpl extends BaseServiceSMO implements IFeeAt\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             feeAttrDto.setPage((page - 1) * feeAttrDto.getRow());\n-        }\n+        } List<FeeAttrDto>feeAttrs\n \n-        List<FeeAttrDto> feeAttrs = BeanConvertUtil.covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n \n \n+        =\n \n-        return feeAttrs;\n-    }\n+        BeanConvertUtil .covertBeanList(feeAttrServiceDaoImpl.getFeeAttrInfo(BeanConvertUtil.beanCovertMap(feeAttrDto)), FeeAttrDto.class);\n \n \n-    @Override\n-    public int queryFeeAttrsCount(@RequestBody FeeAttrDto feeAttrDto) {\n-        return feeAttrServiceDaoImpl.queryFeeAttrsCount(BeanConvertUtil.beanCovertMap(feeAttrDto));    }\n \n-    public IFeeAttrServiceDao getFeeAttrServiceDaoImpl() {\n-        return feeAttrServiceDaoImpl;\n-    }\n+          return feeAttrs;\n+      }\n+\n+\n+      @Override\n+      public int queryFeeAttrsCount(@RequestBody FeeAttrDto feeAttrDto) {\n+          return feeAttrServiceDaoImpl.queryFeeAttrsCount(BeanConvertUtil.beanCovertMap(feeAttrDto));    }\n+\n+      public IFeeAttrServiceDao getFeeAttrServiceDaoImpl() {\n+          return feeAttrServiceDaoImpl;\n+      }\n \n-    public void setFeeAttrServiceDaoImpl(IFeeAttrServiceDao feeAttrServiceDaoImpl) {\n-        this.feeAttrServiceDaoImpl = feeAttrServiceDaoImpl;\n-    }\n+      public void setFeeAttrServiceDaoImpl(IFeeAttrServiceDao feeAttrServiceDaoImpl) {\n+          this.feeAttrServiceDaoImpl = feeAttrServiceDaoImpl;\n+      }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+      public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+          return userInnerServiceSMOImpl;\n+      }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n-}\n+      public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+          this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+      }\n+  }\n+  \n\\ No newline at end of file\n",
+            "diff_size": 30
+        }
+    ]
+}

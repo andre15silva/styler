@@ -1,0 +1,172 @@
+{
+    "error_id": "102",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/102/CompIntLongRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/102/CompIntLongRowUpdateSplit.java\nindex 81b941ad96..26872c6ded 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/102/CompIntLongRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/102/CompIntLongRowUpdateSplit.java\n@@ -34,121 +34,122 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n  */\n public class CompIntLongRowUpdateSplit extends RowUpdateSplit {\n \n-  /**\n-   * Row update split\n-   */\n-  private final IntLongVector split;\n+    /**\n+     * Row update split\n+     */\n+    private final IntLongVector split;\n \n-  /**\n-   * Max element number in this split\n-   */\n-  private final int maxItemNum;\n+    /**\n+     * Max element number in this split\n+     */\n+    private final int maxItemNum;\n \n-  /**\n-   * Create a new CompIntIntRowUpdateSplit.\n-   *\n-   * @param rowIndex row index\n-   * @param split row update split\n-   */\n-  public CompIntLongRowUpdateSplit(int rowIndex, IntLongVector split, int maxItemNum) {\n-    super(rowIndex, RowType.T_LONG_DENSE, -1, -1);\n-    this.split = split;\n-    this.maxItemNum = maxItemNum;\n+    /**\n+     * Create a new CompIntIntRowUpdateSplit.\n+     *\n+     * @param rowIndex row index\n+     * @param split    row update split\n+     */\n+    public CompIntLongRowUpdateSplit(int rowIndex, IntLongVector split, int maxItemNum) {\n+        super(rowIndex, RowType.T_LONG_DENSE, -1, -1);\n+        this.split = split;\n+        this.maxItemNum = maxItemNum;\n \n-    if (split != null) {\n-      IntLongVectorStorage storage = split.getStorage();\n-      if (storage instanceof IntLongDenseVectorStorage) {\n-        rowType = RowType.T_LONG_DENSE_COMPONENT;\n-      } else {\n-        rowType = RowType.T_LONG_SPARSE_COMPONENT;\n-      }\n+        if (split != null) {\n+            IntLongVectorStorage storage = split.getStorage();\n+            if (storage instanceof IntLongDenseVectorStorage) {\n+                rowType = RowType.T_LONG_DENSE_COMPONENT;\n+            } else {\n+                rowType = RowType.T_LONG_SPARSE_COMPONENT;\n+            }\n+        }\n     }\n-  }\n \n-  /**\n-   * Create a empty CompIntLongRowUpdateSplit.\n-   */\n-  public CompIntLongRowUpdateSplit() {\n-    this(-1, null, -1);\n-  }\n+    /**\n+     * Create a empty CompIntLongRowUpdateSplit.\n+     */\n+    public CompIntLongRowUpdateSplit() {\n+        this(-1, null, -1);\n+    }\n \n-  /**\n-   * Get row update split vector\n-   *\n-   * @return row update split vector\n-   */\n-  public IntLongVector getSplit() {\n-    return split;\n-  }\n+    /**\n+     * Get row update split vector\n+     *\n+     * @return row update split vector\n+     */\n+    public IntLongVector getSplit() {\n+        return split;\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    IntLongVectorStorage storage = split.getStorage();\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        super.serialize(buf);\n+        IntLongVectorStorage storage = split.getStorage();\n \n-    if (storage instanceof IntLongSparseVectorStorage) {\n-      buf.writeInt(storage.size());\n-      ObjectIterator<Int2LongMap.Entry> iter = storage.entryIterator();\n-      Int2LongMap.Entry entry;\n-      while (iter.hasNext()) {\n-        entry = iter.next();\n-        buf.writeInt(entry.getIntKey());\n-        buf.writeLong(entry.getLongValue());\n-      }\n-    } else if (storage instanceof IntLongSortedVectorStorage) {\n-      buf.writeInt(storage.size());\n-      int[] indices = storage.getIndices();\n-      long[] values = storage.getValues();\n-      for (int i = 0; i < indices.length; i++) {\n-        buf.writeInt(indices[i]);\n-        buf.writeLong(values[i]);\n-      }\n-    } else if (storage instanceof IntLongDenseVectorStorage) {\n-      long[] values = storage.getValues();\n-      int writeSize = values.length < maxItemNum ? values.length : maxItemNum;\n-      buf.writeInt(writeSize);\n-      for (int i = 0; i < writeSize; i++) {\n-        buf.writeLong(values[i]);\n-      }\n-    } else {\n-      throw new UnsupportedOperationException(\n-          \"unsupport split for storage \" + storage.getClass().getName());\n+        if (storage instanceof IntLongSparseVectorStorage) {\n+            buf.writeInt(storage.size());\n+            ObjectIterator<Int2LongMap.Entry> iter = storage.entryIterator();\n+            Int2LongMap.Entry entry;\n+            while (iter.hasNext()) {\n+                entry = iter.next();\n+                buf.writeInt(entry.getIntKey());\n+                buf.writeLong(entry.getLongValue());\n+            }\n+        } else if (storage instanceof IntLongSortedVectorStorage) {\n+            buf.writeInt(storage.size());\n+            int[] indices = storage.getIndices();\n+            long[] values = storage.getValues();\n+            for (int i = 0; i < indices.length; i++) {\n+                buf.writeInt(indices[i]);\n+                buf.writeLong(values[i]);\n+            }\n+        } else if (storage instanceof IntLongDenseVectorStorage) {\n+            long[] values = storage.getValues();\n+            int writeSize = values.length < maxItemNum ? values.length : maxItemNum;\n+            buf.writeInt(writeSize);\n+            for (int i = 0; i < writeSize; i++) {\n+                buf.writeLong(values[i]);\n+            }\n+        } else {\n+            throw new UnsupportedOperationException(\n+                    \"unsupport split for storage \" + storage.getClass().getName());\n+        }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n-    super.deserialize(buf);\n-    int elemNum = buf.readInt();\n-    if (rowType == RowType.T_LONG_DENSE_COMPONENT) {\n-      long[] values = new long[elemNum];\n-      for (int i = 0; i < elemNum; i++) {\n-        values[i] = buf.readLong();\n-      }\n-      vector = VFactory.denseLongVector(values);\n-    } else if (rowType == RowType.T_LONG_SPARSE_COMPONENT) {\n-      vector = VFactory.sparseLongVector(\n-          (int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n-          elemNum);\n-      for (int i = 0; i < elemNum; i++) {\n-        ((IntLongVector) vector).set(buf.readInt(), buf.readLong());\n-      }\n-    } else {\n-      throw new UnsupportedOperationException(\"Unsupport rowtype \" + rowType);\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n+        super.deserialize(buf);\n+        int elemNum = buf.readInt();\n+        if (rowType == RowType.T_LONG_DENSE_COMPONENT) {\n+            long[] values = new long[elemNum];\n+            for (int i = 0; i < elemNum; i++) {\n+                values[i] = buf.readLong();\n+            }\n+            vector = VFactory.denseLongVector(values);\n+        } else if (rowType == RowType.T_LONG_SPARSE_COMPONENT) {\n+            vector = VFactory.sparseLongVector(\n+                    (int) (splitContext.getPartKey().getEndCol() -\n+                            splitContext.getPartKey().getStartCol()),\n+                    elemNum);\n+            for (int i = 0; i < elemNum; i++) {\n+                ((IntLongVector) vector).set(buf.readInt(), buf.readLong());\n+            }\n+        } else {\n+            throw new UnsupportedOperationException(\"Unsupport rowtype \" + rowType);\n+        }\n     }\n-  }\n \n-  @Override\n-  public long size() {\n-    return split.size();\n-  }\n+    @Override\n+    public long size() {\n+        return split.size();\n+    }\n \n-  @Override\n-  public int bufferLen() {\n-    if (rowType == RowType.T_LONG_DENSE) {\n-      return 4 + super.bufferLen() + split.getStorage().size() * 8;\n-    } else {\n-      return 4 + super.bufferLen() + split.getStorage().size() * 12;\n+    @Override\n+    public int bufferLen() {\n+        if (rowType == RowType.T_LONG_DENSE) {\n+            return 4 + super.bufferLen() + split.getStorage().size() * 8;\n+        } else {\n+            return 4 + super.bufferLen() + split.getStorage().size() * 12;\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 108
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 109).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "128",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/102/CompIntLongRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/102/CompIntLongRowUpdateSplit.java\nindex 81b941ad96..6e82957e76 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/102/CompIntLongRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/102/CompIntLongRowUpdateSplit.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.psagent.matrix.oplog.cache;\n \n import com.tencent.angel.ml.math2.VFactory;\n@@ -111,8 +110,7 @@ public class CompIntLongRowUpdateSplit extends RowUpdateSplit {\n         buf.writeLong(values[i]);\n       }\n     } else {\n-      throw new UnsupportedOperationException(\n-          \"unsupport split for storage \" + storage.getClass().getName());\n+      throw new UnsupportedOperationException(\"unsupport split for storage \" + storage.getClass().getName());\n     }\n   }\n \n@@ -127,8 +125,7 @@ public class CompIntLongRowUpdateSplit extends RowUpdateSplit {\n       }\n       vector = VFactory.denseLongVector(values);\n     } else if (rowType == RowType.T_LONG_SPARSE_COMPONENT) {\n-      vector = VFactory.sparseLongVector(\n-          (int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n+      vector = VFactory.sparseLongVector((int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n           elemNum);\n       for (int i = 0; i < elemNum; i++) {\n         ((IntLongVector) vector).set(buf.readInt(), buf.readLong());\n@@ -151,4 +148,4 @@ public class CompIntLongRowUpdateSplit extends RowUpdateSplit {\n       return 4 + super.bufferLen() + split.getStorage().size() * 12;\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 41.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 46.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 55.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 117).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 110).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 73.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 83.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "133",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 168).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "136",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/102/CompIntLongRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/102/CompIntLongRowUpdateSplit.java\nindex 81b941ad96..369f61e671 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/102/CompIntLongRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/102/CompIntLongRowUpdateSplit.java\n@@ -32,17 +32,18 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;\n /**\n  * Component int key int row update split\n  */\n+\n public class CompIntLongRowUpdateSplit extends RowUpdateSplit {\n \n   /**\n    * Row update split\n    */\n-  private final IntLongVector split;\n+    private final IntLongVector split;\n \n   /**\n    * Max element number in this split\n    */\n-  private final int maxItemNum;\n+    private final int maxItemNum;\n \n   /**\n    * Create a new CompIntIntRowUpdateSplit.\n@@ -50,105 +51,106 @@ public class CompIntLongRowUpdateSplit extends RowUpdateSplit {\n    * @param rowIndex row index\n    * @param split row update split\n    */\n-  public CompIntLongRowUpdateSplit(int rowIndex, IntLongVector split, int maxItemNum) {\n+\n+    public CompIntLongRowUpdateSplit(int rowIndex, IntLongVector split, int maxItemNum) {\n     super(rowIndex, RowType.T_LONG_DENSE, -1, -1);\n     this.split = split;\n     this.maxItemNum = maxItemNum;\n-\n     if (split != null) {\n-      IntLongVectorStorage storage = split.getStorage();\n-      if (storage instanceof IntLongDenseVectorStorage) {\n+                                                                  IntLongVectorStorage storage = split.getStorage();\n+                                                                  if (storage instanceof IntLongDenseVectorStorage) {\n         rowType = RowType.T_LONG_DENSE_COMPONENT;\n-      } else {\n-        rowType = RowType.T_LONG_SPARSE_COMPONENT;\n-      }\n+                                                                  } else {\n+                                                                    rowType = RowType.T_LONG_SPARSE_COMPONENT;\n+                                                                  }\n+    }\n     }\n-  }\n \n   /**\n    * Create a empty CompIntLongRowUpdateSplit.\n    */\n-  public CompIntLongRowUpdateSplit() {\n+\n+    public CompIntLongRowUpdateSplit() {\n     this(-1, null, -1);\n-  }\n+    }\n \n   /**\n    * Get row update split vector\n    *\n    * @return row update split vector\n    */\n-  public IntLongVector getSplit() {\n+\n+    public IntLongVector getSplit() {\n     return split;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     super.serialize(buf);\n     IntLongVectorStorage storage = split.getStorage();\n-\n     if (storage instanceof IntLongSparseVectorStorage) {\n-      buf.writeInt(storage.size());\n-      ObjectIterator<Int2LongMap.Entry> iter = storage.entryIterator();\n-      Int2LongMap.Entry entry;\n-      while (iter.hasNext()) {\n-        entry = iter.next();\n-        buf.writeInt(entry.getIntKey());\n-        buf.writeLong(entry.getLongValue());\n-      }\n+        buf.writeInt(storage.size());\n+        ObjectIterator<Int2LongMap.Entry> iter = storage.entryIterator();\n+        Int2LongMap.Entry entry;\n+        while (iter.hasNext()) {\n+                                                           entry = iter.next();\n+                                                           buf.writeInt(entry.getIntKey());\n+                                                           buf.writeLong(entry.getLongValue());\n+        }\n     } else if (storage instanceof IntLongSortedVectorStorage) {\n-      buf.writeInt(storage.size());\n-      int[] indices = storage.getIndices();\n-      long[] values = storage.getValues();\n-      for (int i = 0; i < indices.length; i++) {\n-        buf.writeInt(indices[i]);\n-        buf.writeLong(values[i]);\n-      }\n+                                           buf.writeInt(storage.size());\n+\n+                                           int[] indices = storage.getIndices();\n+                                           long[] values = storage.getValues();\n+                                           for (int i = 0; i < indices.length; i++) {\n+                                                                  buf.writeInt(indices[i]);\n+                                                                  buf.writeLong(values[i]);\n+                                           }\n     } else if (storage instanceof IntLongDenseVectorStorage) {\n       long[] values = storage.getValues();\n       int writeSize = values.length < maxItemNum ? values.length : maxItemNum;\n       buf.writeInt(writeSize);\n       for (int i = 0; i < writeSize; i++) {\n-        buf.writeLong(values[i]);\n+                                                                 buf.writeLong(values[i]);\n       }\n-    } else {\n-      throw new UnsupportedOperationException(\n-          \"unsupport split for storage \" + storage.getClass().getName());\n+           } else {\n+             throw new UnsupportedOperationException(\"unsupport split for storage \" + storage.getClass().getName());\n+           }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n     super.deserialize(buf);\n+\n     int elemNum = buf.readInt();\n     if (rowType == RowType.T_LONG_DENSE_COMPONENT) {\n-      long[] values = new long[elemNum];\n-      for (int i = 0; i < elemNum; i++) {\n-        values[i] = buf.readLong();\n-      }\n-      vector = VFactory.denseLongVector(values);\n+        long[] values = new long[elemNum];\n+        for (int i = 0; i < elemNum; i++) {\n+                                                       values[i] = buf.readLong();\n+        }\n+        vector = VFactory.denseLongVector(values);\n     } else if (rowType == RowType.T_LONG_SPARSE_COMPONENT) {\n-      vector = VFactory.sparseLongVector(\n-          (int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n-          elemNum);\n-      for (int i = 0; i < elemNum; i++) {\n-        ((IntLongVector) vector).set(buf.readInt(), buf.readLong());\n-      }\n+                                             vector = VFactory.sparseLongVector((int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n+                                                 elemNum);\n+                                             for (int i = 0; i < elemNum; i++) {\n+                                                               ((IntLongVector) vector).set(buf.readInt(), buf.readLong());\n+                                             }\n     } else {\n       throw new UnsupportedOperationException(\"Unsupport rowtype \" + rowType);\n     }\n-  }\n+    }\n \n-  @Override\n-  public long size() {\n+    @Override\n+    public long size() {\n     return split.size();\n-  }\n+    }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     if (rowType == RowType.T_LONG_DENSE) {\n-      return 4 + super.bufferLen() + split.getStorage().size() * 8;\n+        return 4 + super.bufferLen() + split.getStorage().size() * 8;\n     } else {\n       return 4 + super.bufferLen() + split.getStorage().size() * 12;\n     }\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 66
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/102/CompIntLongRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/102/CompIntLongRowUpdateSplit.java\nindex 81b941ad96..46af6eceda 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/102/CompIntLongRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/102/CompIntLongRowUpdateSplit.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.psagent.matrix.oplog.cache;\n \n import com.tencent.angel.ml.math2.VFactory;\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,990 @@
+{
+    "error_id": "628",
+    "information": {
+        "errors": [
+            {
+                "line": "19",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * under the License.\n */\npackage org.apache.iotdb.db.auth.user;\n\nimport java.io.IOException;\nimport java.util.HashMap;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler/628/BasicUserManager.java\nindex 299e9e4b21..4875da3f44 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler/628/BasicUserManager.java\n@@ -16,6 +16,7 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n+\n package org.apache.iotdb.db.auth.user;\n \n import java.io.IOException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/intellij/628/BasicUserManager.java\nindex 299e9e4b21..4875da3f44 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/intellij/628/BasicUserManager.java\n@@ -16,6 +16,7 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n+\n package org.apache.iotdb.db.auth.user;\n \n import java.io.IOException;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "145",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "172",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "203",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "312",
+                    "severity": "warning",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/628/BasicUserManager.java\nindex 299e9e4b21..6299207601 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/628/BasicUserManager.java\n@@ -71,8 +71,7 @@ public abstract class BasicUserManager implements IUserManager {\n       logger.warn(\"Cannot load admin, Creating a new one.\", e);\n       admin = null;\n     }\n-\n-    if (admin == null) {\n+if (admin == null) {\n       createUser(IoTDBConstant.ADMIN_NAME, IoTDBConstant.ADMIN_PW);\n       setUserUseWaterMark(IoTDBConstant.ADMIN_NAME, false);\n     }\n@@ -143,7 +142,7 @@ public abstract class BasicUserManager implements IUserManager {\n   @Override\n   public boolean grantPrivilegeToUser(String username, String path, int privilegeId)\n       throws AuthException {\n-    AuthUtils.validatePrivilegeOnPath(path, privilegeId);\n+  AuthUtils.validatePrivilegeOnPath(path, privilegeId);\n     lock.writeLock(username);\n     try {\n       User user = getUser(username);\n@@ -170,7 +169,7 @@ public abstract class BasicUserManager implements IUserManager {\n   @Override\n   public boolean revokePrivilegeFromUser(String username, String path, int privilegeId)\n       throws AuthException {\n-    AuthUtils.validatePrivilegeOnPath(path, privilegeId);\n+  AuthUtils.validatePrivilegeOnPath(path, privilegeId);\n     lock.writeLock(username);\n     try {\n       User user = getUser(username);\n@@ -201,8 +200,7 @@ public abstract class BasicUserManager implements IUserManager {\n       logger.debug(\"An illegal password detected \", e);\n       return false;\n     }\n-\n-    lock.writeLock(username);\n+lock.writeLock(username);\n     try {\n       User user = getUser(username);\n       if (user == null) {\n@@ -311,8 +309,6 @@ public abstract class BasicUserManager implements IUserManager {\n       throw new AuthException(e);\n     }\n   }\n-\n-\n   @Override\n   public void replaceAllUsers(Map<String, User> users) throws AuthException {\n     synchronized (this) {\n@@ -330,4 +326,4 @@ public abstract class BasicUserManager implements IUserManager {\n     }\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "20",
+                    "severity": "warning",
+                    "message": "'import' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 65.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "column": "28",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 63, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 76.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 30, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "123",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "130",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "132",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "135",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "135",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "138",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "140",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "146",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 120).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "152",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "155",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "158",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "159",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "159",
+                    "column": "13",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "159",
+                    "column": "13",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "159",
+                    "column": "53",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "160",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "161",
+                    "severity": "warning",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "163",
+                    "severity": "warning",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "164",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "165",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "166",
+                    "severity": "warning",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "167",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "171",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "177",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "178",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "180",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "181",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "183",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "184",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "185",
+                    "severity": "warning",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "187",
+                    "severity": "warning",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "188",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "189",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "190",
+                    "severity": "warning",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "191",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "195",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "197",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "197",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 108).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "199",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "206",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "207",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "209",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "210",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "211",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "212",
+                    "severity": "warning",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "214",
+                    "severity": "warning",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "215",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "216",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "217",
+                    "severity": "warning",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "218",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "222",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "224",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "224",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "227",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "228",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "230",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "231",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "233",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "234",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "235",
+                    "severity": "warning",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "237",
+                    "severity": "warning",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "238",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "239",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "240",
+                    "severity": "warning",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "241",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "245",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "247",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "247",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "250",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "251",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "253",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "254",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "256",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "257",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "258",
+                    "severity": "warning",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "260",
+                    "severity": "warning",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "261",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "262",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "263",
+                    "severity": "warning",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "264",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "268",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "270",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "274",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "276",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "276",
+                    "column": "28",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "276",
+                    "column": "28",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "277",
+                    "column": "10",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "277",
+                    "column": "10",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "280",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "282",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "285",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "288",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "290",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "290",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 108).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "293",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "297",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "301",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "306",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "308",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "309",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'synchronized' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "310",
+                    "severity": "warning",
+                    "message": "'synchronized' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "311",
+                    "severity": "warning",
+                    "message": "'synchronized' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "312",
+                    "severity": "warning",
+                    "message": "'for' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "312",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "315",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 64, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "319",
+                    "severity": "warning",
+                    "message": "'for rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "321",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/codebuff/628/BasicUserManager.java\nindex 299e9e4b21..8cbd3e3c76 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/codebuff/628/BasicUserManager.java\n@@ -17,7 +17,6 @@\n  * under the License.\n  */\n package org.apache.iotdb.db.auth.user;\n-\n import java.io.IOException;\n import java.util.HashMap;\n import java.util.HashSet;\n@@ -37,14 +36,24 @@ import org.slf4j.LoggerFactory;\n  * This class stores information of each user in a separate file within a directory, and cache them\n  * in memory when a user is accessed.\n  */\n+\n public abstract class BasicUserManager implements IUserManager {\n \n-  private static final Logger logger = LoggerFactory.getLogger(BasicUserManager.class);\n-  private static final String NO_SUCH_USER_ERROR = \"No such user %s\";\n \n-  private Map<String, User> userMap;\n-  private IUserAccessor accessor;\n-  private HashLock lock;\n+    private static final Logger logger = LoggerFactory.getLogger(BasicUserManager.class);\n+\n+\n+    private static final String NO_SUCH_USER_ERROR =\n+        \"No such user %s\";\n+\n+\n+    private Map<String, User> userMap;\n+\n+\n+    private IUserAccessor accessor;\n+\n+\n+    private HashLock lock;\n \n   /**\n    * BasicUserManager Constructor.\n@@ -52,282 +61,263 @@ public abstract class BasicUserManager implements IUserManager {\n    * @param accessor user accessor\n    * @throws AuthException Authentication Exception\n    */\n-  public BasicUserManager(IUserAccessor accessor) throws AuthException {\n-    this.userMap = new HashMap<>();\n-    this.accessor = accessor;\n-    this.lock = new HashLock();\n \n-    reset();\n-  }\n+    public BasicUserManager(IUserAccessor accessor) throws AuthException {\n+this.userMap = new HashMap <>();\n+this.accessor = accessor;\n+this.lock = new HashLock();\n+reset();\n+                                                               }\n \n   /**\n    * Try to load admin. If it doesn't exist, automatically create one.\n    */\n-  private void initAdmin() throws AuthException {\n+\n+    private void initAdmin() throws AuthException {\n     User admin;\n     try {\n-      admin = getUser(IoTDBConstant.ADMIN_NAME);\n+        admin = getUser(IoTDBConstant.ADMIN_NAME);\n     } catch (AuthException e) {\n       logger.warn(\"Cannot load admin, Creating a new one.\", e);\n       admin = null;\n     }\n-\n     if (admin == null) {\n-      createUser(IoTDBConstant.ADMIN_NAME, IoTDBConstant.ADMIN_PW);\n-      setUserUseWaterMark(IoTDBConstant.ADMIN_NAME, false);\n+        createUser(IoTDBConstant.ADMIN_NAME, IoTDBConstant.ADMIN_PW);\n+        setUserUseWaterMark(IoTDBConstant.ADMIN_NAME, false);\n     }\n     logger.info(\"Admin initialized\");\n-  }\n+    }\n \n-  @Override\n-  public User getUser(String username) throws AuthException {\n+    @ Override public User getUser(String username) throws AuthException {\n     lock.readLock(username);\n     User user = userMap.get(username);\n     try {\n-      if (user == null) {\n+        if (user == null) {\n         user = accessor.loadUser(username);\n         if (user != null) {\n-          userMap.put(username, user);\n+                              userMap.put(username, user);\n+        }\n         }\n-      }\n     } catch (IOException e) {\n       throw new AuthException(e);\n     } finally {\n       lock.readUnlock(username);\n     }\n     if (user != null) {\n-      user.setLastActiveTime(System.currentTimeMillis());\n+        user.setLastActiveTime(System.currentTimeMillis());\n     }\n     return user;\n-  }\n+    }\n \n-  @Override\n-  public boolean createUser(String username, String password) throws AuthException {\n+    @ Override public boolean createUser(String username, String password) throws AuthException {\n     AuthUtils.validateUsername(username);\n     AuthUtils.validatePassword(password);\n-\n     User user = getUser(username);\n     if (user != null) {\n-      return false;\n+        return false;\n     }\n     lock.writeLock(username);\n     try {\n-      user = new User(username, AuthUtils.encryptPassword(password));\n-      accessor.saveUser(user);\n-      userMap.put(username, user);\n-      return true;\n+        user = new User(username, AuthUtils.encryptPassword(password));\n+        accessor.saveUser(user);\n+        userMap.put(username, user);\n+        return true;\n     } catch (IOException e) {\n       throw new AuthException(e);\n     } finally {\n       lock.writeUnlock(username);\n     }\n-  }\n+    }\n \n-  @Override\n-  public boolean deleteUser(String username) throws AuthException {\n+    @ Override public boolean deleteUser(String username) throws AuthException {\n     lock.writeLock(username);\n     try {\n-      if (accessor.deleteUser(username)) {\n+        if(accessor.deleteUser(username)) {\n         userMap.remove(username);\n         return true;\n-      } else {\n+        } else {\n         return false;\n-      }\n+        }\n     } catch (IOException e) {\n       throw new AuthException(e);\n     } finally {\n       lock.writeUnlock(username);\n     }\n-  }\n+    }\n \n-  @Override\n-  public boolean grantPrivilegeToUser(String username, String path, int privilegeId)\n-      throws AuthException {\n+    @ Override public boolean grantPrivilegeToUser(String username, String path, int privilegeId) throws AuthException {\n     AuthUtils.validatePrivilegeOnPath(path, privilegeId);\n     lock.writeLock(username);\n     try {\n-      User user = getUser(username);\n-      if (user == null) {\n+        User user = getUser(username);\n+        if (user == null) {\n         throw new AuthException(String.format(NO_SUCH_USER_ERROR, username));\n-      }\n-      if (user.hasPrivilege(path, privilegeId)) {\n+        }\n+        if (user.hasPrivilege(path, privilegeId)) {\n         return false;\n-      }\n-      Set<Integer> privilegesCopy = new HashSet<>(user.getPrivileges(path));\n-      user.addPrivilege(path, privilegeId);\n-      try {\n+        }\n+        Set < Integer> privilegesCopy = new HashSet <>(user.getPrivileges(path));\n+        user.addPrivilege(path, privilegeId);\n+        try {\n         accessor.saveUser(user);\n-      } catch (IOException e) {\n-        user.setPrivileges(path, privilegesCopy);\n-        throw new AuthException(e);\n-      }\n-      return true;\n+        } catch (IOException e) {\n+          user.setPrivileges(path, privilegesCopy);\n+          throw new AuthException(e);\n+        }\n+        return true;\n     } finally {\n       lock.writeUnlock(username);\n     }\n-  }\n+    }\n \n-  @Override\n-  public boolean revokePrivilegeFromUser(String username, String path, int privilegeId)\n-      throws AuthException {\n+    @ Override public boolean revokePrivilegeFromUser(String username, String path, int privilegeId) throws AuthException {\n     AuthUtils.validatePrivilegeOnPath(path, privilegeId);\n     lock.writeLock(username);\n     try {\n-      User user = getUser(username);\n-      if (user == null) {\n+        User user = getUser(username);\n+        if (user == null) {\n         throw new AuthException(String.format(NO_SUCH_USER_ERROR, username));\n-      }\n-      if (!user.hasPrivilege(path, privilegeId)) {\n+        }\n+        if (!user.hasPrivilege(path, privilegeId)) {\n         return false;\n-      }\n-      user.removePrivilege(path, privilegeId);\n-      try {\n+        }\n+        user.removePrivilege(path, privilegeId);\n+        try {\n         accessor.saveUser(user);\n-      } catch (IOException e) {\n-        user.addPrivilege(path, privilegeId);\n-        throw new AuthException(e);\n-      }\n-      return true;\n+        } catch (IOException e) {\n+          user.addPrivilege(path, privilegeId);\n+          throw new AuthException(e);\n+        }\n+        return true;\n     } finally {\n       lock.writeUnlock(username);\n     }\n-  }\n+    }\n \n-  @Override\n-  public boolean updateUserPassword(String username, String newPassword) throws AuthException {\n+    @ Override public boolean updateUserPassword(String username, String newPassword) throws AuthException {\n     try {\n-      AuthUtils.validatePassword(newPassword);\n+        AuthUtils.validatePassword(newPassword);\n     } catch (AuthException e) {\n       logger.debug(\"An illegal password detected \", e);\n       return false;\n     }\n-\n     lock.writeLock(username);\n     try {\n-      User user = getUser(username);\n-      if (user == null) {\n+        User user = getUser(username);\n+        if (user == null) {\n         throw new AuthException(String.format(NO_SUCH_USER_ERROR, username));\n-      }\n-      String oldPassword = user.getPassword();\n-      user.setPassword(AuthUtils.encryptPassword(newPassword));\n-      try {\n+        }\n+        String oldPassword = user.getPassword();\n+        user.setPassword(AuthUtils.encryptPassword(newPassword));\n+        try {\n         accessor.saveUser(user);\n-      } catch (IOException e) {\n-        user.setPassword(oldPassword);\n-        throw new AuthException(e);\n-      }\n-      return true;\n+        } catch (IOException e) {\n+          user.setPassword(oldPassword);\n+          throw new AuthException(e);\n+        }\n+        return true;\n     } finally {\n       lock.writeUnlock(username);\n     }\n-  }\n+    }\n \n-  @Override\n-  public boolean grantRoleToUser(String roleName, String username) throws AuthException {\n+    @ Override public boolean grantRoleToUser(String roleName, String username) throws AuthException {\n     lock.writeLock(username);\n     try {\n-      User user = getUser(username);\n-      if (user == null) {\n+        User user = getUser(username);\n+        if (user == null) {\n         throw new AuthException(String.format(NO_SUCH_USER_ERROR, username));\n-      }\n-      if (user.hasRole(roleName)) {\n+        }\n+        if (user.hasRole(roleName)) {\n         return false;\n-      }\n-      user.getRoleList().add(roleName);\n-      try {\n+        }\n+        user.getRoleList().add(roleName);\n+        try {\n         accessor.saveUser(user);\n-      } catch (IOException e) {\n-        user.getRoleList().remove(roleName);\n-        throw new AuthException(e);\n-      }\n-      return true;\n+        } catch (IOException e) {\n+          user.getRoleList().remove(roleName);\n+          throw new AuthException(e);\n+        }\n+        return true;\n     } finally {\n       lock.writeUnlock(username);\n     }\n-  }\n+    }\n \n-  @Override\n-  public boolean revokeRoleFromUser(String roleName, String username) throws AuthException {\n+    @ Override public boolean revokeRoleFromUser(String roleName, String username) throws AuthException {\n     lock.writeLock(username);\n     try {\n-      User user = getUser(username);\n-      if (user == null) {\n+        User user = getUser(username);\n+        if (user == null) {\n         throw new AuthException(String.format(NO_SUCH_USER_ERROR, username));\n-      }\n-      if (!user.hasRole(roleName)) {\n+        }\n+        if (!user.hasRole(roleName)) {\n         return false;\n-      }\n-      user.getRoleList().remove(roleName);\n-      try {\n+        }\n+        user.getRoleList().remove(roleName);\n+        try {\n         accessor.saveUser(user);\n-      } catch (IOException e) {\n-        user.getRoleList().add(roleName);\n-        throw new AuthException(e);\n-      }\n-      return true;\n+        } catch (IOException e) {\n+          user.getRoleList().add(roleName);\n+          throw new AuthException(e);\n+        }\n+        return true;\n     } finally {\n       lock.writeUnlock(username);\n     }\n-  }\n+    }\n \n-  @Override\n-  public void reset() throws AuthException {\n+    @ Override public void reset() throws AuthException {\n     accessor.reset();\n     userMap.clear();\n     initAdmin();\n-  }\n+    }\n \n-  @Override\n-  public List<String> listAllUsers() {\n-    List<String> rtlist = accessor.listAllUsers();\n+    @ Override public List < String> listAllUsers() {\n+    List < String> rtlist = accessor.listAllUsers();\n     rtlist.sort(null);\n     return rtlist;\n-  }\n+    }\n \n-  @Override\n-  public boolean isUserUseWaterMark(String username) throws AuthException {\n+    @ Override public boolean isUserUseWaterMark(String username) throws AuthException {\n     User user = getUser(username);\n     if (user == null) {\n-      throw new AuthException(String.format(\"No such user %s\", username));\n+        throw new AuthException(String.format(\"No such user %s\", username));\n     }\n     return user.isUseWaterMark();\n-  }\n+    }\n \n-  @Override\n-  public void setUserUseWaterMark(String username, boolean useWaterMark) throws AuthException {\n+    @ Override public void setUserUseWaterMark(String username, boolean useWaterMark) throws AuthException {\n     User user = getUser(username);\n     if (user == null) {\n-      throw new AuthException(String.format(\"No such user %s\", username));\n+        throw new AuthException(String.format(\"No such user %s\", username));\n     }\n     boolean oldFlag = user.isUseWaterMark();\n     if (oldFlag == useWaterMark) {\n-      return;\n+        return;\n     }\n     user.setUseWaterMark(useWaterMark);\n     try {\n-      accessor.saveUser(user);\n+        accessor.saveUser(user);\n     } catch (IOException e) {\n       user.setUseWaterMark(oldFlag);\n       throw new AuthException(e);\n     }\n-  }\n-\n-\n-  @Override\n-  public void replaceAllUsers(Map<String, User> users) throws AuthException {\n-    synchronized (this) {\n-      reset();\n-      userMap = users;\n+    }\n \n-      for (Entry<String, User> entry : userMap.entrySet()) {\n+    @ Override public void replaceAllUsers(Map<String, User> users) throws AuthException {\n+    synchronized(this) {\n+        reset();\n+        userMap = users;\n+        for(Entry<String, User> entry : userMap.entrySet()) {\n         User user = entry.getValue();\n         try {\n-          accessor.saveUser(user);\n+                                                                accessor.saveUser(user);\n         } catch (IOException e) {\n           throw new AuthException(e);\n         }\n-      }\n+        }\n+    }\n     }\n-  }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 171
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "19",
+                    "severity": "warning",
+                    "message": "package statement should not be line-wrapped.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoLineWrapCheck"
+                },
+                {
+                    "line": "20",
+                    "severity": "warning",
+                    "message": "'auth' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_random/628/BasicUserManager.java\nindex 299e9e4b21..97005784c9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_random/628/BasicUserManager.java\n@@ -16,7 +16,8 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n-package org.apache.iotdb.db.auth.user;\n+package org.apache.iotdb.db.\n+auth.user;\n \n import java.io.IOException;\n import java.util.HashMap;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/628/BasicUserManager.java\nindex 299e9e4b21..4875da3f44 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/628/BasicUserManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/628/BasicUserManager.java\n@@ -16,6 +16,7 @@\n  * specific language governing permissions and limitations\n  * under the License.\n  */\n+\n package org.apache.iotdb.db.auth.user;\n \n import java.io.IOException;\n",
+            "diff_size": 1
+        }
+    ]
+}

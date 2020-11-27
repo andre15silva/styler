@@ -1,0 +1,86 @@
+{
+    "error_id": "484",
+    "information": {
+        "errors": [
+            {
+                "line": "54",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 121).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    this.globalRegistry = globalRegistry;\n\n    //prometheus default port allocation is here : https://github.com/prometheus/prometheus/wiki/Default-port-allocations\n    String address =\n        DynamicPropertyFactory.getInstance().getStringProperty(METRICS_PROMETHEUS_ADDRESS, \"0.0.0.0:9696\").get();\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/484/PrometheusPublisher.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/484/PrometheusPublisher.java\nindex dd4122cfda..e2704522aa 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/484/PrometheusPublisher.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/484/PrometheusPublisher.java\n@@ -123,4 +123,4 @@ public class PrometheusPublisher extends Collector implements Collector.Describa\n     httpServer = null;\n     LOGGER.info(\"Prometheus httpServer stopped.\");\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/484/PrometheusPublisher.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/484/PrometheusPublisher.java\nindex dd4122cfda..dad904b6b5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/484/PrometheusPublisher.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/484/PrometheusPublisher.java\n@@ -52,75 +52,77 @@ public class PrometheusPublisher extends Collector implements Collector.Describa\n     this.globalRegistry = globalRegistry;\n \n     //prometheus default port allocation is here : https://github.com/prometheus/prometheus/wiki/Default-port-allocations\n-    String address =\n-        DynamicPropertyFactory.getInstance().getStringProperty(METRICS_PROMETHEUS_ADDRESS, \"0.0.0.0:9696\").get();\n-\n-    try {\n-      InetSocketAddress socketAddress = getSocketAddress(address);\n-      register();\n-      this.httpServer = new HTTPServer(socketAddress, CollectorRegistry.defaultRegistry, true);\n-\n-      LOGGER.info(\"Prometheus httpServer listened : {}.\", address);\n-    } catch (Exception e) {\n-      throw new ServiceCombException(\"create http publish server failed,may bad address : \" + address, e);\n-    }\n-  }\n-\n-  private InetSocketAddress getSocketAddress(String address) {\n-    String[] hostAndPort = address.split(\":\");\n-    if (hostAndPort.length == 2) {\n-      return new InetSocketAddress(hostAndPort[0], Integer.parseInt(hostAndPort[1]));\n-    }\n-    throw new ServiceCombException(\"create http publish server failed,bad address : \" + address);\n-  }\n-\n-  @Override\n-  public List<MetricFamilySamples> describe() {\n-    List<MetricFamilySamples> familySamples = new ArrayList<>();\n-    if (globalRegistry == null) {\n-      return familySamples;\n-    }\n-\n-    List<Sample> samples = new ArrayList<>();\n-    globalRegistry\n-        .iterator()\n-        .forEachRemaining(meter -> {\n-          meter.measure().forEach(measurement -> {\n-            Sample sample = convertMeasurementToSample(measurement);\n-            samples.add(sample);\n-          });\n-        });\n-    familySamples.add(new MetricFamilySamples(\"ServiceComb Metrics\", Type.UNTYPED, \"ServiceComb Metrics\", samples));\n-\n-    return familySamples;\n-  }\n-\n-  protected Sample convertMeasurementToSample(Measurement measurement) {\n-    String prometheusName = measurement.id().name().replace(\".\", \"_\");\n-    List<String> labelNames = new ArrayList<>();\n-    List<String> labelValues = new ArrayList<>();\n-\n-    for (Tag tag : measurement.id().tags()) {\n-      labelNames.add(tag.key());\n-      labelValues.add(tag.value());\n-    }\n-\n-    return new Sample(prometheusName, labelNames, labelValues, measurement.value());\n-  }\n-\n-  @Override\n-  public List<MetricFamilySamples> collect() {\n-    return describe();\n-  }\n-\n-  @Override\n-  public void uninit() {\n-    if (httpServer == null) {\n-      return;\n-    }\n-\n-    httpServer.stop();\n-    httpServer = null;\n-    LOGGER.info(\"Prometheus httpServer stopped.\");\n-  }\n-}\n+    String address\n+        =\n+         DynamicPropertyFactory.getInstance().getStringProperty(METRICS_PROMETHEUS_ADDRESS, \"0.0.0.0:9696\").get();\n+\n+     try {\n+       InetSocketAddress socketAddress = getSocketAddress(address);\n+       register();\n+       this.httpServer = new HTTPServer(socketAddress, CollectorRegistry.defaultRegistry, true);\n+\n+       LOGGER.info(\"Prometheus httpServer listened : {}.\", address);\n+     } catch (Exception e) {\n+       throw new ServiceCombException(\"create http publish server failed,may bad address : \" + address, e);\n+     }\n+   }\n+\n+   private InetSocketAddress getSocketAddress(String address) {\n+     String[] hostAndPort = address.split(\":\");\n+     if (hostAndPort.length == 2) {\n+       return new InetSocketAddress(hostAndPort[0], Integer.parseInt(hostAndPort[1]));\n+     }\n+     throw new ServiceCombException(\"create http publish server failed,bad address : \" + address);\n+   }\n+\n+   @Override\n+   public List<MetricFamilySamples> describe() {\n+     List<MetricFamilySamples> familySamples = new ArrayList<>();\n+     if (globalRegistry == null) {\n+       return familySamples;\n+     }\n+\n+     List<Sample> samples = new ArrayList<>();\n+     globalRegistry\n+         .iterator()\n+         .forEachRemaining(meter -> {\n+           meter.measure().forEach(measurement -> {\n+             Sample sample = convertMeasurementToSample(measurement);\n+             samples.add(sample);\n+           });\n+         });\n+     familySamples.add(new MetricFamilySamples(\"ServiceComb Metrics\", Type.UNTYPED, \"ServiceComb Metrics\", samples));\n+\n+     return familySamples;\n+   }\n+\n+   protected Sample convertMeasurementToSample(Measurement measurement) {\n+     String prometheusName = measurement.id().name().replace(\".\", \"_\");\n+     List<String> labelNames = new ArrayList<>();\n+     List<String> labelValues = new ArrayList<>();\n+\n+     for (Tag tag : measurement.id().tags()) {\n+       labelNames.add(tag.key());\n+       labelValues.add(tag.value());\n+     }\n+\n+     return new Sample(prometheusName, labelNames, labelValues, measurement.value());\n+   }\n+\n+   @Override\n+   public List<MetricFamilySamples> collect() {\n+     return describe();\n+   }\n+\n+   @Override\n+   public void uninit() {\n+     if (httpServer == null) {\n+       return;\n+     }\n+\n+     httpServer.stop();\n+     httpServer = null;\n+     LOGGER.info(\"Prometheus httpServer stopped.\");\n+   }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 74
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

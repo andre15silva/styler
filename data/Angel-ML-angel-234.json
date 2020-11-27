@@ -1,0 +1,94 @@
+{
+    "error_id": "234",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/234/PartUpdateRowsParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/234/PartUpdateRowsParam.java\nindex 52576e5c98..4e0bfca04f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/234/PartUpdateRowsParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/234/PartUpdateRowsParam.java\n@@ -30,63 +30,63 @@ import java.util.List;\n \n public class PartUpdateRowsParam extends PartitionUpdateParam {\n \n-  private List<RowUpdateSplit> updates;\n+    private List<RowUpdateSplit> updates;\n \n-  public PartUpdateRowsParam(int matrixId, PartitionKey part, List<RowUpdateSplit> updates) {\n-    super(matrixId, part);\n-    this.updates = updates;\n-  }\n+    public PartUpdateRowsParam(int matrixId, PartitionKey part, List<RowUpdateSplit> updates) {\n+        super(matrixId, part);\n+        this.updates = updates;\n+    }\n \n-  public PartUpdateRowsParam() {\n-    this(-1, null, null);\n-  }\n+    public PartUpdateRowsParam() {\n+        this(-1, null, null);\n+    }\n \n-  public List<RowUpdateSplit> getUpdates() {\n-    return updates;\n-  }\n+    public List<RowUpdateSplit> getUpdates() {\n+        return updates;\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    int size = updates.size();\n-    buf.writeInt(size);\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        super.serialize(buf);\n+        int size = updates.size();\n+        buf.writeInt(size);\n \n-    RowUpdateSplitContext context = new RowUpdateSplitContext();\n-    context.setEnableFilter(false);\n-    context.setPartKey(getPartKey());\n+        RowUpdateSplitContext context = new RowUpdateSplitContext();\n+        context.setEnableFilter(false);\n+        context.setPartKey(getPartKey());\n \n-    for (int i = 0; i < size; i++) {\n-      buf.writeInt(updates.get(i).getRowType().getNumber());\n-      updates.get(i).setSplitContext(context);\n-      updates.get(i).serialize(buf);\n+        for (int i = 0; i < size; i++) {\n+            buf.writeInt(updates.get(i).getRowType().getNumber());\n+            updates.get(i).setSplitContext(context);\n+            updates.get(i).serialize(buf);\n+        }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n-    super.deserialize(buf);\n-    int size = buf.readInt();\n-    updates = new ArrayList<>(size);\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n+        super.deserialize(buf);\n+        int size = buf.readInt();\n+        updates = new ArrayList<>(size);\n \n-    RowUpdateSplitContext context = new RowUpdateSplitContext();\n-    context.setPartKey(getPartKey());\n-    for (int i = 0; i < size; i++) {\n-      RowUpdateSplit split = RowUpdateSplitFactory.get(RowType.valueOf(buf.readInt()));\n-      split.setSplitContext(context);\n-      split.deserialize(buf);\n-      updates.add(split);\n+        RowUpdateSplitContext context = new RowUpdateSplitContext();\n+        context.setPartKey(getPartKey());\n+        for (int i = 0; i < size; i++) {\n+            RowUpdateSplit split = RowUpdateSplitFactory.get(RowType.valueOf(buf.readInt()));\n+            split.setSplitContext(context);\n+            split.deserialize(buf);\n+            updates.add(split);\n+        }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n-    int len = super.bufferLen();\n-    len += 4;\n-    int size = updates.size();\n-    for (int i = 0; i < size; i++) {\n-      len += 4;\n-      len += updates.get(i).bufferLen();\n+    @Override\n+    public int bufferLen() {\n+        int len = super.bufferLen();\n+        len += 4;\n+        int size = updates.size();\n+        for (int i = 0; i < size; i++) {\n+            len += 4;\n+            len += updates.get(i).bufferLen();\n+        }\n+        return len;\n     }\n-    return len;\n-  }\n }\n",
+            "diff_size": 51
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/234/PartUpdateRowsParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/234/PartUpdateRowsParam.java\nindex 52576e5c98..e12dff4556 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/234/PartUpdateRowsParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/234/PartUpdateRowsParam.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.matrix.psf.update.update;\n \n import com.tencent.angel.PartitionKey;\n@@ -89,4 +88,4 @@ public class PartUpdateRowsParam extends PartitionUpdateParam {\n     }\n     return len;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/234/PartUpdateRowsParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/234/PartUpdateRowsParam.java\nindex 52576e5c98..53b527302e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/234/PartUpdateRowsParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/234/PartUpdateRowsParam.java\n@@ -29,64 +29,64 @@ import java.util.ArrayList;\n import java.util.List;\n \n public class PartUpdateRowsParam extends PartitionUpdateParam {\n+    private List<RowUpdateSplit> updates;\n \n-  private List<RowUpdateSplit> updates;\n-\n-  public PartUpdateRowsParam(int matrixId, PartitionKey part, List<RowUpdateSplit> updates) {\n+    public PartUpdateRowsParam(int matrixId, PartitionKey part, List<RowUpdateSplit> updates) {\n     super(matrixId, part);\n     this.updates = updates;\n-  }\n+    }\n \n-  public PartUpdateRowsParam() {\n+    public PartUpdateRowsParam() {\n     this(-1, null, null);\n-  }\n+    }\n \n-  public List<RowUpdateSplit> getUpdates() {\n+    public List<RowUpdateSplit> getUpdates() {\n     return updates;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     super.serialize(buf);\n+\n     int size = updates.size();\n     buf.writeInt(size);\n-\n     RowUpdateSplitContext context = new RowUpdateSplitContext();\n     context.setEnableFilter(false);\n     context.setPartKey(getPartKey());\n-\n     for (int i = 0; i < size; i++) {\n-      buf.writeInt(updates.get(i).getRowType().getNumber());\n-      updates.get(i).setSplitContext(context);\n-      updates.get(i).serialize(buf);\n+        buf.writeInt(updates.get(i).getRowType().getNumber());\n+        updates.get(i).setSplitContext(context);\n+        updates.get(i).serialize(buf);\n+    }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n     super.deserialize(buf);\n+\n     int size = buf.readInt();\n     updates = new ArrayList<>(size);\n-\n     RowUpdateSplitContext context = new RowUpdateSplitContext();\n     context.setPartKey(getPartKey());\n     for (int i = 0; i < size; i++) {\n-      RowUpdateSplit split = RowUpdateSplitFactory.get(RowType.valueOf(buf.readInt()));\n-      split.setSplitContext(context);\n-      split.deserialize(buf);\n-      updates.add(split);\n+        RowUpdateSplit split = RowUpdateSplitFactory.get(RowType.valueOf(buf.readInt()));\n+        split.setSplitContext(context);\n+        split.deserialize(buf);\n+        updates.add(split);\n+    }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     int len = super.bufferLen();\n     len += 4;\n+\n     int size = updates.size();\n     for (int i = 0; i < size; i++) {\n-      len += 4;\n-      len += updates.get(i).bufferLen();\n+        len += 4;\n+        len += updates.get(i).bufferLen();\n     }\n     return len;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 37
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/234/PartUpdateRowsParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/234/PartUpdateRowsParam.java\nindex 52576e5c98..97998f2f71 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/234/PartUpdateRowsParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/234/PartUpdateRowsParam.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.matrix.psf.update.update;\n \n import com.tencent.angel.PartitionKey;\n",
+            "diff_size": 1
+        }
+    ]
+}

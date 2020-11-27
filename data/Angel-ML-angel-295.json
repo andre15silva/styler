@@ -1,0 +1,112 @@
+{
+    "error_id": "295",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/295/PSAgentPSFailedReporter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/295/PSAgentPSFailedReporter.java\nindex c720fb5b94..de4e5bddc2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/295/PSAgentPSFailedReporter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/295/PSAgentPSFailedReporter.java\n@@ -29,54 +29,54 @@ import java.util.concurrent.atomic.AtomicBoolean;\n  * Report ps network errors to Master\n  */\n public class PSAgentPSFailedReporter {\n-  private static final Log LOG = LogFactory.getLog(PSAgentPSFailedReporter.class);\n-  private final PSFailedReport report;\n-  private final PSAgentContext context;\n-  private final AtomicBoolean stopped;\n-  private final int reportIntervalMs = 5000;\n-  private Thread reporter;\n+    private static final Log LOG = LogFactory.getLog(PSAgentPSFailedReporter.class);\n+    private final PSFailedReport report;\n+    private final PSAgentContext context;\n+    private final AtomicBoolean stopped;\n+    private final int reportIntervalMs = 5000;\n+    private Thread reporter;\n \n-  public PSAgentPSFailedReporter(PSAgentContext context) {\n-    this.context = context;\n-    this.stopped = new AtomicBoolean(false);\n-    this.report = new PSFailedReport();\n-  }\n+    public PSAgentPSFailedReporter(PSAgentContext context) {\n+        this.context = context;\n+        this.stopped = new AtomicBoolean(false);\n+        this.report = new PSFailedReport();\n+    }\n \n-  public void init() {\n+    public void init() {\n \n-  }\n+    }\n \n-  public void start() {\n-    reporter = new Thread(()->{\n-      while (!stopped.get() && !Thread.interrupted()) {\n-        try {\n-          Thread.sleep(reportIntervalMs);\n-          HashMap<PSLocation, Integer> counters = report.getReports();\n-          if(counters.isEmpty()) {\n-            continue;\n-          }\n-          context.getMasterClient().psFailedReport(counters);\n-        } catch (Exception e) {\n-          if(!stopped.get()) {\n-            LOG.error(\"report ps failed failed \", e);\n-          }\n-        }\n-      }\n-    });\n+    public void start() {\n+        reporter = new Thread(() -> {\n+            while (!stopped.get() && !Thread.interrupted()) {\n+                try {\n+                    Thread.sleep(reportIntervalMs);\n+                    HashMap<PSLocation, Integer> counters = report.getReports();\n+                    if (counters.isEmpty()) {\n+                        continue;\n+                    }\n+                    context.getMasterClient().psFailedReport(counters);\n+                } catch (Exception e) {\n+                    if (!stopped.get()) {\n+                        LOG.error(\"report ps failed failed \", e);\n+                    }\n+                }\n+            }\n+        });\n \n-    reporter.setName(\"psfailed-reporter\");\n-    reporter.start();\n-  }\n+        reporter.setName(\"psfailed-reporter\");\n+        reporter.start();\n+    }\n \n-  public void stop() {\n-    if(!stopped.getAndSet(true)) {\n-      if(reporter != null) {\n-        reporter.interrupt();\n-      }\n+    public void stop() {\n+        if (!stopped.getAndSet(true)) {\n+            if (reporter != null) {\n+                reporter.interrupt();\n+            }\n+        }\n     }\n-  }\n \n-  public void psFailed(PSLocation psLoc) {\n-    report.psFailed(psLoc);\n-  }\n+    public void psFailed(PSLocation psLoc) {\n+        report.psFailed(psLoc);\n+    }\n }\n",
+            "diff_size": 43
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/295/PSAgentPSFailedReporter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/295/PSAgentPSFailedReporter.java\nindex c720fb5b94..0d35d1f320 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/295/PSAgentPSFailedReporter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/295/PSAgentPSFailedReporter.java\n@@ -52,7 +52,7 @@ public class PSAgentPSFailedReporter {\n         try {\n           Thread.sleep(reportIntervalMs);\n           HashMap<PSLocation, Integer> counters = report.getReports();\n-          if(counters.isEmpty()) {\n+          if (counters.isEmpty()) {\n             continue;\n           }\n           context.getMasterClient().psFailedReport(counters);\n@@ -79,4 +79,4 @@ public class PSAgentPSFailedReporter {\n   public void psFailed(PSLocation psLoc) {\n     report.psFailed(psLoc);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/295/PSAgentPSFailedReporter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/295/PSAgentPSFailedReporter.java\nindex c720fb5b94..7934cf3d47 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/295/PSAgentPSFailedReporter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/295/PSAgentPSFailedReporter.java\n@@ -21,62 +21,60 @@ import com.tencent.angel.ml.matrix.transport.PSLocation;\n import com.tencent.angel.psagent.PSAgentContext;\n import org.apache.commons.logging.Log;\n import org.apache.commons.logging.LogFactory;\n-\n import java.util.HashMap;\n import java.util.concurrent.atomic.AtomicBoolean;\n \n /**\n  * Report ps network errors to Master\n  */\n+\n public class PSAgentPSFailedReporter {\n-  private static final Log LOG = LogFactory.getLog(PSAgentPSFailedReporter.class);\n-  private final PSFailedReport report;\n-  private final PSAgentContext context;\n-  private final AtomicBoolean stopped;\n-  private final int reportIntervalMs = 5000;\n-  private Thread reporter;\n+    private static final Log LOG = LogFactory.getLog(PSAgentPSFailedReporter.class);\n+    private final PSFailedReport report;\n+    private final PSAgentContext context;\n+    private final AtomicBoolean stopped;\n+    private final int reportIntervalMs = 5000;\n+    private Thread reporter;\n \n-  public PSAgentPSFailedReporter(PSAgentContext context) {\n+    public PSAgentPSFailedReporter(PSAgentContext context) {\n     this.context = context;\n     this.stopped = new AtomicBoolean(false);\n     this.report = new PSFailedReport();\n-  }\n-\n-  public void init() {\n-\n-  }\n+    }\n \n-  public void start() {\n-    reporter = new Thread(()->{\n-      while (!stopped.get() && !Thread.interrupted()) {\n-        try {\n-          Thread.sleep(reportIntervalMs);\n-          HashMap<PSLocation, Integer> counters = report.getReports();\n-          if(counters.isEmpty()) {\n-            continue;\n-          }\n-          context.getMasterClient().psFailedReport(counters);\n-        } catch (Exception e) {\n-          if(!stopped.get()) {\n-            LOG.error(\"report ps failed failed \", e);\n-          }\n-        }\n-      }\n-    });\n+    public void init() {}\n \n+    public void start() {\n+    reporter = new Thread(()-> {\n+                   while (!stopped.get() && !Thread.interrupted()) {\n+                              try {\n+                                                                       Thread.sleep(reportIntervalMs);\n+                                                                       HashMap<PSLocation, Integer> counters = report.getReports();\n+                                                                       if (counters.isEmpty()) {\n+                                  continue;\n+                                                                       }\n+                                                                       context.getMasterClient().psFailedReport(counters);\n+                              } catch (Exception e) {\n+                                if (!stopped.get()) {\n+                                  LOG.error(\"report ps failed failed \", e);\n+                                }\n+                              }\n+                   }\n+                          });\n     reporter.setName(\"psfailed-reporter\");\n     reporter.start();\n-  }\n+    }\n \n-  public void stop() {\n-    if(!stopped.getAndSet(true)) {\n-      if(reporter != null) {\n+    public void stop() {\n+    if (!stopped.getAndSet(true)) {\n+        if (reporter != null) {\n         reporter.interrupt();\n-      }\n+        }\n+    }\n     }\n-  }\n \n-  public void psFailed(PSLocation psLoc) {\n+    public void psFailed(PSLocation psLoc) {\n     report.psFailed(psLoc);\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 59
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,136 @@
+{
+    "error_id": "892",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/892/PartInitNeighborParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/892/PartInitNeighborParam.java\nindex a3c9f06978..6d2e54d506 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/892/PartInitNeighborParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/892/PartInitNeighborParam.java\n@@ -27,120 +27,120 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;\n  */\n public class PartInitNeighborParam extends PartitionUpdateParam {\n \n-  /**\n-   * Node ids\n-   */\n-  private int[] nodeIds;\n-\n-  /**\n-   * Node id to neighbors map, it it just used in PSClient\n-   */\n-  private Int2ObjectOpenHashMap<int[]> nodeIdToNeighbors;\n-\n-  /**\n-   * Partition range start index for nodeIds, it is just used in PSClient\n-   */\n-  private transient int startPos;\n-\n-  /**\n-   * Partition range end index for nodeIds, it is just used in PSClient\n-   */\n-  private transient int endPos;\n-\n-  /**\n-   * Node neighbors, it is just used in PS\n-   */\n-  private int[] neighbors;\n-\n-  /**\n-   * Node neighbor number, it is just used in PS\n-   */\n-  private int[] neighborNums;\n-\n-  public PartInitNeighborParam(int matrixId, PartitionKey partKey, int[] nodeIds,\n-      Int2ObjectOpenHashMap<int[]> nodeIdToNeighbors,\n-      int startPos, int endPos) {\n-    super(matrixId, partKey, false);\n-    this.nodeIds = nodeIds;\n-    this.nodeIdToNeighbors = nodeIdToNeighbors;\n-    this.startPos = startPos;\n-    this.endPos = endPos;\n-  }\n-\n-  public PartInitNeighborParam() {\n-    this(-1, null, null, null, 0, 0);\n-  }\n-\n-  public int[] getNodeIds() {\n-    return nodeIds;\n-  }\n-\n-  public void setNodeIds(int[] nodeIds) {\n-    this.nodeIds = nodeIds;\n-  }\n-\n-  public int[] getNeighbors() {\n-    return neighbors;\n-  }\n-\n-  public void setNeighbors(int[] neighbors) {\n-    this.neighbors = neighbors;\n-  }\n-\n-  public int[] getNeighborNums() {\n-    return neighborNums;\n-  }\n-\n-  public void setNeighborNums(int[] neighborNums) {\n-    this.neighborNums = neighborNums;\n-  }\n-\n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    buf.writeInt(endPos - startPos);\n-    for (int i = startPos; i < endPos; i++) {\n-      buf.writeInt(nodeIds[i]);\n-      buf.writeInt(nodeIdToNeighbors.get(nodeIds[i]).length);\n+    /**\n+     * Node ids\n+     */\n+    private int[] nodeIds;\n+\n+    /**\n+     * Node id to neighbors map, it it just used in PSClient\n+     */\n+    private Int2ObjectOpenHashMap<int[]> nodeIdToNeighbors;\n+\n+    /**\n+     * Partition range start index for nodeIds, it is just used in PSClient\n+     */\n+    private transient int startPos;\n+\n+    /**\n+     * Partition range end index for nodeIds, it is just used in PSClient\n+     */\n+    private transient int endPos;\n+\n+    /**\n+     * Node neighbors, it is just used in PS\n+     */\n+    private int[] neighbors;\n+\n+    /**\n+     * Node neighbor number, it is just used in PS\n+     */\n+    private int[] neighborNums;\n+\n+    public PartInitNeighborParam(int matrixId, PartitionKey partKey, int[] nodeIds,\n+                                 Int2ObjectOpenHashMap<int[]> nodeIdToNeighbors,\n+                                 int startPos, int endPos) {\n+        super(matrixId, partKey, false);\n+        this.nodeIds = nodeIds;\n+        this.nodeIdToNeighbors = nodeIdToNeighbors;\n+        this.startPos = startPos;\n+        this.endPos = endPos;\n     }\n \n-    for (int i = startPos; i < endPos; i++) {\n-      int[] neighbors = nodeIdToNeighbors.get(nodeIds[i]);\n-      for (int j = 0; j < neighbors.length; j++) {\n-        buf.writeInt(neighbors[j]);\n-      }\n+    public PartInitNeighborParam() {\n+        this(-1, null, null, null, 0, 0);\n     }\n-  }\n-\n-  @Override\n-  public void deserialize(ByteBuf buf) {\n-    super.deserialize(buf);\n-    int len = buf.readInt();\n-    nodeIds = new int[len];\n-    neighborNums = new int[len];\n-\n-    int totalNum = 0;\n-    for (int i = 0; i < len; i++) {\n-      nodeIds[i] = buf.readInt();\n-      neighborNums[i] = buf.readInt();\n-      totalNum += neighborNums[i];\n+\n+    public int[] getNodeIds() {\n+        return nodeIds;\n+    }\n+\n+    public void setNodeIds(int[] nodeIds) {\n+        this.nodeIds = nodeIds;\n     }\n \n-    neighbors = new int[totalNum];\n+    public int[] getNeighbors() {\n+        return neighbors;\n+    }\n \n-    for (int i = 0; i < totalNum; i++) {\n-      neighbors[i] = buf.readInt();\n+    public void setNeighbors(int[] neighbors) {\n+        this.neighbors = neighbors;\n     }\n-  }\n-\n-  @Override\n-  public int bufferLen() {\n-    int len = super.bufferLen();\n-    len += 4;\n-    for (int i = startPos; i < endPos; i++) {\n-      len += 8;\n-      len += nodeIdToNeighbors.get(nodeIds[i]).length * 4;\n+\n+    public int[] getNeighborNums() {\n+        return neighborNums;\n+    }\n+\n+    public void setNeighborNums(int[] neighborNums) {\n+        this.neighborNums = neighborNums;\n+    }\n+\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        super.serialize(buf);\n+        buf.writeInt(endPos - startPos);\n+        for (int i = startPos; i < endPos; i++) {\n+            buf.writeInt(nodeIds[i]);\n+            buf.writeInt(nodeIdToNeighbors.get(nodeIds[i]).length);\n+        }\n+\n+        for (int i = startPos; i < endPos; i++) {\n+            int[] neighbors = nodeIdToNeighbors.get(nodeIds[i]);\n+            for (int j = 0; j < neighbors.length; j++) {\n+                buf.writeInt(neighbors[j]);\n+            }\n+        }\n+    }\n+\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n+        super.deserialize(buf);\n+        int len = buf.readInt();\n+        nodeIds = new int[len];\n+        neighborNums = new int[len];\n+\n+        int totalNum = 0;\n+        for (int i = 0; i < len; i++) {\n+            nodeIds[i] = buf.readInt();\n+            neighborNums[i] = buf.readInt();\n+            totalNum += neighborNums[i];\n+        }\n+\n+        neighbors = new int[totalNum];\n+\n+        for (int i = 0; i < totalNum; i++) {\n+            neighbors[i] = buf.readInt();\n+        }\n+    }\n+\n+    @Override\n+    public int bufferLen() {\n+        int len = super.bufferLen();\n+        len += 4;\n+        for (int i = startPos; i < endPos; i++) {\n+            len += 8;\n+            len += nodeIdToNeighbors.get(nodeIds[i]).length * 4;\n+        }\n+        return len;\n     }\n-    return len;\n-  }\n }\n",
+            "diff_size": 157
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/892/PartInitNeighborParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/892/PartInitNeighborParam.java\nindex a3c9f06978..ed91a2b597 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/892/PartInitNeighborParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/892/PartInitNeighborParam.java\n@@ -143,4 +143,4 @@ public class PartInitNeighborParam extends PartitionUpdateParam {\n     }\n     return len;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 34.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 39.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 44.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 49.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 54.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 59.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 159).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/892/PartInitNeighborParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/892/PartInitNeighborParam.java\nindex a3c9f06978..66b5dcd654 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/892/PartInitNeighborParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/892/PartInitNeighborParam.java\n@@ -25,122 +25,120 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;\n /**\n  * Partition parameter for InitNeighbor function\n  */\n+\n public class PartInitNeighborParam extends PartitionUpdateParam {\n \n   /**\n    * Node ids\n    */\n-  private int[] nodeIds;\n+    private int[] nodeIds;\n \n   /**\n    * Node id to neighbors map, it it just used in PSClient\n    */\n-  private Int2ObjectOpenHashMap<int[]> nodeIdToNeighbors;\n+    private Int2ObjectOpenHashMap<int[]> nodeIdToNeighbors;\n \n   /**\n    * Partition range start index for nodeIds, it is just used in PSClient\n    */\n-  private transient int startPos;\n+    private transient int startPos;\n \n   /**\n    * Partition range end index for nodeIds, it is just used in PSClient\n    */\n-  private transient int endPos;\n+    private transient int endPos;\n \n   /**\n    * Node neighbors, it is just used in PS\n    */\n-  private int[] neighbors;\n+    private int[] neighbors;\n \n   /**\n    * Node neighbor number, it is just used in PS\n    */\n-  private int[] neighborNums;\n+    private int[] neighborNums;\n \n-  public PartInitNeighborParam(int matrixId, PartitionKey partKey, int[] nodeIds,\n-      Int2ObjectOpenHashMap<int[]> nodeIdToNeighbors,\n-      int startPos, int endPos) {\n+    public PartInitNeighborParam(int matrixId, PartitionKey partKey, int[] nodeIds, Int2ObjectOpenHashMap<int[]> nodeIdToNeighbors, int startPos, int endPos) {\n     super(matrixId, partKey, false);\n     this.nodeIds = nodeIds;\n     this.nodeIdToNeighbors = nodeIdToNeighbors;\n     this.startPos = startPos;\n     this.endPos = endPos;\n-  }\n+    }\n \n-  public PartInitNeighborParam() {\n+    public PartInitNeighborParam() {\n     this(-1, null, null, null, 0, 0);\n-  }\n+    }\n \n-  public int[] getNodeIds() {\n+    public int[] getNodeIds() {\n     return nodeIds;\n-  }\n+    }\n \n-  public void setNodeIds(int[] nodeIds) {\n+    public void setNodeIds(int[] nodeIds) {\n     this.nodeIds = nodeIds;\n-  }\n+    }\n \n-  public int[] getNeighbors() {\n+    public int[] getNeighbors() {\n     return neighbors;\n-  }\n+    }\n \n-  public void setNeighbors(int[] neighbors) {\n+    public void setNeighbors(int[] neighbors) {\n     this.neighbors = neighbors;\n-  }\n+    }\n \n-  public int[] getNeighborNums() {\n+    public int[] getNeighborNums() {\n     return neighborNums;\n-  }\n+    }\n \n-  public void setNeighborNums(int[] neighborNums) {\n+    public void setNeighborNums(int[] neighborNums) {\n     this.neighborNums = neighborNums;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     super.serialize(buf);\n     buf.writeInt(endPos - startPos);\n     for (int i = startPos; i < endPos; i++) {\n-      buf.writeInt(nodeIds[i]);\n-      buf.writeInt(nodeIdToNeighbors.get(nodeIds[i]).length);\n+        buf.writeInt(nodeIds[i]);\n+        buf.writeInt(nodeIdToNeighbors.get(nodeIds[i]).length);\n     }\n \n     for (int i = startPos; i < endPos; i++) {\n-      int[] neighbors = nodeIdToNeighbors.get(nodeIds[i]);\n-      for (int j = 0; j < neighbors.length; j++) {\n-        buf.writeInt(neighbors[j]);\n-      }\n+        int[] neighbors = nodeIdToNeighbors.get(nodeIds[i]);\n+        for (int j = 0; j < neighbors.length; j++) {\n+                                                buf.writeInt(neighbors[j]);\n+        }\n+    }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n     super.deserialize(buf);\n+\n     int len = buf.readInt();\n     nodeIds = new int[len];\n     neighborNums = new int[len];\n \n     int totalNum = 0;\n     for (int i = 0; i < len; i++) {\n-      nodeIds[i] = buf.readInt();\n-      neighborNums[i] = buf.readInt();\n-      totalNum += neighborNums[i];\n+        nodeIds[i] = buf.readInt();\n+        neighborNums[i] = buf.readInt();\n+        totalNum += neighborNums[i];\n     }\n-\n     neighbors = new int[totalNum];\n-\n     for (int i = 0; i < totalNum; i++) {\n-      neighbors[i] = buf.readInt();\n+        neighbors[i] = buf.readInt();\n+    }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     int len = super.bufferLen();\n     len += 4;\n     for (int i = startPos; i < endPos; i++) {\n-      len += 8;\n-      len += nodeIdToNeighbors.get(nodeIds[i]).length * 4;\n+        len += 8;\n+        len += nodeIdToNeighbors.get(nodeIds[i]).length * 4;\n     }\n     return len;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 52
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+{
+    "error_id": "80",
+    "information": {
+        "errors": [
+            {
+                "line": "36",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 123).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=323\");\n\n    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=324\");\n\n    private final String userName;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/80/UserNameIdentityToken.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/80/UserNameIdentityToken.java\nindex 27bda30327..fb71eaba3a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/80/UserNameIdentityToken.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/80/UserNameIdentityToken.java\n@@ -33,7 +33,8 @@ public class UserNameIdentityToken extends UserIdentityToken implements UaStruct\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=323\");\n \n-    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=324\");\n+    public static final ExpandedNodeId BINARY_ENCODING_ID =\n+        ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=324\");\n \n     private final String userName;\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/80/UserNameIdentityToken.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/80/UserNameIdentityToken.java\nindex 27bda30327..5910a81f8c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/80/UserNameIdentityToken.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/80/UserNameIdentityToken.java\n@@ -100,4 +100,4 @@ public class UserNameIdentityToken extends UserIdentityToken implements UaStruct\n             encoder.writeString(\"EncryptionAlgorithm\", value.getEncryptionAlgorithm());\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/80/UserNameIdentityToken.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/80/UserNameIdentityToken.java\nindex 27bda30327..9d4b7c20f6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/80/UserNameIdentityToken.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/80/UserNameIdentityToken.java\n@@ -29,21 +29,19 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId;\n )\n @ToString\n public class UserNameIdentityToken extends UserIdentityToken implements UaStructure {\n+\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=322\");\n \n     public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=323\");\n \n     public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=324\");\n-\n     private final String userName;\n-\n     private final ByteString password;\n-\n     private final String encryptionAlgorithm;\n \n-    public UserNameIdentityToken(String policyId, String userName, ByteString password,\n-                                 String encryptionAlgorithm) {\n+    public UserNameIdentityToken(String policyId, String userName, ByteString password, String encryptionAlgorithm) {\n         super(policyId);\n+\n         this.userName = userName;\n         this.password = password;\n         this.encryptionAlgorithm = encryptionAlgorithm;\n@@ -88,16 +86,17 @@ public class UserNameIdentityToken extends UserIdentityToken implements UaStruct\n             String userName = decoder.readString(\"UserName\");\n             ByteString password = decoder.readByteString(\"Password\");\n             String encryptionAlgorithm = decoder.readString(\"EncryptionAlgorithm\");\n+\n             return new UserNameIdentityToken(policyId, userName, password, encryptionAlgorithm);\n         }\n \n         @Override\n-        public void encode(SerializationContext context, UaEncoder encoder,\n-                           UserNameIdentityToken value) {\n+        public void encode(SerializationContext context, UaEncoder encoder, UserNameIdentityToken value) {\n             encoder.writeString(\"PolicyId\", value.getPolicyId());\n             encoder.writeString(\"UserName\", value.getUserName());\n             encoder.writeByteString(\"Password\", value.getPassword());\n             encoder.writeString(\"EncryptionAlgorithm\", value.getEncryptionAlgorithm());\n         }\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 240).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "34",
+                    "column": "240",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/80/UserNameIdentityToken.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/80/UserNameIdentityToken.java\nindex 27bda30327..64d50054ae 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/80/UserNameIdentityToken.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/80/UserNameIdentityToken.java\n@@ -31,9 +31,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId;\n public class UserNameIdentityToken extends UserIdentityToken implements UaStructure {\n     public static final ExpandedNodeId TYPE_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=322\");\n \n-    public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=323\");\n-\n-    public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=324\");\n+    public static final ExpandedNodeId XML_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=323\"); public static final ExpandedNodeId BINARY_ENCODING_ID = ExpandedNodeId.parse(\"nsu=http://opcfoundation.org/UA/;i=324\");\n \n     private final String userName;\n \n",
+            "diff_size": 3
+        }
+    ]
+}

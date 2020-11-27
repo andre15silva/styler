@@ -1,0 +1,87 @@
+{
+    "error_id": "15",
+    "information": {
+        "errors": [
+            {
+                "line": "14",
+                "severity": "error",
+                "message": "Line has trailing spaces.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": " * previous: previously selected items, to handle more without variables\n * implementation: voxelurn.VoxelWorld\n * \n * @author sidaw\n **/\npublic abstract class World {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "14",
+                    "severity": "error",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/15/World.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/intellij/15/World.java\nindex 8871aa5d3b..a5396ab921 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/15/World.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/intellij/15/World.java\n@@ -11,70 +11,71 @@ import edu.stanford.nlp.sempre.interactive.voxelurn.VoxelWorld;\n  * the set of items in focus, usually, but not necessarily a subset of allItems\n  * previous: previously selected items, to handle more without variables\n  * implementation: voxelurn.VoxelWorld\n- * \n+ *\n  * @author sidaw\n  **/\n public abstract class World {\n-  // supports variables, and perhaps scoping\n-  public Set<Item> allItems;\n-  public Set<Item> selected;\n-  public Set<Item> previous;\n-\n-  public static World fromContext(String worldname, ContextValue context) {\n-    if (worldname.equals(\"VoxelWorld\"))\n-      return VoxelWorld.fromContext(context);\n-    throw new RuntimeException(\"World does not exist: \" + worldname);\n-  }\n-\n-  // there are some annoying issues with mutable objects.\n-  // The current strategy is to keep allitems up to date on each mutable\n-  // operation\n-  public abstract String toJSON();\n-\n-  public abstract Set<Item> has(String rel, Set<Object> values);\n-\n-  public abstract Set<Object> get(String rel, Set<Item> subset);\n-\n-  public abstract void update(String rel, Object value, Set<Item> selected);\n-\n-  public abstract void merge();\n-  // public abstract void select(Set<Item> set);\n-\n-  public World() {\n-    this.allItems = new HashSet<>();\n-    this.selected = new HashSet<>();\n-    this.previous = new HashSet<>();\n-  }\n-\n-  // general actions, flatness means these actions can be performed on allitems\n-  public void remove(Set<Item> selected) {\n-    allItems = new HashSet<>(allItems);\n-    allItems.removeAll(selected);\n-    // this.selected.removeAll(selected);\n-  }\n-\n-  // it is bad to ever mutate select, which will break scoping\n-  public void select(Set<Item> set) {\n-    this.selected = set;\n-  }\n-\n-  public void noop() {\n-  }\n-\n-  public Set<Item> selected() {\n-    return this.selected;\n-  }\n-\n-  public Set<Item> previous() {\n-    return this.previous;\n-  }\n-\n-  public Set<Item> all() {\n-    return allItems;\n-  }\n-\n-  public Set<Item> empty() {\n-    return new HashSet<>();\n-  }\n+    // supports variables, and perhaps scoping\n+    public Set<Item> allItems;\n+    public Set<Item> selected;\n+    public Set<Item> previous;\n+\n+    public static World fromContext(String worldname, ContextValue context) {\n+        if (worldname.equals(\"VoxelWorld\")) {\n+            return VoxelWorld.fromContext(context);\n+        }\n+        throw new RuntimeException(\"World does not exist: \" + worldname);\n+    }\n+\n+    // there are some annoying issues with mutable objects.\n+    // The current strategy is to keep allitems up to date on each mutable\n+    // operation\n+    public abstract String toJSON();\n+\n+    public abstract Set<Item> has(String rel, Set<Object> values);\n+\n+    public abstract Set<Object> get(String rel, Set<Item> subset);\n+\n+    public abstract void update(String rel, Object value, Set<Item> selected);\n+\n+    public abstract void merge();\n+    // public abstract void select(Set<Item> set);\n+\n+    public World() {\n+        this.allItems = new HashSet<>();\n+        this.selected = new HashSet<>();\n+        this.previous = new HashSet<>();\n+    }\n+\n+    // general actions, flatness means these actions can be performed on allitems\n+    public void remove(Set<Item> selected) {\n+        allItems = new HashSet<>(allItems);\n+        allItems.removeAll(selected);\n+        // this.selected.removeAll(selected);\n+    }\n+\n+    // it is bad to ever mutate select, which will break scoping\n+    public void select(Set<Item> set) {\n+        this.selected = set;\n+    }\n+\n+    public void noop() {\n+    }\n+\n+    public Set<Item> selected() {\n+        return this.selected;\n+    }\n+\n+    public Set<Item> previous() {\n+        return this.previous;\n+    }\n+\n+    public Set<Item> all() {\n+        return allItems;\n+    }\n+\n+    public Set<Item> empty() {\n+        return new HashSet<>();\n+    }\n \n }\n",
+            "diff_size": 63
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "14",
+                    "severity": "error",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/15/World.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/naturalize/15/World.java\nindex 8871aa5d3b..e00235903e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/15/World.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/naturalize/15/World.java\n@@ -77,4 +77,4 @@ public abstract class World {\n     return new HashSet<>();\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "error",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/15/World.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/codebuff/15/World.java\nindex 8871aa5d3b..973bc1ca58 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/15/World.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/codebuff/15/World.java\n@@ -2,7 +2,6 @@ package edu.stanford.nlp.sempre.interactive;\n \n import java.util.HashSet;\n import java.util.Set;\n-\n import edu.stanford.nlp.sempre.ContextValue;\n import edu.stanford.nlp.sempre.interactive.voxelurn.VoxelWorld;\n \n@@ -14,67 +13,64 @@ import edu.stanford.nlp.sempre.interactive.voxelurn.VoxelWorld;\n  * \n  * @author sidaw\n  **/\n+\n+\n public abstract class World {\n   // supports variables, and perhaps scoping\n-  public Set<Item> allItems;\n-  public Set<Item> selected;\n-  public Set<Item> previous;\n-\n-  public static World fromContext(String worldname, ContextValue context) {\n-    if (worldname.equals(\"VoxelWorld\"))\n-      return VoxelWorld.fromContext(context);\n+    public Set<Item> allItems;\n+    public Set<Item> selected;\n+    public Set<Item> previous;\n+    public static World fromContext(String worldname, ContextValue context) {\n+    if (worldname.equals(\"VoxelWorld\")) return VoxelWorld.fromContext(context);\n     throw new RuntimeException(\"World does not exist: \" + worldname);\n-  }\n+    }\n \n   // there are some annoying issues with mutable objects.\n   // The current strategy is to keep allitems up to date on each mutable\n   // operation\n-  public abstract String toJSON();\n-\n-  public abstract Set<Item> has(String rel, Set<Object> values);\n \n-  public abstract Set<Object> get(String rel, Set<Item> subset);\n-\n-  public abstract void update(String rel, Object value, Set<Item> selected);\n-\n-  public abstract void merge();\n+    public abstract String toJSON();\n+    public abstract Set<Item> has(String rel, Set<Object> values);\n+    public abstract Set<Object> get(String rel, Set<Item> subset);\n+    public abstract void update(String rel, Object value, Set<Item> selected);\n+    public abstract void merge();\n   // public abstract void select(Set<Item> set);\n \n-  public World() {\n+    public World() {\n     this.allItems = new HashSet<>();\n     this.selected = new HashSet<>();\n     this.previous = new HashSet<>();\n-  }\n+    }\n \n   // general actions, flatness means these actions can be performed on allitems\n-  public void remove(Set<Item> selected) {\n+\n+    public void remove(Set<Item> selected) {\n     allItems = new HashSet<>(allItems);\n     allItems.removeAll(selected);\n     // this.selected.removeAll(selected);\n-  }\n+    }\n \n   // it is bad to ever mutate select, which will break scoping\n-  public void select(Set<Item> set) {\n+\n+    public void select(Set<Item> set) {\n     this.selected = set;\n-  }\n+    }\n \n-  public void noop() {\n-  }\n+    public void noop() { }\n \n-  public Set<Item> selected() {\n+    public Set<Item> selected() {\n     return this.selected;\n-  }\n+    }\n \n-  public Set<Item> previous() {\n+    public Set<Item> previous() {\n     return this.previous;\n-  }\n+    }\n \n-  public Set<Item> all() {\n+    public Set<Item> all() {\n     return allItems;\n-  }\n+    }\n \n-  public Set<Item> empty() {\n+    public Set<Item> empty() {\n     return new HashSet<>();\n-  }\n-\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 39
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "14",
+                    "severity": "error",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "12",
+                    "severity": "error",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/15/World.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/styler_three_grams/15/World.java\nindex 8871aa5d3b..f6a95addda 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/errored/1/15/World.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Roboy-roboy_dialog/styler_three_grams/15/World.java\n@@ -4,17 +4,14 @@ import java.util.HashSet;\n import java.util.Set;\n \n import edu.stanford.nlp.sempre.ContextValue;\n-import edu.stanford.nlp.sempre.interactive.voxelurn.VoxelWorld;\n-\n-/**\n+import edu.stanford.nlp.sempre.interactive.voxelurn.VoxelWorld; /**\n  * The world consists of Items, and tracks allItems: the whole world selected:\n  * the set of items in focus, usually, but not necessarily a subset of allItems\n  * previous: previously selected items, to handle more without variables\n  * implementation: voxelurn.VoxelWorld\n  * \n  * @author sidaw\n- **/\n-public abstract class World {\n+ **/public abstract class World {\n   // supports variables, and perhaps scoping\n   public Set<Item> allItems;\n   public Set<Item> selected;\n",
+            "diff_size": 5
+        }
+    ]
+}

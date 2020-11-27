@@ -1,0 +1,100 @@
+{
+    "error_id": "48",
+    "information": {
+        "errors": [
+            {
+                "line": "47",
+                "severity": "error",
+                "message": "Prohibit invoking System.out.println in source code !",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": "\n        Message message = consumer.receive(1000);\n        System.out.println(\"Received message: \" + message);\n        //Acknowledge the consumed message\n        consumer.ack(message.getMessageReceipt());\n        consumer.stop();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Prohibit invoking System.out.println in source code !",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Prohibit invoking System.out.println in source code !",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Prohibit invoking System.out.println in source code !",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/errored/1/48/PullConsumerApp.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/naturalize/48/PullConsumerApp.java\nindex 7f9a2e85fb..29066d935c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/errored/1/48/PullConsumerApp.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/naturalize/48/PullConsumerApp.java\n@@ -26,10 +26,8 @@ import java.util.Arrays;\n public class PullConsumerApp {\n     public static void main(String[] args) {\n         //Load and start the vendor implementation from a specific OMS driver URL.\n-        final MessagingAccessPoint messagingAccessPoint =\n-            OMS.getMessagingAccessPoint(\"oms:rocketmq://alice@rocketmq.apache.org/us-east\");\n-\n-        //Start a PullConsumer to receive messages from the specific queue.\n+        final MessagingAccessPoint messagingAccessPoint = OMS.getMessagingAccessPoint(\"oms:rocketmq://alice@rocketmq.apache.org/us-east\");\n+    //Start a PullConsumer to receive messages from the specific queue.\n         final PullConsumer consumer = messagingAccessPoint.createPullConsumer();\n \n         //Register a shutdown hook to close the opened endpoints.\n@@ -42,12 +40,10 @@ public class PullConsumerApp {\n \n         consumer.bindQueue(Arrays.asList(\"NS://HELLO_QUEUE\"));\n         consumer.start();\n-\n-        Message message = consumer.receive(1000);\n+Message message = consumer.receive(1000);\n         System.out.println(\"Received message: \" + message);\n         //Acknowledge the consumed message\n         consumer.ack(message.getMessageReceipt());\n         consumer.stop();\n-\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Prohibit invoking System.out.println in source code !",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/errored/1/48/PullConsumerApp.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/codebuff/48/PullConsumerApp.java\nindex 7f9a2e85fb..5b100b88a7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/errored/1/48/PullConsumerApp.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/codebuff/48/PullConsumerApp.java\n@@ -26,8 +26,7 @@ import java.util.Arrays;\n public class PullConsumerApp {\n     public static void main(String[] args) {\n         //Load and start the vendor implementation from a specific OMS driver URL.\n-        final MessagingAccessPoint messagingAccessPoint =\n-            OMS.getMessagingAccessPoint(\"oms:rocketmq://alice@rocketmq.apache.org/us-east\");\n+        final MessagingAccessPoint messagingAccessPoint = OMS.getMessagingAccessPoint(\"oms:rocketmq://alice@rocketmq.apache.org/us-east\");\n \n         //Start a PullConsumer to receive messages from the specific queue.\n         final PullConsumer consumer = messagingAccessPoint.createPullConsumer();\n@@ -39,15 +38,12 @@ public class PullConsumerApp {\n                 consumer.stop();\n             }\n         }));\n-\n         consumer.bindQueue(Arrays.asList(\"NS://HELLO_QUEUE\"));\n         consumer.start();\n-\n         Message message = consumer.receive(1000);\n         System.out.println(\"Received message: \" + message);\n         //Acknowledge the consumed message\n         consumer.ack(message.getMessageReceipt());\n         consumer.stop();\n-\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "'method call' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/errored/1/48/PullConsumerApp.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/styler_random/48/PullConsumerApp.java\nindex 7f9a2e85fb..6df08b5e7a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/errored/1/48/PullConsumerApp.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/openmessaging-openmessaging-java/styler_random/48/PullConsumerApp.java\n@@ -43,8 +43,8 @@ public class PullConsumerApp {\n         consumer.bindQueue(Arrays.asList(\"NS://HELLO_QUEUE\"));\n         consumer.start();\n \n-        Message message = consumer.receive(1000);\n-        System.out.println(\"Received message: \" + message);\n+        Message message = consumer.receive(1000);System\n+    .out.println(\"Received message: \" + message);\n         //Acknowledge the consumed message\n         consumer.ack(message.getMessageReceipt());\n         consumer.stop();\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Prohibit invoking System.out.println in source code !",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,250 @@
+{
+    "error_id": "888",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/888/GetColsFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/888/GetColsFunc.java\nindex 3127b17e9a..2e216be5ef 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/888/GetColsFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/888/GetColsFunc.java\n@@ -36,158 +36,161 @@ import java.util.Map;\n \n public class GetColsFunc extends GetFunc {\n \n-  public GetColsFunc(GetColsParam param) {\n-    super(param);\n-  }\n-\n-  public GetColsFunc() {\n-    super(null);\n-  }\n-\n-  @Override\n-  public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n-    PartitionGetColsParam param = (PartitionGetColsParam) partParam;\n-    int[] rows = param.rows;\n-    long[] cols = param.cols;\n-    int matId = param.getMatrixId();\n-    int partitionId = param.getPartKey().getPartitionId();\n-    Arrays.sort(rows);\n+    public GetColsFunc(GetColsParam param) {\n+        super(param);\n+    }\n \n-    RowBasedPartition partition = (RowBasedPartition) psContext.getMatrixStorageManager()\n-        .getPart(matId, partitionId);\n-    ServerRow[] splits = new ServerRow[rows.length];\n-    for (int i = 0; i < rows.length; i++) {\n-      splits[i] = partition.getRow(rows[i]);\n+    public GetColsFunc() {\n+        super(null);\n     }\n-    Vector result = doGet(splits, cols, param.func);\n \n-    return new PartitionGetColsResult(rows, cols, result);\n-  }\n+    @Override\n+    public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n+        PartitionGetColsParam param = (PartitionGetColsParam) partParam;\n+        int[] rows = param.rows;\n+        long[] cols = param.cols;\n+        int matId = param.getMatrixId();\n+        int partitionId = param.getPartKey().getPartitionId();\n+        Arrays.sort(rows);\n \n-  private Vector doGet(ServerRow[] rows, long[] cols, InitFunc func) {\n-    if (func != null) {\n-      rows[0].startWrite();\n-      try {\n-        return doGetLockFree(rows, cols, func);\n-      } finally {\n-        rows[0].endWrite();\n-      }\n-    } else {\n-      rows[0].startRead();\n-      try {\n-        return doGetLockFree(rows, cols, func);\n-      } finally {\n-        rows[0].endRead();\n-      }\n+        RowBasedPartition partition = (RowBasedPartition) psContext.getMatrixStorageManager()\n+                .getPart(matId, partitionId);\n+        ServerRow[] splits = new ServerRow[rows.length];\n+        for (int i = 0; i < rows.length; i++) {\n+            splits[i] = partition.getRow(rows[i]);\n+        }\n+        Vector result = doGet(splits, cols, param.func);\n+\n+        return new PartitionGetColsResult(rows, cols, result);\n     }\n-  }\n \n-  private Vector doGetLockFree(ServerRow[] rows, long[] cols, InitFunc func) {\n-    if (rows[0] instanceof ServerIntDoubleRow) {\n-      IntDoubleVector[] vectors = new IntDoubleVector[cols.length];\n-      if (func != null) {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseDoubleVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerIntDoubleRow) rows[j]).initAndGet((int) cols[i], func));\n-          }\n-        }\n-      } else {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseDoubleVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerIntDoubleRow) rows[j]).get((int) cols[i]));\n-          }\n-        }\n-      }\n-      return VFactory.compIntDoubleVector(cols.length, vectors, rows.length);\n-    } else if (rows[0] instanceof ServerLongDoubleRow) {\n-      IntDoubleVector[] vectors = new IntDoubleVector[cols.length];\n-      if (func != null) {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseDoubleVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerLongDoubleRow) rows[j]).initAndGet(cols[i], func));\n-          }\n+    private Vector doGet(ServerRow[] rows, long[] cols, InitFunc func) {\n+        if (func != null) {\n+            rows[0].startWrite();\n+            try {\n+                return doGetLockFree(rows, cols, func);\n+            } finally {\n+                rows[0].endWrite();\n+            }\n+        } else {\n+            rows[0].startRead();\n+            try {\n+                return doGetLockFree(rows, cols, func);\n+            } finally {\n+                rows[0].endRead();\n+            }\n         }\n-      } else {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseDoubleVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerLongDoubleRow) rows[j]).get(cols[i]));\n-          }\n-        }\n-      }\n-      return VFactory.compIntDoubleVector(cols.length, vectors, rows.length);\n-    } else if (rows[0] instanceof ServerIntFloatRow) {\n-      IntFloatVector[] vectors = new IntFloatVector[cols.length];\n-      if (func != null) {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseFloatVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerIntFloatRow) rows[j]).initAndGet((int) cols[i], func));\n-          }\n-        }\n-      } else {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseFloatVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerIntFloatRow) rows[j]).get((int) cols[i]));\n-          }\n-        }\n-      }\n-      return VFactory.compIntFloatVector(cols.length, vectors, rows.length);\n-    } else if (rows[0] instanceof ServerLongFloatRow) {\n-      IntFloatVector[] vectors = new IntFloatVector[cols.length];\n-      if (func != null) {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseFloatVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerLongFloatRow) rows[j]).initAndGet(cols[i], func));\n-          }\n-        }\n-      } else {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseFloatVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerLongFloatRow) rows[j]).get(cols[i]));\n-          }\n-        }\n-      }\n-      return VFactory.compIntFloatVector(cols.length, vectors, rows.length);\n-    } else {\n-      throw new AngelException(\"The rowType \" + rows[0].getRowType() + \" is not support!\");\n     }\n-  }\n \n-  @Override\n-  public GetResult merge(List<PartitionGetResult> partResults) {\n-    PartitionGetColsResult rr = (PartitionGetColsResult) partResults.get(0);\n-    if (rr.vector instanceof CompIntDoubleVector) {\n-      Map<Long, Vector> maps = new HashMap<>();\n-      for (PartitionGetResult r : partResults) {\n-        PartitionGetColsResult rrr = (PartitionGetColsResult) r;\n-        long[] cols = rrr.cols;\n-        CompIntDoubleVector vector = (CompIntDoubleVector) rrr.vector;\n-        for (int i = 0; i < cols.length; i++) {\n-          maps.put(cols[i], vector.getPartitions()[i]);\n+    private Vector doGetLockFree(ServerRow[] rows, long[] cols, InitFunc func) {\n+        if (rows[0] instanceof ServerIntDoubleRow) {\n+            IntDoubleVector[] vectors = new IntDoubleVector[cols.length];\n+            if (func != null) {\n+                for (int i = 0; i < cols.length; i++) {\n+                    vectors[i] = VFactory.denseDoubleVector(rows.length);\n+                    for (int j = 0; j < rows.length; j++) {\n+                        vectors[i].set(j,\n+                                ((ServerIntDoubleRow) rows[j]).initAndGet((int) cols[i], func));\n+                    }\n+                }\n+            } else {\n+                for (int i = 0; i < cols.length; i++) {\n+                    vectors[i] = VFactory.denseDoubleVector(rows.length);\n+                    for (int j = 0; j < rows.length; j++) {\n+                        vectors[i].set(j, ((ServerIntDoubleRow) rows[j]).get((int) cols[i]));\n+                    }\n+                }\n+            }\n+            return VFactory.compIntDoubleVector(cols.length, vectors, rows.length);\n+        } else if (rows[0] instanceof ServerLongDoubleRow) {\n+            IntDoubleVector[] vectors = new IntDoubleVector[cols.length];\n+            if (func != null) {\n+                for (int i = 0; i < cols.length; i++) {\n+                    vectors[i] = VFactory.denseDoubleVector(rows.length);\n+                    for (int j = 0; j < rows.length; j++) {\n+                        vectors[i]\n+                                .set(j, ((ServerLongDoubleRow) rows[j]).initAndGet(cols[i], func));\n+                    }\n+                }\n+            } else {\n+                for (int i = 0; i < cols.length; i++) {\n+                    vectors[i] = VFactory.denseDoubleVector(rows.length);\n+                    for (int j = 0; j < rows.length; j++) {\n+                        vectors[i].set(j, ((ServerLongDoubleRow) rows[j]).get(cols[i]));\n+                    }\n+                }\n+            }\n+            return VFactory.compIntDoubleVector(cols.length, vectors, rows.length);\n+        } else if (rows[0] instanceof ServerIntFloatRow) {\n+            IntFloatVector[] vectors = new IntFloatVector[cols.length];\n+            if (func != null) {\n+                for (int i = 0; i < cols.length; i++) {\n+                    vectors[i] = VFactory.denseFloatVector(rows.length);\n+                    for (int j = 0; j < rows.length; j++) {\n+                        vectors[i].set(j,\n+                                ((ServerIntFloatRow) rows[j]).initAndGet((int) cols[i], func));\n+                    }\n+                }\n+            } else {\n+                for (int i = 0; i < cols.length; i++) {\n+                    vectors[i] = VFactory.denseFloatVector(rows.length);\n+                    for (int j = 0; j < rows.length; j++) {\n+                        vectors[i].set(j, ((ServerIntFloatRow) rows[j]).get((int) cols[i]));\n+                    }\n+                }\n+            }\n+            return VFactory.compIntFloatVector(cols.length, vectors, rows.length);\n+        } else if (rows[0] instanceof ServerLongFloatRow) {\n+            IntFloatVector[] vectors = new IntFloatVector[cols.length];\n+            if (func != null) {\n+                for (int i = 0; i < cols.length; i++) {\n+                    vectors[i] = VFactory.denseFloatVector(rows.length);\n+                    for (int j = 0; j < rows.length; j++) {\n+                        vectors[i].set(j, ((ServerLongFloatRow) rows[j]).initAndGet(cols[i], func));\n+                    }\n+                }\n+            } else {\n+                for (int i = 0; i < cols.length; i++) {\n+                    vectors[i] = VFactory.denseFloatVector(rows.length);\n+                    for (int j = 0; j < rows.length; j++) {\n+                        vectors[i].set(j, ((ServerLongFloatRow) rows[j]).get(cols[i]));\n+                    }\n+                }\n+            }\n+            return VFactory.compIntFloatVector(cols.length, vectors, rows.length);\n+        } else {\n+            throw new AngelException(\"The rowType \" + rows[0].getRowType() + \" is not support!\");\n         }\n-      }\n-      return new GetColsResult(maps);\n-    } else if (rr.vector instanceof CompIntFloatVector) {\n-      Map<Long, Vector> maps = new HashMap<>();\n-      for (PartitionGetResult r : partResults) {\n-        PartitionGetColsResult rrr = (PartitionGetColsResult) r;\n-        long[] cols = rrr.cols;\n-        CompIntFloatVector vector = (CompIntFloatVector) rrr.vector;\n-        for (int i = 0; i < cols.length; i++) {\n-          maps.put(cols[i], vector.getPartitions()[i]);\n+    }\n+\n+    @Override\n+    public GetResult merge(List<PartitionGetResult> partResults) {\n+        PartitionGetColsResult rr = (PartitionGetColsResult) partResults.get(0);\n+        if (rr.vector instanceof CompIntDoubleVector) {\n+            Map<Long, Vector> maps = new HashMap<>();\n+            for (PartitionGetResult r : partResults) {\n+                PartitionGetColsResult rrr = (PartitionGetColsResult) r;\n+                long[] cols = rrr.cols;\n+                CompIntDoubleVector vector = (CompIntDoubleVector) rrr.vector;\n+                for (int i = 0; i < cols.length; i++) {\n+                    maps.put(cols[i], vector.getPartitions()[i]);\n+                }\n+            }\n+            return new GetColsResult(maps);\n+        } else if (rr.vector instanceof CompIntFloatVector) {\n+            Map<Long, Vector> maps = new HashMap<>();\n+            for (PartitionGetResult r : partResults) {\n+                PartitionGetColsResult rrr = (PartitionGetColsResult) r;\n+                long[] cols = rrr.cols;\n+                CompIntFloatVector vector = (CompIntFloatVector) rrr.vector;\n+                for (int i = 0; i < cols.length; i++) {\n+                    maps.put(cols[i], vector.getPartitions()[i]);\n+                }\n+            }\n+            return new GetColsResult(maps);\n+        } else {\n+            throw new AngelException(\"Data type should be double or float!\");\n         }\n-      }\n-      return new GetColsResult(maps);\n-    } else {\n-      throw new AngelException(\"Data type should be double or float!\");\n     }\n-  }\n \n }\n",
+            "diff_size": 233
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/888/GetColsFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/888/GetColsFunc.java\nindex 3127b17e9a..05bf311655 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/888/GetColsFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/888/GetColsFunc.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.psf.columns;\n \n import com.tencent.angel.exception.AngelException;\n@@ -55,7 +54,7 @@ public class GetColsFunc extends GetFunc {\n \n     RowBasedPartition partition = (RowBasedPartition) psContext.getMatrixStorageManager()\n         .getPart(matId, partitionId);\n-    ServerRow[] splits = new ServerRow[rows.length];\n+ServerRow[] splits = new ServerRow[rows.length];\n     for (int i = 0; i < rows.length; i++) {\n       splits[i] = partition.getRow(rows[i]);\n     }\n@@ -190,4 +189,4 @@ public class GetColsFunc extends GetFunc {\n     }\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 118).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 175).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 144).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 158).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 144).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 178).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "108",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 124).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 147).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 133).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 191).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 154).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 180).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "132",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 120).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "140",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "143",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 183).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "150",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 115).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "166",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 110).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "168",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "175",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 110).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "176",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 111).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "177",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "179",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 120).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "181",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 159).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/888/GetColsFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/888/GetColsFunc.java\nindex 3127b17e9a..d994ce5567 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/888/GetColsFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/888/GetColsFunc.java\n@@ -28,7 +28,6 @@ import com.tencent.angel.ml.matrix.psf.get.base.PartitionGetResult;\n import com.tencent.angel.ps.server.data.request.InitFunc;\n import com.tencent.angel.ps.storage.partition.RowBasedPartition;\n import com.tencent.angel.ps.storage.vector.*;\n-\n import java.util.Arrays;\n import java.util.HashMap;\n import java.util.List;\n@@ -36,158 +35,156 @@ import java.util.Map;\n \n public class GetColsFunc extends GetFunc {\n \n-  public GetColsFunc(GetColsParam param) {\n+    public GetColsFunc(GetColsParam param) {\n     super(param);\n-  }\n+    }\n \n-  public GetColsFunc() {\n+    public GetColsFunc() {\n     super(null);\n-  }\n+    }\n \n-  @Override\n-  public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n+    @Override\n+    public PartitionGetResult partitionGet(PartitionGetParam partParam) {\n     PartitionGetColsParam param = (PartitionGetColsParam) partParam;\n     int[] rows = param.rows;\n     long[] cols = param.cols;\n     int matId = param.getMatrixId();\n     int partitionId = param.getPartKey().getPartitionId();\n     Arrays.sort(rows);\n-\n-    RowBasedPartition partition = (RowBasedPartition) psContext.getMatrixStorageManager()\n-        .getPart(matId, partitionId);\n+    RowBasedPartition partition = (RowBasedPartition) psContext.getMatrixStorageManager().getPart(matId, partitionId);\n     ServerRow[] splits = new ServerRow[rows.length];\n     for (int i = 0; i < rows.length; i++) {\n-      splits[i] = partition.getRow(rows[i]);\n+        splits[i] = partition.getRow(rows[i]);\n     }\n-    Vector result = doGet(splits, cols, param.func);\n \n+    Vector result = doGet(splits, cols, param.func);\n     return new PartitionGetColsResult(rows, cols, result);\n-  }\n+    }\n \n-  private Vector doGet(ServerRow[] rows, long[] cols, InitFunc func) {\n+    private Vector doGet(ServerRow[] rows, long[] cols, InitFunc func) {\n     if (func != null) {\n-      rows[0].startWrite();\n-      try {\n-        return doGetLockFree(rows, cols, func);\n-      } finally {\n-        rows[0].endWrite();\n-      }\n+        rows[0].startWrite();\n+        try {\n+                          return doGetLockFree(rows, cols, func);\n+        } finally {\n+          rows[0].endWrite();\n+        }\n     } else {\n       rows[0].startRead();\n       try {\n-        return doGetLockFree(rows, cols, func);\n+               return doGetLockFree(rows, cols, func);\n       } finally {\n         rows[0].endRead();\n       }\n     }\n-  }\n+    }\n \n-  private Vector doGetLockFree(ServerRow[] rows, long[] cols, InitFunc func) {\n+    private Vector doGetLockFree(ServerRow[] rows, long[] cols, InitFunc func) {\n     if (rows[0] instanceof ServerIntDoubleRow) {\n-      IntDoubleVector[] vectors = new IntDoubleVector[cols.length];\n-      if (func != null) {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseDoubleVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerIntDoubleRow) rows[j]).initAndGet((int) cols[i], func));\n+        IntDoubleVector[] vectors = new IntDoubleVector[cols.length];\n+        if (func != null) {\n+                                                   for (int i = 0; i < cols.length; i++) {\n+                              vectors[i] = VFactory.denseDoubleVector(rows.length);\n+                              for (int j = 0; j < rows.length; j++) {\n+                                                                                             vectors[i].set(j, ((ServerIntDoubleRow) rows[j]).initAndGet((int) cols[i], func));\n+                              }\n+                                                   }\n+        } else {\n+          for (int i = 0; i < cols.length; i++) {\n+                   vectors[i] = VFactory.denseDoubleVector(rows.length);\n+                   for (int j = 0; j < rows.length; j++) {\n+                                                    vectors[i].set(j, ((ServerIntDoubleRow) rows[j]).get((int) cols[i]));\n+                   }\n           }\n         }\n-      } else {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseDoubleVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerIntDoubleRow) rows[j]).get((int) cols[i]));\n-          }\n-        }\n-      }\n-      return VFactory.compIntDoubleVector(cols.length, vectors, rows.length);\n+        return VFactory.compIntDoubleVector(cols.length, vectors, rows.length);\n     } else if (rows[0] instanceof ServerLongDoubleRow) {\n-      IntDoubleVector[] vectors = new IntDoubleVector[cols.length];\n-      if (func != null) {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseDoubleVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerLongDoubleRow) rows[j]).initAndGet(cols[i], func));\n-          }\n-        }\n-      } else {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseDoubleVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerLongDoubleRow) rows[j]).get(cols[i]));\n-          }\n-        }\n-      }\n-      return VFactory.compIntDoubleVector(cols.length, vectors, rows.length);\n+                                                                                   IntDoubleVector[] vectors = new IntDoubleVector[cols.length];\n+                                                                                   if (func != null) {\n+                                                           for (int i = 0; i < cols.length; i++) {\n+                                                                                                         vectors[i] = VFactory.denseDoubleVector(rows.length);\n+                                                                                                         for (int j = 0; j < rows.length; j++) {\n+                                                                                                     vectors[i].set(j, ((ServerLongDoubleRow) rows[j]).initAndGet(cols[i], func));\n+                                                                                                         }\n+                                                           }\n+                                                                                   } else {\n+                                                                                     for (int i = 0; i < cols.length; i++) {\n+                                                                                              vectors[i] = VFactory.denseDoubleVector(rows.length);\n+                                                                                              for (int j = 0; j < rows.length; j++) {\n+                                                                                                                               vectors[i].set(j, ((ServerLongDoubleRow) rows[j]).get(cols[i]));\n+                                                                                              }\n+                                                                                     }\n+                                                                                   }\n+                                                                                   return VFactory.compIntDoubleVector(cols.length, vectors, rows.length);\n     } else if (rows[0] instanceof ServerIntFloatRow) {\n-      IntFloatVector[] vectors = new IntFloatVector[cols.length];\n-      if (func != null) {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseFloatVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerIntFloatRow) rows[j]).initAndGet((int) cols[i], func));\n+        IntFloatVector[] vectors = new IntFloatVector[cols.length];\n+        if (func != null) {\n+                                                         for (int i = 0; i < cols.length; i++) {\n+                              vectors[i] = VFactory.denseFloatVector(rows.length);\n+                              for (int j = 0; j < rows.length; j++) {\n+                                                                                                   vectors[i].set(j, ((ServerIntFloatRow) rows[j]).initAndGet((int) cols[i], func));\n+                              }\n+                                                         }\n+        } else {\n+          for (int i = 0; i < cols.length; i++) {\n+                   vectors[i] = VFactory.denseFloatVector(rows.length);\n+                   for (int j = 0; j < rows.length; j++) {\n+                                                    vectors[i].set(j, ((ServerIntFloatRow) rows[j]).get((int) cols[i]));\n+                   }\n           }\n         }\n-      } else {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseFloatVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerIntFloatRow) rows[j]).get((int) cols[i]));\n+        return VFactory.compIntFloatVector(cols.length, vectors, rows.length);\n+           } else if (rows[0] instanceof ServerLongFloatRow) {\n+        IntFloatVector[] vectors = new IntFloatVector[cols.length];\n+        if (func != null) {\n+                                                                 for (int i = 0; i < cols.length; i++) {\n+                              vectors[i] = VFactory.denseFloatVector(rows.length);\n+                              for (int j = 0; j < rows.length; j++) {\n+                                                                                                           vectors[i].set(j, ((ServerLongFloatRow) rows[j]).initAndGet(cols[i], func));\n+                              }\n+                                                                 }\n+        } else {\n+          for (int i = 0; i < cols.length; i++) {\n+                   vectors[i] = VFactory.denseFloatVector(rows.length);\n+                   for (int j = 0; j < rows.length; j++) {\n+                                                    vectors[i].set(j, ((ServerLongFloatRow) rows[j]).get(cols[i]));\n+                   }\n           }\n         }\n-      }\n-      return VFactory.compIntFloatVector(cols.length, vectors, rows.length);\n-    } else if (rows[0] instanceof ServerLongFloatRow) {\n-      IntFloatVector[] vectors = new IntFloatVector[cols.length];\n-      if (func != null) {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseFloatVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerLongFloatRow) rows[j]).initAndGet(cols[i], func));\n-          }\n-        }\n-      } else {\n-        for (int i = 0; i < cols.length; i++) {\n-          vectors[i] = VFactory.denseFloatVector(rows.length);\n-          for (int j = 0; j < rows.length; j++) {\n-            vectors[i].set(j, ((ServerLongFloatRow) rows[j]).get(cols[i]));\n-          }\n-        }\n-      }\n-      return VFactory.compIntFloatVector(cols.length, vectors, rows.length);\n-    } else {\n-      throw new AngelException(\"The rowType \" + rows[0].getRowType() + \" is not support!\");\n+        return VFactory.compIntFloatVector(cols.length, vectors, rows.length);\n+           } else {\n+             throw new AngelException(\"The rowType \" + rows[0].getRowType() + \" is not support!\");\n+           }\n     }\n-  }\n \n-  @Override\n-  public GetResult merge(List<PartitionGetResult> partResults) {\n+    @Override\n+    public GetResult merge(List<PartitionGetResult> partResults) {\n     PartitionGetColsResult rr = (PartitionGetColsResult) partResults.get(0);\n     if (rr.vector instanceof CompIntDoubleVector) {\n-      Map<Long, Vector> maps = new HashMap<>();\n-      for (PartitionGetResult r : partResults) {\n-        PartitionGetColsResult rrr = (PartitionGetColsResult) r;\n-        long[] cols = rrr.cols;\n-        CompIntDoubleVector vector = (CompIntDoubleVector) rrr.vector;\n-        for (int i = 0; i < cols.length; i++) {\n-          maps.put(cols[i], vector.getPartitions()[i]);\n+        Map<Long, Vector> maps = new HashMap<>();\n+        for (PartitionGetResult r : partResults) {\n+                                                      PartitionGetColsResult rrr = (PartitionGetColsResult) r;\n+                                                      long[] cols = rrr.cols;\n+                                                      CompIntDoubleVector vector = (CompIntDoubleVector) rrr.vector;\n+                                                      for (int i = 0; i < cols.length; i++) {\n+                                                     maps.put(cols[i], vector.getPartitions()[i]);\n+                                                      }\n         }\n-      }\n-      return new GetColsResult(maps);\n+        return new GetColsResult(maps);\n     } else if (rr.vector instanceof CompIntFloatVector) {\n-      Map<Long, Vector> maps = new HashMap<>();\n-      for (PartitionGetResult r : partResults) {\n-        PartitionGetColsResult rrr = (PartitionGetColsResult) r;\n-        long[] cols = rrr.cols;\n-        CompIntFloatVector vector = (CompIntFloatVector) rrr.vector;\n-        for (int i = 0; i < cols.length; i++) {\n-          maps.put(cols[i], vector.getPartitions()[i]);\n-        }\n-      }\n-      return new GetColsResult(maps);\n+                                                                     Map<Long, Vector> maps = new HashMap<>();\n+                                                                     for (PartitionGetResult r : partResults) {\n+                                                            PartitionGetColsResult rrr = (PartitionGetColsResult) r;\n+                                                            long[] cols = rrr.cols;\n+                                                            CompIntFloatVector vector = (CompIntFloatVector) rrr.vector;\n+                                                            for (int i = 0; i < cols.length; i++) {\n+                                                                                                                  maps.put(cols[i], vector.getPartitions()[i]);\n+                                                            }\n+                                                                     }\n+                                                                     return new GetColsResult(maps);\n     } else {\n       throw new AngelException(\"Data type should be double or float!\");\n     }\n-  }\n+    }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 141
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/888/GetColsFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/888/GetColsFunc.java\nindex 3127b17e9a..55ba7b2bfc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/888/GetColsFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/888/GetColsFunc.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.psf.columns;\n \n import com.tencent.angel.exception.AngelException;\n",
+            "diff_size": 1
+        }
+    ]
+}

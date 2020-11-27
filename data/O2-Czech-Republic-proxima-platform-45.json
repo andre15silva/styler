@@ -1,0 +1,411 @@
+{
+    "error_id": "45",
+    "information": {
+        "errors": [
+            {
+                "line": "63",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 100).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "          conn.close();\n        }\n        conn = ConnectionFactory.createConnection(deserialize(serializedConf, new Configuration()));\n        client = conn.getTable(tableName());\n      } catch (IOException ex) {\n        log.error(\"Error connecting to cluster\", ex);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 6, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 98).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/45/HBaseClientWrapper.java\nindex 2ae135b055..908f17ffda 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/45/HBaseClientWrapper.java\n@@ -60,7 +60,7 @@ class HBaseClientWrapper implements AutoCloseable, Serializable {\n         if (conn != null && !conn.isClosed()) {\n           conn.close();\n         }\n-        conn = ConnectionFactory.createConnection(deserialize(serializedConf, new Configuration()));\n+      conn = ConnectionFactory.createConnection(deserialize(serializedConf, new Configuration()));\n         client = conn.getTable(tableName());\n       } catch (IOException ex) {\n         log.error(\"Error connecting to cluster\", ex);\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/45/HBaseClientWrapper.java\nindex 2ae135b055..99c84bbe76 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/45/HBaseClientWrapper.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.direct.hbase;\n \n import java.io.ByteArrayInputStream;\n@@ -60,7 +61,8 @@ class HBaseClientWrapper implements AutoCloseable, Serializable {\n         if (conn != null && !conn.isClosed()) {\n           conn.close();\n         }\n-        conn = ConnectionFactory.createConnection(deserialize(serializedConf, new Configuration()));\n+        conn = ConnectionFactory\n+            .createConnection(deserialize(serializedConf, new Configuration()));\n         client = conn.getTable(tableName());\n       } catch (IOException ex) {\n         log.error(\"Error connecting to cluster\", ex);\n@@ -87,7 +89,7 @@ class HBaseClientWrapper implements AutoCloseable, Serializable {\n \n   private static byte[] serialize(Writable obj) {\n     try (ByteArrayOutputStream baos = new ByteArrayOutputStream();\n-        DataOutputStream dos = new DataOutputStream(baos)) {\n+         DataOutputStream dos = new DataOutputStream(baos)) {\n \n       obj.write(dos);\n       dos.flush();\n@@ -99,7 +101,7 @@ class HBaseClientWrapper implements AutoCloseable, Serializable {\n \n   private static <W extends Writable> W deserialize(byte[] bytes, W obj) {\n     try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);\n-        DataInputStream dis = new DataInputStream(bais)) {\n+         DataInputStream dis = new DataInputStream(bais)) {\n       obj.readFields(dis);\n       return obj;\n     } catch (IOException ex) {\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 100).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 2, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 2, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/45/HBaseClientWrapper.java\nindex 2ae135b055..6f383b39cd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/45/HBaseClientWrapper.java\n@@ -87,9 +87,9 @@ class HBaseClientWrapper implements AutoCloseable, Serializable {\n \n   private static byte[] serialize(Writable obj) {\n     try (ByteArrayOutputStream baos = new ByteArrayOutputStream();\n-        DataOutputStream dos = new DataOutputStream(baos)) {\n \n-      obj.write(dos);\n+        DataOutputStream dos = new DataOutputStream(baos)) {\n+  obj.write(dos);\n       dos.flush();\n       return baos.toByteArray();\n     } catch (IOException ex) {\n@@ -99,11 +99,12 @@ class HBaseClientWrapper implements AutoCloseable, Serializable {\n \n   private static <W extends Writable> W deserialize(byte[] bytes, W obj) {\n     try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);\n+\n         DataInputStream dis = new DataInputStream(bais)) {\n-      obj.readFields(dis);\n+  obj.readFields(dis);\n       return obj;\n     } catch (IOException ex) {\n       throw new RuntimeException(ex);\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "column": "21",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 44, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 44, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 44, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 44, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 44, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 136).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 44, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 118).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "91",
+                    "column": "8",
+                    "severity": "error",
+                    "message": "WhitespaceAround: 'try' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 119).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "101",
+                    "column": "8",
+                    "severity": "error",
+                    "message": "WhitespaceAround: 'try' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/45/HBaseClientWrapper.java\nindex 2ae135b055..ab01a88f8e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/45/HBaseClientWrapper.java\n@@ -32,78 +32,77 @@ import org.apache.hadoop.hbase.client.Table;\n import org.apache.hadoop.io.Writable;\n \n /** Class containing embedded HBase client. */\n+\n+\n @Slf4j\n class HBaseClientWrapper implements AutoCloseable, Serializable {\n \n-  final URI uri;\n-  final byte[] serializedConf;\n-  final byte[] family;\n-  transient Connection conn;\n-  transient Table client;\n+    final URI uri;\n+    final byte[] serializedConf;\n+    final byte[] family;\n+    transient Connection conn;\n+    transient Table client;\n \n-  HBaseClientWrapper(URI uri, Configuration conf) {\n+    HBaseClientWrapper(URI uri, Configuration conf) {\n     this.uri = uri;\n     this.family = Util.getFamily(uri);\n     this.serializedConf = serialize(HBaseConfiguration.create(conf));\n-  }\n+    }\n \n-  public URI getUri() {\n+    public URI getUri() {\n     return uri;\n-  }\n+    }\n \n-  void ensureClient() {\n-    if (conn == null || conn.isClosed()) {\n-      try {\n-        if (client != null) {\n-          client.close();\n-        }\n-        if (conn != null && !conn.isClosed()) {\n-          conn.close();\n+    void ensureClient() {\n+    if (conn == null|| conn.isClosed()) {\n+        try {\n+                                            if (client != null) {\n+            client.close();\n+                                            }\n+                                            if (conn != null && !conn.isClosed()) {\n+            conn.close();\n+                                            }\n+                                            conn = ConnectionFactory.createConnection(deserialize(serializedConf, new Configuration()));\n+                                            client = conn.getTable(tableName());\n+        } catch (IOException ex) {\n+          log.error(\"Error connecting to cluster\", ex);\n+          throw new RuntimeException(ex);\n         }\n-        conn = ConnectionFactory.createConnection(deserialize(serializedConf, new Configuration()));\n-        client = conn.getTable(tableName());\n-      } catch (IOException ex) {\n-        log.error(\"Error connecting to cluster\", ex);\n-        throw new RuntimeException(ex);\n-      }\n     }\n-  }\n+    }\n \n-  TableName tableName() {\n+    TableName tableName() {\n     return TableName.valueOf(Util.getTable(uri));\n-  }\n+    }\n \n-  @Override\n-  public void close() {\n+    @Override\n+    public void close() {\n     if (client != null) {\n-      Util.closeQuietly(client);\n-      client = null;\n+        Util.closeQuietly(client);\n+        client = null;\n     }\n     if (conn != null) {\n-      Util.closeQuietly(conn);\n-      conn = null;\n+        Util.closeQuietly(conn);\n+        conn = null;\n+    }\n     }\n-  }\n-\n-  private static byte[] serialize(Writable obj) {\n-    try (ByteArrayOutputStream baos = new ByteArrayOutputStream();\n-        DataOutputStream dos = new DataOutputStream(baos)) {\n \n-      obj.write(dos);\n-      dos.flush();\n-      return baos.toByteArray();\n+    private static byte[] serialize(Writable obj) {\n+    try(ByteArrayOutputStream baos = new ByteArrayOutputStream(); DataOutputStream dos = new DataOutputStream(baos)) {\n+        obj.write(dos);\n+        dos.flush();\n+        return baos.toByteArray();\n     } catch (IOException ex) {\n       throw new RuntimeException(ex);\n     }\n-  }\n+    }\n \n-  private static <W extends Writable> W deserialize(byte[] bytes, W obj) {\n-    try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);\n-        DataInputStream dis = new DataInputStream(bais)) {\n-      obj.readFields(dis);\n-      return obj;\n+    private static <W extends Writable> W deserialize(byte[] bytes, W obj) {\n+    try(ByteArrayInputStream bais = new ByteArrayInputStream(bytes); DataInputStream dis = new DataInputStream(bais)) {\n+        obj.readFields(dis);\n+        return obj;\n     } catch (IOException ex) {\n       throw new RuntimeException(ex);\n     }\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 59
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "63",
+                    "column": "96",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "63",
+                    "column": "107",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "63",
+                    "column": "135",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/45/HBaseClientWrapper.java\nindex 2ae135b055..c44610e1d5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/45/HBaseClientWrapper.java\n@@ -60,8 +60,7 @@ class HBaseClientWrapper implements AutoCloseable, Serializable {\n         if (conn != null && !conn.isClosed()) {\n           conn.close();\n         }\n-        conn = ConnectionFactory.createConnection(deserialize(serializedConf, new Configuration()));\n-        client = conn.getTable(tableName());\n+        conn = ConnectionFactory.createConnection(deserialize(serializedConf, newConfiguration ()));client= conn.getTable(tableName());\n       } catch (IOException ex) {\n         log.error(\"Error connecting to cluster\", ex);\n         throw new RuntimeException(ex);\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 6, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 98).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/45/HBaseClientWrapper.java\nindex 2ae135b055..908f17ffda 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/45/HBaseClientWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/45/HBaseClientWrapper.java\n@@ -60,7 +60,7 @@ class HBaseClientWrapper implements AutoCloseable, Serializable {\n         if (conn != null && !conn.isClosed()) {\n           conn.close();\n         }\n-        conn = ConnectionFactory.createConnection(deserialize(serializedConf, new Configuration()));\n+      conn = ConnectionFactory.createConnection(deserialize(serializedConf, new Configuration()));\n         client = conn.getTable(tableName());\n       } catch (IOException ex) {\n         log.error(\"Error connecting to cluster\", ex);\n",
+            "diff_size": 1
+        }
+    ]
+}

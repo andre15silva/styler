@@ -1,0 +1,569 @@
+{
+    "error_id": "130",
+    "information": {
+        "errors": [
+            {
+                "line": "58",
+                "severity": "warning",
+                "message": "trailing whitespaces",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+            }
+        ]
+    },
+    "source_code": "\t\t\n\t\t//add resolution indicator\n\t\tresult[0] = dateContext.getSubdivisionMode().toString();\t\n\t\t//add index value\n\t\tresult[1] = dateContext.getIndex();\n\t\t// add event date",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/130/FormQueryPlan.java\nindex d29d8de88f..11bec16037 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/130/FormQueryPlan.java\n@@ -25,17 +25,17 @@ public class FormQueryPlan implements QueryPlan {\n \t@Override\n \tpublic EntityResult execute(QueryExecutionContext ctx, Entity entity) {\n \t\tList<Object[]> resultValues = new ArrayList<>(dateContexts.size());\n-\t\t\n+\n \t\tfor(DateContext dateContext : dateContexts) {\n-\t\t\t\n+\n \t\t\tCloneContext clCtx = new CloneContext(ctx.getStorage());\n-\t\t\t\t\t\t\n+\n \t\t\tArrayConceptQueryPlan subPlan = features.clone(clCtx);\n-\t\n+\n \t\t\tCDateSet dateRestriction = CDateSet.create(ctx.getDateRestriction());\n \t\t\tdateRestriction.retainAll(dateContext.getDateRange());\n \t\t\tEntityResult subResult = subPlan.execute(ctx.withDateRestriction(dateRestriction), entity);\n-\t\t\t\n+\n \t\t\tresultValues.addAll(\n \t\t\t\tResultModifier.modify(\n \t\t\t\t\tsubResult,\n@@ -44,18 +44,18 @@ public class FormQueryPlan implements QueryPlan {\n \t\t\t\t)\n \t\t\t);\n \t\t}\n-\t\t\n+\n \t\treturn EntityResult.multilineOf(entity.getId(), resultValues);\n \t}\n-\t\n+\n \tprivate Object[] addConstants(Object[] values, DateContext dateContext) {\n \t\tint constants = dateContext.getEventDate() == null ? 3 : 4;\n-\t\t\n+\n \t\tObject[] result = new Object[values.length+constants];\n \t\tSystem.arraycopy(values, 0, result, constants, values.length);\n-\t\t\n+\n \t\t//add resolution indicator\n-\t\tresult[0] = dateContext.getSubdivisionMode().toString();\t\n+\t\tresult[0] = dateContext.getSubdivisionMode().toString();\n \t\t//add index value\n \t\tresult[1] = dateContext.getIndex();\n \t\t// add event date\n@@ -64,7 +64,7 @@ public class FormQueryPlan implements QueryPlan {\n \t\t}\n \t\t//add date range at [2] or [3]\n \t\tresult[constants-1] = dateContext.getDateRange().toString();\n-\t\t\n+\n \t\treturn result;\n \t}\n \n",
+            "diff_size": 11
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "22",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "23",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/130/FormQueryPlan.java\nindex d29d8de88f..e07f861812 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/130/FormQueryPlan.java\n@@ -19,62 +19,62 @@ import lombok.RequiredArgsConstructor;\n @RequiredArgsConstructor\n public class FormQueryPlan implements QueryPlan {\n \n-\tprivate final List<DateContext> dateContexts;\n-\tprivate final ArrayConceptQueryPlan features;\n-\n-\t@Override\n-\tpublic EntityResult execute(QueryExecutionContext ctx, Entity entity) {\n-\t\tList<Object[]> resultValues = new ArrayList<>(dateContexts.size());\n-\t\t\n-\t\tfor(DateContext dateContext : dateContexts) {\n-\t\t\t\n-\t\t\tCloneContext clCtx = new CloneContext(ctx.getStorage());\n-\t\t\t\t\t\t\n-\t\t\tArrayConceptQueryPlan subPlan = features.clone(clCtx);\n-\t\n-\t\t\tCDateSet dateRestriction = CDateSet.create(ctx.getDateRestriction());\n-\t\t\tdateRestriction.retainAll(dateContext.getDateRange());\n-\t\t\tEntityResult subResult = subPlan.execute(ctx.withDateRestriction(dateRestriction), entity);\n-\t\t\t\n-\t\t\tresultValues.addAll(\n-\t\t\t\tResultModifier.modify(\n-\t\t\t\t\tsubResult,\n-\t\t\t\t\tsubPlan,\n-\t\t\t\t\tv->addConstants(v, dateContext)\n-\t\t\t\t)\n-\t\t\t);\n-\t\t}\n-\t\t\n-\t\treturn EntityResult.multilineOf(entity.getId(), resultValues);\n-\t}\n-\t\n-\tprivate Object[] addConstants(Object[] values, DateContext dateContext) {\n-\t\tint constants = dateContext.getEventDate() == null ? 3 : 4;\n-\t\t\n-\t\tObject[] result = new Object[values.length+constants];\n-\t\tSystem.arraycopy(values, 0, result, constants, values.length);\n-\t\t\n-\t\t//add resolution indicator\n-\t\tresult[0] = dateContext.getSubdivisionMode().toString();\t\n-\t\t//add index value\n-\t\tresult[1] = dateContext.getIndex();\n-\t\t// add event date\n-\t\tif(dateContext.getEventDate() != null) {\n-\t\t\tresult[2] = dateContext.getEventDate();\n-\t\t}\n-\t\t//add date range at [2] or [3]\n-\t\tresult[constants-1] = dateContext.getDateRange().toString();\n-\t\t\n-\t\treturn result;\n-\t}\n-\n-\t@Override\n-\tpublic FormQueryPlan clone(CloneContext ctx) {\n-\t\treturn new FormQueryPlan(dateContexts, features);\n-\t}\n-\n-\t@Override\n-\tpublic boolean isOfInterest(Entity entity) {\n-\t\treturn true;\n-\t}\n+    private final List<DateContext> dateContexts;\n+    private final ArrayConceptQueryPlan features;\n+\n+    @Override\n+    public EntityResult execute(QueryExecutionContext ctx, Entity entity) {\n+        List<Object[]> resultValues = new ArrayList<>(dateContexts.size());\n+\n+        for (DateContext dateContext : dateContexts) {\n+\n+            CloneContext clCtx = new CloneContext(ctx.getStorage());\n+\n+            ArrayConceptQueryPlan subPlan = features.clone(clCtx);\n+\n+            CDateSet dateRestriction = CDateSet.create(ctx.getDateRestriction());\n+            dateRestriction.retainAll(dateContext.getDateRange());\n+            EntityResult subResult = subPlan.execute(ctx.withDateRestriction(dateRestriction), entity);\n+\n+            resultValues.addAll(\n+                ResultModifier.modify(\n+                    subResult,\n+                    subPlan,\n+                    v -> addConstants(v, dateContext)\n+                )\n+            );\n+        }\n+\n+        return EntityResult.multilineOf(entity.getId(), resultValues);\n+    }\n+\n+    private Object[] addConstants(Object[] values, DateContext dateContext) {\n+        int constants = dateContext.getEventDate() == null ? 3 : 4;\n+\n+        Object[] result = new Object[values.length + constants];\n+        System.arraycopy(values, 0, result, constants, values.length);\n+\n+        //add resolution indicator\n+        result[0] = dateContext.getSubdivisionMode().toString();\n+        //add index value\n+        result[1] = dateContext.getIndex();\n+        // add event date\n+        if (dateContext.getEventDate() != null) {\n+            result[2] = dateContext.getEventDate();\n+        }\n+        //add date range at [2] or [3]\n+        result[constants - 1] = dateContext.getDateRange().toString();\n+\n+        return result;\n+    }\n+\n+    @Override\n+    public FormQueryPlan clone(CloneContext ctx) {\n+        return new FormQueryPlan(dateContexts, features);\n+    }\n+\n+    @Override\n+    public boolean isOfInterest(Entity entity) {\n+        return true;\n+    }\n }\n",
+            "diff_size": 58
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "21",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "22",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "23",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "24",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "trailing whitespaces",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/130/FormQueryPlan.java\nindex d29d8de88f..6a60326e70 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/130/FormQueryPlan.java\n@@ -2,7 +2,6 @@ package com.bakdata.conquery.models.forms.managed;\n \n import java.util.ArrayList;\n import java.util.List;\n-\n import com.bakdata.conquery.models.common.CDateSet;\n import com.bakdata.conquery.models.forms.util.DateContext;\n import com.bakdata.conquery.models.forms.util.ResultModifier;\n@@ -19,62 +18,48 @@ import lombok.RequiredArgsConstructor;\n @RequiredArgsConstructor\n public class FormQueryPlan implements QueryPlan {\n \n-\tprivate final List<DateContext> dateContexts;\n-\tprivate final ArrayConceptQueryPlan features;\n+    private final List<DateContext> dateContexts;\n+    private final ArrayConceptQueryPlan features;\n+    @Override\n+    public EntityResult execute(QueryExecutionContext ctx, Entity entity) {\n+        List<Object[]> resultValues = new ArrayList<>(dateContexts.size());\n+        for(DateContext dateContext : dateContexts) {\n+            CloneContext clCtx = new CloneContext(ctx.getStorage());\n+            ArrayConceptQueryPlan subPlan = features.clone(clCtx);\n+            CDateSet dateRestriction = CDateSet.create(ctx.getDateRestriction());\n+            dateRestriction.retainAll(dateContext.getDateRange());\n+            EntityResult subResult = subPlan.execute(ctx.withDateRestriction(dateRestriction), entity);\n+            resultValues.addAll(ResultModifier.modify(subResult, subPlan, v->addConstants(v, dateContext)));\n+        }\n+        return EntityResult.multilineOf(entity.getId(), resultValues);\n+    }\n+\n+    private Object[] addConstants(Object[] values, DateContext dateContext) {\n+        int constants = dateContext.getEventDate() == null ? 3 : 4;\n+        Object[] result = new Object[values.length+constants];\n+        System.arraycopy(values, 0, result, constants, values.length);\n+        \n+        //add resolution indicator\n+        result[0] = dateContext.getSubdivisionMode().toString();    \n+        //add index value\n+        result[1] = dateContext.getIndex();\n+        // add event date\n \n-\t@Override\n-\tpublic EntityResult execute(QueryExecutionContext ctx, Entity entity) {\n-\t\tList<Object[]> resultValues = new ArrayList<>(dateContexts.size());\n-\t\t\n-\t\tfor(DateContext dateContext : dateContexts) {\n-\t\t\t\n-\t\t\tCloneContext clCtx = new CloneContext(ctx.getStorage());\n-\t\t\t\t\t\t\n-\t\t\tArrayConceptQueryPlan subPlan = features.clone(clCtx);\n-\t\n-\t\t\tCDateSet dateRestriction = CDateSet.create(ctx.getDateRestriction());\n-\t\t\tdateRestriction.retainAll(dateContext.getDateRange());\n-\t\t\tEntityResult subResult = subPlan.execute(ctx.withDateRestriction(dateRestriction), entity);\n-\t\t\t\n-\t\t\tresultValues.addAll(\n-\t\t\t\tResultModifier.modify(\n-\t\t\t\t\tsubResult,\n-\t\t\t\t\tsubPlan,\n-\t\t\t\t\tv->addConstants(v, dateContext)\n-\t\t\t\t)\n-\t\t\t);\n-\t\t}\n-\t\t\n-\t\treturn EntityResult.multilineOf(entity.getId(), resultValues);\n-\t}\n-\t\n-\tprivate Object[] addConstants(Object[] values, DateContext dateContext) {\n-\t\tint constants = dateContext.getEventDate() == null ? 3 : 4;\n-\t\t\n-\t\tObject[] result = new Object[values.length+constants];\n-\t\tSystem.arraycopy(values, 0, result, constants, values.length);\n-\t\t\n-\t\t//add resolution indicator\n-\t\tresult[0] = dateContext.getSubdivisionMode().toString();\t\n-\t\t//add index value\n-\t\tresult[1] = dateContext.getIndex();\n-\t\t// add event date\n-\t\tif(dateContext.getEventDate() != null) {\n-\t\t\tresult[2] = dateContext.getEventDate();\n-\t\t}\n-\t\t//add date range at [2] or [3]\n-\t\tresult[constants-1] = dateContext.getDateRange().toString();\n-\t\t\n-\t\treturn result;\n-\t}\n+        if(dateContext.getEventDate() != null) {\n+            result[2] = dateContext.getEventDate();\n+        }\n+        //add date range at [2] or [3]\n+        result[constants -1] = dateContext.getDateRange().toString();\n+        return result;\n+    }\n \n-\t@Override\n-\tpublic FormQueryPlan clone(CloneContext ctx) {\n-\t\treturn new FormQueryPlan(dateContexts, features);\n-\t}\n+    @Override\n+    public FormQueryPlan clone(CloneContext ctx) {\n+        return new FormQueryPlan(dateContexts, features);\n+    }\n \n-\t@Override\n-\tpublic boolean isOfInterest(Entity entity) {\n-\t\treturn true;\n-\t}\n-}\n+    @Override\n+    public boolean isOfInterest(Entity entity) {\n+        return true;\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 81
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/130/FormQueryPlan.java\nindex d29d8de88f..11bec16037 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/130/FormQueryPlan.java\n@@ -25,17 +25,17 @@ public class FormQueryPlan implements QueryPlan {\n \t@Override\n \tpublic EntityResult execute(QueryExecutionContext ctx, Entity entity) {\n \t\tList<Object[]> resultValues = new ArrayList<>(dateContexts.size());\n-\t\t\n+\n \t\tfor(DateContext dateContext : dateContexts) {\n-\t\t\t\n+\n \t\t\tCloneContext clCtx = new CloneContext(ctx.getStorage());\n-\t\t\t\t\t\t\n+\n \t\t\tArrayConceptQueryPlan subPlan = features.clone(clCtx);\n-\t\n+\n \t\t\tCDateSet dateRestriction = CDateSet.create(ctx.getDateRestriction());\n \t\t\tdateRestriction.retainAll(dateContext.getDateRange());\n \t\t\tEntityResult subResult = subPlan.execute(ctx.withDateRestriction(dateRestriction), entity);\n-\t\t\t\n+\n \t\t\tresultValues.addAll(\n \t\t\t\tResultModifier.modify(\n \t\t\t\t\tsubResult,\n@@ -44,18 +44,18 @@ public class FormQueryPlan implements QueryPlan {\n \t\t\t\t)\n \t\t\t);\n \t\t}\n-\t\t\n+\n \t\treturn EntityResult.multilineOf(entity.getId(), resultValues);\n \t}\n-\t\n+\n \tprivate Object[] addConstants(Object[] values, DateContext dateContext) {\n \t\tint constants = dateContext.getEventDate() == null ? 3 : 4;\n-\t\t\n+\n \t\tObject[] result = new Object[values.length+constants];\n \t\tSystem.arraycopy(values, 0, result, constants, values.length);\n-\t\t\n+\n \t\t//add resolution indicator\n-\t\tresult[0] = dateContext.getSubdivisionMode().toString();\t\n+\t\tresult[0] = dateContext.getSubdivisionMode().toString();\n \t\t//add index value\n \t\tresult[1] = dateContext.getIndex();\n \t\t// add event date\n@@ -64,7 +64,7 @@ public class FormQueryPlan implements QueryPlan {\n \t\t}\n \t\t//add date range at [2] or [3]\n \t\tresult[constants-1] = dateContext.getDateRange().toString();\n-\t\t\n+\n \t\treturn result;\n \t}\n \n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/130/FormQueryPlan.java\nindex d29d8de88f..11bec16037 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/130/FormQueryPlan.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/130/FormQueryPlan.java\n@@ -25,17 +25,17 @@ public class FormQueryPlan implements QueryPlan {\n \t@Override\n \tpublic EntityResult execute(QueryExecutionContext ctx, Entity entity) {\n \t\tList<Object[]> resultValues = new ArrayList<>(dateContexts.size());\n-\t\t\n+\n \t\tfor(DateContext dateContext : dateContexts) {\n-\t\t\t\n+\n \t\t\tCloneContext clCtx = new CloneContext(ctx.getStorage());\n-\t\t\t\t\t\t\n+\n \t\t\tArrayConceptQueryPlan subPlan = features.clone(clCtx);\n-\t\n+\n \t\t\tCDateSet dateRestriction = CDateSet.create(ctx.getDateRestriction());\n \t\t\tdateRestriction.retainAll(dateContext.getDateRange());\n \t\t\tEntityResult subResult = subPlan.execute(ctx.withDateRestriction(dateRestriction), entity);\n-\t\t\t\n+\n \t\t\tresultValues.addAll(\n \t\t\t\tResultModifier.modify(\n \t\t\t\t\tsubResult,\n@@ -44,18 +44,18 @@ public class FormQueryPlan implements QueryPlan {\n \t\t\t\t)\n \t\t\t);\n \t\t}\n-\t\t\n+\n \t\treturn EntityResult.multilineOf(entity.getId(), resultValues);\n \t}\n-\t\n+\n \tprivate Object[] addConstants(Object[] values, DateContext dateContext) {\n \t\tint constants = dateContext.getEventDate() == null ? 3 : 4;\n-\t\t\n+\n \t\tObject[] result = new Object[values.length+constants];\n \t\tSystem.arraycopy(values, 0, result, constants, values.length);\n-\t\t\n+\n \t\t//add resolution indicator\n-\t\tresult[0] = dateContext.getSubdivisionMode().toString();\t\n+\t\tresult[0] = dateContext.getSubdivisionMode().toString();\n \t\t//add index value\n \t\tresult[1] = dateContext.getIndex();\n \t\t// add event date\n@@ -64,7 +64,7 @@ public class FormQueryPlan implements QueryPlan {\n \t\t}\n \t\t//add date range at [2] or [3]\n \t\tresult[constants-1] = dateContext.getDateRange().toString();\n-\t\t\n+\n \t\treturn result;\n \t}\n \n",
+            "diff_size": 11
+        }
+    ]
+}

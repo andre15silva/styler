@@ -1,0 +1,130 @@
+{
+    "error_id": "972",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/972/LabeledUpdateIndexBaseTask.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/972/LabeledUpdateIndexBaseTask.java\nindex 2a49de1027..40af42242c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/972/LabeledUpdateIndexBaseTask.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/972/LabeledUpdateIndexBaseTask.java\n@@ -28,83 +28,83 @@ import java.io.IOException;\n \n /**\n  * The type Labeled update index base task.\n- *<p>\n- *   Support update index\n- *</p>\n+ * <p>\n+ * Support update index\n+ * </p>\n  */\n public abstract class LabeledUpdateIndexBaseTask<KEYIN, VALUEIN> extends\n-    BaseTask<KEYIN, VALUEIN, LabeledData> {\n-  private final boolean updateIndexEnable;\n-  private volatile IntOpenHashSet indexSet;\n-  private final MatrixMeta matrixMeta;\n+        BaseTask<KEYIN, VALUEIN, LabeledData> {\n+    private final boolean updateIndexEnable;\n+    private volatile IntOpenHashSet indexSet;\n+    private final MatrixMeta matrixMeta;\n \n-  public LabeledUpdateIndexBaseTask(TaskContext taskContext, MatrixMeta matrixMeta)\n-      throws IOException {\n-    super(taskContext);\n-    this.matrixMeta = matrixMeta;\n-    updateIndexEnable = true;\n-    indexSet = new IntOpenHashSet();\n-  }\n+    public LabeledUpdateIndexBaseTask(TaskContext taskContext, MatrixMeta matrixMeta)\n+            throws IOException {\n+        super(taskContext);\n+        this.matrixMeta = matrixMeta;\n+        updateIndexEnable = true;\n+        indexSet = new IntOpenHashSet();\n+    }\n \n-  @Override\n-  public void preProcess(TaskContext taskContext) {\n-    try {\n-      Reader<KEYIN, VALUEIN> reader = taskContext.getReader();\n-      while (reader.nextKeyValue()) {\n-        LabeledData out = parse(reader.getCurrentKey(), reader.getCurrentValue());\n-        if (out != null) {\n-          trainDataBlock.put(out);\n-          if (updateIndexEnable) {\n-            TAbstractVector vector = out.getX();\n-            if (vector instanceof SparseDummyVector) {\n-              int[] indexes = ((SparseDummyVector) vector).getIndices();\n-              for (int i = 0; i < indexes.length; i++) {\n-                indexSet.add(indexes[i]);\n-              }\n+    @Override\n+    public void preProcess(TaskContext taskContext) {\n+        try {\n+            Reader<KEYIN, VALUEIN> reader = taskContext.getReader();\n+            while (reader.nextKeyValue()) {\n+                LabeledData out = parse(reader.getCurrentKey(), reader.getCurrentValue());\n+                if (out != null) {\n+                    trainDataBlock.put(out);\n+                    if (updateIndexEnable) {\n+                        TAbstractVector vector = out.getX();\n+                        if (vector instanceof SparseDummyVector) {\n+                            int[] indexes = ((SparseDummyVector) vector).getIndices();\n+                            for (int i = 0; i < indexes.length; i++) {\n+                                indexSet.add(indexes[i]);\n+                            }\n+                        }\n+                    }\n+                }\n             }\n-          }\n-        }\n-      }\n \n-      trainDataBlock.flush();\n-    } catch (Exception e) {\n-      throw new AngelException(\"Pre-Process Error.\", e);\n+            trainDataBlock.flush();\n+        } catch (Exception e) {\n+            throw new AngelException(\"Pre-Process Error.\", e);\n+        }\n     }\n-  }\n \n-  /**\n-   * Is update index enable boolean.\n-   *\n-   * @return true if supported else false\n-   */\n-  public boolean isUpdateIndexEnable() {\n-    return updateIndexEnable;\n-  }\n+    /**\n+     * Is update index enable boolean.\n+     *\n+     * @return true if supported else false\n+     */\n+    public boolean isUpdateIndexEnable() {\n+        return updateIndexEnable;\n+    }\n \n-  /**\n-   * Gets index set.\n-   *\n-   * @return the index set\n-   */\n-  public IntOpenHashSet getIndexSet() {\n-    return indexSet;\n-  }\n+    /**\n+     * Gets index set.\n+     *\n+     * @return the index set\n+     */\n+    public IntOpenHashSet getIndexSet() {\n+        return indexSet;\n+    }\n \n-  /**\n-   * Sets index set.\n-   *\n-   * @param indexSet the index set\n-   */\n-  public void setIndexSet(IntOpenHashSet indexSet) {\n-    this.indexSet = indexSet;\n-  }\n+    /**\n+     * Sets index set.\n+     *\n+     * @param indexSet the index set\n+     */\n+    public void setIndexSet(IntOpenHashSet indexSet) {\n+        this.indexSet = indexSet;\n+    }\n \n-  /**\n-   * Gets matrix meta.\n-   *\n-   * @return the matrix meta\n-   */\n-  public MatrixMeta getMatrixMeta() {\n-    return matrixMeta;\n-  }\n+    /**\n+     * Gets matrix meta.\n+     *\n+     * @return the matrix meta\n+     */\n+    public MatrixMeta getMatrixMeta() {\n+        return matrixMeta;\n+    }\n }\n",
+            "diff_size": 72
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/972/LabeledUpdateIndexBaseTask.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/972/LabeledUpdateIndexBaseTask.java\nindex 2a49de1027..d8bdc99652 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/972/LabeledUpdateIndexBaseTask.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/972/LabeledUpdateIndexBaseTask.java\n@@ -32,8 +32,7 @@ import java.io.IOException;\n  *   Support update index\n  *</p>\n  */\n-public abstract class LabeledUpdateIndexBaseTask<KEYIN, VALUEIN> extends\n-    BaseTask<KEYIN, VALUEIN, LabeledData> {\n+public abstract class LabeledUpdateIndexBaseTask<KEYIN, VALUEIN> extends BaseTask<KEYIN, VALUEIN, LabeledData> {\n   private final boolean updateIndexEnable;\n   private volatile IntOpenHashSet indexSet;\n   private final MatrixMeta matrixMeta;\n@@ -107,4 +106,4 @@ public abstract class LabeledUpdateIndexBaseTask<KEYIN, VALUEIN> extends\n   public MatrixMeta getMatrixMeta() {\n     return matrixMeta;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 79.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 89.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 99.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 109.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/972/LabeledUpdateIndexBaseTask.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/972/LabeledUpdateIndexBaseTask.java\nindex 2a49de1027..4e25e4a948 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/972/LabeledUpdateIndexBaseTask.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/972/LabeledUpdateIndexBaseTask.java\n@@ -23,7 +23,6 @@ import com.tencent.angel.ml.math.vector.SparseDummyVector;\n import com.tencent.angel.ml.matrix.MatrixMeta;\n import com.tencent.angel.worker.storage.Reader;\n import it.unimi.dsi.fastutil.ints.IntOpenHashSet;\n-\n import java.io.IOException;\n \n /**\n@@ -32,79 +31,82 @@ import java.io.IOException;\n  *   Support update index\n  *</p>\n  */\n-public abstract class LabeledUpdateIndexBaseTask<KEYIN, VALUEIN> extends\n-    BaseTask<KEYIN, VALUEIN, LabeledData> {\n-  private final boolean updateIndexEnable;\n-  private volatile IntOpenHashSet indexSet;\n-  private final MatrixMeta matrixMeta;\n \n-  public LabeledUpdateIndexBaseTask(TaskContext taskContext, MatrixMeta matrixMeta)\n-      throws IOException {\n+public abstract class LabeledUpdateIndexBaseTask<KEYIN, VALUEIN> extends BaseTask<KEYIN, VALUEIN, LabeledData> {\n+    private final boolean updateIndexEnable;\n+    private volatile IntOpenHashSet indexSet;\n+    private final MatrixMeta matrixMeta;\n+\n+    public LabeledUpdateIndexBaseTask(TaskContext taskContext, MatrixMeta matrixMeta)\n+    throws IOException {\n     super(taskContext);\n     this.matrixMeta = matrixMeta;\n     updateIndexEnable = true;\n     indexSet = new IntOpenHashSet();\n-  }\n+    }\n \n-  @Override\n-  public void preProcess(TaskContext taskContext) {\n+    @Override\n+    public void preProcess(TaskContext taskContext) {\n     try {\n-      Reader<KEYIN, VALUEIN> reader = taskContext.getReader();\n-      while (reader.nextKeyValue()) {\n+        Reader<KEYIN, VALUEIN> reader = taskContext.getReader();\n+        while (reader.nextKeyValue()) {\n         LabeledData out = parse(reader.getCurrentKey(), reader.getCurrentValue());\n         if (out != null) {\n-          trainDataBlock.put(out);\n-          if (updateIndexEnable) {\n+            trainDataBlock.put(out);\n+            if (updateIndexEnable) {\n             TAbstractVector vector = out.getX();\n             if (vector instanceof SparseDummyVector) {\n-              int[] indexes = ((SparseDummyVector) vector).getIndices();\n-              for (int i = 0; i < indexes.length; i++) {\n-                indexSet.add(indexes[i]);\n-              }\n+                                       int[] indexes = ((SparseDummyVector) vector).getIndices();\n+                                       for (int i = 0; i < indexes.length; i++) {\n+                                                         indexSet.add(indexes[i]);\n+                                       }\n+            }\n             }\n-          }\n         }\n-      }\n-\n-      trainDataBlock.flush();\n+        }\n+        trainDataBlock.flush();\n     } catch (Exception e) {\n       throw new AngelException(\"Pre-Process Error.\", e);\n     }\n-  }\n+    }\n \n   /**\n    * Is update index enable boolean.\n    *\n    * @return true if supported else false\n    */\n-  public boolean isUpdateIndexEnable() {\n+\n+    public boolean isUpdateIndexEnable() {\n     return updateIndexEnable;\n-  }\n+    }\n \n   /**\n    * Gets index set.\n    *\n    * @return the index set\n    */\n-  public IntOpenHashSet getIndexSet() {\n+\n+    public IntOpenHashSet getIndexSet() {\n     return indexSet;\n-  }\n+    }\n \n   /**\n    * Sets index set.\n    *\n    * @param indexSet the index set\n    */\n-  public void setIndexSet(IntOpenHashSet indexSet) {\n+\n+    public void setIndexSet(IntOpenHashSet indexSet) {\n     this.indexSet = indexSet;\n-  }\n+    }\n \n   /**\n    * Gets matrix meta.\n    *\n    * @return the matrix meta\n    */\n-  public MatrixMeta getMatrixMeta() {\n+\n+    public MatrixMeta getMatrixMeta() {\n     return matrixMeta;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 43
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

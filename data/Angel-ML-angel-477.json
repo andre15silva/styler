@@ -1,0 +1,123 @@
+{
+    "error_id": "477",
+    "information": {
+        "errors": [
+            {
+                "line": "53",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 105).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  @Override\n  public int getDimension() {\n    throw new UnsupportedOperationException(\"Unsupportted operation, you should use getLongDim instead\");\n  }\n\n  @Override",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/477/LongKeyDoubleVector.java\nindex e3cac45f44..a96cad52df 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/477/LongKeyDoubleVector.java\n@@ -49,12 +49,11 @@ public abstract class LongKeyDoubleVector extends TVector {\n   public abstract double[] getValues();\n \n   @Override\n-  public int getDimension() {\n-    throw new UnsupportedOperationException(\"Unsupportted operation, you should use getLongDim instead\");\n-  }\n+  public int getDimension() { throw new UnsupportedOperationException(\"Unsupportted operation, you should use getLongDim instead\");\n+}\n \n-  @Override\n-  public TVector plusBy(int index, double x) {\n-    return plusBy((long) index, x);\n-  }\n+@Override\n+public TVector plusBy(int index, double x) {\n+  return plusBy((long) index, x);\n+}\n }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/477/LongKeyDoubleVector.java\nindex e3cac45f44..ec69834f88 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/477/LongKeyDoubleVector.java\n@@ -6,55 +6,63 @@ import com.tencent.angel.ml.math.TVector;\n  * Base class for long key double vector.\n  */\n public abstract class LongKeyDoubleVector extends TVector {\n-  /** Vector dimension */\n-  protected long dim;\n-  public LongKeyDoubleVector(long dim) {\n-    super();\n-    this.dim = dim;\n-  }\n-\n-  /**\n-   * Get dimension for long key vector\n-   * @return long dimension\n-   */\n-  public long getLongDim(){\n-    return dim;\n-  }\n-\n-  /**\n-   * Plus a element by a update value\n-   * @param index element index\n-   * @param x update value\n-   * @return this\n-   */\n-  public abstract TVector plusBy(long index, double x);\n-\n-  /**\n-   * Set a element by a new value\n-   * @param index element index\n-   * @param x new value\n-   * @return this\n-   */\n-  public abstract TVector set(long index, double x);\n-\n-  /**\n-   * Get a element value by value index\n-   * @param index value index\n-   * @return\n-   */\n-  public abstract double get(long index);\n-\n-  public abstract long[] getIndexes();\n-\n-  public abstract double[] getValues();\n-\n-  @Override\n-  public int getDimension() {\n-    throw new UnsupportedOperationException(\"Unsupportted operation, you should use getLongDim instead\");\n-  }\n-\n-  @Override\n-  public TVector plusBy(int index, double x) {\n-    return plusBy((long) index, x);\n-  }\n+    /**\n+     * Vector dimension\n+     */\n+    protected long dim;\n+\n+    public LongKeyDoubleVector(long dim) {\n+        super();\n+        this.dim = dim;\n+    }\n+\n+    /**\n+     * Get dimension for long key vector\n+     *\n+     * @return long dimension\n+     */\n+    public long getLongDim() {\n+        return dim;\n+    }\n+\n+    /**\n+     * Plus a element by a update value\n+     *\n+     * @param index element index\n+     * @param x     update value\n+     * @return this\n+     */\n+    public abstract TVector plusBy(long index, double x);\n+\n+    /**\n+     * Set a element by a new value\n+     *\n+     * @param index element index\n+     * @param x     new value\n+     * @return this\n+     */\n+    public abstract TVector set(long index, double x);\n+\n+    /**\n+     * Get a element value by value index\n+     *\n+     * @param index value index\n+     * @return\n+     */\n+    public abstract double get(long index);\n+\n+    public abstract long[] getIndexes();\n+\n+    public abstract double[] getValues();\n+\n+    @Override\n+    public int getDimension() {\n+        throw new UnsupportedOperationException(\n+                \"Unsupportted operation, you should use getLongDim instead\");\n+    }\n+\n+    @Override\n+    public TVector plusBy(int index, double x) {\n+        return plusBy((long) index, x);\n+    }\n }\n",
+            "diff_size": 59
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/477/LongKeyDoubleVector.java\nindex e3cac45f44..6f5d12cac7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/477/LongKeyDoubleVector.java\n@@ -17,7 +17,7 @@ public abstract class LongKeyDoubleVector extends TVector {\n    * Get dimension for long key vector\n    * @return long dimension\n    */\n-  public long getLongDim(){\n+  public long getLongDim() {\n     return dim;\n   }\n \n@@ -57,4 +57,4 @@ public abstract class LongKeyDoubleVector extends TVector {\n   public TVector plusBy(int index, double x) {\n     return plusBy((long) index, x);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "10",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "19",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 24.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 35.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 44.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 52.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/477/LongKeyDoubleVector.java\nindex e3cac45f44..4b3b5dbe42 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/477/LongKeyDoubleVector.java\n@@ -5,21 +5,25 @@ import com.tencent.angel.ml.math.TVector;\n /**\n  * Base class for long key double vector.\n  */\n+\n public abstract class LongKeyDoubleVector extends TVector {\n   /** Vector dimension */\n-  protected long dim;\n-  public LongKeyDoubleVector(long dim) {\n+\n+    protected long dim;\n+\n+    public LongKeyDoubleVector(long dim) {\n     super();\n     this.dim = dim;\n-  }\n+    }\n \n   /**\n    * Get dimension for long key vector\n    * @return long dimension\n    */\n-  public long getLongDim(){\n+\n+    public long getLongDim() {\n     return dim;\n-  }\n+    }\n \n   /**\n    * Plus a element by a update value\n@@ -27,7 +31,8 @@ public abstract class LongKeyDoubleVector extends TVector {\n    * @param x update value\n    * @return this\n    */\n-  public abstract TVector plusBy(long index, double x);\n+\n+    public abstract TVector plusBy(long index, double x);\n \n   /**\n    * Set a element by a new value\n@@ -35,26 +40,28 @@ public abstract class LongKeyDoubleVector extends TVector {\n    * @param x new value\n    * @return this\n    */\n-  public abstract TVector set(long index, double x);\n+\n+    public abstract TVector set(long index, double x);\n \n   /**\n    * Get a element value by value index\n    * @param index value index\n    * @return\n    */\n-  public abstract double get(long index);\n \n-  public abstract long[] getIndexes();\n+    public abstract double get(long index);\n+\n+    public abstract long[] getIndexes();\n \n-  public abstract double[] getValues();\n+    public abstract double[] getValues();\n \n-  @Override\n-  public int getDimension() {\n+    @Override\n+    public int getDimension() {\n     throw new UnsupportedOperationException(\"Unsupportted operation, you should use getLongDim instead\");\n-  }\n+    }\n \n-  @Override\n-  public TVector plusBy(int index, double x) {\n+    @Override\n+    public TVector plusBy(int index, double x) {\n     return plusBy((long) index, x);\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 115).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "No trailing whitespace allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/477/LongKeyDoubleVector.java\nindex e3cac45f44..30a3e8cb4a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/477/LongKeyDoubleVector.java\n@@ -50,11 +50,9 @@ public abstract class LongKeyDoubleVector extends TVector {\n \n   @Override\n   public int getDimension() {\n-    throw new UnsupportedOperationException(\"Unsupportted operation, you should use getLongDim instead\");\n+    throw new UnsupportedOperationException(\"Unsupportted operation, you should use getLongDim instead\");}@Override\n+    public TVector plusBy(int index, double x) {\n+      return plusBy((long) index, x);\n+    }\n   }\n-\n-  @Override\n-  public TVector plusBy(int index, double x) {\n-    return plusBy((long) index, x);\n-  }\n-}\n+  \n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/477/LongKeyDoubleVector.java\nindex e3cac45f44..a96cad52df 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/477/LongKeyDoubleVector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/477/LongKeyDoubleVector.java\n@@ -49,12 +49,11 @@ public abstract class LongKeyDoubleVector extends TVector {\n   public abstract double[] getValues();\n \n   @Override\n-  public int getDimension() {\n-    throw new UnsupportedOperationException(\"Unsupportted operation, you should use getLongDim instead\");\n-  }\n+  public int getDimension() { throw new UnsupportedOperationException(\"Unsupportted operation, you should use getLongDim instead\");\n+}\n \n-  @Override\n-  public TVector plusBy(int index, double x) {\n-    return plusBy((long) index, x);\n-  }\n+@Override\n+public TVector plusBy(int index, double x) {\n+  return plusBy((long) index, x);\n+}\n }\n",
+            "diff_size": 7
+        }
+    ]
+}

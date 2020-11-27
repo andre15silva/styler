@@ -1,0 +1,132 @@
+{
+    "error_id": "195",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 190).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<OrgStaffRelDto> orgStaffRels = BeanConvertUtil.covertBeanList(orgStaffRelServiceDaoImpl.getOrgStaffRelInfo(BeanConvertUtil.beanCovertMap(orgStaffRelDto)), OrgStaffRelDto.class);\n\n        return orgStaffRels;\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/195/OrgStaffRelInnerServiceSMOImpl.java\nindex ff4300dc98..4e9f083e10 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/195/OrgStaffRelInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class OrgStaffRelInnerServiceSMOImpl extends BaseServiceSMO implements IO\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             orgStaffRelDto.setPage((page - 1) * orgStaffRelDto.getRow());\n-        }\n+        } List<OrgStaffRelDto>orgStaffRels=BeanConvertUtil.\n \n-        List<OrgStaffRelDto> orgStaffRels = BeanConvertUtil.covertBeanList(orgStaffRelServiceDaoImpl.getOrgStaffRelInfo(BeanConvertUtil.beanCovertMap(orgStaffRelDto)), OrgStaffRelDto.class);\n+        covertBeanList(orgStaffRelServiceDaoImpl.getOrgStaffRelInfo(BeanConvertUtil.beanCovertMap(orgStaffRelDto)), OrgStaffRelDto.class);\n \n         return orgStaffRels;\n     }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/195/OrgStaffRelInnerServiceSMOImpl.java\nindex ff4300dc98..6174a34ac2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/195/OrgStaffRelInnerServiceSMOImpl.java\n@@ -25,47 +25,48 @@ import java.util.List;\n @RestController\n public class OrgStaffRelInnerServiceSMOImpl extends BaseServiceSMO implements IOrgStaffRelInnerServiceSMO {\n \n-    @Autowired\n-    private IOrgStaffRelServiceDao orgStaffRelServiceDaoImpl;\n+  @Autowired\n+  private IOrgStaffRelServiceDao orgStaffRelServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<OrgStaffRelDto> queryOrgStaffRels(@RequestBody OrgStaffRelDto orgStaffRelDto) {\n+  @Override\n+  public List<OrgStaffRelDto> queryOrgStaffRels(@RequestBody OrgStaffRelDto orgStaffRelDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = orgStaffRelDto.getPage();\n+    int page = orgStaffRelDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            orgStaffRelDto.setPage((page - 1) * orgStaffRelDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      orgStaffRelDto.setPage((page - 1) * orgStaffRelDto.getRow());\n+    }\n \n-        List<OrgStaffRelDto> orgStaffRels = BeanConvertUtil.covertBeanList(orgStaffRelServiceDaoImpl.getOrgStaffRelInfo(BeanConvertUtil.beanCovertMap(orgStaffRelDto)), OrgStaffRelDto.class);\n+    List<OrgStaffRelDto> orgStaffRels = BeanConvertUtil\n+      .covertBeanList(orgStaffRelServiceDaoImpl.getOrgStaffRelInfo(BeanConvertUtil.beanCovertMap(orgStaffRelDto)), OrgStaffRelDto.class);\n \n-        return orgStaffRels;\n-    }\n+    return orgStaffRels;\n+  }\n \n \n-    @Override\n-    public int queryOrgStaffRelsCount(@RequestBody OrgStaffRelDto orgStaffRelDto) {\n-        return orgStaffRelServiceDaoImpl.queryOrgStaffRelsCount(BeanConvertUtil.beanCovertMap(orgStaffRelDto));\n-    }\n+  @Override\n+  public int queryOrgStaffRelsCount(@RequestBody OrgStaffRelDto orgStaffRelDto) {\n+    return orgStaffRelServiceDaoImpl.queryOrgStaffRelsCount(BeanConvertUtil.beanCovertMap(orgStaffRelDto));\n+  }\n \n-    public IOrgStaffRelServiceDao getOrgStaffRelServiceDaoImpl() {\n-        return orgStaffRelServiceDaoImpl;\n-    }\n+  public IOrgStaffRelServiceDao getOrgStaffRelServiceDaoImpl() {\n+    return orgStaffRelServiceDaoImpl;\n+  }\n \n-    public void setOrgStaffRelServiceDaoImpl(IOrgStaffRelServiceDao orgStaffRelServiceDaoImpl) {\n-        this.orgStaffRelServiceDaoImpl = orgStaffRelServiceDaoImpl;\n-    }\n+  public void setOrgStaffRelServiceDaoImpl(IOrgStaffRelServiceDao orgStaffRelServiceDaoImpl) {\n+    this.orgStaffRelServiceDaoImpl = orgStaffRelServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 31
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 190).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/195/OrgStaffRelInnerServiceSMOImpl.java\nindex ff4300dc98..3c2d63bf53 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/195/OrgStaffRelInnerServiceSMOImpl.java\n@@ -68,4 +68,4 @@ public class OrgStaffRelInnerServiceSMOImpl extends BaseServiceSMO implements IO\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 190).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/195/OrgStaffRelInnerServiceSMOImpl.java\nindex ff4300dc98..86f07e9397 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/195/OrgStaffRelInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.user.smo.impl;\n \n-\n import com.java110.core.base.smo.BaseServiceSMO;\n import com.java110.core.smo.org.IOrgStaffRelInnerServiceSMO;\n import com.java110.core.smo.user.IUserInnerServiceSMO;\n@@ -11,7 +10,6 @@ import com.java110.utils.util.BeanConvertUtil;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -22,6 +20,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class OrgStaffRelInnerServiceSMOImpl extends BaseServiceSMO implements IOrgStaffRelInnerServiceSMO {\n \n@@ -35,9 +35,7 @@ public class OrgStaffRelInnerServiceSMOImpl extends BaseServiceSMO implements IO\n     public List<OrgStaffRelDto> queryOrgStaffRels(@RequestBody OrgStaffRelDto orgStaffRelDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = orgStaffRelDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             orgStaffRelDto.setPage((page - 1) * orgStaffRelDto.getRow());\n         }\n@@ -68,4 +66,4 @@ public class OrgStaffRelInnerServiceSMOImpl extends BaseServiceSMO implements IO\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "119",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "39",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/195/OrgStaffRelInnerServiceSMOImpl.java\nindex ff4300dc98..ac4425f09f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/195/OrgStaffRelInnerServiceSMOImpl.java\n@@ -41,10 +41,8 @@ public class OrgStaffRelInnerServiceSMOImpl extends BaseServiceSMO implements IO\n         if (page != PageDto.DEFAULT_PAGE) {\n             orgStaffRelDto.setPage((page - 1) * orgStaffRelDto.getRow());\n         }\n-\n-        List<OrgStaffRelDto> orgStaffRels = BeanConvertUtil.covertBeanList(orgStaffRelServiceDaoImpl.getOrgStaffRelInfo(BeanConvertUtil.beanCovertMap(orgStaffRelDto)), OrgStaffRelDto.class);\n-\n-        return orgStaffRels;\n+        List<OrgStaffRelDto>orgStaffRels= BeanConvertUtil.covertBeanList(orgStaffRelServiceDaoImpl.getOrgStaffRelInfo (BeanConvertUtil.\n+        beanCovertMap(orgStaffRelDto)),OrgStaffRelDto.class); returnorgStaffRels;\n     }\n \n \n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/195/OrgStaffRelInnerServiceSMOImpl.java\nindex ff4300dc98..4e9f083e10 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/195/OrgStaffRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/195/OrgStaffRelInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class OrgStaffRelInnerServiceSMOImpl extends BaseServiceSMO implements IO\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             orgStaffRelDto.setPage((page - 1) * orgStaffRelDto.getRow());\n-        }\n+        } List<OrgStaffRelDto>orgStaffRels=BeanConvertUtil.\n \n-        List<OrgStaffRelDto> orgStaffRels = BeanConvertUtil.covertBeanList(orgStaffRelServiceDaoImpl.getOrgStaffRelInfo(BeanConvertUtil.beanCovertMap(orgStaffRelDto)), OrgStaffRelDto.class);\n+        covertBeanList(orgStaffRelServiceDaoImpl.getOrgStaffRelInfo(BeanConvertUtil.beanCovertMap(orgStaffRelDto)), OrgStaffRelDto.class);\n \n         return orgStaffRels;\n     }\n",
+            "diff_size": 2
+        }
+    ]
+}

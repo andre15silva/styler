@@ -1,0 +1,138 @@
+{
+    "error_id": "204",
+    "information": {
+        "errors": [
+            {
+                "line": "92",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 156).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    public List<VMInformation> processReservation(Reservation reservation, VMRegion region) {\n        try {\n            return reservation.getInstances().stream().map(instance -> instanceToVmInformation(reservation, instance, region)).collect(Collectors.toList());\n        } catch (Exception ex) {\n            LOG.error(ex.getMessage());\n            throw new RuntimeException(ex);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "93",
+                    "column": "56",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "93",
+                    "column": "74",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "95",
+                    "column": "16",
+                    "severity": "warning",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/204/AmazonDataConverter.java\nindex 0322e44899..346acedeb8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/204/AmazonDataConverter.java\n@@ -89,11 +89,15 @@ public class AmazonDataConverter {\n      */\n     public List<VMInformation> processReservation(Reservation reservation, VMRegion region) {\n         try {\n-            return reservation.getInstances().stream().map(instance -> instanceToVmInformation(reservation, instance, region)).collect(Collectors.toList());\n-        } catch (Exception ex) {\n-            LOG.error(ex.getMessage());\n-            throw new RuntimeException(ex);\n-        }\n-    }\n+            return reservation.getInstances().stream().map(instance->\n+                    instanceToVmInformation(reservation,instance, region )).collect(Collectors\n+        .\n+        toList ());\n+         } catch (Exception ex) {\n+             LOG.error(ex.getMessage());\n+             throw new RuntimeException(ex);\n+         }\n+     }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/204/AmazonDataConverter.java\nindex 0322e44899..c6d5841af6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/204/AmazonDataConverter.java\n@@ -1,6 +1,7 @@\n /**\n  * Copyright 2011 Intuit Inc. All Rights Reserved\n  */\n+\n package com.intuit.tank.vmManager.environment.amazon;\n \n /*\n@@ -32,68 +33,68 @@ import com.intuit.tank.vm.vmManager.VMInformation;\n \n /**\n  * AmazonDataConverter\n- * \n+ *\n  * @author dangleton\n- * \n  */\n public class AmazonDataConverter {\n-    private static final Logger LOG = LogManager.getLogger(AmazonDataConverter.class);\n-\n-    public List<VMInformation> processStateChange(List<InstanceStateChange> changes) {\n-        List<VMInformation> output = new ArrayList<VMInformation>();\n-        try {\n-            for (InstanceStateChange instance : changes) {\n-                VMInformation info = new VMInformation();\n-                info.setInstanceId(instance.getInstanceId());\n-                info.setState(instance.getCurrentState().getName());\n-                output.add(info);\n-            }\n-\n-            return output;\n-        } catch (Exception ex) {\n-            LOG.error(ex.getMessage(), ex);\n-            if (ex instanceof RuntimeException) {\n-                throw (RuntimeException) ex;\n-            }\n-            throw new RuntimeException(ex);\n-        }\n-    }\n+  private static final Logger LOG = LogManager.getLogger(AmazonDataConverter.class);\n \n-    /**\n-     * @param data\n-     * @param instance\n-     * @param region\n-     * @return\n-     */\n-    public VMInformation instanceToVmInformation(Reservation data, Instance instance, VMRegion region) {\n+  public List<VMInformation> processStateChange(List<InstanceStateChange> changes) {\n+    List<VMInformation> output = new ArrayList<VMInformation>();\n+    try {\n+      for (InstanceStateChange instance : changes) {\n         VMInformation info = new VMInformation();\n-        info.setProvider(VMProvider.Amazon);\n-        info.setRequestId(data.getRequesterId());\n-        info.setImageId(instance.getImageId());\n         info.setInstanceId(instance.getInstanceId());\n-        info.setKeyName(instance.getKeyName());\n-        // info.setLaunchTime();\n-        info.setRegion(region);\n-        info.setPlatform(instance.getPlatform());\n-        info.setPrivateDNS(instance.getPrivateDnsName());\n-        info.setPublicDNS(instance.getPublicDnsName());\n-        info.setState(instance.getState().getName());\n-        info.setSize(instance.getInstanceType());\n-        return info;\n+        info.setState(instance.getCurrentState().getName());\n+        output.add(info);\n+      }\n+\n+      return output;\n+    } catch (Exception ex) {\n+      LOG.error(ex.getMessage(), ex);\n+      if (ex instanceof RuntimeException) {\n+        throw (RuntimeException) ex;\n+      }\n+      throw new RuntimeException(ex);\n     }\n+  }\n+\n+  /**\n+   * @param data\n+   * @param instance\n+   * @param region\n+   * @return\n+   */\n+  public VMInformation instanceToVmInformation(Reservation data, Instance instance, VMRegion region) {\n+    VMInformation info = new VMInformation();\n+    info.setProvider(VMProvider.Amazon);\n+    info.setRequestId(data.getRequesterId());\n+    info.setImageId(instance.getImageId());\n+    info.setInstanceId(instance.getInstanceId());\n+    info.setKeyName(instance.getKeyName());\n+    // info.setLaunchTime();\n+    info.setRegion(region);\n+    info.setPlatform(instance.getPlatform());\n+    info.setPrivateDNS(instance.getPrivateDnsName());\n+    info.setPublicDNS(instance.getPublicDnsName());\n+    info.setState(instance.getState().getName());\n+    info.setSize(instance.getInstanceType());\n+    return info;\n+  }\n \n-    /**\n-     * @param reservation\n-     * @param region\n-     * @return\n-     */\n-    public List<VMInformation> processReservation(Reservation reservation, VMRegion region) {\n-        try {\n-            return reservation.getInstances().stream().map(instance -> instanceToVmInformation(reservation, instance, region)).collect(Collectors.toList());\n-        } catch (Exception ex) {\n-            LOG.error(ex.getMessage());\n-            throw new RuntimeException(ex);\n-        }\n+  /**\n+   * @param reservation\n+   * @param region\n+   * @return\n+   */\n+  public List<VMInformation> processReservation(Reservation reservation, VMRegion region) {\n+    try {\n+      return reservation.getInstances().stream().map(instance -> instanceToVmInformation(reservation, instance, region))\n+        .collect(Collectors.toList());\n+    } catch (Exception ex) {\n+      LOG.error(ex.getMessage());\n+      throw new RuntimeException(ex);\n     }\n+  }\n \n }\n",
+            "diff_size": 82
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "92",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/204/AmazonDataConverter.java\nindex 0322e44899..dd1646d1aa 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/204/AmazonDataConverter.java\n@@ -96,4 +96,4 @@ public class AmazonDataConverter {\n         }\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "96",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 155).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/204/AmazonDataConverter.java\nindex 0322e44899..076bf7a126 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/204/AmazonDataConverter.java\n@@ -16,13 +16,13 @@ package com.intuit.tank.vmManager.environment.amazon;\n  * #L%\n  */\n \n+\n+\n import java.util.ArrayList;\n import java.util.List;\n import java.util.stream.Collectors;\n-\n import org.apache.logging.log4j.LogManager;\n import org.apache.logging.log4j.Logger;\n-\n import com.amazonaws.services.ec2.model.Instance;\n import com.amazonaws.services.ec2.model.InstanceStateChange;\n import com.amazonaws.services.ec2.model.Reservation;\n@@ -36,9 +36,10 @@ import com.intuit.tank.vm.vmManager.VMInformation;\n  * @author dangleton\n  * \n  */\n+\n public class AmazonDataConverter {\n-    private static final Logger LOG = LogManager.getLogger(AmazonDataConverter.class);\n \n+    private static final Logger LOG = LogManager.getLogger(AmazonDataConverter.class);\n     public List<VMInformation> processStateChange(List<InstanceStateChange> changes) {\n         List<VMInformation> output = new ArrayList<VMInformation>();\n         try {\n@@ -48,7 +49,6 @@ public class AmazonDataConverter {\n                 info.setState(instance.getCurrentState().getName());\n                 output.add(info);\n             }\n-\n             return output;\n         } catch (Exception ex) {\n             LOG.error(ex.getMessage(), ex);\n@@ -65,6 +65,8 @@ public class AmazonDataConverter {\n      * @param region\n      * @return\n      */\n+\n+\n     public VMInformation instanceToVmInformation(Reservation data, Instance instance, VMRegion region) {\n         VMInformation info = new VMInformation();\n         info.setProvider(VMProvider.Amazon);\n@@ -87,13 +89,15 @@ public class AmazonDataConverter {\n      * @param region\n      * @return\n      */\n+\n+\n     public List<VMInformation> processReservation(Reservation reservation, VMRegion region) {\n         try {\n-            return reservation.getInstances().stream().map(instance -> instanceToVmInformation(reservation, instance, region)).collect(Collectors.toList());\n+            return reservation.getInstances().stream().map(instance-> instanceToVmInformation(reservation, instance, region)).collect(Collectors.toList());\n         } catch (Exception ex) {\n             LOG.error(ex.getMessage());\n             throw new RuntimeException(ex);\n         }\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "92",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 154).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "92",
+                    "column": "106",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "92",
+                    "column": "154",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "93",
+                    "column": "17",
+                    "severity": "warning",
+                    "message": "';' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/204/AmazonDataConverter.java\nindex 0322e44899..06598b64d3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/204/AmazonDataConverter.java\n@@ -89,11 +89,12 @@ public class AmazonDataConverter {\n      */\n     public List<VMInformation> processReservation(Reservation reservation, VMRegion region) {\n         try {\n-            return reservation.getInstances().stream().map(instance -> instanceToVmInformation(reservation, instance, region)).collect(Collectors.toList());\n-        } catch (Exception ex) {\n-            LOG.error(ex.getMessage());\n-            throw new RuntimeException(ex);\n+            return reservation.getInstances().stream().map(instance ->instanceToVmInformation(reservation,instance, region)).collect(Collectors.toList() )\n+                ; } catch (Exception ex) {\n+                LOG.error(ex.getMessage());\n+                throw new RuntimeException(ex);\n+            }\n         }\n-    }\n \n-}\n+    }\n+    \n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "93",
+                    "column": "56",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "93",
+                    "column": "74",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "95",
+                    "column": "16",
+                    "severity": "warning",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/204/AmazonDataConverter.java\nindex 0322e44899..346acedeb8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/204/AmazonDataConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/204/AmazonDataConverter.java\n@@ -89,11 +89,15 @@ public class AmazonDataConverter {\n      */\n     public List<VMInformation> processReservation(Reservation reservation, VMRegion region) {\n         try {\n-            return reservation.getInstances().stream().map(instance -> instanceToVmInformation(reservation, instance, region)).collect(Collectors.toList());\n-        } catch (Exception ex) {\n-            LOG.error(ex.getMessage());\n-            throw new RuntimeException(ex);\n-        }\n-    }\n+            return reservation.getInstances().stream().map(instance->\n+                    instanceToVmInformation(reservation,instance, region )).collect(Collectors\n+        .\n+        toList ());\n+         } catch (Exception ex) {\n+             LOG.error(ex.getMessage());\n+             throw new RuntimeException(ex);\n+         }\n+     }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 11
+        }
+    ]
+}

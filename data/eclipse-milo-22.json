@@ -1,0 +1,85 @@
+{
+    "error_id": "22",
+    "information": {
+        "errors": [
+            {
+                "line": "29",
+                "column": "35",
+                "severity": "error",
+                "message": "'}' at column 35 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "final class BooleanConversions {\n\n    private BooleanConversions() {}\n\n    @Nonnull\n    static UByte booleanToByte(@Nonnull Boolean b) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "29",
+                    "column": "35",
+                    "severity": "error",
+                    "message": "'}' at column 35 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/22/BooleanConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/22/BooleanConversions.java\nindex d4d51f7ada..13adc1a7e4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/22/BooleanConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/22/BooleanConversions.java\n@@ -26,7 +26,8 @@ import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.\n \n final class BooleanConversions {\n \n-    private BooleanConversions() {}\n+    private BooleanConversions() {\n+    }\n \n     @Nonnull\n     static UByte booleanToByte(@Nonnull Boolean b) {\n@@ -100,8 +101,10 @@ final class BooleanConversions {\n     static Object explicitConversion(@Nonnull Boolean b, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:    return booleanToString(b);\n-            default:        return implicitConversion(b, targetType);\n+            case String:\n+                return booleanToString(b);\n+            default:\n+                return implicitConversion(b, targetType);\n         }\n         //@formatter:on\n     }\n@@ -110,17 +113,28 @@ final class BooleanConversions {\n     static Object implicitConversion(@Nonnull Boolean b, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case Byte:      return booleanToByte(b);\n-            case Double:    return booleanToDouble(b);\n-            case Float:     return booleanToFloat(b);\n-            case Int16:     return booleanToInt16(b);\n-            case Int32:     return booleanToInt32(b);\n-            case Int64:     return booleanToInt64(b);\n-            case SByte:     return booleanToSByte(b);\n-            case UInt16:    return booleanToUInt16(b);\n-            case UInt32:    return booleanToUInt32(b);\n-            case UInt64:    return booleanToUInt64(b);\n-            default:        return null;\n+            case Byte:\n+                return booleanToByte(b);\n+            case Double:\n+                return booleanToDouble(b);\n+            case Float:\n+                return booleanToFloat(b);\n+            case Int16:\n+                return booleanToInt16(b);\n+            case Int32:\n+                return booleanToInt32(b);\n+            case Int64:\n+                return booleanToInt64(b);\n+            case SByte:\n+                return booleanToSByte(b);\n+            case UInt16:\n+                return booleanToUInt16(b);\n+            case UInt32:\n+                return booleanToUInt32(b);\n+            case UInt64:\n+                return booleanToUInt64(b);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n",
+            "diff_size": 28
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "29",
+                    "column": "35",
+                    "severity": "error",
+                    "message": "'}' at column 35 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/22/BooleanConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/22/BooleanConversions.java\nindex d4d51f7ada..42f7f760fc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/22/BooleanConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/22/BooleanConversions.java\n@@ -101,7 +101,8 @@ final class BooleanConversions {\n         //@formatter:off\n         switch (targetType) {\n             case String:    return booleanToString(b);\n-            default:        return implicitConversion(b, targetType);\n+            default:\n+    return implicitConversion(b, targetType);\n         }\n         //@formatter:on\n     }\n@@ -120,9 +121,10 @@ final class BooleanConversions {\n             case UInt16:    return booleanToUInt16(b);\n             case UInt32:    return booleanToUInt32(b);\n             case UInt64:    return booleanToUInt64(b);\n-            default:        return null;\n+            default:\n+    return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/22/BooleanConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/22/BooleanConversions.java\nindex d4d51f7ada..62c1494fa4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/22/BooleanConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/22/BooleanConversions.java\n@@ -12,7 +12,6 @@ package org.eclipse.milo.opcua.sdk.server.events.conversions;\n \n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.stack.core.BuiltinDataType;\n import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UByte;\n import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;\n@@ -26,7 +25,8 @@ import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.\n \n final class BooleanConversions {\n \n-    private BooleanConversions() {}\n+    private BooleanConversions() {\n+    }\n \n     @Nonnull\n     static UByte booleanToByte(@Nonnull Boolean b) {\n@@ -84,13 +84,12 @@ final class BooleanConversions {\n     }\n \n     @Nullable\n-    static Object convert(@Nonnull Object o, BuiltinDataType targetType, boolean implicit) {\n+    static Object convert(@Nonnull Object o, BuiltinDataType targetType,\n+                          boolean implicit) {\n         if (o instanceof Boolean) {\n             Boolean b = (Boolean) o;\n \n-            return implicit ?\n-                implicitConversion(b, targetType) :\n-                explicitConversion(b, targetType);\n+            return implicit ? implicitConversion(b, targetType) : explicitConversion(b, targetType);\n         } else {\n             return null;\n         }\n@@ -100,8 +99,10 @@ final class BooleanConversions {\n     static Object explicitConversion(@Nonnull Boolean b, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:    return booleanToString(b);\n-            default:        return implicitConversion(b, targetType);\n+            case String:\n+                return booleanToString(b);\n+            default:\n+                return implicitConversion(b, targetType);\n         }\n         //@formatter:on\n     }\n@@ -110,19 +111,30 @@ final class BooleanConversions {\n     static Object implicitConversion(@Nonnull Boolean b, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case Byte:      return booleanToByte(b);\n-            case Double:    return booleanToDouble(b);\n-            case Float:     return booleanToFloat(b);\n-            case Int16:     return booleanToInt16(b);\n-            case Int32:     return booleanToInt32(b);\n-            case Int64:     return booleanToInt64(b);\n-            case SByte:     return booleanToSByte(b);\n-            case UInt16:    return booleanToUInt16(b);\n-            case UInt32:    return booleanToUInt32(b);\n-            case UInt64:    return booleanToUInt64(b);\n-            default:        return null;\n+            case Byte:\n+                return booleanToByte(b);\n+            case Double:\n+                return booleanToDouble(b);\n+            case Float:\n+                return booleanToFloat(b);\n+            case Int16:\n+                return booleanToInt16(b);\n+            case Int32:\n+                return booleanToInt32(b);\n+            case Int64:\n+                return booleanToInt64(b);\n+            case SByte:\n+                return booleanToSByte(b);\n+            case UInt16:\n+                return booleanToUInt16(b);\n+            case UInt32:\n+                return booleanToUInt32(b);\n+            case UInt64:\n+                return booleanToUInt64(b);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 35
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "29",
+                    "column": "35",
+                    "severity": "error",
+                    "message": "'}' at column 35 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "29",
+                    "column": "35",
+                    "severity": "error",
+                    "message": "'}' at column 35 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,160 @@
+{
+    "error_id": "96",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/96/LongKeySparseIntRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/96/LongKeySparseIntRowUpdateSplit.java\nindex 7514368933..4bdf158668 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/96/LongKeySparseIntRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/96/LongKeySparseIntRowUpdateSplit.java\n@@ -26,161 +26,163 @@ import io.netty.buffer.ByteBuf;\n \n public class LongKeySparseIntRowUpdateSplit extends RowUpdateSplit {\n \n-  /**\n-   * indexes\n-   */\n-  private final long[] offsets;\n-\n-  /**\n-   * values of row\n-   */\n-  private final int[] values;\n-\n-  /**\n-   * Create a new RowUpdateSplit.\n-   *\n-   * @param rowIndex row index\n-   * @param start split start position\n-   * @param end split end position\n-   */\n-  public LongKeySparseIntRowUpdateSplit(int rowIndex, int start, int end, long[] offsets,\n-      int[] values) {\n-    super(rowIndex, RowType.T_INT_SPARSE_LONGKEY, start, end);\n-    this.offsets = offsets;\n-    this.values = values;\n-  }\n-\n-  public LongKeySparseIntRowUpdateSplit() {\n-    this(-1, -1, -1, null, null);\n-  }\n-\n-  /**\n-   * Get indexes of row values\n-   *\n-   * @return int[] indexes of row values\n-   */\n-  public long[] getOffsets() {\n-    return offsets;\n-  }\n-\n-  /**\n-   * Get row values\n-   *\n-   * @return double[] row values\n-   */\n-  public int[] getValues() {\n-    return values;\n-  }\n-\n-  @Override\n-  public boolean isUseIntKey() {\n-    return rowType == RowType.T_INT_SPARSE;\n-  }\n-\n-  @Override\n-  public void setUseIntKey(boolean useIntKey) {\n-    if (useIntKey) {\n-      setRowType(RowType.T_INT_SPARSE);\n-    } else {\n-      setRowType(RowType.T_INT_SPARSE_LONGKEY);\n+    /**\n+     * indexes\n+     */\n+    private final long[] offsets;\n+\n+    /**\n+     * values of row\n+     */\n+    private final int[] values;\n+\n+    /**\n+     * Create a new RowUpdateSplit.\n+     *\n+     * @param rowIndex row index\n+     * @param start    split start position\n+     * @param end      split end position\n+     */\n+    public LongKeySparseIntRowUpdateSplit(int rowIndex, int start, int end, long[] offsets,\n+                                          int[] values) {\n+        super(rowIndex, RowType.T_INT_SPARSE_LONGKEY, start, end);\n+        this.offsets = offsets;\n+        this.values = values;\n     }\n-  }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    super.serialize(buf);\n-    long startCol = splitContext.getPartKey().getStartCol();\n+    public LongKeySparseIntRowUpdateSplit() {\n+        this(-1, -1, -1, null, null);\n+    }\n \n-    if (isUseIntKey()) {\n-      if (splitContext.isEnableFilter()) {\n-        int filterValue = (int) splitContext.getFilterThreshold();\n-        int position = buf.writerIndex();\n-        buf.writeInt(0);\n-        int needUpdateItemNum = 0;\n-        for (int i = start; i < end; i++) {\n-          if (Math.abs(values[i]) > filterValue) {\n-            buf.writeInt((int) (offsets[i] - startCol));\n-            buf.writeInt(values[i]);\n-            needUpdateItemNum++;\n-          }\n+    /**\n+     * Get indexes of row values\n+     *\n+     * @return int[] indexes of row values\n+     */\n+    public long[] getOffsets() {\n+        return offsets;\n+    }\n+\n+    /**\n+     * Get row values\n+     *\n+     * @return double[] row values\n+     */\n+    public int[] getValues() {\n+        return values;\n+    }\n+\n+    @Override\n+    public boolean isUseIntKey() {\n+        return rowType == RowType.T_INT_SPARSE;\n+    }\n+\n+    @Override\n+    public void setUseIntKey(boolean useIntKey) {\n+        if (useIntKey) {\n+            setRowType(RowType.T_INT_SPARSE);\n+        } else {\n+            setRowType(RowType.T_INT_SPARSE_LONGKEY);\n         }\n-        buf.setInt(position, needUpdateItemNum);\n-      } else {\n-        buf.writeInt(end - start);\n-        for (int i = start; i < end; i++) {\n-          buf.writeInt((int) (offsets[i] - startCol));\n-          buf.writeInt(values[i]);\n+    }\n+\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        super.serialize(buf);\n+        long startCol = splitContext.getPartKey().getStartCol();\n+\n+        if (isUseIntKey()) {\n+            if (splitContext.isEnableFilter()) {\n+                int filterValue = (int) splitContext.getFilterThreshold();\n+                int position = buf.writerIndex();\n+                buf.writeInt(0);\n+                int needUpdateItemNum = 0;\n+                for (int i = start; i < end; i++) {\n+                    if (Math.abs(values[i]) > filterValue) {\n+                        buf.writeInt((int) (offsets[i] - startCol));\n+                        buf.writeInt(values[i]);\n+                        needUpdateItemNum++;\n+                    }\n+                }\n+                buf.setInt(position, needUpdateItemNum);\n+            } else {\n+                buf.writeInt(end - start);\n+                for (int i = start; i < end; i++) {\n+                    buf.writeInt((int) (offsets[i] - startCol));\n+                    buf.writeInt(values[i]);\n+                }\n+            }\n+        } else {\n+            if (splitContext.isEnableFilter()) {\n+                int filterValue = (int) splitContext.getFilterThreshold();\n+                int position = buf.writerIndex();\n+                buf.writeInt(0);\n+                int needUpdateItemNum = 0;\n+                for (int i = start; i < end; i++) {\n+                    if (Math.abs(values[i]) > filterValue) {\n+                        buf.writeLong(offsets[i] - startCol);\n+                        buf.writeInt(values[i]);\n+                        needUpdateItemNum++;\n+                    }\n+                }\n+                buf.setInt(position, needUpdateItemNum);\n+            } else {\n+                buf.writeInt(end - start);\n+                for (int i = start; i < end; i++) {\n+                    buf.writeLong(offsets[i] - startCol);\n+                    buf.writeInt(values[i]);\n+                }\n+            }\n         }\n-      }\n-    } else {\n-      if (splitContext.isEnableFilter()) {\n-        int filterValue = (int) splitContext.getFilterThreshold();\n-        int position = buf.writerIndex();\n-        buf.writeInt(0);\n-        int needUpdateItemNum = 0;\n-        for (int i = start; i < end; i++) {\n-          if (Math.abs(values[i]) > filterValue) {\n-            buf.writeLong(offsets[i] - startCol);\n-            buf.writeInt(values[i]);\n-            needUpdateItemNum++;\n-          }\n+    }\n+\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n+        super.deserialize(buf);\n+        int size = buf.readInt();\n+        if (isUseIntKey()) {\n+            vector = VFactory.sparseIntVector(\n+                    (int) (splitContext.getPartKey().getEndCol() -\n+                            splitContext.getPartKey().getStartCol()),\n+                    size);\n+            for (int i = 0; i < size; i++) {\n+                ((IntIntVector) vector).set(buf.readInt(), buf.readInt());\n+            }\n+        } else {\n+            vector = VFactory.sparseLongKeyIntVector(\n+                    splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol(),\n+                    size);\n+            for (int i = 0; i < size; i++) {\n+                ((LongIntVector) vector).set(buf.readLong(), buf.readInt());\n+            }\n         }\n-        buf.setInt(position, needUpdateItemNum);\n-      } else {\n-        buf.writeInt(end - start);\n+    }\n+\n+    private int getNeedUpdateItemNum() {\n+        int needUpdateItemNum = 0;\n+        int filterValue = (int) splitContext.getFilterThreshold();\n         for (int i = start; i < end; i++) {\n-          buf.writeLong(offsets[i] - startCol);\n-          buf.writeInt(values[i]);\n+            if (Math.abs(values[i]) > filterValue) {\n+                needUpdateItemNum++;\n+            }\n         }\n-      }\n-    }\n-  }\n-\n-  @Override\n-  public void deserialize(ByteBuf buf) {\n-    super.deserialize(buf);\n-    int size = buf.readInt();\n-    if (isUseIntKey()) {\n-      vector = VFactory.sparseIntVector(\n-          (int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n-          size);\n-      for (int i = 0; i < size; i++) {\n-        ((IntIntVector) vector).set(buf.readInt(), buf.readInt());\n-      }\n-    } else {\n-      vector = VFactory.sparseLongKeyIntVector(\n-          splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol(), size);\n-      for (int i = 0; i < size; i++) {\n-        ((LongIntVector) vector).set(buf.readLong(), buf.readInt());\n-      }\n+        return needUpdateItemNum;\n     }\n-  }\n-\n-  private int getNeedUpdateItemNum() {\n-    int needUpdateItemNum = 0;\n-    int filterValue = (int) splitContext.getFilterThreshold();\n-    for (int i = start; i < end; i++) {\n-      if (Math.abs(values[i]) > filterValue) {\n-        needUpdateItemNum++;\n-      }\n-    }\n-    return needUpdateItemNum;\n-  }\n-\n-  @Override\n-  public int bufferLen() {\n-    if (isUseIntKey()) {\n-      if (splitContext.isEnableFilter()) {\n-        return 12 + super.bufferLen() + getNeedUpdateItemNum() * 8;\n-      } else {\n-        return 12 + super.bufferLen() + (end - start) * 8;\n-      }\n-    } else {\n-      if (splitContext.isEnableFilter()) {\n-        return 12 + super.bufferLen() + getNeedUpdateItemNum() * 12;\n-      } else {\n-        return 12 + super.bufferLen() + (end - start) * 12;\n-      }\n+\n+    @Override\n+    public int bufferLen() {\n+        if (isUseIntKey()) {\n+            if (splitContext.isEnableFilter()) {\n+                return 12 + super.bufferLen() + getNeedUpdateItemNum() * 8;\n+            } else {\n+                return 12 + super.bufferLen() + (end - start) * 8;\n+            }\n+        } else {\n+            if (splitContext.isEnableFilter()) {\n+                return 12 + super.bufferLen() + getNeedUpdateItemNum() * 12;\n+            } else {\n+                return 12 + super.bufferLen() + (end - start) * 12;\n+            }\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 218
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "142",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 128).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 134).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/96/LongKeySparseIntRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/96/LongKeySparseIntRowUpdateSplit.java\nindex 7514368933..8816d1e3cb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/96/LongKeySparseIntRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/96/LongKeySparseIntRowUpdateSplit.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.psagent.matrix.oplog.cache;\n \n import com.tencent.angel.ml.math2.VFactory;\n@@ -43,8 +42,7 @@ public class LongKeySparseIntRowUpdateSplit extends RowUpdateSplit {\n    * @param start split start position\n    * @param end split end position\n    */\n-  public LongKeySparseIntRowUpdateSplit(int rowIndex, int start, int end, long[] offsets,\n-      int[] values) {\n+  public LongKeySparseIntRowUpdateSplit(int rowIndex, int start, int end, long[] offsets, int[] values) {\n     super(rowIndex, RowType.T_INT_SPARSE_LONGKEY, start, end);\n     this.offsets = offsets;\n     this.values = values;\n@@ -141,15 +139,13 @@ public class LongKeySparseIntRowUpdateSplit extends RowUpdateSplit {\n     super.deserialize(buf);\n     int size = buf.readInt();\n     if (isUseIntKey()) {\n-      vector = VFactory.sparseIntVector(\n-          (int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n+      vector = VFactory.sparseIntVector((int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n           size);\n       for (int i = 0; i < size; i++) {\n         ((IntIntVector) vector).set(buf.readInt(), buf.readInt());\n       }\n     } else {\n-      vector = VFactory.sparseLongKeyIntVector(\n-          splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol(), size);\n+      vector = VFactory.sparseLongKeyIntVector(splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol(), size);\n       for (int i = 0; i < size; i++) {\n         ((LongIntVector) vector).set(buf.readLong(), buf.readInt());\n       }\n@@ -183,4 +179,4 @@ public class LongKeySparseIntRowUpdateSplit extends RowUpdateSplit {\n       }\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 32.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 37.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 47.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 107).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 63.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 73.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 137).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 134).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/96/LongKeySparseIntRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/96/LongKeySparseIntRowUpdateSplit.java\nindex 7514368933..e8693d996f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/96/LongKeySparseIntRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/96/LongKeySparseIntRowUpdateSplit.java\n@@ -29,12 +29,12 @@ public class LongKeySparseIntRowUpdateSplit extends RowUpdateSplit {\n   /**\n    * indexes\n    */\n-  private final long[] offsets;\n+    private final long[] offsets;\n \n   /**\n    * values of row\n    */\n-  private final int[] values;\n+    private final int[] values;\n \n   /**\n    * Create a new RowUpdateSplit.\n@@ -43,144 +43,145 @@ public class LongKeySparseIntRowUpdateSplit extends RowUpdateSplit {\n    * @param start split start position\n    * @param end split end position\n    */\n-  public LongKeySparseIntRowUpdateSplit(int rowIndex, int start, int end, long[] offsets,\n-      int[] values) {\n+\n+    public LongKeySparseIntRowUpdateSplit(int rowIndex, int start, int end, long[] offsets, int[] values) {\n     super(rowIndex, RowType.T_INT_SPARSE_LONGKEY, start, end);\n     this.offsets = offsets;\n     this.values = values;\n-  }\n+    }\n \n-  public LongKeySparseIntRowUpdateSplit() {\n+    public LongKeySparseIntRowUpdateSplit() {\n     this(-1, -1, -1, null, null);\n-  }\n+    }\n \n   /**\n    * Get indexes of row values\n    *\n    * @return int[] indexes of row values\n    */\n-  public long[] getOffsets() {\n+\n+    public long[] getOffsets() {\n     return offsets;\n-  }\n+    }\n \n   /**\n    * Get row values\n    *\n    * @return double[] row values\n    */\n-  public int[] getValues() {\n+\n+    public int[] getValues() {\n     return values;\n-  }\n+    }\n \n-  @Override\n-  public boolean isUseIntKey() {\n+    @Override\n+    public boolean isUseIntKey() {\n     return rowType == RowType.T_INT_SPARSE;\n-  }\n+    }\n \n-  @Override\n-  public void setUseIntKey(boolean useIntKey) {\n+    @Override\n+    public void setUseIntKey(boolean useIntKey) {\n     if (useIntKey) {\n-      setRowType(RowType.T_INT_SPARSE);\n+        setRowType(RowType.T_INT_SPARSE);\n     } else {\n       setRowType(RowType.T_INT_SPARSE_LONGKEY);\n     }\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     super.serialize(buf);\n     long startCol = splitContext.getPartKey().getStartCol();\n-\n     if (isUseIntKey()) {\n-      if (splitContext.isEnableFilter()) {\n-        int filterValue = (int) splitContext.getFilterThreshold();\n-        int position = buf.writerIndex();\n-        buf.writeInt(0);\n-        int needUpdateItemNum = 0;\n-        for (int i = start; i < end; i++) {\n-          if (Math.abs(values[i]) > filterValue) {\n-            buf.writeInt((int) (offsets[i] - startCol));\n-            buf.writeInt(values[i]);\n-            needUpdateItemNum++;\n+        if (splitContext.isEnableFilter()) {\n+                           int filterValue = (int) splitContext.getFilterThreshold();\n+                           int position = buf.writerIndex();\n+                           buf.writeInt(0);\n+\n+                           int needUpdateItemNum = 0;\n+                           for (int i = start; i < end; i++) {\n+                                               if (Math.abs(values[i]) > filterValue) {\n+                               buf.writeInt((int) (offsets[i] - startCol));\n+                               buf.writeInt(values[i]);\n+                               needUpdateItemNum++;\n+                                               }\n+                           }\n+                           buf.setInt(position, needUpdateItemNum);\n+        } else {\n+          buf.writeInt(end - start);\n+          for (int i = start; i < end; i++) {\n+                   buf.writeInt((int) (offsets[i] - startCol));\n+                   buf.writeInt(values[i]);\n           }\n         }\n-        buf.setInt(position, needUpdateItemNum);\n-      } else {\n-        buf.writeInt(end - start);\n-        for (int i = start; i < end; i++) {\n-          buf.writeInt((int) (offsets[i] - startCol));\n-          buf.writeInt(values[i]);\n-        }\n-      }\n     } else {\n       if (splitContext.isEnableFilter()) {\n-        int filterValue = (int) splitContext.getFilterThreshold();\n-        int position = buf.writerIndex();\n-        buf.writeInt(0);\n-        int needUpdateItemNum = 0;\n-        for (int i = start; i < end; i++) {\n-          if (Math.abs(values[i]) > filterValue) {\n-            buf.writeLong(offsets[i] - startCol);\n-            buf.writeInt(values[i]);\n-            needUpdateItemNum++;\n-          }\n-        }\n-        buf.setInt(position, needUpdateItemNum);\n+               int filterValue = (int) splitContext.getFilterThreshold();\n+               int position = buf.writerIndex();\n+               buf.writeInt(0);\n+\n+               int needUpdateItemNum = 0;\n+               for (int i = start; i < end; i++) {\n+                                             if (Math.abs(values[i]) > filterValue) {\n+                   buf.writeLong(offsets[i] - startCol);\n+                   buf.writeInt(values[i]);\n+                   needUpdateItemNum++;\n+                                             }\n+               }\n+               buf.setInt(position, needUpdateItemNum);\n       } else {\n         buf.writeInt(end - start);\n         for (int i = start; i < end; i++) {\n-          buf.writeLong(offsets[i] - startCol);\n-          buf.writeInt(values[i]);\n+                 buf.writeLong(offsets[i] - startCol);\n+                 buf.writeInt(values[i]);\n         }\n       }\n     }\n-  }\n+    }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n     super.deserialize(buf);\n+\n     int size = buf.readInt();\n     if (isUseIntKey()) {\n-      vector = VFactory.sparseIntVector(\n-          (int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()),\n-          size);\n-      for (int i = 0; i < size; i++) {\n-        ((IntIntVector) vector).set(buf.readInt(), buf.readInt());\n-      }\n+        vector = VFactory.sparseIntVector((int) (splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol()), size);\n+        for (int i = 0; i < size; i++) {\n+                           ((IntIntVector) vector).set(buf.readInt(), buf.readInt());\n+        }\n     } else {\n-      vector = VFactory.sparseLongKeyIntVector(\n-          splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol(), size);\n+      vector = VFactory.sparseLongKeyIntVector(splitContext.getPartKey().getEndCol() - splitContext.getPartKey().getStartCol(), size);\n       for (int i = 0; i < size; i++) {\n-        ((LongIntVector) vector).set(buf.readLong(), buf.readInt());\n+               ((LongIntVector) vector).set(buf.readLong(), buf.readInt());\n       }\n     }\n-  }\n+    }\n \n-  private int getNeedUpdateItemNum() {\n+    private int getNeedUpdateItemNum() {\n     int needUpdateItemNum = 0;\n     int filterValue = (int) splitContext.getFilterThreshold();\n     for (int i = start; i < end; i++) {\n-      if (Math.abs(values[i]) > filterValue) {\n+        if (Math.abs(values[i]) > filterValue) {\n         needUpdateItemNum++;\n-      }\n+        }\n     }\n     return needUpdateItemNum;\n-  }\n+    }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     if (isUseIntKey()) {\n-      if (splitContext.isEnableFilter()) {\n-        return 12 + super.bufferLen() + getNeedUpdateItemNum() * 8;\n-      } else {\n-        return 12 + super.bufferLen() + (end - start) * 8;\n-      }\n+        if (splitContext.isEnableFilter()) {\n+                           return 12 + super.bufferLen() + getNeedUpdateItemNum() * 8;\n+        } else {\n+          return 12 + super.bufferLen() + (end - start) * 8;\n+        }\n     } else {\n       if (splitContext.isEnableFilter()) {\n-        return 12 + super.bufferLen() + getNeedUpdateItemNum() * 12;\n+               return 12 + super.bufferLen() + getNeedUpdateItemNum() * 12;\n       } else {\n         return 12 + super.bufferLen() + (end - start) * 12;\n       }\n     }\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 93
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/96/LongKeySparseIntRowUpdateSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/96/LongKeySparseIntRowUpdateSplit.java\nindex 7514368933..6afa3fe4bd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/96/LongKeySparseIntRowUpdateSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/96/LongKeySparseIntRowUpdateSplit.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.psagent.matrix.oplog.cache;\n \n import com.tencent.angel.ml.math2.VFactory;\n",
+            "diff_size": 1
+        }
+    ]
+}

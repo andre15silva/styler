@@ -1,0 +1,120 @@
+{
+    "error_id": "127",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 113).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "      // set split context: partition key, use int key for long key vector or net\n      adapt(partEntry.getKey(), partEntry.getValue());\n      partParams.add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(), doubles, ints));\n    }\n\n    return partParams;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 162).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "162",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/127/AsyncOptimParam.java\nindex 2182dd1f9e..f51e5a463b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/127/AsyncOptimParam.java\n@@ -41,8 +41,7 @@ public class AsyncOptimParam extends IncrementRowsParam {\n     List<PartitionUpdateParam> partParams = new ArrayList<>(partToSplits.size());\n     for (Map.Entry<PartitionKey, List<RowUpdateSplit>> partEntry: partToSplits.entrySet()) {\n       // set split context: partition key, use int key for long key vector or net\n-      adapt(partEntry.getKey(), partEntry.getValue());\n-      partParams.add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(), doubles, ints));\n+      adapt(partEntry.getKey(), partEntry.getValue()); partParams.add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(), doubles, ints));\n     }\n \n     return partParams;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/127/AsyncOptimParam.java\nindex 2182dd1f9e..07ade95f8b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/127/AsyncOptimParam.java\n@@ -14,37 +14,39 @@ import java.util.Map;\n \n public class AsyncOptimParam extends IncrementRowsParam {\n \n-  private double[] doubles;\n-  private int[] ints;\n-\n-  public AsyncOptimParam(int matrixId, Vector[] updates, double[] doubles, int[] ints) {\n-    super(matrixId, updates);\n-    this.doubles = doubles;\n-    this.ints = ints;\n-  }\n-\n-  @Override\n-  public List<PartitionUpdateParam> split() {\n-    // split updates\n-    Map<PartitionKey, List<RowUpdateSplit>> partToSplits = new HashMap<>(getPartsNum(matrixId));\n-    for (int i = 0; i < updates.length; i++) {\n-      if (updates[i] != null) {\n-        mergeRowUpdateSplits(RowUpdateSplitUtils.split(updates[i],\n-          getParts(matrixId, updates[i].getRowId())), partToSplits);\n-      }\n-    }\n-\n-    // shuffle update splits\n-    shuffleSplits(partToSplits);\n+    private double[] doubles;\n+    private int[] ints;\n \n-    // generate part update splits\n-    List<PartitionUpdateParam> partParams = new ArrayList<>(partToSplits.size());\n-    for (Map.Entry<PartitionKey, List<RowUpdateSplit>> partEntry: partToSplits.entrySet()) {\n-      // set split context: partition key, use int key for long key vector or net\n-      adapt(partEntry.getKey(), partEntry.getValue());\n-      partParams.add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(), doubles, ints));\n+    public AsyncOptimParam(int matrixId, Vector[] updates, double[] doubles, int[] ints) {\n+        super(matrixId, updates);\n+        this.doubles = doubles;\n+        this.ints = ints;\n     }\n \n-    return partParams;\n-  }\n+    @Override\n+    public List<PartitionUpdateParam> split() {\n+        // split updates\n+        Map<PartitionKey, List<RowUpdateSplit>> partToSplits = new HashMap<>(getPartsNum(matrixId));\n+        for (int i = 0; i < updates.length; i++) {\n+            if (updates[i] != null) {\n+                mergeRowUpdateSplits(RowUpdateSplitUtils.split(updates[i],\n+                        getParts(matrixId, updates[i].getRowId())), partToSplits);\n+            }\n+        }\n+\n+        // shuffle update splits\n+        shuffleSplits(partToSplits);\n+\n+        // generate part update splits\n+        List<PartitionUpdateParam> partParams = new ArrayList<>(partToSplits.size());\n+        for (Map.Entry<PartitionKey, List<RowUpdateSplit>> partEntry : partToSplits.entrySet()) {\n+            // set split context: partition key, use int key for long key vector or net\n+            adapt(partEntry.getKey(), partEntry.getValue());\n+            partParams\n+                    .add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(),\n+                            doubles, ints));\n+        }\n+\n+        return partParams;\n+    }\n }\n",
+            "diff_size": 54
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 113).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/127/AsyncOptimParam.java\nindex 2182dd1f9e..96a1ba3e33 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/127/AsyncOptimParam.java\n@@ -47,4 +47,4 @@ public class AsyncOptimParam extends IncrementRowsParam {\n \n     return partParams;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 43.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 115).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/127/AsyncOptimParam.java\nindex 2182dd1f9e..9aa482f52d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/127/AsyncOptimParam.java\n@@ -6,32 +6,31 @@ import com.tencent.angel.ml.matrix.psf.update.base.PartitionUpdateParam;\n import com.tencent.angel.ml.matrix.psf.update.update.IncrementRowsParam;\n import com.tencent.angel.psagent.matrix.oplog.cache.RowUpdateSplit;\n import com.tencent.angel.psagent.matrix.oplog.cache.RowUpdateSplitUtils;\n-\n import java.util.ArrayList;\n import java.util.HashMap;\n import java.util.List;\n import java.util.Map;\n \n public class AsyncOptimParam extends IncrementRowsParam {\n+    private double[] doubles;\n+    private int[] ints;\n \n-  private double[] doubles;\n-  private int[] ints;\n-\n-  public AsyncOptimParam(int matrixId, Vector[] updates, double[] doubles, int[] ints) {\n+    public AsyncOptimParam(int matrixId, Vector[] updates, double[] doubles, int[] ints) {\n     super(matrixId, updates);\n     this.doubles = doubles;\n     this.ints = ints;\n-  }\n+    }\n \n-  @Override\n-  public List<PartitionUpdateParam> split() {\n+    @Override\n+    public List<PartitionUpdateParam> split() {\n     // split updates\n     Map<PartitionKey, List<RowUpdateSplit>> partToSplits = new HashMap<>(getPartsNum(matrixId));\n     for (int i = 0; i < updates.length; i++) {\n-      if (updates[i] != null) {\n-        mergeRowUpdateSplits(RowUpdateSplitUtils.split(updates[i],\n-          getParts(matrixId, updates[i].getRowId())), partToSplits);\n-      }\n+        if (updates[i] != null) {\n+        mergeRowUpdateSplits(\n+            RowUpdateSplitUtils.split(updates[i], getParts(matrixId, updates[i].getRowId())),\n+            partToSplits);\n+        }\n     }\n \n     // shuffle update splits\n@@ -39,12 +38,12 @@ public class AsyncOptimParam extends IncrementRowsParam {\n \n     // generate part update splits\n     List<PartitionUpdateParam> partParams = new ArrayList<>(partToSplits.size());\n-    for (Map.Entry<PartitionKey, List<RowUpdateSplit>> partEntry: partToSplits.entrySet()) {\n+    for (Map.Entry<PartitionKey, List<RowUpdateSplit>> partEntry : partToSplits.entrySet()) {\n       // set split context: partition key, use int key for long key vector or net\n-      adapt(partEntry.getKey(), partEntry.getValue());\n-      partParams.add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(), doubles, ints));\n+        adapt(partEntry.getKey(), partEntry.getValue());\n+        partParams.add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(), doubles, ints));\n     }\n-\n     return partParams;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "131",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "No trailing whitespace allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/127/AsyncOptimParam.java\nindex 2182dd1f9e..ee969fc927 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_random/127/AsyncOptimParam.java\n@@ -42,9 +42,7 @@ public class AsyncOptimParam extends IncrementRowsParam {\n     for (Map.Entry<PartitionKey, List<RowUpdateSplit>> partEntry: partToSplits.entrySet()) {\n       // set split context: partition key, use int key for long key vector or net\n       adapt(partEntry.getKey(), partEntry.getValue());\n-      partParams.add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(), doubles, ints));\n+      partParams.add(newPartAsyncOptimParam(matrixId ,partEntry.getKey() , partEntry. getValue(),doubles,ints ));}returnpartParams;\n     }\n-\n-    return partParams;\n   }\n-}\n+  \n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 162).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "162",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/127/AsyncOptimParam.java\nindex 2182dd1f9e..f51e5a463b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/127/AsyncOptimParam.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/127/AsyncOptimParam.java\n@@ -41,8 +41,7 @@ public class AsyncOptimParam extends IncrementRowsParam {\n     List<PartitionUpdateParam> partParams = new ArrayList<>(partToSplits.size());\n     for (Map.Entry<PartitionKey, List<RowUpdateSplit>> partEntry: partToSplits.entrySet()) {\n       // set split context: partition key, use int key for long key vector or net\n-      adapt(partEntry.getKey(), partEntry.getValue());\n-      partParams.add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(), doubles, ints));\n+      adapt(partEntry.getKey(), partEntry.getValue()); partParams.add(new PartAsyncOptimParam(matrixId, partEntry.getKey(), partEntry.getValue(), doubles, ints));\n     }\n \n     return partParams;\n",
+            "diff_size": 2
+        }
+    ]
+}

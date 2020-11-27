@@ -1,0 +1,130 @@
+{
+    "error_id": "772",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/772/DefaultGetRowFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/772/DefaultGetRowFunc.java\nindex 92e8e283b4..15ba1a065d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/772/DefaultGetRowFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/772/DefaultGetRowFunc.java\n@@ -27,43 +27,44 @@ import com.tencent.angel.psagent.matrix.transport.adapter.RowSplitCombineUtils;\n /**\n  * The function of default get row.\n  */\n-public class DefaultGetRowFunc extends BaseGetRowFunc{\n+public class DefaultGetRowFunc extends BaseGetRowFunc {\n \n-  /**\n-   * Creates a new function.\n-   *\n-   * @param param the param\n-   */\n-  public DefaultGetRowFunc(GetRowParam param) {\n-    super(param);\n-  }\n-\n-  /**\n-   *  Creates a new function by default.\n-   */\n-  public DefaultGetRowFunc() {\n-    super();\n-  }\n+    /**\n+     * Creates a new function.\n+     *\n+     * @param param the param\n+     */\n+    public DefaultGetRowFunc(GetRowParam param) {\n+        super(param);\n+    }\n \n-  @Override\n-  public PartitionGetRowResult partitionGet(PartitionGetRowParam param) {\n-    ServerRow row =\n-        PSContext\n-            .get()\n-            .getMatrixPartitionManager()\n-            .getRow(param.getMatrixId(), param.getRowIndex(), param.getPartKey().getPartitionId());\n-    return new PartitionGetRowResult(row);\n-  }\n+    /**\n+     * Creates a new function by default.\n+     */\n+    public DefaultGetRowFunc() {\n+        super();\n+    }\n \n-  @Override\n-  public GetRowResult merge(List<PartitionGetRowResult> partResults) {\n-    int size = partResults.size();\n-    List<ServerRow> rowSplits = new ArrayList<ServerRow>(size);\n-    for (int i = 0; i < size; i++) {\n-      rowSplits.add(partResults.get(i).getRowSplit());\n+    @Override\n+    public PartitionGetRowResult partitionGet(PartitionGetRowParam param) {\n+        ServerRow row =\n+                PSContext\n+                        .get()\n+                        .getMatrixPartitionManager()\n+                        .getRow(param.getMatrixId(), param.getRowIndex(),\n+                                param.getPartKey().getPartitionId());\n+        return new PartitionGetRowResult(row);\n     }\n \n-    return new GetRowResult(ResponseType.SUCCESS, RowSplitCombineUtils.combineServerRowSplits(\n-        rowSplits, param.matrixId, param.rowIndex));\n-  }\n+    @Override\n+    public GetRowResult merge(List<PartitionGetRowResult> partResults) {\n+        int size = partResults.size();\n+        List<ServerRow> rowSplits = new ArrayList<ServerRow>(size);\n+        for (int i = 0; i < size; i++) {\n+            rowSplits.add(partResults.get(i).getRowSplit());\n+        }\n+\n+        return new GetRowResult(ResponseType.SUCCESS, RowSplitCombineUtils.combineServerRowSplits(\n+                rowSplits, param.matrixId, param.rowIndex));\n+    }\n }\n",
+            "diff_size": 45
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/772/DefaultGetRowFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/772/DefaultGetRowFunc.java\nindex 92e8e283b4..b2161f36e3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/772/DefaultGetRowFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/772/DefaultGetRowFunc.java\n@@ -27,7 +27,7 @@ import com.tencent.angel.psagent.matrix.transport.adapter.RowSplitCombineUtils;\n /**\n  * The function of default get row.\n  */\n-public class DefaultGetRowFunc extends BaseGetRowFunc{\n+public class DefaultGetRowFunc extends BaseGetRowFunc {\n \n   /**\n    * Creates a new function.\n@@ -48,8 +48,7 @@ public class DefaultGetRowFunc extends BaseGetRowFunc{\n   @Override\n   public PartitionGetRowResult partitionGet(PartitionGetRowParam param) {\n     ServerRow row =\n-        PSContext\n-            .get()\n+        PSContext.get()\n             .getMatrixPartitionManager()\n             .getRow(param.getMatrixId(), param.getRowIndex(), param.getPartKey().getPartitionId());\n     return new PartitionGetRowResult(row);\n@@ -63,7 +62,6 @@ public class DefaultGetRowFunc extends BaseGetRowFunc{\n       rowSplits.add(partResults.get(i).getRowSplit());\n     }\n \n-    return new GetRowResult(ResponseType.SUCCESS, RowSplitCombineUtils.combineServerRowSplits(\n-        rowSplits, param.matrixId, param.rowIndex));\n+    return new GetRowResult(ResponseType.SUCCESS, RowSplitCombineUtils.combineServerRowSplits(rowSplits, param.matrixId, param.rowIndex));\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 38.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 46.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 150).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 146).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/772/DefaultGetRowFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/772/DefaultGetRowFunc.java\nindex 92e8e283b4..d6edf0a453 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/772/DefaultGetRowFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/772/DefaultGetRowFunc.java\n@@ -18,7 +18,6 @@ package com.tencent.angel.ml.matrix.udf.getrow;\n \n import java.util.ArrayList;\n import java.util.List;\n-\n import com.tencent.angel.ps.impl.PSContext;\n import com.tencent.angel.ps.impl.matrix.ServerRow;\n import com.tencent.angel.psagent.matrix.ResponseType;\n@@ -27,43 +26,42 @@ import com.tencent.angel.psagent.matrix.transport.adapter.RowSplitCombineUtils;\n /**\n  * The function of default get row.\n  */\n-public class DefaultGetRowFunc extends BaseGetRowFunc{\n+\n+public class DefaultGetRowFunc extends BaseGetRowFunc {\n \n   /**\n    * Creates a new function.\n    *\n    * @param param the param\n    */\n-  public DefaultGetRowFunc(GetRowParam param) {\n+\n+    public DefaultGetRowFunc(GetRowParam param) {\n     super(param);\n-  }\n+    }\n \n   /**\n    *  Creates a new function by default.\n    */\n-  public DefaultGetRowFunc() {\n+\n+    public DefaultGetRowFunc() {\n     super();\n-  }\n+    }\n \n-  @Override\n-  public PartitionGetRowResult partitionGet(PartitionGetRowParam param) {\n-    ServerRow row =\n-        PSContext\n-            .get()\n-            .getMatrixPartitionManager()\n-            .getRow(param.getMatrixId(), param.getRowIndex(), param.getPartKey().getPartitionId());\n+    @Override\n+    public PartitionGetRowResult partitionGet(PartitionGetRowParam param) {\n+    ServerRow row = PSContext.get().getMatrixPartitionManager().getRow(param.getMatrixId(), param.getRowIndex(), param.getPartKey().getPartitionId());\n     return new PartitionGetRowResult(row);\n-  }\n+    }\n \n-  @Override\n-  public GetRowResult merge(List<PartitionGetRowResult> partResults) {\n+    @Override\n+    public GetRowResult merge(List<PartitionGetRowResult> partResults) {\n     int size = partResults.size();\n     List<ServerRow> rowSplits = new ArrayList<ServerRow>(size);\n     for (int i = 0; i < size; i++) {\n-      rowSplits.add(partResults.get(i).getRowSplit());\n+        rowSplits.add(partResults.get(i).getRowSplit());\n+    }\n+    return new GetRowResult(ResponseType.SUCCESS,\n+                                                          RowSplitCombineUtils.combineServerRowSplits(rowSplits, param.matrixId, param.rowIndex));\n     }\n \n-    return new GetRowResult(ResponseType.SUCCESS, RowSplitCombineUtils.combineServerRowSplits(\n-        rowSplits, param.matrixId, param.rowIndex));\n-  }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "1",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 15.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/772/DefaultGetRowFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/772/DefaultGetRowFunc.java\nindex 92e8e283b4..be9cb04ff2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/772/DefaultGetRowFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/772/DefaultGetRowFunc.java\n@@ -12,9 +12,7 @@\n  * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n  * either express or implied. See the License for the specific language governing permissions and\n  * limitations under the License.\n- */\n-\n-package com.tencent.angel.ml.matrix.udf.getrow;\n+ */ package com.tencent.angel.ml.matrix.udf.getrow;\n \n import java.util.ArrayList;\n import java.util.List;\n",
+            "diff_size": 3
+        }
+    ]
+}

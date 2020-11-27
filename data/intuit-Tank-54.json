@@ -1,0 +1,103 @@
+{
+    "error_id": "54",
+    "information": {
+        "errors": [
+            {
+                "line": "42",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 135).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "     */\n    public synchronized List<UserDetail> getSnapshot() {\n        return userMap.entrySet().stream().map(entry -> new UserDetail(entry.getKey(), entry.getValue())).collect(Collectors.toList());\n    }\n\n    /**",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "45",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/54/UserTracker.java\nindex 625c237a15..f1ca351fda 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/54/UserTracker.java\n@@ -39,27 +39,33 @@ public class UserTracker implements Serializable {\n      * @return\n      */\n     public synchronized List<UserDetail> getSnapshot() {\n-        return userMap.entrySet().stream().map(entry -> new UserDetail(entry.getKey(), entry.getValue())).collect(Collectors.toList());\n-    }\n+        return userMap.entrySet().stream().map(entry->\n+                newUserDetail(entry.getKey(),entry.getValue())\n+    )\n \n-    /**\n+        .\n+        collect(Collectors.toList());\n+     }\n+\n+     /**\n      * \n      * @param script\n      */\n-    public synchronized void add(String script) {\n-        userMap.merge(script, 1, Integer::sum);\n-    }\n+     public synchronized void add(String script) {\n+         userMap.merge(script, 1, Integer::sum);\n+     }\n \n-    /**\n+     /**\n      * \n      * @param script\n      */\n-    public synchronized void remove(String script) {\n-        Integer i = userMap.get(script);\n-        if (i != null) {\n-            if (i > 0) {\n-                userMap.put(script, i - 1);\n-            }\n-        }\n-    }\n-}\n+     public synchronized void remove(String script) {\n+         Integer i = userMap.get(script);\n+         if (i != null) {\n+             if (i > 0) {\n+                 userMap.put(script, i - 1);\n+             }\n+         }\n+     }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/54/UserTracker.java\nindex 625c237a15..8d463c7ab1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/54/UserTracker.java\n@@ -22,44 +22,40 @@ import java.util.stream.Collectors;\n import com.intuit.tank.api.model.v1.cloud.UserDetail;\n \n /**\n- * \n  * UserTracker\n- * \n+ *\n  * @author dangleton\n- * \n  */\n public class UserTracker implements Serializable {\n \n-    private static final long serialVersionUID = 1L;\n-\n-    private Map<String, Integer> userMap = new HashMap<String, Integer>();\n-\n-    /**\n-     * \n-     * @return\n-     */\n-    public synchronized List<UserDetail> getSnapshot() {\n-        return userMap.entrySet().stream().map(entry -> new UserDetail(entry.getKey(), entry.getValue())).collect(Collectors.toList());\n-    }\n-\n-    /**\n-     * \n-     * @param script\n-     */\n-    public synchronized void add(String script) {\n-        userMap.merge(script, 1, Integer::sum);\n-    }\n-\n-    /**\n-     * \n-     * @param script\n-     */\n-    public synchronized void remove(String script) {\n-        Integer i = userMap.get(script);\n-        if (i != null) {\n-            if (i > 0) {\n-                userMap.put(script, i - 1);\n-            }\n-        }\n+  private static final long serialVersionUID = 1L;\n+\n+  private Map<String, Integer> userMap = new HashMap<String, Integer>();\n+\n+  /**\n+   * @return\n+   */\n+  public synchronized List<UserDetail> getSnapshot() {\n+    return userMap.entrySet().stream().map(entry -> new UserDetail(entry.getKey(), entry.getValue()))\n+      .collect(Collectors.toList());\n+  }\n+\n+  /**\n+   * @param script\n+   */\n+  public synchronized void add(String script) {\n+    userMap.merge(script, 1, Integer::sum);\n+  }\n+\n+  /**\n+   * @param script\n+   */\n+  public synchronized void remove(String script) {\n+    Integer i = userMap.get(script);\n+    if (i != null) {\n+      if (i > 0) {\n+        userMap.put(script, i - 1);\n+      }\n     }\n+  }\n }\n",
+            "diff_size": 35
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/54/UserTracker.java\nindex 625c237a15..5b9769d527 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/54/UserTracker.java\n@@ -62,4 +62,4 @@ public class UserTracker implements Serializable {\n             }\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 134).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/54/UserTracker.java\nindex 625c237a15..14bdef18a3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/54/UserTracker.java\n@@ -13,12 +13,13 @@ package com.intuit.tank.harness;\n  * #L%\n  */\n \n+\n+\n import java.io.Serializable;\n import java.util.HashMap;\n import java.util.List;\n import java.util.Map;\n import java.util.stream.Collectors;\n-\n import com.intuit.tank.api.model.v1.cloud.UserDetail;\n \n /**\n@@ -28,10 +29,10 @@ import com.intuit.tank.api.model.v1.cloud.UserDetail;\n  * @author dangleton\n  * \n  */\n+\n public class UserTracker implements Serializable {\n \n     private static final long serialVersionUID = 1L;\n-\n     private Map<String, Integer> userMap = new HashMap<String, Integer>();\n \n     /**\n@@ -39,13 +40,15 @@ public class UserTracker implements Serializable {\n      * @return\n      */\n     public synchronized List<UserDetail> getSnapshot() {\n-        return userMap.entrySet().stream().map(entry -> new UserDetail(entry.getKey(), entry.getValue())).collect(Collectors.toList());\n+        return userMap.entrySet().stream().map(entry-> new UserDetail(entry.getKey(), entry.getValue())).collect(Collectors.toList());\n     }\n \n     /**\n      * \n      * @param script\n      */\n+\n+\n     public synchronized void add(String script) {\n         userMap.merge(script, 1, Integer::sum);\n     }\n@@ -54,6 +57,8 @@ public class UserTracker implements Serializable {\n      * \n      * @param script\n      */\n+\n+\n     public synchronized void remove(String script) {\n         Integer i = userMap.get(script);\n         if (i != null) {\n@@ -62,4 +67,5 @@ public class UserTracker implements Serializable {\n             }\n         }\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "42",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "42",
+                    "column": "84",
+                    "severity": "warning",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "42",
+                    "column": "86",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/54/UserTracker.java\nindex 625c237a15..35096cd02d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/54/UserTracker.java\n@@ -39,27 +39,24 @@ public class UserTracker implements Serializable {\n      * @return\n      */\n     public synchronized List<UserDetail> getSnapshot() {\n-        return userMap.entrySet().stream().map(entry -> new UserDetail(entry.getKey(), entry.getValue())).collect(Collectors.toList());\n-    }\n-\n-    /**\n+        return userMap .entrySet().stream().map(entry ->newUserDetail(entry.getKey (),entry.getValue())).collect(Collectors.toList());}/**\n      * \n      * @param script\n-     */\n-    public synchronized void add(String script) {\n-        userMap.merge(script, 1, Integer::sum);\n-    }\n+     */public synchronized void add(String script) {\n+            userMap.merge(script, 1, Integer::sum);\n+        }\n \n-    /**\n+        /**\n      * \n      * @param script\n      */\n-    public synchronized void remove(String script) {\n-        Integer i = userMap.get(script);\n-        if (i != null) {\n-            if (i > 0) {\n-                userMap.put(script, i - 1);\n+        public synchronized void remove(String script) {\n+            Integer i = userMap.get(script);\n+            if (i != null) {\n+                if (i > 0) {\n+                    userMap.put(script, i - 1);\n+                }\n             }\n         }\n     }\n-}\n+    \n\\ No newline at end of file\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "45",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/54/UserTracker.java\nindex 625c237a15..f1ca351fda 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/54/UserTracker.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/54/UserTracker.java\n@@ -39,27 +39,33 @@ public class UserTracker implements Serializable {\n      * @return\n      */\n     public synchronized List<UserDetail> getSnapshot() {\n-        return userMap.entrySet().stream().map(entry -> new UserDetail(entry.getKey(), entry.getValue())).collect(Collectors.toList());\n-    }\n+        return userMap.entrySet().stream().map(entry->\n+                newUserDetail(entry.getKey(),entry.getValue())\n+    )\n \n-    /**\n+        .\n+        collect(Collectors.toList());\n+     }\n+\n+     /**\n      * \n      * @param script\n      */\n-    public synchronized void add(String script) {\n-        userMap.merge(script, 1, Integer::sum);\n-    }\n+     public synchronized void add(String script) {\n+         userMap.merge(script, 1, Integer::sum);\n+     }\n \n-    /**\n+     /**\n      * \n      * @param script\n      */\n-    public synchronized void remove(String script) {\n-        Integer i = userMap.get(script);\n-        if (i != null) {\n-            if (i > 0) {\n-                userMap.put(script, i - 1);\n-            }\n-        }\n-    }\n-}\n+     public synchronized void remove(String script) {\n+         Integer i = userMap.get(script);\n+         if (i != null) {\n+             if (i > 0) {\n+                 userMap.put(script, i - 1);\n+             }\n+         }\n+     }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 22
+        }
+    ]
+}

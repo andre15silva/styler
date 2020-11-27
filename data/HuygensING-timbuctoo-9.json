@@ -1,0 +1,234 @@
+{
+    "error_id": "9",
+    "information": {
+        "errors": [
+            {
+                "line": "85",
+                "severity": "error",
+                "message": "'METHOD_DEF' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "      arguments.put(\"uri\", uri);\n    }\n    @Override\n    public <T> T getSource() {\n      throw new IllegalStateException(\"Not implemented yet\");\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler/9/LookUpSubjectByUriFetcherWrapperTest.java\nindex e07e2981fa..fbc61e4b1a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler/9/LookUpSubjectByUriFetcherWrapperTest.java\n@@ -82,6 +82,7 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n     public MockEnv(String uri) {\n       arguments.put(\"uri\", uri);\n     }\n+\n     @Override\n     public <T> T getSource() {\n       throw new IllegalStateException(\"Not implemented yet\");\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/intellij/9/LookUpSubjectByUriFetcherWrapperTest.java\nindex e07e2981fa..fbc61e4b1a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/intellij/9/LookUpSubjectByUriFetcherWrapperTest.java\n@@ -82,6 +82,7 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n     public MockEnv(String uri) {\n       arguments.put(\"uri\", uri);\n     }\n+\n     @Override\n     public <T> T getSource() {\n       throw new IllegalStateException(\"Not implemented yet\");\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "'class def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/naturalize/9/LookUpSubjectByUriFetcherWrapperTest.java\nindex e07e2981fa..78946c7d15 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/naturalize/9/LookUpSubjectByUriFetcherWrapperTest.java\n@@ -23,8 +23,7 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n   @Test\n   public void handlesAbsoluteUrls() {\n     LookUpSubjectByUriFetcherMock lookupFetcherMock = new LookUpSubjectByUriFetcherMock();\n-    LookUpSubjectByUriFetcherWrapper\n-      sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n+    LookUpSubjectByUriFetcherWrapper sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n \n     sut.get(new MockEnv(\"http://example.com/2\"));\n \n@@ -35,8 +34,7 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n   @Test\n   public void handlesRelativeUrls() {\n     LookUpSubjectByUriFetcherMock lookupFetcherMock = new LookUpSubjectByUriFetcherMock();\n-    LookUpSubjectByUriFetcherWrapper\n-      sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n+    LookUpSubjectByUriFetcherWrapper sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n     sut.get(new MockEnv(\"/2\"));\n \n     assertThat(lookupFetcherMock.uri, is(\"http://example.org/2\"));\n@@ -45,8 +43,7 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n   @Test\n   public void handlesEmptyUrls() {\n     LookUpSubjectByUriFetcherMock lookupFetcherMock = new LookUpSubjectByUriFetcherMock();\n-    LookUpSubjectByUriFetcherWrapper\n-      sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n+    LookUpSubjectByUriFetcherWrapper sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n \n     sut.get(new MockEnv(\"\"));\n \n@@ -56,16 +53,14 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n   @Test\n   public void doesntDoTooMuchNormalization() {\n     LookUpSubjectByUriFetcherMock lookupFetcherMock = new LookUpSubjectByUriFetcherMock();\n-    LookUpSubjectByUriFetcherWrapper\n-      sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org/\");\n+    LookUpSubjectByUriFetcherWrapper sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org/\");\n \n     sut.get(new MockEnv(\".\"));\n \n     assertThat(lookupFetcherMock.uri, is(\"http://example.org/\"));\n   }\n \n-\n-  private class LookUpSubjectByUriFetcherMock implements LookUpSubjectByUriFetcher {\n+private class LookUpSubjectByUriFetcherMock implements LookUpSubjectByUriFetcher {\n     private String uri;\n \n     @Override\n@@ -82,7 +77,8 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n     public MockEnv(String uri) {\n       arguments.put(\"uri\", uri);\n     }\n-    @Override\n+\n+@Override\n     public <T> T getSource() {\n       throw new IllegalStateException(\"Not implemented yet\");\n     }\n@@ -142,4 +138,4 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n       throw new IllegalStateException(\"Not implemented yet\");\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "21",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "'ctor def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "127",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "129",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/codebuff/9/LookUpSubjectByUriFetcherWrapperTest.java\nindex e07e2981fa..e440f0e8dd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/codebuff/9/LookUpSubjectByUriFetcherWrapperTest.java\n@@ -10,7 +10,6 @@ import graphql.schema.GraphQLSchema;\n import graphql.schema.GraphQLType;\n import nl.knaw.huygens.timbuctoo.v5.graphql.datafetchers.dto.SubjectReference;\n import org.junit.Test;\n-\n import java.util.HashMap;\n import java.util.List;\n import java.util.Map;\n@@ -19,127 +18,113 @@ import static org.hamcrest.MatcherAssert.assertThat;\n import static org.hamcrest.core.Is.is;\n \n public class LookUpSubjectByUriFetcherWrapperTest {\n-\n-  @Test\n-  public void handlesAbsoluteUrls() {\n+    @Test\n+    public void handlesAbsoluteUrls() {\n     LookUpSubjectByUriFetcherMock lookupFetcherMock = new LookUpSubjectByUriFetcherMock();\n-    LookUpSubjectByUriFetcherWrapper\n-      sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n-\n+    LookUpSubjectByUriFetcherWrapper sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n     sut.get(new MockEnv(\"http://example.com/2\"));\n-\n     assertThat(lookupFetcherMock.uri, is(\"http://example.com/2\"));\n-  }\n-\n+    }\n \n-  @Test\n-  public void handlesRelativeUrls() {\n+    @Test\n+    public void handlesRelativeUrls() {\n     LookUpSubjectByUriFetcherMock lookupFetcherMock = new LookUpSubjectByUriFetcherMock();\n-    LookUpSubjectByUriFetcherWrapper\n-      sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n+    LookUpSubjectByUriFetcherWrapper sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n     sut.get(new MockEnv(\"/2\"));\n-\n     assertThat(lookupFetcherMock.uri, is(\"http://example.org/2\"));\n-  }\n+    }\n \n-  @Test\n-  public void handlesEmptyUrls() {\n+    @Test\n+    public void handlesEmptyUrls() {\n     LookUpSubjectByUriFetcherMock lookupFetcherMock = new LookUpSubjectByUriFetcherMock();\n-    LookUpSubjectByUriFetcherWrapper\n-      sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n-\n+    LookUpSubjectByUriFetcherWrapper sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org\");\n     sut.get(new MockEnv(\"\"));\n-\n     assertThat(lookupFetcherMock.uri, is(\"http://example.org\"));\n-  }\n+    }\n \n-  @Test\n-  public void doesntDoTooMuchNormalization() {\n+    @Test\n+    public void doesntDoTooMuchNormalization() {\n     LookUpSubjectByUriFetcherMock lookupFetcherMock = new LookUpSubjectByUriFetcherMock();\n-    LookUpSubjectByUriFetcherWrapper\n-      sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org/\");\n-\n+    LookUpSubjectByUriFetcherWrapper sut = new LookUpSubjectByUriFetcherWrapper(\"uri\", lookupFetcherMock, \"http://example.org/\");\n     sut.get(new MockEnv(\".\"));\n-\n     assertThat(lookupFetcherMock.uri, is(\"http://example.org/\"));\n-  }\n-\n+    }\n \n-  private class LookUpSubjectByUriFetcherMock implements LookUpSubjectByUriFetcher {\n+    private class LookUpSubjectByUriFetcherMock implements LookUpSubjectByUriFetcher {\n     private String uri;\n-\n     @Override\n     public SubjectReference getItem(String uri) {\n-      this.uri = uri;\n-      return null;\n+        this.uri = uri;\n+        return null;\n+    }\n     }\n-  }\n \n-  private class MockEnv implements DataFetchingEnvironment {\n+    private class MockEnv implements DataFetchingEnvironment {\n \n     Map<String, Object> arguments = new HashMap<>();\n \n     public MockEnv(String uri) {\n-      arguments.put(\"uri\", uri);\n+        arguments.put(\"uri\", uri);\n     }\n+\n     @Override\n     public <T> T getSource() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public Map<String, Object> getArguments() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public boolean containsArgument(String name) {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public <T> T getArgument(String name) {\n-      return (T) arguments.get(name);\n+        return (T) arguments.get(name);\n     }\n \n     @Override\n     public <T> T getContext() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public List<Field> getFields() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public GraphQLOutputType getFieldType() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public GraphQLType getParentType() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public GraphQLSchema getGraphQLSchema() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public Map<String, FragmentDefinition> getFragmentsByName() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public ExecutionId getExecutionId() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n     }\n \n     @Override\n     public DataFetchingFieldSelectionSet getSelectionSet() {\n-      throw new IllegalStateException(\"Not implemented yet\");\n+        throw new IllegalStateException(\"Not implemented yet\");\n+    }\n     }\n-  }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 55
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_random/9/LookUpSubjectByUriFetcherWrapperTest.java\nindex e07e2981fa..fbc61e4b1a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_random/9/LookUpSubjectByUriFetcherWrapperTest.java\n@@ -82,6 +82,7 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n     public MockEnv(String uri) {\n       arguments.put(\"uri\", uri);\n     }\n+\n     @Override\n     public <T> T getSource() {\n       throw new IllegalStateException(\"Not implemented yet\");\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_three_grams/9/LookUpSubjectByUriFetcherWrapperTest.java\nindex e07e2981fa..fbc61e4b1a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/9/LookUpSubjectByUriFetcherWrapperTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_three_grams/9/LookUpSubjectByUriFetcherWrapperTest.java\n@@ -82,6 +82,7 @@ public class LookUpSubjectByUriFetcherWrapperTest {\n     public MockEnv(String uri) {\n       arguments.put(\"uri\", uri);\n     }\n+\n     @Override\n     public <T> T getSource() {\n       throw new IllegalStateException(\"Not implemented yet\");\n",
+            "diff_size": 1
+        }
+    ]
+}

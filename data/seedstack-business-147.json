@@ -1,0 +1,58 @@
+{
+    "error_id": "147",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.domain;\n\nimport org.seedstack.business.internal.utils.BusinessUtils;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/147/BaseDomainEventHandler.java\nindex 1665e26a71..556c92d827 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/147/BaseDomainEventHandler.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import org.seedstack.business.internal.utils.BusinessUtils;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/147/BaseDomainEventHandler.java\nindex 1665e26a71..556c92d827 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/147/BaseDomainEventHandler.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import org.seedstack.business.internal.utils.BusinessUtils;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/147/BaseDomainEventHandler.java\nindex 1665e26a71..4717382ae9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/147/BaseDomainEventHandler.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import org.seedstack.business.internal.utils.BusinessUtils;\n@@ -43,4 +44,4 @@ public abstract class BaseDomainEventHandler<E extends DomainEvent> implements D\n     public Class<E> getEventClass() {\n         return this.eventClass;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/147/BaseDomainEventHandler.java\nindex 1665e26a71..174d7cd8ba 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/147/BaseDomainEventHandler.java\n@@ -16,6 +16,8 @@ import org.seedstack.business.internal.utils.BusinessUtils;\n  *\n  * @param <E> the type of the handled event.\n  */\n+\n+\n public abstract class BaseDomainEventHandler<E extends DomainEvent> implements DomainEventHandler<E> {\n \n     private static final int EVENT_INDEX = 0;\n@@ -24,8 +26,8 @@ public abstract class BaseDomainEventHandler<E extends DomainEvent> implements D\n     /**\n      * Creates a base domain event handler. Actual event class is determined by reflection.\n      */\n-    @SuppressWarnings(\"unchecked\")\n-    protected BaseDomainEventHandler() {\n+\n+    @SuppressWarnings(\"unchecked\") protected BaseDomainEventHandler() {\n         this.eventClass = (Class<E>) BusinessUtils.resolveGenerics(DomainEventHandler.class, getClass())[EVENT_INDEX];\n     }\n \n@@ -35,12 +37,15 @@ public abstract class BaseDomainEventHandler<E extends DomainEvent> implements D\n      *\n      * @param eventClass the event class.\n      */\n+\n+\n     protected BaseDomainEventHandler(Class<E> eventClass) {\n         this.eventClass = eventClass;\n     }\n \n     @Override\n     public Class<E> getEventClass() {\n-        return this.eventClass;\n+        return this\n+            .eventClass;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/147/BaseDomainEventHandler.java\nindex 1665e26a71..556c92d827 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/147/BaseDomainEventHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/147/BaseDomainEventHandler.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import org.seedstack.business.internal.utils.BusinessUtils;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

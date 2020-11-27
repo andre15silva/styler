@@ -1,0 +1,178 @@
+{
+    "error_id": "905",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/905/InitNeighborOver.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/905/InitNeighborOver.java\nindex d331d8b7c7..46e6c038ab 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/905/InitNeighborOver.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/905/InitNeighborOver.java\n@@ -31,81 +31,81 @@ import java.util.List;\n  */\n public class InitNeighborOver extends UpdateFunc {\n \n-  /**\n-   * Create a new UpdateParam\n-   */\n-  public InitNeighborOver(UpdateParam param) {\n-    super(param);\n-  }\n-\n-  public InitNeighborOver() {\n-    this(null);\n-  }\n-\n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam param) {\n-    ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(param.getMatrixId());\n-    CSRPartition part = (CSRPartition) matrix.getPartition(param.getPartKey().getPartitionId());\n-    IntCSRStorage storage = (IntCSRStorage) part.getStorage();\n-    int startCol = (int) param.getPartKey().getStartCol();\n-\n-    synchronized (storage) {\n-      // No data in this partition\n-      if (storage.getTempRowIds() == null) {\n-        return;\n-      }\n-\n-      // Get total neighbor number\n-      int[] rowOffsets = storage.getRowOffsets();\n-      int accumOffset = 0;\n-      for (int i = 0; i < rowOffsets.length - 1; i++) {\n-        int offset = rowOffsets[i];\n-        rowOffsets[i] = accumOffset;\n-        accumOffset += offset;\n-      }\n-\n-      rowOffsets[rowOffsets.length - 1] = accumOffset;\n-\n-      // Final matrix column indices: neighbors node ids\n-      int[] cloumnIndices = new int[accumOffset];\n-\n-      // Write positions in cloumnIndices for nodes\n-      int[] copyOffsets = new int[rowOffsets.length - 1];\n-      System.arraycopy(rowOffsets, 0, copyOffsets, 0, rowOffsets.length - 1);\n-\n-      List<int[]> tempRowIds = storage.getTempRowIds();\n-      List<int[]> tempRowLens = storage.getTempRowLens();\n-      List<int[]> tempColumnIndices = storage.getTempColumnIndices();\n-\n-      // Copy all cached sub column indices to final column indices\n-      int size = tempRowIds.size();\n-      for (int i = 0; i < size; i++) {\n-        // Read position for a sub column indices\n-        int copyLen = 0;\n-        int[] subTempRowIds = tempRowIds.get(i);\n-        int[] subTempLens = tempRowLens.get(i);\n-        int[] subTempColumnIndices = tempColumnIndices.get(i);\n-\n-        for (int j = 0; j < subTempRowIds.length; j++) {\n-          // Copy column indices for a node to final column indices\n-          System.arraycopy(subTempColumnIndices, copyLen, cloumnIndices,\n-              copyOffsets[subTempRowIds[j] - startCol],\n-              subTempLens[j]);\n-\n-          // Update write position for this node in final column indices\n-          copyOffsets[subTempRowIds[j] - startCol] += subTempLens[j];\n-\n-          // Update the read position in sub column indices\n-          copyLen += subTempLens[j];\n-        }\n-      }\n+    /**\n+     * Create a new UpdateParam\n+     */\n+    public InitNeighborOver(UpdateParam param) {\n+        super(param);\n+    }\n \n-      storage.setColumnIndices(cloumnIndices);\n+    public InitNeighborOver() {\n+        this(null);\n+    }\n \n-      // Clear all temp data\n-      storage.setTempRowIds(null);\n-      storage.setTempRowLens(null);\n-      storage.setTempColumnIndices(null);\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam param) {\n+        ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(param.getMatrixId());\n+        CSRPartition part = (CSRPartition) matrix.getPartition(param.getPartKey().getPartitionId());\n+        IntCSRStorage storage = (IntCSRStorage) part.getStorage();\n+        int startCol = (int) param.getPartKey().getStartCol();\n+\n+        synchronized (storage) {\n+            // No data in this partition\n+            if (storage.getTempRowIds() == null) {\n+                return;\n+            }\n+\n+            // Get total neighbor number\n+            int[] rowOffsets = storage.getRowOffsets();\n+            int accumOffset = 0;\n+            for (int i = 0; i < rowOffsets.length - 1; i++) {\n+                int offset = rowOffsets[i];\n+                rowOffsets[i] = accumOffset;\n+                accumOffset += offset;\n+            }\n+\n+            rowOffsets[rowOffsets.length - 1] = accumOffset;\n+\n+            // Final matrix column indices: neighbors node ids\n+            int[] cloumnIndices = new int[accumOffset];\n+\n+            // Write positions in cloumnIndices for nodes\n+            int[] copyOffsets = new int[rowOffsets.length - 1];\n+            System.arraycopy(rowOffsets, 0, copyOffsets, 0, rowOffsets.length - 1);\n+\n+            List<int[]> tempRowIds = storage.getTempRowIds();\n+            List<int[]> tempRowLens = storage.getTempRowLens();\n+            List<int[]> tempColumnIndices = storage.getTempColumnIndices();\n+\n+            // Copy all cached sub column indices to final column indices\n+            int size = tempRowIds.size();\n+            for (int i = 0; i < size; i++) {\n+                // Read position for a sub column indices\n+                int copyLen = 0;\n+                int[] subTempRowIds = tempRowIds.get(i);\n+                int[] subTempLens = tempRowLens.get(i);\n+                int[] subTempColumnIndices = tempColumnIndices.get(i);\n+\n+                for (int j = 0; j < subTempRowIds.length; j++) {\n+                    // Copy column indices for a node to final column indices\n+                    System.arraycopy(subTempColumnIndices, copyLen, cloumnIndices,\n+                            copyOffsets[subTempRowIds[j] - startCol],\n+                            subTempLens[j]);\n+\n+                    // Update write position for this node in final column indices\n+                    copyOffsets[subTempRowIds[j] - startCol] += subTempLens[j];\n+\n+                    // Update the read position in sub column indices\n+                    copyLen += subTempLens[j];\n+                }\n+            }\n+\n+            storage.setColumnIndices(cloumnIndices);\n+\n+            // Clear all temp data\n+            storage.setTempRowIds(null);\n+            storage.setTempRowLens(null);\n+            storage.setTempColumnIndices(null);\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 137
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 0, expected is 10, indentation should be the same level as line 95.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/905/InitNeighborOver.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/905/InitNeighborOver.java\nindex d331d8b7c7..f80b111059 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/905/InitNeighborOver.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/905/InitNeighborOver.java\n@@ -88,11 +88,10 @@ public class InitNeighborOver extends UpdateFunc {\n \n         for (int j = 0; j < subTempRowIds.length; j++) {\n           // Copy column indices for a node to final column indices\n-          System.arraycopy(subTempColumnIndices, copyLen, cloumnIndices,\n-              copyOffsets[subTempRowIds[j] - startCol],\n+          System.arraycopy(subTempColumnIndices, copyLen, cloumnIndices, copyOffsets[subTempRowIds[j] - startCol],\n               subTempLens[j]);\n \n-          // Update write position for this node in final column indices\n+// Update write position for this node in final column indices\n           copyOffsets[subTempRowIds[j] - startCol] += subTempLens[j];\n \n           // Update the read position in sub column indices\n@@ -108,4 +107,4 @@ public class InitNeighborOver extends UpdateFunc {\n       storage.setTempColumnIndices(null);\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 39.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 55.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 61.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 72.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 75.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 82.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 10, expected is 43, indentation should be the same level as line 91.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 10, expected is 43, indentation should be the same level as line 98.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 10, expected is 43, indentation should be the same level as line 101.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 107.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/905/InitNeighborOver.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/905/InitNeighborOver.java\nindex d331d8b7c7..b4e9397976 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/905/InitNeighborOver.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/905/InitNeighborOver.java\n@@ -29,83 +29,85 @@ import java.util.List;\n  * Notify PS that all node neighbors information is pushed. PS generate the final node neighbor\n  * table in CSR format\n  */\n+\n public class InitNeighborOver extends UpdateFunc {\n \n   /**\n    * Create a new UpdateParam\n    */\n-  public InitNeighborOver(UpdateParam param) {\n+\n+    public InitNeighborOver(UpdateParam param) {\n     super(param);\n-  }\n+    }\n \n-  public InitNeighborOver() {\n+    public InitNeighborOver() {\n     this(null);\n-  }\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam param) {\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam param) {\n     ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(param.getMatrixId());\n     CSRPartition part = (CSRPartition) matrix.getPartition(param.getPartKey().getPartitionId());\n     IntCSRStorage storage = (IntCSRStorage) part.getStorage();\n     int startCol = (int) param.getPartKey().getStartCol();\n-\n     synchronized (storage) {\n       // No data in this partition\n-      if (storage.getTempRowIds() == null) {\n+        if (storage.getTempRowIds() == null) {\n         return;\n-      }\n+        }\n \n       // Get total neighbor number\n-      int[] rowOffsets = storage.getRowOffsets();\n-      int accumOffset = 0;\n-      for (int i = 0; i < rowOffsets.length - 1; i++) {\n+\n+        int[] rowOffsets = storage.getRowOffsets();\n+        int accumOffset = 0;\n+        for (int i = 0; i < rowOffsets.length - 1; i++) {\n         int offset = rowOffsets[i];\n         rowOffsets[i] = accumOffset;\n         accumOffset += offset;\n-      }\n-\n-      rowOffsets[rowOffsets.length - 1] = accumOffset;\n+        }\n+        rowOffsets[rowOffsets.length - 1] = accumOffset;\n \n       // Final matrix column indices: neighbors node ids\n-      int[] cloumnIndices = new int[accumOffset];\n \n-      // Write positions in cloumnIndices for nodes\n-      int[] copyOffsets = new int[rowOffsets.length - 1];\n-      System.arraycopy(rowOffsets, 0, copyOffsets, 0, rowOffsets.length - 1);\n+        int[] cloumnIndices = new int[accumOffset];\n \n-      List<int[]> tempRowIds = storage.getTempRowIds();\n-      List<int[]> tempRowLens = storage.getTempRowLens();\n-      List<int[]> tempColumnIndices = storage.getTempColumnIndices();\n+      // Write positions in cloumnIndices for nodes\n+        int[] copyOffsets = new int[rowOffsets.length - 1];\n+        System.arraycopy(rowOffsets, 0, copyOffsets, 0, rowOffsets.length - 1);\n+        List<int[]> tempRowIds = storage.getTempRowIds();\n+        List<int[]> tempRowLens = storage.getTempRowLens();\n+        List<int[]> tempColumnIndices = storage.getTempColumnIndices();\n \n       // Copy all cached sub column indices to final column indices\n-      int size = tempRowIds.size();\n-      for (int i = 0; i < size; i++) {\n+        int size = tempRowIds.size();\n+        for (int i = 0; i < size; i++) {\n         // Read position for a sub column indices\n         int copyLen = 0;\n         int[] subTempRowIds = tempRowIds.get(i);\n         int[] subTempLens = tempRowLens.get(i);\n         int[] subTempColumnIndices = tempColumnIndices.get(i);\n-\n         for (int j = 0; j < subTempRowIds.length; j++) {\n           // Copy column indices for a node to final column indices\n-          System.arraycopy(subTempColumnIndices, copyLen, cloumnIndices,\n-              copyOffsets[subTempRowIds[j] - startCol],\n-              subTempLens[j]);\n+                                           System.arraycopy(subTempColumnIndices,\n+                                                            copyLen,\n+                                                            cloumnIndices,\n+                                                            copyOffsets[subTempRowIds[j] - startCol],\n+                                                            subTempLens[j]);\n \n           // Update write position for this node in final column indices\n-          copyOffsets[subTempRowIds[j] - startCol] += subTempLens[j];\n+                                           copyOffsets[subTempRowIds[j] - startCol] += subTempLens[j];\n \n           // Update the read position in sub column indices\n-          copyLen += subTempLens[j];\n+                                           copyLen += subTempLens[j];\n         }\n-      }\n-\n-      storage.setColumnIndices(cloumnIndices);\n+        }\n+        storage.setColumnIndices(cloumnIndices);\n \n       // Clear all temp data\n-      storage.setTempRowIds(null);\n-      storage.setTempRowLens(null);\n-      storage.setTempColumnIndices(null);\n+        storage.setTempRowIds(null);\n+        storage.setTempRowLens(null);\n+        storage.setTempColumnIndices(null);\n     }\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 47
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

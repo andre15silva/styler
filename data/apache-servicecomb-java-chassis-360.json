@@ -1,0 +1,75 @@
+{
+    "error_id": "360",
+    "information": {
+        "errors": [
+            {
+                "line": "162",
+                "column": "32",
+                "severity": "warning",
+                "message": "'+' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "\n      config.setClassName(\n          \"gen.wrap.protobuf.\" +\n              org.apache.servicecomb.swagger.generator.core.utils.ClassUtils.correctClassName(key));\n      if (!Void.TYPE.isAssignableFrom(javaType.getRawClass())) {\n        config.addField(\"field0\", javaType);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/360/ProtobufSchemaUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/360/ProtobufSchemaUtils.java\nindex 52fd038729..55592e45a3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/360/ProtobufSchemaUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/360/ProtobufSchemaUtils.java\n@@ -159,46 +159,45 @@ public final class ProtobufSchemaUtils {\n       config.setType(WrapType.NORMAL_WRAP);\n \n       config.setClassName(\n-          \"gen.wrap.protobuf.\" +\n-              org.apache.servicecomb.swagger.generator.core.utils.ClassUtils.correctClassName(key));\n-      if (!Void.TYPE.isAssignableFrom(javaType.getRawClass())) {\n-        config.addField(\"field0\", javaType);\n-      }\n+          \"gen.wrap.protobuf.\" + org.apache.servicecomb.swagger.generator.core.utils.ClassUtils.correctClassName(key));\n+  if (!Void.TYPE.isAssignableFrom(javaType.getRawClass())) {\n+    config.addField(\"field0\", javaType);\n+  }\n \n-      JavassistUtils.genSingleWrapperInterface(config);\n+  JavassistUtils.genSingleWrapperInterface(config);\n \n-      return createWrapSchema(config);\n-    });\n-  }\n+  return createWrapSchema(config);\n+});\n+}\n \n-  public static WrapSchema getOrCreateArgsSchema(OperationMeta operationMeta) {\n-    Method method = operationMeta.getMethod();\n-    String type = \"gen.\" + method.getDeclaringClass().getName() + \".\" + method.getName() + \".Args\";\n+public static WrapSchema getOrCreateArgsSchema(OperationMeta operationMeta) {\n+  Method method = operationMeta.getMethod();\n+  String type = \"gen.\" + method.getDeclaringClass().getName() + \".\" + method.getName() + \".Args\";\n \n-    return getOrCreateSchema(type, () -> {\n-      if (!isArgsNeedWrap(method)) {\n-        // \u53ef\u4ee5\u76f4\u63a5\u4f7f\u7528\n-        Class<?> cls = method.getParameterTypes()[0];\n-        Schema<?> schema = RuntimeSchema.createFrom(cls);\n-        return WrapSchemaFactory.createSchema(schema, WrapType.ARGS_NOT_WRAP);\n-      }\n+  return getOrCreateSchema(type, () -> {\n+    if (!isArgsNeedWrap(method)) {\n+      // \u53ef\u4ee5\u76f4\u63a5\u4f7f\u7528\n+      Class<?> cls = method.getParameterTypes()[0];\n+      Schema<?> schema = RuntimeSchema.createFrom(cls);\n+      return WrapSchemaFactory.createSchema(schema, WrapType.ARGS_NOT_WRAP);\n+    }\n \n-      // \u9700\u8981\u5305\u88c5\n-      WrapClassConfig config = new WrapClassConfig();\n-      config.setType(WrapType.ARGS_WRAP);\n-      config.setClassName(type);\n-\n-      Parameter[] params = method.getParameters();\n-      for (int idx = 0; idx < params.length; idx++) {\n-        Parameter param = params[idx];\n-        String paramName = org.apache.servicecomb.swagger.generator.core.utils.ClassUtils\n-            .correctMethodParameterName(operationMeta.getParamName(idx));\n-        config.addField(paramName, param.getParameterizedType());\n-      }\n+    // \u9700\u8981\u5305\u88c5\n+    WrapClassConfig config = new WrapClassConfig();\n+    config.setType(WrapType.ARGS_WRAP);\n+    config.setClassName(type);\n+\n+    Parameter[] params = method.getParameters();\n+    for (int idx = 0; idx < params.length; idx++) {\n+      Parameter param = params[idx];\n+      String paramName = org.apache.servicecomb.swagger.generator.core.utils.ClassUtils\n+          .correctMethodParameterName(operationMeta.getParamName(idx));\n+      config.addField(paramName, param.getParameterizedType());\n+    }\n \n-      JavassistUtils.genMultiWrapperInterface(config);\n+    JavassistUtils.genMultiWrapperInterface(config);\n \n-      return createWrapSchema(config);\n-    });\n-  }\n+    return createWrapSchema(config);\n+  });\n+}\n }\n",
+            "diff_size": 35
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "162",
+                    "column": "32",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "193",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 150).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/360/ProtobufSchemaUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/360/ProtobufSchemaUtils.java\nindex 52fd038729..ae8c17697b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/360/ProtobufSchemaUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/360/ProtobufSchemaUtils.java\n@@ -159,9 +159,8 @@ public final class ProtobufSchemaUtils {\n       config.setType(WrapType.NORMAL_WRAP);\n \n       config.setClassName(\n-          \"gen.wrap.protobuf.\" +\n-              org.apache.servicecomb.swagger.generator.core.utils.ClassUtils.correctClassName(key));\n-      if (!Void.TYPE.isAssignableFrom(javaType.getRawClass())) {\n+          \"gen.wrap.protobuf.\" + org.apache.servicecomb.swagger.generator.core.utils.ClassUtils.correctClassName(key));\n+if (!Void.TYPE.isAssignableFrom(javaType.getRawClass())) {\n         config.addField(\"field0\", javaType);\n       }\n \n@@ -191,8 +190,7 @@ public final class ProtobufSchemaUtils {\n       Parameter[] params = method.getParameters();\n       for (int idx = 0; idx < params.length; idx++) {\n         Parameter param = params[idx];\n-        String paramName = org.apache.servicecomb.swagger.generator.core.utils.ClassUtils\n-            .correctMethodParameterName(operationMeta.getParamName(idx));\n+        String paramName = org.apache.servicecomb.swagger.generator.core.utils.ClassUtils.correctMethodParameterName(operationMeta.getParamName(idx));\n         config.addField(paramName, param.getParameterizedType());\n       }\n \n@@ -201,4 +199,4 @@ public final class ProtobufSchemaUtils {\n       return createWrapSchema(config);\n     });\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/360/ProtobufSchemaUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/360/ProtobufSchemaUtils.java\nindex 52fd038729..55592e45a3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/360/ProtobufSchemaUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/360/ProtobufSchemaUtils.java\n@@ -159,46 +159,45 @@ public final class ProtobufSchemaUtils {\n       config.setType(WrapType.NORMAL_WRAP);\n \n       config.setClassName(\n-          \"gen.wrap.protobuf.\" +\n-              org.apache.servicecomb.swagger.generator.core.utils.ClassUtils.correctClassName(key));\n-      if (!Void.TYPE.isAssignableFrom(javaType.getRawClass())) {\n-        config.addField(\"field0\", javaType);\n-      }\n+          \"gen.wrap.protobuf.\" + org.apache.servicecomb.swagger.generator.core.utils.ClassUtils.correctClassName(key));\n+  if (!Void.TYPE.isAssignableFrom(javaType.getRawClass())) {\n+    config.addField(\"field0\", javaType);\n+  }\n \n-      JavassistUtils.genSingleWrapperInterface(config);\n+  JavassistUtils.genSingleWrapperInterface(config);\n \n-      return createWrapSchema(config);\n-    });\n-  }\n+  return createWrapSchema(config);\n+});\n+}\n \n-  public static WrapSchema getOrCreateArgsSchema(OperationMeta operationMeta) {\n-    Method method = operationMeta.getMethod();\n-    String type = \"gen.\" + method.getDeclaringClass().getName() + \".\" + method.getName() + \".Args\";\n+public static WrapSchema getOrCreateArgsSchema(OperationMeta operationMeta) {\n+  Method method = operationMeta.getMethod();\n+  String type = \"gen.\" + method.getDeclaringClass().getName() + \".\" + method.getName() + \".Args\";\n \n-    return getOrCreateSchema(type, () -> {\n-      if (!isArgsNeedWrap(method)) {\n-        // \u53ef\u4ee5\u76f4\u63a5\u4f7f\u7528\n-        Class<?> cls = method.getParameterTypes()[0];\n-        Schema<?> schema = RuntimeSchema.createFrom(cls);\n-        return WrapSchemaFactory.createSchema(schema, WrapType.ARGS_NOT_WRAP);\n-      }\n+  return getOrCreateSchema(type, () -> {\n+    if (!isArgsNeedWrap(method)) {\n+      // \u53ef\u4ee5\u76f4\u63a5\u4f7f\u7528\n+      Class<?> cls = method.getParameterTypes()[0];\n+      Schema<?> schema = RuntimeSchema.createFrom(cls);\n+      return WrapSchemaFactory.createSchema(schema, WrapType.ARGS_NOT_WRAP);\n+    }\n \n-      // \u9700\u8981\u5305\u88c5\n-      WrapClassConfig config = new WrapClassConfig();\n-      config.setType(WrapType.ARGS_WRAP);\n-      config.setClassName(type);\n-\n-      Parameter[] params = method.getParameters();\n-      for (int idx = 0; idx < params.length; idx++) {\n-        Parameter param = params[idx];\n-        String paramName = org.apache.servicecomb.swagger.generator.core.utils.ClassUtils\n-            .correctMethodParameterName(operationMeta.getParamName(idx));\n-        config.addField(paramName, param.getParameterizedType());\n-      }\n+    // \u9700\u8981\u5305\u88c5\n+    WrapClassConfig config = new WrapClassConfig();\n+    config.setType(WrapType.ARGS_WRAP);\n+    config.setClassName(type);\n+\n+    Parameter[] params = method.getParameters();\n+    for (int idx = 0; idx < params.length; idx++) {\n+      Parameter param = params[idx];\n+      String paramName = org.apache.servicecomb.swagger.generator.core.utils.ClassUtils\n+          .correctMethodParameterName(operationMeta.getParamName(idx));\n+      config.addField(paramName, param.getParameterizedType());\n+    }\n \n-      JavassistUtils.genMultiWrapperInterface(config);\n+    JavassistUtils.genMultiWrapperInterface(config);\n \n-      return createWrapSchema(config);\n-    });\n-  }\n+    return createWrapSchema(config);\n+  });\n+}\n }\n",
+            "diff_size": 35
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "162",
+                    "column": "32",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

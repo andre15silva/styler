@@ -1,0 +1,65 @@
+{
+    "error_id": "264",
+    "information": {
+        "errors": [
+            {
+                "line": "18",
+                "severity": "error",
+                "message": "'package' has more than 1 empty lines before.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "\n\npackage org.activiti.spring.process.conf;\n\nimport java.util.Date;\nimport java.util.HashMap;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/264/ProcessExtensionsAutoConfiguration.java\nindex 8729ee6985..aa31a87abe 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/264/ProcessExtensionsAutoConfiguration.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.spring.process.conf;\n \n import java.util.Date;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "18",
+                    "severity": "error",
+                    "message": "'package' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/264/ProcessExtensionsAutoConfiguration.java\nindex 8729ee6985..beeea0c20f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/264/ProcessExtensionsAutoConfiguration.java\n@@ -50,7 +50,7 @@ public class ProcessExtensionsAutoConfiguration {\n     @Bean\n     @ConditionalOnMissingBean\n     public ProcessExtensionResourceReader processExtensionResourceReader(ObjectMapper objectMapper,\n-                                                            Map<String, VariableType> variableTypeMap) {\n+                                                                         Map<String, VariableType> variableTypeMap) {\n         return new ProcessExtensionResourceReader(objectMapper, variableTypeMap);\n     }\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "18",
+                    "severity": "error",
+                    "message": "'package' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/264/ProcessExtensionsAutoConfiguration.java\nindex 8729ee6985..9eeb37eca3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/264/ProcessExtensionsAutoConfiguration.java\n@@ -44,51 +44,54 @@ public class ProcessExtensionsAutoConfiguration {\n     @Bean\n     @ConditionalOnMissingBean\n     public DeploymentResourceLoader<ProcessExtensionModel> deploymentResourceLoader() {\n-        return new DeploymentResourceLoader<>();\n+    return new DeploymentResourceLoader<>();\n     }\n \n     @Bean\n     @ConditionalOnMissingBean\n-    public ProcessExtensionResourceReader processExtensionResourceReader(ObjectMapper objectMapper,\n-                                                            Map<String, VariableType> variableTypeMap) {\n-        return new ProcessExtensionResourceReader(objectMapper, variableTypeMap);\n+    public ProcessExtensionResourceReader processExtensionResourceReader(ObjectMapper objectMapper, Map<String, VariableType> variableTypeMap) {\n+    return new ProcessExtensionResourceReader(objectMapper, variableTypeMap);\n     }\n \n     @Bean\n     @ConditionalOnMissingBean\n-    public ProcessExtensionService processExtensionService(ProcessExtensionResourceReader processExtensionResourceReader,\n-                                                           DeploymentResourceLoader<ProcessExtensionModel> deploymentResourceLoader) {\n-        return new ProcessExtensionService(\n-                deploymentResourceLoader,\n-                processExtensionResourceReader);\n+    public ProcessExtensionService processExtensionService(ProcessExtensionResourceReader processExtensionResourceReader, DeploymentResourceLoader<ProcessExtensionModel> deploymentResourceLoader) {\n+    return new ProcessExtensionService(deploymentResourceLoader,\n+                                       processExtensionResourceReader);\n     }\n \n     @Bean\n-    InitializingBean initRepositoryServiceForProcessExtensionService(RepositoryService repositoryService,\n-                                                                     ProcessExtensionService processExtensionService) {\n-        return () -> processExtensionService.setRepositoryService(repositoryService);\n+    InitializingBean initRepositoryServiceForProcessExtensionService(RepositoryService repositoryService, ProcessExtensionService processExtensionService) {\n+    return () -> processExtensionService.setRepositoryService(repositoryService);\n     }\n \n     @Bean\n-    InitializingBean initRepositoryServiceForDeploymentResourceLoader(RepositoryService repositoryService,\n-                                                                      DeploymentResourceLoader deploymentResourceLoader) {\n-        return () -> deploymentResourceLoader.setRepositoryService(repositoryService);\n+    InitializingBean initRepositoryServiceForDeploymentResourceLoader(RepositoryService repositoryService, DeploymentResourceLoader deploymentResourceLoader) {\n+    return () -> deploymentResourceLoader.setRepositoryService(repositoryService);\n     }\n \n     @Bean\n     @ConditionalOnMissingBean(name = \"variableTypeMap\")\n-    public Map<String, VariableType> variableTypeMap(ObjectMapper objectMapper,\n-                                                     DateFormatterProvider dateFormatterProvider) {\n+    public Map<String, VariableType> variableTypeMap(ObjectMapper objectMapper, DateFormatterProvider dateFormatterProvider) {\n         Map<String, VariableType> variableTypeMap = new HashMap<>();\n-        variableTypeMap.put(\"boolean\", new JavaObjectVariableType(Boolean.class));\n-        variableTypeMap.put(\"string\", new JavaObjectVariableType(String.class));\n-        variableTypeMap.put(\"integer\", new JavaObjectVariableType(Integer.class));\n-        variableTypeMap.put(\"json\", new JsonObjectVariableType(objectMapper));\n-        variableTypeMap.put(\"file\", new JsonObjectVariableType(objectMapper));\n-        variableTypeMap.put(\"folder\", new JsonObjectVariableType(objectMapper));\n-        variableTypeMap.put(\"date\", new DateVariableType(Date.class, dateFormatterProvider));\n-        variableTypeMap.put(\"datetime\", new DateVariableType(Date.class, dateFormatterProvider));\n-        variableTypeMap.put(\"array\", new JsonObjectVariableType(objectMapper));\n+        variableTypeMap.put(\"boolean\",\n+                            new JavaObjectVariableType(Boolean.class));\n+        variableTypeMap.put(\"string\",\n+                            new JavaObjectVariableType(String.class));\n+        variableTypeMap.put(\"integer\",\n+                            new JavaObjectVariableType(Integer.class));\n+        variableTypeMap.put(\"json\",\n+                            new JsonObjectVariableType(objectMapper));\n+        variableTypeMap.put(\"file\",\n+                            new JsonObjectVariableType(objectMapper));\n+        variableTypeMap.put(\"folder\",\n+                            new JsonObjectVariableType(objectMapper));\n+        variableTypeMap.put(\"date\",\n+                            new DateVariableType(Date.class, dateFormatterProvider));\n+        variableTypeMap.put(\"datetime\",\n+                            new DateVariableType(Date.class, dateFormatterProvider));\n+        variableTypeMap.put(\"array\",\n+                            new JsonObjectVariableType(objectMapper));\n         return variableTypeMap;\n     }\n \n@@ -101,4 +104,5 @@ public class ProcessExtensionsAutoConfiguration {\n     public VariableParsingService variableParsingService(Map<String, VariableType> variableTypeMap) {\n         return new VariableParsingService(variableTypeMap);\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 37
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/264/ProcessExtensionsAutoConfiguration.java\nindex 8729ee6985..aa31a87abe 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/264/ProcessExtensionsAutoConfiguration.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.spring.process.conf;\n \n import java.util.Date;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/264/ProcessExtensionsAutoConfiguration.java\nindex 8729ee6985..aa31a87abe 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/264/ProcessExtensionsAutoConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/264/ProcessExtensionsAutoConfiguration.java\n@@ -14,7 +14,6 @@\n  * limitations under the License.\n  */\n \n-\n package org.activiti.spring.process.conf;\n \n import java.util.Date;\n",
+            "diff_size": 1
+        }
+    ]
+}

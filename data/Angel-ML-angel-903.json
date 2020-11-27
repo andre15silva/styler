@@ -1,0 +1,100 @@
+{
+    "error_id": "903",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/903/QuantifyFloatFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/903/QuantifyFloatFunc.java\nindex 82e5e7947d..6b584de66d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/903/QuantifyFloatFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/903/QuantifyFloatFunc.java\n@@ -31,57 +31,59 @@ import com.tencent.angel.ps.storage.vector.ServerRowUtils;\n \n public class QuantifyFloatFunc extends UpdateFunc {\n \n-  public QuantifyFloatFunc(int matrixId, int rowId, float[] array, int bitPerItem) {\n-    super(new QuantifyFloatParam(matrixId, rowId, array, bitPerItem));\n-  }\n+    public QuantifyFloatFunc(int matrixId, int rowId, float[] array, int bitPerItem) {\n+        super(new QuantifyFloatParam(matrixId, rowId, array, bitPerItem));\n+    }\n \n-  public QuantifyFloatFunc(int matrixId, int rowId, IntFloatVector vector, int bitPerItem) {\n-    this(matrixId, rowId, vector.getStorage().getValues(), bitPerItem);\n-  }\n+    public QuantifyFloatFunc(int matrixId, int rowId, IntFloatVector vector, int bitPerItem) {\n+        this(matrixId, rowId, vector.getStorage().getValues(), bitPerItem);\n+    }\n \n-  public QuantifyFloatFunc(int matrixId, int rowId, Vector vector, int bitPerItem) {\n-    this(matrixId, rowId, (IntFloatVector) vector, bitPerItem);\n-  }\n+    public QuantifyFloatFunc(int matrixId, int rowId, Vector vector, int bitPerItem) {\n+        this(matrixId, rowId, (IntFloatVector) vector, bitPerItem);\n+    }\n \n-  public QuantifyFloatFunc() {\n-    super(null);\n-  }\n+    public QuantifyFloatFunc() {\n+        super(null);\n+    }\n \n-  @Override public void partitionUpdate(PartitionUpdateParam partParam) {\n-    RowBasedPartition part = (RowBasedPartition)psContext.getMatrixStorageManager()\n-        .getPart(partParam.getMatrixId(), partParam.getPartKey().getPartitionId());\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n+        RowBasedPartition part = (RowBasedPartition) psContext.getMatrixStorageManager()\n+                .getPart(partParam.getMatrixId(), partParam.getPartKey().getPartitionId());\n \n-    if (part != null) {\n-      QuantifyFloatPartParam cp =\n-          (QuantifyFloatPartParam) partParam;\n-      ServerRow row = part.getRow(cp.getRowId());\n-      if (row != null) {\n-        update(row, cp.getArraySlice());\n-      }\n+        if (part != null) {\n+            QuantifyFloatPartParam cp =\n+                    (QuantifyFloatPartParam) partParam;\n+            ServerRow row = part.getRow(cp.getRowId());\n+            if (row != null) {\n+                update(row, cp.getArraySlice());\n+            }\n+        }\n     }\n-  }\n \n-  private void update(ServerRow row, float[] arraySlice) {\n-    switch (row.getRowType()) {\n-      case T_FLOAT_DENSE:\n-        doUpdate((ServerIntFloatRow) row, arraySlice);\n-        return;\n-      default:\n-        throw new RuntimeException(\"Spark on Angel currently only supports Double Dense Row\");\n+    private void update(ServerRow row, float[] arraySlice) {\n+        switch (row.getRowType()) {\n+            case T_FLOAT_DENSE:\n+                doUpdate((ServerIntFloatRow) row, arraySlice);\n+                return;\n+            default:\n+                throw new RuntimeException(\n+                        \"Spark on Angel currently only supports Double Dense Row\");\n+        }\n     }\n-  }\n \n-  private void doUpdate(ServerIntFloatRow row, float[] arraySlice) {\n-    try {\n-      row.getLock().writeLock().lock();\n-      float[] values = ServerRowUtils.getVector(row).getStorage().getValues();\n-      int size = row.size();\n-      for (int i = 0; i < size; i++) {\n-        values[i] = values[i] + arraySlice[i];\n-      }\n-    } finally {\n-      row.getLock().writeLock().unlock();\n+    private void doUpdate(ServerIntFloatRow row, float[] arraySlice) {\n+        try {\n+            row.getLock().writeLock().lock();\n+            float[] values = ServerRowUtils.getVector(row).getStorage().getValues();\n+            int size = row.size();\n+            for (int i = 0; i < size; i++) {\n+                values[i] = values[i] + arraySlice[i];\n+            }\n+        } finally {\n+            row.getLock().writeLock().unlock();\n+        }\n     }\n-  }\n }\n \n",
+            "diff_size": 47
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/903/QuantifyFloatFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/903/QuantifyFloatFunc.java\nindex 82e5e7947d..f5a9b0c609 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/903/QuantifyFloatFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/903/QuantifyFloatFunc.java\n@@ -17,7 +17,6 @@ package com.tencent.angel.ml.psf.compress;\n  *\n  */\n \n-\n import com.tencent.angel.ml.math2.vector.IntFloatVector;\n import com.tencent.angel.ml.math2.vector.Vector;\n import com.tencent.angel.ml.matrix.psf.update.base.PartitionUpdateParam;\n@@ -47,7 +46,8 @@ public class QuantifyFloatFunc extends UpdateFunc {\n     super(null);\n   }\n \n-  @Override public void partitionUpdate(PartitionUpdateParam partParam) {\n+  @Override\n+public void partitionUpdate(PartitionUpdateParam partParam) {\n     RowBasedPartition part = (RowBasedPartition)psContext.getMatrixStorageManager()\n         .getPart(partParam.getMatrixId(), partParam.getPartKey().getPartitionId());\n \n@@ -83,5 +83,4 @@ public class QuantifyFloatFunc extends UpdateFunc {\n       row.getLock().writeLock().unlock();\n     }\n   }\n-}\n-\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 159).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/903/QuantifyFloatFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/903/QuantifyFloatFunc.java\nindex 82e5e7947d..cbba0df189 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/903/QuantifyFloatFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/903/QuantifyFloatFunc.java\n@@ -17,7 +17,6 @@ package com.tencent.angel.ml.psf.compress;\n  *\n  */\n \n-\n import com.tencent.angel.ml.math2.vector.IntFloatVector;\n import com.tencent.angel.ml.math2.vector.Vector;\n import com.tencent.angel.ml.matrix.psf.update.base.PartitionUpdateParam;\n@@ -28,60 +27,57 @@ import com.tencent.angel.ps.storage.vector.ServerIntFloatRow;\n import com.tencent.angel.ps.storage.vector.ServerRow;\n import com.tencent.angel.ps.storage.vector.ServerRowUtils;\n \n-\n public class QuantifyFloatFunc extends UpdateFunc {\n \n-  public QuantifyFloatFunc(int matrixId, int rowId, float[] array, int bitPerItem) {\n+    public QuantifyFloatFunc(int matrixId, int rowId, float[] array, int bitPerItem) {\n     super(new QuantifyFloatParam(matrixId, rowId, array, bitPerItem));\n-  }\n+    }\n \n-  public QuantifyFloatFunc(int matrixId, int rowId, IntFloatVector vector, int bitPerItem) {\n+    public QuantifyFloatFunc(int matrixId, int rowId, IntFloatVector vector, int bitPerItem) {\n     this(matrixId, rowId, vector.getStorage().getValues(), bitPerItem);\n-  }\n+    }\n \n-  public QuantifyFloatFunc(int matrixId, int rowId, Vector vector, int bitPerItem) {\n+    public QuantifyFloatFunc(int matrixId, int rowId, Vector vector, int bitPerItem) {\n     this(matrixId, rowId, (IntFloatVector) vector, bitPerItem);\n-  }\n+    }\n \n-  public QuantifyFloatFunc() {\n+    public QuantifyFloatFunc() {\n     super(null);\n-  }\n-\n-  @Override public void partitionUpdate(PartitionUpdateParam partParam) {\n-    RowBasedPartition part = (RowBasedPartition)psContext.getMatrixStorageManager()\n-        .getPart(partParam.getMatrixId(), partParam.getPartKey().getPartitionId());\n+    }\n \n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n+    RowBasedPartition part = (RowBasedPartition) psContext.getMatrixStorageManager().getPart(partParam.getMatrixId(), partParam.getPartKey().getPartitionId());\n     if (part != null) {\n-      QuantifyFloatPartParam cp =\n-          (QuantifyFloatPartParam) partParam;\n-      ServerRow row = part.getRow(cp.getRowId());\n-      if (row != null) {\n+        QuantifyFloatPartParam cp = (QuantifyFloatPartParam) partParam;\n+        ServerRow row = part.getRow(cp.getRowId());\n+        if (row != null) {\n         update(row, cp.getArraySlice());\n-      }\n+        }\n+    }\n     }\n-  }\n \n-  private void update(ServerRow row, float[] arraySlice) {\n+    private void update(ServerRow row, float[] arraySlice) {\n     switch (row.getRowType()) {\n-      case T_FLOAT_DENSE:\n+        case T_FLOAT_DENSE:\n         doUpdate((ServerIntFloatRow) row, arraySlice);\n         return;\n-      default:\n+        default:\n         throw new RuntimeException(\"Spark on Angel currently only supports Double Dense Row\");\n     }\n-  }\n+    }\n \n-  private void doUpdate(ServerIntFloatRow row, float[] arraySlice) {\n+    private void doUpdate(ServerIntFloatRow row, float[] arraySlice) {\n     try {\n-      row.getLock().writeLock().lock();\n-      float[] values = ServerRowUtils.getVector(row).getStorage().getValues();\n-      int size = row.size();\n-      for (int i = 0; i < size; i++) {\n+        row.getLock().writeLock().lock();\n+        float[] values = ServerRowUtils.getVector(row).getStorage().getValues();\n+        int size = row.size();\n+        for (int i = 0; i < size; i++) {\n         values[i] = values[i] + arraySlice[i];\n-      }\n+        }\n     } finally {\n       row.getLock().writeLock().unlock();\n     }\n-  }\n-}\n+    }\n \n+}\n\\ No newline at end of file\n",
+            "diff_size": 37
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

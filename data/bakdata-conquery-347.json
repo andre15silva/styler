@@ -1,0 +1,170 @@
+{
+    "error_id": "347",
+    "information": {
+        "errors": [
+            {
+                "line": "25",
+                "column": "87",
+                "severity": "warning",
+                "message": "'{' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "@Slf4j\n@RequiredArgsConstructor\npublic class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User>{\n\t\n\tprivate final AuthorizationStorage storage;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/347/ConqueryAuthenticator.java\nindex d0dcdee3c8..4cbaf2f3b1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/347/ConqueryAuthenticator.java\n@@ -22,18 +22,18 @@ import org.apache.shiro.authc.AuthenticationToken;\n  */\n @Slf4j\n @RequiredArgsConstructor\n-public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User>{\n-\t\n+public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User> {\n+\n \tprivate final AuthorizationStorage storage;\n \n \t@Override\n \tpublic Optional<User> authenticate(AuthenticationToken token) throws AuthenticationException {\n-\t\t\n+\n \t\tAuthenticationInfo info = SecurityUtils.getSecurityManager().authenticate(token);\n \t\tUserId userId = (UserId)info.getPrincipals().getPrimaryPrincipal();\n \n \t\tUser user = storage.getUser(userId);\n-\t\t\n+\n \t\tConqueryMDC.setLocation(user.getId().toString());\n \t\treturn Optional.ofNullable(user);\n \t}\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/347/ConqueryAuthenticator.java\nindex d0dcdee3c8..b04e2fd87d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/347/ConqueryAuthenticator.java\n@@ -22,20 +22,20 @@ import org.apache.shiro.authc.AuthenticationToken;\n  */\n @Slf4j\n @RequiredArgsConstructor\n-public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User>{\n-\t\n-\tprivate final AuthorizationStorage storage;\n-\n-\t@Override\n-\tpublic Optional<User> authenticate(AuthenticationToken token) throws AuthenticationException {\n-\t\t\n-\t\tAuthenticationInfo info = SecurityUtils.getSecurityManager().authenticate(token);\n-\t\tUserId userId = (UserId)info.getPrincipals().getPrimaryPrincipal();\n-\n-\t\tUser user = storage.getUser(userId);\n-\t\t\n-\t\tConqueryMDC.setLocation(user.getId().toString());\n-\t\treturn Optional.ofNullable(user);\n-\t}\n+public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User> {\n+\n+    private final AuthorizationStorage storage;\n+\n+    @Override\n+    public Optional<User> authenticate(AuthenticationToken token) throws AuthenticationException {\n+\n+        AuthenticationInfo info = SecurityUtils.getSecurityManager().authenticate(token);\n+        UserId userId = (UserId) info.getPrincipals().getPrimaryPrincipal();\n+\n+        User user = storage.getUser(userId);\n+\n+        ConqueryMDC.setLocation(user.getId().toString());\n+        return Optional.ofNullable(user);\n+    }\n \n }\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "31",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/347/ConqueryAuthenticator.java\nindex d0dcdee3c8..e295883584 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/347/ConqueryAuthenticator.java\n@@ -22,14 +22,13 @@ import org.apache.shiro.authc.AuthenticationToken;\n  */\n @Slf4j\n @RequiredArgsConstructor\n-public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User>{\n+public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User> {\n \t\n \tprivate final AuthorizationStorage storage;\n \n \t@Override\n \tpublic Optional<User> authenticate(AuthenticationToken token) throws AuthenticationException {\n-\t\t\n-\t\tAuthenticationInfo info = SecurityUtils.getSecurityManager().authenticate(token);\n+\tAuthenticationInfo info = SecurityUtils.getSecurityManager().authenticate(token);\n \t\tUserId userId = (UserId)info.getPrincipals().getPrimaryPrincipal();\n \n \t\tUser user = storage.getUser(userId);\n@@ -38,4 +37,4 @@ public class ConqueryAuthenticator implements Authenticator<AuthenticationToken,\n \t\treturn Optional.ofNullable(user);\n \t}\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/347/ConqueryAuthenticator.java\nindex d0dcdee3c8..b5503e634a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/347/ConqueryAuthenticator.java\n@@ -1,7 +1,6 @@\n package com.bakdata.conquery.models.auth;\n \n import java.util.Optional;\n-\n import com.bakdata.conquery.models.auth.entities.User;\n import com.bakdata.conquery.models.identifiable.ids.specific.UserId;\n import com.bakdata.conquery.util.io.ConqueryMDC;\n@@ -20,22 +19,18 @@ import org.apache.shiro.authc.AuthenticationToken;\n  * shiro, where multiple realms might be configured.\n  * We need this authenticator to plug in the security, and hereby shiro, into the AuthFilter.\n  */\n+\n @Slf4j\n @RequiredArgsConstructor\n-public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User>{\n-\t\n-\tprivate final AuthorizationStorage storage;\n-\n-\t@Override\n-\tpublic Optional<User> authenticate(AuthenticationToken token) throws AuthenticationException {\n-\t\t\n-\t\tAuthenticationInfo info = SecurityUtils.getSecurityManager().authenticate(token);\n-\t\tUserId userId = (UserId)info.getPrincipals().getPrimaryPrincipal();\n-\n-\t\tUser user = storage.getUser(userId);\n-\t\t\n-\t\tConqueryMDC.setLocation(user.getId().toString());\n-\t\treturn Optional.ofNullable(user);\n-\t}\n+public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User> {\n \n-}\n+    private final AuthorizationStorage storage;\n+    @Override\n+    public Optional<User> authenticate(AuthenticationToken token) throws AuthenticationException {\n+        AuthenticationInfo info = SecurityUtils.getSecurityManager().authenticate(token);\n+        UserId userId = (UserId)info.getPrincipals().getPrimaryPrincipal();\n+        User user = storage.getUser(userId);\n+        ConqueryMDC.setLocation(user.getId().toString());\n+        return Optional.ofNullable(user);\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/347/ConqueryAuthenticator.java\nindex d0dcdee3c8..4cbaf2f3b1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/347/ConqueryAuthenticator.java\n@@ -22,18 +22,18 @@ import org.apache.shiro.authc.AuthenticationToken;\n  */\n @Slf4j\n @RequiredArgsConstructor\n-public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User>{\n-\t\n+public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User> {\n+\n \tprivate final AuthorizationStorage storage;\n \n \t@Override\n \tpublic Optional<User> authenticate(AuthenticationToken token) throws AuthenticationException {\n-\t\t\n+\n \t\tAuthenticationInfo info = SecurityUtils.getSecurityManager().authenticate(token);\n \t\tUserId userId = (UserId)info.getPrincipals().getPrimaryPrincipal();\n \n \t\tUser user = storage.getUser(userId);\n-\t\t\n+\n \t\tConqueryMDC.setLocation(user.getId().toString());\n \t\treturn Optional.ofNullable(user);\n \t}\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/347/ConqueryAuthenticator.java\nindex d0dcdee3c8..4cbaf2f3b1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/347/ConqueryAuthenticator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/347/ConqueryAuthenticator.java\n@@ -22,18 +22,18 @@ import org.apache.shiro.authc.AuthenticationToken;\n  */\n @Slf4j\n @RequiredArgsConstructor\n-public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User>{\n-\t\n+public class ConqueryAuthenticator implements Authenticator<AuthenticationToken, User> {\n+\n \tprivate final AuthorizationStorage storage;\n \n \t@Override\n \tpublic Optional<User> authenticate(AuthenticationToken token) throws AuthenticationException {\n-\t\t\n+\n \t\tAuthenticationInfo info = SecurityUtils.getSecurityManager().authenticate(token);\n \t\tUserId userId = (UserId)info.getPrincipals().getPrimaryPrincipal();\n \n \t\tUser user = storage.getUser(userId);\n-\t\t\n+\n \t\tConqueryMDC.setLocation(user.getId().toString());\n \t\treturn Optional.ofNullable(user);\n \t}\n",
+            "diff_size": 4
+        }
+    ]
+}

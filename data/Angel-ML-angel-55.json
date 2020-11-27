@@ -1,0 +1,85 @@
+{
+    "error_id": "55",
+    "information": {
+        "errors": [
+            {
+                "line": "22",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 117).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "\n\n  public static synchronized void initialize(int numPartitions, int maxIndex, int maxLength, int negative, int order,\n                                             int partDim, int window) {\n    if (ServerWrapper.maxIndex == -1) {\n      numInputs = new int[numPartitions];",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "20",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 117).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/55/ServerWrapper.java\nindex 97fcffd025..75bd237fe6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler/55/ServerWrapper.java\n@@ -17,8 +17,6 @@ public class ServerWrapper {\n \n   private static int[] numInputs;\n   private static int[] numOutputs;\n-\n-\n   public static synchronized void initialize(int numPartitions, int maxIndex, int maxLength, int negative, int order,\n                                              int partDim, int window) {\n     if (ServerWrapper.maxIndex == -1) {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/55/ServerWrapper.java\nindex 97fcffd025..0275786e62 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/55/ServerWrapper.java\n@@ -6,63 +6,72 @@ package com.tencent.angel.spark.ml.psf.embedding;\n  */\n public class ServerWrapper {\n \n-  // @maxIndex: this variable contains the max index of node/word\n-  private static volatile int maxIndex = -1;\n-\n-  private static volatile int maxLength = -1;\n-  private static volatile int negative = -1;\n-  private static volatile int order = -1;\n-  private static volatile int partDim = -1;\n-  private static volatile int window = -1;\n-\n-  private static int[] numInputs;\n-  private static int[] numOutputs;\n-\n-\n-  public static synchronized void initialize(int numPartitions, int maxIndex, int maxLength, int negative, int order,\n-                                             int partDim, int window) {\n-    if (ServerWrapper.maxIndex == -1) {\n-      numInputs = new int[numPartitions];\n-      numOutputs = new int[numPartitions];\n-      ServerWrapper.maxIndex = maxIndex;\n-      ServerWrapper.maxLength = maxLength;\n-      ServerWrapper.negative = negative;\n-      ServerWrapper.order = order;\n-      ServerWrapper.partDim = partDim;\n-      ServerWrapper.window = window;\n+    // @maxIndex: this variable contains the max index of node/word\n+    private static volatile int maxIndex = -1;\n+\n+    private static volatile int maxLength = -1;\n+    private static volatile int negative = -1;\n+    private static volatile int order = -1;\n+    private static volatile int partDim = -1;\n+    private static volatile int window = -1;\n+\n+    private static int[] numInputs;\n+    private static int[] numOutputs;\n+\n+\n+    public static synchronized void initialize(int numPartitions, int maxIndex, int maxLength,\n+                                               int negative, int order,\n+                                               int partDim, int window) {\n+        if (ServerWrapper.maxIndex == -1) {\n+            numInputs = new int[numPartitions];\n+            numOutputs = new int[numPartitions];\n+            ServerWrapper.maxIndex = maxIndex;\n+            ServerWrapper.maxLength = maxLength;\n+            ServerWrapper.negative = negative;\n+            ServerWrapper.order = order;\n+            ServerWrapper.partDim = partDim;\n+            ServerWrapper.window = window;\n+        }\n     }\n-  }\n \n-  public static int getMaxIndex() {\n-    return maxIndex;\n-  }\n+    public static int getMaxIndex() {\n+        return maxIndex;\n+    }\n \n-  public static int getMaxLength() {\n-    return maxLength;\n-  }\n+    public static int getMaxLength() {\n+        return maxLength;\n+    }\n \n-  public static int getNegative() {return negative; }\n+    public static int getNegative() {\n+        return negative;\n+    }\n \n-  public static int getOrder() {return order; }\n+    public static int getOrder() {\n+        return order;\n+    }\n \n-  public static int getPartDim() {return partDim; }\n+    public static int getPartDim() {\n+        return partDim;\n+    }\n \n-  public static int getWindow() {return window; }\n+    public static int getWindow() {\n+        return window;\n+    }\n \n-  public static void setNumInputs(int partitionId, int num) {\n-    numInputs[partitionId] = num;\n-  }\n+    public static void setNumInputs(int partitionId, int num) {\n+        numInputs[partitionId] = num;\n+    }\n \n-  public static int getNumInputs(int partitionId) {\n-    return numInputs[partitionId];\n-  }\n+    public static int getNumInputs(int partitionId) {\n+        return numInputs[partitionId];\n+    }\n \n-  public static void setNumOutputs(int partitionId, int num) {\n-    numOutputs[partitionId] = num;\n-  }\n+    public static void setNumOutputs(int partitionId, int num) {\n+        numOutputs[partitionId] = num;\n+    }\n \n-  public static int getNumOutputs(int partitionId) {\n-    return numOutputs[partitionId];\n-  }\n+    public static int getNumOutputs(int partitionId) {\n+        return numOutputs[partitionId];\n+    }\n \n }\n",
+            "diff_size": 57
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "22",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 144).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/55/ServerWrapper.java\nindex 97fcffd025..4ad97b9db2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/55/ServerWrapper.java\n@@ -19,9 +19,8 @@ public class ServerWrapper {\n   private static int[] numOutputs;\n \n \n-  public static synchronized void initialize(int numPartitions, int maxIndex, int maxLength, int negative, int order,\n-                                             int partDim, int window) {\n-    if (ServerWrapper.maxIndex == -1) {\n+  public static synchronized void initialize(int numPartitions, int maxIndex, int maxLength, int negative, int order, int partDim, int window) {\n+  if (ServerWrapper.maxIndex == -1) {\n       numInputs = new int[numPartitions];\n       numOutputs = new int[numPartitions];\n       ServerWrapper.maxIndex = maxIndex;\n@@ -41,13 +40,21 @@ public class ServerWrapper {\n     return maxLength;\n   }\n \n-  public static int getNegative() {return negative; }\n+  public static int getNegative() {\n+  return negative;\n+  }\n \n-  public static int getOrder() {return order; }\n+  public static int getOrder() {\n+  return order;\n+  }\n \n-  public static int getPartDim() {return partDim; }\n+  public static int getPartDim() {\n+  return partDim;\n+  }\n \n-  public static int getWindow() {return window; }\n+  public static int getWindow() {\n+  return window;\n+  }\n \n   public static void setNumInputs(int partitionId, int num) {\n     numInputs[partitionId] = num;\n@@ -65,4 +72,4 @@ public class ServerWrapper {\n     return numOutputs[partitionId];\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "21",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 146).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/55/ServerWrapper.java\nindex 97fcffd025..5b2485e4ad 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/55/ServerWrapper.java\n@@ -4,65 +4,71 @@ package com.tencent.angel.spark.ml.psf.embedding;\n /**\n  * This class wraps some data structure that required to be maintained at server.\n  */\n-public class ServerWrapper {\n-\n-  // @maxIndex: this variable contains the max index of node/word\n-  private static volatile int maxIndex = -1;\n \n-  private static volatile int maxLength = -1;\n-  private static volatile int negative = -1;\n-  private static volatile int order = -1;\n-  private static volatile int partDim = -1;\n-  private static volatile int window = -1;\n-\n-  private static int[] numInputs;\n-  private static int[] numOutputs;\n \n+public class ServerWrapper {\n \n-  public static synchronized void initialize(int numPartitions, int maxIndex, int maxLength, int negative, int order,\n-                                             int partDim, int window) {\n+  // @maxIndex: this variable contains the max index of node/word\n+    private static volatile int maxIndex = -1;\n+    private static volatile int maxLength = -1;\n+    private static volatile int negative = -1;\n+    private static volatile int order = -1;\n+    private static volatile int partDim = -1;\n+    private static volatile int window = -1;\n+    private static int[] numInputs;\n+    private static int[] numOutputs;\n+\n+    public static synchronized void initialize(int numPartitions, int maxIndex, int maxLength, int negative, int order, int partDim, int window) {\n     if (ServerWrapper.maxIndex == -1) {\n-      numInputs = new int[numPartitions];\n-      numOutputs = new int[numPartitions];\n-      ServerWrapper.maxIndex = maxIndex;\n-      ServerWrapper.maxLength = maxLength;\n-      ServerWrapper.negative = negative;\n-      ServerWrapper.order = order;\n-      ServerWrapper.partDim = partDim;\n-      ServerWrapper.window = window;\n+        numInputs = new int[numPartitions];\n+        numOutputs = new int[numPartitions];\n+        ServerWrapper.maxIndex = maxIndex;\n+        ServerWrapper.maxLength = maxLength;\n+        ServerWrapper.negative = negative;\n+        ServerWrapper.order = order;\n+        ServerWrapper.partDim = partDim;\n+        ServerWrapper.window = window;\n+    }\n     }\n-  }\n \n-  public static int getMaxIndex() {\n+    public static int getMaxIndex() {\n     return maxIndex;\n-  }\n+    }\n \n-  public static int getMaxLength() {\n+    public static int getMaxLength() {\n     return maxLength;\n-  }\n+    }\n \n-  public static int getNegative() {return negative; }\n+    public static int getNegative() {\n+    return negative;\n+    }\n \n-  public static int getOrder() {return order; }\n+    public static int getOrder() {\n+    return order;\n+    }\n \n-  public static int getPartDim() {return partDim; }\n+    public static int getPartDim() {\n+    return partDim;\n+    }\n \n-  public static int getWindow() {return window; }\n+    public static int getWindow() {\n+    return window;\n+    }\n \n-  public static void setNumInputs(int partitionId, int num) {\n+    public static void setNumInputs(int partitionId, int num) {\n     numInputs[partitionId] = num;\n-  }\n+    }\n \n-  public static int getNumInputs(int partitionId) {\n+    public static int getNumInputs(int partitionId) {\n     return numInputs[partitionId];\n-  }\n+    }\n \n-  public static void setNumOutputs(int partitionId, int num) {\n+    public static void setNumOutputs(int partitionId, int num) {\n     numOutputs[partitionId] = num;\n-  }\n+    }\n \n-  public static int getNumOutputs(int partitionId) {\n+    public static int getNumOutputs(int partitionId) {\n     return numOutputs[partitionId];\n-  }\n+    }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 59
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "20",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 117).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/55/ServerWrapper.java\nindex 97fcffd025..75bd237fe6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/55/ServerWrapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/55/ServerWrapper.java\n@@ -17,8 +17,6 @@ public class ServerWrapper {\n \n   private static int[] numInputs;\n   private static int[] numOutputs;\n-\n-\n   public static synchronized void initialize(int numPartitions, int maxIndex, int maxLength, int negative, int order,\n                                              int partDim, int window) {\n     if (ServerWrapper.maxIndex == -1) {\n",
+            "diff_size": 2
+        }
+    ]
+}

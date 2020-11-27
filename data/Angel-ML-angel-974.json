@@ -1,0 +1,196 @@
+{
+    "error_id": "974",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/974/TaskManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/974/TaskManager.java\nindex fdd84ae539..25b7d78aab 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/974/TaskManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/974/TaskManager.java\n@@ -35,211 +35,212 @@ import java.util.concurrent.Executors;\n  * Manages tasks running,include state monitor and task's indexes update\n  */\n public class TaskManager {\n-  private static final Log LOG = LogFactory.getLog(TaskManager.class);\n-  private final Map<TaskId, Task> runningTask;\n-  private volatile ExecutorService taskPool;\n-\n-  public TaskManager() {\n-    runningTask = new HashMap<TaskId, Task>();\n-  }\n-\n-  /**\n-   * Init.\n-   */\n-  public void init() {\n-    Configuration conf = WorkerContext.get().getConf();\n-    int taskNumInWork =\n-        conf.getInt(AngelConf.ANGEL_WORKER_TASK_NUMBER,\n-            AngelConf.DEFAULT_ANGEL_WORKER_TASK_NUMBER);\n-    taskPool = Executors.newFixedThreadPool(taskNumInWork);\n-  }\n-\n-  /**\n-   * Find task by task id.\n-   *\n-   * @param id the task id\n-   * @return the task\n-   */\n-  public Task findTask(TaskId id) {\n-    return runningTask.get(id);\n-  }\n-\n-  /**\n-   * Find task context by task id\n-   *\n-   * @param id the task id\n-   * @return the task context\n-   */\n-  public TaskContext findTaskContext(TaskId id) {\n-    return runningTask.get(id).getTaskContext();\n-  }\n-\n-  /**\n-   * Gets running task.\n-   *\n-   * @return the running task\n-   */\n-  public Map<TaskId, Task> getRunningTask() {\n-    return runningTask;\n-  }\n-\n-  public void stop() {\n-    if (taskPool != null) {\n-      taskPool.shutdownNow();\n+    private static final Log LOG = LogFactory.getLog(TaskManager.class);\n+    private final Map<TaskId, Task> runningTask;\n+    private volatile ExecutorService taskPool;\n+\n+    public TaskManager() {\n+        runningTask = new HashMap<TaskId, Task>();\n+    }\n+\n+    /**\n+     * Init.\n+     */\n+    public void init() {\n+        Configuration conf = WorkerContext.get().getConf();\n+        int taskNumInWork =\n+                conf.getInt(AngelConf.ANGEL_WORKER_TASK_NUMBER,\n+                        AngelConf.DEFAULT_ANGEL_WORKER_TASK_NUMBER);\n+        taskPool = Executors.newFixedThreadPool(taskNumInWork);\n+    }\n+\n+    /**\n+     * Find task by task id.\n+     *\n+     * @param id the task id\n+     * @return the task\n+     */\n+    public Task findTask(TaskId id) {\n+        return runningTask.get(id);\n+    }\n+\n+    /**\n+     * Find task context by task id\n+     *\n+     * @param id the task id\n+     * @return the task context\n+     */\n+    public TaskContext findTaskContext(TaskId id) {\n+        return runningTask.get(id).getTaskContext();\n+    }\n+\n+    /**\n+     * Gets running task.\n+     *\n+     * @return the running task\n+     */\n+    public Map<TaskId, Task> getRunningTask() {\n+        return runningTask;\n+    }\n+\n+    public void stop() {\n+        if (taskPool != null) {\n+            taskPool.shutdownNow();\n+        }\n     }\n-  }\n-\n-  /**\n-   * Start all tasks form task contexts\n-   *\n-   * @param taskIdToContextMap task contexts\n-   */\n-  public void startAllTasks(Map<TaskId, TaskContext> taskIdToContextMap) {\n-    LOG.info(\"start all tasks\");\n-    WorkerContext.get().getDataBlockManager().assignSplitToTasks(taskIdToContextMap.keySet());\n-    for (Entry<TaskId, TaskContext> entry : taskIdToContextMap.entrySet()) {\n-      LOG.info(\"start task \" + entry.getKey() + \" with context=\" + entry.getValue());\n-      Task task = new Task(entry.getKey(), entry.getValue());\n-      runningTask.put(entry.getKey(), task);\n-      taskPool.execute(task);\n+\n+    /**\n+     * Start all tasks form task contexts\n+     *\n+     * @param taskIdToContextMap task contexts\n+     */\n+    public void startAllTasks(Map<TaskId, TaskContext> taskIdToContextMap) {\n+        LOG.info(\"start all tasks\");\n+        WorkerContext.get().getDataBlockManager().assignSplitToTasks(taskIdToContextMap.keySet());\n+        for (Entry<TaskId, TaskContext> entry : taskIdToContextMap.entrySet()) {\n+            LOG.info(\"start task \" + entry.getKey() + \" with context=\" + entry.getValue());\n+            Task task = new Task(entry.getKey(), entry.getValue());\n+            runningTask.put(entry.getKey(), task);\n+            taskPool.execute(task);\n+        }\n     }\n-  }\n-\n-  /**\n-   * Gets task count.\n-   *\n-   * @return the task count\n-   */\n-  public int getTaskCount() {\n-    return runningTask.size();\n-  }\n-\n-  /**\n-   * Is all task success.\n-   *\n-   * @return true if all tasks success else false\n-   */\n-  public boolean isAllTaskSuccess() {\n-    for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      if (!(entry.getValue().getTaskState() == TaskState.SUCCESS)) {\n-        return false;\n-      }\n+\n+    /**\n+     * Gets task count.\n+     *\n+     * @return the task count\n+     */\n+    public int getTaskCount() {\n+        return runningTask.size();\n     }\n-    return true;\n-  }\n-\n-  /**\n-   * Is all task running.\n-   *\n-   * @return true if all tasks running else false\n-   */\n-  public boolean isAllTaskRunning() {\n-    for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      if (!(entry.getValue().getTaskState() == TaskState.RUNNING)) {\n-        return false;\n-      }\n+\n+    /**\n+     * Is all task success.\n+     *\n+     * @return true if all tasks success else false\n+     */\n+    public boolean isAllTaskSuccess() {\n+        for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n+            if (!(entry.getValue().getTaskState() == TaskState.SUCCESS)) {\n+                return false;\n+            }\n+        }\n+        return true;\n     }\n-    return true;\n-  }\n-\n-  /**\n-   * Is all tasks state is final(exit execution).\n-   *\n-   * @return true if all tasks state is final else false\n-   */\n-  public boolean isAllTaskExit() {\n-    for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      if (!(entry.getValue().getTaskState() == TaskState.SUCCESS)\n-          && !(entry.getValue().getTaskState() == TaskState.FAILED)\n-          && !(entry.getValue().getTaskState() == TaskState.KILLED)) {\n-        return false;\n-      }\n+\n+    /**\n+     * Is all task running.\n+     *\n+     * @return true if all tasks running else false\n+     */\n+    public boolean isAllTaskRunning() {\n+        for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n+            if (!(entry.getValue().getTaskState() == TaskState.RUNNING)) {\n+                return false;\n+            }\n+        }\n+        return true;\n     }\n-    return true;\n-  }\n-\n-  /**\n-   * Gets diagnostics.\n-   *\n-   * @return the diagnostics\n-   */\n-  public String getDiagnostics() {\n-    StringBuilder sb = new StringBuilder();\n-    for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      if (entry.getValue().getTaskState() != TaskState.SUCCESS) {\n-        sb.append(entry.getValue().getDiagnostics());\n-      }\n+\n+    /**\n+     * Is all tasks state is final(exit execution).\n+     *\n+     * @return true if all tasks state is final else false\n+     */\n+    public boolean isAllTaskExit() {\n+        for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n+            if (!(entry.getValue().getTaskState() == TaskState.SUCCESS)\n+                    && !(entry.getValue().getTaskState() == TaskState.FAILED)\n+                    && !(entry.getValue().getTaskState() == TaskState.KILLED)) {\n+                return false;\n+            }\n+        }\n+        return true;\n     }\n \n-    return sb.toString();\n-  }\n-\n-  /**\n-   * Combine update index.\n-   */\n-  @SuppressWarnings(\"rawtypes\")\n-  public void combineUpdateIndex() {\n-    IntOpenHashSet indexSet = null;\n-    MatrixMeta meta = null;\n-    for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      LabeledUpdateIndexBaseTask task = (LabeledUpdateIndexBaseTask) entry.getValue().getUserTask();\n-      IntOpenHashSet taskIndexSet = task.getIndexSet();\n-      if (taskIndexSet != null) {\n-        if (indexSet == null) {\n-          indexSet = taskIndexSet;\n-          meta = task.getMatrixMeta();\n-        } else {\n-          indexSet.addAll(taskIndexSet);\n-          task.setIndexSet(null);\n+    /**\n+     * Gets diagnostics.\n+     *\n+     * @return the diagnostics\n+     */\n+    public String getDiagnostics() {\n+        StringBuilder sb = new StringBuilder();\n+        for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n+            if (entry.getValue().getTaskState() != TaskState.SUCCESS) {\n+                sb.append(entry.getValue().getDiagnostics());\n+            }\n         }\n-      }\n+\n+        return sb.toString();\n     }\n \n-    if (indexSet != null) {\n-      int size = indexSet.size();\n-      int[] indexArray = new int[size];\n-      int index = 0;\n-      IntIterator iter = indexSet.iterator();\n-      while (iter.hasNext()) {\n-        indexArray[index++] = iter.nextInt();\n-      }\n-\n-      Arrays.sort(indexArray);\n-\n-      List<PartitionKey> partKeyList =\n-          WorkerContext.get().getPSAgent().getMatrixPartitionRouter()\n-              .getPartitionKeyList(meta.getId());\n-      Collections.sort(partKeyList);\n-      int partNum = partKeyList.size();\n-      int lastPos = 0;\n-      for (int i = 0; i < partNum; i++) {\n-        PartitionKey partKey = partKeyList.get(i);\n-        int endCol = partKey.getEndCol();\n-        for (int j = lastPos; j < size; j++) {\n-          if (indexArray[j] >= endCol) {\n-\n-            lastPos = j;\n-            break;\n-          }\n+    /**\n+     * Combine update index.\n+     */\n+    @SuppressWarnings(\"rawtypes\")\n+    public void combineUpdateIndex() {\n+        IntOpenHashSet indexSet = null;\n+        MatrixMeta meta = null;\n+        for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n+            LabeledUpdateIndexBaseTask task =\n+                    (LabeledUpdateIndexBaseTask) entry.getValue().getUserTask();\n+            IntOpenHashSet taskIndexSet = task.getIndexSet();\n+            if (taskIndexSet != null) {\n+                if (indexSet == null) {\n+                    indexSet = taskIndexSet;\n+                    meta = task.getMatrixMeta();\n+                } else {\n+                    indexSet.addAll(taskIndexSet);\n+                    task.setIndexSet(null);\n+                }\n+            }\n+        }\n+\n+        if (indexSet != null) {\n+            int size = indexSet.size();\n+            int[] indexArray = new int[size];\n+            int index = 0;\n+            IntIterator iter = indexSet.iterator();\n+            while (iter.hasNext()) {\n+                indexArray[index++] = iter.nextInt();\n+            }\n+\n+            Arrays.sort(indexArray);\n+\n+            List<PartitionKey> partKeyList =\n+                    WorkerContext.get().getPSAgent().getMatrixPartitionRouter()\n+                            .getPartitionKeyList(meta.getId());\n+            Collections.sort(partKeyList);\n+            int partNum = partKeyList.size();\n+            int lastPos = 0;\n+            for (int i = 0; i < partNum; i++) {\n+                PartitionKey partKey = partKeyList.get(i);\n+                int endCol = partKey.getEndCol();\n+                for (int j = lastPos; j < size; j++) {\n+                    if (indexArray[j] >= endCol) {\n+\n+                        lastPos = j;\n+                        break;\n+                    }\n+                }\n+            }\n+            // Bitmap bitmap = new Bitmap();\n+            // int max = indexArray[size - 1];\n+            // byte [] bitIndexArray = new byte[max / 8 + 1];\n+            // for(int i = 0; i < size; i++){\n+            // int bitIndex = indexArray[i] >> 3;\n+            // int bitOffset = indexArray[i] - (bitIndex << 3);\n+            // switch(bitOffset){\n+            // case 0:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x01);break;\n+            // case 1:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x02);break;\n+            // case 2:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x04);break;\n+            // case 3:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x08);break;\n+            // case 4:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x10);break;\n+            // case 5:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x20);break;\n+            // case 6:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x40);break;\n+            // case 7:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x80);break;\n+            // }\n+            // }\n         }\n-      }\n-      // Bitmap bitmap = new Bitmap();\n-      // int max = indexArray[size - 1];\n-      // byte [] bitIndexArray = new byte[max / 8 + 1];\n-      // for(int i = 0; i < size; i++){\n-      // int bitIndex = indexArray[i] >> 3;\n-      // int bitOffset = indexArray[i] - (bitIndex << 3);\n-      // switch(bitOffset){\n-      // case 0:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x01);break;\n-      // case 1:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x02);break;\n-      // case 2:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x04);break;\n-      // case 3:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x08);break;\n-      // case 4:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x10);break;\n-      // case 5:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x20);break;\n-      // case 6:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x40);break;\n-      // case 7:bitIndexArray[bitIndex] = (byte) (bitIndexArray[bitIndex] & 0x80);break;\n-      // }\n-      // }\n     }\n-  }\n }\n",
+            "diff_size": 239
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "152",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 184).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/974/TaskManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/974/TaskManager.java\nindex fdd84ae539..a67fca0455 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/974/TaskManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/974/TaskManager.java\n@@ -51,7 +51,7 @@ public class TaskManager {\n     int taskNumInWork =\n         conf.getInt(AngelConf.ANGEL_WORKER_TASK_NUMBER,\n             AngelConf.DEFAULT_ANGEL_WORKER_TASK_NUMBER);\n-    taskPool = Executors.newFixedThreadPool(taskNumInWork);\n+taskPool = Executors.newFixedThreadPool(taskNumInWork);\n   }\n \n   /**\n@@ -149,10 +149,8 @@ public class TaskManager {\n    */\n   public boolean isAllTaskExit() {\n     for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      if (!(entry.getValue().getTaskState() == TaskState.SUCCESS)\n-          && !(entry.getValue().getTaskState() == TaskState.FAILED)\n-          && !(entry.getValue().getTaskState() == TaskState.KILLED)) {\n-        return false;\n+      if (!(entry.getValue().getTaskState() == TaskState.SUCCESS) && !(entry.getValue().getTaskState() == TaskState.FAILED) && !(entry.getValue().getTaskState() == TaskState.KILLED)) {\n+  return false;\n       }\n     }\n     return true;\n@@ -217,8 +215,7 @@ public class TaskManager {\n         int endCol = partKey.getEndCol();\n         for (int j = lastPos; j < size; j++) {\n           if (indexArray[j] >= endCol) {\n-\n-            lastPos = j;\n+  lastPos = j;\n             break;\n           }\n         }\n@@ -242,4 +239,4 @@ public class TaskManager {\n       // }\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 50.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 63.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 74.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 84.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 100.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 117.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 127.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "136",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 142.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "151",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 157.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "159",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 186).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "166",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 172.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "182",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 186.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "191",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "213",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "244",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 218.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/974/TaskManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/974/TaskManager.java\nindex fdd84ae539..1ae605c2d4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/974/TaskManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/974/TaskManager.java\n@@ -25,7 +25,6 @@ import it.unimi.dsi.fastutil.ints.IntOpenHashSet;\n import org.apache.commons.logging.Log;\n import org.apache.commons.logging.LogFactory;\n import org.apache.hadoop.conf.Configuration;\n-\n import java.util.*;\n import java.util.Map.Entry;\n import java.util.concurrent.ExecutorService;\n@@ -34,25 +33,25 @@ import java.util.concurrent.Executors;\n /**\n  * Manages tasks running,include state monitor and task's indexes update\n  */\n+\n public class TaskManager {\n-  private static final Log LOG = LogFactory.getLog(TaskManager.class);\n-  private final Map<TaskId, Task> runningTask;\n-  private volatile ExecutorService taskPool;\n+    private static final Log LOG = LogFactory.getLog(TaskManager.class);\n+    private final Map<TaskId, Task> runningTask;\n+    private volatile ExecutorService taskPool;\n \n-  public TaskManager() {\n+    public TaskManager() {\n     runningTask = new HashMap<TaskId, Task>();\n-  }\n+    }\n \n   /**\n    * Init.\n    */\n-  public void init() {\n+\n+    public void init() {\n     Configuration conf = WorkerContext.get().getConf();\n-    int taskNumInWork =\n-        conf.getInt(AngelConf.ANGEL_WORKER_TASK_NUMBER,\n-            AngelConf.DEFAULT_ANGEL_WORKER_TASK_NUMBER);\n+    int taskNumInWork = conf.getInt(AngelConf.ANGEL_WORKER_TASK_NUMBER, AngelConf.DEFAULT_ANGEL_WORKER_TASK_NUMBER);\n     taskPool = Executors.newFixedThreadPool(taskNumInWork);\n-  }\n+    }\n \n   /**\n    * Find task by task id.\n@@ -60,9 +59,10 @@ public class TaskManager {\n    * @param id the task id\n    * @return the task\n    */\n-  public Task findTask(TaskId id) {\n+\n+    public Task findTask(TaskId id) {\n     return runningTask.get(id);\n-  }\n+    }\n \n   /**\n    * Find task context by task id\n@@ -70,159 +70,161 @@ public class TaskManager {\n    * @param id the task id\n    * @return the task context\n    */\n-  public TaskContext findTaskContext(TaskId id) {\n+\n+    public TaskContext findTaskContext(TaskId id) {\n     return runningTask.get(id).getTaskContext();\n-  }\n+    }\n \n   /**\n    * Gets running task.\n    *\n    * @return the running task\n    */\n-  public Map<TaskId, Task> getRunningTask() {\n+\n+    public Map<TaskId, Task> getRunningTask() {\n     return runningTask;\n-  }\n+    }\n \n-  public void stop() {\n+    public void stop() {\n     if (taskPool != null) {\n-      taskPool.shutdownNow();\n+        taskPool.shutdownNow();\n+    }\n     }\n-  }\n \n   /**\n    * Start all tasks form task contexts\n    *\n    * @param taskIdToContextMap task contexts\n    */\n-  public void startAllTasks(Map<TaskId, TaskContext> taskIdToContextMap) {\n+\n+    public void startAllTasks(Map<TaskId, TaskContext> taskIdToContextMap) {\n     LOG.info(\"start all tasks\");\n     WorkerContext.get().getDataBlockManager().assignSplitToTasks(taskIdToContextMap.keySet());\n     for (Entry<TaskId, TaskContext> entry : taskIdToContextMap.entrySet()) {\n-      LOG.info(\"start task \" + entry.getKey() + \" with context=\" + entry.getValue());\n-      Task task = new Task(entry.getKey(), entry.getValue());\n-      runningTask.put(entry.getKey(), task);\n-      taskPool.execute(task);\n+        LOG.info(\"start task \" + entry.getKey() + \" with context=\" + entry.getValue());\n+        Task task = new Task(entry.getKey(), entry.getValue());\n+        runningTask.put(entry.getKey(), task);\n+        taskPool.execute(task);\n+    }\n     }\n-  }\n \n   /**\n    * Gets task count.\n    *\n    * @return the task count\n    */\n-  public int getTaskCount() {\n+\n+    public int getTaskCount() {\n     return runningTask.size();\n-  }\n+    }\n \n   /**\n    * Is all task success.\n    *\n    * @return true if all tasks success else false\n    */\n-  public boolean isAllTaskSuccess() {\n+\n+    public boolean isAllTaskSuccess() {\n     for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      if (!(entry.getValue().getTaskState() == TaskState.SUCCESS)) {\n+        if (!(entry.getValue().getTaskState() == TaskState.SUCCESS)) {\n         return false;\n-      }\n+        }\n     }\n     return true;\n-  }\n+    }\n \n   /**\n    * Is all task running.\n    *\n    * @return true if all tasks running else false\n    */\n-  public boolean isAllTaskRunning() {\n+\n+    public boolean isAllTaskRunning() {\n     for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      if (!(entry.getValue().getTaskState() == TaskState.RUNNING)) {\n+        if (!(entry.getValue().getTaskState() == TaskState.RUNNING)) {\n         return false;\n-      }\n+        }\n     }\n     return true;\n-  }\n+    }\n \n   /**\n    * Is all tasks state is final(exit execution).\n    *\n    * @return true if all tasks state is final else false\n    */\n-  public boolean isAllTaskExit() {\n+\n+    public boolean isAllTaskExit() {\n     for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      if (!(entry.getValue().getTaskState() == TaskState.SUCCESS)\n-          && !(entry.getValue().getTaskState() == TaskState.FAILED)\n-          && !(entry.getValue().getTaskState() == TaskState.KILLED)) {\n+        if (!(entry.getValue().getTaskState() == TaskState.SUCCESS) && !(entry.getValue().getTaskState() == TaskState.FAILED) && !(entry.getValue().getTaskState() == TaskState.KILLED)) {\n         return false;\n-      }\n+        }\n     }\n     return true;\n-  }\n+    }\n \n   /**\n    * Gets diagnostics.\n    *\n    * @return the diagnostics\n    */\n-  public String getDiagnostics() {\n+\n+    public String getDiagnostics() {\n     StringBuilder sb = new StringBuilder();\n     for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      if (entry.getValue().getTaskState() != TaskState.SUCCESS) {\n+        if (entry.getValue().getTaskState() != TaskState.SUCCESS) {\n         sb.append(entry.getValue().getDiagnostics());\n-      }\n+        }\n     }\n-\n     return sb.toString();\n-  }\n+    }\n \n   /**\n    * Combine update index.\n    */\n-  @SuppressWarnings(\"rawtypes\")\n-  public void combineUpdateIndex() {\n+\n+    @SuppressWarnings(\"rawtypes\")\n+    public void combineUpdateIndex() {\n     IntOpenHashSet indexSet = null;\n     MatrixMeta meta = null;\n     for (Entry<TaskId, Task> entry : runningTask.entrySet()) {\n-      LabeledUpdateIndexBaseTask task = (LabeledUpdateIndexBaseTask) entry.getValue().getUserTask();\n-      IntOpenHashSet taskIndexSet = task.getIndexSet();\n-      if (taskIndexSet != null) {\n+        LabeledUpdateIndexBaseTask task = (LabeledUpdateIndexBaseTask) entry.getValue().getUserTask();\n+        IntOpenHashSet taskIndexSet = task.getIndexSet();\n+        if (taskIndexSet != null) {\n         if (indexSet == null) {\n-          indexSet = taskIndexSet;\n-          meta = task.getMatrixMeta();\n+            indexSet = taskIndexSet;\n+            meta = task.getMatrixMeta();\n         } else {\n           indexSet.addAll(taskIndexSet);\n           task.setIndexSet(null);\n         }\n-      }\n+        }\n     }\n \n     if (indexSet != null) {\n-      int size = indexSet.size();\n-      int[] indexArray = new int[size];\n-      int index = 0;\n-      IntIterator iter = indexSet.iterator();\n-      while (iter.hasNext()) {\n-        indexArray[index++] = iter.nextInt();\n-      }\n-\n-      Arrays.sort(indexArray);\n-\n-      List<PartitionKey> partKeyList =\n-          WorkerContext.get().getPSAgent().getMatrixPartitionRouter()\n-              .getPartitionKeyList(meta.getId());\n-      Collections.sort(partKeyList);\n-      int partNum = partKeyList.size();\n-      int lastPos = 0;\n-      for (int i = 0; i < partNum; i++) {\n-        PartitionKey partKey = partKeyList.get(i);\n-        int endCol = partKey.getEndCol();\n-        for (int j = lastPos; j < size; j++) {\n-          if (indexArray[j] >= endCol) {\n-\n-            lastPos = j;\n-            break;\n-          }\n+        int size = indexSet.size();\n+        int[] indexArray = new int[size];\n+        int index = 0;\n+        IntIterator iter = indexSet.iterator();\n+        while (iter.hasNext()) {\n+                              indexArray[index++] = iter.nextInt();\n+        }\n+        Arrays.sort(indexArray);\n+        List<PartitionKey> partKeyList = WorkerContext.get().getPSAgent().getMatrixPartitionRouter().getPartitionKeyList(meta.getId());\n+        Collections.sort(partKeyList);\n+\n+        int partNum = partKeyList.size();\n+        int lastPos = 0;\n+        for (int i = 0; i < partNum; i++) {\n+                              PartitionKey partKey = partKeyList.get(i);\n+                              int endCol = partKey.getEndCol();\n+                              for (int j = lastPos; j < size; j++) {\n+                                              if (indexArray[j] >= endCol) {\n+                                  lastPos = j;\n+                                  break;\n+                                              }\n+                              }\n         }\n-      }\n       // Bitmap bitmap = new Bitmap();\n       // int max = indexArray[size - 1];\n       // byte [] bitIndexArray = new byte[max / 8 + 1];\n@@ -241,5 +243,6 @@ public class TaskManager {\n       // }\n       // }\n     }\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 98
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

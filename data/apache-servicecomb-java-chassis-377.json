@@ -1,0 +1,91 @@
+{
+    "error_id": "377",
+    "information": {
+        "errors": [
+            {
+                "line": "168",
+                "column": "87",
+                "severity": "warning",
+                "message": "'?' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "            .build()\n    );\n    return MicroserviceCacheStatus.SERVICE_NOT_FOUND.equals(serviceCache.getStatus()) ?\n        null : serviceCache.getInstances();\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "168",
+                    "column": "87",
+                    "severity": "warning",
+                    "message": "'?' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "168",
+                    "column": "87",
+                    "severity": "warning",
+                    "message": "'?' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/377/RegistryUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/377/RegistryUtils.java\nindex 9fc917b6d4..bd16091d7b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/377/RegistryUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/377/RegistryUtils.java\n@@ -159,7 +159,7 @@ public final class RegistryUtils {\n \n \n   public static List<MicroserviceInstance> findServiceInstance(String appId, String serviceName,\n-      String versionRule) {\n+                                                               String versionRule) {\n     MicroserviceCache serviceCache = aggregateServiceRegistryCache.findServiceCache(\n         MicroserviceCacheKey.builder()\n             .appId(appId).serviceName(serviceName).env(getMicroservice().getEnvironment())\n@@ -184,7 +184,7 @@ public final class RegistryUtils {\n   }\n \n   public static MicroserviceInstances findServiceInstances(String appId, String serviceName,\n-      String versionRule, String revision) {\n+                                                           String versionRule, String revision) {\n     MicroserviceCache serviceCache = aggregateServiceRegistryCache.findServiceCache(\n         MicroserviceCacheKey.builder().appId(appId).serviceName(serviceName).env(getMicroservice().getEnvironment())\n             .build());\n@@ -271,7 +271,7 @@ public final class RegistryUtils {\n   }\n \n   /**\n-   * @throws NullPointerException serviceRegistryConfig is null\n+   * @throws NullPointerException     serviceRegistryConfig is null\n    * @throws IllegalArgumentException config value is illegal\n    */\n   public static void validateRegistryConfig(ServiceRegistryConfig serviceRegistryConfig) {\n@@ -281,6 +281,7 @@ public final class RegistryUtils {\n \n   /**\n    * To validate whether the name is legal value.\n+   *\n    * @param name name of the {@link ServiceRegistry}\n    * @throws IllegalArgumentException the input value is illegal\n    */\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "164",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/377/RegistryUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/377/RegistryUtils.java\nindex 9fc917b6d4..9bdd40b8f5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/377/RegistryUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/377/RegistryUtils.java\n@@ -62,8 +62,7 @@ public final class RegistryUtils {\n    */\n   private static volatile ServiceRegistry serviceRegistry;\n \n-\n-  private static InstanceCacheManager instanceCacheManager = new InstanceCacheManagerNew(\n+private static InstanceCacheManager instanceCacheManager = new InstanceCacheManagerNew(\n       DiscoveryManager.INSTANCE.getAppManager());\n \n   private static final Map<String, ServiceRegistryConfig> EXTRA_SERVICE_REGISTRY_CONFIGS = new LinkedHashMap<>();\n@@ -95,8 +94,7 @@ public final class RegistryUtils {\n         .setCacheRefreshedWatcher(refreshedCaches -> DiscoveryManager.INSTANCE.getAppManager().pullInstances());\n \n     executeOnEachServiceRegistry(\n-        serviceRegistry -> serviceRegistry\n-            .getEventBus()\n+        serviceRegistry -> serviceRegistry.getEventBus()\n             .register(aggregateServiceRegistryCache));\n   }\n \n@@ -157,16 +155,13 @@ public final class RegistryUtils {\n     return serviceRegistry.getMicroserviceInstance();\n   }\n \n-\n-  public static List<MicroserviceInstance> findServiceInstance(String appId, String serviceName,\n+public static List<MicroserviceInstance> findServiceInstance(String appId, String serviceName,\n       String versionRule) {\n     MicroserviceCache serviceCache = aggregateServiceRegistryCache.findServiceCache(\n         MicroserviceCacheKey.builder()\n             .appId(appId).serviceName(serviceName).env(getMicroservice().getEnvironment())\n-            .build()\n-    );\n-    return MicroserviceCacheStatus.SERVICE_NOT_FOUND.equals(serviceCache.getStatus()) ?\n-        null : serviceCache.getInstances();\n+            .build());\n+    return MicroserviceCacheStatus.SERVICE_NOT_FOUND.equals(serviceCache.getStatus()) ? null : serviceCache.getInstances();\n   }\n \n   // update microservice instance properties\n@@ -218,7 +213,7 @@ public final class RegistryUtils {\n         return microserviceInstances;\n       default:\n         return null;\n-    }\n+  }\n   }\n \n   public static String calcSchemaSummary(String schemaContent) {\n@@ -320,4 +315,4 @@ public final class RegistryUtils {\n       EventManager.getEventBus().post(microserviceInstanceRegisterTask);\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "168",
+                    "column": "87",
+                    "severity": "warning",
+                    "message": "'?' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "168",
+                    "column": "87",
+                    "severity": "warning",
+                    "message": "'?' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

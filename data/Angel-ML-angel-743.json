@@ -1,0 +1,172 @@
+{
+    "error_id": "743",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/743/WorkerGroupBlock.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/743/WorkerGroupBlock.java\nindex 285acab5db..e8c682f538 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/743/WorkerGroupBlock.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/743/WorkerGroupBlock.java\n@@ -40,104 +40,115 @@ import static org.apache.hadoop.yarn.webapp.view.JQueryUI._INFO_WRAP;\n import static org.apache.hadoop.yarn.webapp.view.JQueryUI._TH;\n \n public class WorkerGroupBlock extends HtmlBlock {\n-  final AMContext amContext;\n-\n-  @Inject\n-  WorkerGroupBlock(AMContext amctx) {\n-    amContext = amctx;\n-  }\n-\n-  @Override\n-  protected void render(Block html) {\n-    String workerGroupIdSr = $(WORKERGROUP_ID);\n-    if (workerGroupIdSr.isEmpty()) {\n-      html.p()._(\"Sorry, can't do anything without a WorkerGroupId.\")._();\n-      return;\n-    }\n+    final AMContext amContext;\n \n-    WorkerGroupId workerGroupId;\n-    try {\n-      workerGroupId = new WorkerGroupId(workerGroupIdSr);\n-    } catch (UnvalidIdStrException e) {\n-      LOG.error(\"unvalid id string, \", e);\n-      return;\n-    }\n-    AMWorkerGroup workerGroup = amContext.getWorkerManager().getWorkerGroup(workerGroupId);\n-    if (workerGroup == null) {\n-      html.p()._(\"Sorry, can't find group \" + workerGroupId)._();\n-      return;\n+    @Inject\n+    WorkerGroupBlock(AMContext amctx) {\n+        amContext = amctx;\n     }\n \n-    set(TITLE, join(\"Angel WorkerGroup \", $(WORKERGROUP_ID)));\n-    html.h1(workerGroupIdSr);\n-\n-    TABLE<DIV<Hamlet>> table = html.div(_INFO_WRAP).table(\"#job\");\n-    TR<THEAD<TABLE<DIV<Hamlet>>>> headTr = table.thead().tr();\n-\n-    headTr.th(_TH, \"id\").th(_TH, \"state\").th(_TH, \"node address\").th(_TH, \"start time\")\n-        .th(_TH, \"end time\").th(_TH, \"elapsed time\").th(_TH, \"log\").th(_TH, \"threadstack\")\n-        .th(_TH, \"workercounter\");\n-\n-    headTr._()._();\n+    @Override\n+    protected void render(Block html) {\n+        String workerGroupIdSr = $(WORKERGROUP_ID);\n+        if (workerGroupIdSr.isEmpty()) {\n+            html.p()._(\"Sorry, can't do anything without a WorkerGroupId.\")._();\n+            return;\n+        }\n \n-    TBODY<TABLE<DIV<Hamlet>>> tbody = table.tbody();\n-    for (AMWorker worker : workerGroup.getWorkerSet()) {\n-      Map<WorkerAttemptId, WorkerAttempt> workerAttempts = worker.getAttempts();\n-      for (WorkerAttempt workerAttempt : workerAttempts.values()) {\n-        TR<TBODY<TABLE<DIV<Hamlet>>>> tr = tbody.tr();\n-        long elaspedTs = 0;\n-        if (workerAttempt.getLaunchTime() != 0 && workerAttempt.getFinishTime() != 0) {\n-          elaspedTs = workerAttempt.getFinishTime() - workerAttempt.getLaunchTime();\n-        } else if (workerAttempt.getLaunchTime() != 0 && workerAttempt.getFinishTime() == 0) {\n-          elaspedTs = System.currentTimeMillis() - workerAttempt.getLaunchTime();\n+        WorkerGroupId workerGroupId;\n+        try {\n+            workerGroupId = new WorkerGroupId(workerGroupIdSr);\n+        } catch (UnvalidIdStrException e) {\n+            LOG.error(\"unvalid id string, \", e);\n+            return;\n+        }\n+        AMWorkerGroup workerGroup = amContext.getWorkerManager().getWorkerGroup(workerGroupId);\n+        if (workerGroup == null) {\n+            html.p()._(\"Sorry, can't find group \" + workerGroupId)._();\n+            return;\n         }\n \n-        if (workerAttempt.getNodeHttpAddr() == null) {\n-          tr.td()\n-              .a(url(\"angel/workerPage\", workerAttempt.getId().toString()),\n-                  workerAttempt.getId().toString())\n-              ._()\n-              .td(workerAttempt.getState().toString())\n-              .td(\"N/A\")\n-              .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getLaunchTime()).toString())\n-              .td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getFinishTime()).toString())\n-              .td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs)).td(\"N/A\").td(\"N/A\")\n-              .td(\"N/A\");\n-        } else {\n-\n-          tr.td()\n-              .a(url(\"angel/workerPage\", workerAttempt.getId().toString()),\n-                  workerAttempt.getId().toString())\n-              ._()\n-              .td(workerAttempt.getState().toString())\n-              .td()\n-              .a(url(MRWebAppUtil.getYARNWebappScheme(), workerAttempt.getNodeHttpAddr()),\n-                  workerAttempt.getNodeHttpAddr())\n-              ._()\n-              .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getLaunchTime()).toString())\n-              .td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getFinishTime()).toString())\n-              .td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n-              .td()\n-              .a(url(MRWebAppUtil.getYARNWebappScheme(), workerAttempt.getNodeHttpAddr(), \"node\",\n-                  \"containerlogs\", workerAttempt.getContainerIdStr(), amContext.getUser()\n-                      .toString()), \"log\")\n-              ._()\n-              .td()\n-              .a(url(\"angel/workerThreadStackPage/\", workerAttempt.getId().toString()),\n-                  \"workerthreadstack\")\n-              ._()\n-              .td()\n-              .a(url(\"angel/workerCounterPage/\", workerAttempt.getId().toString()), \"workercounter\")\n-              ._();\n+        set(TITLE, join(\"Angel WorkerGroup \", $(WORKERGROUP_ID)));\n+        html.h1(workerGroupIdSr);\n+\n+        TABLE<DIV<Hamlet>> table = html.div(_INFO_WRAP).table(\"#job\");\n+        TR<THEAD<TABLE<DIV<Hamlet>>>> headTr = table.thead().tr();\n+\n+        headTr.th(_TH, \"id\").th(_TH, \"state\").th(_TH, \"node address\").th(_TH, \"start time\")\n+                .th(_TH, \"end time\").th(_TH, \"elapsed time\").th(_TH, \"log\").th(_TH, \"threadstack\")\n+                .th(_TH, \"workercounter\");\n+\n+        headTr._()._();\n+\n+        TBODY<TABLE<DIV<Hamlet>>> tbody = table.tbody();\n+        for (AMWorker worker : workerGroup.getWorkerSet()) {\n+            Map<WorkerAttemptId, WorkerAttempt> workerAttempts = worker.getAttempts();\n+            for (WorkerAttempt workerAttempt : workerAttempts.values()) {\n+                TR<TBODY<TABLE<DIV<Hamlet>>>> tr = tbody.tr();\n+                long elaspedTs = 0;\n+                if (workerAttempt.getLaunchTime() != 0 && workerAttempt.getFinishTime() != 0) {\n+                    elaspedTs = workerAttempt.getFinishTime() - workerAttempt.getLaunchTime();\n+                } else if (workerAttempt.getLaunchTime() != 0 &&\n+                        workerAttempt.getFinishTime() == 0) {\n+                    elaspedTs = System.currentTimeMillis() - workerAttempt.getLaunchTime();\n+                }\n+\n+                if (workerAttempt.getNodeHttpAddr() == null) {\n+                    tr.td()\n+                            .a(url(\"angel/workerPage\", workerAttempt.getId().toString()),\n+                                    workerAttempt.getId().toString())\n+                            ._()\n+                            .td(workerAttempt.getState().toString())\n+                            .td(\"N/A\")\n+                            .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" :\n+                                    new Date(workerAttempt\n+                                            .getLaunchTime()).toString())\n+                            .td((workerAttempt.getFinishTime() == 0) ? \"N/A\" :\n+                                    new Date(workerAttempt\n+                                            .getFinishTime()).toString())\n+                            .td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n+                            .td(\"N/A\").td(\"N/A\")\n+                            .td(\"N/A\");\n+                } else {\n+\n+                    tr.td()\n+                            .a(url(\"angel/workerPage\", workerAttempt.getId().toString()),\n+                                    workerAttempt.getId().toString())\n+                            ._()\n+                            .td(workerAttempt.getState().toString())\n+                            .td()\n+                            .a(url(MRWebAppUtil.getYARNWebappScheme(),\n+                                    workerAttempt.getNodeHttpAddr()),\n+                                    workerAttempt.getNodeHttpAddr())\n+                            ._()\n+                            .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" :\n+                                    new Date(workerAttempt\n+                                            .getLaunchTime()).toString())\n+                            .td((workerAttempt.getFinishTime() == 0) ? \"N/A\" :\n+                                    new Date(workerAttempt\n+                                            .getFinishTime()).toString())\n+                            .td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n+                            .td()\n+                            .a(url(MRWebAppUtil.getYARNWebappScheme(),\n+                                    workerAttempt.getNodeHttpAddr(), \"node\",\n+                                    \"containerlogs\", workerAttempt.getContainerIdStr(),\n+                                    amContext.getUser()\n+                                            .toString()), \"log\")\n+                            ._()\n+                            .td()\n+                            .a(url(\"angel/workerThreadStackPage/\",\n+                                    workerAttempt.getId().toString()),\n+                                    \"workerthreadstack\")\n+                            ._()\n+                            .td()\n+                            .a(url(\"angel/workerCounterPage/\", workerAttempt.getId().toString()),\n+                                    \"workercounter\")\n+                            ._();\n+                }\n+                tr._();\n+            }\n         }\n-        tr._();\n-      }\n-    }\n \n-    tbody._()._()._();\n-  }\n+        tbody._()._()._();\n+    }\n }\n",
+            "diff_size": 131
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 303).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 283).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 169).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/743/WorkerGroupBlock.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/743/WorkerGroupBlock.java\nindex 285acab5db..f644ddc2d0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/743/WorkerGroupBlock.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/743/WorkerGroupBlock.java\n@@ -95,37 +95,23 @@ public class WorkerGroupBlock extends HtmlBlock {\n         if (workerAttempt.getNodeHttpAddr() == null) {\n           tr.td()\n               .a(url(\"angel/workerPage\", workerAttempt.getId().toString()),\n-                  workerAttempt.getId().toString())\n-              ._()\n+                  workerAttempt.getId().toString())._()\n               .td(workerAttempt.getState().toString())\n               .td(\"N/A\")\n-              .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getLaunchTime()).toString())\n-              .td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getFinishTime()).toString())\n-              .td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs)).td(\"N/A\").td(\"N/A\")\n+              .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt.getLaunchTime()).toString()).td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt.getFinishTime()).toString()).td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs)).td(\"N/A\").td(\"N/A\")\n               .td(\"N/A\");\n-        } else {\n-\n-          tr.td()\n+  } else {\n+  tr.td()\n               .a(url(\"angel/workerPage\", workerAttempt.getId().toString()),\n-                  workerAttempt.getId().toString())\n-              ._()\n+                  workerAttempt.getId().toString())._()\n               .td(workerAttempt.getState().toString())\n               .td()\n               .a(url(MRWebAppUtil.getYARNWebappScheme(), workerAttempt.getNodeHttpAddr()),\n-                  workerAttempt.getNodeHttpAddr())\n-              ._()\n-              .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getLaunchTime()).toString())\n-              .td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getFinishTime()).toString())\n-              .td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n+                  workerAttempt.getNodeHttpAddr())._()\n+              .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt.getLaunchTime()).toString()).td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt.getFinishTime()).toString()).td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n               .td()\n-              .a(url(MRWebAppUtil.getYARNWebappScheme(), workerAttempt.getNodeHttpAddr(), \"node\",\n-                  \"containerlogs\", workerAttempt.getContainerIdStr(), amContext.getUser()\n-                      .toString()), \"log\")\n-              ._()\n+              .a(url(MRWebAppUtil.getYARNWebappScheme(), workerAttempt.getNodeHttpAddr(), \"node\", \"containerlogs\", workerAttempt.getContainerIdStr(), amContext.getUser()\n+                      .toString()), \"log\")._()\n               .td()\n               .a(url(\"angel/workerThreadStackPage/\", workerAttempt.getId().toString()),\n                   \"workerthreadstack\")\n@@ -133,11 +119,11 @@ public class WorkerGroupBlock extends HtmlBlock {\n               .td()\n               .a(url(\"angel/workerCounterPage/\", workerAttempt.getId().toString()), \"workercounter\")\n               ._();\n-        }\n+  }\n         tr._();\n       }\n     }\n \n     tbody._()._()._();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 195).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 145).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 468).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 215).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 289).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 904).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/743/WorkerGroupBlock.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/743/WorkerGroupBlock.java\nindex 285acab5db..de995369a3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/743/WorkerGroupBlock.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/743/WorkerGroupBlock.java\n@@ -24,120 +24,77 @@ import com.tencent.angel.master.worker.worker.AMWorker;\n import com.tencent.angel.master.worker.workergroup.AMWorkerGroup;\n import com.tencent.angel.worker.WorkerAttemptId;\n import com.tencent.angel.worker.WorkerGroupId;\n-\n import org.apache.hadoop.mapreduce.v2.util.MRWebAppUtil;\n import org.apache.hadoop.util.StringUtils;\n import org.apache.hadoop.yarn.webapp.hamlet.Hamlet;\n import org.apache.hadoop.yarn.webapp.hamlet.Hamlet.*;\n import org.apache.hadoop.yarn.webapp.view.HtmlBlock;\n-\n import java.util.Date;\n import java.util.Map;\n-\n import static com.tencent.angel.webapp.AngelParams.WORKERGROUP_ID;\n import static org.apache.hadoop.yarn.util.StringHelper.join;\n import static org.apache.hadoop.yarn.webapp.view.JQueryUI._INFO_WRAP;\n import static org.apache.hadoop.yarn.webapp.view.JQueryUI._TH;\n \n public class WorkerGroupBlock extends HtmlBlock {\n-  final AMContext amContext;\n \n-  @Inject\n-  WorkerGroupBlock(AMContext amctx) {\n+    final AMContext amContext;\n+\n+    @Inject\n+    WorkerGroupBlock(AMContext amctx) {\n     amContext = amctx;\n-  }\n+    }\n \n-  @Override\n-  protected void render(Block html) {\n+    @Override\n+    protected void render(Block html) {\n     String workerGroupIdSr = $(WORKERGROUP_ID);\n     if (workerGroupIdSr.isEmpty()) {\n-      html.p()._(\"Sorry, can't do anything without a WorkerGroupId.\")._();\n-      return;\n+        html.p()._(\"Sorry, can't do anything without a WorkerGroupId.\")._();\n+        return;\n     }\n \n     WorkerGroupId workerGroupId;\n     try {\n-      workerGroupId = new WorkerGroupId(workerGroupIdSr);\n+        workerGroupId = new WorkerGroupId(workerGroupIdSr);\n     } catch (UnvalidIdStrException e) {\n       LOG.error(\"unvalid id string, \", e);\n       return;\n     }\n+\n     AMWorkerGroup workerGroup = amContext.getWorkerManager().getWorkerGroup(workerGroupId);\n     if (workerGroup == null) {\n-      html.p()._(\"Sorry, can't find group \" + workerGroupId)._();\n-      return;\n+        html.p()._(\"Sorry, can't find group \" + workerGroupId)._();\n+        return;\n     }\n-\n     set(TITLE, join(\"Angel WorkerGroup \", $(WORKERGROUP_ID)));\n     html.h1(workerGroupIdSr);\n-\n     TABLE<DIV<Hamlet>> table = html.div(_INFO_WRAP).table(\"#job\");\n     TR<THEAD<TABLE<DIV<Hamlet>>>> headTr = table.thead().tr();\n-\n-    headTr.th(_TH, \"id\").th(_TH, \"state\").th(_TH, \"node address\").th(_TH, \"start time\")\n-        .th(_TH, \"end time\").th(_TH, \"elapsed time\").th(_TH, \"log\").th(_TH, \"threadstack\")\n-        .th(_TH, \"workercounter\");\n-\n+    headTr.th(_TH, \"id\").th(_TH, \"state\").th(_TH, \"node address\").th(_TH, \"start time\").th(_TH, \"end time\").th(_TH, \"elapsed time\").th(_TH, \"log\").th(_TH, \"threadstack\").th(_TH, \"workercounter\");\n     headTr._()._();\n-\n     TBODY<TABLE<DIV<Hamlet>>> tbody = table.tbody();\n     for (AMWorker worker : workerGroup.getWorkerSet()) {\n-      Map<WorkerAttemptId, WorkerAttempt> workerAttempts = worker.getAttempts();\n-      for (WorkerAttempt workerAttempt : workerAttempts.values()) {\n-        TR<TBODY<TABLE<DIV<Hamlet>>>> tr = tbody.tr();\n-        long elaspedTs = 0;\n-        if (workerAttempt.getLaunchTime() != 0 && workerAttempt.getFinishTime() != 0) {\n-          elaspedTs = workerAttempt.getFinishTime() - workerAttempt.getLaunchTime();\n-        } else if (workerAttempt.getLaunchTime() != 0 && workerAttempt.getFinishTime() == 0) {\n-          elaspedTs = System.currentTimeMillis() - workerAttempt.getLaunchTime();\n+        Map<WorkerAttemptId, WorkerAttempt> workerAttempts = worker.getAttempts();\n+        for (WorkerAttempt workerAttempt : workerAttempts.values()) {\n+                                                           TR<TBODY<TABLE<DIV<Hamlet>>>> tr = tbody.tr();\n+                                                           long elaspedTs = 0;\n+                                                           if (workerAttempt.getLaunchTime() != 0 && workerAttempt.getFinishTime() != 0) {\n+            elaspedTs = workerAttempt.getFinishTime() - workerAttempt.getLaunchTime();\n+                                                           } else if (workerAttempt.getLaunchTime() != 0 && workerAttempt.getFinishTime() == 0) {\n+                                                                        elaspedTs = System.currentTimeMillis() - workerAttempt.getLaunchTime();\n+                                                                  }\n+\n+                                                           if (workerAttempt.getNodeHttpAddr() == null) {\n+            tr.td().a(url(\"angel/workerPage\", workerAttempt.getId().toString()), workerAttempt.getId().toString())._().td(workerAttempt.getState().toString()).td(\"N/A\").td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt.getLaunchTime()).toString()).td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt.getFinishTime()).toString()).td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs)).td(\"N/A\").td(\"N/A\").td(\"N/A\");\n+                                                           } else {\n+                                                             tr.td().a(url(\"angel/workerPage\", workerAttempt.getId().toString()), workerAttempt.getId().toString())._().td(workerAttempt.getState().toString()).td().a(\n+                                                                                                                                                                                                                        url(MRWebAppUtil.getYARNWebappScheme(), workerAttempt.getNodeHttpAddr()),\n+                                                                                                                                                                                                                        workerAttempt.getNodeHttpAddr())._().td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt.getLaunchTime()).toString()).td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt.getFinishTime()).toString()).td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs)).td().a(url(MRWebAppUtil.getYARNWebappScheme(), workerAttempt.getNodeHttpAddr(), \"node\", \"containerlogs\", workerAttempt.getContainerIdStr(), amContext.getUser().toString()), \"log\")._().td().a(url(\"angel/workerThreadStackPage/\", workerAttempt.getId().toString()), \"workerthreadstack\")._().td().a(url(\"angel/workerCounterPage/\", workerAttempt.getId().toString()), \"workercounter\")._();\n+                                                           }\n+                                                           tr._();\n         }\n-\n-        if (workerAttempt.getNodeHttpAddr() == null) {\n-          tr.td()\n-              .a(url(\"angel/workerPage\", workerAttempt.getId().toString()),\n-                  workerAttempt.getId().toString())\n-              ._()\n-              .td(workerAttempt.getState().toString())\n-              .td(\"N/A\")\n-              .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getLaunchTime()).toString())\n-              .td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getFinishTime()).toString())\n-              .td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs)).td(\"N/A\").td(\"N/A\")\n-              .td(\"N/A\");\n-        } else {\n-\n-          tr.td()\n-              .a(url(\"angel/workerPage\", workerAttempt.getId().toString()),\n-                  workerAttempt.getId().toString())\n-              ._()\n-              .td(workerAttempt.getState().toString())\n-              .td()\n-              .a(url(MRWebAppUtil.getYARNWebappScheme(), workerAttempt.getNodeHttpAddr()),\n-                  workerAttempt.getNodeHttpAddr())\n-              ._()\n-              .td((workerAttempt.getLaunchTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getLaunchTime()).toString())\n-              .td((workerAttempt.getFinishTime() == 0) ? \"N/A\" : new Date(workerAttempt\n-                  .getFinishTime()).toString())\n-              .td((elaspedTs == 0) ? \"N/A\" : StringUtils.formatTime(elaspedTs))\n-              .td()\n-              .a(url(MRWebAppUtil.getYARNWebappScheme(), workerAttempt.getNodeHttpAddr(), \"node\",\n-                  \"containerlogs\", workerAttempt.getContainerIdStr(), amContext.getUser()\n-                      .toString()), \"log\")\n-              ._()\n-              .td()\n-              .a(url(\"angel/workerThreadStackPage/\", workerAttempt.getId().toString()),\n-                  \"workerthreadstack\")\n-              ._()\n-              .td()\n-              .a(url(\"angel/workerCounterPage/\", workerAttempt.getId().toString()), \"workercounter\")\n-              ._();\n-        }\n-        tr._();\n-      }\n     }\n-\n     tbody._()._()._();\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 92
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

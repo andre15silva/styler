@@ -1,0 +1,351 @@
+{
+    "error_id": "361",
+    "information": {
+        "errors": [
+            {
+                "line": "24",
+                "column": "1",
+                "severity": "warning",
+                "message": "Comment has incorrect indentation level 0, expected is 1, indentation should be the same level as line 26.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+            }
+        ]
+    },
+    "source_code": "//\tprivate Dataset dataset;\n//\tprivate User user;\n//\tprivate Namespaces namespaces;\n\t\n\tpublic static ManagedQuery generate(Namespaces namespaces, AbsoluteMode mode, DateContextMode resolution, UserId userId, DatasetId submittedDataset) {\n\t\tManagedQuery prerequisite = (ManagedQuery)namespaces.getMetaStorage().getExecution(mode.getForm().getQueryGroup());",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/361/AbsExportGenerator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/361/AbsExportGenerator.java\nindex d7cb431679..a8b4d6bd23 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/361/AbsExportGenerator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/361/AbsExportGenerator.java\n@@ -18,32 +18,31 @@ import lombok.AllArgsConstructor;\n \n @AllArgsConstructor\n public class AbsExportGenerator {\n-\t\n+\n //\tprivate Dataset dataset;\n //\tprivate User user;\n //\tprivate Namespaces namespaces;\n-\t\n-\tpublic static ManagedQuery generate(Namespaces namespaces, AbsoluteMode mode, DateContextMode resolution, UserId userId, DatasetId submittedDataset) {\n+public static ManagedQuery generate(Namespaces namespaces, AbsoluteMode mode, DateContextMode resolution, UserId userId, DatasetId submittedDataset) {\n \t\tManagedQuery prerequisite = (ManagedQuery)namespaces.getMetaStorage().getExecution(mode.getForm().getQueryGroup());\n-\t\n+\n \t\t// Apply defaults to user concept\n \t\tConceptManipulator.DEFAULT_SELECTS_WHEN_EMPTY.consume(mode.getFeatures(), namespaces);\n-\t\t\n+\n \t\tAbsoluteFormQuery query = new AbsoluteFormQuery(\n \t\t\t(ConceptQuery) prerequisite.getQuery(),\n \t\t\tmode.getDateRange(),\n \t\t\tcreateSubQuery(mode.getFeatures()),\n \t\t\tresolution\n \t\t);\n-\t\t\n+\n \t\treturn query.toManagedExecution(namespaces.getMetaStorage(), namespaces, userId, submittedDataset);\n \t}\n-\t\n+\n \tpublic static ArrayConceptQuery createSubQuery(List<CQElement> features) {\n \t\tList<ConceptQuery> cqWraps = features.stream().map(ConceptQuery::new).collect(Collectors.toList());\n \t\treturn createSubPlanFromQueries(cqWraps);\n \t}\n-\t\n+\n \tpublic static ArrayConceptQuery createSubPlanFromQueries(List<ConceptQuery> featureQueries) {\n \t\tArrayConceptQuery subQuery = new ArrayConceptQuery();\n \t\tsubQuery.setChildQueries(featureQueries);\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "24",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 26.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/361/AbsExportGenerator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/361/AbsExportGenerator.java\nindex d7cb431679..ce20a171e6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/361/AbsExportGenerator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/361/AbsExportGenerator.java\n@@ -18,35 +18,35 @@ import lombok.AllArgsConstructor;\n \n @AllArgsConstructor\n public class AbsExportGenerator {\n-\t\n+\n //\tprivate Dataset dataset;\n //\tprivate User user;\n //\tprivate Namespaces namespaces;\n-\t\n-\tpublic static ManagedQuery generate(Namespaces namespaces, AbsoluteMode mode, DateContextMode resolution, UserId userId, DatasetId submittedDataset) {\n-\t\tManagedQuery prerequisite = (ManagedQuery)namespaces.getMetaStorage().getExecution(mode.getForm().getQueryGroup());\n-\t\n-\t\t// Apply defaults to user concept\n-\t\tConceptManipulator.DEFAULT_SELECTS_WHEN_EMPTY.consume(mode.getFeatures(), namespaces);\n-\t\t\n-\t\tAbsoluteFormQuery query = new AbsoluteFormQuery(\n-\t\t\t(ConceptQuery) prerequisite.getQuery(),\n-\t\t\tmode.getDateRange(),\n-\t\t\tcreateSubQuery(mode.getFeatures()),\n-\t\t\tresolution\n-\t\t);\n-\t\t\n-\t\treturn query.toManagedExecution(namespaces.getMetaStorage(), namespaces, userId, submittedDataset);\n-\t}\n-\t\n-\tpublic static ArrayConceptQuery createSubQuery(List<CQElement> features) {\n-\t\tList<ConceptQuery> cqWraps = features.stream().map(ConceptQuery::new).collect(Collectors.toList());\n-\t\treturn createSubPlanFromQueries(cqWraps);\n-\t}\n-\t\n-\tpublic static ArrayConceptQuery createSubPlanFromQueries(List<ConceptQuery> featureQueries) {\n-\t\tArrayConceptQuery subQuery = new ArrayConceptQuery();\n-\t\tsubQuery.setChildQueries(featureQueries);\n-\t\treturn subQuery;\n-\t}\n+\n+    public static ManagedQuery generate(Namespaces namespaces, AbsoluteMode mode, DateContextMode resolution, UserId userId, DatasetId submittedDataset) {\n+        ManagedQuery prerequisite = (ManagedQuery) namespaces.getMetaStorage().getExecution(mode.getForm().getQueryGroup());\n+\n+        // Apply defaults to user concept\n+        ConceptManipulator.DEFAULT_SELECTS_WHEN_EMPTY.consume(mode.getFeatures(), namespaces);\n+\n+        AbsoluteFormQuery query = new AbsoluteFormQuery(\n+            (ConceptQuery) prerequisite.getQuery(),\n+            mode.getDateRange(),\n+            createSubQuery(mode.getFeatures()),\n+            resolution\n+        );\n+\n+        return query.toManagedExecution(namespaces.getMetaStorage(), namespaces, userId, submittedDataset);\n+    }\n+\n+    public static ArrayConceptQuery createSubQuery(List<CQElement> features) {\n+        List<ConceptQuery> cqWraps = features.stream().map(ConceptQuery::new).collect(Collectors.toList());\n+        return createSubPlanFromQueries(cqWraps);\n+    }\n+\n+    public static ArrayConceptQuery createSubPlanFromQueries(List<ConceptQuery> featureQueries) {\n+        ArrayConceptQuery subQuery = new ArrayConceptQuery();\n+        subQuery.setChildQueries(featureQueries);\n+        return subQuery;\n+    }\n }\n",
+            "diff_size": 28
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "20",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "23",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 25.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/361/AbsExportGenerator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/361/AbsExportGenerator.java\nindex d7cb431679..147886f76c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/361/AbsExportGenerator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/361/AbsExportGenerator.java\n@@ -2,7 +2,6 @@ package com.bakdata.conquery.models.forms.export;\n \n import java.util.List;\n import java.util.stream.Collectors;\n-\n import com.bakdata.conquery.apiv1.forms.DateContextMode;\n import com.bakdata.conquery.apiv1.forms.export_form.AbsoluteMode;\n import com.bakdata.conquery.models.forms.managed.AbsoluteFormQuery;\n@@ -18,35 +17,34 @@ import lombok.AllArgsConstructor;\n \n @AllArgsConstructor\n public class AbsExportGenerator {\n-\t\n-//\tprivate Dataset dataset;\n-//\tprivate User user;\n-//\tprivate Namespaces namespaces;\n-\t\n-\tpublic static ManagedQuery generate(Namespaces namespaces, AbsoluteMode mode, DateContextMode resolution, UserId userId, DatasetId submittedDataset) {\n-\t\tManagedQuery prerequisite = (ManagedQuery)namespaces.getMetaStorage().getExecution(mode.getForm().getQueryGroup());\n-\t\n-\t\t// Apply defaults to user concept\n-\t\tConceptManipulator.DEFAULT_SELECTS_WHEN_EMPTY.consume(mode.getFeatures(), namespaces);\n-\t\t\n-\t\tAbsoluteFormQuery query = new AbsoluteFormQuery(\n-\t\t\t(ConceptQuery) prerequisite.getQuery(),\n-\t\t\tmode.getDateRange(),\n-\t\t\tcreateSubQuery(mode.getFeatures()),\n-\t\t\tresolution\n-\t\t);\n-\t\t\n-\t\treturn query.toManagedExecution(namespaces.getMetaStorage(), namespaces, userId, submittedDataset);\n-\t}\n-\t\n-\tpublic static ArrayConceptQuery createSubQuery(List<CQElement> features) {\n-\t\tList<ConceptQuery> cqWraps = features.stream().map(ConceptQuery::new).collect(Collectors.toList());\n-\t\treturn createSubPlanFromQueries(cqWraps);\n-\t}\n-\t\n-\tpublic static ArrayConceptQuery createSubPlanFromQueries(List<ConceptQuery> featureQueries) {\n-\t\tArrayConceptQuery subQuery = new ArrayConceptQuery();\n-\t\tsubQuery.setChildQueries(featureQueries);\n-\t\treturn subQuery;\n-\t}\n-}\n+    \n+//  private Dataset dataset;\n+//  private User user;\n+//  private Namespaces namespaces;\n+\n+    public static ManagedQuery generate(Namespaces namespaces, AbsoluteMode mode, DateContextMode resolution, UserId userId, DatasetId submittedDataset) {\n+        ManagedQuery prerequisite = (ManagedQuery)namespaces.getMetaStorage().getExecution(mode.getForm().getQueryGroup());\n+    \n+        // Apply defaults to user concept\n+        ConceptManipulator.DEFAULT_SELECTS_WHEN_EMPTY.consume(mode.getFeatures(), namespaces);\n+        AbsoluteFormQuery query = new AbsoluteFormQuery(\n+                                      (ConceptQuery)prerequisite.getQuery(),\n+                                      mode.getDateRange(),\n+                                      createSubQuery(mode.getFeatures()),\n+                                      resolution\n+                                  );\n+        return query.toManagedExecution(namespaces.getMetaStorage(), namespaces, userId, submittedDataset);\n+    }\n+\n+    public static ArrayConceptQuery createSubQuery(List<CQElement> features) {\n+        List<ConceptQuery> cqWraps = features.stream().map(ConceptQuery::new)\n+                                                      .collect(Collectors.toList());\n+        return createSubPlanFromQueries(cqWraps);\n+    }\n+\n+    public static ArrayConceptQuery createSubPlanFromQueries(List<ConceptQuery> featureQueries) {\n+        ArrayConceptQuery subQuery = new ArrayConceptQuery();\n+        subQuery.setChildQueries(featureQueries);\n+        return subQuery;\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/361/AbsExportGenerator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/361/AbsExportGenerator.java\nindex d7cb431679..a8b4d6bd23 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/361/AbsExportGenerator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/361/AbsExportGenerator.java\n@@ -18,32 +18,31 @@ import lombok.AllArgsConstructor;\n \n @AllArgsConstructor\n public class AbsExportGenerator {\n-\t\n+\n //\tprivate Dataset dataset;\n //\tprivate User user;\n //\tprivate Namespaces namespaces;\n-\t\n-\tpublic static ManagedQuery generate(Namespaces namespaces, AbsoluteMode mode, DateContextMode resolution, UserId userId, DatasetId submittedDataset) {\n+public static ManagedQuery generate(Namespaces namespaces, AbsoluteMode mode, DateContextMode resolution, UserId userId, DatasetId submittedDataset) {\n \t\tManagedQuery prerequisite = (ManagedQuery)namespaces.getMetaStorage().getExecution(mode.getForm().getQueryGroup());\n-\t\n+\n \t\t// Apply defaults to user concept\n \t\tConceptManipulator.DEFAULT_SELECTS_WHEN_EMPTY.consume(mode.getFeatures(), namespaces);\n-\t\t\n+\n \t\tAbsoluteFormQuery query = new AbsoluteFormQuery(\n \t\t\t(ConceptQuery) prerequisite.getQuery(),\n \t\t\tmode.getDateRange(),\n \t\t\tcreateSubQuery(mode.getFeatures()),\n \t\t\tresolution\n \t\t);\n-\t\t\n+\n \t\treturn query.toManagedExecution(namespaces.getMetaStorage(), namespaces, userId, submittedDataset);\n \t}\n-\t\n+\n \tpublic static ArrayConceptQuery createSubQuery(List<CQElement> features) {\n \t\tList<ConceptQuery> cqWraps = features.stream().map(ConceptQuery::new).collect(Collectors.toList());\n \t\treturn createSubPlanFromQueries(cqWraps);\n \t}\n-\t\n+\n \tpublic static ArrayConceptQuery createSubPlanFromQueries(List<ConceptQuery> featureQueries) {\n \t\tArrayConceptQuery subQuery = new ArrayConceptQuery();\n \t\tsubQuery.setChildQueries(featureQueries);\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

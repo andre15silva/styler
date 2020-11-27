@@ -1,0 +1,76 @@
+{
+    "error_id": "782",
+    "information": {
+        "errors": [
+            {
+                "line": "13",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.engine.impl.bpmn.helper;\n\nimport org.activiti.engine.delegate.event.ActivitiEntityEvent;\nimport org.activiti.engine.delegate.event.ActivitiEvent;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/782/BaseDelegateEventListener.java\nindex 7fed9e1a61..316595ac17 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/782/BaseDelegateEventListener.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.bpmn.helper;\n \n import org.activiti.engine.delegate.event.ActivitiEntityEvent;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/782/BaseDelegateEventListener.java\nindex 7fed9e1a61..6d70245b8b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/782/BaseDelegateEventListener.java\n@@ -1,15 +1,16 @@\n /* Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- * \n+ *\n  *      http://www.apache.org/licenses/LICENSE-2.0\n- * \n+ *\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.bpmn.helper;\n \n import org.activiti.engine.delegate.event.ActivitiEntityEvent;\n@@ -18,31 +19,29 @@ import org.activiti.engine.delegate.event.ActivitiEventListener;\n \n /**\n  * Base implementation of a {@link ActivitiEventListener}, used when creating event-listeners that are part of a BPMN definition.\n- * \n-\n  */\n public abstract class BaseDelegateEventListener implements ActivitiEventListener {\n \n-  protected Class<?> entityClass;\n+    protected Class<?> entityClass;\n \n-  public void setEntityClass(Class<?> entityClass) {\n-    this.entityClass = entityClass;\n-  }\n+    public void setEntityClass(Class<?> entityClass) {\n+        this.entityClass = entityClass;\n+    }\n \n-  protected boolean isValidEvent(ActivitiEvent event) {\n-    boolean valid = false;\n-    if (entityClass != null) {\n-      if (event instanceof ActivitiEntityEvent) {\n-        Object entity = ((ActivitiEntityEvent) event).getEntity();\n-        if (entity != null) {\n-          valid = entityClass.isAssignableFrom(entity.getClass());\n+    protected boolean isValidEvent(ActivitiEvent event) {\n+        boolean valid = false;\n+        if (entityClass != null) {\n+            if (event instanceof ActivitiEntityEvent) {\n+                Object entity = ((ActivitiEntityEvent) event).getEntity();\n+                if (entity != null) {\n+                    valid = entityClass.isAssignableFrom(entity.getClass());\n+                }\n+            }\n+        } else {\n+            // If no class is specified, all events are valid\n+            valid = true;\n         }\n-      }\n-    } else {\n-      // If no class is specified, all events are valid\n-      valid = true;\n+        return valid;\n     }\n-    return valid;\n-  }\n \n }\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 44.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/782/BaseDelegateEventListener.java\nindex 7fed9e1a61..22ea140610 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/782/BaseDelegateEventListener.java\n@@ -21,28 +21,29 @@ import org.activiti.engine.delegate.event.ActivitiEventListener;\n  * \n \n  */\n-public abstract class BaseDelegateEventListener implements ActivitiEventListener {\n \n-  protected Class<?> entityClass;\n \n-  public void setEntityClass(Class<?> entityClass) {\n+public abstract class BaseDelegateEventListener implements ActivitiEventListener {\n+\n+    protected Class<?> entityClass;\n+    public void setEntityClass(Class<?> entityClass) {\n     this.entityClass = entityClass;\n-  }\n+    }\n \n-  protected boolean isValidEvent(ActivitiEvent event) {\n+    protected boolean isValidEvent(ActivitiEvent event) {\n     boolean valid = false;\n     if (entityClass != null) {\n-      if (event instanceof ActivitiEntityEvent) {\n-        Object entity = ((ActivitiEntityEvent) event).getEntity();\n-        if (entity != null) {\n-          valid = entityClass.isAssignableFrom(entity.getClass());\n+        if (event instanceof ActivitiEntityEvent) {\n+            Object entity = ((ActivitiEntityEvent) event).getEntity();\n+            if (entity != null) {\n+                valid = entityClass.isAssignableFrom(entity.getClass());\n+            }\n         }\n-      }\n     } else {\n       // If no class is specified, all events are valid\n-      valid = true;\n+        valid = true;\n     }\n     return valid;\n-  }\n+    }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/782/BaseDelegateEventListener.java\nindex 7fed9e1a61..316595ac17 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/782/BaseDelegateEventListener.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.bpmn.helper;\n \n import org.activiti.engine.delegate.event.ActivitiEntityEvent;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/782/BaseDelegateEventListener.java\nindex 7fed9e1a61..316595ac17 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/782/BaseDelegateEventListener.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/782/BaseDelegateEventListener.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.bpmn.helper;\n \n import org.activiti.engine.delegate.event.ActivitiEntityEvent;\n",
+            "diff_size": 1
+        }
+    ]
+}

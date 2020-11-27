@@ -1,0 +1,166 @@
+{
+    "error_id": "7",
+    "information": {
+        "errors": [
+            {
+                "line": "49",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 126).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    @AssertTrue(message = \"When Update Type is DIFFERENTIAL, either Add/Update or Delete list should not be empty\")\n    public boolean isValidWhenDifferential() {\n        return SendLocalListUpdateType.FULL.equals(updateType) || !getDeleteList().isEmpty() || !getAddUpdateList().isEmpty();\n    }\n\n    @AssertTrue(message = \"The Add/Update and Delete lists should have no elements in ocpp\")",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 164).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "48",
+                    "column": "46",
+                    "severity": "error",
+                    "message": "'{' at column 46 should have line break after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/7/SendLocalListParams.java\nindex a986a9f9ec..bb5af8709f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/7/SendLocalListParams.java\n@@ -45,26 +45,25 @@ public class SendLocalListParams extends MultipleChargePointSelect {\n     private List<String> addUpdateList;\n \n     @AssertTrue(message = \"When Update Type is DIFFERENTIAL, either Add/Update or Delete list should not be empty\")\n-    public boolean isValidWhenDifferential() {\n-        return SendLocalListUpdateType.FULL.equals(updateType) || !getDeleteList().isEmpty() || !getAddUpdateList().isEmpty();\n-    }\n+    public boolean isValidWhenDifferential() { returnSendLocalListUpdateType.FULL.equals(updateType) || !getDeleteList().isEmpty() || !getAddUpdateList().isEmpty();\n+}\n \n-    @AssertTrue(message = \"The Add/Update and Delete lists should have no elements in ocpp\")\n-    public boolean isDisjoint() {\n-        return Collections.disjoint(getDeleteList(), getAddUpdateList());\n-    }\n+@AssertTrue(message = \"The Add/Update and Delete lists should have no elements in ocpp\")\n+public boolean isDisjoint() {\n+    return Collections.disjoint(getDeleteList(), getAddUpdateList());\n+}\n \n-    public List<String> getDeleteList() {\n-        if (deleteList == null) {\n-            deleteList = new ArrayList<>();\n-        }\n-        return deleteList;\n+public List<String> getDeleteList() {\n+    if (deleteList == null) {\n+        deleteList = new ArrayList<>();\n     }\n+    return deleteList;\n+}\n \n-    public List<String> getAddUpdateList() {\n-        if (addUpdateList == null) {\n-            addUpdateList = new ArrayList<>();\n-        }\n-        return addUpdateList;\n+public List<String> getAddUpdateList() {\n+    if (addUpdateList == null) {\n+        addUpdateList = new ArrayList<>();\n     }\n+    return addUpdateList;\n+}\n }\n",
+            "diff_size": 21
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "50",
+                    "column": "94",
+                    "severity": "error",
+                    "message": "'||' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/7/SendLocalListParams.java\nindex a986a9f9ec..3a10b11491 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/7/SendLocalListParams.java\n@@ -16,6 +16,7 @@\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n  */\n+\n package de.rwth.idsg.steve.web.dto.ocpp;\n \n import lombok.Getter;\n@@ -46,7 +47,8 @@ public class SendLocalListParams extends MultipleChargePointSelect {\n \n     @AssertTrue(message = \"When Update Type is DIFFERENTIAL, either Add/Update or Delete list should not be empty\")\n     public boolean isValidWhenDifferential() {\n-        return SendLocalListUpdateType.FULL.equals(updateType) || !getDeleteList().isEmpty() || !getAddUpdateList().isEmpty();\n+        return SendLocalListUpdateType.FULL.equals(updateType) || !getDeleteList().isEmpty() ||\n+            !getAddUpdateList().isEmpty();\n     }\n \n     @AssertTrue(message = \"The Add/Update and Delete lists should have no elements in ocpp\")\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/7/SendLocalListParams.java\nindex a986a9f9ec..e7df1674dc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/7/SendLocalListParams.java\n@@ -15,8 +15,7 @@\n  *\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n- */\n-package de.rwth.idsg.steve.web.dto.ocpp;\n+ */package de.rwth.idsg.steve.web.dto.ocpp;\n \n import lombok.Getter;\n import lombok.Setter;\n@@ -67,4 +66,4 @@ public class SendLocalListParams extends MultipleChargePointSelect {\n         }\n         return addUpdateList;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/7/SendLocalListParams.java\nindex a986a9f9ec..534c50206f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/7/SendLocalListParams.java\n@@ -20,7 +20,6 @@ package de.rwth.idsg.steve.web.dto.ocpp;\n \n import lombok.Getter;\n import lombok.Setter;\n-\n import javax.validation.constraints.AssertTrue;\n import javax.validation.constraints.NotNull;\n import java.util.ArrayList;\n@@ -31,19 +30,18 @@ import java.util.List;\n  * @author Sevket Goekay <goekay@dbis.rwth-aachen.de>\n  * @since 03.01.2015\n  */\n+\n+\n @Setter\n @Getter\n public class SendLocalListParams extends MultipleChargePointSelect {\n \n     @NotNull(message = \"List version is required\")\n     private Integer listVersion;\n-\n     @NotNull(message = \"Update Type is required\")\n     private SendLocalListUpdateType updateType = SendLocalListUpdateType.FULL;\n-\n     private List<String> deleteList;\n     private List<String> addUpdateList;\n-\n     @AssertTrue(message = \"When Update Type is DIFFERENTIAL, either Add/Update or Delete list should not be empty\")\n     public boolean isValidWhenDifferential() {\n         return SendLocalListUpdateType.FULL.equals(updateType) || !getDeleteList().isEmpty() || !getAddUpdateList().isEmpty();\n@@ -67,4 +65,4 @@ public class SendLocalListParams extends MultipleChargePointSelect {\n         }\n         return addUpdateList;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "49",
+                    "column": "51",
+                    "severity": "error",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "64",
+                    "severity": "error",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "65",
+                    "severity": "error",
+                    "message": "'||' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "65",
+                    "severity": "error",
+                    "message": "'||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "50",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "50",
+                    "column": "19",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "50",
+                    "column": "21",
+                    "severity": "error",
+                    "message": "'||' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "50",
+                    "column": "21",
+                    "severity": "error",
+                    "message": "'||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "51",
+                    "column": "5",
+                    "severity": "error",
+                    "message": "';' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/7/SendLocalListParams.java\nindex a986a9f9ec..e0ea8c0cc5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/7/SendLocalListParams.java\n@@ -46,10 +46,12 @@ public class SendLocalListParams extends MultipleChargePointSelect {\n \n     @AssertTrue(message = \"When Update Type is DIFFERENTIAL, either Add/Update or Delete list should not be empty\")\n     public boolean isValidWhenDifferential() {\n-        return SendLocalListUpdateType.FULL.equals(updateType) || !getDeleteList().isEmpty() || !getAddUpdateList().isEmpty();\n-    }\n+        return SendLocalListUpdateType.FULL.equals( updateType )||!getDeleteList()\n+        . isEmpty ()||!getAddUpdateList().isEmpty()\n+    ;\n \n-    @AssertTrue(message = \"The Add/Update and Delete lists should have no elements in ocpp\")\n+        }\n+        @AssertTrue(message = \"The Add/Update and Delete lists should have no elements in ocpp\")\n     public boolean isDisjoint() {\n         return Collections.disjoint(getDeleteList(), getAddUpdateList());\n     }\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 164).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "48",
+                    "column": "46",
+                    "severity": "error",
+                    "message": "'{' at column 46 should have line break after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/7/SendLocalListParams.java\nindex a986a9f9ec..bb5af8709f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/7/SendLocalListParams.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/7/SendLocalListParams.java\n@@ -45,26 +45,25 @@ public class SendLocalListParams extends MultipleChargePointSelect {\n     private List<String> addUpdateList;\n \n     @AssertTrue(message = \"When Update Type is DIFFERENTIAL, either Add/Update or Delete list should not be empty\")\n-    public boolean isValidWhenDifferential() {\n-        return SendLocalListUpdateType.FULL.equals(updateType) || !getDeleteList().isEmpty() || !getAddUpdateList().isEmpty();\n-    }\n+    public boolean isValidWhenDifferential() { returnSendLocalListUpdateType.FULL.equals(updateType) || !getDeleteList().isEmpty() || !getAddUpdateList().isEmpty();\n+}\n \n-    @AssertTrue(message = \"The Add/Update and Delete lists should have no elements in ocpp\")\n-    public boolean isDisjoint() {\n-        return Collections.disjoint(getDeleteList(), getAddUpdateList());\n-    }\n+@AssertTrue(message = \"The Add/Update and Delete lists should have no elements in ocpp\")\n+public boolean isDisjoint() {\n+    return Collections.disjoint(getDeleteList(), getAddUpdateList());\n+}\n \n-    public List<String> getDeleteList() {\n-        if (deleteList == null) {\n-            deleteList = new ArrayList<>();\n-        }\n-        return deleteList;\n+public List<String> getDeleteList() {\n+    if (deleteList == null) {\n+        deleteList = new ArrayList<>();\n     }\n+    return deleteList;\n+}\n \n-    public List<String> getAddUpdateList() {\n-        if (addUpdateList == null) {\n-            addUpdateList = new ArrayList<>();\n-        }\n-        return addUpdateList;\n+public List<String> getAddUpdateList() {\n+    if (addUpdateList == null) {\n+        addUpdateList = new ArrayList<>();\n     }\n+    return addUpdateList;\n+}\n }\n",
+            "diff_size": 21
+        }
+    ]
+}

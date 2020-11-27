@@ -1,0 +1,260 @@
+{
+    "error_id": "58",
+    "information": {
+        "errors": [
+            {
+                "line": "61",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 100).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    if (obj instanceof TopicOffset) {\n      TopicOffset other = (TopicOffset) obj;\n      return other.partition == partition && other.offset == offset && other.watermark == watermark;\n    }\n    return false;\n  }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 100).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "64",
+                    "column": "69",
+                    "severity": "error",
+                    "message": "'&&' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/58/TopicOffset.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/58/TopicOffset.java\nindex 9c7f6e4475..a57623cc92 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/58/TopicOffset.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/58/TopicOffset.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.direct.kafka;\n \n import cz.o2.proxima.direct.commitlog.Offset;\n@@ -28,8 +29,10 @@ class TopicOffset implements Offset {\n \n   // map of partitionId -> committed offset\n   private final int partition;\n-  @Getter private final long offset;\n-  @Getter private final long watermark;\n+  @Getter\n+  private final long offset;\n+  @Getter\n+  private final long watermark;\n \n   TopicOffset(int partition, long offset, long watermark) {\n     this.partition = partition;\n@@ -58,7 +61,8 @@ class TopicOffset implements Offset {\n   public boolean equals(Object obj) {\n     if (obj instanceof TopicOffset) {\n       TopicOffset other = (TopicOffset) obj;\n-      return other.partition == partition && other.offset == offset && other.watermark == watermark;\n+      return other.partition == partition && other.offset == offset &&\n+          other.watermark == watermark;\n     }\n     return false;\n   }\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 100).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/58/TopicOffset.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/58/TopicOffset.java\nindex 9c7f6e4475..ede136ccf6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/58/TopicOffset.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/58/TopicOffset.java\n@@ -25,7 +25,6 @@ import lombok.Getter;\n \n /** Offset used in bulk consumption. */\n class TopicOffset implements Offset {\n-\n   // map of partitionId -> committed offset\n   private final int partition;\n   @Getter private final long offset;\n@@ -69,10 +68,9 @@ class TopicOffset implements Offset {\n   }\n \n   static List<TopicOffset> fromMap(Map<Integer, Long> offsetMap, long watermark) {\n-    return offsetMap\n-        .entrySet()\n+    return offsetMap.entrySet()\n         .stream()\n         .map(e -> new TopicOffset(e.getKey(), e.getValue(), watermark))\n         .collect(Collectors.toList());\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 33.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 100).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "64",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '&&' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "64",
+                    "column": "69",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '&&' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 94).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/58/TopicOffset.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/58/TopicOffset.java\nindex 9c7f6e4475..2b3f4335ca 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/58/TopicOffset.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/58/TopicOffset.java\n@@ -24,55 +24,56 @@ import java.util.stream.Collectors;\n import lombok.Getter;\n \n /** Offset used in bulk consumption. */\n+\n+\n class TopicOffset implements Offset {\n \n   // map of partitionId -> committed offset\n-  private final int partition;\n-  @Getter private final long offset;\n-  @Getter private final long watermark;\n \n-  TopicOffset(int partition, long offset, long watermark) {\n+    private final int partition;\n+\n+    @Getter private final long offset;\n+\n+    @Getter private final long watermark;\n+\n+    TopicOffset(int partition, long offset, long watermark) {\n     this.partition = partition;\n     this.offset = offset;\n     this.watermark = watermark;\n-  }\n+    }\n \n-  @Override\n-  public String toString() {\n-    return \"TopicOffset(\"\n-        + \"partition=\"\n-        + partition\n-        + \", offset=\"\n-        + offset\n-        + \", watermark=\"\n-        + watermark\n-        + \")\";\n-  }\n+    @Override\n+    public String toString() {\n+    return \"TopicOffset(\" + \"partition=\"\n+    + partition\n+    + \", offset=\"\n+    + offset\n+    + \", watermark=\"\n+    + watermark + \")\";\n+    }\n \n-  @Override\n-  public Partition getPartition() {\n+    @Override\n+    public Partition getPartition() {\n     return () -> partition;\n-  }\n+    }\n \n-  @Override\n-  public boolean equals(Object obj) {\n+    @Override\n+    public boolean equals(Object obj) {\n     if (obj instanceof TopicOffset) {\n-      TopicOffset other = (TopicOffset) obj;\n-      return other.partition == partition && other.offset == offset && other.watermark == watermark;\n+        TopicOffset other = (TopicOffset) obj;\n+        return other.partition == partition&& other.offset == offset&& other.watermark == watermark;\n     }\n     return false;\n-  }\n+    }\n \n-  @Override\n-  public int hashCode() {\n+    @Override\n+    public int hashCode() {\n     return Objects.hash(partition, offset, watermark);\n-  }\n+    }\n \n-  static List<TopicOffset> fromMap(Map<Integer, Long> offsetMap, long watermark) {\n-    return offsetMap\n-        .entrySet()\n-        .stream()\n-        .map(e -> new TopicOffset(e.getKey(), e.getValue(), watermark))\n-        .collect(Collectors.toList());\n-  }\n-}\n+    static List<TopicOffset> fromMap(Map<Integer, Long> offsetMap, long watermark) {\n+    return offsetMap.entrySet().stream()\n+                               .map(e -> new TopicOffset(e.getKey(), e.getValue(), watermark))\n+                               .collect(Collectors.toList());\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 43
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 99).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "61",
+                    "column": "29",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '==' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/58/TopicOffset.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/58/TopicOffset.java\nindex 9c7f6e4475..d58ed03338 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/58/TopicOffset.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/58/TopicOffset.java\n@@ -58,7 +58,7 @@ class TopicOffset implements Offset {\n   public boolean equals(Object obj) {\n     if (obj instanceof TopicOffset) {\n       TopicOffset other = (TopicOffset) obj;\n-      return other.partition == partition && other.offset == offset && other.watermark == watermark;\n+      return other.partition== partition && other.offset == offset && other.watermark == watermark;\n     }\n     return false;\n   }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 100).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,114 @@
+{
+    "error_id": "0",
+    "information": {
+        "errors": [
+            {
+                "line": "66",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "        if (!rows.hasNext()) {\n            return ValueBoolean.get(all);\n        } else if (l.containsNull()) { //\u5982\u679cleft\u662fnull\uff0c\u90a3\u4e48\u8fd4\u56denull\n            return ValueNull.INSTANCE;\n        }\n        if (!database.getSettings().optimizeInSelect) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "66",
+                    "column": "10",
+                    "severity": "warning",
+                    "message": "'else' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/0/ConditionInQuery.java\nindex 0398c46524..9a2f3e3b1f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/0/ConditionInQuery.java\n@@ -63,7 +63,7 @@ public class ConditionInQuery extends PredicateWithSubquery {\n         Value l = left.getValue(session);\n         if (!rows.hasNext()) {\n             return ValueBoolean.get(all);\n-        } else if (l.containsNull()) { //\u5982\u679cleft\u662fnull\uff0c\u90a3\u4e48\u8fd4\u56denull\n+        }else if (l.containsNull()) { //\u5982\u679cleft\u662fnull\uff0c\u90a3\u4e48\u8fd4\u56denull\n             return ValueNull.INSTANCE;\n         }\n         if (!database.getSettings().optimizeInSelect) {\n@@ -96,7 +96,7 @@ public class ConditionInQuery extends PredicateWithSubquery {\n             }\n             //\u628aleft\u7684\u503c\u8f6c\u6210\u7ed3\u679c\u96c6\u4e2d\u7b2c\u4e00\u5217\u7684\u7c7b\u578b\uff0c\u7136\u540e\u5224\u65ad\u7ed3\u679c\u96c6\u4e2d\u662f\u5426\u5305\u542b\u5b83\uff0c\u8fd4\u56detrue\n             l = l.convertTo(colType, database.getMode(), null);\n-            if (rows.containsDistinct(new Value[] { l })) { \n+            if (rows.containsDistinct(new Value[] { l })) {\n                 return ValueBoolean.TRUE;\n             }\n         }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/0/ConditionInQuery.java\nindex 0398c46524..397632fadc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/0/ConditionInQuery.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (https://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.expression.condition;\n \n import org.h2.api.ErrorCode;\n@@ -96,7 +97,7 @@ public class ConditionInQuery extends PredicateWithSubquery {\n             }\n             //\u628aleft\u7684\u503c\u8f6c\u6210\u7ed3\u679c\u96c6\u4e2d\u7b2c\u4e00\u5217\u7684\u7c7b\u578b\uff0c\u7136\u540e\u5224\u65ad\u7ed3\u679c\u96c6\u4e2d\u662f\u5426\u5305\u542b\u5b83\uff0c\u8fd4\u56detrue\n             l = l.convertTo(colType, database.getMode(), null);\n-            if (rows.containsDistinct(new Value[] { l })) { \n+            if (rows.containsDistinct(new Value[] {l})) {\n                 return ValueBoolean.TRUE;\n             }\n         }\n@@ -139,7 +140,7 @@ public class ConditionInQuery extends PredicateWithSubquery {\n     private Value compare(Value l, ResultInterface rows) {\n         Value[] currentRow = rows.currentRow();\n         Value r = l.getValueType() != Value.ROW && query.getColumnCount() == 1 ? currentRow[0]\n-                : ValueRow.get(currentRow);\n+            : ValueRow.get(currentRow);\n         return Comparison.compare(database, l, r, compareType);\n     }\n \n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/0/ConditionInQuery.java\nindex 0398c46524..4c1f5951f7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/0/ConditionInQuery.java\n@@ -27,6 +27,8 @@ import org.h2.value.ValueRow;\n /**\n  * An IN() condition with a subquery, as in WHERE ID IN(SELECT ...)\n  */\n+\n+\n public class ConditionInQuery extends PredicateWithSubquery {\n \n     private final Database database;\n@@ -96,7 +98,7 @@ public class ConditionInQuery extends PredicateWithSubquery {\n             }\n             //\u628aleft\u7684\u503c\u8f6c\u6210\u7ed3\u679c\u96c6\u4e2d\u7b2c\u4e00\u5217\u7684\u7c7b\u578b\uff0c\u7136\u540e\u5224\u65ad\u7ed3\u679c\u96c6\u4e2d\u662f\u5426\u5305\u542b\u5b83\uff0c\u8fd4\u56detrue\n             l = l.convertTo(colType, database.getMode(), null);\n-            if (rows.containsDistinct(new Value[] { l })) { \n+            if (rows.containsDistinct(new Value[] { l })) {\n                 return ValueBoolean.TRUE;\n             }\n         }\n@@ -138,8 +140,7 @@ public class ConditionInQuery extends PredicateWithSubquery {\n \n     private Value compare(Value l, ResultInterface rows) {\n         Value[] currentRow = rows.currentRow();\n-        Value r = l.getValueType() != Value.ROW && query.getColumnCount() == 1 ? currentRow[0]\n-                : ValueRow.get(currentRow);\n+        Value r = l.getValueType() != Value.ROW && query.getColumnCount() == 1 ? currentRow[0] : ValueRow.get(currentRow);\n         return Comparison.compare(database, l, r, compareType);\n     }\n \n@@ -175,14 +176,12 @@ public class ConditionInQuery extends PredicateWithSubquery {\n         builder.append('(');\n         left.getSQL(builder, alwaysQuote).append(' ');\n         if (all) {\n-            builder.append(Comparison.getCompareOperator(compareType)).\n-                append(\" ALL\");\n+            builder.append(Comparison.getCompareOperator(compareType)).append(\" ALL\");\n         } else {\n             if (compareType == Comparison.EQUAL) {\n                 builder.append(\"IN\");\n             } else {\n-                builder.append(Comparison.getCompareOperator(compareType)).\n-                    append(\" ANY\");\n+                builder.append(Comparison.getCompareOperator(compareType)).append(\" ANY\");\n             }\n         }\n         return super.getSQL(builder, alwaysQuote).append(')');\n@@ -232,4 +231,4 @@ public class ConditionInQuery extends PredicateWithSubquery {\n         filter.addIndexCondition(IndexCondition.getInQuery(l, query));\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "66",
+                    "column": "23",
+                    "severity": "warning",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "66",
+                    "column": "43",
+                    "severity": "warning",
+                    "message": "'{' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/0/ConditionInQuery.java\nindex 0398c46524..2b4f98f086 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/0/ConditionInQuery.java\n@@ -63,96 +63,97 @@ public class ConditionInQuery extends PredicateWithSubquery {\n         Value l = left.getValue(session);\n         if (!rows.hasNext()) {\n             return ValueBoolean.get(all);\n-        } else if (l.containsNull()) { //\u5982\u679cleft\u662fnull\uff0c\u90a3\u4e48\u8fd4\u56denull\n-            return ValueNull.INSTANCE;\n-        }\n-        if (!database.getSettings().optimizeInSelect) {\n-            return getValueSlow(rows, l);\n-        }\n-        if (all || compareType != Comparison.EQUAL) {\n-            return getValueSlow(rows, l);\n-        }\n-        // \u4e0b\u9762\u4ee3\u7801\u662f\u5904\u7406\u975eall\uff0c\u4e14\u662fEQUAL\u6216EQUAL_NULL_SAFE\u7684\u60c5\u51b5\n-\n-        // \u83b7\u5f97\u7ed3\u679c\u96c6\u4e2d\u7b2c\u4e00\u5217\u7684\u7c7b\u578b\n-        int columnCount = query.getColumnCount();\n-        if (columnCount != 1) {\n-            l = l.convertTo(Value.ROW);\n-            Value[] leftValue = ((ValueRow) l).getList();\n-            if (columnCount == leftValue.length && rows.containsDistinct(leftValue)) {\n-                return ValueBoolean.TRUE;\n-            }\n-        } else {\n-            TypeInfo colType = rows.getColumnType(0);\n-            if (colType.getValueType() == Value.NULL) {\n-                return ValueNull.INSTANCE;\n-            }\n-            if (l.getValueType() == Value.ROW) {\n-                Value[] leftList = ((ValueRow) l).getList();\n-                if (leftList.length != 1) {\n-                    throw DbException.get(ErrorCode.COLUMN_COUNT_DOES_NOT_MATCH);\n-                }\n-                l = leftList[0];\n-            }\n-            //\u628aleft\u7684\u503c\u8f6c\u6210\u7ed3\u679c\u96c6\u4e2d\u7b2c\u4e00\u5217\u7684\u7c7b\u578b\uff0c\u7136\u540e\u5224\u65ad\u7ed3\u679c\u96c6\u4e2d\u662f\u5426\u5305\u542b\u5b83\uff0c\u8fd4\u56detrue\n-            l = l.convertTo(colType, database.getMode(), null);\n-            if (rows.containsDistinct(new Value[] { l })) { \n-                return ValueBoolean.TRUE;\n-            }\n-        }\n-        //\u7ed3\u679c\u96c6\u4e2d\u4e0d\u5305\u542bleft\u4e14\u6709null\uff0c\u90a3\u4e48\u8fd4\u56denull\n-        if (rows.containsNull()) {\n-            return ValueNull.INSTANCE;\n-        }\n-        return ValueBoolean.FALSE;\n-    }\n-\n-    private Value getValueSlow(ResultInterface rows, Value l) {\n-        // this only returns the correct result if the result has at least one\n-        // row, and if l is not null\n-        boolean hasNull = false;\n-        if (all) {\n-            while (rows.next()) {\n-                Value cmp = compare(l, rows);\n-                if (cmp == ValueNull.INSTANCE) {\n-                    hasNull = true;\n-                } else if (cmp == ValueBoolean.FALSE) {\n-                    return cmp;\n-                }\n-            }\n-        } else {\n-            while (rows.next()) {\n-                Value cmp = compare(l, rows);\n-                if (cmp == ValueNull.INSTANCE) {\n-                    hasNull = true;\n-                } else if (cmp == ValueBoolean.TRUE) {\n-                    return cmp;\n-                }\n-            }\n-        }\n-        if (hasNull) {\n-            return ValueNull.INSTANCE;\n-        }\n-        return ValueBoolean.get(all);\n-    }\n-\n-    private Value compare(Value l, ResultInterface rows) {\n-        Value[] currentRow = rows.currentRow();\n-        Value r = l.getValueType() != Value.ROW && query.getColumnCount() == 1 ? currentRow[0]\n-                : ValueRow.get(currentRow);\n-        return Comparison.compare(database, l, r, compareType);\n-    }\n-\n-    @Override\n-    public void mapColumns(ColumnResolver resolver, int level, int state) {\n-        left.mapColumns(resolver, level, state);\n-        super.mapColumns(resolver, level, state);\n-    }\n-\n-    @Override\n-    public Expression optimize(Session session) {\n-        left = left.optimize(session);\n-        return super.optimize(session);\n+            } else if ( l.containsNull()) {//\u5982\u679cleft\u662fnull\uff0c\u90a3\u4e48\u8fd4\u56denull return\n+                ValueNull\n+            .INSTANCE;\n+     }\n+     if (!database.getSettings().optimizeInSelect) {\n+         return getValueSlow(rows, l);\n+     }\n+     if (all || compareType != Comparison.EQUAL) {\n+         return getValueSlow(rows, l);\n+     }\n+     // \u4e0b\u9762\u4ee3\u7801\u662f\u5904\u7406\u975eall\uff0c\u4e14\u662fEQUAL\u6216EQUAL_NULL_SAFE\u7684\u60c5\u51b5\n+\n+     // \u83b7\u5f97\u7ed3\u679c\u96c6\u4e2d\u7b2c\u4e00\u5217\u7684\u7c7b\u578b\n+     int columnCount = query.getColumnCount();\n+     if (columnCount != 1) {\n+         l = l.convertTo(Value.ROW);\n+         Value[] leftValue = ((ValueRow) l).getList();\n+         if (columnCount == leftValue.length && rows.containsDistinct(leftValue)) {\n+             return ValueBoolean.TRUE;\n+         }\n+     } else {\n+         TypeInfo colType = rows.getColumnType(0);\n+         if (colType.getValueType() == Value.NULL) {\n+             return ValueNull.INSTANCE;\n+         }\n+         if (l.getValueType() == Value.ROW) {\n+             Value[] leftList = ((ValueRow) l).getList();\n+             if (leftList.length != 1) {\n+                 throw DbException.get(ErrorCode.COLUMN_COUNT_DOES_NOT_MATCH);\n+             }\n+             l = leftList[0];\n+         }\n+         //\u628aleft\u7684\u503c\u8f6c\u6210\u7ed3\u679c\u96c6\u4e2d\u7b2c\u4e00\u5217\u7684\u7c7b\u578b\uff0c\u7136\u540e\u5224\u65ad\u7ed3\u679c\u96c6\u4e2d\u662f\u5426\u5305\u542b\u5b83\uff0c\u8fd4\u56detrue\n+         l = l.convertTo(colType, database.getMode(), null);\n+         if (rows.containsDistinct(new Value[] { l })) {\n+             return ValueBoolean.TRUE;\n+         }\n+     }\n+     //\u7ed3\u679c\u96c6\u4e2d\u4e0d\u5305\u542bleft\u4e14\u6709null\uff0c\u90a3\u4e48\u8fd4\u56denull\n+     if (rows.containsNull()) {\n+         return ValueNull.INSTANCE;\n+     }\n+     return ValueBoolean.FALSE;\n+ }\n+\n+ private Value getValueSlow(ResultInterface rows, Value l) {\n+     // this only returns the correct result if the result has at least one\n+     // row, and if l is not null\n+     boolean hasNull = false;\n+     if (all) {\n+         while (rows.next()) {\n+             Value cmp = compare(l, rows);\n+             if (cmp == ValueNull.INSTANCE) {\n+                 hasNull = true;\n+             } else if (cmp == ValueBoolean.FALSE) {\n+                 return cmp;\n+             }\n+         }\n+     } else {\n+         while (rows.next()) {\n+             Value cmp = compare(l, rows);\n+             if (cmp == ValueNull.INSTANCE) {\n+                 hasNull = true;\n+             } else if (cmp == ValueBoolean.TRUE) {\n+                 return cmp;\n+             }\n+         }\n+     }\n+     if (hasNull) {\n+         return ValueNull.INSTANCE;\n+     }\n+     return ValueBoolean.get(all);\n+ }\n+\n+ private Value compare(Value l, ResultInterface rows) {\n+     Value[] currentRow = rows.currentRow();\n+     Value r = l.getValueType() != Value.ROW && query.getColumnCount() == 1 ? currentRow[0]\n+             : ValueRow.get(currentRow);\n+     return Comparison.compare(database, l, r, compareType);\n+ }\n+\n+ @Override\n+ public void mapColumns(ColumnResolver resolver, int level, int state) {\n+     left.mapColumns(resolver, level, state);\n+     super.mapColumns(resolver, level, state);\n+ }\n+\n+ @Override\n+ public Expression optimize(Session session) {\n+     left = left.optimize(session);\n+     return super.optimize(session);\n \n //\u65e9\u671f\u7684\u7248\u672cConditionInSelect\u6709\u4e0b\u9762\u8fd9\u4e2a\u5224\u65ad\n //      //\u5982where id in(select id,name from ConditionInSelectTest where id=3)\n",
+            "diff_size": 91
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "66",
+                    "column": "10",
+                    "severity": "warning",
+                    "message": "'else' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/0/ConditionInQuery.java\nindex 0398c46524..9a2f3e3b1f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/0/ConditionInQuery.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/0/ConditionInQuery.java\n@@ -63,7 +63,7 @@ public class ConditionInQuery extends PredicateWithSubquery {\n         Value l = left.getValue(session);\n         if (!rows.hasNext()) {\n             return ValueBoolean.get(all);\n-        } else if (l.containsNull()) { //\u5982\u679cleft\u662fnull\uff0c\u90a3\u4e48\u8fd4\u56denull\n+        }else if (l.containsNull()) { //\u5982\u679cleft\u662fnull\uff0c\u90a3\u4e48\u8fd4\u56denull\n             return ValueNull.INSTANCE;\n         }\n         if (!database.getSettings().optimizeInSelect) {\n@@ -96,7 +96,7 @@ public class ConditionInQuery extends PredicateWithSubquery {\n             }\n             //\u628aleft\u7684\u503c\u8f6c\u6210\u7ed3\u679c\u96c6\u4e2d\u7b2c\u4e00\u5217\u7684\u7c7b\u578b\uff0c\u7136\u540e\u5224\u65ad\u7ed3\u679c\u96c6\u4e2d\u662f\u5426\u5305\u542b\u5b83\uff0c\u8fd4\u56detrue\n             l = l.convertTo(colType, database.getMode(), null);\n-            if (rows.containsDistinct(new Value[] { l })) { \n+            if (rows.containsDistinct(new Value[] { l })) {\n                 return ValueBoolean.TRUE;\n             }\n         }\n",
+            "diff_size": 2
+        }
+    ]
+}

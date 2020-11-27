@@ -1,0 +1,73 @@
+{
+    "error_id": "12",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "column": "9",
+                "severity": "error",
+                "message": "'if' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "        Document updateOperations = toDocument();\n        final Document queryObject = query.prepareQuery();\n        if(getDatastore().getSession() != null) {\n            return options.isMulti()\n                   ? mongoCollection.updateMany(getDatastore().getSession(), queryObject, updateOperations, options)\n                   : mongoCollection.updateOne(getDatastore().getSession(), queryObject, updateOperations, options);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler/12/Update.java\nindex ddb62723e3..d9f5dd9943 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler/12/Update.java\n@@ -42,7 +42,7 @@ public class Update<T> extends UpdateBase<T, Update<T>> {\n         MongoCollection mongoCollection = getDatastore().enforceWriteConcern(collection, getType(), options.getWriteConcern());\n         Document updateOperations = toDocument();\n         final Document queryObject = query.prepareQuery();\n-        if(getDatastore().getSession() != null) {\n+        if (getDatastore().getSession() != null) {\n             return options.isMulti()\n                    ? mongoCollection.updateMany(getDatastore().getSession(), queryObject, updateOperations, options)\n                    : mongoCollection.updateOne(getDatastore().getSession(), queryObject, updateOperations, options);\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/intellij/12/Update.java\nindex ddb62723e3..5e385e7793 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/intellij/12/Update.java\n@@ -42,15 +42,15 @@ public class Update<T> extends UpdateBase<T, Update<T>> {\n         MongoCollection mongoCollection = getDatastore().enforceWriteConcern(collection, getType(), options.getWriteConcern());\n         Document updateOperations = toDocument();\n         final Document queryObject = query.prepareQuery();\n-        if(getDatastore().getSession() != null) {\n+        if (getDatastore().getSession() != null) {\n             return options.isMulti()\n-                   ? mongoCollection.updateMany(getDatastore().getSession(), queryObject, updateOperations, options)\n-                   : mongoCollection.updateOne(getDatastore().getSession(), queryObject, updateOperations, options);\n+                ? mongoCollection.updateMany(getDatastore().getSession(), queryObject, updateOperations, options)\n+                : mongoCollection.updateOne(getDatastore().getSession(), queryObject, updateOperations, options);\n \n         } else {\n             return options.isMulti()\n-                   ? mongoCollection.updateMany(queryObject, updateOperations, options)\n-                   : mongoCollection.updateOne(queryObject, updateOperations, options);\n+                ? mongoCollection.updateMany(queryObject, updateOperations, options)\n+                : mongoCollection.updateOne(queryObject, updateOperations, options);\n         }\n     }\n }\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "21",
+                    "severity": "error",
+                    "message": "'ctor def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/naturalize/12/Update.java\nindex ddb62723e3..de21d6ac95 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/naturalize/12/Update.java\n@@ -18,7 +18,7 @@ public class Update<T> extends UpdateBase<T, Update<T>> {\n \n     Update(final Datastore datastore, final Mapper mapper, final Class<T> clazz, final MongoCollection<T> collection,\n            final QueryImpl query) {\n-        super(datastore, mapper, clazz);\n+    super(datastore, mapper, clazz);\n         this.collection = collection;\n         this.query = query;\n     }\n@@ -42,15 +42,14 @@ public class Update<T> extends UpdateBase<T, Update<T>> {\n         MongoCollection mongoCollection = getDatastore().enforceWriteConcern(collection, getType(), options.getWriteConcern());\n         Document updateOperations = toDocument();\n         final Document queryObject = query.prepareQuery();\n-        if(getDatastore().getSession() != null) {\n+        if (getDatastore().getSession() != null) {\n             return options.isMulti()\n                    ? mongoCollection.updateMany(getDatastore().getSession(), queryObject, updateOperations, options)\n                    : mongoCollection.updateOne(getDatastore().getSession(), queryObject, updateOperations, options);\n-\n-        } else {\n+    } else {\n             return options.isMulti()\n                    ? mongoCollection.updateMany(queryObject, updateOperations, options)\n                    : mongoCollection.updateOne(queryObject, updateOperations, options);\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_random/12/Update.java\nindex ddb62723e3..d9f5dd9943 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_random/12/Update.java\n@@ -42,7 +42,7 @@ public class Update<T> extends UpdateBase<T, Update<T>> {\n         MongoCollection mongoCollection = getDatastore().enforceWriteConcern(collection, getType(), options.getWriteConcern());\n         Document updateOperations = toDocument();\n         final Document queryObject = query.prepareQuery();\n-        if(getDatastore().getSession() != null) {\n+        if (getDatastore().getSession() != null) {\n             return options.isMulti()\n                    ? mongoCollection.updateMany(getDatastore().getSession(), queryObject, updateOperations, options)\n                    : mongoCollection.updateOne(getDatastore().getSession(), queryObject, updateOperations, options);\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "60",
+                    "severity": "error",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_three_grams/12/Update.java\nindex ddb62723e3..9c23782f95 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/12/Update.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_three_grams/12/Update.java\n@@ -41,8 +41,7 @@ public class Update<T> extends UpdateBase<T, Update<T>> {\n     public UpdateResult execute(final UpdateOptions options) {\n         MongoCollection mongoCollection = getDatastore().enforceWriteConcern(collection, getType(), options.getWriteConcern());\n         Document updateOperations = toDocument();\n-        final Document queryObject = query.prepareQuery();\n-        if(getDatastore().getSession() != null) {\n+        final Document queryObject = query.prepareQuery(); if(getDatastore().getSession() != null) {\n             return options.isMulti()\n                    ? mongoCollection.updateMany(getDatastore().getSession(), queryObject, updateOperations, options)\n                    : mongoCollection.updateOne(getDatastore().getSession(), queryObject, updateOperations, options);\n",
+            "diff_size": 2
+        }
+    ]
+}

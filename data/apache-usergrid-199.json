@@ -1,0 +1,67 @@
+{
+    "error_id": "199",
+    "information": {
+        "errors": [
+            {
+                "line": "58",
+                "column": "43",
+                "severity": "warning",
+                "message": "'{' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "\n\n    public Entity post(Entity userPayload){\n        WebResource resource = getResource(true);\n//TODO: need to parse the specific response gotten for admin entities. It is different from regular entities.\n        ApiResponse response = resource.type( MediaType.APPLICATION_JSON_TYPE )",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler/199/UsersResource.java\nindex 7a9e5ddb80..9172164e9d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler/199/UsersResource.java\n@@ -55,7 +55,7 @@ public class UsersResource extends NamedResource {\n     }\n \n \n-    public Entity post(Entity userPayload){\n+    public Entity post(Entity userPayload) {\n         WebResource resource = getResource(true);\n //TODO: need to parse the specific response gotten for admin entities. It is different from regular entities.\n         ApiResponse response = resource.type( MediaType.APPLICATION_JSON_TYPE )\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/199/UsersResource.java\nindex 7a9e5ddb80..09eff1acb6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/199/UsersResource.java\n@@ -35,32 +35,33 @@ import com.sun.jersey.api.client.WebResource;\n  * Example: /management/orgs/org_name/users\n  */\n public class UsersResource extends NamedResource {\n-    public UsersResource( final ClientContext context, final UrlResource parent ) {\n-        super( \"users\", context, parent );\n-    }\n+  public UsersResource(final ClientContext context, final UrlResource parent) {\n+    super(\"users\", context, parent);\n+  }\n \n \n-    /**\n-     * Should this be here? this would facilitate calling the entity endpoint as a way to get/put things\n-     * @param identifier\n-     * @return\n-     */\n-    //TODO: See if this should be reused here or if we should rename it to something else.\n-    public EntityEndpoint entity(String identifier) {\n-        return new EntityEndpoint(identifier, context, this);\n-    }\n+  /**\n+   * Should this be here? this would facilitate calling the entity endpoint as a way to get/put things\n+   *\n+   * @param identifier\n+   * @return\n+   */\n+  //TODO: See if this should be reused here or if we should rename it to something else.\n+  public EntityEndpoint entity(String identifier) {\n+    return new EntityEndpoint(identifier, context, this);\n+  }\n \n-    public UserResource user(String identifier) {\n-        return new UserResource( identifier, context, this );\n-    }\n+  public UserResource user(String identifier) {\n+    return new UserResource(identifier, context, this);\n+  }\n \n \n-    public Entity post(Entity userPayload){\n-        WebResource resource = getResource(true);\n+  public Entity post(Entity userPayload) {\n+    WebResource resource = getResource(true);\n //TODO: need to parse the specific response gotten for admin entities. It is different from regular entities.\n-        ApiResponse response = resource.type( MediaType.APPLICATION_JSON_TYPE )\n-                .accept( MediaType.APPLICATION_JSON ).post( ApiResponse.class, userPayload);\n-        return new Entity(response);\n-    }\n+    ApiResponse response = resource.type(MediaType.APPLICATION_JSON_TYPE)\n+        .accept(MediaType.APPLICATION_JSON).post(ApiResponse.class, userPayload);\n+    return new Entity(response);\n+  }\n \n }\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "65",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/199/UsersResource.java\nindex 7a9e5ddb80..2ed9357da6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/199/UsersResource.java\n@@ -19,14 +19,12 @@ package org.apache.usergrid.rest.test.resource2point0.endpoints.mgmt;\n \n \n import javax.ws.rs.core.MediaType;\n-\n import org.apache.usergrid.rest.test.resource2point0.endpoints.EntityEndpoint;\n import org.apache.usergrid.rest.test.resource2point0.endpoints.NamedResource;\n import org.apache.usergrid.rest.test.resource2point0.endpoints.UrlResource;\n import org.apache.usergrid.rest.test.resource2point0.model.ApiResponse;\n import org.apache.usergrid.rest.test.resource2point0.model.Entity;\n import org.apache.usergrid.rest.test.resource2point0.state.ClientContext;\n-\n import com.sun.jersey.api.client.WebResource;\n \n \n@@ -34,7 +32,10 @@ import com.sun.jersey.api.client.WebResource;\n  * Handles calls to the users management endpoint\n  * Example: /management/orgs/org_name/users\n  */\n+\n+\n public class UsersResource extends NamedResource {\n+\n     public UsersResource( final ClientContext context, final UrlResource parent ) {\n         super( \"users\", context, parent );\n     }\n@@ -46,21 +47,22 @@ public class UsersResource extends NamedResource {\n      * @return\n      */\n     //TODO: See if this should be reused here or if we should rename it to something else.\n-    public EntityEndpoint entity(String identifier) {\n-        return new EntityEndpoint(identifier, context, this);\n+\n+\n+    public EntityEndpoint entity( String identifier ) {\n+        return new EntityEndpoint( identifier, context, this );\n     }\n \n-    public UserResource user(String identifier) {\n+\n+    public UserResource user( String identifier ) {\n         return new UserResource( identifier, context, this );\n     }\n \n \n-    public Entity post(Entity userPayload){\n-        WebResource resource = getResource(true);\n+    public Entity post( Entity userPayload ) {\n+        WebResource resource = getResource( true );\n //TODO: need to parse the specific response gotten for admin entities. It is different from regular entities.\n-        ApiResponse response = resource.type( MediaType.APPLICATION_JSON_TYPE )\n-                .accept( MediaType.APPLICATION_JSON ).post( ApiResponse.class, userPayload);\n-        return new Entity(response);\n+        ApiResponse response = resource.type( MediaType.APPLICATION_JSON_TYPE ).accept( MediaType.APPLICATION_JSON ).post( ApiResponse.class, userPayload );\n+        return new Entity( response );\n     }\n-\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 18
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_random/199/UsersResource.java\nindex 7a9e5ddb80..9172164e9d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_random/199/UsersResource.java\n@@ -55,7 +55,7 @@ public class UsersResource extends NamedResource {\n     }\n \n \n-    public Entity post(Entity userPayload){\n+    public Entity post(Entity userPayload) {\n         WebResource resource = getResource(true);\n //TODO: need to parse the specific response gotten for admin entities. It is different from regular entities.\n         ApiResponse response = resource.type( MediaType.APPLICATION_JSON_TYPE )\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "59",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "'{' at column 5 should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/199/UsersResource.java\nindex 7a9e5ddb80..272cee06ba 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/199/UsersResource.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/199/UsersResource.java\n@@ -55,7 +55,8 @@ public class UsersResource extends NamedResource {\n     }\n \n \n-    public Entity post(Entity userPayload){\n+    public Entity post(Entity userPayload)\n+    {\n         WebResource resource = getResource(true);\n //TODO: need to parse the specific response gotten for admin entities. It is different from regular entities.\n         ApiResponse response = resource.type( MediaType.APPLICATION_JSON_TYPE )\n",
+            "diff_size": 2
+        }
+    ]
+}

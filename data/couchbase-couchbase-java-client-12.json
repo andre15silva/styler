@@ -1,0 +1,206 @@
+{
+    "error_id": "12",
+    "information": {
+        "errors": [
+            {
+                "line": "46",
+                "column": "105",
+                "severity": "warning",
+                "message": "'+' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "            }\n        } else {\n            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non \" +\n                \"JsonStringDocument id \" + id + \", could not decode.\");\n        }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "46",
+                    "column": "105",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "47",
+                    "column": "105",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/12/JsonStringTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/intellij/12/JsonStringTranscoder.java\nindex 9cde378842..060bd10fa0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/12/JsonStringTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/intellij/12/JsonStringTranscoder.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package com.couchbase.client.java.transcoder;\n \n import com.couchbase.client.core.lang.Tuple;\n@@ -34,7 +35,7 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n \n     @Override\n     protected JsonStringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+                                          ResponseStatus status) throws Exception {\n         String decoded = content.toString(CharsetUtil.UTF_8);\n         if (TranscoderUtils.hasCommonFlags(flags) && flags == TranscoderUtils.JSON_COMMON_FLAGS) {\n             decoded = decoded.substring(1, decoded.length() - 1);\n@@ -65,7 +66,7 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n \n     @Override\n     public JsonStringDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n+                                          MutationToken mutationToken) {\n         return JsonStringDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 144).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 161).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/12/JsonStringTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/naturalize/12/JsonStringTranscoder.java\nindex 9cde378842..d3876cfe55 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/12/JsonStringTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/naturalize/12/JsonStringTranscoder.java\n@@ -33,8 +33,7 @@ import com.couchbase.client.java.error.TranscodingException;\n public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument, String> {\n \n     @Override\n-    protected JsonStringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+    protected JsonStringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags, ResponseStatus status) throws Exception {\n         String decoded = content.toString(CharsetUtil.UTF_8);\n         if (TranscoderUtils.hasCommonFlags(flags) && flags == TranscoderUtils.JSON_COMMON_FLAGS) {\n             decoded = decoded.substring(1, decoded.length() - 1);\n@@ -43,8 +42,7 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n                 decoded = decoded.substring(1, decoded.length() - 1);\n             }\n         } else {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non \" +\n-                \"JsonStringDocument id \" + id + \", could not decode.\");\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non \" + \"JsonStringDocument id \" + id + \", could not decode.\");\n         }\n \n         return newDocument(id, expiry, decoded, cas);\n@@ -54,8 +52,7 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n     protected Tuple2<ByteBuf, Integer> doEncode(JsonStringDocument document) throws Exception {\n         return Tuple.create(\n             TranscoderUtils.encodeStringAsUtf8(\"\\\"\" + document.content() + \"\\\"\"),\n-            TranscoderUtils.JSON_COMPAT_FLAGS\n-        );\n+            TranscoderUtils.JSON_COMPAT_FLAGS);\n     }\n \n     @Override\n@@ -64,8 +61,7 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n     }\n \n     @Override\n-    public JsonStringDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n+    public JsonStringDocument newDocument(String id, int expiry, String content, long cas, MutationToken mutationToken) {\n         return JsonStringDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n@@ -73,4 +69,4 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n     public Class<JsonStringDocument> documentType() {\n         return JsonStringDocument.class;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "37",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 144).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 161).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/12/JsonStringTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/codebuff/12/JsonStringTranscoder.java\nindex 9cde378842..8305b1fdb1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/12/JsonStringTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/codebuff/12/JsonStringTranscoder.java\n@@ -30,11 +30,11 @@ import com.couchbase.client.java.error.TranscodingException;\n  * @author Michael Nitschinger\n  * @since 2.0\n  */\n-public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument, String> {\n \n+\n+public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument, String> {\n     @Override\n-    protected JsonStringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags,\n-        ResponseStatus status) throws Exception {\n+    protected JsonStringDocument doDecode(String id, ByteBuf content, long cas, int expiry, int flags, ResponseStatus status) throws Exception {\n         String decoded = content.toString(CharsetUtil.UTF_8);\n         if (TranscoderUtils.hasCommonFlags(flags) && flags == TranscoderUtils.JSON_COMMON_FLAGS) {\n             decoded = decoded.substring(1, decoded.length() - 1);\n@@ -43,10 +43,8 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n                 decoded = decoded.substring(1, decoded.length() - 1);\n             }\n         } else {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non \" +\n-                \"JsonStringDocument id \" + id + \", could not decode.\");\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non \" + \"JsonStringDocument id \" + id + \", could not decode.\");\n         }\n-\n         return newDocument(id, expiry, decoded, cas);\n     }\n \n@@ -64,8 +62,7 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n     }\n \n     @Override\n-    public JsonStringDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n+    public JsonStringDocument newDocument(String id, int expiry, String content, long cas, MutationToken mutationToken) {\n         return JsonStringDocument.create(id, expiry, content, cas, mutationToken);\n     }\n \n@@ -73,4 +70,4 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n     public Class<JsonStringDocument> documentType() {\n         return JsonStringDocument.class;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "48",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 1, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/12/JsonStringTranscoder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_random/12/JsonStringTranscoder.java\nindex 9cde378842..11919c7814 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/errored/1/12/JsonStringTranscoder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/couchbase-couchbase-java-client/styler_random/12/JsonStringTranscoder.java\n@@ -43,34 +43,34 @@ public class JsonStringTranscoder extends AbstractTranscoder<JsonStringDocument,\n                 decoded = decoded.substring(1, decoded.length() - 1);\n             }\n         } else {\n-            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non \" +\n-                \"JsonStringDocument id \" + id + \", could not decode.\");\n-        }\n+            throw new TranscodingException(\"Flags (0x\" + Integer.toHexString(flags) + \") indicate non \"\n+                + \"JsonStringDocument id \" + id + \", could not decode.\");\n+     }\n \n-        return newDocument(id, expiry, decoded, cas);\n-    }\n+     return newDocument(id, expiry, decoded, cas);\n+ }\n \n-    @Override\n-    protected Tuple2<ByteBuf, Integer> doEncode(JsonStringDocument document) throws Exception {\n-        return Tuple.create(\n-            TranscoderUtils.encodeStringAsUtf8(\"\\\"\" + document.content() + \"\\\"\"),\n-            TranscoderUtils.JSON_COMPAT_FLAGS\n-        );\n-    }\n+ @Override\n+ protected Tuple2<ByteBuf, Integer> doEncode(JsonStringDocument document) throws Exception {\n+     return Tuple.create(\n+         TranscoderUtils.encodeStringAsUtf8(\"\\\"\" + document.content() + \"\\\"\"),\n+         TranscoderUtils.JSON_COMPAT_FLAGS\n+     );\n+ }\n \n-    @Override\n-    public JsonStringDocument newDocument(String id, int expiry, String content, long cas) {\n-        return JsonStringDocument.create(id, expiry, content, cas);\n-    }\n+ @Override\n+ public JsonStringDocument newDocument(String id, int expiry, String content, long cas) {\n+     return JsonStringDocument.create(id, expiry, content, cas);\n+ }\n \n-    @Override\n-    public JsonStringDocument newDocument(String id, int expiry, String content, long cas,\n-        MutationToken mutationToken) {\n-        return JsonStringDocument.create(id, expiry, content, cas, mutationToken);\n-    }\n+ @Override\n+ public JsonStringDocument newDocument(String id, int expiry, String content, long cas,\n+     MutationToken mutationToken) {\n+     return JsonStringDocument.create(id, expiry, content, cas, mutationToken);\n+ }\n \n-    @Override\n-    public Class<JsonStringDocument> documentType() {\n-        return JsonStringDocument.class;\n-    }\n+ @Override\n+ public Class<JsonStringDocument> documentType() {\n+     return JsonStringDocument.class;\n+ }\n }\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "46",
+                    "column": "105",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

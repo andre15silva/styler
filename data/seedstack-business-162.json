@@ -1,0 +1,163 @@
+{
+    "error_id": "162",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.internal.utils;\n\nimport com.google.common.primitives.Primitives;\nimport java.lang.reflect.Constructor;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/162/MethodMatcher.java\nindex 1873cf7c4f..d4452aff82 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/162/MethodMatcher.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.internal.utils;\n \n import com.google.common.primitives.Primitives;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/162/MethodMatcher.java\nindex 1873cf7c4f..d4452aff82 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/162/MethodMatcher.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.internal.utils;\n \n import com.google.common.primitives.Primitives;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 174).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 4, expected level should be 20.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/162/MethodMatcher.java\nindex 1873cf7c4f..6e4ff0ecdc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/162/MethodMatcher.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.internal.utils;\n \n import com.google.common.primitives.Primitives;\n@@ -31,8 +32,7 @@ public final class MethodMatcher {\n             Type[] parameterTypes = method.getParameterTypes();\n             // if the return type is not specified (i.e null) we only check the parameters\n             boolean matchReturnType = returnType == null || returnType.equals(method.getReturnType());\n-\n-            if (checkParams(parameterTypes, params) && matchReturnType) {\n+if (checkParams(parameterTypes, params) && matchReturnType) {\n                 if (checkedMethod == null) {\n                     checkedMethod = method;\n                 } else {\n@@ -71,8 +71,7 @@ public final class MethodMatcher {\n     }\n \n     private static boolean checkParams(Type[] parameterTypes, Object[] params) {\n-        return params.length == 0 || (parameterTypes.length == params.length && checkParameterTypes(parameterTypes,\n-                params));\n+        return params.length == 0 || (parameterTypes.length == params.length && checkParameterTypes(parameterTypes, params));\n     }\n \n     private static boolean checkParameterTypes(Type[] parameterTypes, Object[] args) {\n@@ -85,13 +84,11 @@ public final class MethodMatcher {\n                 if (Primitives.isWrapperType(objectType)) {\n                     unWrapPrimitive = Primitives.unwrap(objectType);\n                 }\n-                if (!(((Class<?>) parameterType).isAssignableFrom(\n-                        objectType) || (unWrapPrimitive != null && ((Class<?>) parameterType).isAssignableFrom(\n-                        unWrapPrimitive)))) {\n-                    return false;\n+                if (!(((Class<?>) parameterType).isAssignableFrom(objectType) || (unWrapPrimitive != null && ((Class<?>) parameterType).isAssignableFrom(unWrapPrimitive)))) {\n+    return false;\n                 }\n             }\n         }\n         return true;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "35",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "38",
+                    "column": "57",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "60",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "60",
+                    "column": "83",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 133).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "78",
+                    "column": "34",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "84",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "84",
+                    "column": "25",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '<' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 169).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "96",
+                    "column": "79",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/162/MethodMatcher.java\nindex 1873cf7c4f..df4d69ce96 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/162/MethodMatcher.java\n@@ -14,9 +14,11 @@ import java.lang.reflect.Type;\n import org.seedstack.business.internal.BusinessErrorCode;\n import org.seedstack.business.internal.BusinessException;\n \n+\n public final class MethodMatcher {\n     // TODO add cache\n \n+\n     MethodMatcher() {\n         // no instantiation allowed\n     }\n@@ -24,23 +26,24 @@ public final class MethodMatcher {\n     /**\n      * Finds a method matching the given parameters and return type.\n      */\n+\n+\n     public static Method findMatchingMethod(Class<?> classToInspect, Class<?> returnType, Object... params) {\n         Method[] methods = classToInspect.getMethods();\n+\n         Method checkedMethod = null;\n-        for (Method method : methods) {\n+        for(Method method : methods) {\n             Type[] parameterTypes = method.getParameterTypes();\n             // if the return type is not specified (i.e null) we only check the parameters\n-            boolean matchReturnType = returnType == null || returnType.equals(method.getReturnType());\n-\n+            boolean matchReturnType = returnType == null|| returnType.equals(method.getReturnType());\n             if (checkParams(parameterTypes, params) && matchReturnType) {\n                 if (checkedMethod == null) {\n                     checkedMethod = method;\n                 } else {\n-                    throw BusinessException.createNew(BusinessErrorCode.AMBIGUOUS_METHOD_FOUND)\n-                            .put(\"method1\", method)\n-                            .put(\"method2\", checkedMethod)\n-                            .put(\"object\", classToInspect.getSimpleName())\n-                            .put(\"parameters\", params);\n+                    throw BusinessException.createNew(BusinessErrorCode.AMBIGUOUS_METHOD_FOUND).put(\"method1\", method)\n+.put(\"method2\", checkedMethod)\n+.put(\"object\", classToInspect.getSimpleName())\n+.put(\"parameters\", params);\n                 }\n             }\n         }\n@@ -50,48 +53,52 @@ public final class MethodMatcher {\n     /**\n      * Finds a constructor matching the given parameters.\n      */\n+\n     @SuppressWarnings(\"unchecked\")\n     public static <T> Constructor<T> findMatchingConstructor(Class<T> classToInspect, Object... params) {\n         Constructor<T> checkedConstructors = null;\n-        for (Constructor<?> constructor : classToInspect.getDeclaredConstructors()) {\n+        for(Constructor<?> constructor : classToInspect.getDeclaredConstructors() ) {\n             Type[] parameterTypes = constructor.getParameterTypes();\n             if (parameterTypes.length == params.length && checkParameterTypes(parameterTypes, params)) {\n                 if (checkedConstructors == null) {\n                     checkedConstructors = (Constructor<T>) constructor;\n                 } else {\n-                    throw BusinessException.createNew(BusinessErrorCode.AMBIGUOUS_CONSTRUCTOR_FOUND)\n-                            .put(\"constructor1\", constructor)\n-                            .put(\"constructor2\", checkedConstructors)\n-                            .put(\"object\", classToInspect.getSimpleName())\n-                            .put(\"parameters\", params);\n+                    throw BusinessException.createNew(BusinessErrorCode.AMBIGUOUS_CONSTRUCTOR_FOUND).put(\"constructor1\", constructor)\n+.put(\"constructor2\", checkedConstructors)\n+.put(\"object\", classToInspect.getSimpleName())\n+.put(\"parameters\", params);\n                 }\n             }\n         }\n         return checkedConstructors;\n     }\n \n+\n     private static boolean checkParams(Type[] parameterTypes, Object[] params) {\n-        return params.length == 0 || (parameterTypes.length == params.length && checkParameterTypes(parameterTypes,\n-                params));\n+        return params.length == 0|| (parameterTypes.length == params.length && checkParameterTypes(parameterTypes, params)\n+            );\n     }\n \n+\n     private static boolean checkParameterTypes(Type[] parameterTypes, Object[] args) {\n-        for (int i = 0; i < args.length; i++) {\n+        for(int i = 0;i <args.length;\n+i++) {\n             Object object = args[i];\n+\n             Type parameterType = parameterTypes[i];\n             if (object != null) {\n                 Class<?> objectType = object.getClass();\n+\n                 Class<?> unWrapPrimitive = null;\n                 if (Primitives.isWrapperType(objectType)) {\n                     unWrapPrimitive = Primitives.unwrap(objectType);\n                 }\n-                if (!(((Class<?>) parameterType).isAssignableFrom(\n-                        objectType) || (unWrapPrimitive != null && ((Class<?>) parameterType).isAssignableFrom(\n-                        unWrapPrimitive)))) {\n+                if (! (((Class<?>) parameterType).isAssignableFrom(objectType)|| (unWrapPrimitive != null && ((Class<?>) parameterType).isAssignableFrom(unWrapPrimitive)\n+                    ))) {\n                     return false;\n                 }\n             }\n         }\n         return true;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 32
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/162/MethodMatcher.java\nindex 1873cf7c4f..d4452aff82 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/162/MethodMatcher.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/162/MethodMatcher.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.internal.utils;\n \n import com.google.common.primitives.Primitives;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

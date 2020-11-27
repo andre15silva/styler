@@ -1,0 +1,231 @@
+{
+    "error_id": "23",
+    "information": {
+        "errors": [
+            {
+                "line": "56",
+                "severity": "error",
+                "message": "'try rcurly' has incorrect indentation level 13, expected level should be 12.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+            }
+        ]
+    },
+    "source_code": "            try {\n                wrapped.getPropertyMetadata().getField().setAccessible(true);\n             } catch (Exception e) {\n                throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\",\n                        wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n            }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 20, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler/23/ConventionSetPrivateFieldImpl.java\nindex 0ff5721ea4..67bf8ab99f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler/23/ConventionSetPrivateFieldImpl.java\n@@ -53,8 +53,8 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n             this.wrapped = wrapped;\n             try {\n                 wrapped.getPropertyMetadata().getField().setAccessible(true);\n-             } catch (Exception e) {\n-                throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\",\n+            } catch (Exception e) {\n+                    throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\",\n                         wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n             }\n         }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/intellij/23/ConventionSetPrivateFieldImpl.java\nindex 0ff5721ea4..4ea216f5f3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/intellij/23/ConventionSetPrivateFieldImpl.java\n@@ -29,12 +29,12 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n             if (!(propertyModelBuilder.getPropertyAccessor() instanceof PropertyAccessorImpl)) {\n                 throw new CodecConfigurationException(format(\"The SET_PRIVATE_FIELDS_CONVENTION is not compatible with \"\n                         + \"propertyModelBuilder instance that have custom implementations of org.bson.codecs.pojo.PropertyAccessor: %s\",\n-                        propertyModelBuilder.getPropertyAccessor().getClass().getName()));\n+                    propertyModelBuilder.getPropertyAccessor().getClass().getName()));\n             }\n             PropertyAccessorImpl<?> defaultAccessor = (PropertyAccessorImpl<?>) propertyModelBuilder.getPropertyAccessor();\n             PropertyMetadata<?> propertyMetaData = defaultAccessor.getPropertyMetadata();\n             if (!propertyMetaData.isDeserializable() && propertyMetaData.getField() != null\n-                    && isPrivate(propertyMetaData.getField().getModifiers())) {\n+                && isPrivate(propertyMetaData.getField().getModifiers())) {\n                 setPropertyAccessor(propertyModelBuilder);\n             }\n         }\n@@ -43,7 +43,7 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n     @SuppressWarnings(\"unchecked\")\n     private <T> void setPropertyAccessor(final PropertyModelBuilder<T> propertyModelBuilder) {\n         propertyModelBuilder.propertyAccessor(new PrivatePropertyAccessor<T>(\n-                (PropertyAccessorImpl<T>) propertyModelBuilder.getPropertyAccessor()));\n+            (PropertyAccessorImpl<T>) propertyModelBuilder.getPropertyAccessor()));\n     }\n \n     private static final class PrivatePropertyAccessor<T> implements PropertyAccessor<T> {\n@@ -53,9 +53,9 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n             this.wrapped = wrapped;\n             try {\n                 wrapped.getPropertyMetadata().getField().setAccessible(true);\n-             } catch (Exception e) {\n+            } catch (Exception e) {\n                 throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\",\n-                        wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n+                    wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n             }\n         }\n \n@@ -70,7 +70,7 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n                 wrapped.getPropertyMetadata().getField().set(instance, value);\n             } catch (Exception e) {\n                 throw new CodecConfigurationException(format(\"Unable to set value for property '%s' in %s\",\n-                        wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n+                    wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n             }\n         }\n     }\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 164).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 151).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 4, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 148).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 4, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 4, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 203).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 208).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/naturalize/23/ConventionSetPrivateFieldImpl.java\nindex 0ff5721ea4..d90240451f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/naturalize/23/ConventionSetPrivateFieldImpl.java\n@@ -28,22 +28,20 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n         for (PropertyModelBuilder<?> propertyModelBuilder : classModelBuilder.getPropertyModelBuilders()) {\n             if (!(propertyModelBuilder.getPropertyAccessor() instanceof PropertyAccessorImpl)) {\n                 throw new CodecConfigurationException(format(\"The SET_PRIVATE_FIELDS_CONVENTION is not compatible with \"\n-                        + \"propertyModelBuilder instance that have custom implementations of org.bson.codecs.pojo.PropertyAccessor: %s\",\n+                                                    + \"propertyModelBuilder instance that have custom implementations of org.bson.codecs.pojo.PropertyAccessor: %s\",\n                         propertyModelBuilder.getPropertyAccessor().getClass().getName()));\n-            }\n+    }\n             PropertyAccessorImpl<?> defaultAccessor = (PropertyAccessorImpl<?>) propertyModelBuilder.getPropertyAccessor();\n             PropertyMetadata<?> propertyMetaData = defaultAccessor.getPropertyMetadata();\n-            if (!propertyMetaData.isDeserializable() && propertyMetaData.getField() != null\n-                    && isPrivate(propertyMetaData.getField().getModifiers())) {\n-                setPropertyAccessor(propertyModelBuilder);\n+            if (!propertyMetaData.isDeserializable() && propertyMetaData.getField() != null && isPrivate(propertyMetaData.getField().getModifiers())) {\n+    setPropertyAccessor(propertyModelBuilder);\n             }\n         }\n     }\n \n     @SuppressWarnings(\"unchecked\")\n     private <T> void setPropertyAccessor(final PropertyModelBuilder<T> propertyModelBuilder) {\n-        propertyModelBuilder.propertyAccessor(new PrivatePropertyAccessor<T>(\n-                (PropertyAccessorImpl<T>) propertyModelBuilder.getPropertyAccessor()));\n+        propertyModelBuilder.propertyAccessor(new PrivatePropertyAccessor<T>((PropertyAccessorImpl<T>) propertyModelBuilder.getPropertyAccessor()));\n     }\n \n     private static final class PrivatePropertyAccessor<T> implements PropertyAccessor<T> {\n@@ -53,9 +51,8 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n             this.wrapped = wrapped;\n             try {\n                 wrapped.getPropertyMetadata().getField().setAccessible(true);\n-             } catch (Exception e) {\n-                throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\",\n-                        wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n+    } catch (Exception e) {\n+    throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\", wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n             }\n         }\n \n@@ -69,9 +66,8 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n             try {\n                 wrapped.getPropertyMetadata().getField().set(instance, value);\n             } catch (Exception e) {\n-                throw new CodecConfigurationException(format(\"Unable to set value for property '%s' in %s\",\n-                        wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n+                throw new CodecConfigurationException(format(\"Unable to set value for property '%s' in %s\", wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n             }\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 20, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_random/23/ConventionSetPrivateFieldImpl.java\nindex 0ff5721ea4..67bf8ab99f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_random/23/ConventionSetPrivateFieldImpl.java\n@@ -53,8 +53,8 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n             this.wrapped = wrapped;\n             try {\n                 wrapped.getPropertyMetadata().getField().setAccessible(true);\n-             } catch (Exception e) {\n-                throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\",\n+            } catch (Exception e) {\n+                    throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\",\n                         wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n             }\n         }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "55",
+                    "column": "80",
+                    "severity": "error",
+                    "message": "'catch' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "55",
+                    "column": "80",
+                    "severity": "error",
+                    "message": "'catch' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 19, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 15, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 11, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 11, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 15, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 11, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 11, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'try' has incorrect indentation level 15, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 19, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 15, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 19, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 15, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 11, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 7, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 3, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Trailing whitespace",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_three_grams/23/ConventionSetPrivateFieldImpl.java\nindex 0ff5721ea4..6232afb5e8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/23/ConventionSetPrivateFieldImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_three_grams/23/ConventionSetPrivateFieldImpl.java\n@@ -52,26 +52,26 @@ final class ConventionSetPrivateFieldImpl implements Convention {\n         private PrivatePropertyAccessor(final PropertyAccessorImpl<T> wrapped) {\n             this.wrapped = wrapped;\n             try {\n-                wrapped.getPropertyMetadata().getField().setAccessible(true);\n-             } catch (Exception e) {\n-                throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\",\n-                        wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n-            }\n-        }\n+                wrapped.getPropertyMetadata().getField().setAccessible(true); }catch(Exception e) {\n+                   throw new CodecConfigurationException(format(\"Unable to make private field accessible '%s' in %s\",\n+                           wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n+               }\n+           }\n \n-        @Override\n-        public <S> T get(final S instance) {\n-            return wrapped.get(instance);\n-        }\n+           @Override\n+           public <S> T get(final S instance) {\n+               return wrapped.get(instance);\n+           }\n \n-        @Override\n-        public <S> void set(final S instance, final T value) {\n-            try {\n-                wrapped.getPropertyMetadata().getField().set(instance, value);\n-            } catch (Exception e) {\n-                throw new CodecConfigurationException(format(\"Unable to set value for property '%s' in %s\",\n-                        wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n-            }\n-        }\n-    }\n-}\n+           @Override\n+           public <S> void set(final S instance, final T value) {\n+               try {\n+                   wrapped.getPropertyMetadata().getField().set(instance, value);\n+               } catch (Exception e) {\n+                   throw new CodecConfigurationException(format(\"Unable to set value for property '%s' in %s\",\n+                           wrapped.getPropertyMetadata().getName(), wrapped.getPropertyMetadata().getDeclaringClassName()), e);\n+               }\n+           }\n+       }\n+   }\n+   \n\\ No newline at end of file\n",
+            "diff_size": 22
+        }
+    ]
+}

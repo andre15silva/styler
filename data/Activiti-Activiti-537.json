@@ -1,0 +1,87 @@
+{
+    "error_id": "537",
+    "information": {
+        "errors": [
+            {
+                "line": "83",
+                "severity": "error",
+                "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "    }\n\n    public void signal(IntegrationActivityBehavior receiveTaskActivityBehavior, DelegateExecution execution, String signalName, Object data) {\n        receiveTaskActivityBehavior.leave(execution);\n    }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/537/ActivitiInboundGateway.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/537/ActivitiInboundGateway.java\nindex 835dbf5366..dff1bce95a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/537/ActivitiInboundGateway.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/537/ActivitiInboundGateway.java\n@@ -33,7 +33,6 @@ import org.springframework.messaging.support.MessageBuilder;\n  * flow into Spring Integration. Spring Integration flows\n  * may ultimately return a reply message and that will signal the\n  * execution.\n- *\n  */\n public class ActivitiInboundGateway extends MessagingGatewaySupport {\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/537/ActivitiInboundGateway.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/537/ActivitiInboundGateway.java\nindex 835dbf5366..24218079b0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/537/ActivitiInboundGateway.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/537/ActivitiInboundGateway.java\n@@ -59,9 +59,8 @@ public class ActivitiInboundGateway extends MessagingGatewaySupport {\n         this.sync.add(processInstanceId);\n     }\n \n-    public void execute(IntegrationActivityBehavior receiveTaskActivityBehavior,\n-                        DelegateExecution execution) {\n-        Map<String, Object> stringObjectMap = new HashMap<String, Object>();\n+    public void execute(IntegrationActivityBehavior receiveTaskActivityBehavior, DelegateExecution execution) {\n+  Map<String, Object> stringObjectMap = new HashMap<String, Object>();\n         stringObjectMap.put(executionId, execution.getId());\n \n         stringObjectMap.put(processInstanceId, execution.getProcessInstanceId());\n@@ -83,6 +82,4 @@ public class ActivitiInboundGateway extends MessagingGatewaySupport {\n     public void signal(IntegrationActivityBehavior receiveTaskActivityBehavior, DelegateExecution execution, String signalName, Object data) {\n         receiveTaskActivityBehavior.leave(execution);\n     }\n-\n-\n-}\n+    }\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/537/ActivitiInboundGateway.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/537/ActivitiInboundGateway.java\nindex 835dbf5366..241ae53ee8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/537/ActivitiInboundGateway.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/537/ActivitiInboundGateway.java\n@@ -21,7 +21,6 @@ import java.util.HashMap;\n import java.util.Map;\n import java.util.Set;\n import java.util.concurrent.ConcurrentSkipListSet;\n-\n import org.activiti.engine.ProcessEngine;\n import org.activiti.engine.delegate.DelegateExecution;\n import org.springframework.integration.gateway.MessagingGatewaySupport;\n@@ -35,54 +34,61 @@ import org.springframework.messaging.support.MessageBuilder;\n  * execution.\n  *\n  */\n+\n+\n public class ActivitiInboundGateway extends MessagingGatewaySupport {\n \n     private String executionId = \"executionId\";\n+\n     private String processInstanceId = \"processInstanceId\";\n+\n     private String processDefinitionId = \"processDefinitionId\";\n \n     private final ProcessVariableHeaderMapper headerMapper;\n+\n     private ProcessEngine processEngine;\n \n     private Set<String> sync = new ConcurrentSkipListSet<String>();\n \n     public ActivitiInboundGateway(ProcessEngine processEngine, String... pvsOrHeadersToPreserve) {\n-        Collections.addAll(this.sync, pvsOrHeadersToPreserve);\n-        this.processEngine = processEngine;\n-        this.headerMapper = new ProcessVariableHeaderMapper(sync);\n-        this.initializeDefaultPreservedHeaders();\n+    Collections.addAll(this.sync, pvsOrHeadersToPreserve);\n+    this.processEngine = processEngine;\n+    this.headerMapper = new ProcessVariableHeaderMapper(sync);\n+    this.initializeDefaultPreservedHeaders();\n     }\n \n     protected void initializeDefaultPreservedHeaders() {\n-        this.sync.add(executionId);\n-        this.sync.add(processDefinitionId);\n-        this.sync.add(processInstanceId);\n+    this.sync.add(executionId);\n+    this.sync.add(processDefinitionId);\n+    this.sync.add(processInstanceId);\n     }\n \n-    public void execute(IntegrationActivityBehavior receiveTaskActivityBehavior,\n-                        DelegateExecution execution) {\n-        Map<String, Object> stringObjectMap = new HashMap<String, Object>();\n-        stringObjectMap.put(executionId, execution.getId());\n-\n-        stringObjectMap.put(processInstanceId, execution.getProcessInstanceId());\n-        stringObjectMap.put(processDefinitionId, execution.getProcessDefinitionId());\n-        stringObjectMap.putAll(headerMapper.toHeaders(execution.getVariables()));\n-        MessageBuilder<?> mb = MessageBuilder.withPayload(execution).copyHeaders(stringObjectMap);\n-        Message<?> reply = sendAndReceiveMessage(mb.build());\n-        if (null != reply) {\n-            Map<String, Object> vars = new HashMap<String, Object>();\n-            headerMapper.fromHeaders(reply.getHeaders(), vars);\n-\n-            for (String k : vars.keySet()) {\n-                processEngine.getRuntimeService().setVariable(execution.getId(), k, vars.get(k));\n-            }\n-            receiveTaskActivityBehavior.leave(execution);\n-        }\n-    }\n+    public void execute(IntegrationActivityBehavior receiveTaskActivityBehavior, DelegateExecution execution) {\n+    Map<String, Object> stringObjectMap = new HashMap<String, Object>();\n+    stringObjectMap.put(executionId, execution.getId());\n+    stringObjectMap.put(processInstanceId,\n+                        execution.getProcessInstanceId());\n+    stringObjectMap.put(processDefinitionId,\n+                        execution.getProcessDefinitionId());\n+    stringObjectMap.putAll(headerMapper.toHeaders(execution.getVariables()));\n+\n \n-    public void signal(IntegrationActivityBehavior receiveTaskActivityBehavior, DelegateExecution execution, String signalName, Object data) {\n+    MessageBuilder<?> mb = MessageBuilder.withPayload(execution).copyHeaders(stringObjectMap);\n+    Message<?> reply = sendAndReceiveMessage(mb.build());\n+    if (null != reply) {\n+        Map<String, Object> vars = new HashMap<String, Object>();\n+        headerMapper.fromHeaders(reply.getHeaders(), vars);\n+        for (String k : vars.keySet()) {\n+            processEngine.getRuntimeService().setVariable(execution.getId(), k, vars.get(k));\n+        }\n         receiveTaskActivityBehavior.leave(execution);\n     }\n+    }\n \n+    public void signal(IntegrationActivityBehavior receiveTaskActivityBehavior,\n+                       DelegateExecution execution,\n+                       String signalName, Object data) {\n+    receiveTaskActivityBehavior.leave(execution);\n+    }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 48
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/537/ActivitiInboundGateway.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/537/ActivitiInboundGateway.java\nindex 835dbf5366..4f3b19a55c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/537/ActivitiInboundGateway.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/537/ActivitiInboundGateway.java\n@@ -80,9 +80,11 @@ public class ActivitiInboundGateway extends MessagingGatewaySupport {\n         }\n     }\n \n-    public void signal(IntegrationActivityBehavior receiveTaskActivityBehavior, DelegateExecution execution, String signalName, Object data) {\n-        receiveTaskActivityBehavior.leave(execution);\n-    }\n+    public void signal(IntegrationActivityBehavior receiveTaskActivityBehavior, DelegateExecution\n+        execution,String signalName, Object data) {\n+         receiveTaskActivityBehavior.leave(execution);\n+     }\n \n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,124 @@
+{
+    "error_id": "788",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/788/PartitionGetRowResult.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/788/PartitionGetRowResult.java\nindex 96b8aff69f..57694055ba 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/788/PartitionGetRowResult.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/788/PartitionGetRowResult.java\n@@ -24,94 +24,94 @@ import io.netty.buffer.ByteBuf;\n /**\n  * The result of partition get row.\n  */\n-public class PartitionGetRowResult implements Serialize{\n-  private ServerRow rowSplit;\n+public class PartitionGetRowResult implements Serialize {\n+    private ServerRow rowSplit;\n \n-  /**\n-   * Creates a new partition result.\n-   *\n-   * @param rowSplit the row split\n-   */\n-  public PartitionGetRowResult(ServerRow rowSplit) {\n-    this.rowSplit = rowSplit;\n-  }\n-\n-  /**\n-   * Creates a new partition result by default.\n-   */\n-  public PartitionGetRowResult() {\n-    this(null);\n-  }\n-\n-  @Override\n-  public void serialize(ByteBuf buf) {\n-    if (rowSplit != null) {\n-      buf.writeInt(rowSplit.getRowType().getNumber());\n-      rowSplit.serialize(buf);\n+    /**\n+     * Creates a new partition result.\n+     *\n+     * @param rowSplit the row split\n+     */\n+    public PartitionGetRowResult(ServerRow rowSplit) {\n+        this.rowSplit = rowSplit;\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n-    if (buf.readableBytes() == 0) {\n-      rowSplit = null;\n-      return;\n+    /**\n+     * Creates a new partition result by default.\n+     */\n+    public PartitionGetRowResult() {\n+        this(null);\n     }\n \n-    RowType type = RowType.valueOf(buf.readInt());\n-    if (rowSplit == null) {\n-      switch (type) {\n-        case T_DOUBLE_DENSE: {\n-          rowSplit = new ServerDenseDoubleRow();\n-          break;\n-        }\n-        case T_DOUBLE_SPARSE: {\n-          rowSplit = new ServerSparseDoubleRow();\n-          break;\n+    @Override\n+    public void serialize(ByteBuf buf) {\n+        if (rowSplit != null) {\n+            buf.writeInt(rowSplit.getRowType().getNumber());\n+            rowSplit.serialize(buf);\n         }\n+    }\n \n-        case T_INT_DENSE: {\n-          rowSplit = new ServerDenseIntRow();\n-          break;\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n+        if (buf.readableBytes() == 0) {\n+            rowSplit = null;\n+            return;\n         }\n \n-        case T_INT_SPARSE: {\n-          rowSplit = new ServerSparseIntRow();\n-          break;\n-        }\n+        RowType type = RowType.valueOf(buf.readInt());\n+        if (rowSplit == null) {\n+            switch (type) {\n+                case T_DOUBLE_DENSE: {\n+                    rowSplit = new ServerDenseDoubleRow();\n+                    break;\n+                }\n+                case T_DOUBLE_SPARSE: {\n+                    rowSplit = new ServerSparseDoubleRow();\n+                    break;\n+                }\n+\n+                case T_INT_DENSE: {\n+                    rowSplit = new ServerDenseIntRow();\n+                    break;\n+                }\n \n-        case T_FLOAT_DENSE: {\n-          rowSplit = new ServerDenseFloatRow();\n-          break;\n+                case T_INT_SPARSE: {\n+                    rowSplit = new ServerSparseIntRow();\n+                    break;\n+                }\n+\n+                case T_FLOAT_DENSE: {\n+                    rowSplit = new ServerDenseFloatRow();\n+                    break;\n+                }\n+                default:\n+                    break;\n+            }\n         }\n-        default:\n-          break;\n-      }\n-    }\n \n-    rowSplit.deserialize(buf);\n-  }\n+        rowSplit.deserialize(buf);\n+    }\n \n-  @Override\n-  public int bufferLen() {\n-    return rowSplit.bufferLen();\n-  }\n+    @Override\n+    public int bufferLen() {\n+        return rowSplit.bufferLen();\n+    }\n \n-  /**\n-   * Gets row split.\n-   *\n-   * @return the row split\n-   */\n-  public ServerRow getRowSplit() {\n-    return rowSplit;\n-  }\n+    /**\n+     * Gets row split.\n+     *\n+     * @return the row split\n+     */\n+    public ServerRow getRowSplit() {\n+        return rowSplit;\n+    }\n \n-  /**\n-   * Sets row split.\n-   *\n-   * @param rowSplit the row split\n-   */\n-  public void setRowSplit(ServerRow rowSplit) {\n-    this.rowSplit = rowSplit;\n-  }\n+    /**\n+     * Sets row split.\n+     *\n+     * @param rowSplit the row split\n+     */\n+    public void setRowSplit(ServerRow rowSplit) {\n+        this.rowSplit = rowSplit;\n+    }\n }\n",
+            "diff_size": 99
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/788/PartitionGetRowResult.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/788/PartitionGetRowResult.java\nindex 96b8aff69f..609c0c86cb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/788/PartitionGetRowResult.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/788/PartitionGetRowResult.java\n@@ -24,7 +24,7 @@ import io.netty.buffer.ByteBuf;\n /**\n  * The result of partition get row.\n  */\n-public class PartitionGetRowResult implements Serialize{\n+public class PartitionGetRowResult implements Serialize {\n   private ServerRow rowSplit;\n \n   /**\n@@ -114,4 +114,4 @@ public class PartitionGetRowResult implements Serialize{\n   public void setRowSplit(ServerRow rowSplit) {\n     this.rowSplit = rowSplit;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 37.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 45.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 110.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 120.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/788/PartitionGetRowResult.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/788/PartitionGetRowResult.java\nindex 96b8aff69f..0efaf29168 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/788/PartitionGetRowResult.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/788/PartitionGetRowResult.java\n@@ -24,94 +24,100 @@ import io.netty.buffer.ByteBuf;\n /**\n  * The result of partition get row.\n  */\n-public class PartitionGetRowResult implements Serialize{\n-  private ServerRow rowSplit;\n+\n+public class PartitionGetRowResult implements Serialize {\n+    private ServerRow rowSplit;\n \n   /**\n    * Creates a new partition result.\n    *\n    * @param rowSplit the row split\n    */\n-  public PartitionGetRowResult(ServerRow rowSplit) {\n+\n+    public PartitionGetRowResult(ServerRow rowSplit) {\n     this.rowSplit = rowSplit;\n-  }\n+    }\n \n   /**\n    * Creates a new partition result by default.\n    */\n-  public PartitionGetRowResult() {\n+\n+    public PartitionGetRowResult() {\n     this(null);\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf buf) {\n+    @Override\n+    public void serialize(ByteBuf buf) {\n     if (rowSplit != null) {\n-      buf.writeInt(rowSplit.getRowType().getNumber());\n-      rowSplit.serialize(buf);\n+        buf.writeInt(rowSplit.getRowType().getNumber());\n+        rowSplit.serialize(buf);\n+    }\n     }\n-  }\n \n-  @Override\n-  public void deserialize(ByteBuf buf) {\n+    @Override\n+    public void deserialize(ByteBuf buf) {\n     if (buf.readableBytes() == 0) {\n-      rowSplit = null;\n-      return;\n+        rowSplit = null;\n+        return;\n     }\n \n     RowType type = RowType.valueOf(buf.readInt());\n     if (rowSplit == null) {\n-      switch (type) {\n-        case T_DOUBLE_DENSE: {\n-          rowSplit = new ServerDenseDoubleRow();\n-          break;\n-        }\n-        case T_DOUBLE_SPARSE: {\n-          rowSplit = new ServerSparseDoubleRow();\n-          break;\n-        }\n+        switch (type) {\n+                              case T_DOUBLE_DENSE: {\n+            rowSplit = new ServerDenseDoubleRow();\n+            break;\n+                              }\n \n-        case T_INT_DENSE: {\n-          rowSplit = new ServerDenseIntRow();\n-          break;\n-        }\n+                              case T_DOUBLE_SPARSE: {\n+            rowSplit = new ServerSparseDoubleRow();\n+            break;\n+                              }\n \n-        case T_INT_SPARSE: {\n-          rowSplit = new ServerSparseIntRow();\n-          break;\n-        }\n+                              case T_INT_DENSE: {\n+            rowSplit = new ServerDenseIntRow();\n+            break;\n+                              }\n \n-        case T_FLOAT_DENSE: {\n-          rowSplit = new ServerDenseFloatRow();\n-          break;\n+                              case T_INT_SPARSE: {\n+            rowSplit = new ServerSparseIntRow();\n+            break;\n+                              }\n+\n+                              case T_FLOAT_DENSE: {\n+            rowSplit = new ServerDenseFloatRow();\n+            break;\n+                              }\n+\n+                              default:\n+            break;\n         }\n-        default:\n-          break;\n-      }\n     }\n-\n     rowSplit.deserialize(buf);\n-  }\n+    }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     return rowSplit.bufferLen();\n-  }\n+    }\n \n   /**\n    * Gets row split.\n    *\n    * @return the row split\n    */\n-  public ServerRow getRowSplit() {\n+\n+    public ServerRow getRowSplit() {\n     return rowSplit;\n-  }\n+    }\n \n   /**\n    * Sets row split.\n    *\n    * @param rowSplit the row split\n    */\n-  public void setRowSplit(ServerRow rowSplit) {\n+\n+    public void setRowSplit(ServerRow rowSplit) {\n     this.rowSplit = rowSplit;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 63
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "1",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 15.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/788/PartitionGetRowResult.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/788/PartitionGetRowResult.java\nindex 96b8aff69f..276824539a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/788/PartitionGetRowResult.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/788/PartitionGetRowResult.java\n@@ -12,9 +12,7 @@\n  * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n  * either express or implied. See the License for the specific language governing permissions and\n  * limitations under the License.\n- */\n-\n-package com.tencent.angel.ml.matrix.udf.getrow;\n+ */ package com.tencent.angel.ml.matrix.udf.getrow;\n \n import com.tencent.angel.common.Serialize;\n import com.tencent.angel.ps.impl.matrix.*;\n",
+            "diff_size": 3
+        }
+    ]
+}

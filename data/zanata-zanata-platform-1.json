@@ -1,0 +1,61 @@
+{
+    "error_id": "1",
+    "information": {
+        "errors": [
+            {
+                "line": "60",
+                "column": "60",
+                "severity": "error",
+                "message": "'+' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "    private String buildDocUrl(String projectSlug, String versionSlug,\n            String docId) {\n        return urlUtil.restPath(\"project/p/\" + projectSlug +\"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n    }\n\n    public MTDocument fromSingleTextFlow(String projectSlug, String versionSlug, String docId, LocaleId fromLocale, HTextFlow textFlow) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler/1/TextFlowsToMTDoc.java\nindex 515ecec77f..bc1d6b9fd8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler/1/TextFlowsToMTDoc.java\n@@ -57,7 +57,7 @@ public class TextFlowsToMTDoc {\n \n     private String buildDocUrl(String projectSlug, String versionSlug,\n             String docId) {\n-        return urlUtil.restPath(\"project/p/\" + projectSlug +\"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n+        return urlUtil.restPath(\"project/p/\" + projectSlug + \"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n     }\n \n     public MTDocument fromSingleTextFlow(String projectSlug, String versionSlug, String docId, LocaleId fromLocale, HTextFlow textFlow) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/intellij/1/TextFlowsToMTDoc.java\nindex 515ecec77f..a7c2a1fc82 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/intellij/1/TextFlowsToMTDoc.java\n@@ -18,6 +18,7 @@\n  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA\n  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.\n  */\n+\n package org.zanata.service.mt;\n \n import java.util.Collection;\n@@ -46,24 +47,24 @@ public class TextFlowsToMTDoc {\n     public MTDocument fromTextFlows(String projectSlug, String versionSlug, String docId, LocaleId fromLocale, List<HTextFlow> textFlows) {\n         String url = buildDocUrl(projectSlug, versionSlug, docId);\n         List<TypeString> contents =\n-                textFlows.stream()\n-                        // TODO we can't support plural yet\n-                        .map(textFlow -> textFlow.getContents().get(0))\n-                        .map(TypeString::new)\n-                        .collect(Collectors.toList());\n+            textFlows.stream()\n+                // TODO we can't support plural yet\n+                .map(textFlow -> textFlow.getContents().get(0))\n+                .map(TypeString::new)\n+                .collect(Collectors.toList());\n \n         return new MTDocument(url, contents, fromLocale.getId(), BACKEND_ID);\n     }\n \n     private String buildDocUrl(String projectSlug, String versionSlug,\n-            String docId) {\n-        return urlUtil.restPath(\"project/p/\" + projectSlug +\"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n+                               String docId) {\n+        return urlUtil.restPath(\"project/p/\" + projectSlug + \"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n     }\n \n     public MTDocument fromSingleTextFlow(String projectSlug, String versionSlug, String docId, LocaleId fromLocale, HTextFlow textFlow) {\n         String url = buildDocUrl(projectSlug, versionSlug, docId);\n         List<TypeString> contents = textFlow.getContents()\n-                .stream().map(TypeString::new).collect(Collectors.toList());\n+            .stream().map(TypeString::new).collect(Collectors.toList());\n \n         return new MTDocument(url, contents, fromLocale.getId(), BACKEND_ID);\n     }\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/naturalize/1/TextFlowsToMTDoc.java\nindex 515ecec77f..0f8db16d84 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/naturalize/1/TextFlowsToMTDoc.java\n@@ -57,7 +57,7 @@ public class TextFlowsToMTDoc {\n \n     private String buildDocUrl(String projectSlug, String versionSlug,\n             String docId) {\n-        return urlUtil.restPath(\"project/p/\" + projectSlug +\"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n+        return urlUtil.restPath(\"project/p/\" + projectSlug + \"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n     }\n \n     public MTDocument fromSingleTextFlow(String projectSlug, String versionSlug, String docId, LocaleId fromLocale, HTextFlow textFlow) {\n@@ -67,4 +67,4 @@ public class TextFlowsToMTDoc {\n \n         return new MTDocument(url, contents, fromLocale.getId(), BACKEND_ID);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/1/TextFlowsToMTDoc.java\nindex 515ecec77f..6f6b435463 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/codebuff/1/TextFlowsToMTDoc.java\n@@ -23,10 +23,8 @@ package org.zanata.service.mt;\n import java.util.Collection;\n import java.util.List;\n import java.util.stream.Collectors;\n-\n import javax.enterprise.context.Dependent;\n import javax.inject.Inject;\n-\n import org.zanata.common.LocaleId;\n import org.zanata.model.HTextFlow;\n import org.zanata.service.mt.dto.MTDocument;\n@@ -37,34 +35,40 @@ import org.zanata.util.UrlUtil;\n  * @author Patrick Huang\n  * <a href=\"mailto:pahuang@redhat.com\">pahuang@redhat.com</a>\n  */\n+\n+\n @Dependent\n public class TextFlowsToMTDoc {\n     protected static final String BACKEND_ID = \"dev\";\n+\n     @Inject\n     private UrlUtil urlUtil;\n \n-    public MTDocument fromTextFlows(String projectSlug, String versionSlug, String docId, LocaleId fromLocale, List<HTextFlow> textFlows) {\n+    public MTDocument fromTextFlows(String projectSlug,\n+           String versionSlug,\n+           String docId,\n+           LocaleId fromLocale, List<HTextFlow> textFlows) {\n         String url = buildDocUrl(projectSlug, versionSlug, docId);\n-        List<TypeString> contents =\n-                textFlows.stream()\n-                        // TODO we can't support plural yet\n-                        .map(textFlow -> textFlow.getContents().get(0))\n-                        .map(TypeString::new)\n-                        .collect(Collectors.toList());\n-\n+        List<TypeString> contents = textFlows.stream()\n+                        // TODO we can't support plural yet.map(textFlow -> textFlow.getContents().get(0))\n+                                                                                                                  .map(TypeString::new)\n+                                                                                                                  .collect(Collectors.toList());\n         return new MTDocument(url, contents, fromLocale.getId(), BACKEND_ID);\n     }\n \n-    private String buildDocUrl(String projectSlug, String versionSlug,\n-            String docId) {\n-        return urlUtil.restPath(\"project/p/\" + projectSlug +\"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n+    private String buildDocUrl(String projectSlug, String versionSlug, String docId) {\n+        return urlUtil.restPath(\"project/p/\" + projectSlug + \"/iterations/i\"\n+            + versionSlug + \"/resource?docId=\" + docId);\n     }\n \n-    public MTDocument fromSingleTextFlow(String projectSlug, String versionSlug, String docId, LocaleId fromLocale, HTextFlow textFlow) {\n+    public MTDocument fromSingleTextFlow(String projectSlug,\n+           String versionSlug,\n+           String docId,\n+           LocaleId fromLocale, HTextFlow textFlow) {\n         String url = buildDocUrl(projectSlug, versionSlug, docId);\n-        List<TypeString> contents = textFlow.getContents()\n-                .stream().map(TypeString::new).collect(Collectors.toList());\n-\n+        List<TypeString> contents = textFlow.getContents().stream()\n+                                                          .map(TypeString::new)\n+                                                          .collect(Collectors.toList());\n         return new MTDocument(url, contents, fromLocale.getId(), BACKEND_ID);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/1/TextFlowsToMTDoc.java\nindex 515ecec77f..bc1d6b9fd8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/errored/1/1/TextFlowsToMTDoc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/zanata-zanata-platform/styler_random/1/TextFlowsToMTDoc.java\n@@ -57,7 +57,7 @@ public class TextFlowsToMTDoc {\n \n     private String buildDocUrl(String projectSlug, String versionSlug,\n             String docId) {\n-        return urlUtil.restPath(\"project/p/\" + projectSlug +\"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n+        return urlUtil.restPath(\"project/p/\" + projectSlug + \"/iterations/i\" + versionSlug + \"/resource?docId=\" + docId);\n     }\n \n     public MTDocument fromSingleTextFlow(String projectSlug, String versionSlug, String docId, LocaleId fromLocale, HTextFlow textFlow) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "60",
+                    "column": "60",
+                    "severity": "error",
+                    "message": "'+' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

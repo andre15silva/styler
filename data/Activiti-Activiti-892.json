@@ -1,0 +1,79 @@
+{
+    "error_id": "892",
+    "information": {
+        "errors": [
+            {
+                "line": "46",
+                "severity": "error",
+                "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": "    }\n\n    @Bean\n    public PasswordEncoder passwordEncoder() {\n        return new BCryptPasswordEncoder();\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/892/DemoApplicationConfiguration.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/892/DemoApplicationConfiguration.java\nindex c46236785e..f9a2026f32 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/892/DemoApplicationConfiguration.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/892/DemoApplicationConfiguration.java\n@@ -1,7 +1,6 @@\n package org.activiti.examples;\n \n import static java.util.Arrays.asList;\n-\n import java.util.Arrays;\n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n@@ -13,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;\n import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;\n import org.springframework.security.crypto.password.PasswordEncoder;\n import org.springframework.security.provisioning.InMemoryUserDetailsManager;\n-\n import java.util.List;\n import java.util.stream.Collectors;\n \n@@ -24,23 +22,14 @@ public class DemoApplicationConfiguration {\n \n     @Bean\n     public UserDetailsService myUserDetailsService() {\n-\n-        InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();\n-\n-        String[][] usersGroupsAndRoles = {\n-                {\"system\", \"password\", \"ROLE_ACTIVITI_USER\"},\n-                {\"admin\", \"password\", \"ROLE_ACTIVITI_ADMIN\"},\n-        };\n-\n-        for (String[] user : usersGroupsAndRoles) {\n-            List<String> authoritiesStrings = asList(Arrays.copyOfRange(user, 2, user.length));\n-            logger.info(\"> Registering new user: \" + user[0] + \" with the following Authorities[\" + authoritiesStrings + \"]\");\n-            inMemoryUserDetailsManager.createUser(new User(user[0], passwordEncoder().encode(user[1]),\n-                    authoritiesStrings.stream().map(s -> new SimpleGrantedAuthority(s)).collect(Collectors.toList())));\n-        }\n-\n-        return inMemoryUserDetailsManager;\n-\n+    InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();\n+    String[][] usersGroupsAndRoles = { { \"system\", \"password\", \"ROLE_ACTIVITI_USER\" }, { \"admin\", \"password\", \"ROLE_ACTIVITI_ADMIN\" },};\n+    for (String[] user : usersGroupsAndRoles) {\n+        List<String> authoritiesStrings = asList(Arrays.copyOfRange(user, 2, user.length));\n+        logger.info(\"> Registering new user: \" + user[0] + \" with the following Authorities[\" + authoritiesStrings + \"]\");\n+        inMemoryUserDetailsManager.createUser(new User(user[0], passwordEncoder().encode(user[1]), authoritiesStrings.stream().map(s -> new SimpleGrantedAuthority(s)).collect(Collectors.toList())));\n+    }\n+    return inMemoryUserDetailsManager;\n     }\n \n     @Bean\n@@ -48,5 +37,4 @@ public class DemoApplicationConfiguration {\n         return new BCryptPasswordEncoder();\n     }\n \n-\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 21
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' has more than 1 empty lines after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,155 @@
+{
+    "error_id": "7",
+    "information": {
+        "errors": [
+            {
+                "line": "116",
+                "column": "11",
+                "severity": "error",
+                "message": "'if' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+            }
+        ]
+    },
+    "source_code": "    @Override\n    public Invitations invitations() {\n        if(this.accessToken == null || this.accessToken.isEmpty()) {\n            throw new IllegalStateException(\n                \"Can't fetch invitations without a user's access token\"\n            );",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler/7/Github.java\nindex 282c33d2d8..598af3c07c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler/7/Github.java\n@@ -113,7 +113,7 @@ public final class Github implements Provider {\n \n     @Override\n     public Invitations invitations() {\n-        if(this.accessToken == null || this.accessToken.isEmpty()) {\n+        if (this.accessToken == null || this.accessToken.isEmpty()) {\n             throw new IllegalStateException(\n                 \"Can't fetch invitations without a user's access token\"\n             );\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "@param tag description should start with capital letter",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "@param tag description should start with capital letter",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "@param tag description should start with capital letter",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "@param tag description should start with capital letter",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "@param tag description should start with capital letter",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "@param tag description should start with capital letter",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/intellij/7/Github.java\nindex 282c33d2d8..33f30c2cb5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/intellij/7/Github.java\n@@ -20,6 +20,7 @@\n  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n  * POSSIBILITY OF SUCH DAMAGE.\n  */\n+\n package com.selfxdsd.core;\n \n import com.selfxdsd.api.Invitations;\n@@ -31,12 +32,13 @@ import java.net.URI;\n \n /**\n  * Github as a Provider.\n+ *\n  * @author Mihai Andronache (amihaiemil@gmail.com)\n  * @version $Id$\n- * @since 0.0.1\n  * @todo #26:30min Bring in Gizzly mock HTTP Server (see jcabi-http),\n- *  so we can mock the Github server and write unit tests for the methods\n- *  that perform HTTP Requests.\n+ * so we can mock the Github server and write unit tests for the methods\n+ * that perform HTTP Requests.\n+ * @since 0.0.1\n  */\n public final class Github implements Provider {\n \n@@ -56,14 +58,15 @@ public final class Github implements Provider {\n     private final Storage storage;\n \n     /**\n-     *Token used for making API Requests which require\n-     *user authentication.\n+     * Token used for making API Requests which require\n+     * user authentication.\n      */\n     private final String accessToken;\n \n     /**\n      * Constructor.\n-     * @param user Authenticated user.\n+     *\n+     * @param user    Authenticated user.\n      * @param storage Storage where we might save some stuff.\n      */\n     public Github(final User user, final Storage storage) {\n@@ -72,9 +75,10 @@ public final class Github implements Provider {\n \n     /**\n      * Constructor.\n-     * @param user Authenticated user.\n+     *\n+     * @param user    Authenticated user.\n      * @param storage Storage where we might save some stuff.\n-     * @param uri Base URI of Github's API.\n+     * @param uri     Base URI of Github's API.\n      */\n     public Github(final User user, final Storage storage, final URI uri) {\n         this(user, storage, uri, \"\");\n@@ -83,9 +87,10 @@ public final class Github implements Provider {\n     /**\n      * Private ctor, it can only be used by the withToken(...) method\n      * to return an instance which has a token.\n-     * @param user User.\n-     * @param storage Self Storage\n-     * @param uri Base URI of the provider's API (e.g. api.github.com)\n+     *\n+     * @param user        User.\n+     * @param storage     Self Storage\n+     * @param uri         Base URI of the provider's API (e.g. api.github.com)\n      * @param accessToken Access token.\n      */\n     private Github(\n@@ -113,7 +118,7 @@ public final class Github implements Provider {\n \n     @Override\n     public Invitations invitations() {\n-        if(this.accessToken == null || this.accessToken.isEmpty()) {\n+        if (this.accessToken == null || this.accessToken.isEmpty()) {\n             throw new IllegalStateException(\n                 \"Can't fetch invitations without a user's access token\"\n             );\n",
+            "diff_size": 18
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "116",
+                    "column": "11",
+                    "severity": "error",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/naturalize/7/Github.java\nindex 282c33d2d8..2bd3858240 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/naturalize/7/Github.java\n@@ -115,19 +115,15 @@ public final class Github implements Provider {\n     public Invitations invitations() {\n         if(this.accessToken == null || this.accessToken.isEmpty()) {\n             throw new IllegalStateException(\n-                \"Can't fetch invitations without a user's access token\"\n-            );\n+                \"Can't fetch invitations without a user's access token\");\n         }\n-        return new GithubRepoInvitations(\n-            URI.create(\n-                this.uri.toString() + \"/user/repository_invitations\"\n-            ),\n-            this.accessToken\n-        );\n+        return new GithubRepoInvitations(URI.create(\n+                this.uri.toString() + \"/user/repository_invitations\"),\n+            this.accessToken);\n     }\n \n     @Override\n     public Provider withToken(final String accessToken) {\n         return new Github(this.user, this.storage, this.uri, accessToken);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "127",
+                    "column": "11",
+                    "severity": "error",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "127",
+                    "column": "35",
+                    "severity": "error",
+                    "message": "'||' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "128",
+                    "severity": "error",
+                    "message": "'this' has incorrect indentation level 11, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "129",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 43, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "130",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "131",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 39, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "132",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/codebuff/7/Github.java\nindex 282c33d2d8..96191bedcd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/codebuff/7/Github.java\n@@ -38,27 +38,37 @@ import java.net.URI;\n  *  so we can mock the Github server and write unit tests for the methods\n  *  that perform HTTP Requests.\n  */\n+\n+\n public final class Github implements Provider {\n \n     /**\n      * User.\n      */\n+\n+\n     private final User user;\n \n     /**\n      * Github's URI.\n      */\n+\n+\n     private final URI uri;\n \n     /**\n      * Storge where we might save some stuff.\n      */\n+\n+\n     private final Storage storage;\n \n     /**\n      *Token used for making API Requests which require\n      *user authentication.\n      */\n+\n+\n     private final String accessToken;\n \n     /**\n@@ -66,6 +76,8 @@ public final class Github implements Provider {\n      * @param user Authenticated user.\n      * @param storage Storage where we might save some stuff.\n      */\n+\n+\n     public Github(final User user, final Storage storage) {\n         this(user, storage, URI.create(\"https://api.github.com\"));\n     }\n@@ -76,6 +88,8 @@ public final class Github implements Provider {\n      * @param storage Storage where we might save some stuff.\n      * @param uri Base URI of Github's API.\n      */\n+\n+\n     public Github(final User user, final Storage storage, final URI uri) {\n         this(user, storage, uri, \"\");\n     }\n@@ -88,10 +102,9 @@ public final class Github implements Provider {\n      * @param uri Base URI of the provider's API (e.g. api.github.com)\n      * @param accessToken Access token.\n      */\n-    private Github(\n-        final User user, final Storage storage,\n-        final URI uri, final String accessToken\n-    ) {\n+\n+\n+    private Github(final User user, final Storage storage, final URI uri, final String accessToken) {\n         this.user = user;\n         this.storage = storage;\n         this.uri = uri;\n@@ -105,29 +118,22 @@ public final class Github implements Provider {\n \n     @Override\n     public Repo repo(final String name) {\n-        final URI repo = URI.create(\n-            this.uri.toString() + \"/repos/\" + this.user.username() + \"/\" + name\n-        );\n+        final URI repo = URI.create(this.uri.toString() + \"/repos/\" + this.user.username() + \"/\" + name);\n         return new GithubRepo(this.user, repo, this.storage);\n     }\n \n     @Override\n     public Invitations invitations() {\n-        if(this.accessToken == null || this.accessToken.isEmpty()) {\n-            throw new IllegalStateException(\n-                \"Can't fetch invitations without a user's access token\"\n-            );\n-        }\n-        return new GithubRepoInvitations(\n-            URI.create(\n-                this.uri.toString() + \"/user/repository_invitations\"\n-            ),\n-            this.accessToken\n-        );\n+        if(this.accessToken== null||\n+           this.accessToken.isEmpty()) {\n+                                           throw new IllegalStateException(\n+                                               \"Can't fetch invitations without a user's access token\");\n+                                       }\n+        return new GithubRepoInvitations(URI.create(this.uri.toString() + \"/user/repository_invitations\"), this.accessToken);\n     }\n \n     @Override\n     public Provider withToken(final String accessToken) {\n         return new Github(this.user, this.storage, this.uri, accessToken);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_random/7/Github.java\nindex 282c33d2d8..598af3c07c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_random/7/Github.java\n@@ -113,7 +113,7 @@ public final class Github implements Provider {\n \n     @Override\n     public Invitations invitations() {\n-        if(this.accessToken == null || this.accessToken.isEmpty()) {\n+        if (this.accessToken == null || this.accessToken.isEmpty()) {\n             throw new IllegalStateException(\n                 \"Can't fetch invitations without a user's access token\"\n             );\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_three_grams/7/Github.java\nindex 282c33d2d8..598af3c07c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/7/Github.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_three_grams/7/Github.java\n@@ -113,7 +113,7 @@ public final class Github implements Provider {\n \n     @Override\n     public Invitations invitations() {\n-        if(this.accessToken == null || this.accessToken.isEmpty()) {\n+        if (this.accessToken == null || this.accessToken.isEmpty()) {\n             throw new IllegalStateException(\n                 \"Can't fetch invitations without a user's access token\"\n             );\n",
+            "diff_size": 1
+        }
+    ]
+}

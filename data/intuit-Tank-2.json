@@ -1,0 +1,125 @@
+{
+    "error_id": "2",
+    "information": {
+        "errors": [
+            {
+                "line": "64",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 164).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    protected List<Script> getEntities() {\n        List<Script> scripts = new ScriptDao().findFiltered(ViewFilterType.ALL);\n        List<String> list = scripts.stream().filter(p -> !p.getCreator().isEmpty()).map(OwnableEntity::getCreator).distinct().sorted().collect(Collectors.toList());\n        creatorList = new SelectItem[list.size() + 1];\n        creatorList[0] = new SelectItem(\"\", \"All\");\n        for (int i = 0; i < list.size(); i++) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "66",
+                    "column": "15",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/2/ScriptLoader.java\nindex c3fee59148..4115566594 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/2/ScriptLoader.java\n@@ -61,7 +61,9 @@ public class ScriptLoader extends EntityVersionLoader<Script, ModifiedScriptMess\n     @Override\n     protected List<Script> getEntities() {\n         List<Script> scripts = new ScriptDao().findFiltered(ViewFilterType.ALL);\n-        List<String> list = scripts.stream().filter(p -> !p.getCreator().isEmpty()).map(OwnableEntity::getCreator).distinct().sorted().collect(Collectors.toList());\n+        List<String> list = scripts.stream().filter(\n+                p->!p.getCreator().isEmpty()).map(OwnableEntity\n+:: getCreator ).distinct().sorted().collect(Collectors.toList());\n         creatorList = new SelectItem[list.size() + 1];\n         creatorList[0] = new SelectItem(\"\", \"All\");\n         for (int i = 0; i < list.size(); i++) {\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/2/ScriptLoader.java\nindex c3fee59148..d897d12578 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/2/ScriptLoader.java\n@@ -1,6 +1,7 @@\n /**\n  * Copyright 2011 Intuit Inc. All Rights Reserved\n  */\n+\n package com.intuit.tank.script;\n \n /*\n@@ -34,47 +35,47 @@ import com.intuit.tank.wrapper.EntityVersionLoader;\n \n /**\n  * ScriptLoader\n- * \n+ *\n  * @author dangleton\n- * \n  */\n @Named\n @Dependent\n public class ScriptLoader extends EntityVersionLoader<Script, ModifiedScriptMessage> {\n \n-    private static final long serialVersionUID = 1L;\n-    private SelectItem[] creatorList;\n+  private static final long serialVersionUID = 1L;\n+  private SelectItem[] creatorList;\n \n-    /**\n-     * \n-     * @param entityMsg\n-     */\n-    public void observeEvents(@Observes ModifiedEntityMessage entityMsg) {\n-        if (entityMsg.getEntityClass() == Script.class) {\n-            invalidate();\n-        }\n+  /**\n+   * @param entityMsg\n+   */\n+  public void observeEvents(@Observes ModifiedEntityMessage entityMsg) {\n+    if (entityMsg.getEntityClass() == Script.class) {\n+      invalidate();\n     }\n+  }\n \n-    /**\n-     * @inheritDoc\n-     */\n-    @Override\n-    protected List<Script> getEntities() {\n-        List<Script> scripts = new ScriptDao().findFiltered(ViewFilterType.ALL);\n-        List<String> list = scripts.stream().filter(p -> !p.getCreator().isEmpty()).map(OwnableEntity::getCreator).distinct().sorted().collect(Collectors.toList());\n-        creatorList = new SelectItem[list.size() + 1];\n-        creatorList[0] = new SelectItem(\"\", \"All\");\n-        for (int i = 0; i < list.size(); i++) {\n-            creatorList[i + 1] = new SelectItem(list.get(i), list.get(i));\n-        }\n-        return scripts;\n+  /**\n+   * @inheritDoc\n+   */\n+  @Override\n+  protected List<Script> getEntities() {\n+    List<Script> scripts = new ScriptDao().findFiltered(ViewFilterType.ALL);\n+    List<String> list =\n+      scripts.stream().filter(p -> !p.getCreator().isEmpty()).map(OwnableEntity::getCreator).distinct().sorted()\n+        .collect(Collectors.toList());\n+    creatorList = new SelectItem[list.size() + 1];\n+    creatorList[0] = new SelectItem(\"\", \"All\");\n+    for (int i = 0; i < list.size(); i++) {\n+      creatorList[i + 1] = new SelectItem(list.get(i), list.get(i));\n     }\n+    return scripts;\n+  }\n \n-    /**\n-     * @return the creatorList\n-     */\n-    public SelectItem[] getCreatorList() {\n-        return creatorList;\n-    }\n+  /**\n+   * @return the creatorList\n+   */\n+  public SelectItem[] getCreatorList() {\n+    return creatorList;\n+  }\n \n }\n",
+            "diff_size": 35
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 164).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/2/ScriptLoader.java\nindex c3fee59148..2b3d448b15 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/2/ScriptLoader.java\n@@ -77,4 +77,4 @@ public class ScriptLoader extends EntityVersionLoader<Script, ModifiedScriptMess\n         return creatorList;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 162).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/2/ScriptLoader.java\nindex c3fee59148..94aad96005 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/2/ScriptLoader.java\n@@ -16,14 +16,14 @@ package com.intuit.tank.script;\n  * #L%\n  */\n \n+\n+\n import java.util.List;\n import java.util.stream.Collectors;\n-\n import javax.enterprise.context.Dependent;\n import javax.enterprise.event.Observes;\n import javax.faces.model.SelectItem;\n import javax.inject.Named;\n-\n import com.intuit.tank.ModifiedScriptMessage;\n import com.intuit.tank.dao.ScriptDao;\n import com.intuit.tank.project.OwnableEntity;\n@@ -38,6 +38,7 @@ import com.intuit.tank.wrapper.EntityVersionLoader;\n  * @author dangleton\n  * \n  */\n+\n @Named\n @Dependent\n public class ScriptLoader extends EntityVersionLoader<Script, ModifiedScriptMessage> {\n@@ -58,10 +59,12 @@ public class ScriptLoader extends EntityVersionLoader<Script, ModifiedScriptMess\n     /**\n      * @inheritDoc\n      */\n+\n+\n     @Override\n     protected List<Script> getEntities() {\n         List<Script> scripts = new ScriptDao().findFiltered(ViewFilterType.ALL);\n-        List<String> list = scripts.stream().filter(p -> !p.getCreator().isEmpty()).map(OwnableEntity::getCreator).distinct().sorted().collect(Collectors.toList());\n+        List<String> list = scripts.stream().filter(p->!p.getCreator().isEmpty()).map(OwnableEntity::getCreator).distinct().sorted().collect(Collectors.toList());\n         creatorList = new SelectItem[list.size() + 1];\n         creatorList[0] = new SelectItem(\"\", \"All\");\n         for (int i = 0; i < list.size(); i++) {\n@@ -73,8 +76,10 @@ public class ScriptLoader extends EntityVersionLoader<Script, ModifiedScriptMess\n     /**\n      * @return the creatorList\n      */\n+\n+\n     public SelectItem[] getCreatorList() {\n         return creatorList;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "65",
+                    "column": "15",
+                    "severity": "warning",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "65",
+                    "column": "27",
+                    "severity": "warning",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "65",
+                    "column": "29",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "65",
+                    "column": "31",
+                    "severity": "warning",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "65",
+                    "column": "41",
+                    "severity": "warning",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "66",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/2/ScriptLoader.java\nindex c3fee59148..a3fb4c6ed3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/2/ScriptLoader.java\n@@ -61,7 +61,9 @@ public class ScriptLoader extends EntityVersionLoader<Script, ModifiedScriptMess\n     @Override\n     protected List<Script> getEntities() {\n         List<Script> scripts = new ScriptDao().findFiltered(ViewFilterType.ALL);\n-        List<String> list = scripts.stream().filter(p -> !p.getCreator().isEmpty()).map(OwnableEntity::getCreator).distinct().sorted().collect(Collectors.toList());\n+        List<String > list = scripts.stream().filter(\n+        p->!p . getCreator( ) . isEmpty ()).map(OwnableEntity::getCreator)\n+. distinct().sorted().collect(Collectors.toList());\n         creatorList = new SelectItem[list.size() + 1];\n         creatorList[0] = new SelectItem(\"\", \"All\");\n         for (int i = 0; i < list.size(); i++) {\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "66",
+                    "column": "15",
+                    "severity": "warning",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/2/ScriptLoader.java\nindex c3fee59148..4115566594 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/2/ScriptLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/2/ScriptLoader.java\n@@ -61,7 +61,9 @@ public class ScriptLoader extends EntityVersionLoader<Script, ModifiedScriptMess\n     @Override\n     protected List<Script> getEntities() {\n         List<Script> scripts = new ScriptDao().findFiltered(ViewFilterType.ALL);\n-        List<String> list = scripts.stream().filter(p -> !p.getCreator().isEmpty()).map(OwnableEntity::getCreator).distinct().sorted().collect(Collectors.toList());\n+        List<String> list = scripts.stream().filter(\n+                p->!p.getCreator().isEmpty()).map(OwnableEntity\n+:: getCreator ).distinct().sorted().collect(Collectors.toList());\n         creatorList = new SelectItem[list.size() + 1];\n         creatorList[0] = new SelectItem(\"\", \"All\");\n         for (int i = 0; i < list.size(); i++) {\n",
+            "diff_size": 3
+        }
+    ]
+}

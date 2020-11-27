@@ -1,0 +1,554 @@
+{
+    "error_id": "17",
+    "information": {
+        "errors": [
+            {
+                "line": "64",
+                "column": "9",
+                "severity": "warning",
+                "message": "'}' at column 3 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "\t\t\t\tlog.error(\"Timeout has elapsed before termination completed for executor {}\", pool);\n\t\t\t}\n\t\t} catch (InterruptedException e) {\n\t\t\tthrow new RuntimeException(e);\n\t\t}\n\t}",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "64",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 3 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/17/QueryExecutor.java\nindex 1f639a4466..ad521eb58e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/17/QueryExecutor.java\n@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;\n public class QueryExecutor implements Closeable {\n \n \tprivate final ListeningExecutorService pool;\n-\t\n+\n \tpublic QueryExecutor(ConqueryConfig config) {\n \t\tthis.pool = config.getQueries().getExecutionPool().createService(\"Query Executor %d\");\n \t}\n@@ -41,12 +41,12 @@ public class QueryExecutor implements Closeable {\n \t\tif(entries.isEmpty()) {\n \t\t\tlog.warn(\"entries for query {} are empty\", executionId);\n \t\t}\n-\t\t\n+\n \t\tList<ListenableFuture<EntityResult>> futures = entry.getValue()\n \t\t\t.executeOn(context, entries)\n \t\t\t.map(executor::submit)\n \t\t\t.collect(Collectors.toList());\n-\t\t\n+\n \t\tListenableFuture<List<EntityResult>> future = Futures.allAsList(futures);\n \t\tresult.setFuture(future);\n \t\tfuture.addListener(result::finish, MoreExecutors.directExecutor());\n@@ -61,7 +61,7 @@ public class QueryExecutor implements Closeable {\n \t\t\tif (!success && log.isDebugEnabled()) {\n \t\t\t\tlog.error(\"Timeout has elapsed before termination completed for executor {}\", pool);\n \t\t\t}\n-\t\t} catch (InterruptedException e) {\n+\t\t} catch  (InterruptedException e) {\n \t\t\tthrow new RuntimeException(e);\n \t\t}\n \t}\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "64",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/17/QueryExecutor.java\nindex 1f639a4466..9fdce7e223 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/17/QueryExecutor.java\n@@ -23,46 +23,46 @@ import lombok.extern.slf4j.Slf4j;\n @Slf4j\n public class QueryExecutor implements Closeable {\n \n-\tprivate final ListeningExecutorService pool;\n-\t\n-\tpublic QueryExecutor(ConqueryConfig config) {\n-\t\tthis.pool = config.getQueries().getExecutionPool().createService(\"Query Executor %d\");\n-\t}\n+    private final ListeningExecutorService pool;\n \n-\tpublic ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry) {\n+    public QueryExecutor(ConqueryConfig config) {\n+        this.pool = config.getQueries().getExecutionPool().createService(\"Query Executor %d\");\n+    }\n \n-\t\treturn execute(result, context, entry, pool);\n-\t}\n+    public ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry) {\n \n-\tpublic static ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry, ListeningExecutorService executor) {\n-\t\tManagedExecutionId executionId = entry.getKey();\n-\t\tCollection<Entity> entries = context.getStorage().getBucketManager().getEntities().values();\n+        return execute(result, context, entry, pool);\n+    }\n \n-\t\tif(entries.isEmpty()) {\n-\t\t\tlog.warn(\"entries for query {} are empty\", executionId);\n-\t\t}\n-\t\t\n-\t\tList<ListenableFuture<EntityResult>> futures = entry.getValue()\n-\t\t\t.executeOn(context, entries)\n-\t\t\t.map(executor::submit)\n-\t\t\t.collect(Collectors.toList());\n-\t\t\n-\t\tListenableFuture<List<EntityResult>> future = Futures.allAsList(futures);\n-\t\tresult.setFuture(future);\n-\t\tfuture.addListener(result::finish, MoreExecutors.directExecutor());\n-\t\treturn result;\n-\t}\n+    public static ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry, ListeningExecutorService executor) {\n+        ManagedExecutionId executionId = entry.getKey();\n+        Collection<Entity> entries = context.getStorage().getBucketManager().getEntities().values();\n \n-\t@Override\n-\tpublic void close() throws IOException {\n-\t\tpool.shutdown();\n-\t\ttry {\n-\t\t\tboolean success = pool.awaitTermination(1, TimeUnit.DAYS);\n-\t\t\tif (!success && log.isDebugEnabled()) {\n-\t\t\t\tlog.error(\"Timeout has elapsed before termination completed for executor {}\", pool);\n-\t\t\t}\n-\t\t} catch (InterruptedException e) {\n-\t\t\tthrow new RuntimeException(e);\n-\t\t}\n-\t}\n+        if (entries.isEmpty()) {\n+            log.warn(\"entries for query {} are empty\", executionId);\n+        }\n+\n+        List<ListenableFuture<EntityResult>> futures = entry.getValue()\n+            .executeOn(context, entries)\n+            .map(executor::submit)\n+            .collect(Collectors.toList());\n+\n+        ListenableFuture<List<EntityResult>> future = Futures.allAsList(futures);\n+        result.setFuture(future);\n+        future.addListener(result::finish, MoreExecutors.directExecutor());\n+        return result;\n+    }\n+\n+    @Override\n+    public void close() throws IOException {\n+        pool.shutdown();\n+        try {\n+            boolean success = pool.awaitTermination(1, TimeUnit.DAYS);\n+            if (!success && log.isDebugEnabled()) {\n+                log.error(\"Timeout has elapsed before termination completed for executor {}\", pool);\n+            }\n+        } catch (InterruptedException e) {\n+            throw new RuntimeException(e);\n+        }\n+    }\n }\n",
+            "diff_size": 54
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "warning",
+                    "message": "'catch' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/17/QueryExecutor.java\nindex 1f639a4466..83f738b3fe 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/17/QueryExecutor.java\n@@ -30,8 +30,7 @@ public class QueryExecutor implements Closeable {\n \t}\n \n \tpublic ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry) {\n-\n-\t\treturn execute(result, context, entry, pool);\n+\treturn execute(result, context, entry, pool);\n \t}\n \n \tpublic static ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry, ListeningExecutorService executor) {\n@@ -42,8 +41,7 @@ public class QueryExecutor implements Closeable {\n \t\t\tlog.warn(\"entries for query {} are empty\", executionId);\n \t\t}\n \t\t\n-\t\tList<ListenableFuture<EntityResult>> futures = entry.getValue()\n-\t\t\t.executeOn(context, entries)\n+\t\tList<ListenableFuture<EntityResult>> futures = entry.getValue().executeOn(context, entries)\n \t\t\t.map(executor::submit)\n \t\t\t.collect(Collectors.toList());\n \t\t\n@@ -61,8 +59,9 @@ public class QueryExecutor implements Closeable {\n \t\t\tif (!success && log.isDebugEnabled()) {\n \t\t\t\tlog.error(\"Timeout has elapsed before termination completed for executor {}\", pool);\n \t\t\t}\n-\t\t} catch (InterruptedException e) {\n+\t\t}\n+catch (InterruptedException e) {\n \t\t\tthrow new RuntimeException(e);\n \t\t}\n \t}\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/17/QueryExecutor.java\nindex 1f639a4466..5a17bd1701 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/17/QueryExecutor.java\n@@ -7,7 +7,6 @@ import java.util.List;\n import java.util.Map.Entry;\n import java.util.concurrent.TimeUnit;\n import java.util.stream.Collectors;\n-\n import com.bakdata.conquery.models.config.ConqueryConfig;\n import com.bakdata.conquery.models.identifiable.ids.specific.ManagedExecutionId;\n import com.bakdata.conquery.models.query.entity.Entity;\n@@ -23,46 +22,46 @@ import lombok.extern.slf4j.Slf4j;\n @Slf4j\n public class QueryExecutor implements Closeable {\n \n-\tprivate final ListeningExecutorService pool;\n-\t\n-\tpublic QueryExecutor(ConqueryConfig config) {\n-\t\tthis.pool = config.getQueries().getExecutionPool().createService(\"Query Executor %d\");\n-\t}\n+    private final ListeningExecutorService pool;\n \n-\tpublic ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry) {\n+    public QueryExecutor(ConqueryConfig config) {\n+        this.pool = config.getQueries().getExecutionPool()\n+                                       .createService(\"Query Executor %d\");\n+    }\n \n-\t\treturn execute(result, context, entry, pool);\n-\t}\n+    public ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry) {\n+        return execute(result, context, entry, pool);\n+    }\n \n-\tpublic static ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry, ListeningExecutorService executor) {\n-\t\tManagedExecutionId executionId = entry.getKey();\n-\t\tCollection<Entity> entries = context.getStorage().getBucketManager().getEntities().values();\n+    public static ShardResult execute(ShardResult result, QueryExecutionContext context, Entry<ManagedExecutionId, QueryPlan> entry, ListeningExecutorService executor) {\n+        ManagedExecutionId executionId = entry.getKey();\n+        Collection<Entity> entries = context.getStorage().getBucketManager()\n+                                                         .getEntities()\n+                                                         .values();\n+        if(entries.isEmpty()) {\n+            log.warn(\"entries for query {} are empty\", executionId);\n+        }\n \n-\t\tif(entries.isEmpty()) {\n-\t\t\tlog.warn(\"entries for query {} are empty\", executionId);\n-\t\t}\n-\t\t\n-\t\tList<ListenableFuture<EntityResult>> futures = entry.getValue()\n-\t\t\t.executeOn(context, entries)\n-\t\t\t.map(executor::submit)\n-\t\t\t.collect(Collectors.toList());\n-\t\t\n-\t\tListenableFuture<List<EntityResult>> future = Futures.allAsList(futures);\n-\t\tresult.setFuture(future);\n-\t\tfuture.addListener(result::finish, MoreExecutors.directExecutor());\n-\t\treturn result;\n-\t}\n+        List<ListenableFuture<EntityResult>> futures = entry.getValue().executeOn(context, entries)\n+                                                                       .map(executor::submit)\n+                                                                       .collect(Collectors.toList());\n+        ListenableFuture<List<EntityResult>> future = Futures.allAsList(futures);\n+        result.setFuture(future);\n+        future.addListener(result::finish, MoreExecutors.directExecutor());\n+        return result;\n+    }\n \n-\t@Override\n-\tpublic void close() throws IOException {\n-\t\tpool.shutdown();\n-\t\ttry {\n-\t\t\tboolean success = pool.awaitTermination(1, TimeUnit.DAYS);\n-\t\t\tif (!success && log.isDebugEnabled()) {\n-\t\t\t\tlog.error(\"Timeout has elapsed before termination completed for executor {}\", pool);\n-\t\t\t}\n-\t\t} catch (InterruptedException e) {\n-\t\t\tthrow new RuntimeException(e);\n-\t\t}\n-\t}\n-}\n+    @Override\n+    public void close() throws IOException {\n+        pool.shutdown();\n+        try {\n+            boolean success = pool.awaitTermination(1, TimeUnit.DAYS);\n+            if(!success && log.isDebugEnabled()) {\n+                log.error(\"Timeout has elapsed before termination completed for executor {}\", pool);\n+            }\n+        }\n+        catch (InterruptedException e) {\n+            throw new RuntimeException(e);\n+        }\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 49
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "64",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 3 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/17/QueryExecutor.java\nindex 1f639a4466..ad521eb58e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/17/QueryExecutor.java\n@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;\n public class QueryExecutor implements Closeable {\n \n \tprivate final ListeningExecutorService pool;\n-\t\n+\n \tpublic QueryExecutor(ConqueryConfig config) {\n \t\tthis.pool = config.getQueries().getExecutionPool().createService(\"Query Executor %d\");\n \t}\n@@ -41,12 +41,12 @@ public class QueryExecutor implements Closeable {\n \t\tif(entries.isEmpty()) {\n \t\t\tlog.warn(\"entries for query {} are empty\", executionId);\n \t\t}\n-\t\t\n+\n \t\tList<ListenableFuture<EntityResult>> futures = entry.getValue()\n \t\t\t.executeOn(context, entries)\n \t\t\t.map(executor::submit)\n \t\t\t.collect(Collectors.toList());\n-\t\t\n+\n \t\tListenableFuture<List<EntityResult>> future = Futures.allAsList(futures);\n \t\tresult.setFuture(future);\n \t\tfuture.addListener(result::finish, MoreExecutors.directExecutor());\n@@ -61,7 +61,7 @@ public class QueryExecutor implements Closeable {\n \t\t\tif (!success && log.isDebugEnabled()) {\n \t\t\t\tlog.error(\"Timeout has elapsed before termination completed for executor {}\", pool);\n \t\t\t}\n-\t\t} catch (InterruptedException e) {\n+\t\t} catch  (InterruptedException e) {\n \t\t\tthrow new RuntimeException(e);\n \t\t}\n \t}\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 16, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "'catch rcurly' has incorrect indentation level 12, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "warning",
+                    "message": "'class def rcurly' has incorrect indentation level 1, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/17/QueryExecutor.java\nindex 1f639a4466..de3ad3eed8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/17/QueryExecutor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/17/QueryExecutor.java\n@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;\n public class QueryExecutor implements Closeable {\n \n \tprivate final ListeningExecutorService pool;\n-\t\n+\n \tpublic QueryExecutor(ConqueryConfig config) {\n \t\tthis.pool = config.getQueries().getExecutionPool().createService(\"Query Executor %d\");\n \t}\n@@ -41,12 +41,12 @@ public class QueryExecutor implements Closeable {\n \t\tif(entries.isEmpty()) {\n \t\t\tlog.warn(\"entries for query {} are empty\", executionId);\n \t\t}\n-\t\t\n+\n \t\tList<ListenableFuture<EntityResult>> futures = entry.getValue()\n \t\t\t.executeOn(context, entries)\n \t\t\t.map(executor::submit)\n \t\t\t.collect(Collectors.toList());\n-\t\t\n+\n \t\tListenableFuture<List<EntityResult>> future = Futures.allAsList(futures);\n \t\tresult.setFuture(future);\n \t\tfuture.addListener(result::finish, MoreExecutors.directExecutor());\n@@ -61,8 +61,10 @@ public class QueryExecutor implements Closeable {\n \t\t\tif (!success && log.isDebugEnabled()) {\n \t\t\t\tlog.error(\"Timeout has elapsed before termination completed for executor {}\", pool);\n \t\t\t}\n-\t\t} catch (InterruptedException e) {\n-\t\t\tthrow new RuntimeException(e);\n \t\t}\n-\t}\n-}\n+\t\tcatch (InterruptedException e) {\n+\t\t\t\tthrow new RuntimeException(e);\n+\t\t\t}\n+\t\t}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 11
+        }
+    ]
+}

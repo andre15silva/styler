@@ -1,0 +1,65 @@
+{
+    "error_id": "5",
+    "information": {
+        "errors": [
+            {
+                "line": "49",
+                "severity": "error",
+                "message": "Line is longer than 130 characters (found 133).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        song.setDiscNumber(\"null\".equalsIgnoreCase(s[INDEX_DISC]) ? NULL_DISC : s[INDEX_DISC]);\n\n        MPDArtist artist = processArtist(song, \"null\".equalsIgnoreCase(s[INDEX_ARTIST]) ? TestArtists.NULL_ARTIST : s[INDEX_ARTIST]);\n        MPDGenre genre = processGenre(song, s[INDEX_GENRE]);\n        String year = \"null\".equalsIgnoreCase(s[INDEX_YEAR]) ? TestYears.NULL_YEAR : s[INDEX_YEAR];\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler/5/TestSongs.java\nindex 942be66824..9538685bff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler/5/TestSongs.java\n@@ -46,7 +46,8 @@ public class TestSongs {\n         song.setTrack(Integer.parseInt(\"null\".equalsIgnoreCase(s[INDEX_TRACK]) ? NULL_TRACK : s[INDEX_TRACK]));\n         song.setDiscNumber(\"null\".equalsIgnoreCase(s[INDEX_DISC]) ? NULL_DISC : s[INDEX_DISC]);\n \n-        MPDArtist artist = processArtist(song, \"null\".equalsIgnoreCase(s[INDEX_ARTIST]) ? TestArtists.NULL_ARTIST : s[INDEX_ARTIST]);\n+        MPDArtist artist =processArtist(song, \"null\".equalsIgnoreCase(s [INDEX_ARTIST])?TestArtists.NULL_ARTIST:s [\n+            INDEX_ARTIST ] );\n         MPDGenre genre = processGenre(song, s[INDEX_GENRE]);\n         String year = \"null\".equalsIgnoreCase(s[INDEX_YEAR]) ? TestYears.NULL_YEAR : s[INDEX_YEAR];\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Line is longer than 130 characters (found 133).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/intellij/5/TestSongs.java\nindex 942be66824..dc4e5119a2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/intellij/5/TestSongs.java\n@@ -34,7 +34,7 @@ public class TestSongs {\n \n     private static final Collection<MPDSong> songs = new ArrayList<>();\n     private static final HashMap<MPDArtist, Collection<MPDSong>> SONG_ARTIST_MAP =\n-            new HashMap<>();\n+        new HashMap<>();\n \n     public static void loadSong(File file, File f) {\n         String[] s = file.getName().replace(EXTENSION, \"\").split(\"-\");\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Line is longer than 130 characters (found 133).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/codebuff/5/TestSongs.java\nindex 942be66824..3a4bfbac17 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/codebuff/5/TestSongs.java\n@@ -4,7 +4,6 @@ import org.bff.javampd.album.MPDAlbum;\n import org.bff.javampd.artist.MPDArtist;\n import org.bff.javampd.genre.MPDGenre;\n import org.bff.javampd.song.MPDSong;\n-\n import java.io.File;\n import java.util.ArrayList;\n import java.util.Collection;\n@@ -15,9 +14,10 @@ import java.util.HashMap;\n  *\n  * @author bill\n  */\n+\n public class TestSongs {\n-    public static final String EXTENSION = \".mp3\";\n \n+    public static final String EXTENSION = \".mp3\";\n     private static final int INDEX_ARTIST = 0;\n     private static final int INDEX_ALBUM = 1;\n     private static final int INDEX_TRACK = 2;\n@@ -31,29 +31,32 @@ public class TestSongs {\n     private static final String NULL_GENRE = \"\";\n     private static final String NULL_COMMENT = \"\";\n     private static final String NULL_TRACK = \"0\";\n-\n     private static final Collection<MPDSong> songs = new ArrayList<>();\n-    private static final HashMap<MPDArtist, Collection<MPDSong>> SONG_ARTIST_MAP =\n-            new HashMap<>();\n+    private static final HashMap<MPDArtist, Collection<MPDSong>> SONG_ARTIST_MAP = new HashMap<>();\n \n     public static void loadSong(File file, File f) {\n         String[] s = file.getName().replace(EXTENSION, \"\").split(\"-\");\n+\n         String title = \"null\".equalsIgnoreCase(s[INDEX_TITLE]) ? NULL_TITLE : s[INDEX_TITLE];\n \n         MPDSong song = new MPDSong(file.getName(), title);\n+\n         song.setFile((f.isDirectory() ? f.getName() : \"\") + \"/\" + file.getName());\n         song.setComment(\"null\".equalsIgnoreCase(s[INDEX_COMMENT]) ? NULL_COMMENT : s[INDEX_COMMENT]);\n         song.setTrack(Integer.parseInt(\"null\".equalsIgnoreCase(s[INDEX_TRACK]) ? NULL_TRACK : s[INDEX_TRACK]));\n         song.setDiscNumber(\"null\".equalsIgnoreCase(s[INDEX_DISC]) ? NULL_DISC : s[INDEX_DISC]);\n \n         MPDArtist artist = processArtist(song, \"null\".equalsIgnoreCase(s[INDEX_ARTIST]) ? TestArtists.NULL_ARTIST : s[INDEX_ARTIST]);\n+\n         MPDGenre genre = processGenre(song, s[INDEX_GENRE]);\n+\n         String year = \"null\".equalsIgnoreCase(s[INDEX_YEAR]) ? TestYears.NULL_YEAR : s[INDEX_YEAR];\n \n         song.setYear(year);\n         TestYears.addYear(year);\n \n         MPDAlbum album = processAlbum(song, s[INDEX_ALBUM]);\n+\n         TestYears.addAlbum(year, album);\n \n         if (artist != null) {\n@@ -62,7 +65,6 @@ public class TestSongs {\n         }\n \n         TestGenres.addAlbum(genre, album);\n-\n         songs.add(song);\n \n         if (SONG_ARTIST_MAP.get(artist) == null) {\n@@ -80,6 +82,7 @@ public class TestSongs {\n         } else {\n             albumName = albumName.replace(\"[colon]\", \":\");\n         }\n+\n         song.setAlbumName(albumName != null ? albumName : TestAlbums.NULL_ALBUM);\n         return TestAlbums.addAlbum(albumName, song.getArtistName(), song.getYear());\n     }\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_random/5/TestSongs.java\nindex 942be66824..9538685bff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_random/5/TestSongs.java\n@@ -46,7 +46,8 @@ public class TestSongs {\n         song.setTrack(Integer.parseInt(\"null\".equalsIgnoreCase(s[INDEX_TRACK]) ? NULL_TRACK : s[INDEX_TRACK]));\n         song.setDiscNumber(\"null\".equalsIgnoreCase(s[INDEX_DISC]) ? NULL_DISC : s[INDEX_DISC]);\n \n-        MPDArtist artist = processArtist(song, \"null\".equalsIgnoreCase(s[INDEX_ARTIST]) ? TestArtists.NULL_ARTIST : s[INDEX_ARTIST]);\n+        MPDArtist artist =processArtist(song, \"null\".equalsIgnoreCase(s [INDEX_ARTIST])?TestArtists.NULL_ARTIST:s [\n+            INDEX_ARTIST ] );\n         MPDGenre genre = processGenre(song, s[INDEX_GENRE]);\n         String year = \"null\".equalsIgnoreCase(s[INDEX_YEAR]) ? TestYears.NULL_YEAR : s[INDEX_YEAR];\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_three_grams/5/TestSongs.java\nindex 942be66824..ac5337ee35 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/5/TestSongs.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_three_grams/5/TestSongs.java\n@@ -45,8 +45,7 @@ public class TestSongs {\n         song.setComment(\"null\".equalsIgnoreCase(s[INDEX_COMMENT]) ? NULL_COMMENT : s[INDEX_COMMENT]);\n         song.setTrack(Integer.parseInt(\"null\".equalsIgnoreCase(s[INDEX_TRACK]) ? NULL_TRACK : s[INDEX_TRACK]));\n         song.setDiscNumber(\"null\".equalsIgnoreCase(s[INDEX_DISC]) ? NULL_DISC : s[INDEX_DISC]);\n-\n-        MPDArtist artist = processArtist(song, \"null\".equalsIgnoreCase(s[INDEX_ARTIST]) ? TestArtists.NULL_ARTIST : s[INDEX_ARTIST]);\n+    MPDArtist artist = processArtist(song, \"null\".equalsIgnoreCase(s[INDEX_ARTIST]) ? TestArtists.NULL_ARTIST : s[INDEX_ARTIST]);\n         MPDGenre genre = processGenre(song, s[INDEX_GENRE]);\n         String year = \"null\".equalsIgnoreCase(s[INDEX_YEAR]) ? TestYears.NULL_YEAR : s[INDEX_YEAR];\n \n",
+            "diff_size": 2
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "error_id": "179",
+    "information": {
+        "errors": [
+            {
+                "line": "47",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 172).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<UserAttrDto> userAttrs = BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n\n        if (userAttrs == null || userAttrs.size() == 0) {\n            return userAttrs;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 174).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/179/UserAttrInnerServiceSMOImpl.java\nindex 85a9c926da..673b2e1c41 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/179/UserAttrInnerServiceSMOImpl.java\n@@ -42,9 +42,7 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             userAttrDto.setPage((page - 1) * userAttrDto.getRow());\n-        }\n-\n-        List<UserAttrDto> userAttrs = BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n+        } List<UserAttrDto> userAttrs = BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n \n         if (userAttrs == null || userAttrs.size() == 0) {\n             return userAttrs;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/179/UserAttrInnerServiceSMOImpl.java\nindex 85a9c926da..f470359d4c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/179/UserAttrInnerServiceSMOImpl.java\n@@ -27,86 +27,87 @@ import java.util.List;\n @RestController\n public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUserAttrInnerServiceSMO {\n \n-    @Autowired\n-    private IUserAttrServiceDao userAttrServiceDaoImpl;\n+  @Autowired\n+  private IUserAttrServiceDao userAttrServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<UserAttrDto> queryUserAttrs(@RequestBody UserAttrDto userAttrDto) {\n+  @Override\n+  public List<UserAttrDto> queryUserAttrs(@RequestBody UserAttrDto userAttrDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = userAttrDto.getPage();\n+    int page = userAttrDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            userAttrDto.setPage((page - 1) * userAttrDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      userAttrDto.setPage((page - 1) * userAttrDto.getRow());\n+    }\n \n-        List<UserAttrDto> userAttrs = BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n+    List<UserAttrDto> userAttrs =\n+      BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n \n-        if (userAttrs == null || userAttrs.size() == 0) {\n-            return userAttrs;\n-        }\n+    if (userAttrs == null || userAttrs.size() == 0) {\n+      return userAttrs;\n+    }\n \n-        String[] userIds = getUserIds(userAttrs);\n-        //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n-        List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n+    String[] userIds = getUserIds(userAttrs);\n+    //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n+    List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n \n-        for (UserAttrDto userAttr : userAttrs) {\n-            refreshUserAttr(userAttr, users);\n-        }\n-        return userAttrs;\n+    for (UserAttrDto userAttr : userAttrs) {\n+      refreshUserAttr(userAttr, users);\n     }\n-\n-    /**\n-     * \u4ece\u7528\u6237\u5217\u8868\u4e2d\u67e5\u8be2\u7528\u6237\uff0c\u5c06\u7528\u6237\u4e2d\u7684\u4fe1\u606f \u5237\u65b0\u5230 floor\u5bf9\u8c61\u4e2d\n-     *\n-     * @param userAttr \u5c0f\u533a\u7528\u6237\u5c5e\u6027\u4fe1\u606f\n-     * @param users    \u7528\u6237\u5217\u8868\n-     */\n-    private void refreshUserAttr(UserAttrDto userAttr, List<UserDto> users) {\n-        for (UserDto user : users) {\n-            if (userAttr.getAttrId().equals(user.getUserId())) {\n-                BeanConvertUtil.covertBean(user, userAttr);\n-            }\n-        }\n+    return userAttrs;\n+  }\n+\n+  /**\n+   * \u4ece\u7528\u6237\u5217\u8868\u4e2d\u67e5\u8be2\u7528\u6237\uff0c\u5c06\u7528\u6237\u4e2d\u7684\u4fe1\u606f \u5237\u65b0\u5230 floor\u5bf9\u8c61\u4e2d\n+   *\n+   * @param userAttr \u5c0f\u533a\u7528\u6237\u5c5e\u6027\u4fe1\u606f\n+   * @param users    \u7528\u6237\u5217\u8868\n+   */\n+  private void refreshUserAttr(UserAttrDto userAttr, List<UserDto> users) {\n+    for (UserDto user : users) {\n+      if (userAttr.getAttrId().equals(user.getUserId())) {\n+        BeanConvertUtil.covertBean(user, userAttr);\n+      }\n     }\n-\n-    /**\n-     * \u83b7\u53d6\u6279\u91cfuserId\n-     *\n-     * @param userAttrs \u5c0f\u533a\u697c\u4fe1\u606f\n-     * @return \u6279\u91cfuserIds \u4fe1\u606f\n-     */\n-    private String[] getUserIds(List<UserAttrDto> userAttrs) {\n-        List<String> userIds = new ArrayList<String>();\n-        for (UserAttrDto userAttr : userAttrs) {\n-            userIds.add(userAttr.getAttrId());\n-        }\n-\n-        return userIds.toArray(new String[userIds.size()]);\n+  }\n+\n+  /**\n+   * \u83b7\u53d6\u6279\u91cfuserId\n+   *\n+   * @param userAttrs \u5c0f\u533a\u697c\u4fe1\u606f\n+   * @return \u6279\u91cfuserIds \u4fe1\u606f\n+   */\n+  private String[] getUserIds(List<UserAttrDto> userAttrs) {\n+    List<String> userIds = new ArrayList<String>();\n+    for (UserAttrDto userAttr : userAttrs) {\n+      userIds.add(userAttr.getAttrId());\n     }\n \n-    @Override\n-    public int queryUserAttrsCount(@RequestBody UserAttrDto userAttrDto) {\n-        return userAttrServiceDaoImpl.queryUserAttrsCount(BeanConvertUtil.beanCovertMap(userAttrDto));\n-    }\n+    return userIds.toArray(new String[userIds.size()]);\n+  }\n \n-    public IUserAttrServiceDao getUserAttrServiceDaoImpl() {\n-        return userAttrServiceDaoImpl;\n-    }\n+  @Override\n+  public int queryUserAttrsCount(@RequestBody UserAttrDto userAttrDto) {\n+    return userAttrServiceDaoImpl.queryUserAttrsCount(BeanConvertUtil.beanCovertMap(userAttrDto));\n+  }\n \n-    public void setUserAttrServiceDaoImpl(IUserAttrServiceDao userAttrServiceDaoImpl) {\n-        this.userAttrServiceDaoImpl = userAttrServiceDaoImpl;\n-    }\n+  public IUserAttrServiceDao getUserAttrServiceDaoImpl() {\n+    return userAttrServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public void setUserAttrServiceDaoImpl(IUserAttrServiceDao userAttrServiceDaoImpl) {\n+    this.userAttrServiceDaoImpl = userAttrServiceDaoImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n+\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 72
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 172).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/179/UserAttrInnerServiceSMOImpl.java\nindex 85a9c926da..990b278cf9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/179/UserAttrInnerServiceSMOImpl.java\n@@ -109,4 +109,4 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 172).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/179/UserAttrInnerServiceSMOImpl.java\nindex 85a9c926da..dbb9412242 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/179/UserAttrInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.user.smo.impl;\n \n-\n import com.java110.core.base.smo.BaseServiceSMO;\n import com.java110.core.smo.user.IUserInnerServiceSMO;\n import com.java110.core.smo.userAttr.IUserAttrInnerServiceSMO;\n@@ -12,7 +11,6 @@ import com.java110.utils.util.BeanConvertUtil;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.ArrayList;\n import java.util.List;\n \n@@ -24,6 +22,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUserAttrInnerServiceSMO {\n \n@@ -37,15 +37,12 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n     public List<UserAttrDto> queryUserAttrs(@RequestBody UserAttrDto userAttrDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = userAttrDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             userAttrDto.setPage((page - 1) * userAttrDto.getRow());\n         }\n \n         List<UserAttrDto> userAttrs = BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n-\n         if (userAttrs == null || userAttrs.size() == 0) {\n             return userAttrs;\n         }\n@@ -53,10 +50,10 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n         String[] userIds = getUserIds(userAttrs);\n         //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n         List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n-\n         for (UserAttrDto userAttr : userAttrs) {\n             refreshUserAttr(userAttr, users);\n         }\n+\n         return userAttrs;\n     }\n \n@@ -66,6 +63,8 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n      * @param userAttr \u5c0f\u533a\u7528\u6237\u5c5e\u6027\u4fe1\u606f\n      * @param users    \u7528\u6237\u5217\u8868\n      */\n+\n+\n     private void refreshUserAttr(UserAttrDto userAttr, List<UserDto> users) {\n         for (UserDto user : users) {\n             if (userAttr.getAttrId().equals(user.getUserId())) {\n@@ -80,6 +79,8 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n      * @param userAttrs \u5c0f\u533a\u697c\u4fe1\u606f\n      * @return \u6279\u91cfuserIds \u4fe1\u606f\n      */\n+\n+\n     private String[] getUserIds(List<UserAttrDto> userAttrs) {\n         List<String> userIds = new ArrayList<String>();\n         for (UserAttrDto userAttr : userAttrs) {\n@@ -89,6 +90,7 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n         return userIds.toArray(new String[userIds.size()]);\n     }\n \n+\n     @Override\n     public int queryUserAttrsCount(@RequestBody UserAttrDto userAttrDto) {\n         return userAttrServiceDaoImpl.queryUserAttrsCount(BeanConvertUtil.beanCovertMap(userAttrDto));\n@@ -109,4 +111,4 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 174).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/179/UserAttrInnerServiceSMOImpl.java\nindex 85a9c926da..673b2e1c41 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/179/UserAttrInnerServiceSMOImpl.java\n@@ -42,9 +42,7 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             userAttrDto.setPage((page - 1) * userAttrDto.getRow());\n-        }\n-\n-        List<UserAttrDto> userAttrs = BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n+        } List<UserAttrDto> userAttrs = BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n \n         if (userAttrs == null || userAttrs.size() == 0) {\n             return userAttrs;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 173).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/179/UserAttrInnerServiceSMOImpl.java\nindex 85a9c926da..4c391c5cf4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/179/UserAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/179/UserAttrInnerServiceSMOImpl.java\n@@ -42,9 +42,7 @@ public class UserAttrInnerServiceSMOImpl extends BaseServiceSMO implements IUser\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             userAttrDto.setPage((page - 1) * userAttrDto.getRow());\n-        }\n-\n-        List<UserAttrDto> userAttrs = BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n+        } List<UserAttrDto>userAttrs = BeanConvertUtil.covertBeanList(userAttrServiceDaoImpl.getUserAttrInfo(BeanConvertUtil.beanCovertMap(userAttrDto)), UserAttrDto.class);\n \n         if (userAttrs == null || userAttrs.size() == 0) {\n             return userAttrs;\n",
+            "diff_size": 3
+        }
+    ]
+}

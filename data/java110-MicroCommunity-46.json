@@ -1,0 +1,76 @@
+{
+    "error_id": "46",
+    "information": {
+        "errors": [
+            {
+                "line": "49",
+                "column": "65",
+                "severity": "error",
+                "message": "'{' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "        paramIn.put(\"row\", page * row);\n\n        if (\"1001\".equals(paramIn.getString(\"feeSummaryType\"))) {//\u65e5\n            paramIn.put(\"formatStr\", \"%Y-%m-%d\");\n        } else if (\"1101\".equals(paramIn.getString(\"feeSummaryType\"))) {\n            paramIn.put(\"formatStr\", \"%Y-%m\");",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/46/ListFeeSummarySMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/46/ListFeeSummarySMOImpl.java\nindex c99b4cb504..8829a585bc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/46/ListFeeSummarySMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/46/ListFeeSummarySMOImpl.java\n@@ -46,7 +46,7 @@ public class ListFeeSummarySMOImpl extends AbstractComponentSMO implements IList\n         paramIn.put(\"page\", (page - 1) * row);\n         paramIn.put(\"row\", page * row);\n \n-        if (\"1001\".equals(paramIn.getString(\"feeSummaryType\"))) {//\u65e5\n+        if (\"1001\".equals(paramIn.getString(\"feeSummaryType\"))) { //\u65e5\n             paramIn.put(\"formatStr\", \"%Y-%m-%d\");\n         } else if (\"1101\".equals(paramIn.getString(\"feeSummaryType\"))) {\n             paramIn.put(\"formatStr\", \"%Y-%m\");\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "49",
+                    "column": "61",
+                    "severity": "error",
+                    "message": "'{' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/46/ListFeeSummarySMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/46/ListFeeSummarySMOImpl.java\nindex c99b4cb504..185cbf7eef 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/46/ListFeeSummarySMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/46/ListFeeSummarySMOImpl.java\n@@ -20,56 +20,56 @@ import org.springframework.web.client.RestTemplate;\n @Service(\"listFeeSummarySMOImpl\")\n public class ListFeeSummarySMOImpl extends AbstractComponentSMO implements IListFeeSummarySMO {\n \n-    @Autowired\n-    private RestTemplate restTemplate;\n-\n-    @Override\n-    public ResponseEntity<String> list(IPageData pd) throws SMOException {\n-        return businessProcess(pd);\n-    }\n-\n-    @Override\n-    protected void validate(IPageData pd, JSONObject paramIn) {\n-\n-        super.validatePageInfo(pd);\n-        Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u672a\u5305\u542b\u5c0f\u533a\u4fe1\u606f\");\n-        Assert.hasKeyAndValue(paramIn, \"feeSummaryType\", \"\u672a\u5305\u542b\u5c0f\u533a\u4fe1\u606f\");\n-\n+  @Autowired\n+  private RestTemplate restTemplate;\n+\n+  @Override\n+  public ResponseEntity<String> list(IPageData pd) throws SMOException {\n+    return businessProcess(pd);\n+  }\n+\n+  @Override\n+  protected void validate(IPageData pd, JSONObject paramIn) {\n+\n+    super.validatePageInfo(pd);\n+    Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u672a\u5305\u542b\u5c0f\u533a\u4fe1\u606f\");\n+    Assert.hasKeyAndValue(paramIn, \"feeSummaryType\", \"\u672a\u5305\u542b\u5c0f\u533a\u4fe1\u606f\");\n+\n+  }\n+\n+  @Override\n+  protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n+    ComponentValidateResult result = super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n+\n+    int page = paramIn.getInteger(\"page\");\n+    int row = paramIn.getInteger(\"row\");\n+    paramIn.put(\"page\", (page - 1) * row);\n+    paramIn.put(\"row\", page * row);\n+\n+    if (\"1001\".equals(paramIn.getString(\"feeSummaryType\"))) {//\u65e5\n+      paramIn.put(\"formatStr\", \"%Y-%m-%d\");\n+    } else if (\"1101\".equals(paramIn.getString(\"feeSummaryType\"))) {\n+      paramIn.put(\"formatStr\", \"%Y-%m\");\n+    } else {\n+      paramIn.put(\"formatStr\", \"%Y\");\n     }\n \n-    @Override\n-    protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n-        ComponentValidateResult result = super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n-\n-        int page = paramIn.getInteger(\"page\");\n-        int row = paramIn.getInteger(\"row\");\n-        paramIn.put(\"page\", (page - 1) * row);\n-        paramIn.put(\"row\", page * row);\n+    String apiUrl = \"\";\n+    apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/api.queryFeeSummary\" + mapToUrlParam(paramIn);\n \n-        if (\"1001\".equals(paramIn.getString(\"feeSummaryType\"))) {//\u65e5\n-            paramIn.put(\"formatStr\", \"%Y-%m-%d\");\n-        } else if (\"1101\".equals(paramIn.getString(\"feeSummaryType\"))) {\n-            paramIn.put(\"formatStr\", \"%Y-%m\");\n-        } else {\n-            paramIn.put(\"formatStr\", \"%Y\");\n-        }\n \n-        String apiUrl = \"\";\n-        apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/api.queryFeeSummary\" + mapToUrlParam(paramIn);\n+    ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, \"\",\n+      apiUrl,\n+      HttpMethod.GET);\n \n+    return responseEntity;\n+  }\n \n-        ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, \"\",\n-                apiUrl,\n-                HttpMethod.GET);\n+  public RestTemplate getRestTemplate() {\n+    return restTemplate;\n+  }\n \n-        return responseEntity;\n-    }\n-\n-    public RestTemplate getRestTemplate() {\n-        return restTemplate;\n-    }\n-\n-    public void setRestTemplate(RestTemplate restTemplate) {\n-        this.restTemplate = restTemplate;\n-    }\n+  public void setRestTemplate(RestTemplate restTemplate) {\n+    this.restTemplate = restTemplate;\n+  }\n }\n",
+            "diff_size": 65
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "50",
+                    "column": "65",
+                    "severity": "error",
+                    "message": "'{' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/46/ListFeeSummarySMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/46/ListFeeSummarySMOImpl.java\nindex c99b4cb504..58f4142787 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/46/ListFeeSummarySMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/46/ListFeeSummarySMOImpl.java\n@@ -17,6 +17,8 @@ import org.springframework.web.client.RestTemplate;\n /**\n  * \u67e5\u8be2app\u670d\u52a1\u7c7b\n  */\n+\n+\n @Service(\"listFeeSummarySMOImpl\")\n public class ListFeeSummarySMOImpl extends AbstractComponentSMO implements IListFeeSummarySMO {\n \n@@ -28,19 +30,18 @@ public class ListFeeSummarySMOImpl extends AbstractComponentSMO implements IList\n         return businessProcess(pd);\n     }\n \n+\n     @Override\n     protected void validate(IPageData pd, JSONObject paramIn) {\n-\n         super.validatePageInfo(pd);\n         Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u672a\u5305\u542b\u5c0f\u533a\u4fe1\u606f\");\n         Assert.hasKeyAndValue(paramIn, \"feeSummaryType\", \"\u672a\u5305\u542b\u5c0f\u533a\u4fe1\u606f\");\n-\n     }\n \n+\n     @Override\n     protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n         ComponentValidateResult result = super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n-\n         int page = paramIn.getInteger(\"page\");\n         int row = paramIn.getInteger(\"row\");\n         paramIn.put(\"page\", (page - 1) * row);\n@@ -49,18 +50,15 @@ public class ListFeeSummarySMOImpl extends AbstractComponentSMO implements IList\n         if (\"1001\".equals(paramIn.getString(\"feeSummaryType\"))) {//\u65e5\n             paramIn.put(\"formatStr\", \"%Y-%m-%d\");\n         } else if (\"1101\".equals(paramIn.getString(\"feeSummaryType\"))) {\n-            paramIn.put(\"formatStr\", \"%Y-%m\");\n-        } else {\n-            paramIn.put(\"formatStr\", \"%Y\");\n-        }\n+                   paramIn.put(\"formatStr\", \"%Y-%m\");\n+               } else {\n+                   paramIn.put(\"formatStr\", \"%Y\");\n+               }\n \n         String apiUrl = \"\";\n         apiUrl = ServiceConstant.SERVICE_API_URL + \"/api/api.queryFeeSummary\" + mapToUrlParam(paramIn);\n \n-\n-        ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, \"\",\n-                apiUrl,\n-                HttpMethod.GET);\n+        ResponseEntity<String> responseEntity = this.callCenterService(restTemplate, pd, \"\", apiUrl, HttpMethod.GET);\n \n         return responseEntity;\n     }\n@@ -72,4 +70,4 @@ public class ListFeeSummarySMOImpl extends AbstractComponentSMO implements IList\n     public void setRestTemplate(RestTemplate restTemplate) {\n         this.restTemplate = restTemplate;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/46/ListFeeSummarySMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/46/ListFeeSummarySMOImpl.java\nindex c99b4cb504..8829a585bc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/46/ListFeeSummarySMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/46/ListFeeSummarySMOImpl.java\n@@ -46,7 +46,7 @@ public class ListFeeSummarySMOImpl extends AbstractComponentSMO implements IList\n         paramIn.put(\"page\", (page - 1) * row);\n         paramIn.put(\"row\", page * row);\n \n-        if (\"1001\".equals(paramIn.getString(\"feeSummaryType\"))) {//\u65e5\n+        if (\"1001\".equals(paramIn.getString(\"feeSummaryType\"))) { //\u65e5\n             paramIn.put(\"formatStr\", \"%Y-%m-%d\");\n         } else if (\"1101\".equals(paramIn.getString(\"feeSummaryType\"))) {\n             paramIn.put(\"formatStr\", \"%Y-%m\");\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "49",
+                    "column": "65",
+                    "severity": "error",
+                    "message": "'{' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

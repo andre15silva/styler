@@ -1,0 +1,108 @@
+{
+    "error_id": "59",
+    "information": {
+        "errors": [
+            {
+                "line": "30",
+                "severity": "warning",
+                "message": "Use of @author javadoc keyword is prohibited.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": "\n\n/** @author zznate */\npublic class MetricLine {\n    private final MetricSort metricSort;\n    private final UUID appId;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "30",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "32",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "71",
+                    "column": "25",
+                    "severity": "warning",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.TypecastParenPadCheck"
+                },
+                {
+                    "line": "71",
+                    "column": "35",
+                    "severity": "warning",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.TypecastParenPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/59/MetricLine.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/59/MetricLine.java\nindex 18f3c36afc..e4ff6dc649 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/59/MetricLine.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/59/MetricLine.java\n@@ -14,6 +14,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.usergrid.tools.bean;\n \n \n@@ -27,72 +28,78 @@ import com.google.common.base.Preconditions;\n import com.google.common.collect.ImmutableList;\n \n \n-/** @author zznate */\n+/**\n+ * @author zznate\n+ */\n public class MetricLine {\n-    private final MetricSort metricSort;\n-    private final UUID appId;\n-    private final List<AggregateCounter> aggregateCounters;\n-    private long count = 0;\n-\n-\n-    /**\n-     * Package level access - intented to be used by {@link MetricQuery} only. Sets the value of count by iterating over\n-     * the {@link AggregateCounter} collection.\n-     */\n-    MetricLine( UUID appId, MetricSort metricSort, List<AggregateCounter> counters ) {\n-        Preconditions.checkArgument( appId != null, \"appId was null\" );\n-        Preconditions.checkArgument( counters != null, \"Counters list cannot be null\" );\n-        this.metricSort = metricSort;\n-        this.appId = appId;\n-        this.aggregateCounters = counters;\n-        if ( aggregateCounters.size() > 0 ) {\n-            for ( AggregateCounter ac : aggregateCounters ) {\n-                count += ac.getValue();\n-            }\n-        }\n+  private final MetricSort metricSort;\n+  private final UUID appId;\n+  private final List<AggregateCounter> aggregateCounters;\n+  private long count = 0;\n+\n+\n+  /**\n+   * Package level access - intented to be used by {@link MetricQuery} only. Sets the value of count by iterating over\n+   * the {@link AggregateCounter} collection.\n+   */\n+  MetricLine(UUID appId, MetricSort metricSort, List<AggregateCounter> counters) {\n+    Preconditions.checkArgument(appId != null, \"appId was null\");\n+    Preconditions.checkArgument(counters != null, \"Counters list cannot be null\");\n+    this.metricSort = metricSort;\n+    this.appId = appId;\n+    this.aggregateCounters = counters;\n+    if (aggregateCounters.size() > 0) {\n+      for (AggregateCounter ac : aggregateCounters) {\n+        count += ac.getValue();\n+      }\n     }\n+  }\n \n \n-    @Override\n-    public String toString() {\n-        return Objects.toStringHelper( this ).add( \"appId\", appId ).add( \"metricSort\", metricSort ).toString();\n-    }\n+  @Override\n+  public String toString() {\n+    return Objects.toStringHelper(this).add(\"appId\", appId).add(\"metricSort\", metricSort).toString();\n+  }\n \n \n-    /** Compares metricSort and appId for equality */\n-    @Override\n-    public boolean equals( Object o ) {\n-        if ( o instanceof MetricLine ) {\n-            MetricLine oth = ( MetricLine ) o;\n-            return oth.getMetricSort().equals( metricSort ) && oth.getAppId().equals( appId );\n-        }\n-        return false;\n+  /**\n+   * Compares metricSort and appId for equality\n+   */\n+  @Override\n+  public boolean equals(Object o) {\n+    if (o instanceof MetricLine) {\n+      MetricLine oth = (MetricLine) o;\n+      return oth.getMetricSort().equals(metricSort) && oth.getAppId().equals(appId);\n     }\n+    return false;\n+  }\n \n \n-    @Override\n-    public int hashCode() {\n-        return Objects.hashCode( metricSort, appId );\n-    }\n+  @Override\n+  public int hashCode() {\n+    return Objects.hashCode(metricSort, appId);\n+  }\n \n \n-    public MetricSort getMetricSort() {\n-        return metricSort;\n-    }\n+  public MetricSort getMetricSort() {\n+    return metricSort;\n+  }\n \n \n-    public long getCount() {\n-        return count;\n-    }\n+  public long getCount() {\n+    return count;\n+  }\n \n \n-    public UUID getAppId() {\n-        return appId;\n-    }\n+  public UUID getAppId() {\n+    return appId;\n+  }\n \n \n-    /** @return an Immutable list of our counters */\n-    public List<AggregateCounter> getAggregateCounters() {\n-        return ImmutableList.copyOf( aggregateCounters );\n-    }\n+  /**\n+   * @return an Immutable list of our counters\n+   */\n+  public List<AggregateCounter> getAggregateCounters() {\n+    return ImmutableList.copyOf(aggregateCounters);\n+  }\n }\n",
+            "diff_size": 59
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "30",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/59/MetricLine.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/59/MetricLine.java\nindex 18f3c36afc..412d5255a9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/59/MetricLine.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/59/MetricLine.java\n@@ -95,4 +95,4 @@ public class MetricLine {\n     public List<AggregateCounter> getAggregateCounters() {\n         return ImmutableList.copyOf( aggregateCounters );\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/59/MetricLine.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/59/MetricLine.java\nindex 18f3c36afc..8bfe9efb86 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/59/MetricLine.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/59/MetricLine.java\n@@ -19,16 +19,17 @@ package org.apache.usergrid.tools.bean;\n \n import java.util.List;\n import java.util.UUID;\n-\n import org.apache.usergrid.persistence.AggregateCounter;\n-\n import com.google.common.base.Objects;\n import com.google.common.base.Preconditions;\n import com.google.common.collect.ImmutableList;\n \n \n /** @author zznate */\n+\n+\n public class MetricLine {\n+\n     private final MetricSort metricSort;\n     private final UUID appId;\n     private final List<AggregateCounter> aggregateCounters;\n@@ -39,6 +40,8 @@ public class MetricLine {\n      * Package level access - intented to be used by {@link MetricQuery} only. Sets the value of count by iterating over\n      * the {@link AggregateCounter} collection.\n      */\n+\n+\n     MetricLine( UUID appId, MetricSort metricSort, List<AggregateCounter> counters ) {\n         Preconditions.checkArgument( appId != null, \"appId was null\" );\n         Preconditions.checkArgument( counters != null, \"Counters list cannot be null\" );\n@@ -60,6 +63,8 @@ public class MetricLine {\n \n \n     /** Compares metricSort and appId for equality */\n+\n+\n     @Override\n     public boolean equals( Object o ) {\n         if ( o instanceof MetricLine ) {\n@@ -92,7 +97,9 @@ public class MetricLine {\n \n \n     /** @return an Immutable list of our counters */\n+\n+\n     public List<AggregateCounter> getAggregateCounters() {\n         return ImmutableList.copyOf( aggregateCounters );\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "30",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "29",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/59/MetricLine.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/59/MetricLine.java\nindex 18f3c36afc..ee6833d1ed 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/59/MetricLine.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/59/MetricLine.java\n@@ -26,7 +26,6 @@ import com.google.common.base.Objects;\n import com.google.common.base.Preconditions;\n import com.google.common.collect.ImmutableList;\n \n-\n /** @author zznate */\n public class MetricLine {\n     private final MetricSort metricSort;\n",
+            "diff_size": 1
+        }
+    ]
+}

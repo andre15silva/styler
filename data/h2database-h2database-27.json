@@ -1,0 +1,128 @@
+{
+    "error_id": "27",
+    "information": {
+        "errors": [
+            {
+                "line": "100",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "            return symmetric || cmp1 <= 0 ? ValueNull.INSTANCE : ValueBoolean.get(not);\n        } else {\n            return ValueBoolean.get(not ^ //\n                    (symmetric ? cmp1 <= 0 && cmp2 <= 0 || cmp1 >= 0 && cmp2 >= 0 : cmp1 <= 0 && cmp2 <= 0));\n        }\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "100",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "100",
+                    "column": "25",
+                    "severity": "warning",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "100",
+                    "column": "34",
+                    "severity": "warning",
+                    "message": "'^' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler/27/BetweenPredicate.java\nindex 1a0047542f..97cf6cabff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler/27/BetweenPredicate.java\n@@ -97,8 +97,9 @@ public final class BetweenPredicate extends Condition {\n         } else if (cmp2 == Integer.MIN_VALUE) {\n             return symmetric || cmp1 <= 0 ? ValueNull.INSTANCE : ValueBoolean.get(not);\n         } else {\n-            return ValueBoolean.get(not ^ //\n-                    (symmetric ? cmp1 <= 0 && cmp2 <= 0 || cmp1 >= 0 && cmp2 >= 0 : cmp1 <= 0 && cmp2 <= 0));\n+    return ValueBoolean . get(not^ //\n+            (\n+        symmetric ? cmp1 <= 0 && cmp2 <= 0 || cmp1 >= 0 && cmp2 >= 0 : cmp1 <= 0 && cmp2 <= 0));\n         }\n     }\n \n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "108",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/intellij/27/BetweenPredicate.java\nindex 1a0047542f..b7508830fc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/intellij/27/BetweenPredicate.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (https://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.expression.condition;\n \n import org.h2.engine.Session;\n@@ -21,148 +22,159 @@ import org.h2.value.ValueNull;\n  */\n public final class BetweenPredicate extends Condition {\n \n-    private Expression left;\n-\n-    private final boolean not;\n+  private Expression left;\n \n-    private boolean symmetric;\n+  private final boolean not;\n \n-    private Expression a, b;\n+  private boolean symmetric;\n \n-    public BetweenPredicate(Expression left, boolean not, boolean symmetric, Expression a, Expression b) {\n-        this.left = left;\n-        this.not = not;\n-        this.symmetric = symmetric;\n-        this.a = a;\n-        this.b = b;\n-    }\n-\n-    @Override\n-    public StringBuilder getSQL(StringBuilder builder, int sqlFlags) {\n-        left.getSQL(builder.append('('), sqlFlags);\n-        if (not) {\n-            builder.append(\" NOT\");\n-        }\n-        builder.append(\" BETWEEN \");\n-        if (symmetric) {\n-            builder.append(\"SYMMETRIC \");\n-        }\n-        a.getSQL(builder, sqlFlags).append(\" AND \");\n-        return b.getSQL(builder, sqlFlags).append(')');\n-    }\n-\n-    @Override\n-    public Expression optimize(Session session) {\n-        left = left.optimize(session);\n-        a = a.optimize(session);\n-        b = b.optimize(session);\n-        Value value = left.isConstant() ? left.getValue(session) : null,\n-                aValue = a.isConstant() ? a.getValue(session) : null,\n-                bValue = b.isConstant() ? b.getValue(session) : null;\n-        if (value != null) {\n-            if (value == ValueNull.INSTANCE) {\n-                return TypedValueExpression.UNKNOWN;\n-            }\n-            if (aValue != null && bValue != null) {\n-                return ValueExpression.getBoolean(getValue(session, value, aValue, bValue));\n-            }\n-        }\n-        if (symmetric) {\n-            if (aValue == ValueNull.INSTANCE || bValue == ValueNull.INSTANCE) {\n-                return TypedValueExpression.UNKNOWN;\n-            }\n-        } else if (aValue == ValueNull.INSTANCE && bValue == ValueNull.INSTANCE) {\n-            return TypedValueExpression.UNKNOWN;\n-        }\n-        if (aValue != null && bValue != null && session.compareWithNull(aValue, bValue, false) == 0) {\n-            return new Comparison(not ? Comparison.NOT_EQUAL : Comparison.EQUAL, left, a).optimize(session);\n-        }\n-        return this;\n-    }\n-\n-    @Override\n-    public Value getValue(Session session) {\n-        Value value = left.getValue(session);\n-        if (value == ValueNull.INSTANCE) {\n-            return ValueNull.INSTANCE;\n-        }\n-        return getValue(session, value, a.getValue(session), b.getValue(session));\n-    }\n+  private Expression a, b;\n \n-    private Value getValue(Session session, Value value, Value aValue, Value bValue) {\n-        int cmp1 = session.compareWithNull(aValue, value, false);\n-        int cmp2 = session.compareWithNull(value, bValue, false);\n-        if (cmp1 == Integer.MIN_VALUE) {\n-            return symmetric || cmp2 <= 0 ? ValueNull.INSTANCE : ValueBoolean.get(not);\n-        } else if (cmp2 == Integer.MIN_VALUE) {\n-            return symmetric || cmp1 <= 0 ? ValueNull.INSTANCE : ValueBoolean.get(not);\n-        } else {\n-            return ValueBoolean.get(not ^ //\n-                    (symmetric ? cmp1 <= 0 && cmp2 <= 0 || cmp1 >= 0 && cmp2 >= 0 : cmp1 <= 0 && cmp2 <= 0));\n-        }\n-    }\n+  public BetweenPredicate(Expression left, boolean not, boolean symmetric,\n+                          Expression a, Expression b) {\n+    this.left = left;\n+    this.not = not;\n+    this.symmetric = symmetric;\n+    this.a = a;\n+    this.b = b;\n+  }\n \n-    @Override\n-    public Expression getNotIfPossible(Session session) {\n-        return new BetweenPredicate(left, !not, symmetric, a, b);\n+  @Override\n+  public StringBuilder getSQL(StringBuilder builder, int sqlFlags) {\n+    left.getSQL(builder.append('('), sqlFlags);\n+    if (not) {\n+      builder.append(\" NOT\");\n     }\n-\n-    @Override\n-    public void createIndexConditions(Session session, TableFilter filter) {\n-        if (!not && !symmetric) {\n-            Comparison.createIndexConditions(filter, a, left, Comparison.SMALLER_EQUAL);\n-            Comparison.createIndexConditions(filter, left, b, Comparison.SMALLER_EQUAL);\n-        }\n+    builder.append(\" BETWEEN \");\n+    if (symmetric) {\n+      builder.append(\"SYMMETRIC \");\n     }\n-\n-    @Override\n-    public void setEvaluatable(TableFilter tableFilter, boolean value) {\n-        left.setEvaluatable(tableFilter, value);\n-        a.setEvaluatable(tableFilter, value);\n-        b.setEvaluatable(tableFilter, value);\n+    a.getSQL(builder, sqlFlags).append(\" AND \");\n+    return b.getSQL(builder, sqlFlags).append(')');\n+  }\n+\n+  @Override\n+  public Expression optimize(Session session) {\n+    left = left.optimize(session);\n+    a = a.optimize(session);\n+    b = b.optimize(session);\n+    Value value = left.isConstant() ? left.getValue(session) : null,\n+        aValue = a.isConstant() ? a.getValue(session) : null,\n+        bValue = b.isConstant() ? b.getValue(session) : null;\n+    if (value != null) {\n+      if (value == ValueNull.INSTANCE) {\n+        return TypedValueExpression.UNKNOWN;\n+      }\n+      if (aValue != null && bValue != null) {\n+        return ValueExpression\n+            .getBoolean(getValue(session, value, aValue, bValue));\n+      }\n     }\n-\n-    @Override\n-    public void updateAggregate(Session session, int stage) {\n-        left.updateAggregate(session, stage);\n-        a.updateAggregate(session, stage);\n-        b.updateAggregate(session, stage);\n+    if (symmetric) {\n+      if (aValue == ValueNull.INSTANCE || bValue == ValueNull.INSTANCE) {\n+        return TypedValueExpression.UNKNOWN;\n+      }\n+    } else if (aValue == ValueNull.INSTANCE && bValue == ValueNull.INSTANCE) {\n+      return TypedValueExpression.UNKNOWN;\n     }\n-\n-    @Override\n-    public void mapColumns(ColumnResolver resolver, int level, int state) {\n-        left.mapColumns(resolver, level, state);\n-        a.mapColumns(resolver, level, state);\n-        b.mapColumns(resolver, level, state);\n+    if (aValue != null && bValue != null &&\n+        session.compareWithNull(aValue, bValue, false) == 0) {\n+      return new Comparison(not ? Comparison.NOT_EQUAL : Comparison.EQUAL, left,\n+          a).optimize(session);\n     }\n-\n-    @Override\n-    public boolean isEverything(ExpressionVisitor visitor) {\n-        return left.isEverything(visitor) && a.isEverything(visitor) && b.isEverything(visitor);\n+    return this;\n+  }\n+\n+  @Override\n+  public Value getValue(Session session) {\n+    Value value = left.getValue(session);\n+    if (value == ValueNull.INSTANCE) {\n+      return ValueNull.INSTANCE;\n     }\n-\n-    @Override\n-    public int getCost() {\n-        return left.getCost() + a.getCost() + b.getCost() + 1;\n+    return getValue(session, value, a.getValue(session), b.getValue(session));\n+  }\n+\n+  private Value getValue(Session session, Value value, Value aValue,\n+                         Value bValue) {\n+    int cmp1 = session.compareWithNull(aValue, value, false);\n+    int cmp2 = session.compareWithNull(value, bValue, false);\n+    if (cmp1 == Integer.MIN_VALUE) {\n+      return symmetric || cmp2 <= 0 ? ValueNull.INSTANCE :\n+          ValueBoolean.get(not);\n+    } else if (cmp2 == Integer.MIN_VALUE) {\n+      return symmetric || cmp1 <= 0 ? ValueNull.INSTANCE :\n+          ValueBoolean.get(not);\n+    } else {\n+      return ValueBoolean.get(not ^ //\n+          (symmetric ? cmp1 <= 0 && cmp2 <= 0 || cmp1 >= 0 && cmp2 >= 0 :\n+              cmp1 <= 0 && cmp2 <= 0));\n     }\n-\n-    @Override\n-    public int getSubexpressionCount() {\n-        return 3;\n+  }\n+\n+  @Override\n+  public Expression getNotIfPossible(Session session) {\n+    return new BetweenPredicate(left, !not, symmetric, a, b);\n+  }\n+\n+  @Override\n+  public void createIndexConditions(Session session, TableFilter filter) {\n+    if (!not && !symmetric) {\n+      Comparison\n+          .createIndexConditions(filter, a, left, Comparison.SMALLER_EQUAL);\n+      Comparison\n+          .createIndexConditions(filter, left, b, Comparison.SMALLER_EQUAL);\n     }\n-\n-    @Override\n-    public Expression getSubexpression(int index) {\n-        switch (index) {\n-        case 0:\n-            return left;\n-        case 1:\n-            return a;\n-        case 2:\n-            return b;\n-        default:\n-            throw new IndexOutOfBoundsException();\n-        }\n+  }\n+\n+  @Override\n+  public void setEvaluatable(TableFilter tableFilter, boolean value) {\n+    left.setEvaluatable(tableFilter, value);\n+    a.setEvaluatable(tableFilter, value);\n+    b.setEvaluatable(tableFilter, value);\n+  }\n+\n+  @Override\n+  public void updateAggregate(Session session, int stage) {\n+    left.updateAggregate(session, stage);\n+    a.updateAggregate(session, stage);\n+    b.updateAggregate(session, stage);\n+  }\n+\n+  @Override\n+  public void mapColumns(ColumnResolver resolver, int level, int state) {\n+    left.mapColumns(resolver, level, state);\n+    a.mapColumns(resolver, level, state);\n+    b.mapColumns(resolver, level, state);\n+  }\n+\n+  @Override\n+  public boolean isEverything(ExpressionVisitor visitor) {\n+    return left.isEverything(visitor) && a.isEverything(visitor) &&\n+        b.isEverything(visitor);\n+  }\n+\n+  @Override\n+  public int getCost() {\n+    return left.getCost() + a.getCost() + b.getCost() + 1;\n+  }\n+\n+  @Override\n+  public int getSubexpressionCount() {\n+    return 3;\n+  }\n+\n+  @Override\n+  public Expression getSubexpression(int index) {\n+    switch (index) {\n+      case 0:\n+        return left;\n+      case 1:\n+        return a;\n+      case 2:\n+        return b;\n+      default:\n+        throw new IndexOutOfBoundsException();\n     }\n+  }\n \n }\n",
+            "diff_size": 211
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "100",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/naturalize/27/BetweenPredicate.java\nindex 1a0047542f..2467ac76ae 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/naturalize/27/BetweenPredicate.java\n@@ -59,7 +59,7 @@ public final class BetweenPredicate extends Condition {\n         Value value = left.isConstant() ? left.getValue(session) : null,\n                 aValue = a.isConstant() ? a.getValue(session) : null,\n                 bValue = b.isConstant() ? b.getValue(session) : null;\n-        if (value != null) {\n+if (value != null) {\n             if (value == ValueNull.INSTANCE) {\n                 return TypedValueExpression.UNKNOWN;\n             }\n@@ -165,4 +165,4 @@ public final class BetweenPredicate extends Condition {\n         }\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "100",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "100",
+                    "column": "25",
+                    "severity": "warning",
+                    "message": "'.' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"
+                },
+                {
+                    "line": "100",
+                    "column": "34",
+                    "severity": "warning",
+                    "message": "'^' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_random/27/BetweenPredicate.java\nindex 1a0047542f..97cf6cabff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_random/27/BetweenPredicate.java\n@@ -97,8 +97,9 @@ public final class BetweenPredicate extends Condition {\n         } else if (cmp2 == Integer.MIN_VALUE) {\n             return symmetric || cmp1 <= 0 ? ValueNull.INSTANCE : ValueBoolean.get(not);\n         } else {\n-            return ValueBoolean.get(not ^ //\n-                    (symmetric ? cmp1 <= 0 && cmp2 <= 0 || cmp1 >= 0 && cmp2 >= 0 : cmp1 <= 0 && cmp2 <= 0));\n+    return ValueBoolean . get(not^ //\n+            (\n+        symmetric ? cmp1 <= 0 && cmp2 <= 0 || cmp1 >= 0 && cmp2 >= 0 : cmp1 <= 0 && cmp2 <= 0));\n         }\n     }\n \n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "99",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "99",
+                    "column": "16",
+                    "severity": "warning",
+                    "message": "'{' at column 16 should have line break after.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+                },
+                {
+                    "line": "99",
+                    "column": "16",
+                    "severity": "warning",
+                    "message": "'{' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_three_grams/27/BetweenPredicate.java\nindex 1a0047542f..4f58844477 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/errored/1/27/BetweenPredicate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/h2database-h2database/styler_three_grams/27/BetweenPredicate.java\n@@ -96,73 +96,72 @@ public final class BetweenPredicate extends Condition {\n             return symmetric || cmp2 <= 0 ? ValueNull.INSTANCE : ValueBoolean.get(not);\n         } else if (cmp2 == Integer.MIN_VALUE) {\n             return symmetric || cmp1 <= 0 ? ValueNull.INSTANCE : ValueBoolean.get(not);\n-        } else {\n-            return ValueBoolean.get(not ^ //\n-                    (symmetric ? cmp1 <= 0 && cmp2 <= 0 || cmp1 >= 0 && cmp2 >= 0 : cmp1 <= 0 && cmp2 <= 0));\n-        }\n+        } else {returnValueBoolean.get(not ^ //\n+                (symmetric ? cmp1 <= 0 && cmp2 <= 0 || cmp1 >= 0 && cmp2 >= 0 : cmp1 <= 0 && cmp2 <= 0));\n     }\n+}\n \n-    @Override\n-    public Expression getNotIfPossible(Session session) {\n-        return new BetweenPredicate(left, !not, symmetric, a, b);\n-    }\n+@Override\n+public Expression getNotIfPossible(Session session) {\n+    return new BetweenPredicate(left, !not, symmetric, a, b);\n+}\n \n-    @Override\n-    public void createIndexConditions(Session session, TableFilter filter) {\n-        if (!not && !symmetric) {\n-            Comparison.createIndexConditions(filter, a, left, Comparison.SMALLER_EQUAL);\n-            Comparison.createIndexConditions(filter, left, b, Comparison.SMALLER_EQUAL);\n-        }\n+@Override\n+public void createIndexConditions(Session session, TableFilter filter) {\n+    if (!not && !symmetric) {\n+        Comparison.createIndexConditions(filter, a, left, Comparison.SMALLER_EQUAL);\n+        Comparison.createIndexConditions(filter, left, b, Comparison.SMALLER_EQUAL);\n     }\n+}\n \n-    @Override\n-    public void setEvaluatable(TableFilter tableFilter, boolean value) {\n-        left.setEvaluatable(tableFilter, value);\n-        a.setEvaluatable(tableFilter, value);\n-        b.setEvaluatable(tableFilter, value);\n-    }\n+@Override\n+public void setEvaluatable(TableFilter tableFilter, boolean value) {\n+    left.setEvaluatable(tableFilter, value);\n+    a.setEvaluatable(tableFilter, value);\n+    b.setEvaluatable(tableFilter, value);\n+}\n \n-    @Override\n-    public void updateAggregate(Session session, int stage) {\n-        left.updateAggregate(session, stage);\n-        a.updateAggregate(session, stage);\n-        b.updateAggregate(session, stage);\n-    }\n+@Override\n+public void updateAggregate(Session session, int stage) {\n+    left.updateAggregate(session, stage);\n+    a.updateAggregate(session, stage);\n+    b.updateAggregate(session, stage);\n+}\n \n-    @Override\n-    public void mapColumns(ColumnResolver resolver, int level, int state) {\n-        left.mapColumns(resolver, level, state);\n-        a.mapColumns(resolver, level, state);\n-        b.mapColumns(resolver, level, state);\n-    }\n+@Override\n+public void mapColumns(ColumnResolver resolver, int level, int state) {\n+    left.mapColumns(resolver, level, state);\n+    a.mapColumns(resolver, level, state);\n+    b.mapColumns(resolver, level, state);\n+}\n \n-    @Override\n-    public boolean isEverything(ExpressionVisitor visitor) {\n-        return left.isEverything(visitor) && a.isEverything(visitor) && b.isEverything(visitor);\n-    }\n+@Override\n+public boolean isEverything(ExpressionVisitor visitor) {\n+    return left.isEverything(visitor) && a.isEverything(visitor) && b.isEverything(visitor);\n+}\n \n-    @Override\n-    public int getCost() {\n-        return left.getCost() + a.getCost() + b.getCost() + 1;\n-    }\n+@Override\n+public int getCost() {\n+    return left.getCost() + a.getCost() + b.getCost() + 1;\n+}\n \n-    @Override\n-    public int getSubexpressionCount() {\n-        return 3;\n-    }\n+@Override\n+public int getSubexpressionCount() {\n+    return 3;\n+}\n \n-    @Override\n-    public Expression getSubexpression(int index) {\n-        switch (index) {\n-        case 0:\n-            return left;\n-        case 1:\n-            return a;\n-        case 2:\n-            return b;\n-        default:\n-            throw new IndexOutOfBoundsException();\n-        }\n+@Override\n+public Expression getSubexpression(int index) {\n+    switch (index) {\n+    case 0:\n+        return left;\n+    case 1:\n+        return a;\n+    case 2:\n+        return b;\n+    default:\n+        throw new IndexOutOfBoundsException();\n     }\n+}\n \n }\n",
+            "diff_size": 59
+        }
+    ]
+}

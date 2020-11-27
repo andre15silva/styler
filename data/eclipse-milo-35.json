@@ -1,0 +1,85 @@
+{
+    "error_id": "35",
+    "information": {
+        "errors": [
+            {
+                "line": "37",
+                "column": "41",
+                "severity": "error",
+                "message": "'}' at column 41 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "    private final Map<ByteString, X509Certificate[]> certificates = new HashMap<>();\n\n    public DefaultCertificateManager() {}\n\n    public DefaultCertificateManager(KeyPair keyPair, X509Certificate certificate) {\n        checkNotNull(keyPair, \"keyPair must be non-null\");",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/35/DefaultCertificateManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/35/DefaultCertificateManager.java\nindex 1ab8af5bc6..eb7c6ee520 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/35/DefaultCertificateManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/35/DefaultCertificateManager.java\n@@ -34,7 +34,8 @@ public class DefaultCertificateManager implements CertificateManager {\n     private final Map<ByteString, KeyPair> privateKeys = new HashMap<>();\n     private final Map<ByteString, X509Certificate[]> certificates = new HashMap<>();\n \n-    public DefaultCertificateManager() {}\n+    public DefaultCertificateManager() {\n+    }\n \n     public DefaultCertificateManager(KeyPair keyPair, X509Certificate certificate) {\n         checkNotNull(keyPair, \"keyPair must be non-null\");\n@@ -57,7 +58,7 @@ public class DefaultCertificateManager implements CertificateManager {\n      * @param certificate the {@link X509Certificate} the key pair is associated with.\n      */\n     public synchronized void add(KeyPair keyPair, X509Certificate certificate) {\n-        add(keyPair, new X509Certificate[]{certificate});\n+        add(keyPair, new X509Certificate[] {certificate});\n     }\n \n     /**\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/35/DefaultCertificateManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/35/DefaultCertificateManager.java\nindex 1ab8af5bc6..be960cb813 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/35/DefaultCertificateManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/35/DefaultCertificateManager.java\n@@ -124,4 +124,4 @@ public class DefaultCertificateManager implements CertificateManager {\n             .map(a -> a[0]).collect(Collectors.toSet());\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/35/DefaultCertificateManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/35/DefaultCertificateManager.java\nindex 1ab8af5bc6..8d7a780e76 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/35/DefaultCertificateManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/35/DefaultCertificateManager.java\n@@ -18,7 +18,6 @@ import java.util.Map;\n import java.util.Optional;\n import java.util.Set;\n import java.util.stream.Collectors;\n-\n import com.google.common.collect.Sets;\n import org.eclipse.milo.opcua.stack.core.types.builtin.ByteString;\n import org.eclipse.milo.opcua.stack.core.util.DigestUtil;\n@@ -30,23 +29,21 @@ import static com.google.common.base.Preconditions.checkNotNull;\n public class DefaultCertificateManager implements CertificateManager {\n \n     private final Logger logger = LoggerFactory.getLogger(getClass());\n-\n     private final Map<ByteString, KeyPair> privateKeys = new HashMap<>();\n     private final Map<ByteString, X509Certificate[]> certificates = new HashMap<>();\n \n-    public DefaultCertificateManager() {}\n+    public DefaultCertificateManager() {\n+    }\n \n     public DefaultCertificateManager(KeyPair keyPair, X509Certificate certificate) {\n         checkNotNull(keyPair, \"keyPair must be non-null\");\n         checkNotNull(certificate, \"certificate must be non-null\");\n-\n         add(keyPair, certificate);\n     }\n \n     public DefaultCertificateManager(KeyPair keyPair, X509Certificate[] certificateChain) {\n         checkNotNull(keyPair, \"keyPair must be non-null\");\n         checkNotNull(certificateChain, \"certificateChain must be non-null\");\n-\n         add(keyPair, certificateChain);\n     }\n \n@@ -56,6 +53,7 @@ public class DefaultCertificateManager implements CertificateManager {\n      * @param keyPair     the {@link KeyPair} containing with the public and private key.\n      * @param certificate the {@link X509Certificate} the key pair is associated with.\n      */\n+\n     public synchronized void add(KeyPair keyPair, X509Certificate certificate) {\n         add(keyPair, new X509Certificate[]{certificate});\n     }\n@@ -66,6 +64,7 @@ public class DefaultCertificateManager implements CertificateManager {\n      * @param keyPair          the {@link KeyPair} containing the public and private key.\n      * @param certificateChain the {@link X509Certificate} chain the key pair is associated with.\n      */\n+\n     public synchronized void add(KeyPair keyPair, X509Certificate[] certificateChain) {\n         checkNotNull(keyPair, \"keyPair must be non-null\");\n         checkNotNull(certificateChain, \"certificateChain must be non-null\");\n@@ -88,7 +87,6 @@ public class DefaultCertificateManager implements CertificateManager {\n \n     public synchronized void replace(ByteString thumbprint, KeyPair keyPair, X509Certificate[] certificateChain) {\n         remove(thumbprint);\n-\n         add(keyPair, certificateChain);\n     }\n \n@@ -121,7 +119,8 @@ public class DefaultCertificateManager implements CertificateManager {\n     @Override\n     public synchronized Set<X509Certificate> getCertificates() {\n         return certificates.values().stream()\n-            .map(a -> a[0]).collect(Collectors.toSet());\n+                                    .map(a -> a[0])\n+                                    .collect(Collectors.toSet());\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

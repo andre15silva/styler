@@ -1,0 +1,70 @@
+{
+    "error_id": "17",
+    "information": {
+        "errors": [
+            {
+                "line": "39",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 126).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "public @interface IdTag {\n\n    String message() default \"ID Tag can only contain upper or lower case letters, numbers and dot, dash, underscore symbols\";\n\n    // Required by validation runtime\n    Class<?>[] groups() default {};",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/17/IdTag.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/17/IdTag.java\nindex d0cf970125..f22b294254 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/17/IdTag.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/17/IdTag.java\n@@ -16,6 +16,7 @@\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n  */\n+\n package de.rwth.idsg.steve.web.validation;\n \n import javax.validation.Constraint;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/17/IdTag.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/17/IdTag.java\nindex d0cf970125..947af48e9f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/17/IdTag.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/17/IdTag.java\n@@ -15,8 +15,7 @@\n  *\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n- */\n-package de.rwth.idsg.steve.web.validation;\n+ */package de.rwth.idsg.steve.web.validation;\n \n import javax.validation.Constraint;\n import javax.validation.Payload;\n@@ -31,7 +30,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;\n  * @author Sevket Goekay <goekay@dbis.rwth-aachen.de>\n  * @since 15.08.2014\n  */\n-@Target({FIELD, METHOD})\n+@Target({\n+        FIELD, METHOD})\n @Retention(RUNTIME)\n @Constraint(validatedBy = {IdTagValidator.class, IdTagListValidator.class})\n public @interface IdTag {\n@@ -39,8 +39,10 @@ public @interface IdTag {\n     String message() default \"ID Tag can only contain upper or lower case letters, numbers and dot, dash, underscore symbols\";\n \n     // Required by validation runtime\n-    Class<?>[] groups() default {};\n+    Class<?>[] groups() default {\n+                       };\n \n     // Required by validation runtime\n-    Class<? extends Payload>[] payload() default {};\n-}\n+    Class<? extends Payload>[] payload() default {\n+                       };\n+}\n\\ No newline at end of file\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/17/IdTag.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/17/IdTag.java\nindex d0cf970125..1549595af5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/17/IdTag.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/17/IdTag.java\n@@ -31,11 +31,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;\n  * @author Sevket Goekay <goekay@dbis.rwth-aachen.de>\n  * @since 15.08.2014\n  */\n+\n+\n @Target({FIELD, METHOD})\n @Retention(RUNTIME)\n @Constraint(validatedBy = {IdTagValidator.class, IdTagListValidator.class})\n public @interface IdTag {\n-\n     String message() default \"ID Tag can only contain upper or lower case letters, numbers and dot, dash, underscore symbols\";\n \n     // Required by validation runtime\n@@ -43,4 +44,4 @@ public @interface IdTag {\n \n     // Required by validation runtime\n     Class<? extends Payload>[] payload() default {};\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

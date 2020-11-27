@@ -1,0 +1,119 @@
+{
+    "error_id": "79",
+    "information": {
+        "errors": [
+            {
+                "line": "37",
+                "severity": "error",
+                "message": "Line is longer than 140 characters (found 157).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    @After\n    public void tearDown() throws Exception {\n        VariantHbaseTestUtils.printVariants(((HadoopVariantStorageEngine) variantStorageEngine).getDBAdaptor(), newOutputUri(getTestName().getMethodName()));\n    }\n\n    @Test",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 153).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler/79/HadoopVariantAnnotationManagerTest.java\nindex 273b7edf0f..1514281312 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler/79/HadoopVariantAnnotationManagerTest.java\n@@ -34,7 +34,7 @@ public class HadoopVariantAnnotationManagerTest extends VariantAnnotationManager\n \n     @After\n     public void tearDown() throws Exception {\n-        VariantHbaseTestUtils.printVariants(((HadoopVariantStorageEngine) variantStorageEngine).getDBAdaptor(), newOutputUri(getTestName().getMethodName()));\n+    VariantHbaseTestUtils.printVariants(((HadoopVariantStorageEngine) variantStorageEngine).getDBAdaptor(), newOutputUri(getTestName().getMethodName()));\n     }\n \n     @Test\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/intellij/79/HadoopVariantAnnotationManagerTest.java\nindex 273b7edf0f..34f746a368 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/intellij/79/HadoopVariantAnnotationManagerTest.java\n@@ -29,46 +29,47 @@ import java.util.stream.Collectors;\n  */\n public class HadoopVariantAnnotationManagerTest extends VariantAnnotationManagerTest implements HadoopVariantStorageTest {\n \n-    @ClassRule\n-    public static ExternalResource externalResource = new HadoopExternalResource();\n+  @ClassRule\n+  public static ExternalResource externalResource = new HadoopExternalResource();\n \n-    @After\n-    public void tearDown() throws Exception {\n-        VariantHbaseTestUtils.printVariants(((HadoopVariantStorageEngine) variantStorageEngine).getDBAdaptor(), newOutputUri(getTestName().getMethodName()));\n-    }\n-\n-    @Test\n-    public void incrementalAnnotationTest() throws Exception {\n-        HadoopVariantStorageEngine engine = getVariantStorageEngine();\n-        for (int i = 0; i < 3; i++) {\n-            URI platinumFile = getPlatinumFile(i);\n+  @After\n+  public void tearDown() throws Exception {\n+    VariantHbaseTestUtils\n+        .printVariants(((HadoopVariantStorageEngine) variantStorageEngine).getDBAdaptor(), newOutputUri(getTestName().getMethodName()));\n+  }\n \n-            runDefaultETL(platinumFile, engine, null, new ObjectMap(VariantStorageOptions.ANNOTATE.key(), false)\n-                    .append(VariantStorageOptions.CALCULATE_STATS.key(), false));\n+  @Test\n+  public void incrementalAnnotationTest() throws Exception {\n+    HadoopVariantStorageEngine engine = getVariantStorageEngine();\n+    for (int i = 0; i < 3; i++) {\n+      URI platinumFile = getPlatinumFile(i);\n \n-            // Update pending variants\n-            new TestMRExecutor().run(DiscoverPendingVariantsToAnnotateDriver.class,\n-                    DiscoverPendingVariantsToAnnotateDriver.buildArgs(engine.getDBAdaptor().getVariantTable(), new ObjectMap()),\n-                    new ObjectMap(), \"Prepare variants to annotate\");\n+      runDefaultETL(platinumFile, engine, null, new ObjectMap(VariantStorageOptions.ANNOTATE.key(), false)\n+          .append(VariantStorageOptions.CALCULATE_STATS.key(), false));\n \n-            long pendingVariantsCount = new PendingVariantsToAnnotateReader(engine.getDBAdaptor(), new Query()).stream().count();\n-            System.out.println(\"pendingVariants = \" + pendingVariantsCount);\n-            long expectedPendingVariantsCount = engine.count(new Query(VariantQueryParam.ANNOTATION_EXISTS.key(), false)).first();\n-            Assert.assertEquals(expectedPendingVariantsCount, pendingVariantsCount);\n-            Assert.assertEquals(expectedPendingVariantsCount, engine.annotate(new Query(), new ObjectMap()));\n+      // Update pending variants\n+      new TestMRExecutor().run(DiscoverPendingVariantsToAnnotateDriver.class,\n+          DiscoverPendingVariantsToAnnotateDriver.buildArgs(engine.getDBAdaptor().getVariantTable(), new ObjectMap()),\n+          new ObjectMap(), \"Prepare variants to annotate\");\n \n+      long pendingVariantsCount = new PendingVariantsToAnnotateReader(engine.getDBAdaptor(), new Query()).stream().count();\n+      System.out.println(\"pendingVariants = \" + pendingVariantsCount);\n+      long expectedPendingVariantsCount = engine.count(new Query(VariantQueryParam.ANNOTATION_EXISTS.key(), false)).first();\n+      Assert.assertEquals(expectedPendingVariantsCount, pendingVariantsCount);\n+      Assert.assertEquals(expectedPendingVariantsCount, engine.annotate(new Query(), new ObjectMap()));\n \n-            List<Variant> pendingVariants = new PendingVariantsToAnnotateReader(engine.getDBAdaptor(), new Query())\n-                    .stream()\n-                    .collect(Collectors.toList());\n-            expectedPendingVariantsCount = engine.count(new Query(VariantQueryParam.ANNOTATION_EXISTS.key(), false)).first();\n-            Assert.assertEquals(0, expectedPendingVariantsCount);\n-            Assert.assertEquals(pendingVariants.toString(), 0, pendingVariants.size());\n-            Assert.assertNotEquals(0, engine.count(new Query()).first().longValue());\n-        }\n \n-        long variants = engine.count(new Query()).first();\n-        Assert.assertEquals(0L, engine.annotate(new Query(), new ObjectMap()));\n-        Assert.assertEquals(variants, engine.annotate(new Query(), new ObjectMap(VariantAnnotationManager.OVERWRITE_ANNOTATIONS, true)));\n+      List<Variant> pendingVariants = new PendingVariantsToAnnotateReader(engine.getDBAdaptor(), new Query())\n+          .stream()\n+          .collect(Collectors.toList());\n+      expectedPendingVariantsCount = engine.count(new Query(VariantQueryParam.ANNOTATION_EXISTS.key(), false)).first();\n+      Assert.assertEquals(0, expectedPendingVariantsCount);\n+      Assert.assertEquals(pendingVariants.toString(), 0, pendingVariants.size());\n+      Assert.assertNotEquals(0, engine.count(new Query()).first().longValue());\n     }\n+\n+    long variants = engine.count(new Query()).first();\n+    Assert.assertEquals(0L, engine.annotate(new Query(), new ObjectMap()));\n+    Assert.assertEquals(variants, engine.annotate(new Query(), new ObjectMap(VariantAnnotationManager.OVERWRITE_ANNOTATIONS, true)));\n+  }\n }\n",
+            "diff_size": 51
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 157).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/naturalize/79/HadoopVariantAnnotationManagerTest.java\nindex 273b7edf0f..1307931de7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/naturalize/79/HadoopVariantAnnotationManagerTest.java\n@@ -71,4 +71,4 @@ public class HadoopVariantAnnotationManagerTest extends VariantAnnotationManager\n         Assert.assertEquals(0L, engine.annotate(new Query(), new ObjectMap()));\n         Assert.assertEquals(variants, engine.annotate(new Query(), new ObjectMap(VariantAnnotationManager.OVERWRITE_ANNOTATIONS, true)));\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 164).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "111",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "113",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "155",
+                    "severity": "error",
+                    "message": "')' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "37",
+                    "column": "159",
+                    "severity": "error",
+                    "message": "';' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Line matches the illegal pattern 'Trailing whitespace'.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler_random/79/HadoopVariantAnnotationManagerTest.java\nindex 273b7edf0f..9c8ba4e430 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler_random/79/HadoopVariantAnnotationManagerTest.java\n@@ -34,41 +34,39 @@ public class HadoopVariantAnnotationManagerTest extends VariantAnnotationManager\n \n     @After\n     public void tearDown() throws Exception {\n-        VariantHbaseTestUtils.printVariants(((HadoopVariantStorageEngine) variantStorageEngine).getDBAdaptor(), newOutputUri(getTestName().getMethodName()));\n-    }\n+        VariantHbaseTestUtils.printVariants(((HadoopVariantStorageEngine) variantStorageEngine).getDBAdaptor() ,newOutputUri(getTestName().getMethodName() ));}@Test\n+        public void incrementalAnnotationTest() throws Exception {\n+            HadoopVariantStorageEngine engine = getVariantStorageEngine();\n+            for (int i = 0; i < 3; i++) {\n+                URI platinumFile = getPlatinumFile(i);\n \n-    @Test\n-    public void incrementalAnnotationTest() throws Exception {\n-        HadoopVariantStorageEngine engine = getVariantStorageEngine();\n-        for (int i = 0; i < 3; i++) {\n-            URI platinumFile = getPlatinumFile(i);\n+                runDefaultETL(platinumFile, engine, null, new ObjectMap(VariantStorageOptions.ANNOTATE.key(), false)\n+                        .append(VariantStorageOptions.CALCULATE_STATS.key(), false));\n \n-            runDefaultETL(platinumFile, engine, null, new ObjectMap(VariantStorageOptions.ANNOTATE.key(), false)\n-                    .append(VariantStorageOptions.CALCULATE_STATS.key(), false));\n+                // Update pending variants\n+                new TestMRExecutor().run(DiscoverPendingVariantsToAnnotateDriver.class,\n+                        DiscoverPendingVariantsToAnnotateDriver.buildArgs(engine.getDBAdaptor().getVariantTable(), new ObjectMap()),\n+                        new ObjectMap(), \"Prepare variants to annotate\");\n \n-            // Update pending variants\n-            new TestMRExecutor().run(DiscoverPendingVariantsToAnnotateDriver.class,\n-                    DiscoverPendingVariantsToAnnotateDriver.buildArgs(engine.getDBAdaptor().getVariantTable(), new ObjectMap()),\n-                    new ObjectMap(), \"Prepare variants to annotate\");\n+                long pendingVariantsCount = new PendingVariantsToAnnotateReader(engine.getDBAdaptor(), new Query()).stream().count();\n+                System.out.println(\"pendingVariants = \" + pendingVariantsCount);\n+                long expectedPendingVariantsCount = engine.count(new Query(VariantQueryParam.ANNOTATION_EXISTS.key(), false)).first();\n+                Assert.assertEquals(expectedPendingVariantsCount, pendingVariantsCount);\n+                Assert.assertEquals(expectedPendingVariantsCount, engine.annotate(new Query(), new ObjectMap()));\n \n-            long pendingVariantsCount = new PendingVariantsToAnnotateReader(engine.getDBAdaptor(), new Query()).stream().count();\n-            System.out.println(\"pendingVariants = \" + pendingVariantsCount);\n-            long expectedPendingVariantsCount = engine.count(new Query(VariantQueryParam.ANNOTATION_EXISTS.key(), false)).first();\n-            Assert.assertEquals(expectedPendingVariantsCount, pendingVariantsCount);\n-            Assert.assertEquals(expectedPendingVariantsCount, engine.annotate(new Query(), new ObjectMap()));\n \n+                List<Variant> pendingVariants = new PendingVariantsToAnnotateReader(engine.getDBAdaptor(), new Query())\n+                        .stream()\n+                        .collect(Collectors.toList());\n+                expectedPendingVariantsCount = engine.count(new Query(VariantQueryParam.ANNOTATION_EXISTS.key(), false)).first();\n+                Assert.assertEquals(0, expectedPendingVariantsCount);\n+                Assert.assertEquals(pendingVariants.toString(), 0, pendingVariants.size());\n+                Assert.assertNotEquals(0, engine.count(new Query()).first().longValue());\n+            }\n \n-            List<Variant> pendingVariants = new PendingVariantsToAnnotateReader(engine.getDBAdaptor(), new Query())\n-                    .stream()\n-                    .collect(Collectors.toList());\n-            expectedPendingVariantsCount = engine.count(new Query(VariantQueryParam.ANNOTATION_EXISTS.key(), false)).first();\n-            Assert.assertEquals(0, expectedPendingVariantsCount);\n-            Assert.assertEquals(pendingVariants.toString(), 0, pendingVariants.size());\n-            Assert.assertNotEquals(0, engine.count(new Query()).first().longValue());\n+            long variants = engine.count(new Query()).first();\n+            Assert.assertEquals(0L, engine.annotate(new Query(), new ObjectMap()));\n+            Assert.assertEquals(variants, engine.annotate(new Query(), new ObjectMap(VariantAnnotationManager.OVERWRITE_ANNOTATIONS, true)));\n         }\n-\n-        long variants = engine.count(new Query()).first();\n-        Assert.assertEquals(0L, engine.annotate(new Query(), new ObjectMap()));\n-        Assert.assertEquals(variants, engine.annotate(new Query(), new ObjectMap(VariantAnnotationManager.OVERWRITE_ANNOTATIONS, true)));\n     }\n-}\n+    \n\\ No newline at end of file\n",
+            "diff_size": 44
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 153).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler_three_grams/79/HadoopVariantAnnotationManagerTest.java\nindex 273b7edf0f..1514281312 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/errored/1/79/HadoopVariantAnnotationManagerTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/opencb-opencga/styler_three_grams/79/HadoopVariantAnnotationManagerTest.java\n@@ -34,7 +34,7 @@ public class HadoopVariantAnnotationManagerTest extends VariantAnnotationManager\n \n     @After\n     public void tearDown() throws Exception {\n-        VariantHbaseTestUtils.printVariants(((HadoopVariantStorageEngine) variantStorageEngine).getDBAdaptor(), newOutputUri(getTestName().getMethodName()));\n+    VariantHbaseTestUtils.printVariants(((HadoopVariantStorageEngine) variantStorageEngine).getDBAdaptor(), newOutputUri(getTestName().getMethodName()));\n     }\n \n     @Test\n",
+            "diff_size": 1
+        }
+    ]
+}

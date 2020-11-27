@@ -1,0 +1,100 @@
+{
+    "error_id": "757",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/757/TYahooSketchSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/757/TYahooSketchSplit.java\nindex a12157771e..934112b550 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/757/TYahooSketchSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/757/TYahooSketchSplit.java\n@@ -26,40 +26,40 @@ import com.yahoo.sketches.quantiles.DoublesSketch;\n  * Description: get candidate split value, using yahoo datasketches\n  */\n public class TYahooSketchSplit implements TSplitValueHelper {\n-  @Override\n-  public float[][] getSplitValue(DataMeta dataMeta, RegTMaker treeMaker, int nid) {\n-    return new float[0][];\n-  }\n+    @Override\n+    public float[][] getSplitValue(DataMeta dataMeta, RegTMaker treeMaker, int nid) {\n+        return new float[0][];\n+    }\n \n-  public static float[][] getSplitValue(DataMeta dataMeta, int splitNum) {\n+    public static float[][] getSplitValue(DataMeta dataMeta, int splitNum) {\n \n-    double[] fracs = new double[splitNum];\n-    for (int i = 0; i < splitNum; i++) {\n-      fracs[i] = i / (double) splitNum;\n-    }\n+        double[] fracs = new double[splitNum];\n+        for (int i = 0; i < splitNum; i++) {\n+            fracs[i] = i / (double) splitNum;\n+        }\n \n-    int numFeature = dataMeta.featureMeta.numFeature;\n+        int numFeature = dataMeta.featureMeta.numFeature;\n \n-    DoublesSketch[] sketches = new DoublesSketch[numFeature];\n+        DoublesSketch[] sketches = new DoublesSketch[numFeature];\n \n-    for (int i = 0; i < sketches.length; i++) {\n-      sketches[i] = DoublesSketch.builder().build(); // default k=128\n-    }\n+        for (int i = 0; i < sketches.length; i++) {\n+            sketches[i] = DoublesSketch.builder().build(); // default k=128\n+        }\n \n-    for (int nid = 0; nid < dataMeta.numRow; nid++) {\n-      int[] indice = dataMeta.instances.get(nid).getIndices();\n-      for (int i = 0; i < indice.length; i++) {\n-        int fid = indice[i];\n-        sketches[fid].update(dataMeta.instances.get(nid).get(fid));\n-      }\n-    }\n+        for (int nid = 0; nid < dataMeta.numRow; nid++) {\n+            int[] indice = dataMeta.instances.get(nid).getIndices();\n+            for (int i = 0; i < indice.length; i++) {\n+                int fid = indice[i];\n+                sketches[fid].update(dataMeta.instances.get(nid).get(fid));\n+            }\n+        }\n \n-    float[][] splitSet = new float[numFeature][splitNum];\n+        float[][] splitSet = new float[numFeature][splitNum];\n \n-    for (int fid = 0; fid < numFeature; fid++) {\n-      splitSet[fid] = MathUtils.double2Float(sketches[fid].getQuantiles(fracs));\n-    }\n+        for (int fid = 0; fid < numFeature; fid++) {\n+            splitSet[fid] = MathUtils.double2Float(sketches[fid].getQuantiles(fracs));\n+        }\n \n-    return splitSet;\n-  }\n+        return splitSet;\n+    }\n }\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/757/TYahooSketchSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/757/TYahooSketchSplit.java\nindex a12157771e..f851365324 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/757/TYahooSketchSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/757/TYahooSketchSplit.java\n@@ -62,4 +62,4 @@ public class TYahooSketchSplit implements TSplitValueHelper {\n \n     return splitSet;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 115).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/757/TYahooSketchSplit.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/757/TYahooSketchSplit.java\nindex a12157771e..f055fbe3f5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/757/TYahooSketchSplit.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/757/TYahooSketchSplit.java\n@@ -19,47 +19,43 @@ package com.tencent.angel.ml.algorithm.tree;\n import com.tencent.angel.ml.algorithm.utils.MathUtils;\n import com.tencent.angel.ml.algorithm.RegTree.DataMeta;\n import com.tencent.angel.ml.algorithm.RegTree.RegTMaker;\n-\n import com.yahoo.sketches.quantiles.DoublesSketch;\n \n /**\n  * Description: get candidate split value, using yahoo datasketches\n  */\n+\n public class TYahooSketchSplit implements TSplitValueHelper {\n-  @Override\n-  public float[][] getSplitValue(DataMeta dataMeta, RegTMaker treeMaker, int nid) {\n-    return new float[0][];\n-  }\n \n-  public static float[][] getSplitValue(DataMeta dataMeta, int splitNum) {\n \n+    @Override\n+    public float[][] getSplitValue(DataMeta dataMeta, RegTMaker treeMaker, int nid) {\n+    return new float[0][];\n+    }\n+\n+    public static float[][] getSplitValue(DataMeta dataMeta, int splitNum) {\n     double[] fracs = new double[splitNum];\n     for (int i = 0; i < splitNum; i++) {\n-      fracs[i] = i / (double) splitNum;\n+        fracs[i] = i / (double) splitNum;\n     }\n \n     int numFeature = dataMeta.featureMeta.numFeature;\n-\n     DoublesSketch[] sketches = new DoublesSketch[numFeature];\n-\n     for (int i = 0; i < sketches.length; i++) {\n-      sketches[i] = DoublesSketch.builder().build(); // default k=128\n+        sketches[i] = DoublesSketch.builder().build(); // default k=128\n     }\n \n     for (int nid = 0; nid < dataMeta.numRow; nid++) {\n-      int[] indice = dataMeta.instances.get(nid).getIndices();\n-      for (int i = 0; i < indice.length; i++) {\n-        int fid = indice[i];\n-        sketches[fid].update(dataMeta.instances.get(nid).get(fid));\n-      }\n+        int[] indice = dataMeta.instances.get(nid).getIndices();\n+        for (int i = 0; i < indice.length; i++) {\n+                                                        int fid = indice[i];\n+                                                        sketches[fid].update(dataMeta.instances.get(nid).get(fid));\n+        }\n     }\n-\n     float[][] splitSet = new float[numFeature][splitNum];\n-\n     for (int fid = 0; fid < numFeature; fid++) {\n-      splitSet[fid] = MathUtils.double2Float(sketches[fid].getQuantiles(fracs));\n+        splitSet[fid] = MathUtils.double2Float(sketches[fid].getQuantiles(fracs));\n     }\n-\n     return splitSet;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 28
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

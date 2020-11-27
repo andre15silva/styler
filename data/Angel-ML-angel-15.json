@@ -1,0 +1,94 @@
+{
+    "error_id": "15",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/15/BinaryGradPair.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/15/BinaryGradPair.java\nindex 97d19ac51b..bbb23f3ba8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/15/BinaryGradPair.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/15/BinaryGradPair.java\n@@ -23,109 +23,109 @@ import java.io.Serializable;\n \n public class BinaryGradPair implements GradPair, Serializable {\n \n-  private double grad;\n-  private double hess;\n-\n-  public BinaryGradPair() {\n-  }\n-\n-  public BinaryGradPair(double grad, double hess) {\n-    this.grad = grad;\n-    this.hess = hess;\n-  }\n-\n-  @Override\n-  public void plusBy(GradPair gradPair) {\n-    this.grad += ((BinaryGradPair) gradPair).grad;\n-    this.hess += ((BinaryGradPair) gradPair).hess;\n-  }\n-\n-  public void plusBy(double grad, double hess) {\n-    this.grad += grad;\n-    this.hess += hess;\n-  }\n-\n-  @Override\n-  public void subtractBy(GradPair gradPair) {\n-    this.grad -= ((BinaryGradPair) gradPair).grad;\n-    this.hess -= ((BinaryGradPair) gradPair).hess;\n-  }\n-\n-  public void subtractBy(double grad, double hess) {\n-    this.grad -= grad;\n-    this.hess -= hess;\n-  }\n-\n-  @Override\n-  public GradPair plus(GradPair gradPair) {\n-    GradPair res = this.copy();\n-    res.plusBy(gradPair);\n-    return res;\n-  }\n-\n-  public GradPair plus(double grad, double hess) {\n-    return new BinaryGradPair(this.grad + grad, this.hess + hess);\n-  }\n-\n-  @Override\n-  public GradPair subtract(GradPair gradPair) {\n-    GradPair res = this.copy();\n-    res.subtractBy(gradPair);\n-    return res;\n-  }\n-\n-  public GradPair subtract(double grad, double hess) {\n-    return new BinaryGradPair(this.grad - grad, this.hess - hess);\n-  }\n-\n-  @Override\n-  public void timesBy(double x) {\n-    this.grad *= x;\n-    this.hess *= x;\n-  }\n-\n-  @Override\n-  public float calcGain(GBDTParam param) {\n-    return (float) param.calcGain(grad, hess);\n-  }\n-\n-  public float calcWeight(GBDTParam param) {\n-    return (float) param.calcWeight(grad, hess);\n-  }\n-\n-  @Override\n-  public boolean satisfyWeight(GBDTParam param) {\n-    return param.satisfyWeight(hess);\n-  }\n-\n-  @Override\n-  public GradPair copy() {\n-    return new BinaryGradPair(grad, hess);\n-  }\n-\n-  public double getGrad() {\n-    return grad;\n-  }\n-\n-  public double getHess() {\n-    return hess;\n-  }\n-\n-  public void setGrad(double grad) {\n-    this.grad = grad;\n-  }\n-\n-  public void setHess(double hess) {\n-    this.hess = hess;\n-  }\n-\n-  public void set(double grad, double hess) {\n-    this.grad = grad;\n-    this.hess = hess;\n-  }\n-\n-  @Override\n-  public String toString() {\n-    return \"(\" + grad + \", \" + hess + \")\";\n-  }\n+    private double grad;\n+    private double hess;\n+\n+    public BinaryGradPair() {\n+    }\n+\n+    public BinaryGradPair(double grad, double hess) {\n+        this.grad = grad;\n+        this.hess = hess;\n+    }\n+\n+    @Override\n+    public void plusBy(GradPair gradPair) {\n+        this.grad += ((BinaryGradPair) gradPair).grad;\n+        this.hess += ((BinaryGradPair) gradPair).hess;\n+    }\n+\n+    public void plusBy(double grad, double hess) {\n+        this.grad += grad;\n+        this.hess += hess;\n+    }\n+\n+    @Override\n+    public void subtractBy(GradPair gradPair) {\n+        this.grad -= ((BinaryGradPair) gradPair).grad;\n+        this.hess -= ((BinaryGradPair) gradPair).hess;\n+    }\n+\n+    public void subtractBy(double grad, double hess) {\n+        this.grad -= grad;\n+        this.hess -= hess;\n+    }\n+\n+    @Override\n+    public GradPair plus(GradPair gradPair) {\n+        GradPair res = this.copy();\n+        res.plusBy(gradPair);\n+        return res;\n+    }\n+\n+    public GradPair plus(double grad, double hess) {\n+        return new BinaryGradPair(this.grad + grad, this.hess + hess);\n+    }\n+\n+    @Override\n+    public GradPair subtract(GradPair gradPair) {\n+        GradPair res = this.copy();\n+        res.subtractBy(gradPair);\n+        return res;\n+    }\n+\n+    public GradPair subtract(double grad, double hess) {\n+        return new BinaryGradPair(this.grad - grad, this.hess - hess);\n+    }\n+\n+    @Override\n+    public void timesBy(double x) {\n+        this.grad *= x;\n+        this.hess *= x;\n+    }\n+\n+    @Override\n+    public float calcGain(GBDTParam param) {\n+        return (float) param.calcGain(grad, hess);\n+    }\n+\n+    public float calcWeight(GBDTParam param) {\n+        return (float) param.calcWeight(grad, hess);\n+    }\n+\n+    @Override\n+    public boolean satisfyWeight(GBDTParam param) {\n+        return param.satisfyWeight(hess);\n+    }\n+\n+    @Override\n+    public GradPair copy() {\n+        return new BinaryGradPair(grad, hess);\n+    }\n+\n+    public double getGrad() {\n+        return grad;\n+    }\n+\n+    public double getHess() {\n+        return hess;\n+    }\n+\n+    public void setGrad(double grad) {\n+        this.grad = grad;\n+    }\n+\n+    public void setHess(double hess) {\n+        this.hess = hess;\n+    }\n+\n+    public void set(double grad, double hess) {\n+        this.grad = grad;\n+        this.hess = hess;\n+    }\n+\n+    @Override\n+    public String toString() {\n+        return \"(\" + grad + \", \" + hess + \")\";\n+    }\n }\n",
+            "diff_size": 105
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/15/BinaryGradPair.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/15/BinaryGradPair.java\nindex 97d19ac51b..0b7224bce5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/15/BinaryGradPair.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/15/BinaryGradPair.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.spark.ml.tree.gbdt.histogram;\n \n import com.tencent.angel.spark.ml.tree.tree.param.GBDTParam;\n@@ -128,4 +127,4 @@ public class BinaryGradPair implements GradPair, Serializable {\n   public String toString() {\n     return \"(\" + grad + \", \" + hess + \")\";\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/15/BinaryGradPair.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/15/BinaryGradPair.java\nindex 97d19ac51b..9617cf1149 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/15/BinaryGradPair.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/15/BinaryGradPair.java\n@@ -22,110 +22,109 @@ import com.tencent.angel.spark.ml.tree.tree.param.GBDTParam;\n import java.io.Serializable;\n \n public class BinaryGradPair implements GradPair, Serializable {\n+    private double grad;\n+    private double hess;\n \n-  private double grad;\n-  private double hess;\n+    public BinaryGradPair() {}\n \n-  public BinaryGradPair() {\n-  }\n-\n-  public BinaryGradPair(double grad, double hess) {\n+    public BinaryGradPair(double grad, double hess) {\n     this.grad = grad;\n     this.hess = hess;\n-  }\n+    }\n \n-  @Override\n-  public void plusBy(GradPair gradPair) {\n+    @Override\n+    public void plusBy(GradPair gradPair) {\n     this.grad += ((BinaryGradPair) gradPair).grad;\n     this.hess += ((BinaryGradPair) gradPair).hess;\n-  }\n+    }\n \n-  public void plusBy(double grad, double hess) {\n+    public void plusBy(double grad, double hess) {\n     this.grad += grad;\n     this.hess += hess;\n-  }\n+    }\n \n-  @Override\n-  public void subtractBy(GradPair gradPair) {\n+    @Override\n+    public void subtractBy(GradPair gradPair) {\n     this.grad -= ((BinaryGradPair) gradPair).grad;\n     this.hess -= ((BinaryGradPair) gradPair).hess;\n-  }\n+    }\n \n-  public void subtractBy(double grad, double hess) {\n+    public void subtractBy(double grad, double hess) {\n     this.grad -= grad;\n     this.hess -= hess;\n-  }\n+    }\n \n-  @Override\n-  public GradPair plus(GradPair gradPair) {\n+    @Override\n+    public GradPair plus(GradPair gradPair) {\n     GradPair res = this.copy();\n     res.plusBy(gradPair);\n     return res;\n-  }\n+    }\n \n-  public GradPair plus(double grad, double hess) {\n+    public GradPair plus(double grad, double hess) {\n     return new BinaryGradPair(this.grad + grad, this.hess + hess);\n-  }\n+    }\n \n-  @Override\n-  public GradPair subtract(GradPair gradPair) {\n+    @Override\n+    public GradPair subtract(GradPair gradPair) {\n     GradPair res = this.copy();\n     res.subtractBy(gradPair);\n     return res;\n-  }\n+    }\n \n-  public GradPair subtract(double grad, double hess) {\n+    public GradPair subtract(double grad, double hess) {\n     return new BinaryGradPair(this.grad - grad, this.hess - hess);\n-  }\n+    }\n \n-  @Override\n-  public void timesBy(double x) {\n+    @Override\n+    public void timesBy(double x) {\n     this.grad *= x;\n     this.hess *= x;\n-  }\n+    }\n \n-  @Override\n-  public float calcGain(GBDTParam param) {\n+    @Override\n+    public float calcGain(GBDTParam param) {\n     return (float) param.calcGain(grad, hess);\n-  }\n+    }\n \n-  public float calcWeight(GBDTParam param) {\n+    public float calcWeight(GBDTParam param) {\n     return (float) param.calcWeight(grad, hess);\n-  }\n+    }\n \n-  @Override\n-  public boolean satisfyWeight(GBDTParam param) {\n+    @Override\n+    public boolean satisfyWeight(GBDTParam param) {\n     return param.satisfyWeight(hess);\n-  }\n+    }\n \n-  @Override\n-  public GradPair copy() {\n+    @Override\n+    public GradPair copy() {\n     return new BinaryGradPair(grad, hess);\n-  }\n+    }\n \n-  public double getGrad() {\n+    public double getGrad() {\n     return grad;\n-  }\n+    }\n \n-  public double getHess() {\n+    public double getHess() {\n     return hess;\n-  }\n+    }\n \n-  public void setGrad(double grad) {\n+    public void setGrad(double grad) {\n     this.grad = grad;\n-  }\n+    }\n \n-  public void setHess(double hess) {\n+    public void setHess(double hess) {\n     this.hess = hess;\n-  }\n+    }\n \n-  public void set(double grad, double hess) {\n+    public void set(double grad, double hess) {\n     this.grad = grad;\n     this.hess = hess;\n-  }\n+    }\n \n-  @Override\n-  public String toString() {\n+    @Override\n+    public String toString() {\n     return \"(\" + grad + \", \" + hess + \")\";\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 58
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/15/BinaryGradPair.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/15/BinaryGradPair.java\nindex 97d19ac51b..12f8062d32 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/15/BinaryGradPair.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/15/BinaryGradPair.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.spark.ml.tree.gbdt.histogram;\n \n import com.tencent.angel.spark.ml.tree.tree.param.GBDTParam;\n",
+            "diff_size": 1
+        }
+    ]
+}

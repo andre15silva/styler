@@ -1,0 +1,108 @@
+{
+    "error_id": "203",
+    "information": {
+        "errors": [
+            {
+                "line": "47",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 178).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<AuditUserDto> auditUsers = BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n\n        if (auditUsers == null || auditUsers.size() == 0) {\n            return auditUsers;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 180).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/203/AuditUserInnerServiceSMOImpl.java\nindex e822faf545..440ed285d6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/203/AuditUserInnerServiceSMOImpl.java\n@@ -42,9 +42,7 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             auditUserDto.setPage((page - 1) * auditUserDto.getRow());\n-        }\n-\n-        List<AuditUserDto> auditUsers = BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n+        } List<AuditUserDto> auditUsers = BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n \n         if (auditUsers == null || auditUsers.size() == 0) {\n             return auditUsers;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/203/AuditUserInnerServiceSMOImpl.java\nindex e822faf545..19d396ac94 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/203/AuditUserInnerServiceSMOImpl.java\n@@ -27,86 +27,87 @@ import java.util.List;\n @RestController\n public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAuditUserInnerServiceSMO {\n \n-    @Autowired\n-    private IAuditUserServiceDao auditUserServiceDaoImpl;\n+  @Autowired\n+  private IAuditUserServiceDao auditUserServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<AuditUserDto> queryAuditUsers(@RequestBody AuditUserDto auditUserDto) {\n+  @Override\n+  public List<AuditUserDto> queryAuditUsers(@RequestBody AuditUserDto auditUserDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = auditUserDto.getPage();\n+    int page = auditUserDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            auditUserDto.setPage((page - 1) * auditUserDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      auditUserDto.setPage((page - 1) * auditUserDto.getRow());\n+    }\n \n-        List<AuditUserDto> auditUsers = BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n+    List<AuditUserDto> auditUsers =\n+      BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n \n-        if (auditUsers == null || auditUsers.size() == 0) {\n-            return auditUsers;\n-        }\n+    if (auditUsers == null || auditUsers.size() == 0) {\n+      return auditUsers;\n+    }\n \n-        String[] userIds = getUserIds(auditUsers);\n-        //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n-        List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n+    String[] userIds = getUserIds(auditUsers);\n+    //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n+    List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n \n-        for (AuditUserDto auditUser : auditUsers) {\n-            refreshAuditUser(auditUser, users);\n-        }\n-        return auditUsers;\n+    for (AuditUserDto auditUser : auditUsers) {\n+      refreshAuditUser(auditUser, users);\n     }\n-\n-    /**\n-     * \u4ece\u7528\u6237\u5217\u8868\u4e2d\u67e5\u8be2\u7528\u6237\uff0c\u5c06\u7528\u6237\u4e2d\u7684\u4fe1\u606f \u5237\u65b0\u5230 floor\u5bf9\u8c61\u4e2d\n-     *\n-     * @param auditUser \u5c0f\u533a\u5ba1\u6838\u4eba\u5458\u4fe1\u606f\n-     * @param users     \u7528\u6237\u5217\u8868\n-     */\n-    private void refreshAuditUser(AuditUserDto auditUser, List<UserDto> users) {\n-        for (UserDto user : users) {\n-            if (auditUser.getUserId().equals(user.getUserId())) {\n-                BeanConvertUtil.covertBean(user, auditUser);\n-            }\n-        }\n+    return auditUsers;\n+  }\n+\n+  /**\n+   * \u4ece\u7528\u6237\u5217\u8868\u4e2d\u67e5\u8be2\u7528\u6237\uff0c\u5c06\u7528\u6237\u4e2d\u7684\u4fe1\u606f \u5237\u65b0\u5230 floor\u5bf9\u8c61\u4e2d\n+   *\n+   * @param auditUser \u5c0f\u533a\u5ba1\u6838\u4eba\u5458\u4fe1\u606f\n+   * @param users     \u7528\u6237\u5217\u8868\n+   */\n+  private void refreshAuditUser(AuditUserDto auditUser, List<UserDto> users) {\n+    for (UserDto user : users) {\n+      if (auditUser.getUserId().equals(user.getUserId())) {\n+        BeanConvertUtil.covertBean(user, auditUser);\n+      }\n     }\n-\n-    /**\n-     * \u83b7\u53d6\u6279\u91cfuserId\n-     *\n-     * @param auditUsers \u5c0f\u533a\u697c\u4fe1\u606f\n-     * @return \u6279\u91cfuserIds \u4fe1\u606f\n-     */\n-    private String[] getUserIds(List<AuditUserDto> auditUsers) {\n-        List<String> userIds = new ArrayList<String>();\n-        for (AuditUserDto auditUser : auditUsers) {\n-            userIds.add(auditUser.getUserId());\n-        }\n-\n-        return userIds.toArray(new String[userIds.size()]);\n+  }\n+\n+  /**\n+   * \u83b7\u53d6\u6279\u91cfuserId\n+   *\n+   * @param auditUsers \u5c0f\u533a\u697c\u4fe1\u606f\n+   * @return \u6279\u91cfuserIds \u4fe1\u606f\n+   */\n+  private String[] getUserIds(List<AuditUserDto> auditUsers) {\n+    List<String> userIds = new ArrayList<String>();\n+    for (AuditUserDto auditUser : auditUsers) {\n+      userIds.add(auditUser.getUserId());\n     }\n \n-    @Override\n-    public int queryAuditUsersCount(@RequestBody AuditUserDto auditUserDto) {\n-        return auditUserServiceDaoImpl.queryAuditUsersCount(BeanConvertUtil.beanCovertMap(auditUserDto));\n-    }\n+    return userIds.toArray(new String[userIds.size()]);\n+  }\n \n-    public IAuditUserServiceDao getAuditUserServiceDaoImpl() {\n-        return auditUserServiceDaoImpl;\n-    }\n+  @Override\n+  public int queryAuditUsersCount(@RequestBody AuditUserDto auditUserDto) {\n+    return auditUserServiceDaoImpl.queryAuditUsersCount(BeanConvertUtil.beanCovertMap(auditUserDto));\n+  }\n \n-    public void setAuditUserServiceDaoImpl(IAuditUserServiceDao auditUserServiceDaoImpl) {\n-        this.auditUserServiceDaoImpl = auditUserServiceDaoImpl;\n-    }\n+  public IAuditUserServiceDao getAuditUserServiceDaoImpl() {\n+    return auditUserServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public void setAuditUserServiceDaoImpl(IAuditUserServiceDao auditUserServiceDaoImpl) {\n+    this.auditUserServiceDaoImpl = auditUserServiceDaoImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n+\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 72
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 178).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/203/AuditUserInnerServiceSMOImpl.java\nindex e822faf545..1db503e308 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/203/AuditUserInnerServiceSMOImpl.java\n@@ -109,4 +109,4 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 178).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/203/AuditUserInnerServiceSMOImpl.java\nindex e822faf545..42224ff280 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/203/AuditUserInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.common.smo.impl;\n \n-\n import com.java110.common.dao.IAuditUserServiceDao;\n import com.java110.core.base.smo.BaseServiceSMO;\n import com.java110.core.smo.audit.IAuditUserInnerServiceSMO;\n@@ -12,7 +11,6 @@ import com.java110.utils.util.BeanConvertUtil;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.ArrayList;\n import java.util.List;\n \n@@ -24,6 +22,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAuditUserInnerServiceSMO {\n \n@@ -37,15 +37,12 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n     public List<AuditUserDto> queryAuditUsers(@RequestBody AuditUserDto auditUserDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = auditUserDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             auditUserDto.setPage((page - 1) * auditUserDto.getRow());\n         }\n \n         List<AuditUserDto> auditUsers = BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n-\n         if (auditUsers == null || auditUsers.size() == 0) {\n             return auditUsers;\n         }\n@@ -53,10 +50,10 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n         String[] userIds = getUserIds(auditUsers);\n         //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n         List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n-\n         for (AuditUserDto auditUser : auditUsers) {\n             refreshAuditUser(auditUser, users);\n         }\n+\n         return auditUsers;\n     }\n \n@@ -66,6 +63,8 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n      * @param auditUser \u5c0f\u533a\u5ba1\u6838\u4eba\u5458\u4fe1\u606f\n      * @param users     \u7528\u6237\u5217\u8868\n      */\n+\n+\n     private void refreshAuditUser(AuditUserDto auditUser, List<UserDto> users) {\n         for (UserDto user : users) {\n             if (auditUser.getUserId().equals(user.getUserId())) {\n@@ -80,6 +79,8 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n      * @param auditUsers \u5c0f\u533a\u697c\u4fe1\u606f\n      * @return \u6279\u91cfuserIds \u4fe1\u606f\n      */\n+\n+\n     private String[] getUserIds(List<AuditUserDto> auditUsers) {\n         List<String> userIds = new ArrayList<String>();\n         for (AuditUserDto auditUser : auditUsers) {\n@@ -89,6 +90,7 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n         return userIds.toArray(new String[userIds.size()]);\n     }\n \n+\n     @Override\n     public int queryAuditUsersCount(@RequestBody AuditUserDto auditUserDto) {\n         return auditUserServiceDaoImpl.queryAuditUsersCount(BeanConvertUtil.beanCovertMap(auditUserDto));\n@@ -109,4 +111,4 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 180).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/203/AuditUserInnerServiceSMOImpl.java\nindex e822faf545..440ed285d6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/203/AuditUserInnerServiceSMOImpl.java\n@@ -42,9 +42,7 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             auditUserDto.setPage((page - 1) * auditUserDto.getRow());\n-        }\n-\n-        List<AuditUserDto> auditUsers = BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n+        } List<AuditUserDto> auditUsers = BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n \n         if (auditUsers == null || auditUsers.size() == 0) {\n             return auditUsers;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 179).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/203/AuditUserInnerServiceSMOImpl.java\nindex e822faf545..03b93e1f97 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/203/AuditUserInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/203/AuditUserInnerServiceSMOImpl.java\n@@ -42,9 +42,7 @@ public class AuditUserInnerServiceSMOImpl extends BaseServiceSMO implements IAud\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             auditUserDto.setPage((page - 1) * auditUserDto.getRow());\n-        }\n-\n-        List<AuditUserDto> auditUsers = BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n+        } List<AuditUserDto>auditUsers = BeanConvertUtil.covertBeanList(auditUserServiceDaoImpl.getAuditUserInfo(BeanConvertUtil.beanCovertMap(auditUserDto)), AuditUserDto.class);\n \n         if (auditUsers == null || auditUsers.size() == 0) {\n             return auditUsers;\n",
+            "diff_size": 3
+        }
+    ]
+}

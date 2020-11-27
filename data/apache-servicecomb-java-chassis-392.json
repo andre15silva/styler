@@ -1,0 +1,114 @@
+{
+    "error_id": "392",
+    "information": {
+        "errors": [
+            {
+                "line": "118",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 137).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    }\n\n    InstanceLevelMetricsModel newInstanceModel = new InstanceLevelMetricsModel(totalCountInQueue, lifeTimeInQueueMax, lifeTimeInQueueMin,\n        totalLifeTimeInQueue / totalProviderCallCount,\n        executionTimeMax, executionTimeMin,\n        totalExecutionTimeAverage / totalProviderCallCount);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "118",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 137).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/392/DefaultStatisticsRunner.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/392/DefaultStatisticsRunner.java\nindex f97ea92285..27aa1303aa 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/392/DefaultStatisticsRunner.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/392/DefaultStatisticsRunner.java\n@@ -115,10 +115,11 @@ public class DefaultStatisticsRunner extends AbstractStatisticsRunner {\n       lastRunInvocationModels.put(mergedLocalModel.getOperationName(), mergedLocalModel);\n     }\n \n-    InstanceLevelMetricsModel newInstanceModel = new InstanceLevelMetricsModel(totalCountInQueue, lifeTimeInQueueMax, lifeTimeInQueueMin,\n-        totalLifeTimeInQueue / totalProviderCallCount,\n-        executionTimeMax, executionTimeMin,\n-        totalExecutionTimeAverage / totalProviderCallCount);\n+    InstanceLevelMetricsModel newInstanceModel =\n+        new InstanceLevelMetricsModel(totalCountInQueue, lifeTimeInQueueMax, lifeTimeInQueueMin,\n+            totalLifeTimeInQueue / totalProviderCallCount,\n+            executionTimeMax, executionTimeMin,\n+            totalExecutionTimeAverage / totalProviderCallCount);\n \n     RegistryMetricsModel newRegistryModel = new RegistryMetricsModel(newInstanceModel, newInvocationModels);\n \n",
+            "diff_size": 5
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "117",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 137).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/392/DefaultStatisticsRunner.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/392/DefaultStatisticsRunner.java\nindex f97ea92285..2233fac98b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/392/DefaultStatisticsRunner.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/392/DefaultStatisticsRunner.java\n@@ -59,7 +59,7 @@ public class DefaultStatisticsRunner extends AbstractStatisticsRunner {\n     for (InvocationThreadLocalCache localModel : allLocalModels) {\n       InvocationThreadLocalCache operationLocalModel = mergedLocalModels.computeIfAbsent(localModel.getOperationName(),\n           m -> new InvocationThreadLocalCache(localModel.getOperationName()));\n-      //merge all local model into one per operation\n+//merge all local model into one per operation\n       operationLocalModel.merge(localModel);\n     }\n \n@@ -81,10 +81,10 @@ public class DefaultStatisticsRunner extends AbstractStatisticsRunner {\n       InvocationThreadLocalCache lastModel = lastRunInvocationModels\n           .getOrDefault(mergedLocalModel.getOperationName(),\n               new InvocationThreadLocalCache(mergedLocalModel.getOperationName()));\n-      long providerCallCount = mergedLocalModel.getProviderCallCount() - lastModel.getProviderCallCount();\n+long providerCallCount = mergedLocalModel.getProviderCallCount() - lastModel.getProviderCallCount();\n       double averageExecuteTime =\n           (mergedLocalModel.getExecutionTime() - lastModel.getExecutionTime()) / providerCallCount;\n-      double averageLifeTimeInQueue =\n+double averageLifeTimeInQueue =\n           (mergedLocalModel.getLifeTimeInQueue() - lastModel.getLifeTimeInQueue()) / providerCallCount;\n \n       newInvocationModels.put(mergedLocalModel.getOperationName(),\n@@ -92,8 +92,7 @@ public class DefaultStatisticsRunner extends AbstractStatisticsRunner {\n               mergedLocalModel.getLifeTimeInQueueMax(), mergedLocalModel.getLifeTimeInQueueMin(),\n               averageLifeTimeInQueue,\n               mergedLocalModel.getExecutionTimeMax(), mergedLocalModel.getExecutionTimeMin(), averageExecuteTime));\n-\n-      if (isValidMax(lifeTimeInQueueMax, mergedLocalModel.getLifeTimeInQueueMax())) {\n+if (isValidMax(lifeTimeInQueueMax, mergedLocalModel.getLifeTimeInQueueMax())) {\n         lifeTimeInQueueMax = mergedLocalModel.getLifeTimeInQueueMax();\n       }\n       if (isValidMin(lifeTimeInQueueMin, mergedLocalModel.getLifeTimeInQueueMin())) {\n@@ -136,4 +135,4 @@ public class DefaultStatisticsRunner extends AbstractStatisticsRunner {\n   private boolean isValidMin(double source, double value) {\n     return source == 0 || (source > value && value != 0);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "118",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "118",
+                    "column": "97",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "118",
+                    "column": "115",
+                    "severity": "warning",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "118",
+                    "column": "117",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "118",
+                    "column": "135",
+                    "severity": "warning",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "118",
+                    "column": "137",
+                    "severity": "warning",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/392/DefaultStatisticsRunner.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/392/DefaultStatisticsRunner.java\nindex f97ea92285..5ea575839a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/392/DefaultStatisticsRunner.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/392/DefaultStatisticsRunner.java\n@@ -115,25 +115,25 @@ public class DefaultStatisticsRunner extends AbstractStatisticsRunner {\n       lastRunInvocationModels.put(mergedLocalModel.getOperationName(), mergedLocalModel);\n     }\n \n-    InstanceLevelMetricsModel newInstanceModel = new InstanceLevelMetricsModel(totalCountInQueue, lifeTimeInQueueMax, lifeTimeInQueueMin,\n-        totalLifeTimeInQueue / totalProviderCallCount,\n-        executionTimeMax, executionTimeMin,\n-        totalExecutionTimeAverage / totalProviderCallCount);\n+    InstanceLevelMetricsModel newInstanceModel = newInstanceLevelMetricsModel(totalCountInQueue,lifeTimeInQueueMax ,lifeTimeInQueueMin ,totalLifeTimeInQueue\n+        / totalProviderCallCount,\n+     executionTimeMax, executionTimeMin,\n+     totalExecutionTimeAverage / totalProviderCallCount);\n \n-    RegistryMetricsModel newRegistryModel = new RegistryMetricsModel(newInstanceModel, newInvocationModels);\n+ RegistryMetricsModel newRegistryModel = new RegistryMetricsModel(newInstanceModel, newInvocationModels);\n \n-    //update registry model once\n-    registryModel.set(newRegistryModel);\n+ //update registry model once\n+ registryModel.set(newRegistryModel);\n \n-    //update last compute time\n-    lastRunNanoTime.set(currentTime);\n-  }\n+ //update last compute time\n+ lastRunNanoTime.set(currentTime);\n+}\n \n-  private boolean isValidMax(double source, double value) {\n-    return source < value && value != 0;\n-  }\n+private boolean isValidMax(double source, double value) {\n+  return source < value && value != 0;\n+}\n \n-  private boolean isValidMin(double source, double value) {\n-    return source == 0 || (source > value && value != 0);\n-  }\n+private boolean isValidMin(double source, double value) {\n+  return source == 0 || (source > value && value != 0);\n+}\n }\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "118",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 137).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

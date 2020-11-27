@@ -1,0 +1,132 @@
+{
+    "error_id": "169",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 196).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<OrgCommunityDto> orgCommunitys = BeanConvertUtil.covertBeanList(orgCommunityServiceDaoImpl.getOrgCommunityInfo(BeanConvertUtil.beanCovertMap(orgCommunityDto)), OrgCommunityDto.class);\n\n        return orgCommunitys;\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/169/OrgCommunityInnerServiceSMOImpl.java\nindex f9ed4095a7..c2b53b6af4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/169/OrgCommunityInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class OrgCommunityInnerServiceSMOImpl extends BaseServiceSMO implements I\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             orgCommunityDto.setPage((page - 1) * orgCommunityDto.getRow());\n-        }\n+        } List<OrgCommunityDto>orgCommunitys=BeanConvertUtil.\n \n-        List<OrgCommunityDto> orgCommunitys = BeanConvertUtil.covertBeanList(orgCommunityServiceDaoImpl.getOrgCommunityInfo(BeanConvertUtil.beanCovertMap(orgCommunityDto)), OrgCommunityDto.class);\n+        covertBeanList(orgCommunityServiceDaoImpl.getOrgCommunityInfo(BeanConvertUtil.beanCovertMap(orgCommunityDto)), OrgCommunityDto.class);\n \n         return orgCommunitys;\n     }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/169/OrgCommunityInnerServiceSMOImpl.java\nindex f9ed4095a7..16c5a0e1fa 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/169/OrgCommunityInnerServiceSMOImpl.java\n@@ -25,47 +25,48 @@ import java.util.List;\n @RestController\n public class OrgCommunityInnerServiceSMOImpl extends BaseServiceSMO implements IOrgCommunityInnerServiceSMO {\n \n-    @Autowired\n-    private IOrgCommunityServiceDao orgCommunityServiceDaoImpl;\n+  @Autowired\n+  private IOrgCommunityServiceDao orgCommunityServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<OrgCommunityDto> queryOrgCommunitys(@RequestBody OrgCommunityDto orgCommunityDto) {\n+  @Override\n+  public List<OrgCommunityDto> queryOrgCommunitys(@RequestBody OrgCommunityDto orgCommunityDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = orgCommunityDto.getPage();\n+    int page = orgCommunityDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            orgCommunityDto.setPage((page - 1) * orgCommunityDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      orgCommunityDto.setPage((page - 1) * orgCommunityDto.getRow());\n+    }\n \n-        List<OrgCommunityDto> orgCommunitys = BeanConvertUtil.covertBeanList(orgCommunityServiceDaoImpl.getOrgCommunityInfo(BeanConvertUtil.beanCovertMap(orgCommunityDto)), OrgCommunityDto.class);\n+    List<OrgCommunityDto> orgCommunitys = BeanConvertUtil\n+      .covertBeanList(orgCommunityServiceDaoImpl.getOrgCommunityInfo(BeanConvertUtil.beanCovertMap(orgCommunityDto)), OrgCommunityDto.class);\n \n-        return orgCommunitys;\n-    }\n+    return orgCommunitys;\n+  }\n \n \n-    @Override\n-    public int queryOrgCommunitysCount(@RequestBody OrgCommunityDto orgCommunityDto) {\n-        return orgCommunityServiceDaoImpl.queryOrgCommunitysCount(BeanConvertUtil.beanCovertMap(orgCommunityDto));\n-    }\n+  @Override\n+  public int queryOrgCommunitysCount(@RequestBody OrgCommunityDto orgCommunityDto) {\n+    return orgCommunityServiceDaoImpl.queryOrgCommunitysCount(BeanConvertUtil.beanCovertMap(orgCommunityDto));\n+  }\n \n-    public IOrgCommunityServiceDao getOrgCommunityServiceDaoImpl() {\n-        return orgCommunityServiceDaoImpl;\n-    }\n+  public IOrgCommunityServiceDao getOrgCommunityServiceDaoImpl() {\n+    return orgCommunityServiceDaoImpl;\n+  }\n \n-    public void setOrgCommunityServiceDaoImpl(IOrgCommunityServiceDao orgCommunityServiceDaoImpl) {\n-        this.orgCommunityServiceDaoImpl = orgCommunityServiceDaoImpl;\n-    }\n+  public void setOrgCommunityServiceDaoImpl(IOrgCommunityServiceDao orgCommunityServiceDaoImpl) {\n+    this.orgCommunityServiceDaoImpl = orgCommunityServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 31
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 196).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/169/OrgCommunityInnerServiceSMOImpl.java\nindex f9ed4095a7..c34b70310f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/169/OrgCommunityInnerServiceSMOImpl.java\n@@ -68,4 +68,4 @@ public class OrgCommunityInnerServiceSMOImpl extends BaseServiceSMO implements I\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 196).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/169/OrgCommunityInnerServiceSMOImpl.java\nindex f9ed4095a7..22306055af 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/169/OrgCommunityInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.user.smo.impl;\n \n-\n import com.java110.core.base.smo.BaseServiceSMO;\n import com.java110.core.smo.org.IOrgCommunityInnerServiceSMO;\n import com.java110.core.smo.user.IUserInnerServiceSMO;\n@@ -11,7 +10,6 @@ import com.java110.utils.util.BeanConvertUtil;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -22,6 +20,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class OrgCommunityInnerServiceSMOImpl extends BaseServiceSMO implements IOrgCommunityInnerServiceSMO {\n \n@@ -35,9 +35,7 @@ public class OrgCommunityInnerServiceSMOImpl extends BaseServiceSMO implements I\n     public List<OrgCommunityDto> queryOrgCommunitys(@RequestBody OrgCommunityDto orgCommunityDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = orgCommunityDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             orgCommunityDto.setPage((page - 1) * orgCommunityDto.getRow());\n         }\n@@ -68,4 +66,4 @@ public class OrgCommunityInnerServiceSMOImpl extends BaseServiceSMO implements I\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "123",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "40",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/169/OrgCommunityInnerServiceSMOImpl.java\nindex f9ed4095a7..038f91e9b1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/169/OrgCommunityInnerServiceSMOImpl.java\n@@ -41,10 +41,8 @@ public class OrgCommunityInnerServiceSMOImpl extends BaseServiceSMO implements I\n         if (page != PageDto.DEFAULT_PAGE) {\n             orgCommunityDto.setPage((page - 1) * orgCommunityDto.getRow());\n         }\n-\n-        List<OrgCommunityDto> orgCommunitys = BeanConvertUtil.covertBeanList(orgCommunityServiceDaoImpl.getOrgCommunityInfo(BeanConvertUtil.beanCovertMap(orgCommunityDto)), OrgCommunityDto.class);\n-\n-        return orgCommunitys;\n+        List<OrgCommunityDto>orgCommunitys= BeanConvertUtil.covertBeanList(orgCommunityServiceDaoImpl.getOrgCommunityInfo (BeanConvertUtil.\n+        beanCovertMap(orgCommunityDto)),OrgCommunityDto.class); returnorgCommunitys;\n     }\n \n \n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/169/OrgCommunityInnerServiceSMOImpl.java\nindex f9ed4095a7..c2b53b6af4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/169/OrgCommunityInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/169/OrgCommunityInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class OrgCommunityInnerServiceSMOImpl extends BaseServiceSMO implements I\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             orgCommunityDto.setPage((page - 1) * orgCommunityDto.getRow());\n-        }\n+        } List<OrgCommunityDto>orgCommunitys=BeanConvertUtil.\n \n-        List<OrgCommunityDto> orgCommunitys = BeanConvertUtil.covertBeanList(orgCommunityServiceDaoImpl.getOrgCommunityInfo(BeanConvertUtil.beanCovertMap(orgCommunityDto)), OrgCommunityDto.class);\n+        covertBeanList(orgCommunityServiceDaoImpl.getOrgCommunityInfo(BeanConvertUtil.beanCovertMap(orgCommunityDto)), OrgCommunityDto.class);\n \n         return orgCommunitys;\n     }\n",
+            "diff_size": 2
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "error_id": "40",
+    "information": {
+        "errors": [
+            {
+                "line": "47",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 184).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<WechatMenuDto> wechatMenus = BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n\n        if (wechatMenus == null || wechatMenus.size() == 0) {\n            return wechatMenus;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 186).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/40/WechatMenuInnerServiceSMOImpl.java\nindex 6d8b31c6b7..70fa677be9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/40/WechatMenuInnerServiceSMOImpl.java\n@@ -42,9 +42,7 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             wechatMenuDto.setPage((page - 1) * wechatMenuDto.getRow());\n-        }\n-\n-        List<WechatMenuDto> wechatMenus = BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n+        } List<WechatMenuDto> wechatMenus = BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n \n         if (wechatMenus == null || wechatMenus.size() == 0) {\n             return wechatMenus;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/40/WechatMenuInnerServiceSMOImpl.java\nindex 6d8b31c6b7..7b98bac142 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/40/WechatMenuInnerServiceSMOImpl.java\n@@ -27,85 +27,87 @@ import java.util.List;\n @RestController\n public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWechatMenuInnerServiceSMO {\n \n-    @Autowired\n-    private IWechatMenuServiceDao wechatMenuServiceDaoImpl;\n+  @Autowired\n+  private IWechatMenuServiceDao wechatMenuServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<WechatMenuDto> queryWechatMenus(@RequestBody  WechatMenuDto wechatMenuDto) {\n+  @Override\n+  public List<WechatMenuDto> queryWechatMenus(@RequestBody WechatMenuDto wechatMenuDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = wechatMenuDto.getPage();\n+    int page = wechatMenuDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            wechatMenuDto.setPage((page - 1) * wechatMenuDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      wechatMenuDto.setPage((page - 1) * wechatMenuDto.getRow());\n+    }\n \n-        List<WechatMenuDto> wechatMenus = BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n+    List<WechatMenuDto> wechatMenus =\n+      BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n \n-        if (wechatMenus == null || wechatMenus.size() == 0) {\n-            return wechatMenus;\n-        }\n+    if (wechatMenus == null || wechatMenus.size() == 0) {\n+      return wechatMenus;\n+    }\n \n-        String[] userIds = getUserIds(wechatMenus);\n-        //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n-        List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n+    String[] userIds = getUserIds(wechatMenus);\n+    //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n+    List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n \n-        for (WechatMenuDto wechatMenu : wechatMenus) {\n-            refreshWechatMenu(wechatMenu, users);\n-        }\n-        return wechatMenus;\n+    for (WechatMenuDto wechatMenu : wechatMenus) {\n+      refreshWechatMenu(wechatMenu, users);\n     }\n-\n-    /**\n-     * \u4ece\u7528\u6237\u5217\u8868\u4e2d\u67e5\u8be2\u7528\u6237\uff0c\u5c06\u7528\u6237\u4e2d\u7684\u4fe1\u606f \u5237\u65b0\u5230 floor\u5bf9\u8c61\u4e2d\n-     *\n-     * @param wechatMenu \u5c0f\u533a\u516c\u4f17\u53f7\u83dc\u5355\u4fe1\u606f\n-     * @param users \u7528\u6237\u5217\u8868\n-     */\n-    private void refreshWechatMenu(WechatMenuDto wechatMenu, List<UserDto> users) {\n-        for (UserDto user : users) {\n-            if (wechatMenu.getWechatMenuId().equals(user.getUserId())) {\n-                BeanConvertUtil.covertBean(user, wechatMenu);\n-            }\n-        }\n+    return wechatMenus;\n+  }\n+\n+  /**\n+   * \u4ece\u7528\u6237\u5217\u8868\u4e2d\u67e5\u8be2\u7528\u6237\uff0c\u5c06\u7528\u6237\u4e2d\u7684\u4fe1\u606f \u5237\u65b0\u5230 floor\u5bf9\u8c61\u4e2d\n+   *\n+   * @param wechatMenu \u5c0f\u533a\u516c\u4f17\u53f7\u83dc\u5355\u4fe1\u606f\n+   * @param users      \u7528\u6237\u5217\u8868\n+   */\n+  private void refreshWechatMenu(WechatMenuDto wechatMenu, List<UserDto> users) {\n+    for (UserDto user : users) {\n+      if (wechatMenu.getWechatMenuId().equals(user.getUserId())) {\n+        BeanConvertUtil.covertBean(user, wechatMenu);\n+      }\n     }\n-\n-    /**\n-     * \u83b7\u53d6\u6279\u91cfuserId\n-     *\n-     * @param wechatMenus \u5c0f\u533a\u697c\u4fe1\u606f\n-     * @return \u6279\u91cfuserIds \u4fe1\u606f\n-     */\n-     private String[] getUserIds(List<WechatMenuDto> wechatMenus) {\n-        List<String> userIds = new ArrayList<String>();\n-        for (WechatMenuDto wechatMenu : wechatMenus) {\n-            userIds.add(wechatMenu.getWechatMenuId());\n-        }\n-\n-        return userIds.toArray(new String[userIds.size()]);\n+  }\n+\n+  /**\n+   * \u83b7\u53d6\u6279\u91cfuserId\n+   *\n+   * @param wechatMenus \u5c0f\u533a\u697c\u4fe1\u606f\n+   * @return \u6279\u91cfuserIds \u4fe1\u606f\n+   */\n+  private String[] getUserIds(List<WechatMenuDto> wechatMenus) {\n+    List<String> userIds = new ArrayList<String>();\n+    for (WechatMenuDto wechatMenu : wechatMenus) {\n+      userIds.add(wechatMenu.getWechatMenuId());\n     }\n \n-    @Override\n-    public int queryWechatMenusCount(@RequestBody WechatMenuDto wechatMenuDto) {\n-        return wechatMenuServiceDaoImpl.queryWechatMenusCount(BeanConvertUtil.beanCovertMap(wechatMenuDto));    }\n+    return userIds.toArray(new String[userIds.size()]);\n+  }\n \n-    public IWechatMenuServiceDao getWechatMenuServiceDaoImpl() {\n-        return wechatMenuServiceDaoImpl;\n-    }\n+  @Override\n+  public int queryWechatMenusCount(@RequestBody WechatMenuDto wechatMenuDto) {\n+    return wechatMenuServiceDaoImpl.queryWechatMenusCount(BeanConvertUtil.beanCovertMap(wechatMenuDto));\n+  }\n \n-    public void setWechatMenuServiceDaoImpl(IWechatMenuServiceDao wechatMenuServiceDaoImpl) {\n-        this.wechatMenuServiceDaoImpl = wechatMenuServiceDaoImpl;\n-    }\n+  public IWechatMenuServiceDao getWechatMenuServiceDaoImpl() {\n+    return wechatMenuServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public void setWechatMenuServiceDaoImpl(IWechatMenuServiceDao wechatMenuServiceDaoImpl) {\n+    this.wechatMenuServiceDaoImpl = wechatMenuServiceDaoImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n+\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 71
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 184).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/40/WechatMenuInnerServiceSMOImpl.java\nindex 6d8b31c6b7..7ddcfcd748 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/40/WechatMenuInnerServiceSMOImpl.java\n@@ -80,8 +80,8 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n      * @param wechatMenus \u5c0f\u533a\u697c\u4fe1\u606f\n      * @return \u6279\u91cfuserIds \u4fe1\u606f\n      */\n-     private String[] getUserIds(List<WechatMenuDto> wechatMenus) {\n-        List<String> userIds = new ArrayList<String>();\n+private String[] getUserIds(List<WechatMenuDto> wechatMenus) {\n+    List<String> userIds = new ArrayList<String>();\n         for (WechatMenuDto wechatMenu : wechatMenus) {\n             userIds.add(wechatMenu.getWechatMenuId());\n         }\n@@ -108,4 +108,4 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 184).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/40/WechatMenuInnerServiceSMOImpl.java\nindex 6d8b31c6b7..03bfdff2e7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/40/WechatMenuInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.store.smo.impl;\n \n-\n import com.java110.store.dao.IWechatMenuServiceDao;\n import com.java110.core.smo.store.IWechatMenuInnerServiceSMO;\n import com.java110.dto.wechatMenu.WechatMenuDto;\n@@ -12,7 +11,6 @@ import com.java110.dto.PageDto;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.ArrayList;\n import java.util.List;\n \n@@ -24,6 +22,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWechatMenuInnerServiceSMO {\n \n@@ -34,18 +34,15 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n     private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n     @Override\n-    public List<WechatMenuDto> queryWechatMenus(@RequestBody  WechatMenuDto wechatMenuDto) {\n+    public List<WechatMenuDto> queryWechatMenus(@RequestBody WechatMenuDto wechatMenuDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = wechatMenuDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             wechatMenuDto.setPage((page - 1) * wechatMenuDto.getRow());\n         }\n \n         List<WechatMenuDto> wechatMenus = BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n-\n         if (wechatMenus == null || wechatMenus.size() == 0) {\n             return wechatMenus;\n         }\n@@ -53,10 +50,10 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n         String[] userIds = getUserIds(wechatMenus);\n         //\u6839\u636e userId \u67e5\u8be2\u7528\u6237\u4fe1\u606f\n         List<UserDto> users = userInnerServiceSMOImpl.getUserInfo(userIds);\n-\n         for (WechatMenuDto wechatMenu : wechatMenus) {\n             refreshWechatMenu(wechatMenu, users);\n         }\n+\n         return wechatMenus;\n     }\n \n@@ -66,6 +63,8 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n      * @param wechatMenu \u5c0f\u533a\u516c\u4f17\u53f7\u83dc\u5355\u4fe1\u606f\n      * @param users \u7528\u6237\u5217\u8868\n      */\n+\n+\n     private void refreshWechatMenu(WechatMenuDto wechatMenu, List<UserDto> users) {\n         for (UserDto user : users) {\n             if (wechatMenu.getWechatMenuId().equals(user.getUserId())) {\n@@ -80,7 +79,9 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n      * @param wechatMenus \u5c0f\u533a\u697c\u4fe1\u606f\n      * @return \u6279\u91cfuserIds \u4fe1\u606f\n      */\n-     private String[] getUserIds(List<WechatMenuDto> wechatMenus) {\n+\n+\n+    private String[] getUserIds(List<WechatMenuDto> wechatMenus) {\n         List<String> userIds = new ArrayList<String>();\n         for (WechatMenuDto wechatMenu : wechatMenus) {\n             userIds.add(wechatMenu.getWechatMenuId());\n@@ -89,9 +90,11 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n         return userIds.toArray(new String[userIds.size()]);\n     }\n \n+\n     @Override\n     public int queryWechatMenusCount(@RequestBody WechatMenuDto wechatMenuDto) {\n-        return wechatMenuServiceDaoImpl.queryWechatMenusCount(BeanConvertUtil.beanCovertMap(wechatMenuDto));    }\n+        return wechatMenuServiceDaoImpl.queryWechatMenusCount(BeanConvertUtil.beanCovertMap(wechatMenuDto));\n+    }\n \n     public IWechatMenuServiceDao getWechatMenuServiceDaoImpl() {\n         return wechatMenuServiceDaoImpl;\n@@ -108,4 +111,4 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 186).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/40/WechatMenuInnerServiceSMOImpl.java\nindex 6d8b31c6b7..70fa677be9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/40/WechatMenuInnerServiceSMOImpl.java\n@@ -42,9 +42,7 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             wechatMenuDto.setPage((page - 1) * wechatMenuDto.getRow());\n-        }\n-\n-        List<WechatMenuDto> wechatMenus = BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n+        } List<WechatMenuDto> wechatMenus = BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n \n         if (wechatMenus == null || wechatMenus.size() == 0) {\n             return wechatMenus;\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 185).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/40/WechatMenuInnerServiceSMOImpl.java\nindex 6d8b31c6b7..a427cbeef3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/40/WechatMenuInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/40/WechatMenuInnerServiceSMOImpl.java\n@@ -42,9 +42,7 @@ public class WechatMenuInnerServiceSMOImpl extends BaseServiceSMO implements IWe\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             wechatMenuDto.setPage((page - 1) * wechatMenuDto.getRow());\n-        }\n-\n-        List<WechatMenuDto> wechatMenus = BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n+        } List<WechatMenuDto>wechatMenus = BeanConvertUtil.covertBeanList(wechatMenuServiceDaoImpl.getWechatMenuInfo(BeanConvertUtil.beanCovertMap(wechatMenuDto)), WechatMenuDto.class);\n \n         if (wechatMenus == null || wechatMenus.size() == 0) {\n             return wechatMenus;\n",
+            "diff_size": 3
+        }
+    ]
+}

@@ -1,0 +1,79 @@
+{
+    "error_id": "186",
+    "information": {
+        "errors": [
+            {
+                "line": "50",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 160).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "            ServletException {\n        if (identity != null && identity.getAccount() != null) {\n            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(identityManager.lookupById(User.class, identity.getAccount().getId()).getLoginName());\n        } else {\n            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(null);\n        }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/186/UserNameFilter.java\nindex 7f5385d02d..2a7ac304bf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler/186/UserNameFilter.java\n@@ -33,7 +33,7 @@ public class UserNameFilter implements Filter {\n \n     @Inject\n     private Identity identity;\n-    \n+\n     @Inject\n     private IdentityManager identityManager;\n \n@@ -47,16 +47,18 @@ public class UserNameFilter implements Filter {\n     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,\n             ServletException {\n         if (identity != null && identity.getAccount() != null) {\n-            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(identityManager.lookupById(User.class, identity.getAccount().getId()).getLoginName());\n-        } else {\n-            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(null);\n-        }\n-        chain.doFilter(request, response);\n-    }\n+            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(identityManager.lookupById(User.class,\n+                    identity.getAccount().getId()).getLoginName());\n+         } else {\n+             ThreadLocalUsernameProvider.getUsernameProvider().setUserName(null);\n+         }\n+         chain.doFilter(request, response);\n+     }\n \n-    @Override\n-    public void destroy() {\n-        // TODO Auto-generated method stub\n-    }\n+     @Override\n+     public void destroy() {\n+         // TODO Auto-generated method stub\n+     }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/186/UserNameFilter.java\nindex 7f5385d02d..9cb2303367 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/intellij/186/UserNameFilter.java\n@@ -31,32 +31,33 @@ import com.intuit.tank.vm.common.ThreadLocalUsernameProvider;\n \n public class UserNameFilter implements Filter {\n \n-    @Inject\n-    private Identity identity;\n-    \n-    @Inject\n-    private IdentityManager identityManager;\n-\n-\n-    @Override\n-    public void init(FilterConfig filterConfig) throws ServletException {\n-        // TODO Auto-generated method stub\n+  @Inject\n+  private Identity identity;\n+\n+  @Inject\n+  private IdentityManager identityManager;\n+\n+\n+  @Override\n+  public void init(FilterConfig filterConfig) throws ServletException {\n+    // TODO Auto-generated method stub\n+  }\n+\n+  @Override\n+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,\n+    ServletException {\n+    if (identity != null && identity.getAccount() != null) {\n+      ThreadLocalUsernameProvider.getUsernameProvider()\n+        .setUserName(identityManager.lookupById(User.class, identity.getAccount().getId()).getLoginName());\n+    } else {\n+      ThreadLocalUsernameProvider.getUsernameProvider().setUserName(null);\n     }\n+    chain.doFilter(request, response);\n+  }\n \n-    @Override\n-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,\n-            ServletException {\n-        if (identity != null && identity.getAccount() != null) {\n-            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(identityManager.lookupById(User.class, identity.getAccount().getId()).getLoginName());\n-        } else {\n-            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(null);\n-        }\n-        chain.doFilter(request, response);\n-    }\n-\n-    @Override\n-    public void destroy() {\n-        // TODO Auto-generated method stub\n-    }\n+  @Override\n+  public void destroy() {\n+    // TODO Auto-generated method stub\n+  }\n \n }\n",
+            "diff_size": 37
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 160).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/186/UserNameFilter.java\nindex 7f5385d02d..a3f4fc4171 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/naturalize/186/UserNameFilter.java\n@@ -35,10 +35,9 @@ public class UserNameFilter implements Filter {\n     private Identity identity;\n     \n     @Inject\n-    private IdentityManager identityManager;\n+private IdentityManager identityManager;\n \n-\n-    @Override\n+@Override\n     public void init(FilterConfig filterConfig) throws ServletException {\n         // TODO Auto-generated method stub\n     }\n@@ -59,4 +58,4 @@ public class UserNameFilter implements Filter {\n         // TODO Auto-generated method stub\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 132).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 160).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/186/UserNameFilter.java\nindex 7f5385d02d..a040802f84 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/codebuff/186/UserNameFilter.java\n@@ -13,8 +13,9 @@ package com.intuit.tank.util;\n  * #L%\n  */\n \n-import java.io.IOException;\n \n+\n+import java.io.IOException;\n import javax.inject.Inject;\n import javax.servlet.Filter;\n import javax.servlet.FilterChain;\n@@ -22,30 +23,28 @@ import javax.servlet.FilterConfig;\n import javax.servlet.ServletException;\n import javax.servlet.ServletRequest;\n import javax.servlet.ServletResponse;\n-\n import org.picketlink.Identity;\n import org.picketlink.idm.IdentityManager;\n import org.picketlink.idm.model.basic.User;\n-\n import com.intuit.tank.vm.common.ThreadLocalUsernameProvider;\n \n public class UserNameFilter implements Filter {\n \n     @Inject\n     private Identity identity;\n-    \n+\n     @Inject\n     private IdentityManager identityManager;\n \n-\n     @Override\n     public void init(FilterConfig filterConfig) throws ServletException {\n         // TODO Auto-generated method stub\n+\n     }\n \n+\n     @Override\n-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,\n-            ServletException {\n+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {\n         if (identity != null && identity.getAccount() != null) {\n             ThreadLocalUsernameProvider.getUsernameProvider().setUserName(identityManager.lookupById(User.class, identity.getAccount().getId()).getLoginName());\n         } else {\n@@ -54,9 +53,11 @@ public class UserNameFilter implements Filter {\n         chain.doFilter(request, response);\n     }\n \n+\n     @Override\n     public void destroy() {\n         // TODO Auto-generated method stub\n+\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 160).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/186/UserNameFilter.java\nindex 7f5385d02d..d57edc1758 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_random/186/UserNameFilter.java\n@@ -33,7 +33,7 @@ public class UserNameFilter implements Filter {\n \n     @Inject\n     private Identity identity;\n-    \n+\n     @Inject\n     private IdentityManager identityManager;\n \n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/186/UserNameFilter.java\nindex 7f5385d02d..2a7ac304bf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/errored/1/186/UserNameFilter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/intuit-Tank/styler_three_grams/186/UserNameFilter.java\n@@ -33,7 +33,7 @@ public class UserNameFilter implements Filter {\n \n     @Inject\n     private Identity identity;\n-    \n+\n     @Inject\n     private IdentityManager identityManager;\n \n@@ -47,16 +47,18 @@ public class UserNameFilter implements Filter {\n     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,\n             ServletException {\n         if (identity != null && identity.getAccount() != null) {\n-            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(identityManager.lookupById(User.class, identity.getAccount().getId()).getLoginName());\n-        } else {\n-            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(null);\n-        }\n-        chain.doFilter(request, response);\n-    }\n+            ThreadLocalUsernameProvider.getUsernameProvider().setUserName(identityManager.lookupById(User.class,\n+                    identity.getAccount().getId()).getLoginName());\n+         } else {\n+             ThreadLocalUsernameProvider.getUsernameProvider().setUserName(null);\n+         }\n+         chain.doFilter(request, response);\n+     }\n \n-    @Override\n-    public void destroy() {\n-        // TODO Auto-generated method stub\n-    }\n+     @Override\n+     public void destroy() {\n+         // TODO Auto-generated method stub\n+     }\n \n-}\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 14
+        }
+    ]
+}

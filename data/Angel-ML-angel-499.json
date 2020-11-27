@@ -1,0 +1,142 @@
+{
+    "error_id": "499",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/499/DenseServerRowsStorage.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/499/DenseServerRowsStorage.java\nindex 74b9da10d7..785345f585 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/499/DenseServerRowsStorage.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/499/DenseServerRowsStorage.java\n@@ -33,167 +33,168 @@ import java.util.Map.Entry;\n  */\n public class DenseServerRowsStorage extends ServerRowsStorage {\n \n-  /**\n-   * Server rows\n-   */\n-  private ServerRow[] data;\n-\n-  /**\n-   * Create new DenseServerRowsStorage\n-   *\n-   * @param rowIdOffset row id offset\n-   * @param rowNum row number\n-   */\n-  public DenseServerRowsStorage(int rowIdOffset, int rowNum) {\n-    super(rowIdOffset);\n-    this.data = new ServerRow[rowNum];\n-  }\n-\n-  @Override\n-  public ServerRow getRow(int index) {\n-    return data[index - rowIdOffset];\n-  }\n-\n-  @Override\n-  public List<ServerRow> getRows(List<Integer> rowIds) {\n-    List<ServerRow> rows = new ArrayList<>(rowIds.size());\n-    for (int rowId : rowIds) {\n-      rows.add(getRow(rowId));\n+    /**\n+     * Server rows\n+     */\n+    private ServerRow[] data;\n+\n+    /**\n+     * Create new DenseServerRowsStorage\n+     *\n+     * @param rowIdOffset row id offset\n+     * @param rowNum      row number\n+     */\n+    public DenseServerRowsStorage(int rowIdOffset, int rowNum) {\n+        super(rowIdOffset);\n+        this.data = new ServerRow[rowNum];\n     }\n-    return rows;\n-  }\n-\n-  @Override\n-  public void putRow(int index, ServerRow row) {\n-    data[index - rowIdOffset] = row;\n-  }\n-\n-  @Override\n-  public void putRows(List<Integer> rowIds, List<ServerRow> rows) {\n-    assert rowIds.size() == rows.size();\n-    int size = rowIds.size();\n-    for (int i = 0; i < size; i++) {\n-      putRow(rowIds.get(i), rows.get(i));\n+\n+    @Override\n+    public ServerRow getRow(int index) {\n+        return data[index - rowIdOffset];\n+    }\n+\n+    @Override\n+    public List<ServerRow> getRows(List<Integer> rowIds) {\n+        List<ServerRow> rows = new ArrayList<>(rowIds.size());\n+        for (int rowId : rowIds) {\n+            rows.add(getRow(rowId));\n+        }\n+        return rows;\n+    }\n+\n+    @Override\n+    public void putRow(int index, ServerRow row) {\n+        data[index - rowIdOffset] = row;\n     }\n-  }\n-\n-  @Override\n-  public int getRowNum() {\n-    return data.length;\n-  }\n-\n-  @Override\n-  public boolean hasRow(int index) {\n-    return (index - rowIdOffset) >= 0 && (index - rowIdOffset) < data.length;\n-  }\n-\n-  @Override\n-  public Iterator<Entry<Integer, ServerRow>> iterator() {\n-\n-    return new Iterator<Map.Entry<Integer, ServerRow>>() {\n-      int currIndex = 0;\n-\n-      @Override\n-      public boolean hasNext() {\n-        return currIndex < data.length;\n-      }\n-\n-      @Override\n-      public Map.Entry<Integer, ServerRow> next() {\n-        Map.Entry<Integer, ServerRow> entry = new AbstractMap.SimpleEntry(currIndex + rowIdOffset,\n-            data[currIndex]);\n-        currIndex++;\n-        return entry;\n-      }\n-    };\n-  }\n-\n-  @Override\n-  public void init() {\n-\n-  }\n-\n-  @Override\n-  public void reset() {\n-    for (int i = 0; i < data.length; i++) {\n-      if (data[i] != null) {\n-        data[i].reset();\n-      }\n+\n+    @Override\n+    public void putRows(List<Integer> rowIds, List<ServerRow> rows) {\n+        assert rowIds.size() == rows.size();\n+        int size = rowIds.size();\n+        for (int i = 0; i < size; i++) {\n+            putRow(rowIds.get(i), rows.get(i));\n+        }\n     }\n-  }\n-\n-  @Override\n-  public long getElemNum() {\n-    long ret = 0L;\n-    for (int i = 0; i < data.length; i++) {\n-      if (data[i] != null) {\n-        ret += data[i].size();\n-      }\n+\n+    @Override\n+    public int getRowNum() {\n+        return data.length;\n     }\n-    return ret;\n-  }\n-\n-  @Override\n-  public void serialize(ByteBuf output) {\n-    super.serialize(output);\n-    // Array size\n-    output.writeInt(data.length);\n-    int writeIndex = output.writerIndex();\n-\n-    // Actual write size\n-    output.writeInt(0);\n-    int writeRowNum = 0;\n-\n-    // Rows data\n-    for (int i = 0; i < data.length; i++) {\n-      if (data[i] != null) {\n-        // Row id\n-        output.writeInt(i);\n-        // Row type\n-        output.writeInt(data[i].getRowType().getNumber());\n-        // Row data\n-        data[i].serialize(output);\n-        writeRowNum++;\n-      }\n+\n+    @Override\n+    public boolean hasRow(int index) {\n+        return (index - rowIdOffset) >= 0 && (index - rowIdOffset) < data.length;\n     }\n \n-    output.setInt(writeIndex, writeRowNum);\n-  }\n-\n-  @Override\n-  public void deserialize(ByteBuf input) {\n-    super.deserialize(input);\n-    // Array size\n-    int len = input.readInt();\n-    data = new ServerRow[len];\n-\n-    // Actual write row number\n-    int writeRowNum = input.readInt();\n-\n-    // Rows data\n-    for (int i = 0; i < writeRowNum; i++) {\n-      // Row id\n-      int index = input.readInt();\n-      // Create empty server row\n-      data[index] = ServerRowFactory.createEmptyServerRow(RowType.valueOf(input.readInt()));\n-      // Row data\n-      data[index].deserialize(input);\n+    @Override\n+    public Iterator<Entry<Integer, ServerRow>> iterator() {\n+\n+        return new Iterator<Map.Entry<Integer, ServerRow>>() {\n+            int currIndex = 0;\n+\n+            @Override\n+            public boolean hasNext() {\n+                return currIndex < data.length;\n+            }\n+\n+            @Override\n+            public Map.Entry<Integer, ServerRow> next() {\n+                Map.Entry<Integer, ServerRow> entry =\n+                        new AbstractMap.SimpleEntry(currIndex + rowIdOffset,\n+                                data[currIndex]);\n+                currIndex++;\n+                return entry;\n+            }\n+        };\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n-    int len = 0;\n-    len += super.bufferLen();\n-    len += 8;\n+    @Override\n+    public void init() {\n+\n+    }\n \n-    // Rows data\n-    for (int i = 0; i < data.length; i++) {\n-      if (data[i] != null) {\n+    @Override\n+    public void reset() {\n+        for (int i = 0; i < data.length; i++) {\n+            if (data[i] != null) {\n+                data[i].reset();\n+            }\n+        }\n+    }\n+\n+    @Override\n+    public long getElemNum() {\n+        long ret = 0L;\n+        for (int i = 0; i < data.length; i++) {\n+            if (data[i] != null) {\n+                ret += data[i].size();\n+            }\n+        }\n+        return ret;\n+    }\n+\n+    @Override\n+    public void serialize(ByteBuf output) {\n+        super.serialize(output);\n+        // Array size\n+        output.writeInt(data.length);\n+        int writeIndex = output.writerIndex();\n+\n+        // Actual write size\n+        output.writeInt(0);\n+        int writeRowNum = 0;\n+\n+        // Rows data\n+        for (int i = 0; i < data.length; i++) {\n+            if (data[i] != null) {\n+                // Row id\n+                output.writeInt(i);\n+                // Row type\n+                output.writeInt(data[i].getRowType().getNumber());\n+                // Row data\n+                data[i].serialize(output);\n+                writeRowNum++;\n+            }\n+        }\n+\n+        output.setInt(writeIndex, writeRowNum);\n+    }\n+\n+    @Override\n+    public void deserialize(ByteBuf input) {\n+        super.deserialize(input);\n+        // Array size\n+        int len = input.readInt();\n+        data = new ServerRow[len];\n+\n+        // Actual write row number\n+        int writeRowNum = input.readInt();\n+\n+        // Rows data\n+        for (int i = 0; i < writeRowNum; i++) {\n+            // Row id\n+            int index = input.readInt();\n+            // Create empty server row\n+            data[index] = ServerRowFactory.createEmptyServerRow(RowType.valueOf(input.readInt()));\n+            // Row data\n+            data[index].deserialize(input);\n+        }\n+    }\n+\n+    @Override\n+    public int bufferLen() {\n+        int len = 0;\n+        len += super.bufferLen();\n         len += 8;\n-        len += data[i].bufferLen();\n-      }\n+\n+        // Rows data\n+        for (int i = 0; i < data.length; i++) {\n+            if (data[i] != null) {\n+                len += 8;\n+                len += data[i].bufferLen();\n+            }\n+        }\n+        return len;\n     }\n-    return len;\n-  }\n }\n",
+            "diff_size": 232
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/499/DenseServerRowsStorage.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/499/DenseServerRowsStorage.java\nindex 74b9da10d7..d39dda4ada 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/499/DenseServerRowsStorage.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/499/DenseServerRowsStorage.java\n@@ -89,8 +89,7 @@ public class DenseServerRowsStorage extends ServerRowsStorage {\n \n   @Override\n   public Iterator<Entry<Integer, ServerRow>> iterator() {\n-\n-    return new Iterator<Map.Entry<Integer, ServerRow>>() {\n+  return new Iterator<Map.Entry<Integer, ServerRow>>() {\n       int currIndex = 0;\n \n       @Override\n@@ -100,9 +99,8 @@ public class DenseServerRowsStorage extends ServerRowsStorage {\n \n       @Override\n       public Map.Entry<Integer, ServerRow> next() {\n-        Map.Entry<Integer, ServerRow> entry = new AbstractMap.SimpleEntry(currIndex + rowIdOffset,\n-            data[currIndex]);\n-        currIndex++;\n+        Map.Entry<Integer, ServerRow> entry = new AbstractMap.SimpleEntry(currIndex + rowIdOffset, data[currIndex]);\n+currIndex++;\n         return entry;\n       }\n     };\n@@ -196,4 +194,4 @@ public class DenseServerRowsStorage extends ServerRowsStorage {\n     }\n     return len;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 40.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 49.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 111).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "179",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 180.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "181",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 182.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "183",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 184.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/499/DenseServerRowsStorage.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/499/DenseServerRowsStorage.java\nindex 74b9da10d7..88506609be 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/499/DenseServerRowsStorage.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/499/DenseServerRowsStorage.java\n@@ -31,12 +31,13 @@ import java.util.Map.Entry;\n /**\n  * Row-based matrix partition storage, it use a server row array as inner storage\n  */\n+\n public class DenseServerRowsStorage extends ServerRowsStorage {\n \n   /**\n    * Server rows\n    */\n-  private ServerRow[] data;\n+    private ServerRow[] data;\n \n   /**\n    * Create new DenseServerRowsStorage\n@@ -44,109 +45,111 @@ public class DenseServerRowsStorage extends ServerRowsStorage {\n    * @param rowIdOffset row id offset\n    * @param rowNum row number\n    */\n-  public DenseServerRowsStorage(int rowIdOffset, int rowNum) {\n+\n+    public DenseServerRowsStorage(int rowIdOffset, int rowNum) {\n     super(rowIdOffset);\n     this.data = new ServerRow[rowNum];\n-  }\n+    }\n \n-  @Override\n-  public ServerRow getRow(int index) {\n+    @Override\n+    public ServerRow getRow(int index) {\n     return data[index - rowIdOffset];\n-  }\n+    }\n \n-  @Override\n-  public List<ServerRow> getRows(List<Integer> rowIds) {\n+    @Override\n+    public List<ServerRow> getRows(List<Integer> rowIds) {\n     List<ServerRow> rows = new ArrayList<>(rowIds.size());\n     for (int rowId : rowIds) {\n-      rows.add(getRow(rowId));\n+        rows.add(getRow(rowId));\n     }\n     return rows;\n-  }\n+    }\n \n-  @Override\n-  public void putRow(int index, ServerRow row) {\n+    @Override\n+    public void putRow(int index, ServerRow row) {\n     data[index - rowIdOffset] = row;\n-  }\n+    }\n \n-  @Override\n-  public void putRows(List<Integer> rowIds, List<ServerRow> rows) {\n+    @Override\n+    public void putRows(List<Integer> rowIds, List<ServerRow> rows) {\n     assert rowIds.size() == rows.size();\n+\n     int size = rowIds.size();\n     for (int i = 0; i < size; i++) {\n-      putRow(rowIds.get(i), rows.get(i));\n+        putRow(rowIds.get(i), rows.get(i));\n+    }\n     }\n-  }\n \n-  @Override\n-  public int getRowNum() {\n+    @Override\n+    public int getRowNum() {\n     return data.length;\n-  }\n+    }\n \n-  @Override\n-  public boolean hasRow(int index) {\n+    @Override\n+    public boolean hasRow(int index) {\n     return (index - rowIdOffset) >= 0 && (index - rowIdOffset) < data.length;\n-  }\n-\n-  @Override\n-  public Iterator<Entry<Integer, ServerRow>> iterator() {\n+    }\n \n+    @Override\n+    public Iterator<Entry<Integer, ServerRow>> iterator() {\n     return new Iterator<Map.Entry<Integer, ServerRow>>() {\n-      int currIndex = 0;\n-\n-      @Override\n-      public boolean hasNext() {\n-        return currIndex < data.length;\n-      }\n-\n-      @Override\n-      public Map.Entry<Integer, ServerRow> next() {\n-        Map.Entry<Integer, ServerRow> entry = new AbstractMap.SimpleEntry(currIndex + rowIdOffset,\n-            data[currIndex]);\n-        currIndex++;\n-        return entry;\n-      }\n-    };\n-  }\n \n-  @Override\n-  public void init() {\n+                                                                  int currIndex = 0;\n+\n+                                                                  @Override\n+                                                                  public boolean hasNext() {\n+               return currIndex < data.length;\n+                                                                  }\n+\n+                                                                  @Override\n+                                                                  public Map.Entry<Integer, ServerRow> next() {\n+               Map.Entry<Integer, ServerRow> entry = new AbstractMap.SimpleEntry(currIndex + rowIdOffset, data[currIndex]);\n+               currIndex++;\n+               return entry;\n+                                                                  }\n \n-  }\n+    };\n+    }\n \n-  @Override\n-  public void reset() {\n+    @Override\n+    public void init() {}\n+\n+    @Override\n+    public void reset() {\n     for (int i = 0; i < data.length; i++) {\n-      if (data[i] != null) {\n+        if (data[i] != null) {\n         data[i].reset();\n-      }\n+        }\n+    }\n     }\n-  }\n \n-  @Override\n-  public long getElemNum() {\n+    @Override\n+    public long getElemNum() {\n     long ret = 0L;\n     for (int i = 0; i < data.length; i++) {\n-      if (data[i] != null) {\n+        if (data[i] != null) {\n         ret += data[i].size();\n-      }\n+        }\n     }\n     return ret;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf output) {\n+    @Override\n+    public void serialize(ByteBuf output) {\n     super.serialize(output);\n     // Array size\n     output.writeInt(data.length);\n+\n     int writeIndex = output.writerIndex();\n \n     // Actual write size\n     output.writeInt(0);\n+\n     int writeRowNum = 0;\n \n     // Rows data\n     for (int i = 0; i < data.length; i++) {\n-      if (data[i] != null) {\n+        if (data[i] != null) {\n         // Row id\n         output.writeInt(i);\n         // Row type\n@@ -154,46 +157,48 @@ public class DenseServerRowsStorage extends ServerRowsStorage {\n         // Row data\n         data[i].serialize(output);\n         writeRowNum++;\n-      }\n+        }\n     }\n-\n     output.setInt(writeIndex, writeRowNum);\n-  }\n+    }\n \n-  @Override\n-  public void deserialize(ByteBuf input) {\n+    @Override\n+    public void deserialize(ByteBuf input) {\n     super.deserialize(input);\n     // Array size\n+\n     int len = input.readInt();\n     data = new ServerRow[len];\n \n     // Actual write row number\n+\n     int writeRowNum = input.readInt();\n \n     // Rows data\n     for (int i = 0; i < writeRowNum; i++) {\n       // Row id\n-      int index = input.readInt();\n+        int index = input.readInt();\n       // Create empty server row\n-      data[index] = ServerRowFactory.createEmptyServerRow(RowType.valueOf(input.readInt()));\n+        data[index] = ServerRowFactory.createEmptyServerRow(RowType.valueOf(input.readInt()));\n       // Row data\n-      data[index].deserialize(input);\n+        data[index].deserialize(input);\n+    }\n     }\n-  }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     int len = 0;\n     len += super.bufferLen();\n     len += 8;\n \n     // Rows data\n     for (int i = 0; i < data.length; i++) {\n-      if (data[i] != null) {\n+        if (data[i] != null) {\n         len += 8;\n         len += data[i].bufferLen();\n-      }\n+        }\n     }\n     return len;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 101
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

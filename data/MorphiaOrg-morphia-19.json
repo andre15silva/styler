@@ -1,0 +1,221 @@
+{
+    "error_id": "19",
+    "information": {
+        "errors": [
+            {
+                "line": "194",
+                "severity": "error",
+                "message": "Line is longer than 140 characters (found 141).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "\n    @SuppressWarnings(\"unchecked\")\n    protected void decodeProperties(final BsonReader reader, final DecoderContext decoderContext, final InstanceCreator<T> instanceCreator) {\n        reader.readStartDocument();\n        while (reader.readBsonType() != BsonType.END_OF_DOCUMENT) {\n            String name = reader.readName();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/19/PojoCodecImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler/19/PojoCodecImpl.java\nindex a215a4a64c..c09415d0ce 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/19/PojoCodecImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler/19/PojoCodecImpl.java\n@@ -191,7 +191,8 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     }\n \n     @SuppressWarnings(\"unchecked\")\n-    protected void decodeProperties(final BsonReader reader, final DecoderContext decoderContext, final InstanceCreator<T> instanceCreator) {\n+\n+    protectedvoid decodeProperties(final BsonReader reader, final DecoderContext decoderContext, final InstanceCreator<T> instanceCreator) {\n         reader.readStartDocument();\n         while (reader.readBsonType() != BsonType.END_OF_DOCUMENT) {\n             String name = reader.readName();\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/19/PojoCodecImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/intellij/19/PojoCodecImpl.java\nindex a215a4a64c..cf29576402 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/19/PojoCodecImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/intellij/19/PojoCodecImpl.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.bson.codecs.pojo;\n \n import org.bson.BsonInvalidOperationException;\n@@ -86,7 +87,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     public void encode(final BsonWriter writer, final T value, final EncoderContext encoderContext) {\n         if (!specialized) {\n             throw new CodecConfigurationException(format(\"%s contains generic types that have not been specialised.%n\"\n-                            + \"Top level classes with generic types are not supported by the PojoCodec.\", classModel.getName()));\n+                + \"Top level classes with generic types are not supported by the PojoCodec.\", classModel.getName()));\n         }\n \n         if (areEquivalentTypes(value.getClass(), classModel.getType())) {\n@@ -115,14 +116,14 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n         if (decoderContext.hasCheckedDiscriminator()) {\n             if (!specialized) {\n                 throw new CodecConfigurationException(format(\"%s contains generic types that have not been specialised.%n\"\n-                        + \"Top level classes with generic types are not supported by the PojoCodec.\", classModel.getName()));\n+                    + \"Top level classes with generic types are not supported by the PojoCodec.\", classModel.getName()));\n             }\n             InstanceCreator<T> instanceCreator = classModel.getInstanceCreator();\n             decodeProperties(reader, decoderContext, instanceCreator);\n             return instanceCreator.getInstance();\n         } else {\n             return getCodecFromDocument(reader, classModel.useDiscriminator(), classModel.getDiscriminatorKey(), registry,\n-                    discriminatorLookup, this).decode(reader, DecoderContext.builder().checkedDiscriminator(true).build());\n+                discriminatorLookup, this).decode(reader, DecoderContext.builder().checkedDiscriminator(true).build());\n         }\n     }\n \n@@ -173,7 +174,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n         }\n     }\n \n-    private <S> void encodeValue(final BsonWriter writer,  final EncoderContext encoderContext, final PropertyModel<S> propertyModel,\n+    private <S> void encodeValue(final BsonWriter writer, final EncoderContext encoderContext, final PropertyModel<S> propertyModel,\n                                  final S propertyValue) {\n         if (propertyModel.shouldSerialize(propertyValue)) {\n             writer.writeName(propertyModel.getReadName());\n@@ -184,14 +185,15 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n                     encoderContext.encodeWithChildContext(propertyModel.getCachedCodec(), writer, propertyValue);\n                 } catch (CodecConfigurationException e) {\n                     throw new CodecConfigurationException(format(\"Failed to encode '%s'. Encoding '%s' errored with: %s\",\n-                            classModel.getName(), propertyModel.getReadName(), e.getMessage()), e);\n+                        classModel.getName(), propertyModel.getReadName(), e.getMessage()), e);\n                 }\n             }\n         }\n     }\n \n     @SuppressWarnings(\"unchecked\")\n-    protected void decodeProperties(final BsonReader reader, final DecoderContext decoderContext, final InstanceCreator<T> instanceCreator) {\n+    protected void decodeProperties(final BsonReader reader, final DecoderContext decoderContext,\n+                                    final InstanceCreator<T> instanceCreator) {\n         reader.readStartDocument();\n         while (reader.readBsonType() != BsonType.END_OF_DOCUMENT) {\n             String name = reader.readName();\n@@ -205,9 +207,9 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     }\n \n     @SuppressWarnings(\"unchecked\")\n-    protected  <S> void decodePropertyModel(final BsonReader reader, final DecoderContext decoderContext,\n-                                         final InstanceCreator<T> instanceCreator, final String name,\n-                                         final PropertyModel<S> propertyModel) {\n+    protected <S> void decodePropertyModel(final BsonReader reader, final DecoderContext decoderContext,\n+                                           final InstanceCreator<T> instanceCreator, final String name,\n+                                           final PropertyModel<S> propertyModel) {\n         if (propertyModel != null) {\n             try {\n                 S value = null;\n@@ -221,10 +223,10 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n                 }\n             } catch (BsonInvalidOperationException e) {\n                 throw new CodecConfigurationException(format(\"Failed to decode '%s'. Decoding '%s' errored with: %s\",\n-                        classModel.getName(), name, e.getMessage()), e);\n+                    classModel.getName(), name, e.getMessage()), e);\n             } catch (CodecConfigurationException e) {\n                 throw new CodecConfigurationException(format(\"Failed to decode '%s'. Decoding '%s' errored with: %s\",\n-                        classModel.getName(), name, e.getMessage()), e);\n+                    classModel.getName(), name, e.getMessage()), e);\n             }\n         } else {\n             if (LOGGER.isTraceEnabled()) {\n@@ -251,7 +253,6 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     }\n \n \n-\n     @SuppressWarnings(\"unchecked\")\n     private <S> Codec<S> specializePojoCodec(final PropertyModel<S> propertyModel) {\n         Codec<S> codec = getCodecFromPropertyRegistry(propertyModel);\n@@ -278,11 +279,11 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     @SuppressWarnings({\"rawtypes\", \"unchecked\"})\n     private <S, V> ClassModel<S> getSpecializedClassModel(final ClassModel<S> clazzModel, final PropertyModel<V> propertyModel) {\n         boolean useDiscriminator = propertyModel.useDiscriminator() == null ? clazzModel.useDiscriminator()\n-                : propertyModel.useDiscriminator();\n+            : propertyModel.useDiscriminator();\n         boolean validDiscriminator = clazzModel.getDiscriminatorKey() != null && clazzModel.getDiscriminator() != null;\n         boolean changeTheDiscriminator = (useDiscriminator != clazzModel.useDiscriminator()) && validDiscriminator;\n \n-        if (propertyModel.getTypeData().getTypeParameters().isEmpty() && !changeTheDiscriminator){\n+        if (propertyModel.getTypeData().getTypeParameters().isEmpty() && !changeTheDiscriminator) {\n             return clazzModel;\n         }\n \n@@ -305,8 +306,8 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n \n         boolean discriminatorEnabled = changeTheDiscriminator ? propertyModel.useDiscriminator() : clazzModel.useDiscriminator();\n         return new ClassModel<S>(clazzModel.getType(), clazzModel.getPropertyNameToTypeParameterMap(),\n-                clazzModel.getInstanceCreatorFactory(), discriminatorEnabled, clazzModel.getDiscriminatorKey(),\n-                clazzModel.getDiscriminator(), IdPropertyModelHolder.create(clazzModel, concreteIdProperty), concretePropertyModels);\n+            clazzModel.getInstanceCreatorFactory(), discriminatorEnabled, clazzModel.getDiscriminatorKey(),\n+            clazzModel.getDiscriminator(), IdPropertyModelHolder.create(clazzModel, concreteIdProperty), concretePropertyModels);\n     }\n \n     @SuppressWarnings(\"unchecked\")\n@@ -335,8 +336,8 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n         }\n \n         return new PropertyModel<V>(propertyModel.getName(), propertyModel.getReadName(), propertyModel.getWriteName(),\n-                specializedPropertyType, null, propertyModel.getPropertySerialization(), propertyModel.useDiscriminator(),\n-                propertyModel.getPropertyAccessor(), propertyModel.getError());\n+            specializedPropertyType, null, propertyModel.getPropertySerialization(), propertyModel.useDiscriminator(),\n+            propertyModel.getPropertyAccessor(), propertyModel.getError());\n     }\n \n     @SuppressWarnings(\"unchecked\")\n@@ -356,7 +357,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n                         codec = (Codec<T>) registry.get(discriminatorLookup.lookup(reader.readString()));\n                     } catch (Exception e) {\n                         throw new CodecConfigurationException(format(\"Failed to decode '%s'. Decoding errored with: %s\",\n-                                classModel.getName(), e.getMessage()), e);\n+                            classModel.getName(), e.getMessage()), e);\n                     }\n                 } else {\n                     reader.skipValue();\n",
+            "diff_size": 21
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'ctor def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "'ctor def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 153).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 153).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "119",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 226).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "169",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "175",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 157).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "176",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "184",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 193).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "191",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "205",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 165).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "207",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "219",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 166).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "220",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 4, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "221",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 166).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "247",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "272",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "273",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "298",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 198).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "303",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 189).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "304",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "326",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 226).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "334",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "346",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 163).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/19/PojoCodecImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/naturalize/19/PojoCodecImpl.java\nindex a215a4a64c..a9e2605d1c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/19/PojoCodecImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/naturalize/19/PojoCodecImpl.java\n@@ -51,7 +51,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n \n     protected PojoCodecImpl(final ClassModel<T> classModel, final CodecRegistry codecRegistry,\n                             final List<PropertyCodecProvider> propertyCodecProviders, final DiscriminatorLookup discriminatorLookup) {\n-        this.classModel = classModel;\n+    this.classModel = classModel;\n         this.registry = fromRegistries(fromCodecs(this), codecRegistry);\n         this.discriminatorLookup = discriminatorLookup;\n         this.codecCache = new ConcurrentHashMap<ClassModel<?>, Codec<?>>();\n@@ -63,7 +63,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     protected PojoCodecImpl(final ClassModel<T> classModel, final CodecRegistry registry, final PropertyCodecRegistry propertyCodecRegistry,\n                             final DiscriminatorLookup discriminatorLookup, final ConcurrentMap<ClassModel<?>, Codec<?>> codecCache,\n                             final boolean specialized) {\n-        this.classModel = classModel;\n+    this.classModel = classModel;\n         this.registry = fromRegistries(fromCodecs(this), registry);\n         this.discriminatorLookup = discriminatorLookup;\n         this.codecCache = codecCache;\n@@ -86,8 +86,8 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     public void encode(final BsonWriter writer, final T value, final EncoderContext encoderContext) {\n         if (!specialized) {\n             throw new CodecConfigurationException(format(\"%s contains generic types that have not been specialised.%n\"\n-                            + \"Top level classes with generic types are not supported by the PojoCodec.\", classModel.getName()));\n-        }\n+                                                    + \"Top level classes with generic types are not supported by the PojoCodec.\", classModel.getName()));\n+    }\n \n         if (areEquivalentTypes(value.getClass(), classModel.getType())) {\n             writer.writeStartDocument();\n@@ -115,14 +115,13 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n         if (decoderContext.hasCheckedDiscriminator()) {\n             if (!specialized) {\n                 throw new CodecConfigurationException(format(\"%s contains generic types that have not been specialised.%n\"\n-                        + \"Top level classes with generic types are not supported by the PojoCodec.\", classModel.getName()));\n-            }\n+                                                    + \"Top level classes with generic types are not supported by the PojoCodec.\", classModel.getName()));\n+    }\n             InstanceCreator<T> instanceCreator = classModel.getInstanceCreator();\n             decodeProperties(reader, decoderContext, instanceCreator);\n             return instanceCreator.getInstance();\n         } else {\n-            return getCodecFromDocument(reader, classModel.useDiscriminator(), classModel.getDiscriminatorKey(), registry,\n-                    discriminatorLookup, this).decode(reader, DecoderContext.builder().checkedDiscriminator(true).build());\n+            return getCodecFromDocument(reader, classModel.useDiscriminator(), classModel.getDiscriminatorKey(), registry, discriminatorLookup, this).decode(reader, DecoderContext.builder().checkedDiscriminator(true).build());\n         }\n     }\n \n@@ -146,7 +145,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n \n     protected <S> void encodeIdProperty(final BsonWriter writer, final T instance, final EncoderContext encoderContext,\n                                         final IdPropertyModelHolder<S> propertyModelHolder) {\n-        if (propertyModelHolder.getPropertyModel() != null) {\n+    if (propertyModelHolder.getPropertyModel() != null) {\n             if (propertyModelHolder.getIdGenerator() == null) {\n                 encodeProperty(writer, instance, encoderContext, propertyModelHolder.getPropertyModel());\n             } else {\n@@ -167,15 +166,14 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     @SuppressWarnings(\"unchecked\")\n     protected <S> void encodeProperty(final BsonWriter writer, final T instance, final EncoderContext encoderContext,\n                                       final PropertyModel<S> propertyModel) {\n-        if (propertyModel != null && propertyModel.isReadable()) {\n+    if (propertyModel != null && propertyModel.isReadable()) {\n             S propertyValue = propertyModel.getPropertyAccessor().get(instance);\n             encodeValue(writer, encoderContext, propertyModel, propertyValue);\n         }\n     }\n \n-    private <S> void encodeValue(final BsonWriter writer,  final EncoderContext encoderContext, final PropertyModel<S> propertyModel,\n-                                 final S propertyValue) {\n-        if (propertyModel.shouldSerialize(propertyValue)) {\n+    private <S> void encodeValue(final BsonWriter writer, final EncoderContext encoderContext, final PropertyModel<S> propertyModel, final S propertyValue) {\n+    if (propertyModel.shouldSerialize(propertyValue)) {\n             writer.writeName(propertyModel.getReadName());\n             if (propertyValue == null) {\n                 writer.writeNull();\n@@ -183,8 +181,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n                 try {\n                     encoderContext.encodeWithChildContext(propertyModel.getCachedCodec(), writer, propertyValue);\n                 } catch (CodecConfigurationException e) {\n-                    throw new CodecConfigurationException(format(\"Failed to encode '%s'. Encoding '%s' errored with: %s\",\n-                            classModel.getName(), propertyModel.getReadName(), e.getMessage()), e);\n+                    throw new CodecConfigurationException(format(\"Failed to encode '%s'. Encoding '%s' errored with: %s\", classModel.getName(), propertyModel.getReadName(), e.getMessage()), e);\n                 }\n             }\n         }\n@@ -205,10 +202,9 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     }\n \n     @SuppressWarnings(\"unchecked\")\n-    protected  <S> void decodePropertyModel(final BsonReader reader, final DecoderContext decoderContext,\n-                                         final InstanceCreator<T> instanceCreator, final String name,\n+    protected <S> void decodePropertyModel(final BsonReader reader, final DecoderContext decoderContext, final InstanceCreator<T> instanceCreator, final String name,\n                                          final PropertyModel<S> propertyModel) {\n-        if (propertyModel != null) {\n+    if (propertyModel != null) {\n             try {\n                 S value = null;\n                 if (reader.getCurrentBsonType() == BsonType.NULL) {\n@@ -220,11 +216,9 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n                     instanceCreator.set(value, propertyModel);\n                 }\n             } catch (BsonInvalidOperationException e) {\n-                throw new CodecConfigurationException(format(\"Failed to decode '%s'. Decoding '%s' errored with: %s\",\n-                        classModel.getName(), name, e.getMessage()), e);\n-            } catch (CodecConfigurationException e) {\n-                throw new CodecConfigurationException(format(\"Failed to decode '%s'. Decoding '%s' errored with: %s\",\n-                        classModel.getName(), name, e.getMessage()), e);\n+                throw new CodecConfigurationException(format(\"Failed to decode '%s'. Decoding '%s' errored with: %s\", classModel.getName(), name, e.getMessage()), e);\n+    } catch (CodecConfigurationException e) {\n+                throw new CodecConfigurationException(format(\"Failed to decode '%s'. Decoding '%s' errored with: %s\", classModel.getName(), name, e.getMessage()), e);\n             }\n         } else {\n             if (LOGGER.isTraceEnabled()) {\n@@ -250,9 +244,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n         return false;\n     }\n \n-\n-\n-    @SuppressWarnings(\"unchecked\")\n+@SuppressWarnings(\"unchecked\")\n     private <S> Codec<S> specializePojoCodec(final PropertyModel<S> propertyModel) {\n         Codec<S> codec = getCodecFromPropertyRegistry(propertyModel);\n         if (codec instanceof PojoCodec) {\n@@ -277,12 +269,11 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n \n     @SuppressWarnings({\"rawtypes\", \"unchecked\"})\n     private <S, V> ClassModel<S> getSpecializedClassModel(final ClassModel<S> clazzModel, final PropertyModel<V> propertyModel) {\n-        boolean useDiscriminator = propertyModel.useDiscriminator() == null ? clazzModel.useDiscriminator()\n-                : propertyModel.useDiscriminator();\n-        boolean validDiscriminator = clazzModel.getDiscriminatorKey() != null && clazzModel.getDiscriminator() != null;\n+        boolean useDiscriminator = propertyModel.useDiscriminator() == null ? clazzModel.useDiscriminator() : propertyModel.useDiscriminator();\n+boolean validDiscriminator = clazzModel.getDiscriminatorKey() != null && clazzModel.getDiscriminator() != null;\n         boolean changeTheDiscriminator = (useDiscriminator != clazzModel.useDiscriminator()) && validDiscriminator;\n \n-        if (propertyModel.getTypeData().getTypeParameters().isEmpty() && !changeTheDiscriminator){\n+        if (propertyModel.getTypeData().getTypeParameters().isEmpty() && !changeTheDiscriminator) {\n             return clazzModel;\n         }\n \n@@ -304,15 +295,13 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n         }\n \n         boolean discriminatorEnabled = changeTheDiscriminator ? propertyModel.useDiscriminator() : clazzModel.useDiscriminator();\n-        return new ClassModel<S>(clazzModel.getType(), clazzModel.getPropertyNameToTypeParameterMap(),\n-                clazzModel.getInstanceCreatorFactory(), discriminatorEnabled, clazzModel.getDiscriminatorKey(),\n+        return new ClassModel<S>(clazzModel.getType(), clazzModel.getPropertyNameToTypeParameterMap(), clazzModel.getInstanceCreatorFactory(), discriminatorEnabled, clazzModel.getDiscriminatorKey(),\n                 clazzModel.getDiscriminator(), IdPropertyModelHolder.create(clazzModel, concreteIdProperty), concretePropertyModels);\n     }\n \n     @SuppressWarnings(\"unchecked\")\n-    private <V> PropertyModel<V> getSpecializedPropertyModel(final PropertyModel<V> propertyModel, final TypeParameterMap typeParameterMap,\n-                                                             final List<TypeData<?>> propertyTypeParameters) {\n-        TypeData<V> specializedPropertyType;\n+    private <V> PropertyModel<V> getSpecializedPropertyModel(final PropertyModel<V> propertyModel, final TypeParameterMap typeParameterMap, final List<TypeData<?>> propertyTypeParameters) {\n+    TypeData<V> specializedPropertyType;\n         Map<Integer, Integer> propertyToClassParamIndexMap = typeParameterMap.getPropertyToClassParamIndexMap();\n         Integer classTypeParamRepresentsWholeProperty = propertyToClassParamIndexMap.get(-1);\n         if (classTypeParamRepresentsWholeProperty != null) {\n@@ -334,8 +323,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n             return propertyModel;\n         }\n \n-        return new PropertyModel<V>(propertyModel.getName(), propertyModel.getReadName(), propertyModel.getWriteName(),\n-                specializedPropertyType, null, propertyModel.getPropertySerialization(), propertyModel.useDiscriminator(),\n+        return new PropertyModel<V>(propertyModel.getName(), propertyModel.getReadName(), propertyModel.getWriteName(), specializedPropertyType, null, propertyModel.getPropertySerialization(), propertyModel.useDiscriminator(),\n                 propertyModel.getPropertyAccessor(), propertyModel.getError());\n     }\n \n@@ -343,7 +331,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     protected Codec<T> getCodecFromDocument(final BsonReader reader, final boolean useDiscriminator, final String discriminatorKey,\n                                             final CodecRegistry registry, final DiscriminatorLookup discriminatorLookup,\n                                             final Codec<T> defaultCodec) {\n-        Codec<T> codec = defaultCodec;\n+    Codec<T> codec = defaultCodec;\n         if (useDiscriminator) {\n             BsonReaderMark mark = reader.getMark();\n             reader.readStartDocument();\n@@ -355,8 +343,7 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n                     try {\n                         codec = (Codec<T>) registry.get(discriminatorLookup.lookup(reader.readString()));\n                     } catch (Exception e) {\n-                        throw new CodecConfigurationException(format(\"Failed to decode '%s'. Decoding errored with: %s\",\n-                                classModel.getName(), e.getMessage()), e);\n+                        throw new CodecConfigurationException(format(\"Failed to decode '%s'. Decoding errored with: %s\", classModel.getName(), e.getMessage()), e);\n                     }\n                 } else {\n                     reader.skipValue();\n@@ -406,4 +393,4 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     protected DiscriminatorLookup getDiscriminatorLookup() {\n         return discriminatorLookup;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 41
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "194",
+                    "severity": "error",
+                    "message": "Line is longer than 140 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/19/PojoCodecImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_three_grams/19/PojoCodecImpl.java\nindex a215a4a64c..c09415d0ce 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/errored/1/19/PojoCodecImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/MorphiaOrg-morphia/styler_three_grams/19/PojoCodecImpl.java\n@@ -191,7 +191,8 @@ public class PojoCodecImpl<T> extends PojoCodec<T> {\n     }\n \n     @SuppressWarnings(\"unchecked\")\n-    protected void decodeProperties(final BsonReader reader, final DecoderContext decoderContext, final InstanceCreator<T> instanceCreator) {\n+\n+    protectedvoid decodeProperties(final BsonReader reader, final DecoderContext decoderContext, final InstanceCreator<T> instanceCreator) {\n         reader.readStartDocument();\n         while (reader.readBsonType() != BsonType.END_OF_DOCUMENT) {\n             String name = reader.readName();\n",
+            "diff_size": 2
+        }
+    ]
+}

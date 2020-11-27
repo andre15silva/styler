@@ -1,0 +1,94 @@
+{
+    "error_id": "583",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/583/WalkPath.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/583/WalkPath.java\nindex 2aa2d8b831..fb6fc5915c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/583/WalkPath.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/583/WalkPath.java\n@@ -14,6 +14,7 @@\n  * the License.\n  *\n  */\n+\n package com.tencent.angel.graph.client.node2vec.data;\n \n import com.tencent.angel.graph.client.node2vec.PartitionHasher;\n@@ -26,159 +27,162 @@ import java.io.DataOutputStream;\n import java.io.IOException;\n \n public class WalkPath implements IElement {\n-  private long[] path;\n-\n-  public int getCurrPathIdx() {\n-    return currPathIdx;\n-  }\n-\n-  public void setCurrPathIdx(int currPathIdx) {\n-    this.currPathIdx = currPathIdx;\n-  }\n-\n-  private int currPathIdx = 0;\n-  private int mod;\n-  private int nextPartitionIdx = -1;\n-\n-  public WalkPath() {\n-  }\n-\n-  public WalkPath(long[] path, int mod) {\n-    this.path = path;\n-    this.currPathIdx = path.length;\n-    this.mod = mod;\n-    updatePartitionIdx();\n-  }\n-\n-  public WalkPath(long[] path, int mod, int currPathIdx) {\n-    this.path = path;\n-    this.currPathIdx = currPathIdx;\n-    this.mod = mod;\n-    updatePartitionIdx();\n-  }\n-\n-  public WalkPath(int pathLength, int mod, long... eles) {\n-    path = new long[pathLength];\n-    if (eles != null) {\n-      for (long e : eles) {\n-        path[currPathIdx] = e;\n+    private long[] path;\n+\n+    public int getCurrPathIdx() {\n+        return currPathIdx;\n+    }\n+\n+    public void setCurrPathIdx(int currPathIdx) {\n+        this.currPathIdx = currPathIdx;\n+    }\n+\n+    private int currPathIdx = 0;\n+    private int mod;\n+    private int nextPartitionIdx = -1;\n+\n+    public WalkPath() {\n+    }\n+\n+    public WalkPath(long[] path, int mod) {\n+        this.path = path;\n+        this.currPathIdx = path.length;\n+        this.mod = mod;\n+        updatePartitionIdx();\n+    }\n+\n+    public WalkPath(long[] path, int mod, int currPathIdx) {\n+        this.path = path;\n+        this.currPathIdx = currPathIdx;\n+        this.mod = mod;\n+        updatePartitionIdx();\n+    }\n+\n+    public WalkPath(int pathLength, int mod, long... eles) {\n+        path = new long[pathLength];\n+        if (eles != null) {\n+            for (long e : eles) {\n+                path[currPathIdx] = e;\n+                currPathIdx++;\n+            }\n+        }\n+        this.mod = mod;\n+        updatePartitionIdx();\n+    }\n+\n+    public int getNextPartitionIdx() {\n+        return nextPartitionIdx;\n+    }\n+\n+    public long[] getPath() {\n+        return path;\n+    }\n+\n+    public void setPath(long[] path) {\n+        this.path = path;\n+    }\n+\n+    public int getMod() {\n+        return mod;\n+    }\n+\n+    public void setMod(int mod) {\n+        this.mod = mod;\n+    }\n+\n+    public WalkPath add2Path(long ele) {\n+        assert currPathIdx < path.length;\n+\n+        path[currPathIdx] = ele;\n         currPathIdx++;\n-      }\n-    }\n-    this.mod = mod;\n-    updatePartitionIdx();\n-  }\n-\n-  public int getNextPartitionIdx() {\n-    return nextPartitionIdx;\n-  }\n-\n-  public long[] getPath() {\n-    return path;\n-  }\n-\n-  public void setPath(long[] path) {\n-    this.path = path;\n-  }\n-\n-  public int getMod() {\n-    return mod;\n-  }\n-\n-  public void setMod(int mod) {\n-    this.mod = mod;\n-  }\n-\n-  public WalkPath add2Path(long ele) {\n-    assert currPathIdx < path.length;\n-\n-    path[currPathIdx] = ele;\n-    currPathIdx++;\n-    updatePartitionIdx();\n-    return this;\n-  }\n-\n-  public long[] getTail2() {\n-    return new long[]{path[currPathIdx - 2], path[currPathIdx - 1]};\n-  }\n-\n-  public long getHead() { return path[0]; }\n-\n-  private void updatePartitionIdx() {\n-    nextPartitionIdx = PartitionHasher.getHash(path[currPathIdx - 2], path[currPathIdx - 1], mod);\n-  }\n-\n-  public boolean isComplete() {\n-    return currPathIdx >= path.length;\n-  }\n-\n-  @Override\n-  public Object deepClone() {\n-    long[] clonedPath = path.clone();\n-    return new WalkPath(clonedPath, this.mod, this.currPathIdx);\n-  }\n-\n-  @Override\n-  public void serialize(ByteBuf output) {\n-    output.writeInt(mod);\n-    output.writeInt(currPathIdx);\n-    if (path == null) {\n-      output.writeInt(0);\n-    } else {\n-      SerDe.serArray(path, output);\n-    }\n-  }\n-\n-  @Override\n-  public void deserialize(ByteBuf input) {\n-    mod = input.readInt();\n-    currPathIdx = input.readInt();\n-    path = SerDe.deserLongArray(input);\n-    updatePartitionIdx();\n-  }\n-\n-  @Override\n-  public int bufferLen() {\n-    int len = 8;\n-    if (path != null) {\n-      len += currPathIdx * 8;\n-    }\n-    return len;\n-  }\n-\n-  @Override\n-  public void serialize(DataOutputStream output) throws IOException {\n-    output.writeInt(mod);\n-    output.writeInt(currPathIdx);\n-    if (path == null) {\n-      output.writeInt(0);\n-    } else {\n-      output.writeInt(path.length);\n-\n-      for (long e : path) {\n-        output.writeLong(e);\n-      }\n-    }\n-  }\n-\n-  @Override\n-  public void deserialize(DataInputStream input) throws IOException {\n-    mod = input.readInt();\n-    currPathIdx = input.readInt();\n-\n-    int len = input.readInt();\n-    if (len > 0) {\n-      path = new long[len];\n-      for (int i = 0; i < len; i++) {\n-        path[i] = input.readLong();\n-      }\n-    }\n-\n-    updatePartitionIdx();\n-  }\n-\n-  @Override\n-  public int dataLen() {\n-    return bufferLen();\n-  }\n+        updatePartitionIdx();\n+        return this;\n+    }\n+\n+    public long[] getTail2() {\n+        return new long[] {path[currPathIdx - 2], path[currPathIdx - 1]};\n+    }\n+\n+    public long getHead() {\n+        return path[0];\n+    }\n+\n+    private void updatePartitionIdx() {\n+        nextPartitionIdx =\n+                PartitionHasher.getHash(path[currPathIdx - 2], path[currPathIdx - 1], mod);\n+    }\n+\n+    public boolean isComplete() {\n+        return currPathIdx >= path.length;\n+    }\n+\n+    @Override\n+    public Object deepClone() {\n+        long[] clonedPath = path.clone();\n+        return new WalkPath(clonedPath, this.mod, this.currPathIdx);\n+    }\n+\n+    @Override\n+    public void serialize(ByteBuf output) {\n+        output.writeInt(mod);\n+        output.writeInt(currPathIdx);\n+        if (path == null) {\n+            output.writeInt(0);\n+        } else {\n+            SerDe.serArray(path, output);\n+        }\n+    }\n+\n+    @Override\n+    public void deserialize(ByteBuf input) {\n+        mod = input.readInt();\n+        currPathIdx = input.readInt();\n+        path = SerDe.deserLongArray(input);\n+        updatePartitionIdx();\n+    }\n+\n+    @Override\n+    public int bufferLen() {\n+        int len = 8;\n+        if (path != null) {\n+            len += currPathIdx * 8;\n+        }\n+        return len;\n+    }\n+\n+    @Override\n+    public void serialize(DataOutputStream output) throws IOException {\n+        output.writeInt(mod);\n+        output.writeInt(currPathIdx);\n+        if (path == null) {\n+            output.writeInt(0);\n+        } else {\n+            output.writeInt(path.length);\n+\n+            for (long e : path) {\n+                output.writeLong(e);\n+            }\n+        }\n+    }\n+\n+    @Override\n+    public void deserialize(DataInputStream input) throws IOException {\n+        mod = input.readInt();\n+        currPathIdx = input.readInt();\n+\n+        int len = input.readInt();\n+        if (len > 0) {\n+            path = new long[len];\n+            for (int i = 0; i < len; i++) {\n+                path[i] = input.readLong();\n+            }\n+        }\n+\n+        updatePartitionIdx();\n+    }\n+\n+    @Override\n+    public int dataLen() {\n+        return bufferLen();\n+    }\n }\n",
+            "diff_size": 186
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/583/WalkPath.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/583/WalkPath.java\nindex 2aa2d8b831..186994d969 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/583/WalkPath.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/583/WalkPath.java\n@@ -102,7 +102,9 @@ public class WalkPath implements IElement {\n     return new long[]{path[currPathIdx - 2], path[currPathIdx - 1]};\n   }\n \n-  public long getHead() { return path[0]; }\n+  public long getHead() {\n+  return path[0];\n+  }\n \n   private void updatePartitionIdx() {\n     nextPartitionIdx = PartitionHasher.getHash(path[currPathIdx - 2], path[currPathIdx - 1], mod);\n@@ -181,4 +183,4 @@ public class WalkPath implements IElement {\n   public int dataLen() {\n     return bufferLen();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/583/WalkPath.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/583/WalkPath.java\nindex 2aa2d8b831..11dcc07756 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/583/WalkPath.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/583/WalkPath.java\n@@ -20,165 +20,167 @@ import com.tencent.angel.graph.client.node2vec.PartitionHasher;\n import com.tencent.angel.graph.client.node2vec.utils.SerDe;\n import com.tencent.angel.ps.storage.vector.element.IElement;\n import io.netty.buffer.ByteBuf;\n-\n import java.io.DataInputStream;\n import java.io.DataOutputStream;\n import java.io.IOException;\n \n public class WalkPath implements IElement {\n-  private long[] path;\n+    private long[] path;\n \n-  public int getCurrPathIdx() {\n+    public int getCurrPathIdx() {\n     return currPathIdx;\n-  }\n+    }\n \n-  public void setCurrPathIdx(int currPathIdx) {\n+    public void setCurrPathIdx(int currPathIdx) {\n     this.currPathIdx = currPathIdx;\n-  }\n+    }\n \n-  private int currPathIdx = 0;\n-  private int mod;\n-  private int nextPartitionIdx = -1;\n+    private int currPathIdx = 0;\n+    private int mod;\n+    private int nextPartitionIdx = -1;\n \n-  public WalkPath() {\n-  }\n+    public WalkPath() {}\n \n-  public WalkPath(long[] path, int mod) {\n+    public WalkPath(long[] path, int mod) {\n     this.path = path;\n     this.currPathIdx = path.length;\n     this.mod = mod;\n     updatePartitionIdx();\n-  }\n+    }\n \n-  public WalkPath(long[] path, int mod, int currPathIdx) {\n+    public WalkPath(long[] path, int mod, int currPathIdx) {\n     this.path = path;\n     this.currPathIdx = currPathIdx;\n     this.mod = mod;\n     updatePartitionIdx();\n-  }\n+    }\n \n-  public WalkPath(int pathLength, int mod, long... eles) {\n+    public WalkPath(int pathLength, int mod,\n+    long ... eles) {\n     path = new long[pathLength];\n     if (eles != null) {\n-      for (long e : eles) {\n-        path[currPathIdx] = e;\n-        currPathIdx++;\n-      }\n+        for (long e : eles) {\n+                          path[currPathIdx] = e;\n+                          currPathIdx++;\n+        }\n     }\n+\n+\n+\n     this.mod = mod;\n     updatePartitionIdx();\n-  }\n+    }\n \n-  public int getNextPartitionIdx() {\n+    public int getNextPartitionIdx() {\n     return nextPartitionIdx;\n-  }\n+    }\n \n-  public long[] getPath() {\n+    public long[] getPath() {\n     return path;\n-  }\n+    }\n \n-  public void setPath(long[] path) {\n+    public void setPath(long[] path) {\n     this.path = path;\n-  }\n+    }\n \n-  public int getMod() {\n+    public int getMod() {\n     return mod;\n-  }\n+    }\n \n-  public void setMod(int mod) {\n+    public void setMod(int mod) {\n     this.mod = mod;\n-  }\n+    }\n \n-  public WalkPath add2Path(long ele) {\n+    public WalkPath add2Path(long ele) {\n     assert currPathIdx < path.length;\n-\n     path[currPathIdx] = ele;\n     currPathIdx++;\n     updatePartitionIdx();\n     return this;\n-  }\n+    }\n \n-  public long[] getTail2() {\n+    public long[] getTail2() {\n     return new long[]{path[currPathIdx - 2], path[currPathIdx - 1]};\n-  }\n+    }\n \n-  public long getHead() { return path[0]; }\n+    public long getHead() {\n+    return path[0];\n+    }\n \n-  private void updatePartitionIdx() {\n+    private void updatePartitionIdx() {\n     nextPartitionIdx = PartitionHasher.getHash(path[currPathIdx - 2], path[currPathIdx - 1], mod);\n-  }\n+    }\n \n-  public boolean isComplete() {\n+    public boolean isComplete() {\n     return currPathIdx >= path.length;\n-  }\n+    }\n \n-  @Override\n-  public Object deepClone() {\n+    @Override\n+    public Object deepClone() {\n     long[] clonedPath = path.clone();\n     return new WalkPath(clonedPath, this.mod, this.currPathIdx);\n-  }\n+    }\n \n-  @Override\n-  public void serialize(ByteBuf output) {\n+    @Override\n+    public void serialize(ByteBuf output) {\n     output.writeInt(mod);\n     output.writeInt(currPathIdx);\n     if (path == null) {\n-      output.writeInt(0);\n+        output.writeInt(0);\n     } else {\n       SerDe.serArray(path, output);\n     }\n-  }\n+    }\n \n-  @Override\n-  public void deserialize(ByteBuf input) {\n+    @Override\n+    public void deserialize(ByteBuf input) {\n     mod = input.readInt();\n     currPathIdx = input.readInt();\n     path = SerDe.deserLongArray(input);\n     updatePartitionIdx();\n-  }\n+    }\n \n-  @Override\n-  public int bufferLen() {\n+    @Override\n+    public int bufferLen() {\n     int len = 8;\n     if (path != null) {\n-      len += currPathIdx * 8;\n+        len += currPathIdx * 8;\n     }\n     return len;\n-  }\n+    }\n \n-  @Override\n-  public void serialize(DataOutputStream output) throws IOException {\n+    @Override\n+    public void serialize(DataOutputStream output) throws IOException {\n     output.writeInt(mod);\n     output.writeInt(currPathIdx);\n     if (path == null) {\n-      output.writeInt(0);\n+        output.writeInt(0);\n     } else {\n       output.writeInt(path.length);\n-\n       for (long e : path) {\n-        output.writeLong(e);\n+               output.writeLong(e);\n       }\n     }\n-  }\n+    }\n \n-  @Override\n-  public void deserialize(DataInputStream input) throws IOException {\n+    @Override\n+    public void deserialize(DataInputStream input) throws IOException {\n     mod = input.readInt();\n     currPathIdx = input.readInt();\n \n     int len = input.readInt();\n     if (len > 0) {\n-      path = new long[len];\n-      for (int i = 0; i < len; i++) {\n-        path[i] = input.readLong();\n-      }\n+        path = new long[len];\n+        for (int i = 0; i < len; i++) {\n+                     path[i] = input.readLong();\n+        }\n     }\n-\n     updatePartitionIdx();\n-  }\n+    }\n \n-  @Override\n-  public int dataLen() {\n+    @Override\n+    public int dataLen() {\n     return bufferLen();\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 80
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

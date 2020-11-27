@@ -1,0 +1,1084 @@
+{
+    "error_id": "406",
+    "information": {
+        "errors": [
+            {
+                "line": "114",
+                "severity": "warning",
+                "message": "Line is longer than 100 characters (found 126).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    // call the callback to make sure the StorageGroup exit merging status, but passing 2\n    // empty file lists to avoid files being deleted.\n    callback.call(Collections.emptyList(), Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n  }\n\n  private void doMerge() throws IOException, MetadataException {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "115",
+                    "severity": "warning",
+                    "message": "'method call' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler/406/MergeTask.java\nindex 68476aa278..901f888cd5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler/406/MergeTask.java\n@@ -111,7 +111,8 @@ public class MergeTask implements Callable<Void> {\n     cleanUp(false);\n     // call the callback to make sure the StorageGroup exit merging status, but passing 2\n     // empty file lists to avoid files being deleted.\n-    callback.call(Collections.emptyList(), Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n+    callback.call(Collections.emptyList()\n+    ,Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n   }\n \n   private void doMerge() throws IOException, MetadataException {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/intellij/406/MergeTask.java\nindex 68476aa278..234d1919b6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/intellij/406/MergeTask.java\n@@ -47,9 +47,9 @@ import org.slf4j.LoggerFactory;\n /**\n  * MergeTask merges given seqFiles and unseqFiles into new ones, which basically consists of three\n  * steps: 1. rewrite overflowed, modified or small-sized chunks into temp merge files\n- *        2. move the merged chunks in the temp files back to the seqFiles or move the unmerged\n- *        chunks in the seqFiles into temp files and replace the seqFiles with the temp files.\n- *        3. remove unseqFiles\n+ * 2. move the merged chunks in the temp files back to the seqFiles or move the unmerged\n+ * chunks in the seqFiles into temp files and replace the seqFiles with the temp files.\n+ * 3. remove unseqFiles\n  */\n public class MergeTask implements Callable<Void> {\n \n@@ -73,8 +73,8 @@ public class MergeTask implements Callable<Void> {\n   MergeFileTask fileTask;\n \n   MergeTask(List<TsFileResource> seqFiles,\n-      List<TsFileResource> unseqFiles, String storageGroupSysDir, MergeCallback callback,\n-      String taskName, boolean fullMerge, String storageGroupName) {\n+            List<TsFileResource> unseqFiles, String storageGroupSysDir, MergeCallback callback,\n+            String taskName, boolean fullMerge, String storageGroupName) {\n     this.resource = new MergeResource(seqFiles, unseqFiles);\n     this.storageGroupSysDir = storageGroupSysDir;\n     this.callback = callback;\n@@ -85,7 +85,8 @@ public class MergeTask implements Callable<Void> {\n   }\n \n   public MergeTask(MergeResource mergeResource, String storageGroupSysDir, MergeCallback callback,\n-      String taskName, boolean fullMerge, int concurrentMergeSeriesNum, String storageGroupName) {\n+                   String taskName, boolean fullMerge, int concurrentMergeSeriesNum,\n+                   String storageGroupName) {\n     this.resource = mergeResource;\n     this.storageGroupSysDir = storageGroupSysDir;\n     this.callback = callback;\n@@ -97,7 +98,7 @@ public class MergeTask implements Callable<Void> {\n \n   @Override\n   public Void call() throws Exception {\n-    try  {\n+    try {\n       doMerge();\n     } catch (Exception e) {\n       logger.error(\"Runtime exception in merge {}\", taskName, e);\n@@ -111,7 +112,8 @@ public class MergeTask implements Callable<Void> {\n     cleanUp(false);\n     // call the callback to make sure the StorageGroup exit merging status, but passing 2\n     // empty file lists to avoid files being deleted.\n-    callback.call(Collections.emptyList(), Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n+    callback.call(Collections.emptyList(), Collections.emptyList(),\n+        new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n   }\n \n   private void doMerge() throws IOException, MetadataException {\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "56",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 189).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 191).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 112.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "120",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "136",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "138",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 158).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "139",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "145",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 106).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "146",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "165",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 0, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "166",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 200).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "167",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "172",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "174",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "218",
+                    "severity": "warning",
+                    "message": "'switch rcurly' has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/406/MergeTask.java\nindex 68476aa278..98250b31eb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/naturalize/406/MergeTask.java\n@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;\n  */\n public class MergeTask implements Callable<Void> {\n \n-  public static final String MERGE_SUFFIX = \".merge\";\n+public static final String MERGE_SUFFIX = \".merge\";\n   private static final Logger logger = LoggerFactory.getLogger(MergeTask.class);\n \n   MergeResource resource;\n@@ -72,10 +72,8 @@ public class MergeTask implements Callable<Void> {\n   MergeMultiChunkTask chunkTask;\n   MergeFileTask fileTask;\n \n-  MergeTask(List<TsFileResource> seqFiles,\n-      List<TsFileResource> unseqFiles, String storageGroupSysDir, MergeCallback callback,\n-      String taskName, boolean fullMerge, String storageGroupName) {\n-    this.resource = new MergeResource(seqFiles, unseqFiles);\n+  MergeTask(List<TsFileResource> seqFiles, List<TsFileResource> unseqFiles, String storageGroupSysDir, MergeCallback callback, String taskName, boolean fullMerge, String storageGroupName) {\n+  this.resource = new MergeResource(seqFiles, unseqFiles);\n     this.storageGroupSysDir = storageGroupSysDir;\n     this.callback = callback;\n     this.taskName = taskName;\n@@ -84,9 +82,8 @@ public class MergeTask implements Callable<Void> {\n     this.storageGroupName = storageGroupName;\n   }\n \n-  public MergeTask(MergeResource mergeResource, String storageGroupSysDir, MergeCallback callback,\n-      String taskName, boolean fullMerge, int concurrentMergeSeriesNum, String storageGroupName) {\n-    this.resource = mergeResource;\n+  public MergeTask(MergeResource mergeResource, String storageGroupSysDir, MergeCallback callback, String taskName, boolean fullMerge, int concurrentMergeSeriesNum, String storageGroupName) {\n+  this.resource = mergeResource;\n     this.storageGroupSysDir = storageGroupSysDir;\n     this.callback = callback;\n     this.taskName = taskName;\n@@ -97,7 +94,7 @@ public class MergeTask implements Callable<Void> {\n \n   @Override\n   public Void call() throws Exception {\n-    try  {\n+    try {\n       doMerge();\n     } catch (Exception e) {\n       logger.error(\"Runtime exception in merge {}\", taskName, e);\n@@ -109,22 +106,20 @@ public class MergeTask implements Callable<Void> {\n   private void abort() throws IOException {\n     states = States.ABORTED;\n     cleanUp(false);\n-    // call the callback to make sure the StorageGroup exit merging status, but passing 2\n+\n+// call the callback to make sure the StorageGroup exit merging status, but passing 2\n     // empty file lists to avoid files being deleted.\n     callback.call(Collections.emptyList(), Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n   }\n \n   private void doMerge() throws IOException, MetadataException {\n     if (logger.isInfoEnabled()) {\n-      logger.info(\"{} starts to merge {} seqFiles, {} unseqFiles\", taskName,\n-          resource.getSeqFiles().size(), resource.getUnseqFiles().size());\n-    }\n+      logger.info(\"{} starts to merge {} seqFiles, {} unseqFiles\", taskName, resource.getSeqFiles().size(), resource.getUnseqFiles().size());\n+  }\n     long startTime = System.currentTimeMillis();\n-    long totalFileSize = MergeUtils.collectFileSizes(resource.getSeqFiles(),\n-        resource.getUnseqFiles());\n-    mergeLogger = new MergeLogger(storageGroupSysDir);\n-\n-    mergeLogger.logFiles(resource);\n+    long totalFileSize = MergeUtils.collectFileSizes(resource.getSeqFiles(), resource.getUnseqFiles());\n+mergeLogger = new MergeLogger(storageGroupSysDir);\n+mergeLogger.logFiles(resource);\n \n     Set<String> devices = MManager.getInstance().getDevices(storageGroupName);\n     Map<Path, MeasurementSchema> measurementSchemaMap = new HashMap<>();\n@@ -138,23 +133,17 @@ public class MergeTask implements Callable<Void> {\n       }\n     }\n     resource.setMeasurementSchemaMap(measurementSchemaMap);\n+mergeLogger.logMergeStart();\n \n-    mergeLogger.logMergeStart();\n-\n-    chunkTask = new MergeMultiChunkTask(mergeContext, taskName, mergeLogger, resource,\n-        fullMerge, unmergedSeries, concurrentMergeSeriesNum, storageGroupName);\n-    states = States.MERGE_CHUNKS;\n+    chunkTask = new MergeMultiChunkTask(mergeContext, taskName, mergeLogger, resource, fullMerge, unmergedSeries, concurrentMergeSeriesNum, storageGroupName);\n+states = States.MERGE_CHUNKS;\n     chunkTask.mergeSeries();\n     if (Thread.interrupted()) {\n       logger.info(\"Merge task {} aborted\", taskName);\n       abort();\n       return;\n-    }\n-\n-\n-    fileTask = new MergeFileTask(taskName, mergeContext, mergeLogger, resource,\n-        resource.getSeqFiles());\n-    states = States.MERGE_FILES;\n+    } fileTask = new MergeFileTask(taskName, mergeContext, mergeLogger, resource, resource.getSeqFiles());\n+states = States.MERGE_FILES;\n     chunkTask = null;\n     fileTask.mergeFiles();\n     if (Thread.interrupted()) {\n@@ -173,20 +162,16 @@ public class MergeTask implements Callable<Void> {\n       double chunkRate = mergeContext.getTotalChunkWritten() / elapsedTime;\n       double fileRate =\n           (resource.getSeqFiles().size() + resource.getUnseqFiles().size()) / elapsedTime;\n-      double ptRate = mergeContext.getTotalPointWritten() / elapsedTime;\n-      logger.info(\"{} ends after {}s, byteRate: {}MB/s, seriesRate {}/s, chunkRate: {}/s, \"\n-              + \"fileRate: {}/s, ptRate: {}/s\",\n-          taskName, elapsedTime, byteRate, seriesRate, chunkRate, fileRate, ptRate);\n-    }\n+double ptRate = mergeContext.getTotalPointWritten() / elapsedTime;\n+      logger.info(\"{} ends after {}s, byteRate: {}MB/s, seriesRate {}/s, chunkRate: {}/s, \" + \"fileRate: {}/s, ptRate: {}/s\", taskName, elapsedTime, byteRate, seriesRate, chunkRate, fileRate, ptRate);\n+  }\n   }\n \n   void cleanUp(boolean executeCallback) throws IOException {\n     logger.info(\"{} is cleaning up\", taskName);\n-\n-    resource.clear();\n+resource.clear();\n     mergeContext.clear();\n-\n-    if (mergeLogger != null) {\n+if (mergeLogger != null) {\n       mergeLogger.close();\n     }\n \n@@ -214,11 +199,7 @@ public class MergeTask implements Callable<Void> {\n   }\n \n   enum States {\n-    START,\n-    MERGE_CHUNKS,\n-    MERGE_FILES,\n-    CLEAN_UP,\n-    ABORTED\n+    START, MERGE_CHUNKS, MERGE_FILES, CLEAN_UP, ABORTED\n   }\n \n   public String getProgress() {\n@@ -234,10 +215,10 @@ public class MergeTask implements Callable<Void> {\n       case START:\n       default:\n         return \"Just started\";\n-    }\n+  }\n   }\n \n   public String getTaskName() {\n     return taskName;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 47
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "21",
+                    "severity": "warning",
+                    "message": "'import' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "54",
+                    "column": "44",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "54",
+                    "column": "44",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "warning",
+                    "message": "'CTOR_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 195).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "98",
+                    "column": "20",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "98",
+                    "column": "20",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "98",
+                    "column": "53",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "98",
+                    "column": "53",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "warning",
+                    "message": "'CTOR_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 51, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 242).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "108",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "warning",
+                    "message": "'ctor def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "warning",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 51, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "116",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 57, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 53, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "129",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "130",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "132",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "134",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "134",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "137",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "140",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "140",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "141",
+                    "column": "69",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "142",
+                    "column": "10",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "142",
+                    "column": "10",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "142",
+                    "column": "49",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "143",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 69, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 157).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "145",
+                    "severity": "warning",
+                    "message": "'for' has incorrect indentation level 69, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "145",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "145",
+                    "column": "70",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "146",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 37, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "147",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 37, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "147",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 37, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "149",
+                    "severity": "warning",
+                    "message": "'for rcurly' has incorrect indentation level 69, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 158).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "158",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "159",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "161",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "166",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "167",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "168",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "174",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "174",
+                    "column": "79",
+                    "severity": "warning",
+                    "message": "'/' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "174",
+                    "column": "79",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "176",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "176",
+                    "column": "40",
+                    "severity": "warning",
+                    "message": "'/' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "176",
+                    "column": "40",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "177",
+                    "column": "42",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "177",
+                    "column": "42",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "177",
+                    "column": "47",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "177",
+                    "column": "47",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "178",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "178",
+                    "column": "50",
+                    "severity": "warning",
+                    "message": "'/' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "178",
+                    "column": "50",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "180",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "180",
+                    "column": "63",
+                    "severity": "warning",
+                    "message": "'/' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "180",
+                    "column": "63",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "182",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "182",
+                    "column": "92",
+                    "severity": "warning",
+                    "message": "'/' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "182",
+                    "column": "92",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "184",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "184",
+                    "column": "60",
+                    "severity": "warning",
+                    "message": "'/' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                },
+                {
+                    "line": "184",
+                    "column": "60",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '/' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "186",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "186",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 202).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "188",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "190",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "195",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "197",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "198",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 65, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "198",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "199",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 65, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "200",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 65, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "202",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "203",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 65, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "206",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "208",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 209.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "209",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "211",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "213",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "215",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "217",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "219",
+                    "severity": "warning",
+                    "message": "'enum def ident' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "219",
+                    "column": "16",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '{' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "219",
+                    "column": "16",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '{' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "219",
+                    "column": "68",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '}' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "221",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "222",
+                    "column": "5",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'switch' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "223",
+                    "severity": "warning",
+                    "message": "'case' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "224",
+                    "severity": "warning",
+                    "message": "'block' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "225",
+                    "severity": "warning",
+                    "message": "'case' child has incorrect indentation level 19, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "226",
+                    "severity": "warning",
+                    "message": "'block' child has incorrect indentation level 19, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "227",
+                    "severity": "warning",
+                    "message": "'case' child has incorrect indentation level 19, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "228",
+                    "severity": "warning",
+                    "message": "'block' child has incorrect indentation level 19, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "229",
+                    "severity": "warning",
+                    "message": "'case' child has incorrect indentation level 19, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "230",
+                    "severity": "warning",
+                    "message": "'block' child has incorrect indentation level 19, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "231",
+                    "severity": "warning",
+                    "message": "'case' child has incorrect indentation level 19, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "232",
+                    "severity": "warning",
+                    "message": "'case' child has incorrect indentation level 19, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "233",
+                    "severity": "warning",
+                    "message": "'block' child has incorrect indentation level 19, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "235",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "237",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "239",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/codebuff/406/MergeTask.java\nindex 68476aa278..0b3193e32b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/codebuff/406/MergeTask.java\n@@ -18,7 +18,6 @@\n  */\n \n package org.apache.iotdb.db.engine.merge.task;\n-\n import java.io.File;\n import java.io.IOException;\n import java.util.ArrayList;\n@@ -51,193 +50,192 @@ import org.slf4j.LoggerFactory;\n  *        chunks in the seqFiles into temp files and replace the seqFiles with the temp files.\n  *        3. remove unseqFiles\n  */\n-public class MergeTask implements Callable<Void> {\n-\n-  public static final String MERGE_SUFFIX = \".merge\";\n-  private static final Logger logger = LoggerFactory.getLogger(MergeTask.class);\n-\n-  MergeResource resource;\n-  String storageGroupSysDir;\n-  String storageGroupName;\n-  MergeLogger mergeLogger;\n-  MergeContext mergeContext = new MergeContext();\n-\n-  private MergeCallback callback;\n-  int concurrentMergeSeriesNum;\n-  String taskName;\n-  boolean fullMerge;\n-\n-  States states = States.START;\n-\n-  MergeMultiChunkTask chunkTask;\n-  MergeFileTask fileTask;\n-\n-  MergeTask(List<TsFileResource> seqFiles,\n-      List<TsFileResource> unseqFiles, String storageGroupSysDir, MergeCallback callback,\n-      String taskName, boolean fullMerge, String storageGroupName) {\n-    this.resource = new MergeResource(seqFiles, unseqFiles);\n-    this.storageGroupSysDir = storageGroupSysDir;\n-    this.callback = callback;\n-    this.taskName = taskName;\n-    this.fullMerge = fullMerge;\n-    this.concurrentMergeSeriesNum = 1;\n-    this.storageGroupName = storageGroupName;\n-  }\n-\n-  public MergeTask(MergeResource mergeResource, String storageGroupSysDir, MergeCallback callback,\n-      String taskName, boolean fullMerge, int concurrentMergeSeriesNum, String storageGroupName) {\n-    this.resource = mergeResource;\n-    this.storageGroupSysDir = storageGroupSysDir;\n-    this.callback = callback;\n-    this.taskName = taskName;\n-    this.fullMerge = fullMerge;\n-    this.concurrentMergeSeriesNum = concurrentMergeSeriesNum;\n-    this.storageGroupName = storageGroupName;\n-  }\n-\n-  @Override\n-  public Void call() throws Exception {\n-    try  {\n-      doMerge();\n+\n+public class MergeTask implements Callable < Void> {\n+\n+\n+    public static final String MERGE_SUFFIX =\n+        \".merge\";\n+\n+\n+    private static final Logger logger = LoggerFactory.getLogger(MergeTask.class);\n+\n+\n+    MergeResource resource;\n+\n+\n+    String storageGroupSysDir;\n+\n+\n+    String storageGroupName;\n+\n+\n+    MergeLogger mergeLogger;\n+\n+\n+    MergeContext mergeContext = new MergeContext();\n+\n+\n+    private MergeCallback callback;\n+\n+\n+    int concurrentMergeSeriesNum;\n+\n+\n+    String taskName;\n+\n+\n+    boolean fullMerge;\n+\n+\n+    States states = States.START;\n+\n+\n+    MergeMultiChunkTask chunkTask;\n+\n+\n+    MergeFileTask fileTask;\n+    MergeTask(List < TsFileResource> seqFiles, List < TsFileResource> unseqFiles, String storageGroupSysDir, MergeCallback callback, String taskName, boolean fullMerge, String storageGroupName) {\n+this.resource = new MergeResource(seqFiles, unseqFiles);\n+this.storageGroupSysDir = storageGroupSysDir;\n+this.callback = callback;\n+this.taskName = taskName;\n+this.fullMerge = fullMerge;\n+this.concurrentMergeSeriesNum = 1;\n+this.storageGroupName = storageGroupName;\n+                                                   } public MergeTask(MergeResource mergeResource, String storageGroupSysDir, MergeCallback callback, String taskName, boolean fullMerge, int concurrentMergeSeriesNum, String storageGroupName) {\n+this.resource = mergeResource;\n+this.storageGroupSysDir = storageGroupSysDir;\n+this.callback = callback;\n+this.taskName = taskName;\n+this.fullMerge = fullMerge;\n+this.concurrentMergeSeriesNum = concurrentMergeSeriesNum;\n+this.storageGroupName = storageGroupName;\n+                                                   } @ Override public Void call() throws Exception {\n+    try {\n+                                                         doMerge();\n     } catch (Exception e) {\n       logger.error(\"Runtime exception in merge {}\", taskName, e);\n       abort();\n     }\n     return null;\n-  }\n+                                                     }\n \n-  private void abort() throws IOException {\n+    private void abort() throws IOException {\n     states = States.ABORTED;\n     cleanUp(false);\n     // call the callback to make sure the StorageGroup exit merging status, but passing 2\n     // empty file lists to avoid files being deleted.\n     callback.call(Collections.emptyList(), Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n-  }\n+    }\n \n-  private void doMerge() throws IOException, MetadataException {\n+    private void doMerge() throws IOException, MetadataException {\n     if (logger.isInfoEnabled()) {\n-      logger.info(\"{} starts to merge {} seqFiles, {} unseqFiles\", taskName,\n-          resource.getSeqFiles().size(), resource.getUnseqFiles().size());\n+        logger.info(\"{} starts to merge {} seqFiles, {} unseqFiles\", taskName, resource.getSeqFiles().size(), resource.getUnseqFiles().size());\n     }\n     long startTime = System.currentTimeMillis();\n-    long totalFileSize = MergeUtils.collectFileSizes(resource.getSeqFiles(),\n-        resource.getUnseqFiles());\n+    long totalFileSize = MergeUtils.collectFileSizes(resource.getSeqFiles(), resource.getUnseqFiles());\n     mergeLogger = new MergeLogger(storageGroupSysDir);\n-\n     mergeLogger.logFiles(resource);\n-\n-    Set<String> devices = MManager.getInstance().getDevices(storageGroupName);\n-    Map<Path, MeasurementSchema> measurementSchemaMap = new HashMap<>();\n-    List<Path> unmergedSeries = new ArrayList<>();\n-    for (String device : devices) {\n-      InternalMNode deviceNode = (InternalMNode) MManager.getInstance().getNodeByPath(device);\n-      for (Entry<String, MNode> entry : deviceNode.getChildren().entrySet()) {\n-        Path path = new Path(device, entry.getKey());\n-        measurementSchemaMap.put(path, ((LeafMNode) entry.getValue()).getSchema());\n-        unmergedSeries.add(path);\n-      }\n+    Set < String> devices = MManager.getInstance().getDevices(storageGroupName);\n+    Map<Path, MeasurementSchema> measurementSchemaMap = new HashMap <>();\n+    List < Path> unmergedSeries = new ArrayList <>();\n+    for(String device : devices) {\n+                                                                     InternalMNode deviceNode = (InternalMNode) MManager.getInstance().getNodeByPath(device);\n+                                                                     for(Entry<String, MNode> entry : deviceNode.getChildren().entrySet()) {\n+                                     Path path = new Path(device, entry.getKey());\n+                                     measurementSchemaMap.put(path, ((LeafMNode) entry.getValue()).getSchema());\n+                                     unmergedSeries.add(path);\n+                                                                     }\n     }\n     resource.setMeasurementSchemaMap(measurementSchemaMap);\n-\n     mergeLogger.logMergeStart();\n-\n-    chunkTask = new MergeMultiChunkTask(mergeContext, taskName, mergeLogger, resource,\n-        fullMerge, unmergedSeries, concurrentMergeSeriesNum, storageGroupName);\n+    chunkTask = new MergeMultiChunkTask(mergeContext, taskName, mergeLogger, resource, fullMerge, unmergedSeries, concurrentMergeSeriesNum, storageGroupName);\n     states = States.MERGE_CHUNKS;\n     chunkTask.mergeSeries();\n     if (Thread.interrupted()) {\n-      logger.info(\"Merge task {} aborted\", taskName);\n-      abort();\n-      return;\n+        logger.info(\"Merge task {} aborted\", taskName);\n+        abort();\n+        return;\n     }\n-\n-\n-    fileTask = new MergeFileTask(taskName, mergeContext, mergeLogger, resource,\n-        resource.getSeqFiles());\n+    fileTask = new MergeFileTask(taskName, mergeContext, mergeLogger, resource, resource.getSeqFiles());\n     states = States.MERGE_FILES;\n     chunkTask = null;\n     fileTask.mergeFiles();\n     if (Thread.interrupted()) {\n-      logger.info(\"Merge task {} aborted\", taskName);\n-      abort();\n-      return;\n+        logger.info(\"Merge task {} aborted\", taskName);\n+        abort();\n+        return;\n     }\n-\n     states = States.CLEAN_UP;\n     fileTask = null;\n     cleanUp(true);\n     if (logger.isInfoEnabled()) {\n-      double elapsedTime = (double) (System.currentTimeMillis() - startTime) / 1000.0;\n-      double byteRate = totalFileSize / elapsedTime / 1024 / 1024;\n-      double seriesRate = unmergedSeries.size() / elapsedTime;\n-      double chunkRate = mergeContext.getTotalChunkWritten() / elapsedTime;\n-      double fileRate =\n-          (resource.getSeqFiles().size() + resource.getUnseqFiles().size()) / elapsedTime;\n-      double ptRate = mergeContext.getTotalPointWritten() / elapsedTime;\n-      logger.info(\"{} ends after {}s, byteRate: {}MB/s, seriesRate {}/s, chunkRate: {}/s, \"\n-              + \"fileRate: {}/s, ptRate: {}/s\",\n-          taskName, elapsedTime, byteRate, seriesRate, chunkRate, fileRate, ptRate);\n-    }\n-  }\n-\n-  void cleanUp(boolean executeCallback) throws IOException {\n-    logger.info(\"{} is cleaning up\", taskName);\n+        double elapsedTime = (double) (System.currentTimeMillis() - startTime)/\n+                                 1000.0;\n+        double byteRate = totalFileSize/\n+                              elapsedTime/1024/1024;\n+        double seriesRate = unmergedSeries.size()/\n+                                elapsedTime;\n+        double chunkRate = mergeContext.getTotalChunkWritten()/\n+                               elapsedTime;\n+        double fileRate = (resource.getSeqFiles().size() + resource.getUnseqFiles().size())/\n+                              elapsedTime;\n+        double ptRate = mergeContext.getTotalPointWritten()/\n+                            elapsedTime;\n+        logger.info(\"{} ends after {}s, byteRate: {}MB/s, seriesRate {}/s, chunkRate: {}/s, \" + \"fileRate: {}/s, ptRate: {}/s\", taskName, elapsedTime, byteRate, seriesRate, chunkRate, fileRate, ptRate);\n+    }\n+    }\n \n+    void cleanUp(boolean executeCallback) throws IOException {\n+    logger.info(\"{} is cleaning up\", taskName);\n     resource.clear();\n     mergeContext.clear();\n-\n     if (mergeLogger != null) {\n-      mergeLogger.close();\n+        mergeLogger.close();\n     }\n-\n-    for (TsFileResource seqFile : resource.getSeqFiles()) {\n-      File mergeFile = new File(seqFile.getPath() + MERGE_SUFFIX);\n-      mergeFile.delete();\n-      seqFile.setMerging(false);\n+    for(TsFileResource seqFile : resource.getSeqFiles()) {\n+                                                                 File mergeFile = new File(seqFile.getPath() + MERGE_SUFFIX);\n+                                                                 mergeFile.delete();\n+                                                                 seqFile.setMerging(false);\n     }\n-    for (TsFileResource unseqFile : resource.getUnseqFiles()) {\n-      unseqFile.setMerging(false);\n+    for(TsFileResource unseqFile : resource.getUnseqFiles()) {\n+                                                                 unseqFile.setMerging(false);\n     }\n-\n     File logFile = new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME);\n-    if (executeCallback) {\n+    if(executeCallback) {\n       // make sure merge.log is not deleted until unseqFiles are cleared so that when system\n       // reboots, the undeleted files can be deleted again\n-      callback.call(resource.getSeqFiles(), resource.getUnseqFiles(), logFile);\n+        callback.call(resource.getSeqFiles(), resource.getUnseqFiles(), logFile);\n     } else {\n-      logFile.delete();\n+        logFile.delete();\n+    }\n     }\n-  }\n \n-  public String getStorageGroupName() {\n+    public String getStorageGroupName() {\n     return storageGroupName;\n-  }\n-\n-  enum States {\n-    START,\n-    MERGE_CHUNKS,\n-    MERGE_FILES,\n-    CLEAN_UP,\n-    ABORTED\n-  }\n-\n-  public String getProgress() {\n-    switch (states) {\n-      case ABORTED:\n-        return \"Aborted\";\n-      case CLEAN_UP:\n-        return \"Cleaning up\";\n-      case MERGE_FILES:\n-        return \"Merging files: \" + fileTask.getProgress();\n-      case MERGE_CHUNKS:\n-        return \"Merging series: \" + chunkTask.getProgress();\n-      case START:\n-      default:\n-        return \"Just started\";\n-    }\n-  }\n-\n-  public String getTaskName() {\n+    }\n+\n+    enum States{START, MERGE_CHUNKS, MERGE_FILES, CLEAN_UP, ABORTED}\n+\n+    public String getProgress() {\n+    switch(states) {\n+    case ABORTED:\n+    return \"Aborted\";\n+                   case CLEAN_UP:\n+                   return \"Cleaning up\";\n+                   case MERGE_FILES:\n+                   return \"Merging files: \" + fileTask.getProgress();\n+                   case MERGE_CHUNKS:\n+                   return \"Merging series: \" + chunkTask.getProgress();\n+                   case START:\n+                   default:\n+                   return \"Just started\";\n+    }\n+    }\n+\n+    public String getTaskName() {\n     return taskName;\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 163
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "115",
+                    "severity": "warning",
+                    "message": "'method call' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_random/406/MergeTask.java\nindex 68476aa278..901f888cd5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_random/406/MergeTask.java\n@@ -111,7 +111,8 @@ public class MergeTask implements Callable<Void> {\n     cleanUp(false);\n     // call the callback to make sure the StorageGroup exit merging status, but passing 2\n     // empty file lists to avoid files being deleted.\n-    callback.call(Collections.emptyList(), Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n+    callback.call(Collections.emptyList()\n+    ,Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n   }\n \n   private void doMerge() throws IOException, MetadataException {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "113",
+                    "severity": "warning",
+                    "message": "Line is longer than 100 characters (found 175).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/406/MergeTask.java\nindex 68476aa278..48673d0d83 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/errored/1/406/MergeTask.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-incubator-iotdb/styler_three_grams/406/MergeTask.java\n@@ -110,8 +110,7 @@ public class MergeTask implements Callable<Void> {\n     states = States.ABORTED;\n     cleanUp(false);\n     // call the callback to make sure the StorageGroup exit merging status, but passing 2\n-    // empty file lists to avoid files being deleted.\n-    callback.call(Collections.emptyList(), Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n+    // empty file lists to avoid files being deleted.callback.call(Collections.emptyList(), Collections.emptyList(), new File(storageGroupSysDir, MergeLogger.MERGE_LOG_NAME));\n   }\n \n   private void doMerge() throws IOException, MetadataException {\n",
+            "diff_size": 2
+        }
+    ]
+}

@@ -1,0 +1,121 @@
+{
+    "error_id": "66",
+    "information": {
+        "errors": [
+            {
+                "line": "33",
+                "severity": "warning",
+                "message": "Use of @author javadoc keyword is prohibited.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": "/**\n *\n * @author: tnine\n *\n */\npublic class ConnectionRefLoader implements ResultsLoader {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "65",
+                    "column": "14",
+                    "severity": "warning",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.TypecastParenPadCheck"
+                },
+                {
+                    "line": "65",
+                    "column": "57",
+                    "severity": "warning",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.TypecastParenPadCheck"
+                },
+                {
+                    "line": "67",
+                    "column": "7",
+                    "severity": "warning",
+                    "message": "'}' at column 7 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/66/ConnectionRefLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/66/ConnectionRefLoader.java\nindex f1dd1b6073..75e1af1826 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/66/ConnectionRefLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/intellij/66/ConnectionRefLoader.java\n@@ -14,6 +14,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.usergrid.persistence.query.ir.result;\n \n \n@@ -29,53 +30,49 @@ import org.apache.usergrid.persistence.cassandra.ConnectionRefImpl;\n \n \n /**\n- *\n  * @author: tnine\n- *\n  */\n public class ConnectionRefLoader implements ResultsLoader {\n \n-    private final UUID sourceEntityId;\n-    private final String sourceType;\n-    private final String connectionType;\n-    private final String targetEntityType;\n+  private final UUID sourceEntityId;\n+  private final String sourceType;\n+  private final String connectionType;\n+  private final String targetEntityType;\n \n \n-    public ConnectionRefLoader( ConnectionRef connectionRef ) {\n-        this.sourceType = connectionRef.getConnectingEntity().getType();\n-        this.sourceEntityId = connectionRef.getConnectingEntity().getUuid();\n-        this.connectionType = connectionRef.getConnectionType();\n-        this.targetEntityType = connectionRef.getConnectedEntity().getType();\n-    }\n+  public ConnectionRefLoader(ConnectionRef connectionRef) {\n+    this.sourceType = connectionRef.getConnectingEntity().getType();\n+    this.sourceEntityId = connectionRef.getConnectingEntity().getUuid();\n+    this.connectionType = connectionRef.getConnectionType();\n+    this.targetEntityType = connectionRef.getConnectedEntity().getType();\n+  }\n \n \n-    @Override\n-    public Results getResults( List<ScanColumn> entityIds ) throws Exception {\n+  @Override\n+  public Results getResults(List<ScanColumn> entityIds) throws Exception {\n \n \n-        final EntityRef sourceRef = new SimpleEntityRef( sourceType, sourceEntityId );\n+    final EntityRef sourceRef = new SimpleEntityRef(sourceType, sourceEntityId);\n \n-        List<ConnectionRef> refs = new ArrayList<ConnectionRef>( entityIds.size() );\n+    List<ConnectionRef> refs = new ArrayList<ConnectionRef>(entityIds.size());\n \n-        for ( ScanColumn column : entityIds ) {\n+    for (ScanColumn column : entityIds) {\n \n-            SimpleEntityRef targetRef;\n+      SimpleEntityRef targetRef;\n \n-            if ( column instanceof ConnectionIndexSliceParser.ConnectionColumn ) {\n-                final ConnectionIndexSliceParser.ConnectionColumn connectionColumn =\n-                        ( ConnectionIndexSliceParser.ConnectionColumn ) column;\n-                targetRef = new SimpleEntityRef( connectionColumn.getTargetType(), connectionColumn.getUUID() );\n-            }\n+      if (column instanceof ConnectionIndexSliceParser.ConnectionColumn) {\n+        final ConnectionIndexSliceParser.ConnectionColumn connectionColumn =\n+            (ConnectionIndexSliceParser.ConnectionColumn) column;\n+        targetRef = new SimpleEntityRef(connectionColumn.getTargetType(), connectionColumn.getUUID());\n+      } else {\n+        targetRef = new SimpleEntityRef(targetEntityType, column.getUUID());\n+      }\n \n-            else {\n-                targetRef = new SimpleEntityRef( targetEntityType, column.getUUID() );\n-            }\n+      final ConnectionRef ref = new ConnectionRefImpl(sourceRef, connectionType, targetRef);\n \n-            final ConnectionRef ref = new ConnectionRefImpl( sourceRef, connectionType, targetRef );\n-\n-            refs.add( ref );\n-        }\n-\n-        return Results.fromConnections( refs );\n+      refs.add(ref);\n     }\n+\n+    return Results.fromConnections(refs);\n+  }\n }\n",
+            "diff_size": 38
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/66/ConnectionRefLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/66/ConnectionRefLoader.java\nindex f1dd1b6073..8c57ed65fe 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/66/ConnectionRefLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/naturalize/66/ConnectionRefLoader.java\n@@ -52,8 +52,7 @@ public class ConnectionRefLoader implements ResultsLoader {\n     @Override\n     public Results getResults( List<ScanColumn> entityIds ) throws Exception {\n \n-\n-        final EntityRef sourceRef = new SimpleEntityRef( sourceType, sourceEntityId );\n+    final EntityRef sourceRef = new SimpleEntityRef( sourceType, sourceEntityId );\n \n         List<ConnectionRef> refs = new ArrayList<ConnectionRef>( entityIds.size() );\n \n@@ -70,12 +69,11 @@ public class ConnectionRefLoader implements ResultsLoader {\n             else {\n                 targetRef = new SimpleEntityRef( targetEntityType, column.getUUID() );\n             }\n-\n-            final ConnectionRef ref = new ConnectionRefImpl( sourceRef, connectionType, targetRef );\n+final ConnectionRef ref = new ConnectionRefImpl( sourceRef, connectionType, targetRef );\n \n             refs.add( ref );\n         }\n \n         return Results.fromConnections( refs );\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "32",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/66/ConnectionRefLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/66/ConnectionRefLoader.java\nindex f1dd1b6073..337063a83f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/66/ConnectionRefLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/codebuff/66/ConnectionRefLoader.java\n@@ -20,7 +20,6 @@ package org.apache.usergrid.persistence.query.ir.result;\n import java.util.ArrayList;\n import java.util.List;\n import java.util.UUID;\n-\n import org.apache.usergrid.persistence.ConnectionRef;\n import org.apache.usergrid.persistence.EntityRef;\n import org.apache.usergrid.persistence.Results;\n@@ -33,6 +32,8 @@ import org.apache.usergrid.persistence.cassandra.ConnectionRefImpl;\n  * @author: tnine\n  *\n  */\n+\n+\n public class ConnectionRefLoader implements ResultsLoader {\n \n     private final UUID sourceEntityId;\n@@ -51,31 +52,20 @@ public class ConnectionRefLoader implements ResultsLoader {\n \n     @Override\n     public Results getResults( List<ScanColumn> entityIds ) throws Exception {\n-\n-\n         final EntityRef sourceRef = new SimpleEntityRef( sourceType, sourceEntityId );\n-\n         List<ConnectionRef> refs = new ArrayList<ConnectionRef>( entityIds.size() );\n-\n         for ( ScanColumn column : entityIds ) {\n-\n             SimpleEntityRef targetRef;\n-\n             if ( column instanceof ConnectionIndexSliceParser.ConnectionColumn ) {\n-                final ConnectionIndexSliceParser.ConnectionColumn connectionColumn =\n-                        ( ConnectionIndexSliceParser.ConnectionColumn ) column;\n+                final ConnectionIndexSliceParser.ConnectionColumn connectionColumn = ( ConnectionIndexSliceParser.ConnectionColumn ) column;\n                 targetRef = new SimpleEntityRef( connectionColumn.getTargetType(), connectionColumn.getUUID() );\n             }\n-\n             else {\n                 targetRef = new SimpleEntityRef( targetEntityType, column.getUUID() );\n             }\n-\n             final ConnectionRef ref = new ConnectionRefImpl( sourceRef, connectionType, targetRef );\n-\n             refs.add( ref );\n         }\n-\n         return Results.fromConnections( refs );\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "32",
+                    "severity": "warning",
+                    "message": "Use of @author javadoc keyword is prohibited.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/66/ConnectionRefLoader.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/66/ConnectionRefLoader.java\nindex f1dd1b6073..c80b692f6c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/errored/1/66/ConnectionRefLoader.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-usergrid/styler_three_grams/66/ConnectionRefLoader.java\n@@ -27,7 +27,6 @@ import org.apache.usergrid.persistence.Results;\n import org.apache.usergrid.persistence.SimpleEntityRef;\n import org.apache.usergrid.persistence.cassandra.ConnectionRefImpl;\n \n-\n /**\n  *\n  * @author: tnine\n",
+            "diff_size": 1
+        }
+    ]
+}

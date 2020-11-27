@@ -1,0 +1,203 @@
+{
+    "error_id": "67",
+    "information": {
+        "errors": [
+            {
+                "line": "65",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 91).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    return client()\n        .create(\n            BlobInfo.newBuilder(bucket, path + name).setStorageClass(storageClass).build(),\n            Storage.BlobTargetOption.doesNotExist());\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "65",
+                    "column": "46",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '+' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/67/GCloudClient.java\nindex d70375e6a6..805de2e952 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/67/GCloudClient.java\n@@ -62,8 +62,8 @@ class GCloudClient extends AbstractStorage {\n   Blob createBlob(String name) {\n     return client()\n         .create(\n-            BlobInfo.newBuilder(bucket, path + name).setStorageClass(storageClass).build(),\n-            Storage.BlobTargetOption.doesNotExist());\n+            BlobInfo.newBuilder(bucket,path +name).setStorageClass(storageClass).build(\n+            ),Storage.BlobTargetOption.doesNotExist());\n   }\n \n   @VisibleForTesting\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/67/GCloudClient.java\nindex d70375e6a6..b0f3fd71ab 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/67/GCloudClient.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.direct.gcloud.storage;\n \n import com.google.cloud.storage.Blob;\n@@ -32,15 +33,21 @@ import lombok.Getter;\n \n class GCloudClient extends AbstractStorage {\n \n-  @Getter final Map<String, Object> cfg;\n+  @Getter\n+  final Map<String, Object> cfg;\n \n-  @Getter final String bucket;\n+  @Getter\n+  final String bucket;\n \n-  @Getter final String path;\n+  @Getter\n+  final String path;\n \n-  @Getter final StorageClass storageClass;\n+  @Getter\n+  final StorageClass storageClass;\n \n-  @Nullable @Getter private transient Storage client;\n+  @Nullable\n+  @Getter\n+  private transient Storage client;\n \n   GCloudClient(EntityDescriptor entityDesc, URI uri, Map<String, Object> cfg) {\n     super(entityDesc, uri);\n@@ -62,7 +69,8 @@ class GCloudClient extends AbstractStorage {\n   Blob createBlob(String name) {\n     return client()\n         .create(\n-            BlobInfo.newBuilder(bucket, path + name).setStorageClass(storageClass).build(),\n+            BlobInfo.newBuilder(bucket, path + name).setStorageClass(storageClass)\n+                .build(),\n             Storage.BlobTargetOption.doesNotExist());\n   }\n \n",
+            "diff_size": 18
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/67/GCloudClient.java\nindex d70375e6a6..aa8dc1845a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/67/GCloudClient.java\n@@ -73,4 +73,4 @@ class GCloudClient extends AbstractStorage {\n     }\n     return client;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 96).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 100).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 58.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 97).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 118).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/67/GCloudClient.java\nindex d70375e6a6..c27e76e60d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/67/GCloudClient.java\n@@ -30,47 +30,45 @@ import java.util.Optional;\n import javax.annotation.Nullable;\n import lombok.Getter;\n \n+\n class GCloudClient extends AbstractStorage {\n \n-  @Getter final Map<String, Object> cfg;\n+    @Getter final Map<String, Object> cfg;\n \n-  @Getter final String bucket;\n+    @Getter final String bucket;\n \n-  @Getter final String path;\n+    @Getter final String path;\n \n-  @Getter final StorageClass storageClass;\n+    @Getter final StorageClass storageClass;\n \n-  @Nullable @Getter private transient Storage client;\n+    @Nullable @Getter private transient Storage client;\n \n-  GCloudClient(EntityDescriptor entityDesc, URI uri, Map<String, Object> cfg) {\n+    GCloudClient(EntityDescriptor entityDesc, URI uri, Map<String, Object> cfg) {\n     super(entityDesc, uri);\n     this.cfg = cfg;\n     this.bucket = uri.getAuthority();\n     this.path = toPath(uri);\n-    this.storageClass =\n-        Optional.ofNullable(cfg.get(\"storage-class\"))\n-            .map(Object::toString)\n-            .map(StorageClass::valueOf)\n-            .orElse(StorageClass.STANDARD);\n-  }\n+    this.storageClass = Optional.ofNullable(cfg.get(\"storage-class\")).map(Object::toString)\n+                                                                     .map(StorageClass::valueOf)\n+                                                                     .orElse(StorageClass.STANDARD);\n+    }\n \n   // normalize path to not start and to end with slash\n-  private static String toPath(URI uri) {\n+\n+    private static String toPath(URI uri) {\n     return UriUtil.getPathNormalized(uri) + \"/\";\n-  }\n+    }\n \n-  Blob createBlob(String name) {\n-    return client()\n-        .create(\n-            BlobInfo.newBuilder(bucket, path + name).setStorageClass(storageClass).build(),\n-            Storage.BlobTargetOption.doesNotExist());\n-  }\n+    Blob createBlob(String name) {\n+    return client().create(BlobInfo.newBuilder(bucket, path + name).setStorageClass(storageClass)\n+                                                                   .build(), Storage.BlobTargetOption.doesNotExist());\n+    }\n \n-  @VisibleForTesting\n-  Storage client() {\n+    @VisibleForTesting\n+    Storage client() {\n     if (client == null) {\n-      client = StorageOptions.getDefaultInstance().getService();\n+        client = StorageOptions.getDefaultInstance().getService();\n     }\n     return client;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "65",
+                    "column": "46",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '+' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/67/GCloudClient.java\nindex d70375e6a6..805de2e952 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/67/GCloudClient.java\n@@ -62,8 +62,8 @@ class GCloudClient extends AbstractStorage {\n   Blob createBlob(String name) {\n     return client()\n         .create(\n-            BlobInfo.newBuilder(bucket, path + name).setStorageClass(storageClass).build(),\n-            Storage.BlobTargetOption.doesNotExist());\n+            BlobInfo.newBuilder(bucket,path +name).setStorageClass(storageClass).build(\n+            ),Storage.BlobTargetOption.doesNotExist());\n   }\n \n   @VisibleForTesting\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 132).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/67/GCloudClient.java\nindex d70375e6a6..9f76febfe4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/67/GCloudClient.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/67/GCloudClient.java\n@@ -62,8 +62,7 @@ class GCloudClient extends AbstractStorage {\n   Blob createBlob(String name) {\n     return client()\n         .create(\n-            BlobInfo.newBuilder(bucket, path + name).setStorageClass(storageClass).build(),\n-            Storage.BlobTargetOption.doesNotExist());\n+            BlobInfo.newBuilder(bucket, path + name).setStorageClass(storageClass).build(),Storage.BlobTargetOption.doesNotExist());\n   }\n \n   @VisibleForTesting\n",
+            "diff_size": 2
+        }
+    ]
+}

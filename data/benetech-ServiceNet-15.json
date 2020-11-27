@@ -1,0 +1,63 @@
+{
+    "error_id": "15",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "column": "70",
+                "severity": "error",
+                "message": "'{' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "import feign.RequestTemplate;\n\npublic class UserFeignClientInterceptor implements RequestInterceptor{\n\n    private static final String AUTHORIZATION_HEADER = \"Authorization\";\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "intellij",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/benetech-ServiceNet/errored/1/15/UserFeignClientInterceptor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/benetech-ServiceNet/naturalize/15/UserFeignClientInterceptor.java\nindex c2816474e0..fddba45a0a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/benetech-ServiceNet/errored/1/15/UserFeignClientInterceptor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/benetech-ServiceNet/naturalize/15/UserFeignClientInterceptor.java\n@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.provider.authentication.OAuth2Authent\n import feign.RequestInterceptor;\n import feign.RequestTemplate;\n \n-public class UserFeignClientInterceptor implements RequestInterceptor{\n+public class UserFeignClientInterceptor implements RequestInterceptor {\n \n     private static final String AUTHORIZATION_HEADER = \"Authorization\";\n \n@@ -26,4 +26,4 @@ public class UserFeignClientInterceptor implements RequestInterceptor{\n             template.header(AUTHORIZATION_HEADER, String.format(\"%s %s\", BEARER_TOKEN_TYPE, details.getTokenValue()));\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 125 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "11",
+                    "column": "71",
+                    "severity": "error",
+                    "message": "'{' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/benetech-ServiceNet/errored/1/15/UserFeignClientInterceptor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/benetech-ServiceNet/styler_three_grams/15/UserFeignClientInterceptor.java\nindex c2816474e0..a06ad8d753 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/benetech-ServiceNet/errored/1/15/UserFeignClientInterceptor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/benetech-ServiceNet/styler_three_grams/15/UserFeignClientInterceptor.java\n@@ -8,22 +8,20 @@ import org.springframework.security.oauth2.provider.authentication.OAuth2Authent\n import feign.RequestInterceptor;\n import feign.RequestTemplate;\n \n-public class UserFeignClientInterceptor implements RequestInterceptor{\n+public class UserFeignClientInterceptor implements RequestInterceptor {private static final String AUTHORIZATION_HEADER = \"Authorization\";\n \n-    private static final String AUTHORIZATION_HEADER = \"Authorization\";\n+private static final String BEARER_TOKEN_TYPE = \"Bearer\";\n \n-    private static final String BEARER_TOKEN_TYPE = \"Bearer\";\n+@Override\n+public void apply(RequestTemplate template) {\n \n-    @Override\n-    public void apply(RequestTemplate template) {\n+    SecurityContext securityContext = SecurityContextHolder.getContext();\n+    Authentication authentication = securityContext.getAuthentication();\n \n-        SecurityContext securityContext = SecurityContextHolder.getContext();\n-        Authentication authentication = securityContext.getAuthentication();\n+    if (authentication != null && authentication.getDetails() instanceof OAuth2AuthenticationDetails) {\n \n-        if (authentication != null && authentication.getDetails() instanceof OAuth2AuthenticationDetails) {\n-\n-            OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) authentication.getDetails();\n-            template.header(AUTHORIZATION_HEADER, String.format(\"%s %s\", BEARER_TOKEN_TYPE, details.getTokenValue()));\n-        }\n+        OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) authentication.getDetails();\n+        template.header(AUTHORIZATION_HEADER, String.format(\"%s %s\", BEARER_TOKEN_TYPE, details.getTokenValue()));\n     }\n }\n+}\n",
+            "diff_size": 14
+        }
+    ]
+}

@@ -1,0 +1,148 @@
+{
+    "error_id": "544",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/544/ServerIntFloatRow.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/544/ServerIntFloatRow.java\nindex e65d57bef5..b55f4bcc50 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/544/ServerIntFloatRow.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/544/ServerIntFloatRow.java\n@@ -34,146 +34,149 @@ import org.apache.commons.logging.LogFactory;\n  */\n public class ServerIntFloatRow extends ServerBasicTypeRow implements IIntFloatOp {\n \n-  private static final Log LOG = LogFactory.getLog(ServerIntFloatRow.class);\n-\n-  /**\n-   * Create a new ServerIntDoubleRow\n-   *\n-   * @param rowId row index\n-   * @param rowType row type\n-   * @param startCol start position\n-   * @param endCol end position\n-   * @param estElemNum the estimate element number\n-   * @param storage inner storage\n-   */\n-  public ServerIntFloatRow(int rowId, RowType rowType, int startCol, int endCol, int estElemNum,\n-      IntFloatStorage storage) {\n-    super(rowId, rowType, startCol, endCol, estElemNum, storage);\n-  }\n-\n-  /**\n-   * Create a new ServerIntDoubleRow\n-   *\n-   * @param rowId row index\n-   * @param rowType row type\n-   * @param startCol start position\n-   * @param endCol end position\n-   * @param estElemNum the estimate element number\n-   */\n-  public ServerIntFloatRow(int rowId, RowType rowType, int startCol, int endCol, int estElemNum) {\n-    this(rowId, rowType, startCol, endCol, estElemNum, null);\n-  }\n-\n-  /**\n-   * Create a empty ServerIntFloatRow\n-   *\n-   * @param rowType row type\n-   */\n-  public ServerIntFloatRow(RowType rowType) {\n-    this(0, rowType, 0, 0, 0);\n-  }\n-\n-  //////////////////////////////////////////////////////////////////////////////////////////////////\n-  //Methods with out lock operation, you must call startWrite/startRead before using these methods\n-  // and call endWrite/endRead after\n-  //////////////////////////////////////////////////////////////////////////////////////////////////\n-\n-  @Override\n-  public IntFloatStorage getStorage() {\n-    return (IntFloatStorage) storage;\n-  }\n-\n-  @Override\n-  public float get(int index) {\n-    return getStorage().get(index);\n-  }\n-\n-  @Override\n-  public void set(int index, float value) {\n-    getStorage().set(index, value);\n-  }\n-\n-  @Override\n-  public float[] get(int[] indices) {\n-    return getStorage().get(indices);\n-  }\n-\n-  @Override\n-  public void set(int[] indices, float[] values) {\n-    assert indices.length == values.length;\n-    getStorage().set(indices, values);\n-  }\n-\n-  @Override\n-  public void addTo(int index, float value) {\n-    getStorage().addTo(index, value);\n-  }\n-\n-  @Override\n-  public void addTo(int[] indices, float[] values) {\n-    assert indices.length == values.length;\n-    getStorage().addTo(indices, values);\n-  }\n-\n-  @Override\n-  public int size() {\n-    return getStorage().size();\n-  }\n-\n-  @Override\n-  public void mergeTo(IntFloatVector mergedRow) {\n-    startRead();\n-    try {\n-      getStorage().mergeTo(mergedRow);\n-    } finally {\n-      endRead();\n-    }\n-  }\n-\n-  @Override\n-  public ServerRow deepClone() {\n-    startRead();\n-    try {\n-      return new ServerIntFloatRow(rowId, rowType, (int) startCol, (int) endCol, (int) estElemNum,\n-          (IntFloatStorage) getStorage().deepClone());\n-    } finally {\n-      endRead();\n-    }\n-  }\n-\n-  @Override\n-  public ServerRow adaptiveClone() {\n-    startRead();\n-    try {\n-      return new ServerIntFloatRow(rowId, rowType, (int) startCol, (int) endCol, (int) estElemNum,\n-          (IntFloatStorage) getStorage().adaptiveClone());\n-    } finally {\n-      endRead();\n-    }\n-  }\n-\n-  /**\n-   * Check the vector contains the index or not\n-   *\n-   * @param index element index\n-   * @return true means exist\n-   */\n-  public boolean exist(int index) {\n-    return getStorage().exist(index);\n-  }\n-\n-  @Override\n-  public float initAndGet(int index, InitFunc func) {\n-    return getStorage().initAndGet(index, func);\n-  }\n-\n-  @Override\n-  public void indexGet(IndexType indexType, int indexSize, ByteBuf in, ByteBuf out, InitFunc func) {\n-    getStorage().indexGet(indexType, indexSize, in, out, func);\n-  }\n-\n-  @Override\n-  public void elemUpdate(FloatElemUpdateFunc func) {\n-    getStorage().elemUpdate(func);\n-  }\n+    private static final Log LOG = LogFactory.getLog(ServerIntFloatRow.class);\n+\n+    /**\n+     * Create a new ServerIntDoubleRow\n+     *\n+     * @param rowId      row index\n+     * @param rowType    row type\n+     * @param startCol   start position\n+     * @param endCol     end position\n+     * @param estElemNum the estimate element number\n+     * @param storage    inner storage\n+     */\n+    public ServerIntFloatRow(int rowId, RowType rowType, int startCol, int endCol, int estElemNum,\n+                             IntFloatStorage storage) {\n+        super(rowId, rowType, startCol, endCol, estElemNum, storage);\n+    }\n+\n+    /**\n+     * Create a new ServerIntDoubleRow\n+     *\n+     * @param rowId      row index\n+     * @param rowType    row type\n+     * @param startCol   start position\n+     * @param endCol     end position\n+     * @param estElemNum the estimate element number\n+     */\n+    public ServerIntFloatRow(int rowId, RowType rowType, int startCol, int endCol, int estElemNum) {\n+        this(rowId, rowType, startCol, endCol, estElemNum, null);\n+    }\n+\n+    /**\n+     * Create a empty ServerIntFloatRow\n+     *\n+     * @param rowType row type\n+     */\n+    public ServerIntFloatRow(RowType rowType) {\n+        this(0, rowType, 0, 0, 0);\n+    }\n+\n+    //////////////////////////////////////////////////////////////////////////////////////////////////\n+    //Methods with out lock operation, you must call startWrite/startRead before using these methods\n+    // and call endWrite/endRead after\n+    //////////////////////////////////////////////////////////////////////////////////////////////////\n+\n+    @Override\n+    public IntFloatStorage getStorage() {\n+        return (IntFloatStorage) storage;\n+    }\n+\n+    @Override\n+    public float get(int index) {\n+        return getStorage().get(index);\n+    }\n+\n+    @Override\n+    public void set(int index, float value) {\n+        getStorage().set(index, value);\n+    }\n+\n+    @Override\n+    public float[] get(int[] indices) {\n+        return getStorage().get(indices);\n+    }\n+\n+    @Override\n+    public void set(int[] indices, float[] values) {\n+        assert indices.length == values.length;\n+        getStorage().set(indices, values);\n+    }\n+\n+    @Override\n+    public void addTo(int index, float value) {\n+        getStorage().addTo(index, value);\n+    }\n+\n+    @Override\n+    public void addTo(int[] indices, float[] values) {\n+        assert indices.length == values.length;\n+        getStorage().addTo(indices, values);\n+    }\n+\n+    @Override\n+    public int size() {\n+        return getStorage().size();\n+    }\n+\n+    @Override\n+    public void mergeTo(IntFloatVector mergedRow) {\n+        startRead();\n+        try {\n+            getStorage().mergeTo(mergedRow);\n+        } finally {\n+            endRead();\n+        }\n+    }\n+\n+    @Override\n+    public ServerRow deepClone() {\n+        startRead();\n+        try {\n+            return new ServerIntFloatRow(rowId, rowType, (int) startCol, (int) endCol,\n+                    (int) estElemNum,\n+                    (IntFloatStorage) getStorage().deepClone());\n+        } finally {\n+            endRead();\n+        }\n+    }\n+\n+    @Override\n+    public ServerRow adaptiveClone() {\n+        startRead();\n+        try {\n+            return new ServerIntFloatRow(rowId, rowType, (int) startCol, (int) endCol,\n+                    (int) estElemNum,\n+                    (IntFloatStorage) getStorage().adaptiveClone());\n+        } finally {\n+            endRead();\n+        }\n+    }\n+\n+    /**\n+     * Check the vector contains the index or not\n+     *\n+     * @param index element index\n+     * @return true means exist\n+     */\n+    public boolean exist(int index) {\n+        return getStorage().exist(index);\n+    }\n+\n+    @Override\n+    public float initAndGet(int index, InitFunc func) {\n+        return getStorage().initAndGet(index, func);\n+    }\n+\n+    @Override\n+    public void indexGet(IndexType indexType, int indexSize, ByteBuf in, ByteBuf out,\n+                         InitFunc func) {\n+        getStorage().indexGet(indexType, indexSize, in, out, func);\n+    }\n+\n+    @Override\n+    public void elemUpdate(FloatElemUpdateFunc func) {\n+        getStorage().elemUpdate(func);\n+    }\n }\n",
+            "diff_size": 145
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/544/ServerIntFloatRow.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/544/ServerIntFloatRow.java\nindex e65d57bef5..bd9c45dd8b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/544/ServerIntFloatRow.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/544/ServerIntFloatRow.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ps.storage.vector;\n \n import com.tencent.angel.ml.math2.vector.IntFloatVector;\n@@ -135,8 +134,8 @@ public class ServerIntFloatRow extends ServerBasicTypeRow implements IIntFloatOp\n     startRead();\n     try {\n       return new ServerIntFloatRow(rowId, rowType, (int) startCol, (int) endCol, (int) estElemNum,\n-          (IntFloatStorage) getStorage().deepClone());\n-    } finally {\n+(IntFloatStorage) getStorage().deepClone());\n+  } finally {\n       endRead();\n     }\n   }\n@@ -146,8 +145,8 @@ public class ServerIntFloatRow extends ServerBasicTypeRow implements IIntFloatOp\n     startRead();\n     try {\n       return new ServerIntFloatRow(rowId, rowType, (int) startCol, (int) endCol, (int) estElemNum,\n-          (IntFloatStorage) getStorage().adaptiveClone());\n-    } finally {\n+(IntFloatStorage) getStorage().adaptiveClone());\n+  } finally {\n       endRead();\n     }\n   }\n@@ -176,4 +175,4 @@ public class ServerIntFloatRow extends ServerBasicTypeRow implements IIntFloatOp\n   public void elemUpdate(FloatElemUpdateFunc func) {\n     getStorage().elemUpdate(func);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 50.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 64.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 74.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 83.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "165",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 172.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "182",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/544/ServerIntFloatRow.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/544/ServerIntFloatRow.java\nindex e65d57bef5..21c96ae656 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/544/ServerIntFloatRow.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/544/ServerIntFloatRow.java\n@@ -32,9 +32,9 @@ import org.apache.commons.logging.LogFactory;\n /**\n  * The row with \"int\" index type and \"float\" value type in PS\n  */\n-public class ServerIntFloatRow extends ServerBasicTypeRow implements IIntFloatOp {\n \n-  private static final Log LOG = LogFactory.getLog(ServerIntFloatRow.class);\n+public class ServerIntFloatRow extends ServerBasicTypeRow implements IIntFloatOp {\n+    private static final Log LOG = LogFactory.getLog(ServerIntFloatRow.class);\n \n   /**\n    * Create a new ServerIntDoubleRow\n@@ -46,10 +46,10 @@ public class ServerIntFloatRow extends ServerBasicTypeRow implements IIntFloatOp\n    * @param estElemNum the estimate element number\n    * @param storage inner storage\n    */\n-  public ServerIntFloatRow(int rowId, RowType rowType, int startCol, int endCol, int estElemNum,\n-      IntFloatStorage storage) {\n+\n+    public ServerIntFloatRow(int rowId, RowType rowType, int startCol, int endCol, int estElemNum, IntFloatStorage storage) {\n     super(rowId, rowType, startCol, endCol, estElemNum, storage);\n-  }\n+    }\n \n   /**\n    * Create a new ServerIntDoubleRow\n@@ -60,97 +60,107 @@ public class ServerIntFloatRow extends ServerBasicTypeRow implements IIntFloatOp\n    * @param endCol end position\n    * @param estElemNum the estimate element number\n    */\n-  public ServerIntFloatRow(int rowId, RowType rowType, int startCol, int endCol, int estElemNum) {\n+\n+    public ServerIntFloatRow(int rowId, RowType rowType, int startCol, int endCol, int estElemNum) {\n     this(rowId, rowType, startCol, endCol, estElemNum, null);\n-  }\n+    }\n \n   /**\n    * Create a empty ServerIntFloatRow\n    *\n    * @param rowType row type\n    */\n-  public ServerIntFloatRow(RowType rowType) {\n+\n+    public ServerIntFloatRow(RowType rowType) {\n     this(0, rowType, 0, 0, 0);\n-  }\n+    }\n \n   //////////////////////////////////////////////////////////////////////////////////////////////////\n   //Methods with out lock operation, you must call startWrite/startRead before using these methods\n   // and call endWrite/endRead after\n   //////////////////////////////////////////////////////////////////////////////////////////////////\n \n-  @Override\n-  public IntFloatStorage getStorage() {\n+    @Override\n+    public IntFloatStorage getStorage() {\n     return (IntFloatStorage) storage;\n-  }\n+    }\n \n-  @Override\n-  public float get(int index) {\n+    @Override\n+    public float get(int index) {\n     return getStorage().get(index);\n-  }\n+    }\n \n-  @Override\n-  public void set(int index, float value) {\n+    @Override\n+    public void set(int index, float value) {\n     getStorage().set(index, value);\n-  }\n+    }\n \n-  @Override\n-  public float[] get(int[] indices) {\n+    @Override\n+    public float[] get(int[] indices) {\n     return getStorage().get(indices);\n-  }\n+    }\n \n-  @Override\n-  public void set(int[] indices, float[] values) {\n+    @Override\n+    public void set(int[] indices, float[] values) {\n     assert indices.length == values.length;\n     getStorage().set(indices, values);\n-  }\n+    }\n \n-  @Override\n-  public void addTo(int index, float value) {\n+    @Override\n+    public void addTo(int index, float value) {\n     getStorage().addTo(index, value);\n-  }\n+    }\n \n-  @Override\n-  public void addTo(int[] indices, float[] values) {\n+    @Override\n+    public void addTo(int[] indices, float[] values) {\n     assert indices.length == values.length;\n     getStorage().addTo(indices, values);\n-  }\n+    }\n \n-  @Override\n-  public int size() {\n+    @Override\n+    public int size() {\n     return getStorage().size();\n-  }\n+    }\n \n-  @Override\n-  public void mergeTo(IntFloatVector mergedRow) {\n+    @Override\n+    public void mergeTo(IntFloatVector mergedRow) {\n     startRead();\n     try {\n-      getStorage().mergeTo(mergedRow);\n+        getStorage().mergeTo(mergedRow);\n     } finally {\n       endRead();\n     }\n-  }\n+    }\n \n-  @Override\n-  public ServerRow deepClone() {\n+    @Override\n+    public ServerRow deepClone() {\n     startRead();\n     try {\n-      return new ServerIntFloatRow(rowId, rowType, (int) startCol, (int) endCol, (int) estElemNum,\n-          (IntFloatStorage) getStorage().deepClone());\n+        return new ServerIntFloatRow(rowId,\n+        rowType,\n+        (int) startCol,\n+        (int) endCol,\n+        (int) estElemNum,\n+        (IntFloatStorage) getStorage().deepClone());\n     } finally {\n       endRead();\n     }\n-  }\n+    }\n \n-  @Override\n-  public ServerRow adaptiveClone() {\n+    @Override\n+    public ServerRow adaptiveClone() {\n     startRead();\n     try {\n-      return new ServerIntFloatRow(rowId, rowType, (int) startCol, (int) endCol, (int) estElemNum,\n-          (IntFloatStorage) getStorage().adaptiveClone());\n+        return new ServerIntFloatRow(rowId,\n+        rowType,\n+        (int) startCol,\n+        (int) endCol,\n+        (int) estElemNum,\n+        (IntFloatStorage) getStorage().adaptiveClone());\n     } finally {\n       endRead();\n     }\n-  }\n+    }\n \n   /**\n    * Check the vector contains the index or not\n@@ -158,22 +168,24 @@ public class ServerIntFloatRow extends ServerBasicTypeRow implements IIntFloatOp\n    * @param index element index\n    * @return true means exist\n    */\n-  public boolean exist(int index) {\n+\n+    public boolean exist(int index) {\n     return getStorage().exist(index);\n-  }\n+    }\n \n-  @Override\n-  public float initAndGet(int index, InitFunc func) {\n+    @Override\n+    public float initAndGet(int index, InitFunc func) {\n     return getStorage().initAndGet(index, func);\n-  }\n+    }\n \n-  @Override\n-  public void indexGet(IndexType indexType, int indexSize, ByteBuf in, ByteBuf out, InitFunc func) {\n+    @Override\n+    public void indexGet(IndexType indexType, int indexSize, ByteBuf in, ByteBuf out, InitFunc func) {\n     getStorage().indexGet(indexType, indexSize, in, out, func);\n-  }\n+    }\n \n-  @Override\n-  public void elemUpdate(FloatElemUpdateFunc func) {\n+    @Override\n+    public void elemUpdate(FloatElemUpdateFunc func) {\n     getStorage().elemUpdate(func);\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 72
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/544/ServerIntFloatRow.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/544/ServerIntFloatRow.java\nindex e65d57bef5..c83d9408a0 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/544/ServerIntFloatRow.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/544/ServerIntFloatRow.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ps.storage.vector;\n \n import com.tencent.angel.ml.math2.vector.IntFloatVector;\n",
+            "diff_size": 1
+        }
+    ]
+}

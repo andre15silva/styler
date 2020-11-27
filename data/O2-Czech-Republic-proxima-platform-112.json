@@ -1,0 +1,830 @@
+{
+    "error_id": "112",
+    "information": {
+        "errors": [
+            {
+                "line": "87",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 96).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now));\n    assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n    assertEquals(Pair.of(now + 30_000L, \"test1\"), cache.get(\"key\", \"attribute\", now + 31_000L));\n    assertNull(cache.get(\"key\", \"attribute\", now - 1));\n    assertEquals(2, cache.get(\"key\").get(\"attribute\").size());\n  }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 172).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "86",
+                    "column": "172",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/112/TimeBoundedVersionedCacheTest.java\nindex 10e6eabc86..6c4a7c26c4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/112/TimeBoundedVersionedCacheTest.java\n@@ -83,8 +83,7 @@ public class TimeBoundedVersionedCacheTest {\n     now -= 30_000L;\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now));\n-    assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n-    assertEquals(Pair.of(now + 30_000L, \"test1\"), cache.get(\"key\", \"attribute\", now + 31_000L));\n+    assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));assertEquals(Pair.of(now + 30_000L, \"test1\"), cache.get(\"key\", \"attribute\", now + 31_000L));\n     assertNull(cache.get(\"key\", \"attribute\", now - 1));\n     assertEquals(2, cache.get(\"key\").get(\"attribute\").size());\n   }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/112/TimeBoundedVersionedCacheTest.java\nindex 10e6eabc86..900682aa4b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/112/TimeBoundedVersionedCacheTest.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.direct.view;\n \n import static org.junit.Assert.*;\n@@ -84,7 +85,8 @@ public class TimeBoundedVersionedCacheTest {\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now));\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n-    assertEquals(Pair.of(now + 30_000L, \"test1\"), cache.get(\"key\", \"attribute\", now + 31_000L));\n+    assertEquals(Pair.of(now + 30_000L, \"test1\"),\n+        cache.get(\"key\", \"attribute\", now + 31_000L));\n     assertNull(cache.get(\"key\", \"attribute\", now - 1));\n     assertEquals(2, cache.get(\"key\").get(\"attribute\").size());\n   }\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "'member def type' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 96).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "138",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "186",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/112/TimeBoundedVersionedCacheTest.java\nindex 10e6eabc86..4bc1e983c5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/112/TimeBoundedVersionedCacheTest.java\n@@ -32,7 +32,7 @@ public class TimeBoundedVersionedCacheTest {\n   EntityDescriptor entity =\n       repo.findEntity(\"gateway\")\n           .orElseThrow(() -> new IllegalArgumentException(\"Missing entity gateway\"));\n-  long now = System.currentTimeMillis();\n+long now = System.currentTimeMillis();\n \n   @Test\n   public void testCachePutGet() {\n@@ -130,22 +130,19 @@ public class TimeBoundedVersionedCacheTest {\n         \"key\",\n         \"a.\",\n         now,\n-        k -> null,\n-        (k, v) -> {\n+        k -> null, (k, v) -> {\n           scanned.put(k, v);\n           return true;\n         });\n     assertEquals(3, scanned.size());\n-\n-    now += 1;\n+now += 1;\n     assertTrue(cache.put(\"key\", \"a.2\", now, false, null));\n     scanned.clear();\n     cache.scan(\n         \"key\",\n         \"a.\",\n         now,\n-        k -> null,\n-        (k, v) -> {\n+        k -> null, (k, v) -> {\n           scanned.put(k, v);\n           return true;\n         });\n@@ -157,8 +154,7 @@ public class TimeBoundedVersionedCacheTest {\n         \"a.\",\n         \"a.2\",\n         now,\n-        k -> null,\n-        (k, v) -> {\n+        k -> null, (k, v) -> {\n           scanned.put(k, v);\n           return true;\n         });\n@@ -182,22 +178,19 @@ public class TimeBoundedVersionedCacheTest {\n         \"key\",\n         \"a.\",\n         now,\n-        k -> \"a.\",\n-        (k, v) -> {\n+        k -> \"a.\", (k, v) -> {\n           scanned.put(k, v);\n           return true;\n         });\n     assertEquals(1, scanned.size());\n-\n-    now += 1;\n+now += 1;\n     assertTrue(cache.put(\"key\", \"a.2\", now, false, null));\n     scanned.clear();\n     cache.scan(\n         \"key\",\n         \"a.\",\n         now,\n-        k -> \"a.\",\n-        (k, v) -> {\n+        k -> \"a.\", (k, v) -> {\n           scanned.put(k, v);\n           return true;\n         });\n@@ -209,8 +202,7 @@ public class TimeBoundedVersionedCacheTest {\n         \"a.\",\n         \"a.2\",\n         now,\n-        k -> \"a.\",\n-        (k, v) -> {\n+        k -> \"a.\", (k, v) -> {\n           scanned.put(k, v);\n           return true;\n         });\n@@ -222,11 +214,10 @@ public class TimeBoundedVersionedCacheTest {\n         \"key\",\n         \"a.\",\n         now - 3,\n-        k -> \"a.\",\n-        (k, v) -> {\n+        k -> \"a.\", (k, v) -> {\n           scanned.put(k, v);\n           return true;\n         });\n     assertEquals(2, scanned.size());\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 20
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 96).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "115",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "123",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "134",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 51, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "135",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 51, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "136",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 44, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "142",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 51, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "143",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 51, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 44, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 58, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "149",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 58, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "150",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 51, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "155",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "168",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 51, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "169",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 51, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "170",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 44, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "176",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 51, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "177",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 51, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "178",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 44, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "182",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 58, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "183",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 58, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "184",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 51, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "189",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 55, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "190",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 55, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "191",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 48, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "193",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/112/TimeBoundedVersionedCacheTest.java\nindex 10e6eabc86..0ac2e967bf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/112/TimeBoundedVersionedCacheTest.java\n@@ -16,7 +16,6 @@\n package cz.o2.proxima.direct.view;\n \n import static org.junit.Assert.*;\n-\n import com.typesafe.config.ConfigFactory;\n import cz.o2.proxima.repository.EntityDescriptor;\n import cz.o2.proxima.repository.Repository;\n@@ -26,34 +25,35 @@ import java.util.Map;\n import org.junit.Test;\n \n /** Test suite for {@link TimeBoundedVersionedCache}. */\n+\n+\n public class TimeBoundedVersionedCacheTest {\n \n-  Repository repo = Repository.of(ConfigFactory.load(\"test-reference.conf\"));\n-  EntityDescriptor entity =\n-      repo.findEntity(\"gateway\")\n-          .orElseThrow(() -> new IllegalArgumentException(\"Missing entity gateway\"));\n-  long now = System.currentTimeMillis();\n+    Repository repo = Repository.of(ConfigFactory.load(\"test-reference.conf\"));\n \n-  @Test\n-  public void testCachePutGet() {\n+    EntityDescriptor entity = repo.findEntity(\"gateway\").orElseThrow(() -> new IllegalArgumentException(\"Missing entity gateway\"));\n+    long now = System.currentTimeMillis();\n+\n+    @Test\n+    public void testCachePutGet() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test\"));\n     assertEquals(Pair.of(now, \"test\"), cache.get(\"key\", \"attribute\", now));\n     assertEquals(Pair.of(now, \"test\"), cache.get(\"key\", \"attribute\", now + 1));\n     assertNull(cache.get(\"key\", \"attribute\", now - 1));\n-  }\n+    }\n \n-  @Test\n-  public void testCachePutGetWithCorrectAttribute() {\n+    @Test\n+    public void testCachePutGetWithCorrectAttribute() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"armed\", now, false, \"test\"));\n     assertEquals(Pair.of(now, \"test\"), cache.get(\"key\", \"armed\", now));\n     assertEquals(Pair.of(now, \"test\"), cache.get(\"key\", \"armed\", now + 1));\n     assertNull(cache.get(\"key\", \"armed\", now - 1));\n-  }\n+    }\n \n-  @Test\n-  public void testMultiCacheWithinTimeout() {\n+    @Test\n+    public void testMultiCacheWithinTimeout() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test1\"));\n     now += 30_000L;\n@@ -61,11 +61,12 @@ public class TimeBoundedVersionedCacheTest {\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now));\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n     assertEquals(Pair.of(now - 30_000L, \"test1\"), cache.get(\"key\", \"attribute\", now - 1));\n-    assertEquals(2, cache.get(\"key\").get(\"attribute\").size());\n-  }\n+    assertEquals(2, cache.get(\"key\").get(\"attribute\")\n+                                    .size());\n+    }\n \n-  @Test\n-  public void testMultiCacheWithinTimeoutOverwrite() {\n+    @Test\n+    public void testMultiCacheWithinTimeoutOverwrite() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test1\"));\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n@@ -74,10 +75,10 @@ public class TimeBoundedVersionedCacheTest {\n     assertEquals(Pair.of(now, \"test3\"), cache.get(\"key\", \"attribute\", now));\n     assertFalse(cache.put(\"key\", \"attribute\", now, false, \"test4\"));\n     assertEquals(Pair.of(now, \"test3\"), cache.get(\"key\", \"attribute\", now));\n-  }\n+    }\n \n-  @Test\n-  public void testMultiCacheWithinTimeoutReversed() {\n+    @Test\n+    public void testMultiCacheWithinTimeoutReversed() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test1\"));\n     now -= 30_000L;\n@@ -86,11 +87,12 @@ public class TimeBoundedVersionedCacheTest {\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n     assertEquals(Pair.of(now + 30_000L, \"test1\"), cache.get(\"key\", \"attribute\", now + 31_000L));\n     assertNull(cache.get(\"key\", \"attribute\", now - 1));\n-    assertEquals(2, cache.get(\"key\").get(\"attribute\").size());\n-  }\n+    assertEquals(2, cache.get(\"key\").get(\"attribute\")\n+                                    .size());\n+    }\n \n-  @Test\n-  public void testMultiCacheOverTimeout() {\n+    @Test\n+    public void testMultiCacheOverTimeout() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test1\"));\n     now += 120_000L;\n@@ -98,76 +100,60 @@ public class TimeBoundedVersionedCacheTest {\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now));\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n     assertNull(cache.get(\"key\", \"attribute\", now - 1));\n-    assertEquals(1, cache.get(\"key\").get(\"attribute\").size());\n-  }\n+    assertEquals(1, cache.get(\"key\").get(\"attribute\")\n+                                    .size());\n+    }\n \n-  @Test\n-  public void testMultiCacheOverTimeoutReversed() {\n+    @Test\n+    public void testMultiCacheOverTimeoutReversed() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test1\"));\n     now -= 120_000L;\n     assertFalse(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n-    assertEquals(1, cache.get(\"key\").get(\"attribute\").size());\n-  }\n+    assertEquals(1, cache.get(\"key\").get(\"attribute\")\n+                                    .size());\n+    }\n \n-  @Test\n-  public void testGetWithDelete() {\n+    @Test\n+    public void testGetWithDelete() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"attribute.suffix\", now, false, null));\n     assertTrue(cache.put(\"key\", \"attribute.suffix2\", now, false, \"value\"));\n     assertNull(cache.get(\"key\", \"attribute.\", now + 1));\n-  }\n+    }\n \n-  @Test\n-  public void testMultiCacheScan() {\n+    @Test\n+    public void testMultiCacheScan() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"a.1\", now, false, \"test1\"));\n     now += 1;\n     assertTrue(cache.put(\"key\", \"a.2\", now, false, \"test2\"));\n     assertTrue(cache.put(\"key\", \"a.3\", now, false, \"test3\"));\n     Map<String, Pair<Long, Object>> scanned = new HashMap<>();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now,\n-        k -> null,\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n+    cache.scan(\"key\", \"a.\", now, k -> null, (k, v) -> {\n+                                                   scanned.put(k, v);\n+                                                   return true;\n+                                            });\n     assertEquals(3, scanned.size());\n-\n     now += 1;\n     assertTrue(cache.put(\"key\", \"a.2\", now, false, null));\n     scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now,\n-        k -> null,\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n+    cache.scan(\"key\", \"a.\", now, k -> null, (k, v) -> {\n+                                                   scanned.put(k, v);\n+                                                   return true;\n+                                            });\n     assertEquals(3, scanned.size());\n-\n     scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        \"a.2\",\n-        now,\n-        k -> null,\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n+    cache.scan(\"key\", \"a.\", \"a.2\", now, k -> null, (k, v) -> {\n+                                                          scanned.put(k, v);\n+                                                          return true;\n+                                                   });\n     assertEquals(1, scanned.size());\n     assertNotNull(scanned.get(\"a.3\"));\n-  }\n+    }\n \n-  @Test\n-  public void testMultiCacheScanWithTombstoneDelete() {\n+    @Test\n+    public void testMultiCacheScanWithTombstoneDelete() {\n     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n     assertTrue(cache.put(\"key\", \"a.1\", now, false, \"test1\"));\n     now += 1;\n@@ -178,55 +164,31 @@ public class TimeBoundedVersionedCacheTest {\n     now += 1;\n     assertTrue(cache.put(\"key\", \"a.3\", now, false, \"test3\"));\n     Map<String, Pair<Long, Object>> scanned = new HashMap<>();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now,\n-        k -> \"a.\",\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n+    cache.scan(\"key\", \"a.\", now, k -> \"a.\", (k, v) -> {\n+                                                   scanned.put(k, v);\n+                                                   return true;\n+                                            });\n     assertEquals(1, scanned.size());\n-\n     now += 1;\n     assertTrue(cache.put(\"key\", \"a.2\", now, false, null));\n     scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now,\n-        k -> \"a.\",\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n+    cache.scan(\"key\", \"a.\", now, k -> \"a.\", (k, v) -> {\n+                                                   scanned.put(k, v);\n+                                                   return true;\n+                                            });\n     assertEquals(2, scanned.size());\n-\n     scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        \"a.2\",\n-        now,\n-        k -> \"a.\",\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n+    cache.scan(\"key\", \"a.\", \"a.2\", now, k -> \"a.\", (k, v) -> {\n+                                                          scanned.put(k, v);\n+                                                          return true;\n+                                                   });\n     assertEquals(1, scanned.size());\n     assertNotNull(scanned.get(\"a.3\"));\n-\n     scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now - 3,\n-        k -> \"a.\",\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n+    cache.scan(\"key\", \"a.\", now - 3, k -> \"a.\", (k, v) -> {\n+                                                       scanned.put(k, v);\n+                                                       return true;\n+                                                });\n     assertEquals(2, scanned.size());\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 120
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "'+' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "column": "58",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '+' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "88",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "WhitespaceAround: '+' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "89",
+                    "column": "56",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "108",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "116",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "119",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "120",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "126",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "127",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "128",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "129",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "130",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "139",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "141",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "142",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "143",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "155",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "166",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "167",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "168",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "170",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "172",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "174",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "175",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "176",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "178",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "179",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "180",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "181",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "182",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "191",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "193",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "194",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "195",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "196",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "205",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "207",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "208",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "218",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "219",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "221",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "222",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "231",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 5, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "232",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 3, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "233",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 1, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/112/TimeBoundedVersionedCacheTest.java\nindex 10e6eabc86..18ef45952d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_random/112/TimeBoundedVersionedCacheTest.java\n@@ -84,149 +84,151 @@ public class TimeBoundedVersionedCacheTest {\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now));\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n-    assertEquals(Pair.of(now + 30_000L, \"test1\"), cache.get(\"key\", \"attribute\", now + 31_000L));\n-    assertNull(cache.get(\"key\", \"attribute\", now - 1));\n-    assertEquals(2, cache.get(\"key\").get(\"attribute\").size());\n-  }\n-\n-  @Test\n-  public void testMultiCacheOverTimeout() {\n-    TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n-    assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test1\"));\n-    now += 120_000L;\n-    assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n-    assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now));\n-    assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n-    assertNull(cache.get(\"key\", \"attribute\", now - 1));\n-    assertEquals(1, cache.get(\"key\").get(\"attribute\").size());\n-  }\n-\n-  @Test\n-  public void testMultiCacheOverTimeoutReversed() {\n-    TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n-    assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test1\"));\n-    now -= 120_000L;\n-    assertFalse(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n-    assertEquals(1, cache.get(\"key\").get(\"attribute\").size());\n-  }\n-\n-  @Test\n-  public void testGetWithDelete() {\n-    TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n-    assertTrue(cache.put(\"key\", \"attribute.suffix\", now, false, null));\n-    assertTrue(cache.put(\"key\", \"attribute.suffix2\", now, false, \"value\"));\n-    assertNull(cache.get(\"key\", \"attribute.\", now + 1));\n-  }\n-\n-  @Test\n-  public void testMultiCacheScan() {\n-    TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n-    assertTrue(cache.put(\"key\", \"a.1\", now, false, \"test1\"));\n-    now += 1;\n-    assertTrue(cache.put(\"key\", \"a.2\", now, false, \"test2\"));\n-    assertTrue(cache.put(\"key\", \"a.3\", now, false, \"test3\"));\n-    Map<String, Pair<Long, Object>> scanned = new HashMap<>();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now,\n-        k -> null,\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n-    assertEquals(3, scanned.size());\n-\n-    now += 1;\n-    assertTrue(cache.put(\"key\", \"a.2\", now, false, null));\n-    scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now,\n-        k -> null,\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n-    assertEquals(3, scanned.size());\n-\n-    scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        \"a.2\",\n-        now,\n-        k -> null,\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n-    assertEquals(1, scanned.size());\n-    assertNotNull(scanned.get(\"a.3\"));\n-  }\n-\n-  @Test\n-  public void testMultiCacheScanWithTombstoneDelete() {\n-    TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n-    assertTrue(cache.put(\"key\", \"a.1\", now, false, \"test1\"));\n-    now += 1;\n-    assertTrue(cache.put(\"key\", \"a.2\", now, false, \"test2\"));\n-    now += 1;\n-    // tombstone prefix delete\n-    assertTrue(cache.put(\"key\", \"a.\", now, false, null));\n-    now += 1;\n-    assertTrue(cache.put(\"key\", \"a.3\", now, false, \"test3\"));\n-    Map<String, Pair<Long, Object>> scanned = new HashMap<>();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now,\n-        k -> \"a.\",\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n-    assertEquals(1, scanned.size());\n-\n-    now += 1;\n-    assertTrue(cache.put(\"key\", \"a.2\", now, false, null));\n-    scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now,\n-        k -> \"a.\",\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n-    assertEquals(2, scanned.size());\n-\n-    scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        \"a.2\",\n-        now,\n-        k -> \"a.\",\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n-    assertEquals(1, scanned.size());\n-    assertNotNull(scanned.get(\"a.3\"));\n-\n-    scanned.clear();\n-    cache.scan(\n-        \"key\",\n-        \"a.\",\n-        now - 3,\n-        k -> \"a.\",\n-        (k, v) -> {\n-          scanned.put(k, v);\n-          return true;\n-        });\n-    assertEquals(2, scanned.size());\n-  }\n-}\n+    assertEquals(Pair.of(now\n+    + 30_000L,\"test1\" ), cache .get(\"key\",\"attribute\",now+31_000L))\n+    ;assertNull(cache.get(\"key\", \"attribute\", now - 1));\n+     assertEquals(2, cache.get(\"key\").get(\"attribute\").size());\n+   }\n+\n+   @Test\n+   public void testMultiCacheOverTimeout() {\n+     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n+     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test1\"));\n+     now += 120_000L;\n+     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n+     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now));\n+     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n+     assertNull(cache.get(\"key\", \"attribute\", now - 1));\n+     assertEquals(1, cache.get(\"key\").get(\"attribute\").size());\n+   }\n+\n+   @Test\n+   public void testMultiCacheOverTimeoutReversed() {\n+     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n+     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test1\"));\n+     now -= 120_000L;\n+     assertFalse(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n+     assertEquals(1, cache.get(\"key\").get(\"attribute\").size());\n+   }\n+\n+   @Test\n+   public void testGetWithDelete() {\n+     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n+     assertTrue(cache.put(\"key\", \"attribute.suffix\", now, false, null));\n+     assertTrue(cache.put(\"key\", \"attribute.suffix2\", now, false, \"value\"));\n+     assertNull(cache.get(\"key\", \"attribute.\", now + 1));\n+   }\n+\n+   @Test\n+   public void testMultiCacheScan() {\n+     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n+     assertTrue(cache.put(\"key\", \"a.1\", now, false, \"test1\"));\n+     now += 1;\n+     assertTrue(cache.put(\"key\", \"a.2\", now, false, \"test2\"));\n+     assertTrue(cache.put(\"key\", \"a.3\", now, false, \"test3\"));\n+     Map<String, Pair<Long, Object>> scanned = new HashMap<>();\n+     cache.scan(\n+         \"key\",\n+         \"a.\",\n+         now,\n+         k -> null,\n+         (k, v) -> {\n+           scanned.put(k, v);\n+           return true;\n+         });\n+     assertEquals(3, scanned.size());\n+\n+     now += 1;\n+     assertTrue(cache.put(\"key\", \"a.2\", now, false, null));\n+     scanned.clear();\n+     cache.scan(\n+         \"key\",\n+         \"a.\",\n+         now,\n+         k -> null,\n+         (k, v) -> {\n+           scanned.put(k, v);\n+           return true;\n+         });\n+     assertEquals(3, scanned.size());\n+\n+     scanned.clear();\n+     cache.scan(\n+         \"key\",\n+         \"a.\",\n+         \"a.2\",\n+         now,\n+         k -> null,\n+         (k, v) -> {\n+           scanned.put(k, v);\n+           return true;\n+         });\n+     assertEquals(1, scanned.size());\n+     assertNotNull(scanned.get(\"a.3\"));\n+   }\n+\n+   @Test\n+   public void testMultiCacheScanWithTombstoneDelete() {\n+     TimeBoundedVersionedCache cache = new TimeBoundedVersionedCache(entity, 60_000L);\n+     assertTrue(cache.put(\"key\", \"a.1\", now, false, \"test1\"));\n+     now += 1;\n+     assertTrue(cache.put(\"key\", \"a.2\", now, false, \"test2\"));\n+     now += 1;\n+     // tombstone prefix delete\n+     assertTrue(cache.put(\"key\", \"a.\", now, false, null));\n+     now += 1;\n+     assertTrue(cache.put(\"key\", \"a.3\", now, false, \"test3\"));\n+     Map<String, Pair<Long, Object>> scanned = new HashMap<>();\n+     cache.scan(\n+         \"key\",\n+         \"a.\",\n+         now,\n+         k -> \"a.\",\n+         (k, v) -> {\n+           scanned.put(k, v);\n+           return true;\n+         });\n+     assertEquals(1, scanned.size());\n+\n+     now += 1;\n+     assertTrue(cache.put(\"key\", \"a.2\", now, false, null));\n+     scanned.clear();\n+     cache.scan(\n+         \"key\",\n+         \"a.\",\n+         now,\n+         k -> \"a.\",\n+         (k, v) -> {\n+           scanned.put(k, v);\n+           return true;\n+         });\n+     assertEquals(2, scanned.size());\n+\n+     scanned.clear();\n+     cache.scan(\n+         \"key\",\n+         \"a.\",\n+         \"a.2\",\n+         now,\n+         k -> \"a.\",\n+         (k, v) -> {\n+           scanned.put(k, v);\n+           return true;\n+         });\n+     assertEquals(1, scanned.size());\n+     assertNotNull(scanned.get(\"a.3\"));\n+\n+     scanned.clear();\n+     cache.scan(\n+         \"key\",\n+         \"a.\",\n+         now - 3,\n+         k -> \"a.\",\n+         (k, v) -> {\n+           scanned.put(k, v);\n+           return true;\n+         });\n+     assertEquals(2, scanned.size());\n+   }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 148
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 172).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "86",
+                    "column": "172",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/112/TimeBoundedVersionedCacheTest.java\nindex 10e6eabc86..6c4a7c26c4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/112/TimeBoundedVersionedCacheTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/112/TimeBoundedVersionedCacheTest.java\n@@ -83,8 +83,7 @@ public class TimeBoundedVersionedCacheTest {\n     now -= 30_000L;\n     assertTrue(cache.put(\"key\", \"attribute\", now, false, \"test2\"));\n     assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now));\n-    assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));\n-    assertEquals(Pair.of(now + 30_000L, \"test1\"), cache.get(\"key\", \"attribute\", now + 31_000L));\n+    assertEquals(Pair.of(now, \"test2\"), cache.get(\"key\", \"attribute\", now + 1));assertEquals(Pair.of(now + 30_000L, \"test1\"), cache.get(\"key\", \"attribute\", now + 31_000L));\n     assertNull(cache.get(\"key\", \"attribute\", now - 1));\n     assertEquals(2, cache.get(\"key\").get(\"attribute\").size());\n   }\n",
+            "diff_size": 2
+        }
+    ]
+}

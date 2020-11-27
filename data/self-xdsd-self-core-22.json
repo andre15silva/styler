@@ -1,0 +1,187 @@
+{
+    "error_id": "22",
+    "information": {
+        "errors": [
+            {
+                "line": "77",
+                "column": "11",
+                "severity": "error",
+                "message": "'if' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+            }
+        ]
+    },
+    "source_code": "        );\n        Contract contract = contracts.get(key);\n        if(contract == null) {\n            final Project project = getProjectById(projectId);\n            final Contributor contributor = getContributorById(\n                contributorUsername, contributorProvider",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler/22/InMemoryContracts.java\nindex 41ee987199..c69f54fc3a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler/22/InMemoryContracts.java\n@@ -74,7 +74,7 @@ public final class InMemoryContracts implements Contracts {\n             projectId, contributorUsername, contributorProvider\n         );\n         Contract contract = contracts.get(key);\n-        if(contract == null) {\n+        if (contract == null) {\n             final Project project = getProjectById(projectId);\n             final Contributor contributor = getContributorById(\n                 contributorUsername, contributorProvider\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "220",
+                    "severity": "error",
+                    "message": "@param tag description should start with capital letter",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/intellij/22/InMemoryContracts.java\nindex 41ee987199..6ab8edb353 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/intellij/22/InMemoryContracts.java\n@@ -20,6 +20,7 @@\n  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n  * POSSIBILITY OF SUCH DAMAGE.\n  */\n+\n package com.selfxdsd.core.mock;\n \n import com.selfxdsd.api.*;\n@@ -39,8 +40,8 @@ import java.util.stream.StreamSupport;\n  * @author Mihai Andronache (amihaiemil@gmail.com)\n  * @version $Id$\n  * @todo #74:30min When Storage API has contributors available, update\n- *  InMemoryContracts#getContributorById() to use storage. Then update\n- *  InMemoryContractsTestCase tests to reflect that.\n+ * InMemoryContracts#getContributorById() to use storage. Then update\n+ * InMemoryContractsTestCase tests to reflect that.\n  * @since 0.0.1\n  */\n public final class InMemoryContracts implements Contracts {\n@@ -74,7 +75,7 @@ public final class InMemoryContracts implements Contracts {\n             projectId, contributorUsername, contributorProvider\n         );\n         Contract contract = contracts.get(key);\n-        if(contract == null) {\n+        if (contract == null) {\n             final Project project = getProjectById(projectId);\n             final Contributor contributor = getContributorById(\n                 contributorUsername, contributorProvider\n@@ -124,6 +125,7 @@ public final class InMemoryContracts implements Contracts {\n             .findFirst()\n             .orElse(null);\n     }\n+\n     /**\n      * Get a contributor from storage by id,\n      * or null if contributor is not found.\n@@ -175,8 +177,10 @@ public final class InMemoryContracts implements Contracts {\n             .filter(\n                 //@checkstyle LineLength (5 lines)\n                 key -> {\n-                    return key.contributorUsername.equals(contributor.username())\n-                        && key.contributorProvider.equals(contributor.provider());\n+                    return\n+                        key.contributorUsername.equals(contributor.username())\n+                            && key.contributorProvider\n+                            .equals(contributor.provider());\n                 }\n             )\n             .map(key -> this.contracts.get(key))\n@@ -213,10 +217,10 @@ public final class InMemoryContracts implements Contracts {\n         /**\n          * Constructor.\n          *\n-         * @param projectId Project ID.\n+         * @param projectId           Project ID.\n          * @param contributorUsername Contributor's username.\n          * @param contributorProvider Contributor's provider.\n-         * */\n+         */\n         ContractKey(\n             final int projectId,\n             final String contributorUsername,\n@@ -239,8 +243,10 @@ public final class InMemoryContracts implements Contracts {\n                 (InMemoryContracts.ContractKey) object;\n             //@checkstyle LineLength (5 lines)\n             return this.projectId == contractKey.projectId\n-                && this.contributorUsername.equals(contractKey.contributorUsername)\n-                && this.contributorProvider.equals(contractKey.contributorProvider);\n+                &&\n+                this.contributorUsername.equals(contractKey.contributorUsername)\n+                && this.contributorProvider\n+                .equals(contractKey.contributorProvider);\n         }\n \n         @Override\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "'final' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 95).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "76",
+                    "column": "11",
+                    "severity": "error",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 4, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 142).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 129.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "135",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be one of the following: 12, 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "155",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 181).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "161",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 85).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "163",
+                    "severity": "error",
+                    "message": "'lambda arguments' has incorrect indentation level 16, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "164",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 20, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "165",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 4, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "167",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "187",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 0, expected is 8, indentation should be the same level as line 190.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "222",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 100).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "226",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "231",
+                    "severity": "error",
+                    "message": "Line is longer than 80 characters (found 84).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/naturalize/22/InMemoryContracts.java\nindex 41ee987199..d63828c416 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/naturalize/22/InMemoryContracts.java\n@@ -66,18 +66,16 @@ public final class InMemoryContracts implements Contracts {\n \n     @Override\n     public Contract addContract(final int projectId,\n-                                final String contributorUsername,\n+final String contributorUsername,\n                                 final String contributorProvider,\n                                 final BigDecimal hourlyRate,\n                                 final String role) {\n-        final ContractKey key = new ContractKey(\n-            projectId, contributorUsername, contributorProvider\n+    final ContractKey key = new ContractKey(projectId, contributorUsername, contributorProvider\n         );\n         Contract contract = contracts.get(key);\n         if(contract == null) {\n             final Project project = getProjectById(projectId);\n-            final Contributor contributor = getContributorById(\n-                contributorUsername, contributorProvider\n+            final Contributor contributor = getContributorById(contributorUsername, contributorProvider\n             );\n             if (project != null && contributor != null) {\n                 contract = new Contract() {\n@@ -103,9 +101,8 @@ public final class InMemoryContracts implements Contracts {\n                 };\n                 contracts.put(key, contract);\n             } else {\n-                throw new IllegalStateException(\"Contract was not created:\"\n-                    + \" project or contributor was not found in storage\");\n-            }\n+                throw new IllegalStateException(\"Contract was not created:\" + \" project or contributor was not found in storage\");\n+    }\n         }\n         return contract;\n     }\n@@ -118,13 +115,10 @@ public final class InMemoryContracts implements Contracts {\n      * @return Found Project or null\n      */\n     private Project getProjectById(final int projectId) {\n-        return StreamSupport\n-            .stream(storage.projects().spliterator(), false)\n-            .filter(p -> p.projectId() == projectId)\n-            .findFirst()\n-            .orElse(null);\n+        return StreamSupport.stream(storage.projects().spliterator(), false).filter(p -> p.projectId() == projectId).findFirst().orElse(null);\n     }\n-    /**\n+\n+/**\n      * Get a contributor from storage by id,\n      * or null if contributor is not found.\n      *\n@@ -138,8 +132,7 @@ public final class InMemoryContracts implements Contracts {\n     ) {\n         //placeholder until there is a way to get contributors from storage API\n         return new Contributor() {\n-\n-            @Override\n+    @Override\n             public String username() {\n                 return username;\n             }\n@@ -152,36 +145,26 @@ public final class InMemoryContracts implements Contracts {\n             @Override\n             public Contracts contracts() {\n                 return ofContributor(\n-                    new StoredContributor(username, provider, null)\n-                );\n+                    new StoredContributor(username, provider, null));\n             }\n         };\n     }\n \n     @Override\n     public Contracts ofProject(final int projectId) {\n-        final List<Contract> ofProject = this.contracts.keySet()\n-            .stream()\n-            .filter(key -> key.projectId == projectId)\n-            .map(key -> this.contracts.get(key))\n-            .collect(Collectors.toList());\n-        return new ProjectContracts(projectId, ofProject);\n+        final List<Contract> ofProject = this.contracts.keySet().stream().filter(key -> key.projectId == projectId).map(key -> this.contracts.get(key)).collect(Collectors.toList());\n+return new ProjectContracts(projectId, ofProject);\n     }\n \n     @Override\n     public Contracts ofContributor(final Contributor contributor) {\n-        final List<Contract> ofContributor = this.contracts.keySet()\n-            .stream()\n-            .filter(\n+        final List<Contract> ofContributor = this.contracts.keySet().stream().filter(\n                 //@checkstyle LineLength (5 lines)\n                 key -> {\n-                    return key.contributorUsername.equals(contributor.username())\n-                        && key.contributorProvider.equals(contributor.provider());\n-                }\n-            )\n-            .map(key -> this.contracts.get(key))\n-            .collect(Collectors.toList());\n-        return new ContributorContracts(contributor, ofContributor);\n+                    return key.contributorUsername.equals(contributor.username())&& key.contributorProvider.equals(contributor.provider());\n+    }\n+            ).map(key -> this.contracts.get(key)).collect(Collectors.toList());\n+return new ContributorContracts(contributor, ofContributor);\n     }\n \n     @Override\n@@ -200,7 +183,8 @@ public final class InMemoryContracts implements Contracts {\n          * Project.\n          */\n         final int projectId;\n-        /**\n+\n+/**\n          * Contributor's username.\n          */\n         final String contributorUsername;\n@@ -235,21 +219,16 @@ public final class InMemoryContracts implements Contracts {\n             if (object == null || getClass() != object.getClass()) {\n                 return false;\n             }\n-            final InMemoryContracts.ContractKey contractKey =\n-                (InMemoryContracts.ContractKey) object;\n+            final InMemoryContracts.ContractKey contractKey =(InMemoryContracts.ContractKey) object;\n             //@checkstyle LineLength (5 lines)\n-            return this.projectId == contractKey.projectId\n-                && this.contributorUsername.equals(contractKey.contributorUsername)\n+            return this.projectId == contractKey.projectId&& this.contributorUsername.equals(contractKey.contributorUsername)\n                 && this.contributorProvider.equals(contractKey.contributorProvider);\n-        }\n+    }\n \n         @Override\n         public int hashCode() {\n             return Objects.hash(\n-                this.projectId,\n-                this.contributorUsername,\n-                this.contributorProvider\n-            );\n+                this.projectId, this.contributorUsername, this.contributorProvider);\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 47
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_random/22/InMemoryContracts.java\nindex 41ee987199..c69f54fc3a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_random/22/InMemoryContracts.java\n@@ -74,7 +74,7 @@ public final class InMemoryContracts implements Contracts {\n             projectId, contributorUsername, contributorProvider\n         );\n         Contract contract = contracts.get(key);\n-        if(contract == null) {\n+        if (contract == null) {\n             final Project project = getProjectById(projectId);\n             final Contributor contributor = getContributorById(\n                 contributorUsername, contributorProvider\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_three_grams/22/InMemoryContracts.java\nindex 41ee987199..c69f54fc3a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/errored/1/22/InMemoryContracts.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/self-xdsd-self-core/styler_three_grams/22/InMemoryContracts.java\n@@ -74,7 +74,7 @@ public final class InMemoryContracts implements Contracts {\n             projectId, contributorUsername, contributorProvider\n         );\n         Contract contract = contracts.get(key);\n-        if(contract == null) {\n+        if (contract == null) {\n             final Project project = getProjectById(projectId);\n             final Contributor contributor = getContributorById(\n                 contributorUsername, contributorProvider\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,917 @@
+{
+    "error_id": "178",
+    "information": {
+        "errors": [
+            {
+                "line": "95",
+                "column": "34",
+                "severity": "warning",
+                "message": "'{' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "\t}\n\t\n\tpublic static class JWTConfig{\n\t\t@Getter\n\t\t@Setter\n\t\tprivate Duration jwtDuration = Duration.hours(8);",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/178/ConqueryTokenRealm.java\nindex bdfef8427b..c0fdb528bc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/178/ConqueryTokenRealm.java\n@@ -34,11 +34,11 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \tprivate static final Class<? extends AuthenticationToken> TOKEN_CLASS = JwtToken.class;\n \n \tprivate final MasterMetaStorage storage;\n-\t\n+\n \t@Setter\n \tprivate JWTConfig jwtConfig = new JWTConfig();\n-\t\n-\t\n+\n+\n \tpublic ConqueryTokenRealm(MasterMetaStorage storage) {\n \t\tthis.storage = storage;\n \t\tsetAuthenticationTokenClass(TOKEN_CLASS);\n@@ -82,27 +82,27 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \n \t\treturn new ConqueryAuthenticationInfo(userId, token, this);\n \t}\n-\t\n \n-\t\n+\n+\n \tpublic String createTokenForUser(UserId userId) {\n \t\tif(storage.getUser(userId) == null) {\n \t\t\tthrow new IllegalArgumentException(\"Cannot create a JWT for unknown user with id: \" + userId);\n \t\t}\n \t\treturn TokenHandler.createToken(userId.toString(), jwtConfig.getJwtDuration(), getName(), jwtConfig.getTokenSignAlgorithm());\n \t}\n-\t\n-\tpublic static class JWTConfig{\n+\n+\tpublic static class JWTConfig {\n \t\t@Getter\n \t\t@Setter\n \t\tprivate Duration jwtDuration = Duration.hours(8);\n-\t\t\n+\n \t\t@JsonIgnore\n \t\t@Getter\n \t\tprivate Algorithm tokenSignAlgorithm = Algorithm.HMAC256(TokenHandler.generateTokenSecret());\n \t\t@JsonIgnore\n \t\tprivate JWTVerifier tokenVerifier;\n-\t\t\n+\n \t\t@JsonIgnore\n \t\tpublic JWTVerifier getTokenVerifier(ConqueryAuthenticationRealm realm) {\n \t\t\tif(tokenVerifier == null) {\n@@ -110,7 +110,7 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \t\t\t}\n \t\t\treturn tokenVerifier;\n \t\t}\n-\t\t\n+\n \n \t}\n \n",
+            "diff_size": 11
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "60",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "column": "9",
+                    "severity": "warning",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "108",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "115",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "116",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/178/ConqueryTokenRealm.java\nindex bdfef8427b..a7cb0b0916 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/178/ConqueryTokenRealm.java\n@@ -31,92 +31,88 @@ import org.apache.shiro.authc.IncorrectCredentialsException;\n @Slf4j\n public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \n-\tprivate static final Class<? extends AuthenticationToken> TOKEN_CLASS = JwtToken.class;\n-\n-\tprivate final MasterMetaStorage storage;\n-\t\n-\t@Setter\n-\tprivate JWTConfig jwtConfig = new JWTConfig();\n-\t\n-\t\n-\tpublic ConqueryTokenRealm(MasterMetaStorage storage) {\n-\t\tthis.storage = storage;\n-\t\tsetAuthenticationTokenClass(TOKEN_CLASS);\n-\t\tsetCredentialsMatcher(new SkippingCredentialsMatcher());\n-\t}\n-\n-\t@Override\n-\tprotected ConqueryAuthenticationInfo doGetConqueryAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {\n-\t\tif (!(TOKEN_CLASS.isAssignableFrom(token.getClass()))) {\n-\t\t\t// Incompatible token\n-\t\t\treturn null;\n-\t\t}\n-\t\tDecodedJWT decodedToken = null;\n-\t\ttry {\n-\t\t\tdecodedToken = jwtConfig.getTokenVerifier(this).verify((String) token.getCredentials());\n-\t\t}\n-\t\tcatch (TokenExpiredException e) {\n-\t\t\tlog.trace(\"The provided token is expired.\");\n-\t\t\tthrow new ExpiredCredentialsException(e);\n-\t\t}\n-\t\tcatch (SignatureVerificationException | InvalidClaimException e) {\n-\t\t\tlog.trace(\"The provided token was not successfully verified against its signature or claims.\");\n-\t\t\tthrow new IncorrectCredentialsException(e);\n-\t\t}\n-\t\tcatch (JWTVerificationException e) {\n-\t\t\tlog.trace(\"The provided token could not be verified.\");\n-\t\t\tthrow new AuthenticationException(e);\n-\t\t}\n-\n-\t\tString username = decodedToken.getSubject();\n-\n-\t\tUserId userId = UserId.Parser.INSTANCE.parse(username);\n-\t\tUser user = storage.getUser(userId);\n-\t\t// try to construct a new User if none could be found in the storage\n-\t\tif (user == null) {\n-\t\t\tlog.warn(\n-\t\t\t\t\"Provided credentials were valid, but a corresponding user was not found in the System. You need to add a user to the system with the id: {}\",\n-\t\t\t\tuserId);\n-\t\t\treturn null;\n-\t\t}\n-\n-\t\treturn new ConqueryAuthenticationInfo(userId, token, this);\n-\t}\n-\t\n-\n-\t\n-\tpublic String createTokenForUser(UserId userId) {\n-\t\tif(storage.getUser(userId) == null) {\n-\t\t\tthrow new IllegalArgumentException(\"Cannot create a JWT for unknown user with id: \" + userId);\n-\t\t}\n-\t\treturn TokenHandler.createToken(userId.toString(), jwtConfig.getJwtDuration(), getName(), jwtConfig.getTokenSignAlgorithm());\n-\t}\n-\t\n-\tpublic static class JWTConfig{\n-\t\t@Getter\n-\t\t@Setter\n-\t\tprivate Duration jwtDuration = Duration.hours(8);\n-\t\t\n-\t\t@JsonIgnore\n-\t\t@Getter\n-\t\tprivate Algorithm tokenSignAlgorithm = Algorithm.HMAC256(TokenHandler.generateTokenSecret());\n-\t\t@JsonIgnore\n-\t\tprivate JWTVerifier tokenVerifier;\n-\t\t\n-\t\t@JsonIgnore\n-\t\tpublic JWTVerifier getTokenVerifier(ConqueryAuthenticationRealm realm) {\n-\t\t\tif(tokenVerifier == null) {\n-\t\t\t\ttokenVerifier = JWT.require(tokenSignAlgorithm).withIssuer(realm.getName()).build();\n-\t\t\t}\n-\t\t\treturn tokenVerifier;\n-\t\t}\n-\t\t\n-\n-\t}\n-\n-\t@Override\n-\tpublic AuthenticationToken extractToken(ContainerRequestContext request) {\n-\t\treturn TokenHandler.extractToken(request);\n-\t}\n+    private static final Class<? extends AuthenticationToken> TOKEN_CLASS = JwtToken.class;\n+\n+    private final MasterMetaStorage storage;\n+\n+    @Setter\n+    private JWTConfig jwtConfig = new JWTConfig();\n+\n+\n+    public ConqueryTokenRealm(MasterMetaStorage storage) {\n+        this.storage = storage;\n+        setAuthenticationTokenClass(TOKEN_CLASS);\n+        setCredentialsMatcher(new SkippingCredentialsMatcher());\n+    }\n+\n+    @Override\n+    protected ConqueryAuthenticationInfo doGetConqueryAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {\n+        if (!(TOKEN_CLASS.isAssignableFrom(token.getClass()))) {\n+            // Incompatible token\n+            return null;\n+        }\n+        DecodedJWT decodedToken = null;\n+        try {\n+            decodedToken = jwtConfig.getTokenVerifier(this).verify((String) token.getCredentials());\n+        } catch (TokenExpiredException e) {\n+            log.trace(\"The provided token is expired.\");\n+            throw new ExpiredCredentialsException(e);\n+        } catch (SignatureVerificationException | InvalidClaimException e) {\n+            log.trace(\"The provided token was not successfully verified against its signature or claims.\");\n+            throw new IncorrectCredentialsException(e);\n+        } catch (JWTVerificationException e) {\n+            log.trace(\"The provided token could not be verified.\");\n+            throw new AuthenticationException(e);\n+        }\n+\n+        String username = decodedToken.getSubject();\n+\n+        UserId userId = UserId.Parser.INSTANCE.parse(username);\n+        User user = storage.getUser(userId);\n+        // try to construct a new User if none could be found in the storage\n+        if (user == null) {\n+            log.warn(\n+                \"Provided credentials were valid, but a corresponding user was not found in the System. You need to add a user to the system with the id: {}\",\n+                userId);\n+            return null;\n+        }\n+\n+        return new ConqueryAuthenticationInfo(userId, token, this);\n+    }\n+\n+\n+    public String createTokenForUser(UserId userId) {\n+        if (storage.getUser(userId) == null) {\n+            throw new IllegalArgumentException(\"Cannot create a JWT for unknown user with id: \" + userId);\n+        }\n+        return TokenHandler.createToken(userId.toString(), jwtConfig.getJwtDuration(), getName(), jwtConfig.getTokenSignAlgorithm());\n+    }\n+\n+    public static class JWTConfig {\n+        @Getter\n+        @Setter\n+        private Duration jwtDuration = Duration.hours(8);\n+\n+        @JsonIgnore\n+        @Getter\n+        private Algorithm tokenSignAlgorithm = Algorithm.HMAC256(TokenHandler.generateTokenSecret());\n+        @JsonIgnore\n+        private JWTVerifier tokenVerifier;\n+\n+        @JsonIgnore\n+        public JWTVerifier getTokenVerifier(ConqueryAuthenticationRealm realm) {\n+            if (tokenVerifier == null) {\n+                tokenVerifier = JWT.require(tokenSignAlgorithm).withIssuer(realm.getName()).build();\n+            }\n+            return tokenVerifier;\n+        }\n+\n+\n+    }\n+\n+    @Override\n+    public AuthenticationToken extractToken(ContainerRequestContext request) {\n+        return TokenHandler.extractToken(request);\n+    }\n \n }\n",
+            "diff_size": 87
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "86",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/178/ConqueryTokenRealm.java\nindex bdfef8427b..3c6097c346 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/178/ConqueryTokenRealm.java\n@@ -82,23 +82,20 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \n \t\treturn new ConqueryAuthenticationInfo(userId, token, this);\n \t}\n-\t\n \n-\t\n-\tpublic String createTokenForUser(UserId userId) {\n+public String createTokenForUser(UserId userId) {\n \t\tif(storage.getUser(userId) == null) {\n \t\t\tthrow new IllegalArgumentException(\"Cannot create a JWT for unknown user with id: \" + userId);\n \t\t}\n \t\treturn TokenHandler.createToken(userId.toString(), jwtConfig.getJwtDuration(), getName(), jwtConfig.getTokenSignAlgorithm());\n \t}\n \t\n-\tpublic static class JWTConfig{\n+\tpublic static class JWTConfig {\n \t\t@Getter\n \t\t@Setter\n \t\tprivate Duration jwtDuration = Duration.hours(8);\n \t\t\n-\t\t@JsonIgnore\n-\t\t@Getter\n+\t\t@JsonIgnore @Getter\n \t\tprivate Algorithm tokenSignAlgorithm = Algorithm.HMAC256(TokenHandler.generateTokenSecret());\n \t\t@JsonIgnore\n \t\tprivate JWTVerifier tokenVerifier;\n@@ -110,7 +107,6 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \t\t\t}\n \t\t\treturn tokenVerifier;\n \t\t}\n-\t\t\n \n \t}\n \n@@ -119,4 +115,4 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \t\treturn TokenHandler.extractToken(request);\n \t}\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/178/ConqueryTokenRealm.java\nindex bdfef8427b..60dddc6301 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/178/ConqueryTokenRealm.java\n@@ -1,7 +1,6 @@\n package com.bakdata.conquery.models.auth.conquerytoken;\n \n import javax.ws.rs.container.ContainerRequestContext;\n-\n import com.auth0.jwt.JWT;\n import com.auth0.jwt.JWTVerifier;\n import com.auth0.jwt.algorithms.Algorithm;\n@@ -31,92 +30,84 @@ import org.apache.shiro.authc.IncorrectCredentialsException;\n @Slf4j\n public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \n-\tprivate static final Class<? extends AuthenticationToken> TOKEN_CLASS = JwtToken.class;\n-\n-\tprivate final MasterMetaStorage storage;\n-\t\n-\t@Setter\n-\tprivate JWTConfig jwtConfig = new JWTConfig();\n-\t\n-\t\n-\tpublic ConqueryTokenRealm(MasterMetaStorage storage) {\n-\t\tthis.storage = storage;\n-\t\tsetAuthenticationTokenClass(TOKEN_CLASS);\n-\t\tsetCredentialsMatcher(new SkippingCredentialsMatcher());\n-\t}\n+    private static final Class<? extends AuthenticationToken> TOKEN_CLASS = JwtToken.class;\n+    private final MasterMetaStorage storage;\n+    @Setter\n+    private JWTConfig jwtConfig = new JWTConfig();\n \n-\t@Override\n-\tprotected ConqueryAuthenticationInfo doGetConqueryAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {\n-\t\tif (!(TOKEN_CLASS.isAssignableFrom(token.getClass()))) {\n-\t\t\t// Incompatible token\n-\t\t\treturn null;\n-\t\t}\n-\t\tDecodedJWT decodedToken = null;\n-\t\ttry {\n-\t\t\tdecodedToken = jwtConfig.getTokenVerifier(this).verify((String) token.getCredentials());\n-\t\t}\n-\t\tcatch (TokenExpiredException e) {\n-\t\t\tlog.trace(\"The provided token is expired.\");\n-\t\t\tthrow new ExpiredCredentialsException(e);\n-\t\t}\n-\t\tcatch (SignatureVerificationException | InvalidClaimException e) {\n-\t\t\tlog.trace(\"The provided token was not successfully verified against its signature or claims.\");\n-\t\t\tthrow new IncorrectCredentialsException(e);\n-\t\t}\n-\t\tcatch (JWTVerificationException e) {\n-\t\t\tlog.trace(\"The provided token could not be verified.\");\n-\t\t\tthrow new AuthenticationException(e);\n-\t\t}\n+    public ConqueryTokenRealm(MasterMetaStorage storage) {\n+        this.storage = storage;\n+        setAuthenticationTokenClass(TOKEN_CLASS);\n+        setCredentialsMatcher(new SkippingCredentialsMatcher());\n+    }\n \n-\t\tString username = decodedToken.getSubject();\n+    @Override\n+    protected ConqueryAuthenticationInfo doGetConqueryAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {\n+        if(!(TOKEN_CLASS.isAssignableFrom(token.getClass()))) {\n+            // Incompatible token\n+            return null;\n+        }\n \n-\t\tUserId userId = UserId.Parser.INSTANCE.parse(username);\n-\t\tUser user = storage.getUser(userId);\n-\t\t// try to construct a new User if none could be found in the storage\n-\t\tif (user == null) {\n-\t\t\tlog.warn(\n-\t\t\t\t\"Provided credentials were valid, but a corresponding user was not found in the System. You need to add a user to the system with the id: {}\",\n-\t\t\t\tuserId);\n-\t\t\treturn null;\n-\t\t}\n+        DecodedJWT decodedToken = null;\n+        try {\n+            decodedToken = jwtConfig.getTokenVerifier(this).verify((String)token.getCredentials());\n+        }\n+        catch (TokenExpiredException e) {\n+            log.trace(\"The provided token is expired.\");\n+            throw new ExpiredCredentialsException(e);\n+        }\n+        catch (SignatureVerificationException | InvalidClaimException e) {\n+            log.trace(\"The provided token was not successfully verified against its signature or claims.\");\n+            throw new IncorrectCredentialsException(e);\n+        }\n+        catch (JWTVerificationException e) {\n+            log.trace(\"The provided token could not be verified.\");\n+            throw new AuthenticationException(e);\n+        }\n \n-\t\treturn new ConqueryAuthenticationInfo(userId, token, this);\n-\t}\n-\t\n+        String username = decodedToken.getSubject();\n+        UserId userId = UserId.Parser.INSTANCE.parse(username);\n+        User user = storage.getUser(userId);\n+        // try to construct a new User if none could be found in the storage\n+        if(user == null) {\n+            log.warn(\"Provided credentials were valid, but a corresponding user was not found in the System. You need to add a user to the system with the id: {}\", userId);\n+            return null;\n+        }\n+        return new ConqueryAuthenticationInfo(userId, token, this);\n+    }\n \n-\t\n-\tpublic String createTokenForUser(UserId userId) {\n-\t\tif(storage.getUser(userId) == null) {\n-\t\t\tthrow new IllegalArgumentException(\"Cannot create a JWT for unknown user with id: \" + userId);\n-\t\t}\n-\t\treturn TokenHandler.createToken(userId.toString(), jwtConfig.getJwtDuration(), getName(), jwtConfig.getTokenSignAlgorithm());\n-\t}\n-\t\n-\tpublic static class JWTConfig{\n-\t\t@Getter\n-\t\t@Setter\n-\t\tprivate Duration jwtDuration = Duration.hours(8);\n-\t\t\n-\t\t@JsonIgnore\n-\t\t@Getter\n-\t\tprivate Algorithm tokenSignAlgorithm = Algorithm.HMAC256(TokenHandler.generateTokenSecret());\n-\t\t@JsonIgnore\n-\t\tprivate JWTVerifier tokenVerifier;\n-\t\t\n-\t\t@JsonIgnore\n-\t\tpublic JWTVerifier getTokenVerifier(ConqueryAuthenticationRealm realm) {\n-\t\t\tif(tokenVerifier == null) {\n-\t\t\t\ttokenVerifier = JWT.require(tokenSignAlgorithm).withIssuer(realm.getName()).build();\n-\t\t\t}\n-\t\t\treturn tokenVerifier;\n-\t\t}\n-\t\t\n+    public String createTokenForUser(UserId userId) {\n+        if(storage.getUser(userId) == null) {\n+            throw new IllegalArgumentException(\"Cannot create a JWT for unknown user with id: \"+userId);\n+        }\n+        return TokenHandler.createToken(\n+            userId.toString(),\n+            jwtConfig.getJwtDuration(),\n+            getName(),\n+            jwtConfig.getTokenSignAlgorithm()\n+        );\n+    }\n \n-\t}\n+    public static class JWTConfig {\n \n-\t@Override\n-\tpublic AuthenticationToken extractToken(ContainerRequestContext request) {\n-\t\treturn TokenHandler.extractToken(request);\n-\t}\n+        @Getter @Setter\n+        private Duration jwtDuration = Duration.hours(8);\n+        @JsonIgnore @Getter\n+        private Algorithm tokenSignAlgorithm = Algorithm.HMAC256(TokenHandler.generateTokenSecret());\n+        @JsonIgnore\n+        private JWTVerifier tokenVerifier;\n+        @JsonIgnore\n+        public JWTVerifier getTokenVerifier(ConqueryAuthenticationRealm realm) {\n+            if(tokenVerifier == null) {\n+                tokenVerifier = JWT.require(tokenSignAlgorithm).withIssuer(realm.getName())\n+                                                               .build();\n+            }\n+            return tokenVerifier;\n+        }\n+    }\n \n-}\n+    @Override\n+    public AuthenticationToken extractToken(ContainerRequestContext request) {\n+        return TokenHandler.extractToken(request);\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 116
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/178/ConqueryTokenRealm.java\nindex bdfef8427b..c0fdb528bc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/178/ConqueryTokenRealm.java\n@@ -34,11 +34,11 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \tprivate static final Class<? extends AuthenticationToken> TOKEN_CLASS = JwtToken.class;\n \n \tprivate final MasterMetaStorage storage;\n-\t\n+\n \t@Setter\n \tprivate JWTConfig jwtConfig = new JWTConfig();\n-\t\n-\t\n+\n+\n \tpublic ConqueryTokenRealm(MasterMetaStorage storage) {\n \t\tthis.storage = storage;\n \t\tsetAuthenticationTokenClass(TOKEN_CLASS);\n@@ -82,27 +82,27 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \n \t\treturn new ConqueryAuthenticationInfo(userId, token, this);\n \t}\n-\t\n \n-\t\n+\n+\n \tpublic String createTokenForUser(UserId userId) {\n \t\tif(storage.getUser(userId) == null) {\n \t\t\tthrow new IllegalArgumentException(\"Cannot create a JWT for unknown user with id: \" + userId);\n \t\t}\n \t\treturn TokenHandler.createToken(userId.toString(), jwtConfig.getJwtDuration(), getName(), jwtConfig.getTokenSignAlgorithm());\n \t}\n-\t\n-\tpublic static class JWTConfig{\n+\n+\tpublic static class JWTConfig {\n \t\t@Getter\n \t\t@Setter\n \t\tprivate Duration jwtDuration = Duration.hours(8);\n-\t\t\n+\n \t\t@JsonIgnore\n \t\t@Getter\n \t\tprivate Algorithm tokenSignAlgorithm = Algorithm.HMAC256(TokenHandler.generateTokenSecret());\n \t\t@JsonIgnore\n \t\tprivate JWTVerifier tokenVerifier;\n-\t\t\n+\n \t\t@JsonIgnore\n \t\tpublic JWTVerifier getTokenVerifier(ConqueryAuthenticationRealm realm) {\n \t\t\tif(tokenVerifier == null) {\n@@ -110,7 +110,7 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \t\t\t}\n \t\t\treturn tokenVerifier;\n \t\t}\n-\t\t\n+\n \n \t}\n \n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/178/ConqueryTokenRealm.java\nindex bdfef8427b..c0fdb528bc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/178/ConqueryTokenRealm.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/178/ConqueryTokenRealm.java\n@@ -34,11 +34,11 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \tprivate static final Class<? extends AuthenticationToken> TOKEN_CLASS = JwtToken.class;\n \n \tprivate final MasterMetaStorage storage;\n-\t\n+\n \t@Setter\n \tprivate JWTConfig jwtConfig = new JWTConfig();\n-\t\n-\t\n+\n+\n \tpublic ConqueryTokenRealm(MasterMetaStorage storage) {\n \t\tthis.storage = storage;\n \t\tsetAuthenticationTokenClass(TOKEN_CLASS);\n@@ -82,27 +82,27 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \n \t\treturn new ConqueryAuthenticationInfo(userId, token, this);\n \t}\n-\t\n \n-\t\n+\n+\n \tpublic String createTokenForUser(UserId userId) {\n \t\tif(storage.getUser(userId) == null) {\n \t\t\tthrow new IllegalArgumentException(\"Cannot create a JWT for unknown user with id: \" + userId);\n \t\t}\n \t\treturn TokenHandler.createToken(userId.toString(), jwtConfig.getJwtDuration(), getName(), jwtConfig.getTokenSignAlgorithm());\n \t}\n-\t\n-\tpublic static class JWTConfig{\n+\n+\tpublic static class JWTConfig {\n \t\t@Getter\n \t\t@Setter\n \t\tprivate Duration jwtDuration = Duration.hours(8);\n-\t\t\n+\n \t\t@JsonIgnore\n \t\t@Getter\n \t\tprivate Algorithm tokenSignAlgorithm = Algorithm.HMAC256(TokenHandler.generateTokenSecret());\n \t\t@JsonIgnore\n \t\tprivate JWTVerifier tokenVerifier;\n-\t\t\n+\n \t\t@JsonIgnore\n \t\tpublic JWTVerifier getTokenVerifier(ConqueryAuthenticationRealm realm) {\n \t\t\tif(tokenVerifier == null) {\n@@ -110,7 +110,7 @@ public class ConqueryTokenRealm extends ConqueryAuthenticationRealm {\n \t\t\t}\n \t\t\treturn tokenVerifier;\n \t\t}\n-\t\t\n+\n \n \t}\n \n",
+            "diff_size": 11
+        }
+    ]
+}

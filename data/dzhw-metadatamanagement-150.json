@@ -1,0 +1,387 @@
+{
+    "error_id": "150",
+    "information": {
+        "errors": [
+            {
+                "line": "228",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 112).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  public void onConceptChanged(Concept concept) {\n    elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n        () -> questionRepository.streamIdsByConceptIdsContaining(concept.getId()), ElasticsearchType.questions);\n  }\n\n  /**",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "228",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler/150/QuestionService.java\nindex ee0a2bdc41..2563a9ee59 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler/150/QuestionService.java\n@@ -193,7 +193,7 @@ public class QuestionService {\n   @HandleAfterDelete\n   public void onVariableChanged(Variable variable) {\n     List<String> questionIds = variableChangesProvider.getAffectedQuestionIds(\n-        variable.getId()); \n+        variable.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByIdIn(questionIds),\n         ElasticsearchType.questions);\n@@ -209,12 +209,12 @@ public class QuestionService {\n   @HandleAfterDelete\n   public void onRelatedPublicationChanged(RelatedPublication relatedPublication) {\n     List<String> questionIds = relatedPublicationChangesProvider.getAffectedQuestionIds(\n-        relatedPublication.getId()); \n+        relatedPublication.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByMasterIdIn(questionIds),\n         ElasticsearchType.questions);\n   }\n-  \n+\n   /**\n    * Enqueue update of question search documents when the concept is changed.\n    * \n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/intellij/150/QuestionService.java\nindex ee0a2bdc41..9dec3fe228 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/intellij/150/QuestionService.java\n@@ -83,7 +83,7 @@ public class QuestionService {\n \n   /**\n    * Update all {@link QuestionSearchDocument}s when the project is released.\n-   * \n+   *\n    * @param dataAcquisitionProject the changed project\n    */\n   @HandleAfterSave\n@@ -96,12 +96,12 @@ public class QuestionService {\n \n   /**\n    * A service method for deletion of questions within a data acquisition project.\n-   * \n+   *\n    * @param dataAcquisitionProjectId the id for to the data acquisition project.\n    */\n   public void deleteQuestionsByProjectId(String dataAcquisitionProjectId) {\n     try (Stream<Question> questions =\n-        questionRepository.streamByDataAcquisitionProjectId(dataAcquisitionProjectId)) {\n+             questionRepository.streamByDataAcquisitionProjectId(dataAcquisitionProjectId)) {\n       questions.forEach(question -> {\n         if (question.isShadow()) {\n           throw new ShadowCopyDeleteNotAllowedException();\n@@ -139,7 +139,7 @@ public class QuestionService {\n \n   /**\n    * Enqueue update of question search documents when the study is changed.\n-   * \n+   *\n    * @param study the updated, created or deleted study.\n    */\n   @HandleAfterCreate\n@@ -152,7 +152,7 @@ public class QuestionService {\n \n   /**\n    * Enqueue update of question search documents when the instrument is changed.\n-   * \n+   *\n    * @param instrument the updated, created or deleted instrument.\n    */\n   @HandleAfterCreate\n@@ -166,7 +166,7 @@ public class QuestionService {\n \n   /**\n    * Enqueue update of question search documents when the survey is changed.\n-   * \n+   *\n    * @param survey the updated, created or deleted survey.\n    */\n   @HandleAfterCreate\n@@ -175,7 +175,7 @@ public class QuestionService {\n   public void onSurveyChanged(Survey survey) {\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(() -> {\n       try (Stream<IdAndVersionProjection> instruments =\n-          instrumentRepository.streamIdsBySurveyIdsContaining(survey.getId())) {\n+               instrumentRepository.streamIdsBySurveyIdsContaining(survey.getId())) {\n         return instruments.map(instrument -> {\n           return questionRepository.streamIdsByInstrumentId(instrument.getId());\n         }).collect(Collectors.toList());\n@@ -185,7 +185,7 @@ public class QuestionService {\n \n   /**\n    * Enqueue update of question search document when the variable is changed.\n-   * \n+   *\n    * @param variable the updated, created or deleted variable.\n    */\n   @HandleAfterCreate\n@@ -193,7 +193,7 @@ public class QuestionService {\n   @HandleAfterDelete\n   public void onVariableChanged(Variable variable) {\n     List<String> questionIds = variableChangesProvider.getAffectedQuestionIds(\n-        variable.getId()); \n+        variable.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByIdIn(questionIds),\n         ElasticsearchType.questions);\n@@ -201,7 +201,7 @@ public class QuestionService {\n \n   /**\n    * Enqueue update of question search document when the related publication is changed.\n-   * \n+   *\n    * @param relatedPublication the updated, created or deleted publication.\n    */\n   @HandleAfterCreate\n@@ -209,15 +209,15 @@ public class QuestionService {\n   @HandleAfterDelete\n   public void onRelatedPublicationChanged(RelatedPublication relatedPublication) {\n     List<String> questionIds = relatedPublicationChangesProvider.getAffectedQuestionIds(\n-        relatedPublication.getId()); \n+        relatedPublication.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByMasterIdIn(questionIds),\n         ElasticsearchType.questions);\n   }\n-  \n+\n   /**\n    * Enqueue update of question search documents when the concept is changed.\n-   * \n+   *\n    * @param concept the updated, created or deleted concept.\n    */\n   @HandleAfterCreate\n@@ -225,11 +225,13 @@ public class QuestionService {\n   @HandleAfterDelete\n   public void onConceptChanged(Concept concept) {\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n-        () -> questionRepository.streamIdsByConceptIdsContaining(concept.getId()), ElasticsearchType.questions);\n+        () -> questionRepository.streamIdsByConceptIdsContaining(concept.getId()),\n+        ElasticsearchType.questions);\n   }\n \n   /**\n    * Create shadow copies for questions on project release.\n+   *\n    * @param projectReleasedEvent Released project event\n    */\n   @EventListener\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "228",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/naturalize/150/QuestionService.java\nindex ee0a2bdc41..dda9650f3f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/naturalize/150/QuestionService.java\n@@ -237,4 +237,4 @@ public class QuestionService {\n     shadowCopyService.createShadowCopies(projectReleasedEvent.getDataAcquisitionProject(),\n         projectReleasedEvent.getPreviousReleaseVersion(), questionShadowCopyDataSource);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 118).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "108",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 30, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "126",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "132",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "141",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "147",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "162",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "171",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "178",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "187",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "193",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 128).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "195",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 23, expected level should be 14.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "198",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 4, expected level should be one of the following: 6, 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "200",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "209",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "217",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "226",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "230",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "233",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "242",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "249",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "257",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "259",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 171).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "260",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/codebuff/150/QuestionService.java\nindex ee0a2bdc41..6e8068ad2f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/codebuff/150/QuestionService.java\n@@ -3,7 +3,6 @@ package eu.dzhw.fdz.metadatamanagement.questionmanagement.service;\n import java.util.List;\n import java.util.stream.Collectors;\n import java.util.stream.Stream;\n-\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.context.ApplicationEventPublisher;\n import org.springframework.context.event.EventListener;\n@@ -14,7 +13,6 @@ import org.springframework.data.rest.core.annotation.RepositoryEventHandler;\n import org.springframework.data.rest.core.event.AfterDeleteEvent;\n import org.springframework.data.rest.core.event.BeforeDeleteEvent;\n import org.springframework.stereotype.Service;\n-\n import eu.dzhw.fdz.metadatamanagement.common.domain.ShadowCopyDeleteNotAllowedException;\n import eu.dzhw.fdz.metadatamanagement.common.domain.projections.IdAndVersionProjection;\n import eu.dzhw.fdz.metadatamanagement.common.service.ShadowCopyService;\n@@ -40,201 +38,224 @@ import eu.dzhw.fdz.metadatamanagement.variablemanagement.service.VariableChanges\n  * Service for creating and updating questions. Used for updating questions in mongo and\n  * elasticsearch.\n  */\n+\n+\n @Service\n @RepositoryEventHandler\n public class QuestionService {\n \n-  @Autowired\n-  private QuestionRepository questionRepository;\n+    @Autowired\n+    private QuestionRepository questionRepository;\n \n-  @Autowired\n-  private InstrumentRepository instrumentRepository;\n+    @Autowired\n+    private InstrumentRepository instrumentRepository;\n \n-  @Autowired\n-  private ElasticsearchUpdateQueueService elasticsearchUpdateQueueService;\n+    @Autowired\n+    private ElasticsearchUpdateQueueService elasticsearchUpdateQueueService;\n \n-  @Autowired\n-  private QuestionImageService imageService;\n+    @Autowired\n+    private QuestionImageService imageService;\n \n-  @Autowired\n-  private ApplicationEventPublisher eventPublisher;\n+    @Autowired\n+    private ApplicationEventPublisher eventPublisher;\n \n-  @Autowired\n-  private VariableChangesProvider variableChangesProvider;\n+    @Autowired\n+    private VariableChangesProvider variableChangesProvider;\n \n-  @Autowired\n-  private RelatedPublicationChangesProvider relatedPublicationChangesProvider;\n+    @Autowired\n+    private RelatedPublicationChangesProvider relatedPublicationChangesProvider;\n \n-  @Autowired\n-  private ShadowCopyService<Question> shadowCopyService;\n+    @Autowired\n+    private ShadowCopyService<Question> shadowCopyService;\n \n-  @Autowired\n-  private QuestionShadowCopyDataSource questionShadowCopyDataSource;\n+    @Autowired\n+    private QuestionShadowCopyDataSource questionShadowCopyDataSource;\n \n   /**\n    * Delete all questions when the dataAcquisitionProject was deleted.\n    *\n    * @param dataAcquisitionProject the dataAcquisitionProject which has been deleted.\n    */\n-  @HandleAfterDelete\n-  public void onDataAcquisitionProjectDeleted(DataAcquisitionProject dataAcquisitionProject) {\n+\n+    @HandleAfterDelete\n+    public void onDataAcquisitionProjectDeleted(DataAcquisitionProject dataAcquisitionProject) {\n     deleteQuestionsByProjectId(dataAcquisitionProject.getId());\n-  }\n+    }\n \n   /**\n    * Update all {@link QuestionSearchDocument}s when the project is released.\n    * \n    * @param dataAcquisitionProject the changed project\n    */\n-  @HandleAfterSave\n-  public void onDataAcquisitionProjectUpdated(DataAcquisitionProject dataAcquisitionProject) {\n+\n+\n+    @HandleAfterSave\n+    public void onDataAcquisitionProjectUpdated(DataAcquisitionProject dataAcquisitionProject) {\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n-        () -> questionRepository\n-            .streamIdsByDataAcquisitionProjectId(dataAcquisitionProject.getId()),\n+        () -> questionRepository.streamIdsByDataAcquisitionProjectId(dataAcquisitionProject.getId()),\n         ElasticsearchType.questions);\n-  }\n+    }\n \n   /**\n    * A service method for deletion of questions within a data acquisition project.\n    * \n    * @param dataAcquisitionProjectId the id for to the data acquisition project.\n    */\n-  public void deleteQuestionsByProjectId(String dataAcquisitionProjectId) {\n-    try (Stream<Question> questions =\n-        questionRepository.streamByDataAcquisitionProjectId(dataAcquisitionProjectId)) {\n-      questions.forEach(question -> {\n+\n+\n+    public void deleteQuestionsByProjectId(String dataAcquisitionProjectId) {\n+    try (Stream<Question> questions = questionRepository.streamByDataAcquisitionProjectId(dataAcquisitionProjectId)) {\n+        questions.forEach(question -> {\n         if (question.isShadow()) {\n-          throw new ShadowCopyDeleteNotAllowedException();\n+                              throw new ShadowCopyDeleteNotAllowedException();\n         }\n         eventPublisher.publishEvent(new BeforeDeleteEvent(question));\n         questionRepository.delete(question);\n         eventPublisher.publishEvent(new AfterDeleteEvent(question));\n-      });\n+        });\n+    }\n     }\n-  }\n \n   /**\n    * Enqueue deletion of question search document when the question is deleted.\n    *\n    * @param question the deleted question.\n    */\n-  @HandleAfterDelete\n-  public void onQuestionDeleted(Question question) {\n+\n+\n+    @HandleAfterDelete\n+    public void onQuestionDeleted(Question question) {\n     imageService.deleteQuestionImages(question.getId());\n-    elasticsearchUpdateQueueService.enqueue(question.getId(), ElasticsearchType.questions,\n-        ElasticsearchUpdateQueueAction.DELETE);\n-  }\n+    elasticsearchUpdateQueueService.enqueue(question.getId(),\n+                                            ElasticsearchType.questions,\n+                                            ElasticsearchUpdateQueueAction.DELETE);\n+    }\n \n   /**\n    * Enqueue update of question search document when the question is updated.\n    *\n    * @param question the updated or created question.\n    */\n-  @HandleAfterCreate\n-  @HandleAfterSave\n-  public void onQuestionSaved(Question question) {\n-    elasticsearchUpdateQueueService.enqueue(question.getId(), ElasticsearchType.questions,\n-        ElasticsearchUpdateQueueAction.UPSERT);\n-  }\n+\n+\n+    @HandleAfterCreate\n+    @HandleAfterSave\n+    public void onQuestionSaved(Question question) {\n+    elasticsearchUpdateQueueService.enqueue(question.getId(),\n+                                            ElasticsearchType.questions,\n+                                            ElasticsearchUpdateQueueAction.UPSERT);\n+    }\n \n   /**\n    * Enqueue update of question search documents when the study is changed.\n    * \n    * @param study the updated, created or deleted study.\n    */\n-  @HandleAfterCreate\n-  @HandleAfterSave\n-  @HandleAfterDelete\n-  public void onStudyChanged(Study study) {\n+\n+\n+    @HandleAfterCreate\n+    @HandleAfterSave\n+    @HandleAfterDelete\n+    public void onStudyChanged(Study study) {\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByStudyId(study.getId()), ElasticsearchType.questions);\n-  }\n+    }\n \n   /**\n    * Enqueue update of question search documents when the instrument is changed.\n    * \n    * @param instrument the updated, created or deleted instrument.\n    */\n-  @HandleAfterCreate\n-  @HandleAfterSave\n-  @HandleAfterDelete\n-  public void onInstrumentChanged(Instrument instrument) {\n+\n+\n+    @HandleAfterCreate\n+    @HandleAfterSave\n+    @HandleAfterDelete\n+    public void onInstrumentChanged(Instrument instrument) {\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByInstrumentId(instrument.getId()),\n         ElasticsearchType.questions);\n-  }\n+    }\n \n   /**\n    * Enqueue update of question search documents when the survey is changed.\n    * \n    * @param survey the updated, created or deleted survey.\n    */\n-  @HandleAfterCreate\n-  @HandleAfterSave\n-  @HandleAfterDelete\n-  public void onSurveyChanged(Survey survey) {\n-    elasticsearchUpdateQueueService.enqueueUpsertsAsync(() -> {\n-      try (Stream<IdAndVersionProjection> instruments =\n-          instrumentRepository.streamIdsBySurveyIdsContaining(survey.getId())) {\n-        return instruments.map(instrument -> {\n-          return questionRepository.streamIdsByInstrumentId(instrument.getId());\n-        }).collect(Collectors.toList());\n-      }\n-    }, ElasticsearchType.questions);\n-  }\n+\n+\n+    @HandleAfterCreate\n+    @HandleAfterSave\n+    @HandleAfterDelete\n+    public void onSurveyChanged(Survey survey) {\n+    elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n+        () -> {\n+        try (Stream<IdAndVersionProjection> instruments = instrumentRepository.streamIdsBySurveyIdsContaining(survey.getId())) {\n+            return instruments.map(instrument -> {\n+                       return questionRepository.streamIdsByInstrumentId(instrument.getId());\n+            }).collect(Collectors.toList());\n+        }\n+    },\n+        ElasticsearchType.questions);\n+    }\n \n   /**\n    * Enqueue update of question search document when the variable is changed.\n    * \n    * @param variable the updated, created or deleted variable.\n    */\n-  @HandleAfterCreate\n-  @HandleAfterSave\n-  @HandleAfterDelete\n-  public void onVariableChanged(Variable variable) {\n-    List<String> questionIds = variableChangesProvider.getAffectedQuestionIds(\n-        variable.getId()); \n+\n+\n+    @HandleAfterCreate\n+    @HandleAfterSave\n+    @HandleAfterDelete\n+    public void onVariableChanged(Variable variable) {\n+    List<String> questionIds = variableChangesProvider.getAffectedQuestionIds(variable.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByIdIn(questionIds),\n         ElasticsearchType.questions);\n-  }\n+    }\n \n   /**\n    * Enqueue update of question search document when the related publication is changed.\n    * \n    * @param relatedPublication the updated, created or deleted publication.\n    */\n-  @HandleAfterCreate\n-  @HandleAfterSave\n-  @HandleAfterDelete\n-  public void onRelatedPublicationChanged(RelatedPublication relatedPublication) {\n-    List<String> questionIds = relatedPublicationChangesProvider.getAffectedQuestionIds(\n-        relatedPublication.getId()); \n+\n+\n+    @HandleAfterCreate\n+    @HandleAfterSave\n+    @HandleAfterDelete\n+    public void onRelatedPublicationChanged(RelatedPublication relatedPublication) {\n+    List<String> questionIds = relatedPublicationChangesProvider.getAffectedQuestionIds(relatedPublication.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n-        () -> questionRepository.streamIdsByMasterIdIn(questionIds),\n-        ElasticsearchType.questions);\n-  }\n+        () -> questionRepository.streamIdsByMasterIdIn(questionIds), ElasticsearchType.questions);\n+    }\n   \n   /**\n    * Enqueue update of question search documents when the concept is changed.\n    * \n    * @param concept the updated, created or deleted concept.\n    */\n-  @HandleAfterCreate\n-  @HandleAfterSave\n-  @HandleAfterDelete\n-  public void onConceptChanged(Concept concept) {\n+\n+\n+    @HandleAfterCreate\n+    @HandleAfterSave\n+    @HandleAfterDelete\n+    public void onConceptChanged(Concept concept) {\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n-        () -> questionRepository.streamIdsByConceptIdsContaining(concept.getId()), ElasticsearchType.questions);\n-  }\n+        () -> questionRepository.streamIdsByConceptIdsContaining(concept.getId()),\n+        ElasticsearchType.questions);\n+    }\n \n   /**\n    * Create shadow copies for questions on project release.\n    * @param projectReleasedEvent Released project event\n    */\n-  @EventListener\n-  public void onProjectReleaseEvent(ProjectReleasedEvent projectReleasedEvent) {\n-    shadowCopyService.createShadowCopies(projectReleasedEvent.getDataAcquisitionProject(),\n-        projectReleasedEvent.getPreviousReleaseVersion(), questionShadowCopyDataSource);\n-  }\n-}\n+\n+\n+    @EventListener\n+    public void onProjectReleaseEvent(ProjectReleasedEvent projectReleasedEvent) {\n+    shadowCopyService.createShadowCopies(projectReleasedEvent.getDataAcquisitionProject(), projectReleasedEvent.getPreviousReleaseVersion(), questionShadowCopyDataSource);\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 123
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "228",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler_random/150/QuestionService.java\nindex ee0a2bdc41..2563a9ee59 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler_random/150/QuestionService.java\n@@ -193,7 +193,7 @@ public class QuestionService {\n   @HandleAfterDelete\n   public void onVariableChanged(Variable variable) {\n     List<String> questionIds = variableChangesProvider.getAffectedQuestionIds(\n-        variable.getId()); \n+        variable.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByIdIn(questionIds),\n         ElasticsearchType.questions);\n@@ -209,12 +209,12 @@ public class QuestionService {\n   @HandleAfterDelete\n   public void onRelatedPublicationChanged(RelatedPublication relatedPublication) {\n     List<String> questionIds = relatedPublicationChangesProvider.getAffectedQuestionIds(\n-        relatedPublication.getId()); \n+        relatedPublication.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByMasterIdIn(questionIds),\n         ElasticsearchType.questions);\n   }\n-  \n+\n   /**\n    * Enqueue update of question search documents when the concept is changed.\n    * \n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "227",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 161).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "228",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "234",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "236",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 2, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "238",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler_three_grams/150/QuestionService.java\nindex ee0a2bdc41..15467d8bf5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/errored/1/150/QuestionService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/dzhw-metadatamanagement/styler_three_grams/150/QuestionService.java\n@@ -193,7 +193,7 @@ public class QuestionService {\n   @HandleAfterDelete\n   public void onVariableChanged(Variable variable) {\n     List<String> questionIds = variableChangesProvider.getAffectedQuestionIds(\n-        variable.getId()); \n+        variable.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByIdIn(questionIds),\n         ElasticsearchType.questions);\n@@ -209,12 +209,12 @@ public class QuestionService {\n   @HandleAfterDelete\n   public void onRelatedPublicationChanged(RelatedPublication relatedPublication) {\n     List<String> questionIds = relatedPublicationChangesProvider.getAffectedQuestionIds(\n-        relatedPublication.getId()); \n+        relatedPublication.getId());\n     elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n         () -> questionRepository.streamIdsByMasterIdIn(questionIds),\n         ElasticsearchType.questions);\n   }\n-  \n+\n   /**\n    * Enqueue update of question search documents when the concept is changed.\n    * \n@@ -224,17 +224,16 @@ public class QuestionService {\n   @HandleAfterSave\n   @HandleAfterDelete\n   public void onConceptChanged(Concept concept) {\n-    elasticsearchUpdateQueueService.enqueueUpsertsAsync(\n-        () -> questionRepository.streamIdsByConceptIdsContaining(concept.getId()), ElasticsearchType.questions);\n-  }\n+    elasticsearchUpdateQueueService.enqueueUpsertsAsync(( ) -> questionRepository.streamIdsByConceptIdsContaining(concept.getId()), ElasticsearchType.questions);\n+}\n \n-  /**\n+/**\n    * Create shadow copies for questions on project release.\n    * @param projectReleasedEvent Released project event\n    */\n-  @EventListener\n-  public void onProjectReleaseEvent(ProjectReleasedEvent projectReleasedEvent) {\n-    shadowCopyService.createShadowCopies(projectReleasedEvent.getDataAcquisitionProject(),\n-        projectReleasedEvent.getPreviousReleaseVersion(), questionShadowCopyDataSource);\n-  }\n+@EventListener\n+public void onProjectReleaseEvent(ProjectReleasedEvent projectReleasedEvent) {\n+  shadowCopyService.createShadowCopies(projectReleasedEvent.getDataAcquisitionProject(),\n+      projectReleasedEvent.getPreviousReleaseVersion(), questionShadowCopyDataSource);\n+}\n }\n",
+            "diff_size": 12
+        }
+    ]
+}

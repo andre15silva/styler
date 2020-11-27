@@ -1,0 +1,198 @@
+{
+    "error_id": "60",
+    "information": {
+        "errors": [
+            {
+                "line": "91",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 123).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        try {\n            DatabaseMetaData dbMetadata = connection.getMetaData();\n            resultSet = dbMetadata.getTables(null, ((HiveProp) prop).getDbName().toUpperCase(), filterRegexp.toUpperCase(),\n                    new String[] { \"TABLE\" });\n            while (resultSet.next()) {\n                String name = resultSet.getString(\"TABLE_NAME\");",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "'while' has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "'while' child has incorrect indentation level 9, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "'while' child has incorrect indentation level 9, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "'while rcurly' has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 1, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 1, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "'finally' child has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "'finally rcurly' has incorrect indentation level 1, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/styler/60/BaseJdbcCollector.java\nindex 45a265ee4e..fc92d9d443 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/styler/60/BaseJdbcCollector.java\n@@ -88,18 +88,19 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n         List<String> tableNames = new ArrayList<>();\n         try {\n             DatabaseMetaData dbMetadata = connection.getMetaData();\n-            resultSet = dbMetadata.getTables(null, ((HiveProp) prop).getDbName().toUpperCase(), filterRegexp.toUpperCase(),\n-                    new String[] { \"TABLE\" });\n-            while (resultSet.next()) {\n-                String name = resultSet.getString(\"TABLE_NAME\");\n-                tableNames.add(name);\n-            }\n+            resultSet = dbMetadata.getTables(null, ((HiveProp)prop) .getDbName(\n+                ) .toUpperCase(),filterRegexp .toUpperCase(),new\n+                String [] { \"TABLE\" });\n+     while (resultSet.next()) {\n+         String name = resultSet.getString(\"TABLE_NAME\");\n+         tableNames.add(name);\n+     }\n \n-            return tableNames;\n-        } catch (SQLException ex) {\n-            throw new RuntimeException(ex);\n-        } finally {\n-            DbUtils.closeQuietly(resultSet);\n-        }\n-    }\n+     return tableNames;\n+ } catch (SQLException ex) {\n+     throw new RuntimeException(ex);\n+ } finally {\n+     DbUtils.closeQuietly(resultSet);\n+ }\n+}\n }\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/intellij/60/BaseJdbcCollector.java\nindex 45a265ee4e..91fa45f076 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/intellij/60/BaseJdbcCollector.java\n@@ -88,8 +88,9 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n         List<String> tableNames = new ArrayList<>();\n         try {\n             DatabaseMetaData dbMetadata = connection.getMetaData();\n-            resultSet = dbMetadata.getTables(null, ((HiveProp) prop).getDbName().toUpperCase(), filterRegexp.toUpperCase(),\n-                    new String[] { \"TABLE\" });\n+            resultSet =\n+                dbMetadata.getTables(null, ((HiveProp) prop).getDbName().toUpperCase(), filterRegexp.toUpperCase(),\n+                    new String[] {\"TABLE\"});\n             while (resultSet.next()) {\n                 String name = resultSet.getString(\"TABLE_NAME\");\n                 tableNames.add(name);\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "'while' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/naturalize/60/BaseJdbcCollector.java\nindex 45a265ee4e..1307ed8acc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/naturalize/60/BaseJdbcCollector.java\n@@ -89,8 +89,9 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n         try {\n             DatabaseMetaData dbMetadata = connection.getMetaData();\n             resultSet = dbMetadata.getTables(null, ((HiveProp) prop).getDbName().toUpperCase(), filterRegexp.toUpperCase(),\n-                    new String[] { \"TABLE\" });\n-            while (resultSet.next()) {\n+    new String[] { \"TABLE\"\n+    });\n+while (resultSet.next()) {\n                 String name = resultSet.getString(\"TABLE_NAME\");\n                 tableNames.add(name);\n             }\n@@ -102,4 +103,4 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n             DbUtils.closeQuietly(resultSet);\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/codebuff/60/BaseJdbcCollector.java\nindex 45a265ee4e..4034de109f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/codebuff/60/BaseJdbcCollector.java\n@@ -8,7 +8,6 @@ import com.qihoo.qsql.metadata.entity.TableValue;\n import java.util.Date;\n import org.apache.commons.dbutils.DbUtils;\n import org.apache.commons.lang3.StringUtils;\n-\n import java.sql.Connection;\n import java.sql.DatabaseMetaData;\n import java.sql.ResultSet;\n@@ -18,10 +17,10 @@ import java.util.Arrays;\n import java.util.List;\n import java.util.stream.Collectors;\n \n+\n public abstract class BaseJdbcCollector extends MetadataCollector {\n \n     protected JdbcProp prop;\n-\n     protected Connection connection;\n \n     BaseJdbcCollector(String filterRegexp) throws SQLException {\n@@ -31,9 +30,11 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n     @Override\n     protected List<DatabaseParamValue> convertDatabaseParamValue(Long dbId) {\n         DatabaseParamValue[] paramValues = new DatabaseParamValue[4];\n+\n         for (int i = 0; i < paramValues.length; i++) {\n             paramValues[i] = new DatabaseParamValue(dbId);\n         }\n+\n         paramValues[0].setParamKey(\"jdbcUrl\").setParamValue(prop.getJdbcUrl());\n         paramValues[1].setParamKey(\"jdbcDriver\").setParamValue(prop.getJdbcDriver());\n         paramValues[2].setParamKey(\"jdbcUser\").setParamValue(prop.getJdbcUser());\n@@ -41,13 +42,13 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n         return Arrays.stream(paramValues).collect(Collectors.toList());\n     }\n \n-\n     @Override\n     protected TableValue convertTableValue(Long dbId, String tableName) {\n         TableValue value = new TableValue();\n         value.setTblName(tableName);\n         value.setDbId(dbId);\n-        value.setCreateTime(new Date().toString());\n+        value.setCreateTime(new Date()\n+                                .toString());\n         return value;\n     }\n \n@@ -62,7 +63,6 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n                 String name = resultSet.getString(\"COLUMN_NAME\");\n                 String type = resultSet.getString(\"TYPE_NAME\");\n                 int columnIdx = resultSet.getInt(\"ORDINAL_POSITION\");\n-\n                 ColumnValue value = new ColumnValue();\n                 value.setColumnName(name);\n                 value.setTypeName(type);\n@@ -88,13 +88,17 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n         List<String> tableNames = new ArrayList<>();\n         try {\n             DatabaseMetaData dbMetadata = connection.getMetaData();\n-            resultSet = dbMetadata.getTables(null, ((HiveProp) prop).getDbName().toUpperCase(), filterRegexp.toUpperCase(),\n-                    new String[] { \"TABLE\" });\n+            resultSet = dbMetadata.getTables(null,\n+                                             ((HiveProp) prop).getDbName()\n+                                                              .toUpperCase(),\n+                                             filterRegexp.toUpperCase(),\n+                                             new String[] {\n+                                                 \"TABLE\"\n+                                             });\n             while (resultSet.next()) {\n                 String name = resultSet.getString(\"TABLE_NAME\");\n                 tableNames.add(name);\n             }\n-\n             return tableNames;\n         } catch (SQLException ex) {\n             throw new RuntimeException(ex);\n@@ -102,4 +106,4 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n             DbUtils.closeQuietly(resultSet);\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 18
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "'while' has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "'while' child has incorrect indentation level 9, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "'while' child has incorrect indentation level 9, expected level should be 16.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "'while rcurly' has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 1, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 1, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "'finally' child has incorrect indentation level 5, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "'finally rcurly' has incorrect indentation level 1, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/styler_random/60/BaseJdbcCollector.java\nindex 45a265ee4e..fc92d9d443 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/errored/1/60/BaseJdbcCollector.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Qihoo360-Quicksql/styler_random/60/BaseJdbcCollector.java\n@@ -88,18 +88,19 @@ public abstract class BaseJdbcCollector extends MetadataCollector {\n         List<String> tableNames = new ArrayList<>();\n         try {\n             DatabaseMetaData dbMetadata = connection.getMetaData();\n-            resultSet = dbMetadata.getTables(null, ((HiveProp) prop).getDbName().toUpperCase(), filterRegexp.toUpperCase(),\n-                    new String[] { \"TABLE\" });\n-            while (resultSet.next()) {\n-                String name = resultSet.getString(\"TABLE_NAME\");\n-                tableNames.add(name);\n-            }\n+            resultSet = dbMetadata.getTables(null, ((HiveProp)prop) .getDbName(\n+                ) .toUpperCase(),filterRegexp .toUpperCase(),new\n+                String [] { \"TABLE\" });\n+     while (resultSet.next()) {\n+         String name = resultSet.getString(\"TABLE_NAME\");\n+         tableNames.add(name);\n+     }\n \n-            return tableNames;\n-        } catch (SQLException ex) {\n-            throw new RuntimeException(ex);\n-        } finally {\n-            DbUtils.closeQuietly(resultSet);\n-        }\n-    }\n+     return tableNames;\n+ } catch (SQLException ex) {\n+     throw new RuntimeException(ex);\n+ } finally {\n+     DbUtils.closeQuietly(resultSet);\n+ }\n+}\n }\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

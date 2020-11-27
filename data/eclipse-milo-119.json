@@ -1,0 +1,91 @@
+{
+    "error_id": "119",
+    "information": {
+        "errors": [
+            {
+                "line": "23",
+                "column": "32",
+                "severity": "error",
+                "message": "'}' at column 32 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "final class GuidConversions {\n\n    private GuidConversions() {}\n\n    @Nonnull\n    static ByteString guidToByteString(@Nonnull UUID uuid) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "23",
+                    "column": "32",
+                    "severity": "error",
+                    "message": "'}' at column 32 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler/119/GuidConversions.java\nindex 06c52dd846..8bda5648c6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler/119/GuidConversions.java\n@@ -65,5 +65,5 @@ final class GuidConversions {\n         // no implicit conversions exist\n         return null;\n     }\n-    \n+\n }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/119/GuidConversions.java\nindex 06c52dd846..ae0a2e9907 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/119/GuidConversions.java\n@@ -20,7 +20,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.ByteString;\n \n final class GuidConversions {\n \n-    private GuidConversions() {}\n+    private GuidConversions() {\n+    }\n \n     @Nonnull\n     static ByteString guidToByteString(@Nonnull UUID uuid) {\n@@ -53,9 +54,12 @@ final class GuidConversions {\n     static Object explicitConversion(@Nonnull UUID uuid, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case ByteString:    return guidToByteString(uuid);\n-            case String:        return guidToString(uuid);\n-            default:            return implicitConversion(uuid, targetType);\n+            case ByteString:\n+                return guidToByteString(uuid);\n+            case String:\n+                return guidToString(uuid);\n+            default:\n+                return implicitConversion(uuid, targetType);\n         }\n         //@formatter:on\n     }\n@@ -65,5 +69,5 @@ final class GuidConversions {\n         // no implicit conversions exist\n         return null;\n     }\n-    \n+\n }\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "23",
+                    "column": "32",
+                    "severity": "error",
+                    "message": "'}' at column 32 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/119/GuidConversions.java\nindex 06c52dd846..a39a694720 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/119/GuidConversions.java\n@@ -65,5 +65,4 @@ final class GuidConversions {\n         // no implicit conversions exist\n         return null;\n     }\n-    \n-}\n+    }\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/119/GuidConversions.java\nindex 06c52dd846..826fe0a302 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/119/GuidConversions.java\n@@ -14,17 +14,18 @@ import java.nio.ByteBuffer;\n import java.util.UUID;\n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.stack.core.BuiltinDataType;\n import org.eclipse.milo.opcua.stack.core.types.builtin.ByteString;\n \n final class GuidConversions {\n \n-    private GuidConversions() {}\n+    private GuidConversions() {\n+    }\n \n     @Nonnull\n     static ByteString guidToByteString(@Nonnull UUID uuid) {\n         ByteBuffer bb = ByteBuffer.wrap(new byte[16]);\n+\n         bb.putLong(uuid.getMostSignificantBits());\n         bb.putLong(uuid.getLeastSignificantBits());\n \n@@ -37,13 +38,12 @@ final class GuidConversions {\n     }\n \n     @Nullable\n-    static Object convert(@Nonnull Object o, BuiltinDataType targetType, boolean implicit) {\n+    static Object convert(@Nonnull Object o, BuiltinDataType targetType,\n+                          boolean implicit) {\n         if (o instanceof UUID) {\n             UUID uuid = (UUID) o;\n \n-            return implicit ?\n-                implicitConversion(uuid, targetType) :\n-                explicitConversion(uuid, targetType);\n+            return implicit ? implicitConversion(uuid, targetType) : explicitConversion(uuid, targetType);\n         } else {\n             return null;\n         }\n@@ -53,9 +53,12 @@ final class GuidConversions {\n     static Object explicitConversion(@Nonnull UUID uuid, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case ByteString:    return guidToByteString(uuid);\n-            case String:        return guidToString(uuid);\n-            default:            return implicitConversion(uuid, targetType);\n+            case ByteString:\n+                return guidToByteString(uuid);\n+            case String:\n+                return guidToString(uuid);\n+            default:\n+                return implicitConversion(uuid, targetType);\n         }\n         //@formatter:on\n     }\n@@ -65,5 +68,5 @@ final class GuidConversions {\n         // no implicit conversions exist\n         return null;\n     }\n-    \n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "23",
+                    "column": "32",
+                    "severity": "error",
+                    "message": "'}' at column 32 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_random/119/GuidConversions.java\nindex 06c52dd846..8bda5648c6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_random/119/GuidConversions.java\n@@ -65,5 +65,5 @@ final class GuidConversions {\n         // no implicit conversions exist\n         return null;\n     }\n-    \n+\n }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "23",
+                    "column": "32",
+                    "severity": "error",
+                    "message": "'}' at column 32 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/119/GuidConversions.java\nindex 06c52dd846..8bda5648c6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/119/GuidConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/119/GuidConversions.java\n@@ -65,5 +65,5 @@ final class GuidConversions {\n         // no implicit conversions exist\n         return null;\n     }\n-    \n+\n }\n",
+            "diff_size": 1
+        }
+    ]
+}

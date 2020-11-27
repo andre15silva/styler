@@ -1,0 +1,118 @@
+{
+    "error_id": "227",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 178).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<StoreAttrDto> storeAttrs = BeanConvertUtil.covertBeanList(storeAttrServiceDaoImpl.getStoreAttrInfo(BeanConvertUtil.beanCovertMap(storeAttrDto)), StoreAttrDto.class);\n\n        if (storeAttrs == null || storeAttrs.size() == 0) {\n            return storeAttrs;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/227/StoreAttrInnerServiceSMOImpl.java\nindex 6099d6b5f3..a5c1817a33 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/227/StoreAttrInnerServiceSMOImpl.java\n@@ -40,35 +40,40 @@ public class StoreAttrInnerServiceSMOImpl extends BaseServiceSMO implements ISto\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             storeAttrDto.setPage((page - 1) * storeAttrDto.getRow());\n-        }\n+        } List<StoreAttrDto>storeAttrs\n \n-        List<StoreAttrDto> storeAttrs = BeanConvertUtil.covertBeanList(storeAttrServiceDaoImpl.getStoreAttrInfo(BeanConvertUtil.beanCovertMap(storeAttrDto)), StoreAttrDto.class);\n \n-        if (storeAttrs == null || storeAttrs.size() == 0) {\n-            return storeAttrs;\n-        }\n \n-        return storeAttrs;\n-    }\n+        =\n \n+        BeanConvertUtil .covertBeanList(storeAttrServiceDaoImpl.getStoreAttrInfo(BeanConvertUtil.beanCovertMap(storeAttrDto)), StoreAttrDto.class);\n \n-    @Override\n-    public int queryStoreAttrsCount(@RequestBody StoreAttrDto storeAttrDto) {\n-        return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));    }\n+          if (storeAttrs == null || storeAttrs.size() == 0) {\n+              return storeAttrs;\n+          }\n+\n+          return storeAttrs;\n+      }\n+\n+\n+      @Override\n+      public int queryStoreAttrsCount(@RequestBody StoreAttrDto storeAttrDto) {\n+          return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));    }\n \n-    public IStoreAttrServiceDao getStoreAttrServiceDaoImpl() {\n-        return storeAttrServiceDaoImpl;\n-    }\n+      public IStoreAttrServiceDao getStoreAttrServiceDaoImpl() {\n+          return storeAttrServiceDaoImpl;\n+      }\n \n-    public void setStoreAttrServiceDaoImpl(IStoreAttrServiceDao storeAttrServiceDaoImpl) {\n-        this.storeAttrServiceDaoImpl = storeAttrServiceDaoImpl;\n-    }\n+      public void setStoreAttrServiceDaoImpl(IStoreAttrServiceDao storeAttrServiceDaoImpl) {\n+          this.storeAttrServiceDaoImpl = storeAttrServiceDaoImpl;\n+      }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+      public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+          return userInnerServiceSMOImpl;\n+      }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n-}\n+      public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+          this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+      }\n+  }\n+  \n\\ No newline at end of file\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/227/StoreAttrInnerServiceSMOImpl.java\nindex 6099d6b5f3..67f88718b1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/227/StoreAttrInnerServiceSMOImpl.java\n@@ -25,50 +25,52 @@ import java.util.List;\n @RestController\n public class StoreAttrInnerServiceSMOImpl extends BaseServiceSMO implements IStoreAttrInnerServiceSMO {\n \n-    @Autowired\n-    private IStoreAttrServiceDao storeAttrServiceDaoImpl;\n+  @Autowired\n+  private IStoreAttrServiceDao storeAttrServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<StoreAttrDto> queryStoreAttrs(@RequestBody  StoreAttrDto storeAttrDto) {\n+  @Override\n+  public List<StoreAttrDto> queryStoreAttrs(@RequestBody StoreAttrDto storeAttrDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = storeAttrDto.getPage();\n+    int page = storeAttrDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            storeAttrDto.setPage((page - 1) * storeAttrDto.getRow());\n-        }\n-\n-        List<StoreAttrDto> storeAttrs = BeanConvertUtil.covertBeanList(storeAttrServiceDaoImpl.getStoreAttrInfo(BeanConvertUtil.beanCovertMap(storeAttrDto)), StoreAttrDto.class);\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      storeAttrDto.setPage((page - 1) * storeAttrDto.getRow());\n+    }\n \n-        if (storeAttrs == null || storeAttrs.size() == 0) {\n-            return storeAttrs;\n-        }\n+    List<StoreAttrDto> storeAttrs =\n+      BeanConvertUtil.covertBeanList(storeAttrServiceDaoImpl.getStoreAttrInfo(BeanConvertUtil.beanCovertMap(storeAttrDto)), StoreAttrDto.class);\n \n-        return storeAttrs;\n+    if (storeAttrs == null || storeAttrs.size() == 0) {\n+      return storeAttrs;\n     }\n \n+    return storeAttrs;\n+  }\n \n-    @Override\n-    public int queryStoreAttrsCount(@RequestBody StoreAttrDto storeAttrDto) {\n-        return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));    }\n \n-    public IStoreAttrServiceDao getStoreAttrServiceDaoImpl() {\n-        return storeAttrServiceDaoImpl;\n-    }\n+  @Override\n+  public int queryStoreAttrsCount(@RequestBody StoreAttrDto storeAttrDto) {\n+    return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));\n+  }\n \n-    public void setStoreAttrServiceDaoImpl(IStoreAttrServiceDao storeAttrServiceDaoImpl) {\n-        this.storeAttrServiceDaoImpl = storeAttrServiceDaoImpl;\n-    }\n+  public IStoreAttrServiceDao getStoreAttrServiceDaoImpl() {\n+    return storeAttrServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public void setStoreAttrServiceDaoImpl(IStoreAttrServiceDao storeAttrServiceDaoImpl) {\n+    this.storeAttrServiceDaoImpl = storeAttrServiceDaoImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n+\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 40
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 178).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/227/StoreAttrInnerServiceSMOImpl.java\nindex 6099d6b5f3..5392d4175e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/227/StoreAttrInnerServiceSMOImpl.java\n@@ -71,4 +71,4 @@ public class StoreAttrInnerServiceSMOImpl extends BaseServiceSMO implements ISto\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 178).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/227/StoreAttrInnerServiceSMOImpl.java\nindex 6099d6b5f3..7d2f0b285a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/227/StoreAttrInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.store.smo.impl;\n \n-\n import com.java110.dto.store.StoreAttrDto;\n import com.java110.store.dao.IStoreAttrServiceDao;\n import com.java110.utils.util.BeanConvertUtil;\n@@ -11,7 +10,6 @@ import com.java110.dto.PageDto;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -22,6 +20,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class StoreAttrInnerServiceSMOImpl extends BaseServiceSMO implements IStoreAttrInnerServiceSMO {\n \n@@ -32,18 +32,15 @@ public class StoreAttrInnerServiceSMOImpl extends BaseServiceSMO implements ISto\n     private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n     @Override\n-    public List<StoreAttrDto> queryStoreAttrs(@RequestBody  StoreAttrDto storeAttrDto) {\n+    public List<StoreAttrDto> queryStoreAttrs(@RequestBody StoreAttrDto storeAttrDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = storeAttrDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             storeAttrDto.setPage((page - 1) * storeAttrDto.getRow());\n         }\n \n         List<StoreAttrDto> storeAttrs = BeanConvertUtil.covertBeanList(storeAttrServiceDaoImpl.getStoreAttrInfo(BeanConvertUtil.beanCovertMap(storeAttrDto)), StoreAttrDto.class);\n-\n         if (storeAttrs == null || storeAttrs.size() == 0) {\n             return storeAttrs;\n         }\n@@ -54,7 +51,8 @@ public class StoreAttrInnerServiceSMOImpl extends BaseServiceSMO implements ISto\n \n     @Override\n     public int queryStoreAttrsCount(@RequestBody StoreAttrDto storeAttrDto) {\n-        return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));    }\n+        return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));\n+    }\n \n     public IStoreAttrServiceDao getStoreAttrServiceDaoImpl() {\n         return storeAttrServiceDaoImpl;\n@@ -71,4 +69,4 @@ public class StoreAttrInnerServiceSMOImpl extends BaseServiceSMO implements ISto\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "76",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "26",
+                    "severity": "error",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "26",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/227/StoreAttrInnerServiceSMOImpl.java\nindex 6099d6b5f3..7d10210db5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/227/StoreAttrInnerServiceSMOImpl.java\n@@ -41,34 +41,37 @@ public class StoreAttrInnerServiceSMOImpl extends BaseServiceSMO implements ISto\n         if (page != PageDto.DEFAULT_PAGE) {\n             storeAttrDto.setPage((page - 1) * storeAttrDto.getRow());\n         }\n+            List < StoreAttrDto >storeAttrs=BeanConvertUtil.covertBeanList (storeAttrServiceDaoImpl.\n+        getStoreAttrInfo ( BeanConvertUtil .beanCovertMap(storeAttrDto)),\n \n-        List<StoreAttrDto> storeAttrs = BeanConvertUtil.covertBeanList(storeAttrServiceDaoImpl.getStoreAttrInfo(BeanConvertUtil.beanCovertMap(storeAttrDto)), StoreAttrDto.class);\n+        StoreAttrDto .class);\n \n-        if (storeAttrs == null || storeAttrs.size() == 0) {\n-            return storeAttrs;\n-        }\n+         if (storeAttrs == null || storeAttrs.size() == 0) {\n+             return storeAttrs;\n+         }\n \n-        return storeAttrs;\n-    }\n+         return storeAttrs;\n+     }\n \n \n-    @Override\n-    public int queryStoreAttrsCount(@RequestBody StoreAttrDto storeAttrDto) {\n-        return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));    }\n+     @Override\n+     public int queryStoreAttrsCount(@RequestBody StoreAttrDto storeAttrDto) {\n+         return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));    }\n \n-    public IStoreAttrServiceDao getStoreAttrServiceDaoImpl() {\n-        return storeAttrServiceDaoImpl;\n-    }\n+     public IStoreAttrServiceDao getStoreAttrServiceDaoImpl() {\n+         return storeAttrServiceDaoImpl;\n+     }\n \n-    public void setStoreAttrServiceDaoImpl(IStoreAttrServiceDao storeAttrServiceDaoImpl) {\n-        this.storeAttrServiceDaoImpl = storeAttrServiceDaoImpl;\n-    }\n+     public void setStoreAttrServiceDaoImpl(IStoreAttrServiceDao storeAttrServiceDaoImpl) {\n+         this.storeAttrServiceDaoImpl = storeAttrServiceDaoImpl;\n+     }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+     public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+         return userInnerServiceSMOImpl;\n+     }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n-}\n+     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+     }\n+ }\n+ \n\\ No newline at end of file\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/227/StoreAttrInnerServiceSMOImpl.java\nindex 6099d6b5f3..a5c1817a33 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/227/StoreAttrInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/227/StoreAttrInnerServiceSMOImpl.java\n@@ -40,35 +40,40 @@ public class StoreAttrInnerServiceSMOImpl extends BaseServiceSMO implements ISto\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             storeAttrDto.setPage((page - 1) * storeAttrDto.getRow());\n-        }\n+        } List<StoreAttrDto>storeAttrs\n \n-        List<StoreAttrDto> storeAttrs = BeanConvertUtil.covertBeanList(storeAttrServiceDaoImpl.getStoreAttrInfo(BeanConvertUtil.beanCovertMap(storeAttrDto)), StoreAttrDto.class);\n \n-        if (storeAttrs == null || storeAttrs.size() == 0) {\n-            return storeAttrs;\n-        }\n \n-        return storeAttrs;\n-    }\n+        =\n \n+        BeanConvertUtil .covertBeanList(storeAttrServiceDaoImpl.getStoreAttrInfo(BeanConvertUtil.beanCovertMap(storeAttrDto)), StoreAttrDto.class);\n \n-    @Override\n-    public int queryStoreAttrsCount(@RequestBody StoreAttrDto storeAttrDto) {\n-        return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));    }\n+          if (storeAttrs == null || storeAttrs.size() == 0) {\n+              return storeAttrs;\n+          }\n+\n+          return storeAttrs;\n+      }\n+\n+\n+      @Override\n+      public int queryStoreAttrsCount(@RequestBody StoreAttrDto storeAttrDto) {\n+          return storeAttrServiceDaoImpl.queryStoreAttrsCount(BeanConvertUtil.beanCovertMap(storeAttrDto));    }\n \n-    public IStoreAttrServiceDao getStoreAttrServiceDaoImpl() {\n-        return storeAttrServiceDaoImpl;\n-    }\n+      public IStoreAttrServiceDao getStoreAttrServiceDaoImpl() {\n+          return storeAttrServiceDaoImpl;\n+      }\n \n-    public void setStoreAttrServiceDaoImpl(IStoreAttrServiceDao storeAttrServiceDaoImpl) {\n-        this.storeAttrServiceDaoImpl = storeAttrServiceDaoImpl;\n-    }\n+      public void setStoreAttrServiceDaoImpl(IStoreAttrServiceDao storeAttrServiceDaoImpl) {\n+          this.storeAttrServiceDaoImpl = storeAttrServiceDaoImpl;\n+      }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+      public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+          return userInnerServiceSMOImpl;\n+      }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n-}\n+      public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+          this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+      }\n+  }\n+  \n\\ No newline at end of file\n",
+            "diff_size": 33
+        }
+    ]
+}

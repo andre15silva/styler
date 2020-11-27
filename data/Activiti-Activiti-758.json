@@ -1,0 +1,65 @@
+{
+    "error_id": "758",
+    "information": {
+        "errors": [
+            {
+                "line": "13",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.engine.impl.cmd;\n\nimport java.io.Serializable;\nimport java.util.Optional;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/758/NewTaskCmd.java\nindex a3784b2dbb..c917158040 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/758/NewTaskCmd.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/758/NewTaskCmd.java\nindex a3784b2dbb..c917158040 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/758/NewTaskCmd.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/758/NewTaskCmd.java\nindex a3784b2dbb..fd98528113 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/naturalize/758/NewTaskCmd.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n@@ -46,4 +47,4 @@ public class NewTaskCmd implements Command<Task>, Serializable {\n         return Optional.ofNullable(deployment)\n                 .map(DeploymentEntity::getVersion);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/758/NewTaskCmd.java\nindex a3784b2dbb..dc521a0c9e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/758/NewTaskCmd.java\n@@ -14,7 +14,6 @@ package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n import java.util.Optional;\n-\n import org.activiti.engine.impl.interceptor.Command;\n import org.activiti.engine.impl.interceptor.CommandContext;\n import org.activiti.engine.impl.persistence.entity.DeploymentEntity;\n@@ -22,6 +21,7 @@ import org.activiti.engine.impl.persistence.entity.DeploymentEntityManager;\n import org.activiti.engine.impl.persistence.entity.TaskEntity;\n import org.activiti.engine.task.Task;\n \n+\n public class NewTaskCmd implements Command<Task>, Serializable {\n \n     private static final long serialVersionUID = 1L;\n@@ -29,21 +29,19 @@ public class NewTaskCmd implements Command<Task>, Serializable {\n     private final String taskId;\n \n     public NewTaskCmd(String taskId) {\n-        this.taskId = taskId;\n+    this.taskId = taskId;\n     }\n \n     public Task execute(CommandContext commandContext) {\n-        TaskEntity task = commandContext.getTaskEntityManager().create();\n-        task.setId(taskId);\n-        task.setRevision(0);\n-        findAppVersionFromDeployment(commandContext.getDeploymentEntityManager())\n-                .ifPresent(task::setAppVersion);\n-        return task;\n+    TaskEntity task = commandContext.getTaskEntityManager().create();\n+    task.setId(taskId);\n+    task.setRevision(0);\n+    findAppVersionFromDeployment(commandContext.getDeploymentEntityManager()).ifPresent(task::setAppVersion);\n+    return task;\n     }\n \n     private Optional<Integer> findAppVersionFromDeployment(DeploymentEntityManager deploymentEntityManager) {\n-        DeploymentEntity deployment = deploymentEntityManager.findLatestDeploymentByName(\"SpringAutoDeployment\");\n-        return Optional.ofNullable(deployment)\n-                .map(DeploymentEntity::getVersion);\n+    DeploymentEntity deployment = deploymentEntityManager.findLatestDeploymentByName(\"SpringAutoDeployment\");\n+    return Optional.ofNullable(deployment).map(DeploymentEntity::getVersion);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/758/NewTaskCmd.java\nindex a3784b2dbb..c917158040 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/758/NewTaskCmd.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/758/NewTaskCmd.java\nindex a3784b2dbb..c917158040 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/758/NewTaskCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/758/NewTaskCmd.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n",
+            "diff_size": 1
+        }
+    ]
+}

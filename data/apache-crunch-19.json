@@ -1,0 +1,234 @@
+{
+    "error_id": "19",
+    "information": {
+        "errors": [
+            {
+                "line": "114",
+                "severity": "warning",
+                "message": "'method def modifier' has incorrect indentation level 1, expected level should be 2.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+            }
+        ]
+    },
+    "source_code": "  *          The strategy to use for handling existing outputs\n  */\n void write(PCollection<?> collection, Target target,\n     Target.WriteMode writeMode);\n\n /**",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler/19/Pipeline.java\nindex cd4ce033b8..a13a60eaa9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler/19/Pipeline.java\n@@ -111,8 +111,8 @@ public interface Pipeline {\n   * @param writeMode\n   *          The strategy to use for handling existing outputs\n   */\n- void write(PCollection<?> collection, Target target,\n-     Target.WriteMode writeMode);\n+  void write(PCollection<?> collection, Target target,\n+                             Target.WriteMode writeMode);\n \n  /**\n    * Create the given PCollection and read the data it contains into the\n@@ -219,7 +219,7 @@ public interface Pipeline {\n    * @return\n    */\n   PipelineExecution runAsync();\n-  \n+\n   /**\n    * Run any remaining jobs required to generate outputs and then clean up any\n    * intermediate data files that were created in this run or previous calls to\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/intellij/19/Pipeline.java\nindex cd4ce033b8..b5e0460bed 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/intellij/19/Pipeline.java\n@@ -6,15 +6,16 @@\n  * to you under the Apache License, Version 2.0 (the\n  * \"License\"); you may not use this file except in compliance\n  * with the License.  You may obtain a copy of the License at\n- *\n- *     http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.apache.crunch;\n \n import org.apache.crunch.types.PTableType;\n@@ -25,7 +26,7 @@ import java.util.List;\n \n /**\n  * Manages the state of a pipeline execution.\n- * \n+ *\n  */\n public interface Pipeline {\n \n@@ -36,7 +37,7 @@ public interface Pipeline {\n \n   /**\n    * Returns the name of this pipeline.\n-   * \n+   *\n    * @return Name of the pipeline\n    */\n   String getName();\n@@ -49,7 +50,7 @@ public interface Pipeline {\n   /**\n    * Converts the given {@code Source} into a {@code PCollection} that is\n    * available to jobs run using this {@code Pipeline} instance.\n-   * \n+   *\n    * @param source\n    *          The source of data\n    * @return A PCollection that references the given source\n@@ -69,14 +70,14 @@ public interface Pipeline {\n   /**\n    * A version of the read method for {@code TableSource} instances that map to\n    * {@code PTable}s.\n-   * \n+   *\n    * @param tableSource\n    *          The source of the data\n    * @return A PTable that references the given source\n    */\n   <K, V> PTable<K, V> read(TableSource<K, V> tableSource);\n \n- /**\n+  /**\n    * A version of the read method for {@code TableSource} instances that map to\n    * {@code PTable}s.\n    *\n@@ -90,7 +91,7 @@ public interface Pipeline {\n    * Write the given collection to the given target on the next pipeline run. The\n    * system will check to see if the target's location already exists using the\n    * {@code WriteMode.DEFAULT} rule for the given {@code Target}.\n-   * \n+   *\n    * @param collection\n    *          The collection\n    * @param target\n@@ -99,25 +100,25 @@ public interface Pipeline {\n   void write(PCollection<?> collection, Target target);\n \n   /**\n-  * Write the contents of the {@code PCollection} to the given {@code Target},\n-  * using the storage format specified by the target and the given\n-  * {@code WriteMode} for cases where the referenced {@code Target}\n-  * already exists.\n-  *\n-  * @param collection\n-  *          The collection\n-  * @param target\n-  *          The target to write to\n-  * @param writeMode\n-  *          The strategy to use for handling existing outputs\n-  */\n- void write(PCollection<?> collection, Target target,\n-     Target.WriteMode writeMode);\n-\n- /**\n+   * Write the contents of the {@code PCollection} to the given {@code Target},\n+   * using the storage format specified by the target and the given\n+   * {@code WriteMode} for cases where the referenced {@code Target}\n+   * already exists.\n+   *\n+   * @param collection\n+   *          The collection\n+   * @param target\n+   *          The target to write to\n+   * @param writeMode\n+   *          The strategy to use for handling existing outputs\n+   */\n+  void write(PCollection<?> collection, Target target,\n+             Target.WriteMode writeMode);\n+\n+  /**\n    * Create the given PCollection and read the data it contains into the\n    * returned Collection instance for client use.\n-   * \n+   *\n    * @param pcollection\n    *          The PCollection to materialize\n    * @return the data from the PCollection as a read-only Collection\n@@ -219,7 +220,7 @@ public interface Pipeline {\n    * @return\n    */\n   PipelineExecution runAsync();\n-  \n+\n   /**\n    * Run any remaining jobs required to generate outputs and then clean up any\n    * intermediate data files that were created in this run or previous calls to\n@@ -228,9 +229,9 @@ public interface Pipeline {\n   PipelineResult done();\n \n   /**\n-  * Cleans up any artifacts created as a result of {@link #run() running} the pipeline.\n-  * @param force forces the cleanup even if all targets of the pipeline have not been completed.\n-  */\n+   * Cleans up any artifacts created as a result of {@link #run() running} the pipeline.\n+   * @param force forces the cleanup even if all targets of the pipeline have not been completed.\n+   */\n   void cleanup(boolean force);\n \n   /**\n",
+            "diff_size": 31
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "87",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/naturalize/19/Pipeline.java\nindex cd4ce033b8..90edbb2c12 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/naturalize/19/Pipeline.java\n@@ -76,7 +76,7 @@ public interface Pipeline {\n    */\n   <K, V> PTable<K, V> read(TableSource<K, V> tableSource);\n \n- /**\n+/**\n    * A version of the read method for {@code TableSource} instances that map to\n    * {@code PTable}s.\n    *\n@@ -84,7 +84,7 @@ public interface Pipeline {\n    * @param named A name for the returned PTable\n    * @return A PTable that references the given source\n    */\n-  <K, V> PTable<K, V> read(TableSource<K, V> tableSource, String named);\n+<K, V> PTable<K, V> read(TableSource<K, V> tableSource, String named);\n \n   /**\n    * Write the given collection to the given target on the next pipeline run. The\n@@ -111,7 +111,7 @@ public interface Pipeline {\n   * @param writeMode\n   *          The strategy to use for handling existing outputs\n   */\n- void write(PCollection<?> collection, Target target,\n+void write(PCollection<?> collection, Target target,\n      Target.WriteMode writeMode);\n \n  /**\n@@ -122,7 +122,7 @@ public interface Pipeline {\n    *          The PCollection to materialize\n    * @return the data from the PCollection as a read-only Collection\n    */\n-  <T> Iterable<T> materialize(PCollection<T> pcollection);\n+<T> Iterable<T> materialize(PCollection<T> pcollection);\n \n   /**\n    * Caches the given PCollection so that it will be processed at most once\n@@ -247,4 +247,4 @@ public interface Pipeline {\n    * Turn on debug logging for jobs that are run from this pipeline.\n    */\n   void enableDebug();\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "131",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "143",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "154",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "164",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "185",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "198",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "209",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "221",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "224",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "226",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "239",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "247",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "257",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "266",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "274",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "281",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "288",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "295",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/codebuff/19/Pipeline.java\nindex cd4ce033b8..7ae44700ca 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/codebuff/19/Pipeline.java\n@@ -20,31 +20,38 @@ package org.apache.crunch;\n import org.apache.crunch.types.PTableType;\n import org.apache.crunch.types.PType;\n import org.apache.hadoop.conf.Configuration;\n-\n import java.util.List;\n \n /**\n  * Manages the state of a pipeline execution.\n  * \n  */\n+\n+\n public interface Pipeline {\n \n   /**\n    * Set the {@code Configuration} to use with this pipeline.\n    */\n-  void setConfiguration(Configuration conf);\n+\n+\n+    void setConfiguration(Configuration conf);\n \n   /**\n    * Returns the name of this pipeline.\n    * \n    * @return Name of the pipeline\n    */\n-  String getName();\n+\n+\n+    String getName();\n \n   /**\n    * Returns the {@code Configuration} instance associated with this pipeline.\n    */\n-  Configuration getConfiguration();\n+\n+\n+    Configuration getConfiguration();\n \n   /**\n    * Converts the given {@code Source} into a {@code PCollection} that is\n@@ -54,7 +61,9 @@ public interface Pipeline {\n    *          The source of data\n    * @return A PCollection that references the given source\n    */\n-  <T> PCollection<T> read(Source<T> source);\n+\n+\n+    <T> PCollection<T> read(Source<T> source);\n \n   /**\n    * Converts the given {@code Source} into a {@code PCollection} that is\n@@ -64,7 +73,9 @@ public interface Pipeline {\n    * @param named A name for the returned PCollection\n    * @return A PCollection that references the given source\n    */\n-  <T> PCollection<T> read(Source<T> source, String named);\n+\n+\n+    <T> PCollection<T> read(Source<T> source, String named);\n \n   /**\n    * A version of the read method for {@code TableSource} instances that map to\n@@ -74,7 +85,8 @@ public interface Pipeline {\n    *          The source of the data\n    * @return A PTable that references the given source\n    */\n-  <K, V> PTable<K, V> read(TableSource<K, V> tableSource);\n+\n+    <K, V> PTable<K, V> read(TableSource<K, V> tableSource);\n \n  /**\n    * A version of the read method for {@code TableSource} instances that map to\n@@ -84,7 +96,8 @@ public interface Pipeline {\n    * @param named A name for the returned PTable\n    * @return A PTable that references the given source\n    */\n-  <K, V> PTable<K, V> read(TableSource<K, V> tableSource, String named);\n+\n+    <K, V> PTable<K, V> read(TableSource<K, V> tableSource, String named);\n \n   /**\n    * Write the given collection to the given target on the next pipeline run. The\n@@ -96,7 +109,9 @@ public interface Pipeline {\n    * @param target\n    *          The output target\n    */\n-  void write(PCollection<?> collection, Target target);\n+\n+\n+    void write(PCollection<?> collection, Target target);\n \n   /**\n   * Write the contents of the {@code PCollection} to the given {@code Target},\n@@ -111,8 +126,9 @@ public interface Pipeline {\n   * @param writeMode\n   *          The strategy to use for handling existing outputs\n   */\n- void write(PCollection<?> collection, Target target,\n-     Target.WriteMode writeMode);\n+\n+\n+    void write(PCollection<?> collection, Target target, Target.WriteMode writeMode);\n \n  /**\n    * Create the given PCollection and read the data it contains into the\n@@ -122,7 +138,9 @@ public interface Pipeline {\n    *          The PCollection to materialize\n    * @return the data from the PCollection as a read-only Collection\n    */\n-  <T> Iterable<T> materialize(PCollection<T> pcollection);\n+\n+\n+    <T> Iterable<T> materialize(PCollection<T> pcollection);\n \n   /**\n    * Caches the given PCollection so that it will be processed at most once\n@@ -131,7 +149,9 @@ public interface Pipeline {\n    * @param pcollection The PCollection to cache\n    * @param options The options for how the cached data is stored\n    */\n-  <T> void cache(PCollection<T> pcollection, CachingOptions options);\n+\n+\n+    <T> void cache(PCollection<T> pcollection, CachingOptions options);\n \n   /**\n    * Creates an empty {@code PCollection} of the given {@code PType}.\n@@ -139,7 +159,9 @@ public interface Pipeline {\n    * @param ptype The PType of the empty PCollection\n    * @return A valid PCollection with no contents\n    */\n-  <T> PCollection<T> emptyPCollection(PType<T> ptype);\n+\n+\n+    <T> PCollection<T> emptyPCollection(PType<T> ptype);\n \n   /**\n    * Creates an empty {@code PTable} of the given {@code PTable Type}.\n@@ -147,7 +169,8 @@ public interface Pipeline {\n    * @param ptype The PTableType of the empty PTable\n    * @return A valid PTable with no contents\n    */\n-  <K, V> PTable<K, V> emptyPTable(PTableType<K, V> ptype);\n+\n+    <K, V> PTable<K, V> emptyPTable(PTableType<K, V> ptype);\n \n   /**\n    * Creates a {@code PCollection} containing the values found in the given {@code Iterable}\n@@ -157,7 +180,9 @@ public interface Pipeline {\n    * @param ptype The PType of the PCollection\n    * @return A PCollection that contains the given values\n    */\n-  <T> PCollection<T> create(Iterable<T> contents, PType<T> ptype);\n+\n+\n+    <T> PCollection<T> create(Iterable<T> contents, PType<T> ptype);\n \n   /**\n    * Creates a {@code PCollection} containing the values found in the given {@code Iterable}\n@@ -168,7 +193,9 @@ public interface Pipeline {\n    * @param options Additional options, such as the name or desired parallelism of the PCollection\n    * @return A PCollection that contains the given values\n    */\n-  <T> PCollection<T> create(Iterable<T> contents, PType<T> ptype, CreateOptions options);\n+\n+\n+    <T> PCollection<T> create(Iterable<T> contents, PType<T> ptype, CreateOptions options);\n \n   /**\n    * Creates a {@code PTable} containing the values found in the given {@code Iterable}\n@@ -178,7 +205,8 @@ public interface Pipeline {\n    * @param ptype The PTableType of the PTable\n    * @return A PTable that contains the given values\n    */\n-  <K, V> PTable<K, V> create(Iterable<Pair<K, V>> contents, PTableType<K, V> ptype);\n+\n+    <K, V> PTable<K, V> create(Iterable<Pair<K, V>> contents, PTableType<K, V> ptype);\n \n   /**\n    * Creates a {@code PTable} containing the values found in the given {@code Iterable}\n@@ -189,11 +217,13 @@ public interface Pipeline {\n    * @param options Additional options, such as the name or desired parallelism of the PTable\n    * @return A PTable that contains the given values\n    */\n-  <K, V> PTable<K, V> create(Iterable<Pair<K, V>> contents, PTableType<K, V> ptype, CreateOptions options);\n \n-  <S> PCollection<S> union(List<PCollection<S>> collections);\n+    <K, V> PTable<K, V> create(Iterable<Pair<K, V>> contents, PTableType<K, V> ptype, CreateOptions options);\n \n-  <K, V> PTable<K, V> unionTables(List<PTable<K, V>> tables);\n+\n+    <S> PCollection<S> union(List<PCollection<S>> collections);\n+\n+    <K, V> PTable<K, V> unionTables(List<PTable<K, V>> tables);\n \n   /**\n    * Executes the given {@code PipelineCallable} on the client after the {@code Targets}\n@@ -204,13 +234,17 @@ public interface Pipeline {\n    * @param <Output> The return type of the PipelineCallable\n    * @return The result of executing the PipelineCallable\n    */\n-  <Output> Output sequentialDo(PipelineCallable<Output> pipelineCallable);\n+\n+\n+    <Output> Output sequentialDo(PipelineCallable<Output> pipelineCallable);\n \n   /**\n    * Constructs and executes a series of MapReduce jobs in order to write data\n    * to the output targets.\n    */\n-  PipelineResult run();\n+\n+\n+    PipelineResult run();\n \n   /**\n    * Constructs and starts a series of MapReduce jobs in order ot write data to\n@@ -218,33 +252,45 @@ public interface Pipeline {\n    * job execution.\n    * @return\n    */\n-  PipelineExecution runAsync();\n+\n+\n+    PipelineExecution runAsync();\n   \n   /**\n    * Run any remaining jobs required to generate outputs and then clean up any\n    * intermediate data files that were created in this run or previous calls to\n    * {@code run}.\n    */\n-  PipelineResult done();\n+\n+\n+    PipelineResult done();\n \n   /**\n   * Cleans up any artifacts created as a result of {@link #run() running} the pipeline.\n   * @param force forces the cleanup even if all targets of the pipeline have not been completed.\n   */\n-  void cleanup(boolean force);\n+\n+\n+    void cleanup(boolean force);\n \n   /**\n    * A convenience method for reading a text file.\n    */\n-  PCollection<String> readTextFile(String pathName);\n+\n+\n+    PCollection<String> readTextFile(String pathName);\n \n   /**\n    * A convenience method for writing a text file.\n    */\n-  <T> void writeTextFile(PCollection<T> collection, String pathName);\n+\n+\n+    <T> void writeTextFile(PCollection<T> collection, String pathName);\n \n   /**\n    * Turn on debug logging for jobs that are run from this pipeline.\n    */\n-  void enableDebug();\n-}\n+\n+\n+    void enableDebug();\n+}\n\\ No newline at end of file\n",
+            "diff_size": 78
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_random/19/Pipeline.java\nindex cd4ce033b8..a13a60eaa9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_random/19/Pipeline.java\n@@ -111,8 +111,8 @@ public interface Pipeline {\n   * @param writeMode\n   *          The strategy to use for handling existing outputs\n   */\n- void write(PCollection<?> collection, Target target,\n-     Target.WriteMode writeMode);\n+  void write(PCollection<?> collection, Target target,\n+                             Target.WriteMode writeMode);\n \n  /**\n    * Create the given PCollection and read the data it contains into the\n@@ -219,7 +219,7 @@ public interface Pipeline {\n    * @return\n    */\n   PipelineExecution runAsync();\n-  \n+\n   /**\n    * Run any remaining jobs required to generate outputs and then clean up any\n    * intermediate data files that were created in this run or previous calls to\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_three_grams/19/Pipeline.java\nindex cd4ce033b8..de8c5c0086 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/errored/1/19/Pipeline.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-crunch/styler_three_grams/19/Pipeline.java\n@@ -111,8 +111,8 @@ public interface Pipeline {\n   * @param writeMode\n   *          The strategy to use for handling existing outputs\n   */\n- void write(PCollection<?> collection, Target target,\n-     Target.WriteMode writeMode);\n+  void write(PCollection<?> collection, Target target,\n+          Target.WriteMode writeMode);\n \n  /**\n    * Create the given PCollection and read the data it contains into the\n@@ -219,7 +219,7 @@ public interface Pipeline {\n    * @return\n    */\n   PipelineExecution runAsync();\n-  \n+\n   /**\n    * Run any remaining jobs required to generate outputs and then clean up any\n    * intermediate data files that were created in this run or previous calls to\n",
+            "diff_size": 3
+        }
+    ]
+}

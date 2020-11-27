@@ -1,0 +1,198 @@
+{
+    "error_id": "56",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.internal.utils;\n\nimport java.lang.reflect.Field;\nimport java.util.Optional;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/56/FieldUtils.java\nindex bb3c206985..ebcf8cfc7b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/56/FieldUtils.java\n@@ -1,93 +1,94 @@\n-/*\r\n- * Copyright \u00a9 2013-2019, The SeedStack authors <http://seedstack.org>\r\n- *\r\n- * This Source Code Form is subject to the terms of the Mozilla Public\r\n- * License, v. 2.0. If a copy of the MPL was not distributed with this\r\n- * file, You can obtain one at http://mozilla.org/MPL/2.0/.\r\n- */\r\n-package org.seedstack.business.internal.utils;\r\n-\r\n-import java.lang.reflect.Field;\r\n-import java.util.Optional;\r\n-import org.seedstack.business.internal.BusinessErrorCode;\r\n-import org.seedstack.business.internal.BusinessException;\r\n-import org.seedstack.shed.cache.Cache;\r\n-import org.seedstack.shed.cache.CacheParameters;\r\n-import org.seedstack.shed.reflect.Classes;\r\n-\r\n-public final class FieldUtils {\r\n-    private static final Cache<FieldReference, Optional<Field>> fieldCache = Cache.create(\r\n-            new CacheParameters<FieldReference, Optional<Field>>()\r\n-                    .setInitialSize(256)\r\n-                    .setMaxSize(1024)\r\n-                    .setLoadingFunction(fieldReference -> Classes.from(fieldReference.someClass)\r\n-                            .traversingSuperclasses()\r\n-                            .fields()\r\n-                            .filter(f -> f.getName().equals(fieldReference.fieldName))\r\n-                            .findFirst())\r\n-    );\r\n-\r\n-    private FieldUtils() {\r\n-        // no instantiation allowed\r\n-    }\r\n-\r\n-    /**\r\n-     * Return the value contained in the specified field of the candidate object.\r\n-     *\r\n-     * @param candidate the object to retrieve the value of.\r\n-     * @param field     the field.\r\n-     * @return the value contained in the field of the candidate.\r\n-     */\r\n-    public static Object getFieldValue(Object candidate, Field field) {\r\n-        field.setAccessible(true);\r\n-        try {\r\n-            return field.get(candidate);\r\n-        } catch (Exception e) {\r\n-            throw BusinessException.wrap(e, BusinessErrorCode.ERROR_ACCESSING_FIELD)\r\n-                    .put(\"className\", candidate.getClass())\r\n-                    .put(\"fieldName\", field.getName());\r\n-        }\r\n-    }\r\n-\r\n-    /**\r\n-     * Returns the specified field found on the specified class and its ancestors.\r\n-     *\r\n-     * @param someClass the class to search the field on.\r\n-     * @param fieldName the field name.\r\n-     * @return the corresponding field object wrapped in an optional.\r\n-     */\r\n-    public static Optional<Field> resolveField(Class<?> someClass, String fieldName) {\r\n-        return fieldCache.get(new FieldReference(someClass, fieldName));\r\n-    }\r\n-\r\n-    private static class FieldReference {\r\n-        final Class<?> someClass;\r\n-        final String fieldName;\r\n-\r\n-        private FieldReference(Class<?> someClass, String fieldName) {\r\n-            this.someClass = someClass;\r\n-            this.fieldName = fieldName;\r\n-        }\r\n-\r\n-        @Override\r\n-        public boolean equals(Object o) {\r\n-            if (this == o) {\r\n-                return true;\r\n-            }\r\n-            if (o == null || getClass() != o.getClass()) {\r\n-                return false;\r\n-            }\r\n-\r\n-            FieldReference that = (FieldReference) o;\r\n-\r\n-            return someClass.equals(that.someClass) && fieldName.equals(that.fieldName);\r\n-        }\r\n-\r\n-        @Override\r\n-        public int hashCode() {\r\n-            int result = someClass.hashCode();\r\n-            result = 31 * result + fieldName.hashCode();\r\n-            return result;\r\n-        }\r\n-    }\r\n-}\r\n+/*\n+ * Copyright \u00a9 2013-2019, The SeedStack authors <http://seedstack.org>\n+ *\n+ * This Source Code Form is subject to the terms of the Mozilla Public\n+ * License, v. 2.0. If a copy of the MPL was not distributed with this\n+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n+ */\n+\n+package org.seedstack.business.internal.utils;\n+\n+import java.lang.reflect.Field;\n+import java.util.Optional;\n+import org.seedstack.business.internal.BusinessErrorCode;\n+import org.seedstack.business.internal.BusinessException;\n+import org.seedstack.shed.cache.Cache;\n+import org.seedstack.shed.cache.CacheParameters;\n+import org.seedstack.shed.reflect.Classes;\n+\n+public final class FieldUtils {\n+    private static final Cache<FieldReference, Optional<Field>> fieldCache = Cache.create(\n+            new CacheParameters<FieldReference, Optional<Field>>()\n+                    .setInitialSize(256)\n+                    .setMaxSize(1024)\n+                    .setLoadingFunction(fieldReference -> Classes.from(fieldReference.someClass)\n+                            .traversingSuperclasses()\n+                            .fields()\n+                            .filter(f -> f.getName().equals(fieldReference.fieldName))\n+                            .findFirst())\n+    );\n+\n+    private FieldUtils() {\n+        // no instantiation allowed\n+    }\n+\n+    /**\n+     * Return the value contained in the specified field of the candidate object.\n+     *\n+     * @param candidate the object to retrieve the value of.\n+     * @param field     the field.\n+     * @return the value contained in the field of the candidate.\n+     */\n+    public static Object getFieldValue(Object candidate, Field field) {\n+        field.setAccessible(true);\n+        try {\n+            return field.get(candidate);\n+        } catch (Exception e) {\n+            throw BusinessException.wrap(e, BusinessErrorCode.ERROR_ACCESSING_FIELD)\n+                    .put(\"className\", candidate.getClass())\n+                    .put(\"fieldName\", field.getName());\n+        }\n+    }\n+\n+    /**\n+     * Returns the specified field found on the specified class and its ancestors.\n+     *\n+     * @param someClass the class to search the field on.\n+     * @param fieldName the field name.\n+     * @return the corresponding field object wrapped in an optional.\n+     */\n+    public static Optional<Field> resolveField(Class<?> someClass, String fieldName) {\n+        return fieldCache.get(new FieldReference(someClass, fieldName));\n+    }\n+\n+    private static class FieldReference {\n+        final Class<?> someClass;\n+        final String fieldName;\n+\n+        private FieldReference(Class<?> someClass, String fieldName) {\n+            this.someClass = someClass;\n+            this.fieldName = fieldName;\n+        }\n+\n+        @Override\n+        public boolean equals(Object o) {\n+            if (this == o) {\n+                return true;\n+            }\n+            if (o == null || getClass() != o.getClass()) {\n+                return false;\n+            }\n+\n+            FieldReference that = (FieldReference) o;\n+\n+            return someClass.equals(that.someClass) && fieldName.equals(that.fieldName);\n+        }\n+\n+        @Override\n+        public int hashCode() {\n+            int result = someClass.hashCode();\n+            result = 31 * result + fieldName.hashCode();\n+            return result;\n+        }\n+    }\n+}\n",
+            "diff_size": 94
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/56/FieldUtils.java\nindex bb3c206985..7293c9696d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/56/FieldUtils.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\r\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\r\n  */\r\n+\r\n package org.seedstack.business.internal.utils;\r\n \r\n import java.lang.reflect.Field;\r\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "20",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 145).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "20",
+                    "column": "90",
+                    "severity": "warning",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "warning",
+                    "message": "'CTOR_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 0, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'CTOR_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/56/FieldUtils.java\nindex bb3c206985..792bf32e6f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/56/FieldUtils.java\n@@ -4,7 +4,8 @@\n  * This Source Code Form is subject to the terms of the Mozilla Public\r\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\r\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\r\n- */\r\n+ */\n+\n package org.seedstack.business.internal.utils;\r\n \r\n import java.lang.reflect.Field;\r\n@@ -16,18 +17,15 @@ import org.seedstack.shed.cache.CacheParameters;\n import org.seedstack.shed.reflect.Classes;\r\n \r\n public final class FieldUtils {\r\n-    private static final Cache<FieldReference, Optional<Field>> fieldCache = Cache.create(\r\n-            new CacheParameters<FieldReference, Optional<Field>>()\r\n+    private static final Cache<FieldReference, Optional<Field>> fieldCache = Cache.create( new CacheParameters<FieldReference, Optional<Field>>()\r\n                     .setInitialSize(256)\r\n                     .setMaxSize(1024)\r\n                     .setLoadingFunction(fieldReference -> Classes.from(fieldReference.someClass)\r\n                             .traversingSuperclasses()\r\n                             .fields()\r\n                             .filter(f -> f.getName().equals(fieldReference.fieldName))\r\n-                            .findFirst())\r\n-    );\r\n-\r\n-    private FieldUtils() {\r\n+                            .findFirst()));\n+private FieldUtils() {\r\n         // no instantiation allowed\r\n     }\r\n \r\n@@ -62,9 +60,8 @@ public final class FieldUtils {\n \r\n     private static class FieldReference {\r\n         final Class<?> someClass;\r\n-        final String fieldName;\r\n-\r\n-        private FieldReference(Class<?> someClass, String fieldName) {\r\n+        final String fieldName;\n+private FieldReference(Class<?> someClass, String fieldName) {\r\n             this.someClass = someClass;\r\n             this.fieldName = fieldName;\r\n         }\r\n@@ -90,4 +87,4 @@ public final class FieldUtils {\n             return result;\r\n         }\r\n     }\r\n-}\r\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "21",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 164).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "22",
+                    "severity": "warning",
+                    "message": "'.' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "23",
+                    "severity": "warning",
+                    "message": "'.' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "23",
+                    "column": "35",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '->' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "24",
+                    "severity": "warning",
+                    "message": "'.' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "warning",
+                    "message": "'.' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "25",
+                    "column": "10",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '->' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "warning",
+                    "message": "'.' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "warning",
+                    "message": "'CTOR_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "'catch' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'catch' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "warning",
+                    "message": "'CTOR_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "80",
+                    "column": "26",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "80",
+                    "column": "39",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '!=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "90",
+                    "column": "24",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '*' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/56/FieldUtils.java\nindex bb3c206985..9027ffce62 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/56/FieldUtils.java\n@@ -5,30 +5,27 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\r\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\r\n  */\r\n-package org.seedstack.business.internal.utils;\r\n-\r\n-import java.lang.reflect.Field;\r\n-import java.util.Optional;\r\n-import org.seedstack.business.internal.BusinessErrorCode;\r\n-import org.seedstack.business.internal.BusinessException;\r\n-import org.seedstack.shed.cache.Cache;\r\n-import org.seedstack.shed.cache.CacheParameters;\r\n-import org.seedstack.shed.reflect.Classes;\r\n-\r\n-public final class FieldUtils {\r\n-    private static final Cache<FieldReference, Optional<Field>> fieldCache = Cache.create(\r\n-            new CacheParameters<FieldReference, Optional<Field>>()\r\n-                    .setInitialSize(256)\r\n-                    .setMaxSize(1024)\r\n-                    .setLoadingFunction(fieldReference -> Classes.from(fieldReference.someClass)\r\n-                            .traversingSuperclasses()\r\n-                            .fields()\r\n-                            .filter(f -> f.getName().equals(fieldReference.fieldName))\r\n-                            .findFirst())\r\n-    );\r\n-\r\n+package org.seedstack.business.internal.utils;\n+\n+import java.lang.reflect.Field;\n+import java.util.Optional;\n+import org.seedstack.business.internal.BusinessErrorCode;\n+import org.seedstack.business.internal.BusinessException;\n+import org.seedstack.shed.cache.Cache;\n+import org.seedstack.shed.cache.CacheParameters;\n+import org.seedstack.shed.reflect.Classes;\n+\n+\n+public final class FieldUtils {\n+\n+    private static final Cache<FieldReference, Optional<Field>> fieldCache = Cache.create(new CacheParameters<FieldReference, Optional<Field>>().setInitialSize(256)\n+.setMaxSize(1024)\n+.setLoadingFunction(fieldReference-> Classes.from(fieldReference.someClass).traversingSuperclasses()\n+.fields()\n+.filter(f-> f.getName().equals(fieldReference.fieldName))\n+.findFirst()));\n     private FieldUtils() {\r\n-        // no instantiation allowed\r\n+        // no instantiation allowed\n     }\r\n \r\n     /**\r\n@@ -37,16 +34,19 @@ public final class FieldUtils {\n      * @param candidate the object to retrieve the value of.\r\n      * @param field     the field.\r\n      * @return the value contained in the field of the candidate.\r\n-     */\r\n-    public static Object getFieldValue(Object candidate, Field field) {\r\n-        field.setAccessible(true);\r\n-        try {\r\n-            return field.get(candidate);\r\n-        } catch (Exception e) {\r\n-            throw BusinessException.wrap(e, BusinessErrorCode.ERROR_ACCESSING_FIELD)\r\n-                    .put(\"className\", candidate.getClass())\r\n-                    .put(\"fieldName\", field.getName());\r\n-        }\r\n+     */\n+\n+\n+    public static Object getFieldValue(Object candidate, Field field) {\n+        field.setAccessible(true);\n+        try {\n+            return field.get(candidate);\n+        }\n+\n+catch(Exception e) {\n+            throw BusinessException.wrap(e, BusinessErrorCode.ERROR_ACCESSING_FIELD).put(\"className\", candidate.getClass())\n+.put(\"fieldName\", field.getName());\n+        }\n     }\r\n \r\n     /**\r\n@@ -55,39 +55,40 @@ public final class FieldUtils {\n      * @param someClass the class to search the field on.\r\n      * @param fieldName the field name.\r\n      * @return the corresponding field object wrapped in an optional.\r\n-     */\r\n-    public static Optional<Field> resolveField(Class<?> someClass, String fieldName) {\r\n-        return fieldCache.get(new FieldReference(someClass, fieldName));\r\n-    }\r\n-\r\n-    private static class FieldReference {\r\n-        final Class<?> someClass;\r\n-        final String fieldName;\r\n-\r\n-        private FieldReference(Class<?> someClass, String fieldName) {\r\n-            this.someClass = someClass;\r\n-            this.fieldName = fieldName;\r\n-        }\r\n-\r\n-        @Override\r\n-        public boolean equals(Object o) {\r\n-            if (this == o) {\r\n-                return true;\r\n-            }\r\n-            if (o == null || getClass() != o.getClass()) {\r\n-                return false;\r\n-            }\r\n-\r\n-            FieldReference that = (FieldReference) o;\r\n-\r\n-            return someClass.equals(that.someClass) && fieldName.equals(that.fieldName);\r\n-        }\r\n-\r\n-        @Override\r\n-        public int hashCode() {\r\n-            int result = someClass.hashCode();\r\n-            result = 31 * result + fieldName.hashCode();\r\n-            return result;\r\n-        }\r\n-    }\r\n-}\r\n+     */\n+\n+\n+    public static Optional<Field> resolveField(Class<?> someClass, String fieldName) {\n+        return fieldCache.get(new FieldReference(someClass, fieldName));\n+    }\n+\n+\n+    private static class FieldReference {\n+\n+        final Class<?> someClass;\n+        final String fieldName;\n+        private FieldReference(Class<?> someClass, String fieldName) {\n+            this.someClass = someClass;\n+            this.fieldName = fieldName;\n+        }\n+\n+        @Override\n+        public boolean equals(Object o) {\n+            if (this == o) {\n+                return true;\n+            }\n+            if (o == null|| getClass()!= o.getClass()) {\n+                return false;\n+            }\n+            FieldReference that = (FieldReference) o;\n+            return someClass.equals(that.someClass) && fieldName.equals(that.fieldName);\n+        }\n+\n+        @Override\n+        public int hashCode() {\n+            int result = someClass.hashCode();\n+            result = 31* result + fieldName.hashCode();\n+            return result;\n+        }\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 73
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/56/FieldUtils.java\nindex bb3c206985..ebcf8cfc7b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/56/FieldUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/56/FieldUtils.java\n@@ -1,93 +1,94 @@\n-/*\r\n- * Copyright \u00a9 2013-2019, The SeedStack authors <http://seedstack.org>\r\n- *\r\n- * This Source Code Form is subject to the terms of the Mozilla Public\r\n- * License, v. 2.0. If a copy of the MPL was not distributed with this\r\n- * file, You can obtain one at http://mozilla.org/MPL/2.0/.\r\n- */\r\n-package org.seedstack.business.internal.utils;\r\n-\r\n-import java.lang.reflect.Field;\r\n-import java.util.Optional;\r\n-import org.seedstack.business.internal.BusinessErrorCode;\r\n-import org.seedstack.business.internal.BusinessException;\r\n-import org.seedstack.shed.cache.Cache;\r\n-import org.seedstack.shed.cache.CacheParameters;\r\n-import org.seedstack.shed.reflect.Classes;\r\n-\r\n-public final class FieldUtils {\r\n-    private static final Cache<FieldReference, Optional<Field>> fieldCache = Cache.create(\r\n-            new CacheParameters<FieldReference, Optional<Field>>()\r\n-                    .setInitialSize(256)\r\n-                    .setMaxSize(1024)\r\n-                    .setLoadingFunction(fieldReference -> Classes.from(fieldReference.someClass)\r\n-                            .traversingSuperclasses()\r\n-                            .fields()\r\n-                            .filter(f -> f.getName().equals(fieldReference.fieldName))\r\n-                            .findFirst())\r\n-    );\r\n-\r\n-    private FieldUtils() {\r\n-        // no instantiation allowed\r\n-    }\r\n-\r\n-    /**\r\n-     * Return the value contained in the specified field of the candidate object.\r\n-     *\r\n-     * @param candidate the object to retrieve the value of.\r\n-     * @param field     the field.\r\n-     * @return the value contained in the field of the candidate.\r\n-     */\r\n-    public static Object getFieldValue(Object candidate, Field field) {\r\n-        field.setAccessible(true);\r\n-        try {\r\n-            return field.get(candidate);\r\n-        } catch (Exception e) {\r\n-            throw BusinessException.wrap(e, BusinessErrorCode.ERROR_ACCESSING_FIELD)\r\n-                    .put(\"className\", candidate.getClass())\r\n-                    .put(\"fieldName\", field.getName());\r\n-        }\r\n-    }\r\n-\r\n-    /**\r\n-     * Returns the specified field found on the specified class and its ancestors.\r\n-     *\r\n-     * @param someClass the class to search the field on.\r\n-     * @param fieldName the field name.\r\n-     * @return the corresponding field object wrapped in an optional.\r\n-     */\r\n-    public static Optional<Field> resolveField(Class<?> someClass, String fieldName) {\r\n-        return fieldCache.get(new FieldReference(someClass, fieldName));\r\n-    }\r\n-\r\n-    private static class FieldReference {\r\n-        final Class<?> someClass;\r\n-        final String fieldName;\r\n-\r\n-        private FieldReference(Class<?> someClass, String fieldName) {\r\n-            this.someClass = someClass;\r\n-            this.fieldName = fieldName;\r\n-        }\r\n-\r\n-        @Override\r\n-        public boolean equals(Object o) {\r\n-            if (this == o) {\r\n-                return true;\r\n-            }\r\n-            if (o == null || getClass() != o.getClass()) {\r\n-                return false;\r\n-            }\r\n-\r\n-            FieldReference that = (FieldReference) o;\r\n-\r\n-            return someClass.equals(that.someClass) && fieldName.equals(that.fieldName);\r\n-        }\r\n-\r\n-        @Override\r\n-        public int hashCode() {\r\n-            int result = someClass.hashCode();\r\n-            result = 31 * result + fieldName.hashCode();\r\n-            return result;\r\n-        }\r\n-    }\r\n-}\r\n+/*\n+ * Copyright \u00a9 2013-2019, The SeedStack authors <http://seedstack.org>\n+ *\n+ * This Source Code Form is subject to the terms of the Mozilla Public\n+ * License, v. 2.0. If a copy of the MPL was not distributed with this\n+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n+ */\n+\n+package org.seedstack.business.internal.utils;\n+\n+import java.lang.reflect.Field;\n+import java.util.Optional;\n+import org.seedstack.business.internal.BusinessErrorCode;\n+import org.seedstack.business.internal.BusinessException;\n+import org.seedstack.shed.cache.Cache;\n+import org.seedstack.shed.cache.CacheParameters;\n+import org.seedstack.shed.reflect.Classes;\n+\n+public final class FieldUtils {\n+    private static final Cache<FieldReference, Optional<Field>> fieldCache = Cache.create(\n+            new CacheParameters<FieldReference, Optional<Field>>()\n+                    .setInitialSize(256)\n+                    .setMaxSize(1024)\n+                    .setLoadingFunction(fieldReference -> Classes.from(fieldReference.someClass)\n+                            .traversingSuperclasses()\n+                            .fields()\n+                            .filter(f -> f.getName().equals(fieldReference.fieldName))\n+                            .findFirst())\n+    );\n+\n+    private FieldUtils() {\n+        // no instantiation allowed\n+    }\n+\n+    /**\n+     * Return the value contained in the specified field of the candidate object.\n+     *\n+     * @param candidate the object to retrieve the value of.\n+     * @param field     the field.\n+     * @return the value contained in the field of the candidate.\n+     */\n+    public static Object getFieldValue(Object candidate, Field field) {\n+        field.setAccessible(true);\n+        try {\n+            return field.get(candidate);\n+        } catch (Exception e) {\n+            throw BusinessException.wrap(e, BusinessErrorCode.ERROR_ACCESSING_FIELD)\n+                    .put(\"className\", candidate.getClass())\n+                    .put(\"fieldName\", field.getName());\n+        }\n+    }\n+\n+    /**\n+     * Returns the specified field found on the specified class and its ancestors.\n+     *\n+     * @param someClass the class to search the field on.\n+     * @param fieldName the field name.\n+     * @return the corresponding field object wrapped in an optional.\n+     */\n+    public static Optional<Field> resolveField(Class<?> someClass, String fieldName) {\n+        return fieldCache.get(new FieldReference(someClass, fieldName));\n+    }\n+\n+    private static class FieldReference {\n+        final Class<?> someClass;\n+        final String fieldName;\n+\n+        private FieldReference(Class<?> someClass, String fieldName) {\n+            this.someClass = someClass;\n+            this.fieldName = fieldName;\n+        }\n+\n+        @Override\n+        public boolean equals(Object o) {\n+            if (this == o) {\n+                return true;\n+            }\n+            if (o == null || getClass() != o.getClass()) {\n+                return false;\n+            }\n+\n+            FieldReference that = (FieldReference) o;\n+\n+            return someClass.equals(that.someClass) && fieldName.equals(that.fieldName);\n+        }\n+\n+        @Override\n+        public int hashCode() {\n+            int result = someClass.hashCode();\n+            result = 31 * result + fieldName.hashCode();\n+            return result;\n+        }\n+    }\n+}\n",
+            "diff_size": 94
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

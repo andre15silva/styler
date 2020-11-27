@@ -1,0 +1,378 @@
+{
+    "error_id": "108",
+    "information": {
+        "errors": [
+            {
+                "line": "250",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 121).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    @SuppressWarnings(\"unchecked\")\n    private\n    SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>>\n    getInternal(TransactionQueryForm form) {\n\n        SelectQuery selectQuery = ctx.selectQuery();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "249",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "249",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "249",
+                    "column": "48",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "249",
+                    "column": "56",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/108/TransactionRepositoryImpl.java\nindex 2c700620b1..0d3eab89fd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/108/TransactionRepositoryImpl.java\n@@ -246,8 +246,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n      * Joins with CHARGE_BOX and OCPP_TAG tables, selects CHARGE_BOX_PK and OCPP_TAG_PK additionally\n      */\n     @SuppressWarnings(\"unchecked\")\n-    private\n-    SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>>\n+    private SelectQuery<Record11<Integer,String,Integer,String, DateTime, String, DateTime, String, String, Integer, Integer>>\n     getInternal(TransactionQueryForm form) {\n \n         SelectQuery selectQuery = ctx.selectQuery();\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "248",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/108/TransactionRepositoryImpl.java\nindex 2c700620b1..b723a2519c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/108/TransactionRepositoryImpl.java\n@@ -48,25 +48,25 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n     @SuppressWarnings(\"unchecked\")\n     public List<Transaction> getTransactions(TransactionQueryForm form) {\n         return getInternal(form).fetch()\n-                                .map(new TransactionMapper());\n+            .map(new TransactionMapper());\n     }\n \n     @Override\n     @SuppressWarnings(\"unchecked\")\n     public void writeTransactionsCSV(TransactionQueryForm form, Writer writer) {\n         getInternalCSV(form).fetch()\n-                            .formatCSV(writer);\n+            .formatCSV(writer);\n     }\n \n     @Override\n     public List<Integer> getActiveTransactionIds(String chargeBoxId) {\n         return ctx.select(TRANSACTION.TRANSACTION_PK)\n-                  .from(TRANSACTION)\n-                  .join(CONNECTOR)\n-                    .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n-                    .and(CONNECTOR.CHARGE_BOX_ID.equal(chargeBoxId))\n-                  .where(TRANSACTION.STOP_TIMESTAMP.isNull())\n-                  .fetch(TRANSACTION.TRANSACTION_PK);\n+            .from(TRANSACTION)\n+            .join(CONNECTOR)\n+            .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n+            .and(CONNECTOR.CHARGE_BOX_ID.equal(chargeBoxId))\n+            .where(TRANSACTION.STOP_TIMESTAMP.isNull())\n+            .fetch(TRANSACTION.TRANSACTION_PK);\n     }\n \n     @Override\n@@ -82,7 +82,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         form.setPeriodType(TransactionQueryForm.QueryPeriodType.ALL);\n \n         Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>\n-                transaction = getInternal(form).fetchOne();\n+            transaction = getInternal(form).fetchOne();\n \n         if (transaction == null) {\n             throw new SteveException(\"There is no transaction with id '%s'\", transactionPk);\n@@ -107,15 +107,15 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n             //\n             // \"what is the start time of the first subsequent transaction at the same chargebox and connector?\"\n             DateTime startOfNext = ctx.select(TRANSACTION.START_TIMESTAMP)\n-                                      .from(TRANSACTION)\n-                                      .join(CONNECTOR)\n-                                        .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n-                                      .where(CONNECTOR.CHARGE_BOX_ID.equal(chargeBoxId))\n-                                        .and(CONNECTOR.CONNECTOR_ID.equal(connectorId))\n-                                        .and(TRANSACTION.START_TIMESTAMP.greaterThan(startTimestamp))\n-                                      .orderBy(TRANSACTION.START_TIMESTAMP)\n-                                      .limit(1)\n-                                      .fetchOne(TRANSACTION.START_TIMESTAMP);\n+                .from(TRANSACTION)\n+                .join(CONNECTOR)\n+                .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n+                .where(CONNECTOR.CHARGE_BOX_ID.equal(chargeBoxId))\n+                .and(CONNECTOR.CONNECTOR_ID.equal(connectorId))\n+                .and(TRANSACTION.START_TIMESTAMP.greaterThan(startTimestamp))\n+                .orderBy(TRANSACTION.START_TIMESTAMP)\n+                .limit(1)\n+                .fetchOne(TRANSACTION.START_TIMESTAMP);\n \n             if (startOfNext == null) {\n                 // the last active transaction\n@@ -131,20 +131,20 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         // Case 1: Ideal and most accurate case. Station sends meter values with transaction id set.\n         //\n         SelectQuery<ConnectorMeterValueRecord> transactionQuery =\n-                ctx.selectFrom(CONNECTOR_METER_VALUE)\n-                   .where(CONNECTOR_METER_VALUE.TRANSACTION_PK.eq(transactionPk))\n-                   .getQuery();\n+            ctx.selectFrom(CONNECTOR_METER_VALUE)\n+                .where(CONNECTOR_METER_VALUE.TRANSACTION_PK.eq(transactionPk))\n+                .getQuery();\n \n         // Case 2: Fall back to filtering according to time windows\n         //\n         SelectQuery<ConnectorMeterValueRecord> timestampQuery =\n-                ctx.selectFrom(CONNECTOR_METER_VALUE)\n-                   .where(CONNECTOR_METER_VALUE.CONNECTOR_PK.eq(ctx.select(CONNECTOR.CONNECTOR_PK)\n-                                                                   .from(CONNECTOR)\n-                                                                   .where(CONNECTOR.CHARGE_BOX_ID.eq(chargeBoxId))\n-                                                                   .and(CONNECTOR.CONNECTOR_ID.eq(connectorId))))\n-                   .and(timestampCondition)\n-                   .getQuery();\n+            ctx.selectFrom(CONNECTOR_METER_VALUE)\n+                .where(CONNECTOR_METER_VALUE.CONNECTOR_PK.eq(ctx.select(CONNECTOR.CONNECTOR_PK)\n+                    .from(CONNECTOR)\n+                    .where(CONNECTOR.CHARGE_BOX_ID.eq(chargeBoxId))\n+                    .and(CONNECTOR.CONNECTOR_ID.eq(connectorId))))\n+                .and(timestampCondition)\n+                .getQuery();\n \n         // Actually, either case 1 applies or 2. If we retrieved values using 1, case 2 is should not be\n         // executed (best case). In worst case (1 returns empty list and we fall back to case 2) though,\n@@ -165,36 +165,36 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         Field<DateTime> dateTimeField = DSL.min(t1.field(2, DateTime.class)).as(\"min\");\n \n         List<TransactionDetails.MeterValues> values =\n-                ctx.select(\n-                        dateTimeField,\n-                        t1.field(3, String.class),\n-                        t1.field(4, String.class),\n-                        t1.field(5, String.class),\n-                        t1.field(6, String.class),\n-                        t1.field(7, String.class),\n-                        t1.field(8, String.class),\n-                        t1.field(9, String.class))\n-                   .from(t1)\n-                   .groupBy(\n-                           t1.field(3),\n-                           t1.field(4),\n-                           t1.field(5),\n-                           t1.field(6),\n-                           t1.field(7),\n-                           t1.field(8),\n-                           t1.field(9))\n-                   .orderBy(dateTimeField)\n-                   .fetch()\n-                   .map(r -> TransactionDetails.MeterValues.builder()\n-                                                           .valueTimestamp(r.value1())\n-                                                           .value(r.value2())\n-                                                           .readingContext(r.value3())\n-                                                           .format(r.value4())\n-                                                           .measurand(r.value5())\n-                                                           .location(r.value6())\n-                                                           .unit(r.value7())\n-                                                           .phase(r.value8())\n-                                                           .build());\n+            ctx.select(\n+                dateTimeField,\n+                t1.field(3, String.class),\n+                t1.field(4, String.class),\n+                t1.field(5, String.class),\n+                t1.field(6, String.class),\n+                t1.field(7, String.class),\n+                t1.field(8, String.class),\n+                t1.field(9, String.class))\n+                .from(t1)\n+                .groupBy(\n+                    t1.field(3),\n+                    t1.field(4),\n+                    t1.field(5),\n+                    t1.field(6),\n+                    t1.field(7),\n+                    t1.field(8),\n+                    t1.field(9))\n+                .orderBy(dateTimeField)\n+                .fetch()\n+                .map(r -> TransactionDetails.MeterValues.builder()\n+                    .valueTimestamp(r.value1())\n+                    .value(r.value2())\n+                    .readingContext(r.value3())\n+                    .format(r.value4())\n+                    .measurand(r.value5())\n+                    .location(r.value6())\n+                    .unit(r.value7())\n+                    .phase(r.value8())\n+                    .build());\n \n         return new TransactionDetails(new TransactionMapper().map(transaction), values);\n     }\n@@ -205,13 +205,13 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n     @Override\n     public List<String> getChargeBoxIdsOfActiveTransactions(String ocppIdTag) {\n         return ctx.select(CONNECTOR.CHARGE_BOX_ID)\n-                  .from(CONNECTOR)\n-                  .join(TRANSACTION)\n-                    .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n-                  .where(TRANSACTION.ID_TAG.eq(ocppIdTag))\n-                    .and(TRANSACTION.STOP_VALUE.isNull())\n-                    .and(TRANSACTION.STOP_TIMESTAMP.isNull())\n-                  .fetch(CONNECTOR.CHARGE_BOX_ID);\n+            .from(CONNECTOR)\n+            .join(TRANSACTION)\n+            .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n+            .where(TRANSACTION.ID_TAG.eq(ocppIdTag))\n+            .and(TRANSACTION.STOP_VALUE.isNull())\n+            .and(TRANSACTION.STOP_TIMESTAMP.isNull())\n+            .fetch(CONNECTOR.CHARGE_BOX_ID);\n     }\n \n     // -------------------------------------------------------------------------\n@@ -219,23 +219,22 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n     // -------------------------------------------------------------------------\n \n     @SuppressWarnings(\"unchecked\")\n-    private\n-    SelectQuery<Record9<Integer, String, Integer, String, DateTime, String, DateTime, String, String>>\n+    private SelectQuery<Record9<Integer, String, Integer, String, DateTime, String, DateTime, String, String>>\n     getInternalCSV(TransactionQueryForm form) {\n \n         SelectQuery selectQuery = ctx.selectQuery();\n         selectQuery.addFrom(TRANSACTION);\n         selectQuery.addJoin(CONNECTOR, TRANSACTION.CONNECTOR_PK.eq(CONNECTOR.CONNECTOR_PK));\n         selectQuery.addSelect(\n-                TRANSACTION.TRANSACTION_PK,\n-                CONNECTOR.CHARGE_BOX_ID,\n-                CONNECTOR.CONNECTOR_ID,\n-                TRANSACTION.ID_TAG,\n-                TRANSACTION.START_TIMESTAMP,\n-                TRANSACTION.START_VALUE,\n-                TRANSACTION.STOP_TIMESTAMP,\n-                TRANSACTION.STOP_VALUE,\n-                TRANSACTION.STOP_REASON\n+            TRANSACTION.TRANSACTION_PK,\n+            CONNECTOR.CHARGE_BOX_ID,\n+            CONNECTOR.CONNECTOR_ID,\n+            TRANSACTION.ID_TAG,\n+            TRANSACTION.START_TIMESTAMP,\n+            TRANSACTION.START_VALUE,\n+            TRANSACTION.STOP_TIMESTAMP,\n+            TRANSACTION.STOP_VALUE,\n+            TRANSACTION.STOP_REASON\n         );\n \n         return addConditions(selectQuery, form);\n@@ -246,8 +245,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n      * Joins with CHARGE_BOX and OCPP_TAG tables, selects CHARGE_BOX_PK and OCPP_TAG_PK additionally\n      */\n     @SuppressWarnings(\"unchecked\")\n-    private\n-    SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>>\n+    private SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>>\n     getInternal(TransactionQueryForm form) {\n \n         SelectQuery selectQuery = ctx.selectQuery();\n@@ -256,17 +254,17 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         selectQuery.addJoin(CHARGE_BOX, CHARGE_BOX.CHARGE_BOX_ID.eq(CONNECTOR.CHARGE_BOX_ID));\n         selectQuery.addJoin(OCPP_TAG, OCPP_TAG.ID_TAG.eq(TRANSACTION.ID_TAG));\n         selectQuery.addSelect(\n-                TRANSACTION.TRANSACTION_PK,\n-                CONNECTOR.CHARGE_BOX_ID,\n-                CONNECTOR.CONNECTOR_ID,\n-                TRANSACTION.ID_TAG,\n-                TRANSACTION.START_TIMESTAMP,\n-                TRANSACTION.START_VALUE,\n-                TRANSACTION.STOP_TIMESTAMP,\n-                TRANSACTION.STOP_VALUE,\n-                TRANSACTION.STOP_REASON,\n-                CHARGE_BOX.CHARGE_BOX_PK,\n-                OCPP_TAG.OCPP_TAG_PK\n+            TRANSACTION.TRANSACTION_PK,\n+            CONNECTOR.CHARGE_BOX_ID,\n+            CONNECTOR.CONNECTOR_ID,\n+            TRANSACTION.ID_TAG,\n+            TRANSACTION.START_TIMESTAMP,\n+            TRANSACTION.START_VALUE,\n+            TRANSACTION.STOP_TIMESTAMP,\n+            TRANSACTION.STOP_VALUE,\n+            TRANSACTION.STOP_REASON,\n+            CHARGE_BOX.CHARGE_BOX_PK,\n+            OCPP_TAG.OCPP_TAG_PK\n         );\n \n         return addConditions(selectQuery, form);\n@@ -302,7 +300,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         switch (form.getPeriodType()) {\n             case TODAY:\n                 selectQuery.addConditions(\n-                        date(TRANSACTION.START_TIMESTAMP).eq(date(DateTime.now()))\n+                    date(TRANSACTION.START_TIMESTAMP).eq(date(DateTime.now()))\n                 );\n                 break;\n \n@@ -311,10 +309,10 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n             case LAST_90:\n                 DateTime now = DateTime.now();\n                 selectQuery.addConditions(\n-                        date(TRANSACTION.START_TIMESTAMP).between(\n-                                date(now.minusDays(form.getPeriodType().getInterval())),\n-                                date(now)\n-                        )\n+                    date(TRANSACTION.START_TIMESTAMP).between(\n+                        date(now.minusDays(form.getPeriodType().getInterval())),\n+                        date(now)\n+                    )\n                 );\n                 break;\n \n@@ -323,7 +321,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n \n             case FROM_TO:\n                 selectQuery.addConditions(\n-                        TRANSACTION.START_TIMESTAMP.between(form.getFrom().toDateTime(), form.getTo().toDateTime())\n+                    TRANSACTION.START_TIMESTAMP.between(form.getFrom().toDateTime(), form.getTo().toDateTime())\n                 );\n                 break;\n \n@@ -333,26 +331,26 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n     }\n \n     private static class TransactionMapper\n-            implements RecordMapper<Record11<Integer, String, Integer, String, DateTime, String, DateTime,\n-                                             String, String, Integer, Integer>, Transaction> {\n+        implements RecordMapper<Record11<Integer, String, Integer, String, DateTime, String, DateTime,\n+        String, String, Integer, Integer>, Transaction> {\n         @Override\n         public Transaction map(Record11<Integer, String, Integer, String, DateTime, String, DateTime,\n-                                        String, String, Integer, Integer> r) {\n+            String, String, Integer, Integer> r) {\n             return Transaction.builder()\n-                              .id(r.value1())\n-                              .chargeBoxId(r.value2())\n-                              .connectorId(r.value3())\n-                              .ocppIdTag(r.value4())\n-                              .startTimestampDT(r.value5())\n-                              .startTimestamp(DateTimeUtils.humanize(r.value5()))\n-                              .startValue(r.value6())\n-                              .stopTimestampDT(r.value7())\n-                              .stopTimestamp(DateTimeUtils.humanize(r.value7()))\n-                              .stopValue(r.value8())\n-                              .stopReason(r.value9())\n-                              .chargeBoxPk(r.value10())\n-                              .ocppTagPk(r.value11())\n-                              .build();\n+                .id(r.value1())\n+                .chargeBoxId(r.value2())\n+                .connectorId(r.value3())\n+                .ocppIdTag(r.value4())\n+                .startTimestampDT(r.value5())\n+                .startTimestamp(DateTimeUtils.humanize(r.value5()))\n+                .startValue(r.value6())\n+                .stopTimestampDT(r.value7())\n+                .stopTimestamp(DateTimeUtils.humanize(r.value7()))\n+                .stopValue(r.value8())\n+                .stopReason(r.value9())\n+                .chargeBoxPk(r.value10())\n+                .ocppTagPk(r.value11())\n+                .build();\n         }\n     }\n }\n",
+            "diff_size": 112
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "242",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "328",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/108/TransactionRepositoryImpl.java\nindex 2c700620b1..ea45e2919c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/108/TransactionRepositoryImpl.java\n@@ -47,15 +47,13 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n     @Override\n     @SuppressWarnings(\"unchecked\")\n     public List<Transaction> getTransactions(TransactionQueryForm form) {\n-        return getInternal(form).fetch()\n-                                .map(new TransactionMapper());\n+        return getInternal(form).fetch().map(new TransactionMapper());\n     }\n \n     @Override\n     @SuppressWarnings(\"unchecked\")\n     public void writeTransactionsCSV(TransactionQueryForm form, Writer writer) {\n-        getInternalCSV(form).fetch()\n-                            .formatCSV(writer);\n+        getInternalCSV(form).fetch().formatCSV(writer);\n     }\n \n     @Override\n@@ -81,8 +79,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         form.setType(TransactionQueryForm.QueryType.ALL);\n         form.setPeriodType(TransactionQueryForm.QueryPeriodType.ALL);\n \n-        Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>\n-                transaction = getInternal(form).fetchOne();\n+        Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer> transaction = getInternal(form).fetchOne();\n \n         if (transaction == null) {\n             throw new SteveException(\"There is no transaction with id '%s'\", transactionPk);\n@@ -107,7 +104,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n             //\n             // \"what is the start time of the first subsequent transaction at the same chargebox and connector?\"\n             DateTime startOfNext = ctx.select(TRANSACTION.START_TIMESTAMP)\n-                                      .from(TRANSACTION)\n+.from(TRANSACTION)\n                                       .join(CONNECTOR)\n                                         .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n                                       .where(CONNECTOR.CHARGE_BOX_ID.equal(chargeBoxId))\n@@ -116,8 +113,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n                                       .orderBy(TRANSACTION.START_TIMESTAMP)\n                                       .limit(1)\n                                       .fetchOne(TRANSACTION.START_TIMESTAMP);\n-\n-            if (startOfNext == null) {\n+if (startOfNext == null) {\n                 // the last active transaction\n                 timestampCondition = CONNECTOR_METER_VALUE.VALUE_TIMESTAMP.greaterOrEqual(startTimestamp);\n             } else {\n@@ -135,18 +131,18 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n                    .where(CONNECTOR_METER_VALUE.TRANSACTION_PK.eq(transactionPk))\n                    .getQuery();\n \n-        // Case 2: Fall back to filtering according to time windows\n+// Case 2: Fall back to filtering according to time windows\n         //\n         SelectQuery<ConnectorMeterValueRecord> timestampQuery =\n                 ctx.selectFrom(CONNECTOR_METER_VALUE)\n                    .where(CONNECTOR_METER_VALUE.CONNECTOR_PK.eq(ctx.select(CONNECTOR.CONNECTOR_PK)\n-                                                                   .from(CONNECTOR)\n+.from(CONNECTOR)\n                                                                    .where(CONNECTOR.CHARGE_BOX_ID.eq(chargeBoxId))\n                                                                    .and(CONNECTOR.CONNECTOR_ID.eq(connectorId))))\n-                   .and(timestampCondition)\n+.and(timestampCondition)\n                    .getQuery();\n \n-        // Actually, either case 1 applies or 2. If we retrieved values using 1, case 2 is should not be\n+// Actually, either case 1 applies or 2. If we retrieved values using 1, case 2 is should not be\n         // executed (best case). In worst case (1 returns empty list and we fall back to case 2) though,\n         // we make two db calls. Alternatively, we can pass both queries in one go, and make the db work.\n         //\n@@ -185,8 +181,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n                            t1.field(9))\n                    .orderBy(dateTimeField)\n                    .fetch()\n-                   .map(r -> TransactionDetails.MeterValues.builder()\n-                                                           .valueTimestamp(r.value1())\n+                   .map(r -> TransactionDetails.MeterValues.builder().valueTimestamp(r.value1())\n                                                            .value(r.value2())\n                                                            .readingContext(r.value3())\n                                                            .format(r.value4())\n@@ -195,8 +190,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n                                                            .unit(r.value7())\n                                                            .phase(r.value8())\n                                                            .build());\n-\n-        return new TransactionDetails(new TransactionMapper().map(transaction), values);\n+return new TransactionDetails(new TransactionMapper().map(transaction), values);\n     }\n \n     /**\n@@ -219,8 +213,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n     // -------------------------------------------------------------------------\n \n     @SuppressWarnings(\"unchecked\")\n-    private\n-    SelectQuery<Record9<Integer, String, Integer, String, DateTime, String, DateTime, String, String>>\n+    private SelectQuery<Record9<Integer, String, Integer, String, DateTime, String, DateTime, String, String>>\n     getInternalCSV(TransactionQueryForm form) {\n \n         SelectQuery selectQuery = ctx.selectQuery();\n@@ -246,8 +239,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n      * Joins with CHARGE_BOX and OCPP_TAG tables, selects CHARGE_BOX_PK and OCPP_TAG_PK additionally\n      */\n     @SuppressWarnings(\"unchecked\")\n-    private\n-    SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>>\n+    private SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>>\n     getInternal(TransactionQueryForm form) {\n \n         SelectQuery selectQuery = ctx.selectQuery();\n@@ -333,9 +325,8 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n     }\n \n     private static class TransactionMapper\n-            implements RecordMapper<Record11<Integer, String, Integer, String, DateTime, String, DateTime,\n-                                             String, String, Integer, Integer>, Transaction> {\n-        @Override\n+            implements RecordMapper<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>, Transaction> {\n+    @Override\n         public Transaction map(Record11<Integer, String, Integer, String, DateTime, String, DateTime,\n                                         String, String, Integer, Integer> r) {\n             return Transaction.builder()\n@@ -355,4 +346,4 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n                               .build();\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 133).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 124).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "108",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "126",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 165).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "131",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 196).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "132",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 227).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "133",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 226).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "134",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 277).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "154",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 367).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "155",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 291).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 276).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 345).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "158",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 336).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "159",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 345).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "160",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 337).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "161",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 340).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "162",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 339).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "163",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 335).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "164",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 336).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "165",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 328).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "190",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 154).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "194",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 258).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "204",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 170).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "210",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 306).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "249",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 153).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "256",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "264",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 187).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "267",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 140).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/108/TransactionRepositoryImpl.java\nindex 2c700620b1..cf5c6dc7bc 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/108/TransactionRepositoryImpl.java\n@@ -19,7 +19,6 @@ import org.jooq.Table;\n import org.jooq.impl.DSL;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.stereotype.Repository;\n-\n import java.io.Writer;\n import java.util.List;\n \n@@ -34,9 +33,10 @@ import static jooq.steve.db.tables.Transaction.TRANSACTION;\n  * @author Sevket Goekay <goekay@dbis.rwth-aachen.de>\n  * @since 14.08.2014\n  */\n+\n+\n @Repository\n public class TransactionRepositoryImpl implements TransactionRepository {\n-\n     private final DSLContext ctx;\n \n     @Autowired\n@@ -54,19 +54,17 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n     @Override\n     @SuppressWarnings(\"unchecked\")\n     public void writeTransactionsCSV(TransactionQueryForm form, Writer writer) {\n-        getInternalCSV(form).fetch()\n-                            .formatCSV(writer);\n+        getInternalCSV(form).fetch().formatCSV(writer);\n     }\n \n     @Override\n     public List<Integer> getActiveTransactionIds(String chargeBoxId) {\n-        return ctx.select(TRANSACTION.TRANSACTION_PK)\n-                  .from(TRANSACTION)\n-                  .join(CONNECTOR)\n-                    .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n-                    .and(CONNECTOR.CHARGE_BOX_ID.equal(chargeBoxId))\n-                  .where(TRANSACTION.STOP_TIMESTAMP.isNull())\n-                  .fetch(TRANSACTION.TRANSACTION_PK);\n+        return ctx.select(TRANSACTION.TRANSACTION_PK).from(TRANSACTION)\n+                                                     .join(CONNECTOR)\n+                                                     .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n+                                                     .and(CONNECTOR.CHARGE_BOX_ID.equal(chargeBoxId))\n+                                                     .where(TRANSACTION.STOP_TIMESTAMP.isNull())\n+                                                     .fetch(TRANSACTION.TRANSACTION_PK);\n     }\n \n     @Override\n@@ -75,15 +73,12 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         // -------------------------------------------------------------------------\n         // Step 1: Collect general data about transaction\n         // -------------------------------------------------------------------------\n-\n         TransactionQueryForm form = new TransactionQueryForm();\n         form.setTransactionPk(transactionPk);\n         form.setType(TransactionQueryForm.QueryType.ALL);\n         form.setPeriodType(TransactionQueryForm.QueryPeriodType.ALL);\n \n-        Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>\n-                transaction = getInternal(form).fetchOne();\n-\n+        Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer> transaction = getInternal(form).fetchOne();\n         if (transaction == null) {\n             throw new SteveException(\"There is no transaction with id '%s'\", transactionPk);\n         }\n@@ -97,7 +92,6 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         // -------------------------------------------------------------------------\n         // Step 2: Collect intermediate meter values\n         // -------------------------------------------------------------------------\n-\n         Condition timestampCondition;\n         if (stopTimestamp == null && stopValue == null) {\n \n@@ -106,17 +100,15 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n             // to this zombie transaction.\n             //\n             // \"what is the start time of the first subsequent transaction at the same chargebox and connector?\"\n-            DateTime startOfNext = ctx.select(TRANSACTION.START_TIMESTAMP)\n-                                      .from(TRANSACTION)\n-                                      .join(CONNECTOR)\n-                                        .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n-                                      .where(CONNECTOR.CHARGE_BOX_ID.equal(chargeBoxId))\n-                                        .and(CONNECTOR.CONNECTOR_ID.equal(connectorId))\n-                                        .and(TRANSACTION.START_TIMESTAMP.greaterThan(startTimestamp))\n-                                      .orderBy(TRANSACTION.START_TIMESTAMP)\n-                                      .limit(1)\n-                                      .fetchOne(TRANSACTION.START_TIMESTAMP);\n-\n+            DateTime startOfNext = ctx.select(TRANSACTION.START_TIMESTAMP).from(TRANSACTION)\n+                                                                          .join(CONNECTOR)\n+                                                                          .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n+                                                                          .where(CONNECTOR.CHARGE_BOX_ID.equal(chargeBoxId))\n+                                                                          .and(CONNECTOR.CONNECTOR_ID.equal(connectorId))\n+                                                                          .and(TRANSACTION.START_TIMESTAMP.greaterThan(startTimestamp))\n+                                                                          .orderBy(TRANSACTION.START_TIMESTAMP)\n+                                                                          .limit(1)\n+                                                                          .fetchOne(TRANSACTION.START_TIMESTAMP);\n             if (startOfNext == null) {\n                 // the last active transaction\n                 timestampCondition = CONNECTOR_METER_VALUE.VALUE_TIMESTAMP.greaterOrEqual(startTimestamp);\n@@ -130,21 +122,17 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n \n         // Case 1: Ideal and most accurate case. Station sends meter values with transaction id set.\n         //\n-        SelectQuery<ConnectorMeterValueRecord> transactionQuery =\n-                ctx.selectFrom(CONNECTOR_METER_VALUE)\n-                   .where(CONNECTOR_METER_VALUE.TRANSACTION_PK.eq(transactionPk))\n-                   .getQuery();\n+\n+        SelectQuery<ConnectorMeterValueRecord> transactionQuery = ctx.selectFrom(CONNECTOR_METER_VALUE).where(CONNECTOR_METER_VALUE.TRANSACTION_PK.eq(transactionPk))\n+                                                                                                       .getQuery();\n \n         // Case 2: Fall back to filtering according to time windows\n         //\n-        SelectQuery<ConnectorMeterValueRecord> timestampQuery =\n-                ctx.selectFrom(CONNECTOR_METER_VALUE)\n-                   .where(CONNECTOR_METER_VALUE.CONNECTOR_PK.eq(ctx.select(CONNECTOR.CONNECTOR_PK)\n-                                                                   .from(CONNECTOR)\n-                                                                   .where(CONNECTOR.CHARGE_BOX_ID.eq(chargeBoxId))\n-                                                                   .and(CONNECTOR.CONNECTOR_ID.eq(connectorId))))\n-                   .and(timestampCondition)\n-                   .getQuery();\n+        SelectQuery<ConnectorMeterValueRecord> timestampQuery = ctx.selectFrom(CONNECTOR_METER_VALUE).where(CONNECTOR_METER_VALUE.CONNECTOR_PK.eq(ctx.select(CONNECTOR.CONNECTOR_PK).from(CONNECTOR)\n+                                                                                                                                                                                    .where(CONNECTOR.CHARGE_BOX_ID.eq(chargeBoxId))\n+                                                                                                                                                                                    .and(CONNECTOR.CONNECTOR_ID.eq(connectorId))))\n+                                                                                                     .and(timestampCondition)\n+                                                                                                     .getQuery();\n \n         // Actually, either case 1 applies or 2. If we retrieved values using 1, case 2 is should not be\n         // executed (best case). In worst case (1 returns empty list and we fall back to case 2) though,\n@@ -161,57 +149,37 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         // yields multiple entries in db with the same value but different timestamp.\n         // We are only interested in the first arriving entry.\n         // -------------------------------------------------------------------------\n-\n         Field<DateTime> dateTimeField = DSL.min(t1.field(2, DateTime.class)).as(\"min\");\n-\n-        List<TransactionDetails.MeterValues> values =\n-                ctx.select(\n-                        dateTimeField,\n-                        t1.field(3, String.class),\n-                        t1.field(4, String.class),\n-                        t1.field(5, String.class),\n-                        t1.field(6, String.class),\n-                        t1.field(7, String.class),\n-                        t1.field(8, String.class),\n-                        t1.field(9, String.class))\n-                   .from(t1)\n-                   .groupBy(\n-                           t1.field(3),\n-                           t1.field(4),\n-                           t1.field(5),\n-                           t1.field(6),\n-                           t1.field(7),\n-                           t1.field(8),\n-                           t1.field(9))\n-                   .orderBy(dateTimeField)\n-                   .fetch()\n-                   .map(r -> TransactionDetails.MeterValues.builder()\n-                                                           .valueTimestamp(r.value1())\n-                                                           .value(r.value2())\n-                                                           .readingContext(r.value3())\n-                                                           .format(r.value4())\n-                                                           .measurand(r.value5())\n-                                                           .location(r.value6())\n-                                                           .unit(r.value7())\n-                                                           .phase(r.value8())\n-                                                           .build());\n-\n-        return new TransactionDetails(new TransactionMapper().map(transaction), values);\n+        List<TransactionDetails.MeterValues> values = ctx.select(dateTimeField, t1.field(3, String.class), t1.field(4, String.class), t1.field(5, String.class), t1.field(6, String.class), t1.field(7, String.class), t1.field(8, String.class), t1.field(9, String.class)).from(t1)\n+                                                                                                                                                                                                                                                                            .groupBy(t1.field(3), t1.field(4), t1.field(5), t1.field(6), t1.field(7), t1.field(8), t1.field(9))\n+                                                                                                                                                                                                                                                                            .orderBy(dateTimeField)\n+                                                                                                                                                                                                                                                                            .fetch()\n+                                                                                                                                                                                                                                                                            .map(r -> TransactionDetails.MeterValues.builder().valueTimestamp(r.value1())\n+                                                                                                                                                                                                                                                                                                                              .value(r.value2())\n+                                                                                                                                                                                                                                                                                                                              .readingContext(r.value3())\n+                                                                                                                                                                                                                                                                                                                              .format(r.value4())\n+                                                                                                                                                                                                                                                                                                                              .measurand(r.value5())\n+                                                                                                                                                                                                                                                                                                                              .location(r.value6())\n+                                                                                                                                                                                                                                                                                                                              .unit(r.value7())\n+                                                                                                                                                                                                                                                                                                                              .phase(r.value8())\n+                                                                                                                                                                                                                                                                                                                              .build());\n+        return new TransactionDetails(new TransactionMapper()\n+.map(transaction), values);\n     }\n \n     /**\n      * See documentation of {@link TransactionRepository#getChargeBoxIdsOfActiveTransactions(String)}\n      */\n+\n     @Override\n     public List<String> getChargeBoxIdsOfActiveTransactions(String ocppIdTag) {\n-        return ctx.select(CONNECTOR.CHARGE_BOX_ID)\n-                  .from(CONNECTOR)\n-                  .join(TRANSACTION)\n-                    .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n-                  .where(TRANSACTION.ID_TAG.eq(ocppIdTag))\n-                    .and(TRANSACTION.STOP_VALUE.isNull())\n-                    .and(TRANSACTION.STOP_TIMESTAMP.isNull())\n-                  .fetch(CONNECTOR.CHARGE_BOX_ID);\n+        return ctx.select(CONNECTOR.CHARGE_BOX_ID).from(CONNECTOR)\n+                                                  .join(TRANSACTION)\n+                                                  .on(TRANSACTION.CONNECTOR_PK.equal(CONNECTOR.CONNECTOR_PK))\n+                                                  .where(TRANSACTION.ID_TAG.eq(ocppIdTag))\n+                                                  .and(TRANSACTION.STOP_VALUE.isNull())\n+                                                  .and(TRANSACTION.STOP_TIMESTAMP.isNull())\n+                                                  .fetch(CONNECTOR.CHARGE_BOX_ID);\n     }\n \n     // -------------------------------------------------------------------------\n@@ -219,25 +187,11 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n     // -------------------------------------------------------------------------\n \n     @SuppressWarnings(\"unchecked\")\n-    private\n-    SelectQuery<Record9<Integer, String, Integer, String, DateTime, String, DateTime, String, String>>\n-    getInternalCSV(TransactionQueryForm form) {\n-\n+    private SelectQuery<Record9<Integer, String, Integer, String, DateTime, String, DateTime, String, String>> getInternalCSV(TransactionQueryForm form) {\n         SelectQuery selectQuery = ctx.selectQuery();\n         selectQuery.addFrom(TRANSACTION);\n         selectQuery.addJoin(CONNECTOR, TRANSACTION.CONNECTOR_PK.eq(CONNECTOR.CONNECTOR_PK));\n-        selectQuery.addSelect(\n-                TRANSACTION.TRANSACTION_PK,\n-                CONNECTOR.CHARGE_BOX_ID,\n-                CONNECTOR.CONNECTOR_ID,\n-                TRANSACTION.ID_TAG,\n-                TRANSACTION.START_TIMESTAMP,\n-                TRANSACTION.START_VALUE,\n-                TRANSACTION.STOP_TIMESTAMP,\n-                TRANSACTION.STOP_VALUE,\n-                TRANSACTION.STOP_REASON\n-        );\n-\n+        selectQuery.addSelect(TRANSACTION.TRANSACTION_PK, CONNECTOR.CHARGE_BOX_ID, CONNECTOR.CONNECTOR_ID, TRANSACTION.ID_TAG, TRANSACTION.START_TIMESTAMP, TRANSACTION.START_VALUE, TRANSACTION.STOP_TIMESTAMP, TRANSACTION.STOP_VALUE, TRANSACTION.STOP_REASON);\n         return addConditions(selectQuery, form);\n     }\n \n@@ -245,30 +199,15 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n      * Difference from getInternalCSV:\n      * Joins with CHARGE_BOX and OCPP_TAG tables, selects CHARGE_BOX_PK and OCPP_TAG_PK additionally\n      */\n-    @SuppressWarnings(\"unchecked\")\n-    private\n-    SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>>\n-    getInternal(TransactionQueryForm form) {\n \n+    @SuppressWarnings(\"unchecked\")\n+    private SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>> getInternal(TransactionQueryForm form) {\n         SelectQuery selectQuery = ctx.selectQuery();\n         selectQuery.addFrom(TRANSACTION);\n         selectQuery.addJoin(CONNECTOR, TRANSACTION.CONNECTOR_PK.eq(CONNECTOR.CONNECTOR_PK));\n         selectQuery.addJoin(CHARGE_BOX, CHARGE_BOX.CHARGE_BOX_ID.eq(CONNECTOR.CHARGE_BOX_ID));\n         selectQuery.addJoin(OCPP_TAG, OCPP_TAG.ID_TAG.eq(TRANSACTION.ID_TAG));\n-        selectQuery.addSelect(\n-                TRANSACTION.TRANSACTION_PK,\n-                CONNECTOR.CHARGE_BOX_ID,\n-                CONNECTOR.CONNECTOR_ID,\n-                TRANSACTION.ID_TAG,\n-                TRANSACTION.START_TIMESTAMP,\n-                TRANSACTION.START_VALUE,\n-                TRANSACTION.STOP_TIMESTAMP,\n-                TRANSACTION.STOP_VALUE,\n-                TRANSACTION.STOP_REASON,\n-                CHARGE_BOX.CHARGE_BOX_PK,\n-                OCPP_TAG.OCPP_TAG_PK\n-        );\n-\n+        selectQuery.addSelect(TRANSACTION.TRANSACTION_PK, CONNECTOR.CHARGE_BOX_ID, CONNECTOR.CONNECTOR_ID, TRANSACTION.ID_TAG, TRANSACTION.START_TIMESTAMP, TRANSACTION.START_VALUE, TRANSACTION.STOP_TIMESTAMP, TRANSACTION.STOP_VALUE, TRANSACTION.STOP_REASON, CHARGE_BOX.CHARGE_BOX_PK, OCPP_TAG.OCPP_TAG_PK);\n         return addConditions(selectQuery, form);\n     }\n \n@@ -294,37 +233,27 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n \n         // Default order\n         selectQuery.addOrderBy(TRANSACTION.TRANSACTION_PK.desc());\n-\n         return selectQuery;\n     }\n \n     private void processType(SelectQuery selectQuery, TransactionQueryForm form) {\n         switch (form.getPeriodType()) {\n             case TODAY:\n-                selectQuery.addConditions(\n-                        date(TRANSACTION.START_TIMESTAMP).eq(date(DateTime.now()))\n-                );\n+                selectQuery.addConditions(date(TRANSACTION.START_TIMESTAMP).eq(date(DateTime.now())));\n                 break;\n \n             case LAST_10:\n             case LAST_30:\n             case LAST_90:\n                 DateTime now = DateTime.now();\n-                selectQuery.addConditions(\n-                        date(TRANSACTION.START_TIMESTAMP).between(\n-                                date(now.minusDays(form.getPeriodType().getInterval())),\n-                                date(now)\n-                        )\n-                );\n+                selectQuery.addConditions(date(TRANSACTION.START_TIMESTAMP).between(date(now.minusDays(form.getPeriodType().getInterval())), date(now)));\n                 break;\n \n             case ALL:\n                 break;\n \n             case FROM_TO:\n-                selectQuery.addConditions(\n-                        TRANSACTION.START_TIMESTAMP.between(form.getFrom().toDateTime(), form.getTo().toDateTime())\n-                );\n+                selectQuery.addConditions(TRANSACTION.START_TIMESTAMP.between(form.getFrom().toDateTime(), form.getTo().toDateTime()));\n                 break;\n \n             default:\n@@ -332,27 +261,24 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n         }\n     }\n \n-    private static class TransactionMapper\n-            implements RecordMapper<Record11<Integer, String, Integer, String, DateTime, String, DateTime,\n-                                             String, String, Integer, Integer>, Transaction> {\n+    private static class TransactionMapper implements RecordMapper<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>, Transaction> {\n+\n         @Override\n-        public Transaction map(Record11<Integer, String, Integer, String, DateTime, String, DateTime,\n-                                        String, String, Integer, Integer> r) {\n-            return Transaction.builder()\n-                              .id(r.value1())\n-                              .chargeBoxId(r.value2())\n-                              .connectorId(r.value3())\n-                              .ocppIdTag(r.value4())\n-                              .startTimestampDT(r.value5())\n-                              .startTimestamp(DateTimeUtils.humanize(r.value5()))\n-                              .startValue(r.value6())\n-                              .stopTimestampDT(r.value7())\n-                              .stopTimestamp(DateTimeUtils.humanize(r.value7()))\n-                              .stopValue(r.value8())\n-                              .stopReason(r.value9())\n-                              .chargeBoxPk(r.value10())\n-                              .ocppTagPk(r.value11())\n-                              .build();\n+        public Transaction map(Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer> r) {\n+            return Transaction.builder().id(r.value1())\n+                                        .chargeBoxId(r.value2())\n+                                        .connectorId(r.value3())\n+                                        .ocppIdTag(r.value4())\n+                                        .startTimestampDT(r.value5())\n+                                        .startTimestamp(DateTimeUtils.humanize(r.value5()))\n+                                        .startValue(r.value6())\n+                                        .stopTimestampDT(r.value7())\n+                                        .stopTimestamp(DateTimeUtils.humanize(r.value7()))\n+                                        .stopValue(r.value8())\n+                                        .stopReason(r.value9())\n+                                        .chargeBoxPk(r.value10())\n+                                        .ocppTagPk(r.value11())\n+                                        .build();\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 155
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "250",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "251",
+                    "column": "5",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "251",
+                    "column": "13",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "251",
+                    "column": "30",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "251",
+                    "column": "40",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "251",
+                    "column": "40",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "251",
+                    "column": "48",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                },
+                {
+                    "line": "252",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "',' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/108/TransactionRepositoryImpl.java\nindex 2c700620b1..dab25a527f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/108/TransactionRepositoryImpl.java\n@@ -247,7 +247,9 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n      */\n     @SuppressWarnings(\"unchecked\")\n     private\n-    SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>>\n+    SelectQuery<Record11<Integer, String,Integer\n+    , String,DateTime, String,DateTime ,String , String, Integer\n+        , Integer>>\n     getInternal(TransactionQueryForm form) {\n \n         SelectQuery selectQuery = ctx.selectQuery();\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "249",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "249",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "249",
+                    "column": "48",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                },
+                {
+                    "line": "249",
+                    "column": "56",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/108/TransactionRepositoryImpl.java\nindex 2c700620b1..0d3eab89fd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/108/TransactionRepositoryImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/108/TransactionRepositoryImpl.java\n@@ -246,8 +246,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {\n      * Joins with CHARGE_BOX and OCPP_TAG tables, selects CHARGE_BOX_PK and OCPP_TAG_PK additionally\n      */\n     @SuppressWarnings(\"unchecked\")\n-    private\n-    SelectQuery<Record11<Integer, String, Integer, String, DateTime, String, DateTime, String, String, Integer, Integer>>\n+    private SelectQuery<Record11<Integer,String,Integer,String, DateTime, String, DateTime, String, String, Integer, Integer>>\n     getInternal(TransactionQueryForm form) {\n \n         SelectQuery selectQuery = ctx.selectQuery();\n",
+            "diff_size": 2
+        }
+    ]
+}

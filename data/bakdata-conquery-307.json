@@ -1,0 +1,1027 @@
+{
+    "error_id": "307",
+    "information": {
+        "errors": [
+            {
+                "line": "24",
+                "column": "71",
+                "severity": "warning",
+                "message": "'{' is not preceded with whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "import lombok.Setter;\n\npublic class User extends PermissionOwner<UserId> implements Principal{\n\t@Getter @Setter @MetaIdRefCollection\n\tprivate Set<Mandator> roles = new HashSet<>();\n\t@Getter @Setter @NonNull @NotNull",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/307/User.java\nindex 94d843eb3e..1c208f3768 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler/307/User.java\n@@ -21,7 +21,7 @@ import lombok.Getter;\n import lombok.NonNull;\n import lombok.Setter;\n \n-public class User extends PermissionOwner<UserId> implements Principal{\n+public class User extends PermissionOwner<UserId> implements Principal {\n \t@Getter @Setter @MetaIdRefCollection\n \tprivate Set<Mandator> roles = new HashSet<>();\n \t@Getter @Setter @NonNull @NotNull\n@@ -33,13 +33,13 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\tthis.email = email;\n \t\tthis.label = label;\n \t}\n-\t\n+\n \t@Override\n \tpublic boolean isPermitted(Permission permission) {\n \t\tif(isPermittedSelfOnly((ConqueryPermission)permission)) {\n \t\t\treturn true;\n \t\t}\n-\t\t\n+\n \t\treturn isPermittedByMandators((ConqueryPermission)permission);\n \t}\n \n@@ -61,16 +61,16 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\t}\n \t\treturn true;\n \t}\n-\t\n+\n \t@Override\n \tpublic UserId createId() {\n \t\treturn new UserId(email);\n \t}\n-\t\n+\n \tpublic void removeRole(Mandator mandator) {\n \t\troles.remove(mandator);\n \t}\n-\t\n+\n \tprivate boolean isPermittedByMandators(ConqueryPermission permission) {\n \t\tfor(Mandator mandator : roles) {\n \t\t\tif(mandator.isPermittedSelfOnly(permission)) {\n@@ -86,7 +86,7 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\t\tstorage.updateUser(this);\n \t\t}\n \t}\n-\t\n+\n \tpublic void removeMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n \t\tif(roles.contains(mandator)) {\n \t\t\troles.remove(mandator);\n@@ -103,7 +103,7 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \tpublic String getName() {\n \t\treturn email;\n \t}\n-\t\n+\n \t@Override\n \tpublic Set<ConqueryPermission> getPermissions(){\n \t\tSet<ConqueryPermission> permissions = new HashSet<>(super.getPermissions());\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "85",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "115",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "116",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "119",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "120",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/307/User.java\nindex 94d843eb3e..9ff7317e52 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/intellij/307/User.java\n@@ -21,95 +21,103 @@ import lombok.Getter;\n import lombok.NonNull;\n import lombok.Setter;\n \n-public class User extends PermissionOwner<UserId> implements Principal{\n-\t@Getter @Setter @MetaIdRefCollection\n-\tprivate Set<Mandator> roles = new HashSet<>();\n-\t@Getter @Setter @NonNull @NotNull\n-\tprivate String email;\n-\t@Getter @Setter @NonNull @NotNull\n-\tprivate String label;\n-\n-\tpublic User(String email, String label) {\n-\t\tthis.email = email;\n-\t\tthis.label = label;\n-\t}\n-\t\n-\t@Override\n-\tpublic boolean isPermitted(Permission permission) {\n-\t\tif(isPermittedSelfOnly((ConqueryPermission)permission)) {\n-\t\t\treturn true;\n-\t\t}\n-\t\t\n-\t\treturn isPermittedByMandators((ConqueryPermission)permission);\n-\t}\n-\n-\t@Override\n-\tpublic boolean[] isPermitted(List<Permission> permissions) {\n-\t\tboolean[] ret = new boolean[permissions.size()];\n-\t\tfor(int i = 0; i < permissions.size(); ++i) {\n-\t\t\tret[i] = isPermitted(permissions.get(i));\n-\t\t}\n-\t\treturn ret;\n-\t}\n-\n-\t@Override\n-\tpublic boolean isPermittedAll(Collection<Permission> permissions) {\n-\t\tfor(Permission permission : permissions) {\n-\t\t\tif(!isPermitted(permission)) {\n-\t\t\t\treturn false;\n-\t\t\t}\n-\t\t}\n-\t\treturn true;\n-\t}\n-\t\n-\t@Override\n-\tpublic UserId createId() {\n-\t\treturn new UserId(email);\n-\t}\n-\t\n-\tpublic void removeRole(Mandator mandator) {\n-\t\troles.remove(mandator);\n-\t}\n-\t\n-\tprivate boolean isPermittedByMandators(ConqueryPermission permission) {\n-\t\tfor(Mandator mandator : roles) {\n-\t\t\tif(mandator.isPermittedSelfOnly(permission)) {\n-\t\t\t\treturn true;\n-\t\t\t}\n-\t\t}\n-\t\treturn false;\n-\t}\n-\n-\tpublic void addMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n-\t\tif(!roles.contains(mandator)) {\n-\t\t\taddMandatorLocal(mandator);\n-\t\t\tstorage.updateUser(this);\n-\t\t}\n-\t}\n-\t\n-\tpublic void removeMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n-\t\tif(roles.contains(mandator)) {\n-\t\t\troles.remove(mandator);\n-\t\t\tstorage.updateUser(this);\n-\t\t}\n-\t}\n-\n-\tpublic void addMandatorLocal(Mandator mandator) {\n-\t\troles.add(mandator);\n-\t}\n-\n-\t@Override\n-\t@JsonIgnore\n-\tpublic String getName() {\n-\t\treturn email;\n-\t}\n-\t\n-\t@Override\n-\tpublic Set<ConqueryPermission> getPermissions(){\n-\t\tSet<ConqueryPermission> permissions = new HashSet<>(super.getPermissions());\n-\t\tfor (Mandator mandator : roles) {\n-\t\t\tpermissions.addAll(mandator.getPermissions());\n-\t\t}\n-\t\treturn permissions;\n-\t}\n+public class User extends PermissionOwner<UserId> implements Principal {\n+    @Getter\n+    @Setter\n+    @MetaIdRefCollection\n+    private Set<Mandator> roles = new HashSet<>();\n+    @Getter\n+    @Setter\n+    @NonNull\n+    @NotNull\n+    private String email;\n+    @Getter\n+    @Setter\n+    @NonNull\n+    @NotNull\n+    private String label;\n+\n+    public User(String email, String label) {\n+        this.email = email;\n+        this.label = label;\n+    }\n+\n+    @Override\n+    public boolean isPermitted(Permission permission) {\n+        if (isPermittedSelfOnly((ConqueryPermission) permission)) {\n+            return true;\n+        }\n+\n+        return isPermittedByMandators((ConqueryPermission) permission);\n+    }\n+\n+    @Override\n+    public boolean[] isPermitted(List<Permission> permissions) {\n+        boolean[] ret = new boolean[permissions.size()];\n+        for (int i = 0; i < permissions.size(); ++i) {\n+            ret[i] = isPermitted(permissions.get(i));\n+        }\n+        return ret;\n+    }\n+\n+    @Override\n+    public boolean isPermittedAll(Collection<Permission> permissions) {\n+        for (Permission permission : permissions) {\n+            if (!isPermitted(permission)) {\n+                return false;\n+            }\n+        }\n+        return true;\n+    }\n+\n+    @Override\n+    public UserId createId() {\n+        return new UserId(email);\n+    }\n+\n+    public void removeRole(Mandator mandator) {\n+        roles.remove(mandator);\n+    }\n+\n+    private boolean isPermittedByMandators(ConqueryPermission permission) {\n+        for (Mandator mandator : roles) {\n+            if (mandator.isPermittedSelfOnly(permission)) {\n+                return true;\n+            }\n+        }\n+        return false;\n+    }\n+\n+    public void addMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n+        if (!roles.contains(mandator)) {\n+            addMandatorLocal(mandator);\n+            storage.updateUser(this);\n+        }\n+    }\n+\n+    public void removeMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n+        if (roles.contains(mandator)) {\n+            roles.remove(mandator);\n+            storage.updateUser(this);\n+        }\n+    }\n+\n+    public void addMandatorLocal(Mandator mandator) {\n+        roles.add(mandator);\n+    }\n+\n+    @Override\n+    @JsonIgnore\n+    public String getName() {\n+        return email;\n+    }\n+\n+    @Override\n+    public Set<ConqueryPermission> getPermissions() {\n+        Set<ConqueryPermission> permissions = new HashSet<>(super.getPermissions());\n+        for (Mandator mandator : roles) {\n+            permissions.addAll(mandator.getPermissions());\n+        }\n+        return permissions;\n+    }\n }\n",
+            "diff_size": 99
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/307/User.java\nindex 94d843eb3e..9a55f35eff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/naturalize/307/User.java\n@@ -21,7 +21,7 @@ import lombok.Getter;\n import lombok.NonNull;\n import lombok.Setter;\n \n-public class User extends PermissionOwner<UserId> implements Principal{\n+public class User extends PermissionOwner<UserId> implements Principal {\n \t@Getter @Setter @MetaIdRefCollection\n \tprivate Set<Mandator> roles = new HashSet<>();\n \t@Getter @Setter @NonNull @NotNull\n@@ -112,4 +112,4 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\t}\n \t\treturn permissions;\n \t}\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "22",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "23",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "24",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "32",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "87",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "89",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "103",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "108",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "error",
+                    "message": "Indent must use tab characters",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/307/User.java\nindex 94d843eb3e..c54cbf25e9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/codebuff/307/User.java\n@@ -5,111 +5,107 @@ import java.util.Collection;\n import java.util.HashSet;\n import java.util.List;\n import java.util.Set;\n-\n import javax.validation.constraints.NotNull;\n-\n import org.apache.shiro.authz.Permission;\n-\n import com.bakdata.conquery.io.jackson.serializer.MetaIdRefCollection;\n import com.bakdata.conquery.io.xodus.MasterMetaStorage;\n import com.bakdata.conquery.models.auth.permissions.ConqueryPermission;\n import com.bakdata.conquery.models.exceptions.JSONException;\n import com.bakdata.conquery.models.identifiable.ids.specific.UserId;\n import com.fasterxml.jackson.annotation.JsonIgnore;\n-\n import lombok.Getter;\n import lombok.NonNull;\n import lombok.Setter;\n \n-public class User extends PermissionOwner<UserId> implements Principal{\n-\t@Getter @Setter @MetaIdRefCollection\n-\tprivate Set<Mandator> roles = new HashSet<>();\n-\t@Getter @Setter @NonNull @NotNull\n-\tprivate String email;\n-\t@Getter @Setter @NonNull @NotNull\n-\tprivate String label;\n+public class User extends PermissionOwner<UserId> implements Principal {\n+\n+    @Getter @Setter @MetaIdRefCollection\n+    private Set<Mandator> roles = new HashSet<>();\n+    @Getter @Setter @NonNull @NotNull\n+    private String email;\n+    @Getter @Setter @NonNull @NotNull\n+    private String label;\n+\n+    public User(String email, String label) {\n+        this.email = email;\n+        this.label = label;\n+    }\n+\n+    @Override\n+    public boolean isPermitted(Permission permission) {\n+        if(isPermittedSelfOnly((ConqueryPermission)permission)) {\n+            return true;\n+        }\n+        return isPermittedByMandators((ConqueryPermission)permission);\n+    }\n+\n+    @Override\n+    public boolean[] isPermitted(List<Permission> permissions) {\n+        boolean[] ret = new boolean[permissions.size()];\n+        for(int i = 0;i<permissions.size(); ++i) {\n+            ret[i] = isPermitted(permissions.get(i));\n+        }\n+        return ret;\n+    }\n+\n+    @Override\n+    public boolean isPermittedAll(Collection<Permission> permissions) {\n+        for(Permission permission : permissions) {\n+            if(!isPermitted(permission)) {\n+                return false;\n+            }\n+        }\n+        return true;\n+    }\n+\n+    @Override\n+    public UserId createId() {\n+        return new UserId(email);\n+    }\n+\n+    public void removeRole(Mandator mandator) {\n+        roles.remove(mandator);\n+    }\n \n-\tpublic User(String email, String label) {\n-\t\tthis.email = email;\n-\t\tthis.label = label;\n-\t}\n-\t\n-\t@Override\n-\tpublic boolean isPermitted(Permission permission) {\n-\t\tif(isPermittedSelfOnly((ConqueryPermission)permission)) {\n-\t\t\treturn true;\n-\t\t}\n-\t\t\n-\t\treturn isPermittedByMandators((ConqueryPermission)permission);\n-\t}\n+    private boolean isPermittedByMandators(ConqueryPermission permission) {\n+        for(Mandator mandator : roles) {\n+            if(mandator.isPermittedSelfOnly(permission)) {\n+                return true;\n+            }\n+        }\n+        return false;\n+    }\n \n-\t@Override\n-\tpublic boolean[] isPermitted(List<Permission> permissions) {\n-\t\tboolean[] ret = new boolean[permissions.size()];\n-\t\tfor(int i = 0; i < permissions.size(); ++i) {\n-\t\t\tret[i] = isPermitted(permissions.get(i));\n-\t\t}\n-\t\treturn ret;\n-\t}\n+    public void addMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n+        if(!roles.contains(mandator)) {\n+            addMandatorLocal(mandator);\n+            storage.updateUser(this);\n+        }\n+    }\n \n-\t@Override\n-\tpublic boolean isPermittedAll(Collection<Permission> permissions) {\n-\t\tfor(Permission permission : permissions) {\n-\t\t\tif(!isPermitted(permission)) {\n-\t\t\t\treturn false;\n-\t\t\t}\n-\t\t}\n-\t\treturn true;\n-\t}\n-\t\n-\t@Override\n-\tpublic UserId createId() {\n-\t\treturn new UserId(email);\n-\t}\n-\t\n-\tpublic void removeRole(Mandator mandator) {\n-\t\troles.remove(mandator);\n-\t}\n-\t\n-\tprivate boolean isPermittedByMandators(ConqueryPermission permission) {\n-\t\tfor(Mandator mandator : roles) {\n-\t\t\tif(mandator.isPermittedSelfOnly(permission)) {\n-\t\t\t\treturn true;\n-\t\t\t}\n-\t\t}\n-\t\treturn false;\n-\t}\n+    public void removeMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n+        if(roles.contains(mandator)) {\n+            roles.remove(mandator);\n+            storage.updateUser(this);\n+        }\n+    }\n \n-\tpublic void addMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n-\t\tif(!roles.contains(mandator)) {\n-\t\t\taddMandatorLocal(mandator);\n-\t\t\tstorage.updateUser(this);\n-\t\t}\n-\t}\n-\t\n-\tpublic void removeMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n-\t\tif(roles.contains(mandator)) {\n-\t\t\troles.remove(mandator);\n-\t\t\tstorage.updateUser(this);\n-\t\t}\n-\t}\n+    public void addMandatorLocal(Mandator mandator) {\n+        roles.add(mandator);\n+    }\n \n-\tpublic void addMandatorLocal(Mandator mandator) {\n-\t\troles.add(mandator);\n-\t}\n+    @Override\n+    @JsonIgnore\n+    public String getName() {\n+        return email;\n+    }\n \n-\t@Override\n-\t@JsonIgnore\n-\tpublic String getName() {\n-\t\treturn email;\n-\t}\n-\t\n-\t@Override\n-\tpublic Set<ConqueryPermission> getPermissions(){\n-\t\tSet<ConqueryPermission> permissions = new HashSet<>(super.getPermissions());\n-\t\tfor (Mandator mandator : roles) {\n-\t\t\tpermissions.addAll(mandator.getPermissions());\n-\t\t}\n-\t\treturn permissions;\n-\t}\n-}\n+    @Override\n+    public Set<ConqueryPermission> getPermissions() {\n+        Set<ConqueryPermission> permissions = new HashSet<>(super.getPermissions());\n+        for(Mandator mandator : roles) {\n+            permissions.addAll(mandator.getPermissions());\n+        }\n+        return permissions;\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 134
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/307/User.java\nindex 94d843eb3e..1c208f3768 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_random/307/User.java\n@@ -21,7 +21,7 @@ import lombok.Getter;\n import lombok.NonNull;\n import lombok.Setter;\n \n-public class User extends PermissionOwner<UserId> implements Principal{\n+public class User extends PermissionOwner<UserId> implements Principal {\n \t@Getter @Setter @MetaIdRefCollection\n \tprivate Set<Mandator> roles = new HashSet<>();\n \t@Getter @Setter @NonNull @NotNull\n@@ -33,13 +33,13 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\tthis.email = email;\n \t\tthis.label = label;\n \t}\n-\t\n+\n \t@Override\n \tpublic boolean isPermitted(Permission permission) {\n \t\tif(isPermittedSelfOnly((ConqueryPermission)permission)) {\n \t\t\treturn true;\n \t\t}\n-\t\t\n+\n \t\treturn isPermittedByMandators((ConqueryPermission)permission);\n \t}\n \n@@ -61,16 +61,16 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\t}\n \t\treturn true;\n \t}\n-\t\n+\n \t@Override\n \tpublic UserId createId() {\n \t\treturn new UserId(email);\n \t}\n-\t\n+\n \tpublic void removeRole(Mandator mandator) {\n \t\troles.remove(mandator);\n \t}\n-\t\n+\n \tprivate boolean isPermittedByMandators(ConqueryPermission permission) {\n \t\tfor(Mandator mandator : roles) {\n \t\t\tif(mandator.isPermittedSelfOnly(permission)) {\n@@ -86,7 +86,7 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\t\tstorage.updateUser(this);\n \t\t}\n \t}\n-\t\n+\n \tpublic void removeMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n \t\tif(roles.contains(mandator)) {\n \t\t\troles.remove(mandator);\n@@ -103,7 +103,7 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \tpublic String getName() {\n \t\treturn email;\n \t}\n-\t\n+\n \t@Override\n \tpublic Set<ConqueryPermission> getPermissions(){\n \t\tSet<ConqueryPermission> permissions = new HashSet<>(super.getPermissions());\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/307/User.java\nindex 94d843eb3e..1c208f3768 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/errored/1/307/User.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/bakdata-conquery/styler_three_grams/307/User.java\n@@ -21,7 +21,7 @@ import lombok.Getter;\n import lombok.NonNull;\n import lombok.Setter;\n \n-public class User extends PermissionOwner<UserId> implements Principal{\n+public class User extends PermissionOwner<UserId> implements Principal {\n \t@Getter @Setter @MetaIdRefCollection\n \tprivate Set<Mandator> roles = new HashSet<>();\n \t@Getter @Setter @NonNull @NotNull\n@@ -33,13 +33,13 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\tthis.email = email;\n \t\tthis.label = label;\n \t}\n-\t\n+\n \t@Override\n \tpublic boolean isPermitted(Permission permission) {\n \t\tif(isPermittedSelfOnly((ConqueryPermission)permission)) {\n \t\t\treturn true;\n \t\t}\n-\t\t\n+\n \t\treturn isPermittedByMandators((ConqueryPermission)permission);\n \t}\n \n@@ -61,16 +61,16 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\t}\n \t\treturn true;\n \t}\n-\t\n+\n \t@Override\n \tpublic UserId createId() {\n \t\treturn new UserId(email);\n \t}\n-\t\n+\n \tpublic void removeRole(Mandator mandator) {\n \t\troles.remove(mandator);\n \t}\n-\t\n+\n \tprivate boolean isPermittedByMandators(ConqueryPermission permission) {\n \t\tfor(Mandator mandator : roles) {\n \t\t\tif(mandator.isPermittedSelfOnly(permission)) {\n@@ -86,7 +86,7 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \t\t\tstorage.updateUser(this);\n \t\t}\n \t}\n-\t\n+\n \tpublic void removeMandator(MasterMetaStorage storage, Mandator mandator) throws JSONException {\n \t\tif(roles.contains(mandator)) {\n \t\t\troles.remove(mandator);\n@@ -103,7 +103,7 @@ public class User extends PermissionOwner<UserId> implements Principal{\n \tpublic String getName() {\n \t\treturn email;\n \t}\n-\t\n+\n \t@Override\n \tpublic Set<ConqueryPermission> getPermissions(){\n \t\tSet<ConqueryPermission> permissions = new HashSet<>(super.getPermissions());\n",
+            "diff_size": 8
+        }
+    ]
+}

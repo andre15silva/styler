@@ -1,0 +1,122 @@
+{
+    "error_id": "98",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.domain;\n\nimport java.lang.reflect.Field;\nimport java.util.Objects;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/98/BaseEntity.java\nindex 168578654a..a3cd8d863b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/98/BaseEntity.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import java.lang.reflect.Field;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/98/BaseEntity.java\nindex 168578654a..a3cd8d863b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/98/BaseEntity.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import java.lang.reflect.Field;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "33",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 137).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "33",
+                    "column": "88",
+                    "severity": "warning",
+                    "message": "'(' is followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 4, expected is 12, indentation should be the same level as line 74.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/98/BaseEntity.java\nindex 168578654a..9fe9ac61f7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/98/BaseEntity.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import java.lang.reflect.Field;\n@@ -29,12 +30,10 @@ import org.seedstack.shed.reflect.ReflectUtils;\n  * @param <I> The type of the entity identifier.\n  */\n public abstract class BaseEntity<I> implements Entity<I> {\n-    private static final Cache<Class<?>, Optional<Field>> identityFields = Cache.create(\n-            new CacheParameters<Class<?>, Optional<Field>>()\n+    private static final Cache<Class<?>, Optional<Field>> identityFields = Cache.create( new CacheParameters<Class<?>, Optional<Field>>()\n                     .setInitialSize(256)\n                     .setMaxSize(1024)\n-                    .setLoadingFunction(BaseEntity::resolveIdentityField)\n-    );\n+                    .setLoadingFunction(BaseEntity::resolveIdentityField));\n \n     /**\n      * Returns the identifier of the entity if present. Starting from the current class and going up\n@@ -68,12 +67,10 @@ public abstract class BaseEntity<I> implements Entity<I> {\n         if (other == null) {\n             // comparison to null\n             return false;\n-        }\n-        Class<? extends BaseEntity> thisClass = getClass();\n+        } Class<? extends BaseEntity> thisClass = getClass();\n         Class<?> otherClass = other.getClass();\n-        if (!(other instanceof Entity) || (!thisClass.isAssignableFrom(otherClass) && !otherClass.isAssignableFrom(\n-                thisClass))) {\n-            // objects are not from the same class hierarchy\n+        if (!(other instanceof Entity) || (!thisClass.isAssignableFrom(otherClass) && !otherClass.isAssignableFrom(thisClass))) {\n+    // objects are not from the same class hierarchy\n             return false;\n         }\n         return Objects.equals(getId(), ((Entity<?>) other).getId());\n@@ -93,4 +90,4 @@ public abstract class BaseEntity<I> implements Entity<I> {\n         }\n         return field.map(ReflectUtils::makeAccessible);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 156).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "warning",
+                    "message": "'.' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "warning",
+                    "message": "'.' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "column": "52",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '->' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 127).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "74",
+                    "column": "40",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '||' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/98/BaseEntity.java\nindex 168578654a..278494bd51 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/98/BaseEntity.java\n@@ -28,13 +28,13 @@ import org.seedstack.shed.reflect.ReflectUtils;\n  *\n  * @param <I> The type of the entity identifier.\n  */\n+\n+\n public abstract class BaseEntity<I> implements Entity<I> {\n-    private static final Cache<Class<?>, Optional<Field>> identityFields = Cache.create(\n-            new CacheParameters<Class<?>, Optional<Field>>()\n-                    .setInitialSize(256)\n-                    .setMaxSize(1024)\n-                    .setLoadingFunction(BaseEntity::resolveIdentityField)\n-    );\n+\n+    private static final Cache<Class<?>, Optional<Field>> identityFields = Cache.create(new CacheParameters<Class<?>, Optional<Field>>().setInitialSize(256)\n+.setMaxSize(1024)\n+.setLoadingFunction(BaseEntity::resolveIdentityField));\n \n     /**\n      * Returns the identifier of the entity if present. Starting from the current class and going up\n@@ -49,9 +49,8 @@ public abstract class BaseEntity<I> implements Entity<I> {\n     @Override\n     @SuppressWarnings(\"unchecked\")\n     public I getId() {\n-        return identityFields.get(getClass())\n-                .map(f -> (I) ReflectUtils.getValue(f, this))\n-                .orElse(null);\n+        return identityFields.get(getClass()).map(f-> (I) ReflectUtils.getValue(f, this))\n+.orElse(null);\n     }\n \n     @Override\n@@ -70,9 +69,10 @@ public abstract class BaseEntity<I> implements Entity<I> {\n             return false;\n         }\n         Class<? extends BaseEntity> thisClass = getClass();\n+\n         Class<?> otherClass = other.getClass();\n-        if (!(other instanceof Entity) || (!thisClass.isAssignableFrom(otherClass) && !otherClass.isAssignableFrom(\n-                thisClass))) {\n+        if (! (other instanceof Entity)|| (! thisClass.isAssignableFrom(otherClass) && ! otherClass.isAssignableFrom(thisClass)\n+            )) {\n             // objects are not from the same class hierarchy\n             return false;\n         }\n@@ -84,13 +84,13 @@ public abstract class BaseEntity<I> implements Entity<I> {\n         return String.format(\"%s[%s]\", getClass().getSimpleName(), getId());\n     }\n \n+\n     private static Optional<Field> resolveIdentityField(Class<?> entityClass) {\n         Optional<Field> field = IdentityResolver.INSTANCE.resolveField(entityClass);\n-        if (!field.isPresent()) {\n-            field = Classes.from(entityClass)\n-                    .traversingSuperclasses()\n-                    .field(\"id\");\n+        if (! field.isPresent()) {\n+            field = Classes.from(entityClass).traversingSuperclasses()\n+.field(\"id\");\n         }\n         return field.map(ReflectUtils::makeAccessible);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 20
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/98/BaseEntity.java\nindex 168578654a..a3cd8d863b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/98/BaseEntity.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/98/BaseEntity.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.domain;\n \n import java.lang.reflect.Field;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

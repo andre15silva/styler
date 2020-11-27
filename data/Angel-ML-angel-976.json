@@ -1,0 +1,94 @@
+{
+    "error_id": "976",
+    "information": {
+        "errors": [
+            {
+                "line": "14",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 118).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "public class KryoUtils {\n  private static ThreadLocal<Kryo> kryos = new ThreadLocal<Kryo>();\n  private static ThreadLocal<KryoReflectionFactorySupport> kryoRefs = new ThreadLocal<KryoReflectionFactorySupport>();\n\n  private static Kryo getKryo(){\n    Kryo kryo = kryos.get();",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "14",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 118).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/976/KryoUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/976/KryoUtils.java\nindex affd28fb01..1cd586651b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/976/KryoUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/976/KryoUtils.java\n@@ -10,43 +10,44 @@ import java.io.ByteArrayInputStream;\n import java.io.ByteArrayOutputStream;\n \n public class KryoUtils {\n-  private static ThreadLocal<Kryo> kryos = new ThreadLocal<Kryo>();\n-  private static ThreadLocal<KryoReflectionFactorySupport> kryoRefs = new ThreadLocal<KryoReflectionFactorySupport>();\n-\n-  private static Kryo getKryo(){\n-    Kryo kryo = kryos.get();\n-    if(kryo == null) {\n-      kryo = new Kryo();\n-      kryos.set(kryo);\n+    private static ThreadLocal<Kryo> kryos = new ThreadLocal<Kryo>();\n+    private static ThreadLocal<KryoReflectionFactorySupport> kryoRefs =\n+            new ThreadLocal<KryoReflectionFactorySupport>();\n+\n+    private static Kryo getKryo() {\n+        Kryo kryo = kryos.get();\n+        if (kryo == null) {\n+            kryo = new Kryo();\n+            kryos.set(kryo);\n+        }\n+\n+        return kryo;\n     }\n \n-    return kryo;\n-  }\n+    private static KryoReflectionFactorySupport getKryoRef() {\n+        KryoReflectionFactorySupport kryoRef = kryoRefs.get();\n+        if (kryoRef == null) {\n+            kryoRef = new KryoReflectionFactorySupport();\n+            kryoRefs.set(kryoRef);\n+        }\n \n-  private static KryoReflectionFactorySupport getKryoRef(){\n-    KryoReflectionFactorySupport kryoRef = kryoRefs.get();\n-    if(kryoRef == null) {\n-      kryoRef = new KryoReflectionFactorySupport();\n-      kryoRefs.set(kryoRef);\n+        return kryoRef;\n     }\n \n-    return kryoRef;\n-  }\n-\n-  public static byte[] serializeAlgoMetric(Metric value) {\n-    Kryo kryo = getKryo();\n-    ByteArrayOutputStream baos = new ByteArrayOutputStream();\n-    Output output = new Output(baos);\n-    kryo.writeClassAndObject(output, value);\n-    output.flush();\n-    output.close();\n-    return baos.toByteArray();\n-  }\n-\n-  public static Metric deserializeAlgoMetric(byte [] data) {\n-    ByteArrayInputStream bais = new ByteArrayInputStream(data);\n-    Input input = new Input(bais);\n-    KryoReflectionFactorySupport kryoRef = getKryoRef();\n-    return ((Metric)kryoRef.readClassAndObject(input));\n-  }\n+    public static byte[] serializeAlgoMetric(Metric value) {\n+        Kryo kryo = getKryo();\n+        ByteArrayOutputStream baos = new ByteArrayOutputStream();\n+        Output output = new Output(baos);\n+        kryo.writeClassAndObject(output, value);\n+        output.flush();\n+        output.close();\n+        return baos.toByteArray();\n+    }\n+\n+    public static Metric deserializeAlgoMetric(byte[] data) {\n+        ByteArrayInputStream bais = new ByteArrayInputStream(data);\n+        Input input = new Input(bais);\n+        KryoReflectionFactorySupport kryoRef = getKryoRef();\n+        return ((Metric) kryoRef.readClassAndObject(input));\n+    }\n }\n",
+            "diff_size": 42
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "14",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 118).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/976/KryoUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/976/KryoUtils.java\nindex affd28fb01..60baaf4593 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/976/KryoUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/976/KryoUtils.java\n@@ -13,9 +13,9 @@ public class KryoUtils {\n   private static ThreadLocal<Kryo> kryos = new ThreadLocal<Kryo>();\n   private static ThreadLocal<KryoReflectionFactorySupport> kryoRefs = new ThreadLocal<KryoReflectionFactorySupport>();\n \n-  private static Kryo getKryo(){\n+  private static Kryo getKryo() {\n     Kryo kryo = kryos.get();\n-    if(kryo == null) {\n+    if (kryo == null) {\n       kryo = new Kryo();\n       kryos.set(kryo);\n     }\n@@ -23,9 +23,9 @@ public class KryoUtils {\n     return kryo;\n   }\n \n-  private static KryoReflectionFactorySupport getKryoRef(){\n+  private static KryoReflectionFactorySupport getKryoRef() {\n     KryoReflectionFactorySupport kryoRef = kryoRefs.get();\n-    if(kryoRef == null) {\n+    if (kryoRef == null) {\n       kryoRef = new KryoReflectionFactorySupport();\n       kryoRefs.set(kryoRef);\n     }\n@@ -43,10 +43,10 @@ public class KryoUtils {\n     return baos.toByteArray();\n   }\n \n-  public static Metric deserializeAlgoMetric(byte [] data) {\n+  public static Metric deserializeAlgoMetric(byte[] data) {\n     ByteArrayInputStream bais = new ByteArrayInputStream(data);\n     Input input = new Input(bais);\n     KryoReflectionFactorySupport kryoRef = getKryoRef();\n     return ((Metric)kryoRef.readClassAndObject(input));\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 120).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/976/KryoUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/976/KryoUtils.java\nindex affd28fb01..cf62f79333 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/976/KryoUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/976/KryoUtils.java\n@@ -5,35 +5,31 @@ import com.esotericsoftware.kryo.io.Input;\n import com.esotericsoftware.kryo.io.Output;\n import com.tencent.angel.ml.metrics.Metric;\n import de.javakaffee.kryoserializers.KryoReflectionFactorySupport;\n-\n import java.io.ByteArrayInputStream;\n import java.io.ByteArrayOutputStream;\n \n public class KryoUtils {\n-  private static ThreadLocal<Kryo> kryos = new ThreadLocal<Kryo>();\n-  private static ThreadLocal<KryoReflectionFactorySupport> kryoRefs = new ThreadLocal<KryoReflectionFactorySupport>();\n-\n-  private static Kryo getKryo(){\n+    private static ThreadLocal<Kryo> kryos = new ThreadLocal<Kryo>();\n+    private static ThreadLocal<KryoReflectionFactorySupport> kryoRefs = new ThreadLocal<KryoReflectionFactorySupport>();\n+    private static Kryo getKryo() {\n     Kryo kryo = kryos.get();\n-    if(kryo == null) {\n-      kryo = new Kryo();\n-      kryos.set(kryo);\n+    if (kryo == null) {\n+        kryo = new Kryo();\n+        kryos.set(kryo);\n     }\n-\n     return kryo;\n-  }\n+    }\n \n-  private static KryoReflectionFactorySupport getKryoRef(){\n+    private static KryoReflectionFactorySupport getKryoRef() {\n     KryoReflectionFactorySupport kryoRef = kryoRefs.get();\n-    if(kryoRef == null) {\n-      kryoRef = new KryoReflectionFactorySupport();\n-      kryoRefs.set(kryoRef);\n+    if (kryoRef == null) {\n+        kryoRef = new KryoReflectionFactorySupport();\n+        kryoRefs.set(kryoRef);\n     }\n-\n     return kryoRef;\n-  }\n+    }\n \n-  public static byte[] serializeAlgoMetric(Metric value) {\n+    public static byte[] serializeAlgoMetric(Metric value) {\n     Kryo kryo = getKryo();\n     ByteArrayOutputStream baos = new ByteArrayOutputStream();\n     Output output = new Output(baos);\n@@ -41,12 +37,13 @@ public class KryoUtils {\n     output.flush();\n     output.close();\n     return baos.toByteArray();\n-  }\n+    }\n \n-  public static Metric deserializeAlgoMetric(byte [] data) {\n+    public static Metric deserializeAlgoMetric(byte[] data) {\n     ByteArrayInputStream bais = new ByteArrayInputStream(data);\n     Input input = new Input(bais);\n     KryoReflectionFactorySupport kryoRef = getKryoRef();\n-    return ((Metric)kryoRef.readClassAndObject(input));\n-  }\n-}\n+    return ((Metric) kryoRef.readClassAndObject(input));\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 23
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "14",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 118).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 184).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "13",
+                    "column": "184",
+                    "severity": "error",
+                    "message": "Only one statement per line allowed.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/976/KryoUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/976/KryoUtils.java\nindex affd28fb01..22679369b8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/976/KryoUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/976/KryoUtils.java\n@@ -10,8 +10,7 @@ import java.io.ByteArrayInputStream;\n import java.io.ByteArrayOutputStream;\n \n public class KryoUtils {\n-  private static ThreadLocal<Kryo> kryos = new ThreadLocal<Kryo>();\n-  private static ThreadLocal<KryoReflectionFactorySupport> kryoRefs = new ThreadLocal<KryoReflectionFactorySupport>();\n+  private static ThreadLocal<Kryo> kryos = new ThreadLocal<Kryo>(); private static ThreadLocal<KryoReflectionFactorySupport> kryoRefs = new ThreadLocal<KryoReflectionFactorySupport>();\n \n   private static Kryo getKryo(){\n     Kryo kryo = kryos.get();\n",
+            "diff_size": 2
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+{
+    "error_id": "9",
+    "information": {
+        "errors": [
+            {
+                "line": "21",
+                "column": "41",
+                "severity": "error",
+                "message": "'}' at column 41 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "final class LocalizedTextConversions {\n\n    private LocalizedTextConversions() {}\n\n    @Nullable\n    static String localizedTextToString(@Nonnull LocalizedText text) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "21",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/9/LocalizedTextConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/9/LocalizedTextConversions.java\nindex 884ae9e92d..52d243e559 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/9/LocalizedTextConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/9/LocalizedTextConversions.java\n@@ -18,7 +18,8 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;\n \n final class LocalizedTextConversions {\n \n-    private LocalizedTextConversions() {}\n+    private LocalizedTextConversions() {\n+    }\n \n     @Nullable\n     static String localizedTextToString(@Nonnull LocalizedText text) {\n@@ -47,8 +48,10 @@ final class LocalizedTextConversions {\n     static Object implicitConversion(@Nonnull LocalizedText text, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:    return localizedTextToString(text);\n-            default:        return null;\n+            case String:\n+                return localizedTextToString(text);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "21",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/9/LocalizedTextConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/9/LocalizedTextConversions.java\nindex 884ae9e92d..267fd1d304 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/9/LocalizedTextConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/9/LocalizedTextConversions.java\n@@ -48,9 +48,10 @@ final class LocalizedTextConversions {\n         //@formatter:off\n         switch (targetType) {\n             case String:    return localizedTextToString(text);\n-            default:        return null;\n+            default:\n+    return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/9/LocalizedTextConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/9/LocalizedTextConversions.java\nindex 884ae9e92d..57479514e4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/9/LocalizedTextConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/9/LocalizedTextConversions.java\n@@ -12,13 +12,13 @@ package org.eclipse.milo.opcua.sdk.server.events.conversions;\n \n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.stack.core.BuiltinDataType;\n import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;\n \n final class LocalizedTextConversions {\n \n-    private LocalizedTextConversions() {}\n+    private LocalizedTextConversions() {\n+    }\n \n     @Nullable\n     static String localizedTextToString(@Nonnull LocalizedText text) {\n@@ -26,13 +26,12 @@ final class LocalizedTextConversions {\n     }\n \n     @Nullable\n-    static Object convert(@Nonnull Object o, BuiltinDataType targetType, boolean implicit) {\n+    static Object convert(@Nonnull Object o, BuiltinDataType targetType,\n+                          boolean implicit) {\n         if (o instanceof LocalizedText) {\n             LocalizedText text = (LocalizedText) o;\n \n-            return implicit ?\n-                implicitConversion(text, targetType) :\n-                explicitConversion(text, targetType);\n+            return implicit ? implicitConversion(text, targetType) : explicitConversion(text, targetType);\n         } else {\n             return null;\n         }\n@@ -47,10 +46,12 @@ final class LocalizedTextConversions {\n     static Object implicitConversion(@Nonnull LocalizedText text, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case String:    return localizedTextToString(text);\n-            default:        return null;\n+            case String:\n+                return localizedTextToString(text);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "21",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "21",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "'}' at column 41 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

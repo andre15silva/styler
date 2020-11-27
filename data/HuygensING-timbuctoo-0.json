@@ -1,0 +1,855 @@
+{
+    "error_id": "0",
+    "information": {
+        "errors": [
+            {
+                "line": "192",
+                "column": "57",
+                "severity": "error",
+                "message": "'{' at column 57 should be on the previous line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "                                                        .stream()\n                                                        .filter(dataSet ->\n                                                        {\n                                                          try {\n                                                            return\n                                                              vreAuthorizationCrud",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler/0/DataSetFactory.java\nindex 2536f059cf..a19ffda350 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler/0/DataSetFactory.java\n@@ -188,8 +188,7 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n \n       Set<PromotedDataSet> mappedUserSets = userDataSets.getValue()\n                                                         .stream()\n-                                                        .filter(dataSet ->\n-                                                        {\n+                                                        .filter(dataSet -> {\n                                                           try {\n                                                             return\n                                                               vreAuthorizationCrud\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "192",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'{' at column 9 should be on the previous line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/intellij/0/DataSetFactory.java\nindex 2536f059cf..e1bd39f43c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/intellij/0/DataSetFactory.java\n@@ -170,9 +170,9 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n \n     for (Map.Entry<String, Set<PromotedDataSet>> userDataSets : dataSets.entrySet()) {\n       Set<PromotedDataSet> mappedUserSets = userDataSets.getValue()\n-                                                        .stream()\n-                                                        .filter(dataSet -> dataSet.isPromoted())\n-                                                        .collect(Collectors.toSet());\n+        .stream()\n+        .filter(dataSet -> dataSet.isPromoted())\n+        .collect(Collectors.toSet());\n       promotedDataSets.put(userDataSets.getKey(), mappedUserSets);\n     }\n     return promotedDataSets;\n@@ -187,21 +187,21 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n       Set<DataSetWithRoles> dataSetWithRoles = new HashSet<>();\n \n       Set<PromotedDataSet> mappedUserSets = userDataSets.getValue()\n-                                                        .stream()\n-                                                        .filter(dataSet ->\n-                                                        {\n-                                                          try {\n-                                                            return\n-                                                              vreAuthorizationCrud\n-                                                                .getAuthorization(\n-                                                                  userDataSets.getKey() + \"_\" + dataSet.getName(),\n-                                                                  userId)\n-                                                                .isPresent();\n-                                                          } catch (AuthorizationUnavailableException e) {\n-                                                            return false;\n-                                                          }\n-                                                        })\n-                                                        .collect(Collectors.toSet());\n+        .stream()\n+        .filter(dataSet ->\n+        {\n+          try {\n+            return\n+              vreAuthorizationCrud\n+                .getAuthorization(\n+                  userDataSets.getKey() + \"_\" + dataSet.getName(),\n+                  userId)\n+                .isPresent();\n+          } catch (AuthorizationUnavailableException e) {\n+            return false;\n+          }\n+        })\n+        .collect(Collectors.toSet());\n \n \n       userDataSets.getValue().forEach((dataSet) -> {\n@@ -258,7 +258,7 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n     storedDataSets.updateData(dataSets -> {\n       Set<PromotedDataSet>\n         dataSetsToKeep = dataSets.get(ownerId).stream().filter(dataSet -> !dataSet.getName().equals(dataSetName))\n-                                 .collect(Collectors.toSet());\n+        .collect(Collectors.toSet());\n       dataSets.put(ownerId, dataSetsToKeep);\n       return dataSets;\n     });\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "175",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 0, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "200",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 0, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "201",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "202",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "203",
+                    "severity": "error",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "204",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 10, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "208",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 10, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "209",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 12, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "211",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 10, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "212",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 12, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "213",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 10, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "214",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "215",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "216",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "217",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "222",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "223",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 6, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "251",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 132).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "253",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 0, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/naturalize/0/DataSetFactory.java\nindex 2536f059cf..4aad8c3711 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/naturalize/0/DataSetFactory.java\n@@ -169,11 +169,10 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n     Map<String, Set<PromotedDataSet>> promotedDataSets = new HashMap<>();\n \n     for (Map.Entry<String, Set<PromotedDataSet>> userDataSets : dataSets.entrySet()) {\n-      Set<PromotedDataSet> mappedUserSets = userDataSets.getValue()\n-                                                        .stream()\n+      Set<PromotedDataSet> mappedUserSets = userDataSets.getValue().stream()\n                                                         .filter(dataSet -> dataSet.isPromoted())\n                                                         .collect(Collectors.toSet());\n-      promotedDataSets.put(userDataSets.getKey(), mappedUserSets);\n+promotedDataSets.put(userDataSets.getKey(), mappedUserSets);\n     }\n     return promotedDataSets;\n   }\n@@ -186,14 +185,10 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n     for (Map.Entry<String, Set<PromotedDataSet>> userDataSets : dataSets.entrySet()) {\n       Set<DataSetWithRoles> dataSetWithRoles = new HashSet<>();\n \n-      Set<PromotedDataSet> mappedUserSets = userDataSets.getValue()\n-                                                        .stream()\n-                                                        .filter(dataSet ->\n-                                                        {\n+      Set<PromotedDataSet> mappedUserSets = userDataSets.getValue().stream()\n+                                                        .filter(dataSet -> {\n                                                           try {\n-                                                            return\n-                                                              vreAuthorizationCrud\n-                                                                .getAuthorization(\n+                                                            return vreAuthorizationCrud.getAuthorization(\n                                                                   userDataSets.getKey() + \"_\" + dataSet.getName(),\n                                                                   userId)\n                                                                 .isPresent();\n@@ -202,9 +197,7 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n                                                           }\n                                                         })\n                                                         .collect(Collectors.toSet());\n-\n-\n-      userDataSets.getValue().forEach((dataSet) -> {\n+userDataSets.getValue().forEach((dataSet) -> {\n         List<String> roles;\n         Optional<VreAuthorization> vre;\n         try {\n@@ -224,8 +217,7 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n         DataSetWithRoles dataSetWithWriteAccess = new DataSetWithRoles(\n           dataSet.getName(),\n           dataSet.isPromoted(),\n-          roles, null\n-        );\n+          roles, null);\n \n         dataSetWithRoles.add(dataSetWithWriteAccess);\n       });\n@@ -256,10 +248,9 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n     dataStoreFactory.removeDataStoresFor(ownerId, dataSetName);\n     // remove from datasets.json\n     storedDataSets.updateData(dataSets -> {\n-      Set<PromotedDataSet>\n-        dataSetsToKeep = dataSets.get(ownerId).stream().filter(dataSet -> !dataSet.getName().equals(dataSetName))\n+      Set<PromotedDataSet> dataSetsToKeep = dataSets.get(ownerId).stream().filter(dataSet -> !dataSet.getName().equals(dataSetName))\n                                  .collect(Collectors.toSet());\n-      dataSets.put(ownerId, dataSetsToKeep);\n+dataSets.put(ownerId, dataSetsToKeep);\n       return dataSets;\n     });\n     dataSetMap.get(ownerId).remove(dataSetName);\n@@ -289,4 +280,4 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n       return new DataStoreDataFetcherFactory(quadStore, collectionIndex);\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 193).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 196).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "70",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "'synchronized' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 54, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 129).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 54, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 12, expected level should be 56.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 12, expected level should be 56.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "'synchronized' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "109",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "111",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 363).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "113",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "114",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "115",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "116",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "117",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "119",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "119",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 132).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "120",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 128).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "126",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "128",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "130",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "132",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "134",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "136",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "140",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "143",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "146",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "153",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "154",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "error",
+                    "message": "'try' has incorrect indentation level 12, expected level should be 71.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 81, expected level should be 73.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 195).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "158",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 12, expected level should be 71.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "159",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 14, expected level should be 73.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "160",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 12, expected level should be 71.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "163",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "164",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 89, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "165",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 89, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "166",
+                    "severity": "error",
+                    "message": "'try' has incorrect indentation level 89, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "167",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 44, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "167",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 145).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "168",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 44, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "169",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 93, expected level should be 14.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "169",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "170",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 44, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "171",
+                    "severity": "error",
+                    "message": "'else' child has incorrect indentation level 46, expected level should be 14.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "172",
+                    "severity": "error",
+                    "message": "'else rcurly' has incorrect indentation level 44, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "error",
+                    "message": "'try rcurly' has incorrect indentation level 89, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 136).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "174",
+                    "severity": "error",
+                    "message": "'catch' child has incorrect indentation level 91, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "174",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 123).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "175",
+                    "severity": "error",
+                    "message": "'catch rcurly' has incorrect indentation level 89, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "177",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 89, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "177",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 206).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "178",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 89, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "178",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 134).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "180",
+                    "severity": "error",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "183",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "185",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "187",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "189",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "194",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 32, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "195",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 32, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "196",
+                    "severity": "error",
+                    "message": "'block rcurly' has incorrect indentation level 28, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "199",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "201",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "205",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "206",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "208",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "209",
+                    "severity": "error",
+                    "message": "'block' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "215",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "217",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "220",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "222",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "224",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "226",
+                    "severity": "error",
+                    "message": "'class def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "235",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "237",
+                    "severity": "error",
+                    "message": "'class def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/codebuff/0/DataSetFactory.java\nindex 2536f059cf..21a7a45f71 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/codebuff/0/DataSetFactory.java\n@@ -20,7 +20,6 @@ import nl.knaw.huygens.timbuctoo.v5.filestorage.implementations.filesystem.DataS\n import nl.knaw.huygens.timbuctoo.v5.graphql.datafetchers.DataFetcherFactory;\n import nl.knaw.huygens.timbuctoo.v5.rml.RdfDataSourceFactory;\n import org.apache.commons.io.FileUtils;\n-\n import java.io.File;\n import java.io.IOException;\n import java.util.Collections;\n@@ -41,243 +40,190 @@ import java.util.stream.Collectors;\n  * - makes CreateDataSet a singleton\n  * - keeps track of all created dataSets across restarts (stores them in a file)\n  */\n-public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFactory, TypeNameStoreFactory {\n-\n-  private final ExecutorService executorService;\n-  private final VreAuthorizationCrud vreAuthorizationCrud;\n-  private final DataSetConfiguration configuration;\n-  private final DataStoreFactory dataStoreFactory;\n-  private final Map<String, Map<String, DataSet>> dataSetMap;\n-  private final JsonFileBackedData<Map<String, Set<PromotedDataSet>>> storedDataSets;\n-  private final HashMap<UUID, StringBuffer> statusMap;\n-  private final DataSetPathHelper dataSetPathHelper;\n \n-\n-  public DataSetFactory(ExecutorService executorService, VreAuthorizationCrud vreAuthorizationCrud,\n-                        DataSetConfiguration configuration,\n-                        DataStoreFactory dataStoreFactory) throws IOException {\n+public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFactory, TypeNameStoreFactory {\n+    private final ExecutorService executorService;\n+    private final VreAuthorizationCrud vreAuthorizationCrud;\n+    private final DataSetConfiguration configuration;\n+    private final DataStoreFactory dataStoreFactory;\n+    private final Map<String, Map<String, DataSet>> dataSetMap;\n+    private final JsonFileBackedData<Map<String, Set<PromotedDataSet>>> storedDataSets;\n+    private final HashMap<UUID, StringBuffer> statusMap;\n+    private final DataSetPathHelper dataSetPathHelper;\n+\n+    public DataSetFactory(ExecutorService executorService, VreAuthorizationCrud vreAuthorizationCrud, DataSetConfiguration configuration, DataStoreFactory dataStoreFactory) throws IOException {\n     this.executorService = executorService;\n     this.vreAuthorizationCrud = vreAuthorizationCrud;\n     this.configuration = configuration;\n     this.dataStoreFactory = dataStoreFactory;\n-\n     dataSetMap = new HashMap<>();\n     dataSetPathHelper = new DataSetPathHelper(configuration.getDataSetMetadataLocation());\n-    storedDataSets = JsonFileBackedData.getOrCreate(\n-      new File(configuration.getDataSetMetadataLocation(), \"dataSets.json\"),\n-      HashMap::new,\n-      new TypeReference<Map<String, Set<PromotedDataSet>>>() {\n-      }\n-    );\n+    storedDataSets = JsonFileBackedData.getOrCreate(new File(configuration.getDataSetMetadataLocation(), \"dataSets.json\"), HashMap::new, new TypeReference<Map<String, Set<PromotedDataSet>>>() {});\n     statusMap = new HashMap<>();\n-  }\n+    }\n \n-  @Override\n-  public DataFetcherFactory createDataFetcherFactory(String userId, String dataSetId)\n-    throws DataStoreCreationException {\n+    @Override\n+    public DataFetcherFactory createDataFetcherFactory(String userId, String dataSetId) throws DataStoreCreationException {\n     return make(userId, dataSetId).createDataFetcherFactory();\n-  }\n+    }\n \n-  @Override\n-  public SchemaStore createSchemaStore(String userId, String dataSetId) throws DataStoreCreationException {\n+    @Override\n+    public SchemaStore createSchemaStore(String userId, String dataSetId) throws DataStoreCreationException {\n     return make(userId, dataSetId).schemaStore;\n-  }\n+    }\n \n-  @Override\n-  public TypeNameStore createTypeNameStore(String userId, String dataSetId) throws DataStoreCreationException {\n+    @Override\n+    public TypeNameStore createTypeNameStore(String userId, String dataSetId) throws DataStoreCreationException {\n     return make(userId, dataSetId).typeNameStore;\n-  }\n+    }\n \n-  public ImportManager createImportManager(String userId, String dataSetId) throws DataStoreCreationException {\n+    public ImportManager createImportManager(String userId, String dataSetId) throws DataStoreCreationException {\n     return make(userId, dataSetId).importManager;\n+    }\n \n-  }\n-\n-  public RdfDataSourceFactory createDataSource(String userId, String dataSetId) throws DataStoreCreationException {\n+    public RdfDataSourceFactory createDataSource(String userId, String dataSetId) throws DataStoreCreationException {\n     return make(userId, dataSetId).dataSource;\n-  }\n+    }\n \n-  private DataSet make(String userId, String dataSetId) throws DataStoreCreationException {\n+    private DataSet make(String userId, String dataSetId) throws DataStoreCreationException {\n     String authorizationKey = userId + \"_\" + dataSetId;\n     synchronized (dataSetMap) {\n-      Map<String, DataSet> userDataSets = dataSetMap.computeIfAbsent(userId, key -> new HashMap<>());\n-\n-      if (!userDataSets.containsKey(dataSetId)) {\n+        Map<String, DataSet> userDataSets = dataSetMap.computeIfAbsent(userId, key -> new HashMap<>());\n+        if (!userDataSets.containsKey(dataSetId)) {\n         DataSet dataSet = createNewDataSet(userId, dataSetId, authorizationKey);\n         userDataSets.put(dataSetId, dataSet);\n-\n         try {\n-          PromotedDataSet promotedDataSet = PromotedDataSet.create(dataSetId, false);\n-          storedDataSets.updateData(dataSets -> {\n+                                                      PromotedDataSet promotedDataSet = PromotedDataSet.create(dataSetId, false);\n+                                                      storedDataSets.updateData(dataSets -> {\n             dataSets.computeIfAbsent(userId, key -> new HashSet<>()).add(promotedDataSet);\n             return dataSets;\n-          });\n+                                                      });\n         } catch (IOException e) {\n           throw new DataStoreCreationException(e);\n         }\n-      }\n-      return userDataSets.get(dataSetId);\n+        }\n+        return userDataSets.get(dataSetId);\n+    }\n     }\n-  }\n \n-  private DataSet createNewDataSet(String userId, String dataSetId, String authorizationKey)\n-    throws DataStoreCreationException {\n+    private DataSet createNewDataSet(String userId, String dataSetId, String authorizationKey) throws DataStoreCreationException {\n     try {\n-      vreAuthorizationCrud.createAuthorization(authorizationKey, userId, \"ADMIN\");\n-      ImportManager importManager = new ImportManager(\n-        dataSetPathHelper.fileInDataSet(userId, dataSetId, \"log.json\"),\n-        configuration.getFileStorage().makeFileStorage(userId, dataSetId),\n-        configuration.getFileStorage().makeFileStorage(userId, dataSetId),\n-        configuration.getFileStorage().makeLogStorage(userId, dataSetId),\n-        executorService,\n-        configuration.getRdfIo()\n-      );\n-\n-      DataSet dataSet = new DataSet();\n-      QuadStore quadStore = dataStoreFactory.createQuadStore(importManager, userId, dataSetId);\n-      CollectionIndex collectionIndex = dataStoreFactory.createCollectionIndex(importManager, userId, dataSetId);\n-      dataSet.quadStore = quadStore;\n-      dataSet.collectionIndex = collectionIndex;\n-      dataSet.typeNameStore = new JsonTypeNameStore(\n-        dataSetPathHelper.fileInDataSet(userId, dataSetId, \"prefixes.json\"),\n-        importManager\n-      );\n-      dataSet.schemaStore = new JsonSchemaStore(\n-        importManager,\n-        dataSetPathHelper.fileInDataSet(userId, dataSetId, \"schema.json\")\n-      );\n-      dataSet.importManager = importManager;\n-      dataSet.dataSource = new RdfDataSourceFactory(\n-        dataStoreFactory.createDataSourceStore(importManager, userId, dataSetId)\n-      );\n-      return dataSet;\n+        vreAuthorizationCrud.createAuthorization(authorizationKey, userId, \"ADMIN\");\n+        ImportManager importManager = new ImportManager(dataSetPathHelper.fileInDataSet(userId, dataSetId, \"log.json\"), configuration.getFileStorage().makeFileStorage(userId, dataSetId), configuration.getFileStorage().makeFileStorage(userId, dataSetId), configuration.getFileStorage().makeLogStorage(userId, dataSetId), executorService, configuration.getRdfIo());\n+        DataSet dataSet = new DataSet();\n+        QuadStore quadStore = dataStoreFactory.createQuadStore(importManager, userId, dataSetId);\n+        CollectionIndex collectionIndex = dataStoreFactory.createCollectionIndex(importManager, userId, dataSetId);\n+        dataSet.quadStore = quadStore;\n+        dataSet.collectionIndex = collectionIndex;\n+        dataSet.typeNameStore = new JsonTypeNameStore(dataSetPathHelper.fileInDataSet(userId, dataSetId, \"prefixes.json\"), importManager);\n+        dataSet.schemaStore = new JsonSchemaStore(importManager, dataSetPathHelper.fileInDataSet(userId, dataSetId, \"schema.json\"));\n+        dataSet.importManager = importManager;\n+        dataSet.dataSource = new RdfDataSourceFactory(dataStoreFactory.createDataSourceStore(importManager, userId, dataSetId));\n+        return dataSet;\n     } catch (AuthorizationCreationException | IOException e) {\n       throw new DataStoreCreationException(e);\n     }\n-  }\n+    }\n \n-  public boolean dataSetExists(String ownerId, String dataSet) {\n+    public boolean dataSetExists(String ownerId, String dataSet) {\n     return dataSetMap.containsKey(ownerId) && dataSetMap.get(ownerId).containsKey(dataSet);\n-  }\n+    }\n \n-  public Map<String, Set<PromotedDataSet>> getDataSets() {\n+    public Map<String, Set<PromotedDataSet>> getDataSets() {\n     return storedDataSets.getData();\n-  }\n+    }\n \n-  public Map<String, Set<PromotedDataSet>> getPromotedDataSets() {\n+    public Map<String, Set<PromotedDataSet>> getPromotedDataSets() {\n     Map<String, Set<PromotedDataSet>> dataSets = storedDataSets.getData();\n     Map<String, Set<PromotedDataSet>> promotedDataSets = new HashMap<>();\n-\n     for (Map.Entry<String, Set<PromotedDataSet>> userDataSets : dataSets.entrySet()) {\n-      Set<PromotedDataSet> mappedUserSets = userDataSets.getValue()\n-                                                        .stream()\n-                                                        .filter(dataSet -> dataSet.isPromoted())\n-                                                        .collect(Collectors.toSet());\n-      promotedDataSets.put(userDataSets.getKey(), mappedUserSets);\n+        Set<PromotedDataSet> mappedUserSets = userDataSets.getValue().stream()\n+                                                                     .filter(dataSet -> dataSet.isPromoted())\n+                                                                     .collect(Collectors.toSet());\n+        promotedDataSets.put(userDataSets.getKey(), mappedUserSets);\n     }\n     return promotedDataSets;\n-  }\n+    }\n \n-  public Map<String, Set<DataSetWithRoles>> getDataSetsWithWriteAccess(String userId) {\n+    public Map<String, Set<DataSetWithRoles>> getDataSetsWithWriteAccess(String userId) {\n     Map<String, Set<PromotedDataSet>> dataSets = storedDataSets.getData();\n     Map<String, Set<PromotedDataSet>> promotedDataSets = new HashMap<>();\n     Map<String, Set<DataSetWithRoles>> dataSetsWithWriteAccess = new HashMap<>();\n-\n     for (Map.Entry<String, Set<PromotedDataSet>> userDataSets : dataSets.entrySet()) {\n-      Set<DataSetWithRoles> dataSetWithRoles = new HashSet<>();\n-\n-      Set<PromotedDataSet> mappedUserSets = userDataSets.getValue()\n-                                                        .stream()\n-                                                        .filter(dataSet ->\n-                                                        {\n-                                                          try {\n-                                                            return\n-                                                              vreAuthorizationCrud\n-                                                                .getAuthorization(\n-                                                                  userDataSets.getKey() + \"_\" + dataSet.getName(),\n-                                                                  userId)\n-                                                                .isPresent();\n-                                                          } catch (AuthorizationUnavailableException e) {\n-                                                            return false;\n-                                                          }\n-                                                        })\n-                                                        .collect(Collectors.toSet());\n-\n-\n-      userDataSets.getValue().forEach((dataSet) -> {\n-        List<String> roles;\n-        Optional<VreAuthorization> vre;\n-        try {\n-          vre = vreAuthorizationCrud\n-            .getAuthorization(\n-              userDataSets.getKey() + \"_\" + dataSet.getName(),\n-              userId);\n-          if (vre.isPresent()) {\n-            roles = vre\n-              .get().getRoles();\n-          } else {\n-            roles = Collections.emptyList();\n-          }\n-        } catch (AuthorizationUnavailableException e) {\n-          roles = Collections.emptyList();\n-        }\n-        DataSetWithRoles dataSetWithWriteAccess = new DataSetWithRoles(\n-          dataSet.getName(),\n-          dataSet.isPromoted(),\n-          roles, null\n-        );\n-\n-        dataSetWithRoles.add(dataSetWithWriteAccess);\n-      });\n-\n-      dataSetsWithWriteAccess.put(userDataSets.getKey(), dataSetWithRoles);\n+        Set<DataSetWithRoles> dataSetWithRoles = new HashSet<>();\n+        Set<PromotedDataSet> mappedUserSets = userDataSets.getValue().stream()\n+                                                                     .filter(dataSet -> {\n+            try {\n+                                                                                 return vreAuthorizationCrud.getAuthorization(userDataSets.getKey() + \"_\" + dataSet.getName(), userId).isPresent();\n+            } catch (AuthorizationUnavailableException e) {\n+              return false;\n+            }\n+                                                                     })\n+                                                                     .collect(Collectors.toSet());\n+        userDataSets.getValue().forEach((dataSet) -> {\n+                                                                                         List<String> roles;\n+                                                                                         Optional<VreAuthorization> vre;\n+                                                                                         try {\n+                                            vre = vreAuthorizationCrud.getAuthorization(userDataSets.getKey() + \"_\" + dataSet.getName(), userId);\n+                                            if (vre.isPresent()) {\n+                                                                                             roles = vre.get().getRoles();\n+                                            } else {\n+                                              roles = Collections.emptyList();\n+                                            }\n+                                                                                         } catch (AuthorizationUnavailableException e) {\n+                                                                                           roles = Collections.emptyList();\n+                                                                                         }\n+\n+                                                                                         DataSetWithRoles dataSetWithWriteAccess = new DataSetWithRoles(dataSet.getName(), dataSet.isPromoted(), roles, null);\n+                                                                                         dataSetWithRoles.add(dataSetWithWriteAccess);\n+        });\n+        dataSetsWithWriteAccess.put(userDataSets.getKey(), dataSetWithRoles);\n     }\n     return dataSetsWithWriteAccess;\n-  }\n+    }\n \n-  public Optional<String> getStatus(UUID uuid) {\n+    public Optional<String> getStatus(UUID uuid) {\n     return statusMap.containsKey(uuid) ? Optional.of(statusMap.get(uuid).toString()) : Optional.empty();\n-  }\n+    }\n \n-  public Tuple<UUID, RdfCreator> registerRdfCreator(Function<Consumer<String>, RdfCreator> rdfCreatorBuilder) {\n+    public Tuple<UUID, RdfCreator> registerRdfCreator(Function<Consumer<String>, RdfCreator> rdfCreatorBuilder) {\n     StringBuffer stringBuffer = new StringBuffer();\n     UUID uuid = UUID.randomUUID();\n     statusMap.put(uuid, stringBuffer);\n-\n     RdfCreator rdfCreator = rdfCreatorBuilder.apply((str) -> {\n-      stringBuffer.setLength(0);\n-      stringBuffer.append(str);\n-    });\n+                                stringBuffer.setLength(0);\n+                                stringBuffer.append(str);\n+                            });\n \n     return Tuple.tuple(uuid, rdfCreator);\n-  }\n+    }\n \n-  public void removeDataSet(String ownerId, String dataSetName) throws IOException {\n+    public void removeDataSet(String ownerId, String dataSetName) throws IOException {\n     dataStoreFactory.removeDataStoresFor(ownerId, dataSetName);\n     // remove from datasets.json\n     storedDataSets.updateData(dataSets -> {\n-      Set<PromotedDataSet>\n-        dataSetsToKeep = dataSets.get(ownerId).stream().filter(dataSet -> !dataSet.getName().equals(dataSetName))\n-                                 .collect(Collectors.toSet());\n-      dataSets.put(ownerId, dataSetsToKeep);\n-      return dataSets;\n+        Set<PromotedDataSet> dataSetsToKeep = dataSets.get(ownerId).stream()\n+                                                                   .filter(dataSet -> !dataSet.getName().equals(dataSetName))\n+                                                                   .collect(Collectors.toSet());\n+        dataSets.put(ownerId, dataSetsToKeep);\n+        return dataSets;\n     });\n     dataSetMap.get(ownerId).remove(dataSetName);\n \n     // remove folder\n     FileUtils.deleteDirectory(dataSetPathHelper.dataSetPath(ownerId, dataSetName));\n-  }\n+    }\n \n-  public void stop() {\n+    public void stop() {\n     // TODO let data set close all its stores\n     dataStoreFactory.stop();\n-  }\n+    }\n \n-  public void start() {\n+    public void start() {\n     dataStoreFactory.start();\n-  }\n+    }\n \n-  private class DataSet {\n+    private class DataSet {\n     private SchemaStore schemaStore;\n     private TypeNameStore typeNameStore;\n     private ImportManager importManager;\n@@ -286,7 +232,7 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n     private CollectionIndex collectionIndex;\n \n     public DataFetcherFactory createDataFetcherFactory() {\n-      return new DataStoreDataFetcherFactory(quadStore, collectionIndex);\n+        return new DataStoreDataFetcherFactory(quadStore, collectionIndex);\n+    }\n     }\n-  }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 175
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_random/0/DataSetFactory.java\nindex 2536f059cf..a19ffda350 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_random/0/DataSetFactory.java\n@@ -188,8 +188,7 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n \n       Set<PromotedDataSet> mappedUserSets = userDataSets.getValue()\n                                                         .stream()\n-                                                        .filter(dataSet ->\n-                                                        {\n+                                                        .filter(dataSet -> {\n                                                           try {\n                                                             return\n                                                               vreAuthorizationCrud\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_three_grams/0/DataSetFactory.java\nindex 2536f059cf..a19ffda350 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/errored/1/0/DataSetFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HuygensING-timbuctoo/styler_three_grams/0/DataSetFactory.java\n@@ -188,8 +188,7 @@ public class DataSetFactory implements DataFetcherFactoryFactory, SchemaStoreFac\n \n       Set<PromotedDataSet> mappedUserSets = userDataSets.getValue()\n                                                         .stream()\n-                                                        .filter(dataSet ->\n-                                                        {\n+                                                        .filter(dataSet -> {\n                                                           try {\n                                                             return\n                                                               vreAuthorizationCrud\n",
+            "diff_size": 2
+        }
+    ]
+}

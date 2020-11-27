@@ -1,0 +1,208 @@
+{
+    "error_id": "44",
+    "information": {
+        "errors": [
+            {
+                "line": "35",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 95).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "\n/**\n * Class that uses all code that is pasted in root README.md to ensure that this code is always\n * actual.\n */\n@Slf4j",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 95).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 95).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/44/ReadMe.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/44/ReadMe.java\nindex 8cc9812156..1605bc47ac 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/44/ReadMe.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/44/ReadMe.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.beam;\n \n import com.typesafe.config.ConfigFactory;\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 95).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 8, expected level should be 4.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'CountByKey' has incorrect indentation level 8, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'.' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 0, expected is 8, indentation should be the same level as line 53.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/44/ReadMe.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/44/ReadMe.java\nindex 8cc9812156..d40a3eb212 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/44/ReadMe.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/44/ReadMe.java\n@@ -49,24 +49,25 @@ class ReadMe {\n     PCollection<StreamElement> input =\n         operator.getStream(\n             pipeline, Position.OLDEST, false, true, model.getEvent().getDataDescriptor());\n-    PCollection<KV<String, Long>> counted =\n+\n+        PCollection<KV<String, Long>> counted =\n         CountByKey.of(input)\n             .keyBy(\n-                el ->\n-                    model\n+                el -> model\n                         .getEvent()\n                         .getDataDescriptor()\n                         .valueOf(el)\n                         .map(BaseEvent::getProductId)\n                         .orElse(\"\"))\n-            .windowBy(FixedWindows.of(Duration.standardMinutes(1)))\n+.windowBy(FixedWindows.of(Duration.standardMinutes(1)))\n             .triggeredBy(AfterWatermark.pastEndOfWindow())\n             .accumulationMode(AccumulationMode.DISCARDING_FIRED_PANES)\n             .output();\n-    // do something with the output\n+\n+// do something with the output\n   }\n \n   private ReadMe() {\n     createStream();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 95).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 136).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 113).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 119).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 110).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 122).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/44/ReadMe.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/44/ReadMe.java\nindex 8cc9812156..9094744341 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/44/ReadMe.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/44/ReadMe.java\n@@ -35,38 +35,32 @@ import org.joda.time.Duration;\n  * Class that uses all code that is pasted in root README.md to ensure that this code is always\n  * actual.\n  */\n+\n+\n @Slf4j\n class ReadMe {\n \n-  private Model createModel() {\n+    private Model createModel() {\n     return Model.of(ConfigFactory.defaultApplication());\n-  }\n+    }\n \n-  private void createStream() {\n+    private void createStream() {\n     Model model = createModel();\n     BeamDataOperator operator = model.getRepo().asDataOperator(BeamDataOperator.class);\n     Pipeline pipeline = Pipeline.create();\n-    PCollection<StreamElement> input =\n-        operator.getStream(\n-            pipeline, Position.OLDEST, false, true, model.getEvent().getDataDescriptor());\n-    PCollection<KV<String, Long>> counted =\n-        CountByKey.of(input)\n-            .keyBy(\n-                el ->\n-                    model\n-                        .getEvent()\n-                        .getDataDescriptor()\n-                        .valueOf(el)\n-                        .map(BaseEvent::getProductId)\n-                        .orElse(\"\"))\n-            .windowBy(FixedWindows.of(Duration.standardMinutes(1)))\n-            .triggeredBy(AfterWatermark.pastEndOfWindow())\n-            .accumulationMode(AccumulationMode.DISCARDING_FIRED_PANES)\n-            .output();\n+    PCollection<StreamElement> input = operator.getStream(pipeline, Position.OLDEST, false, true, model.getEvent().getDataDescriptor());\n+    PCollection<KV<String, Long>> counted = CountByKey.of(input).keyBy(el -> model.getEvent().getDataDescriptor()\n+                                                                                             .valueOf(el)\n+                                                                                             .map(BaseEvent::getProductId)\n+                                                                                             .orElse(\"\"))\n+                                                                .windowBy(FixedWindows.of(Duration.standardMinutes(1)))\n+                                                                .triggeredBy(AfterWatermark.pastEndOfWindow())\n+                                                                .accumulationMode(AccumulationMode.DISCARDING_FIRED_PANES)\n+                                                                .output();\n     // do something with the output\n-  }\n+    }\n \n-  private ReadMe() {\n+    private ReadMe() {\n     createStream();\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 26
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 95).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 0, indentation should be the same level as line 38.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 95).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/44/ReadMe.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/44/ReadMe.java\nindex 8cc9812156..f926a2d9a7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/44/ReadMe.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/44/ReadMe.java\n@@ -31,7 +31,7 @@ import org.apache.beam.sdk.values.PCollection;\n import org.apache.beam.sdk.values.WindowingStrategy.AccumulationMode;\n import org.joda.time.Duration;\n \n-/**\n+  /**\n  * Class that uses all code that is pasted in root README.md to ensure that this code is always\n  * actual.\n  */\n",
+            "diff_size": 1
+        }
+    ]
+}

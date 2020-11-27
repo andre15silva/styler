@@ -1,0 +1,118 @@
+{
+    "error_id": "506",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/506/IncrementRows.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/506/IncrementRows.java\nindex c71c57c113..19f827decb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/506/IncrementRows.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/506/IncrementRows.java\n@@ -35,40 +35,40 @@ import java.util.List;\n  */\n public class IncrementRows extends UpdateFunc {\n \n-  /**\n-   * Create a new UpdateParam\n-   */\n-  public IncrementRows(UpdateParam param) {\n-    super(param);\n-  }\n+    /**\n+     * Create a new UpdateParam\n+     */\n+    public IncrementRows(UpdateParam param) {\n+        super(param);\n+    }\n \n-  public IncrementRows() {\n-    this(null);\n-  }\n+    public IncrementRows() {\n+        this(null);\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n-    PartIncrementRowsParam partUpdateRowsParam = (PartIncrementRowsParam) partParam;\n-    List<RowUpdateSplit> updates = partUpdateRowsParam.getUpdates();\n-    for (RowUpdateSplit update : updates) {\n-      getVector(partUpdateRowsParam.getMatrixId(), update.getRowId(), partParam.getPartKey())\n-          .iadd(update.getVector());\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n+        PartIncrementRowsParam partUpdateRowsParam = (PartIncrementRowsParam) partParam;\n+        List<RowUpdateSplit> updates = partUpdateRowsParam.getUpdates();\n+        for (RowUpdateSplit update : updates) {\n+            getVector(partUpdateRowsParam.getMatrixId(), update.getRowId(), partParam.getPartKey())\n+                    .iadd(update.getVector());\n+        }\n     }\n-  }\n \n-  /**\n-   * Get inner vector from server matrix, it is can be only use in RowBasedPartition and basic row\n-   * type\n-   *\n-   * @param matrixId matrix id\n-   * @param rowId row id\n-   * @param part partition key\n-   * @return inner vector\n-   */\n-  protected Vector getVector(int matrixId, int rowId, PartitionKey part) {\n-    ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(matrixId);\n-    ServerRow psRow = ((RowBasedPartition) matrix.getPartition(part.getPartitionId()))\n-        .getRow(rowId);\n-    return ServerRowUtils.getVector(psRow);\n-  }\n+    /**\n+     * Get inner vector from server matrix, it is can be only use in RowBasedPartition and basic row\n+     * type\n+     *\n+     * @param matrixId matrix id\n+     * @param rowId    row id\n+     * @param part     partition key\n+     * @return inner vector\n+     */\n+    protected Vector getVector(int matrixId, int rowId, PartitionKey part) {\n+        ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(matrixId);\n+        ServerRow psRow = ((RowBasedPartition) matrix.getPartition(part.getPartitionId()))\n+                .getRow(rowId);\n+        return ServerRowUtils.getVector(psRow);\n+    }\n }\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/506/IncrementRows.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/506/IncrementRows.java\nindex c71c57c113..25fb760c5a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/506/IncrementRows.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/506/IncrementRows.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.matrix.psf.update.update;\n \n import com.tencent.angel.PartitionKey;\n@@ -69,6 +68,6 @@ public class IncrementRows extends UpdateFunc {\n     ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(matrixId);\n     ServerRow psRow = ((RowBasedPartition) matrix.getPartition(part.getPartitionId()))\n         .getRow(rowId);\n-    return ServerRowUtils.getVector(psRow);\n+return ServerRowUtils.getVector(psRow);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 43.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 70.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/506/IncrementRows.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/506/IncrementRows.java\nindex c71c57c113..a69710991c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/506/IncrementRows.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/506/IncrementRows.java\n@@ -33,28 +33,29 @@ import java.util.List;\n /**\n  * Increment PS matrix rows\n  */\n+\n public class IncrementRows extends UpdateFunc {\n \n   /**\n    * Create a new UpdateParam\n    */\n-  public IncrementRows(UpdateParam param) {\n+\n+    public IncrementRows(UpdateParam param) {\n     super(param);\n-  }\n+    }\n \n-  public IncrementRows() {\n+    public IncrementRows() {\n     this(null);\n-  }\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n     PartIncrementRowsParam partUpdateRowsParam = (PartIncrementRowsParam) partParam;\n     List<RowUpdateSplit> updates = partUpdateRowsParam.getUpdates();\n     for (RowUpdateSplit update : updates) {\n-      getVector(partUpdateRowsParam.getMatrixId(), update.getRowId(), partParam.getPartKey())\n-          .iadd(update.getVector());\n+        getVector(partUpdateRowsParam.getMatrixId(), update.getRowId(), partParam.getPartKey()).iadd(update.getVector());\n+    }\n     }\n-  }\n \n   /**\n    * Get inner vector from server matrix, it is can be only use in RowBasedPartition and basic row\n@@ -65,10 +66,11 @@ public class IncrementRows extends UpdateFunc {\n    * @param part partition key\n    * @return inner vector\n    */\n-  protected Vector getVector(int matrixId, int rowId, PartitionKey part) {\n+\n+    protected Vector getVector(int matrixId, int rowId, PartitionKey part) {\n     ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(matrixId);\n-    ServerRow psRow = ((RowBasedPartition) matrix.getPartition(part.getPartitionId()))\n-        .getRow(rowId);\n+    ServerRow psRow = ((RowBasedPartition) matrix.getPartition(part.getPartitionId())).getRow(rowId);\n     return ServerRowUtils.getVector(psRow);\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 18
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/506/IncrementRows.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/506/IncrementRows.java\nindex c71c57c113..1f9f1783c4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/506/IncrementRows.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/506/IncrementRows.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.matrix.psf.update.update;\n \n import com.tencent.angel.PartitionKey;\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,1059 @@
+{
+    "error_id": "19",
+    "information": {
+        "errors": [
+            {
+                "line": "143",
+                "severity": "error",
+                "message": "Line is longer than 160 characters (found 167).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        if ( fullAccessRelationshipScanCursor == null )\n        {\n            return trace( new FullAccessRelationshipScanCursor( this::acceptFullAccess, storageReader.allocateRelationshipScanCursor( cursorTracer ), cursorTracer ) );\n        }\n\n        try",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/styler/19/DefaultPooledCursors.java\nindex ed7076ad32..156d7f3c21 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/styler/19/DefaultPooledCursors.java\n@@ -139,283 +139,285 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     public RelationshipScanCursor allocateFullAccessRelationshipScanCursor( PageCursorTracer cursorTracer )\n     {\n         if ( fullAccessRelationshipScanCursor == null )\n-        {\n-            return trace( new FullAccessRelationshipScanCursor( this::acceptFullAccess, storageReader.allocateRelationshipScanCursor( cursorTracer ), cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return fullAccessRelationshipScanCursor;\n-        }\n-        finally\n-        {\n-            fullAccessRelationshipScanCursor = null;\n-        }\n-    }\n-\n-    private void acceptFullAccess( DefaultRelationshipScanCursor cursor )\n-    {\n-        if ( fullAccessRelationshipScanCursor != null )\n-        {\n-            fullAccessRelationshipScanCursor.release();\n-        }\n-        cursor.removeTracer();\n-        fullAccessRelationshipScanCursor = (FullAccessRelationshipScanCursor) cursor;\n-    }\n-\n-    @Override\n-    public DefaultRelationshipTraversalCursor allocateRelationshipTraversalCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( relationshipTraversalCursor == null )\n-        {\n-            return trace( new DefaultRelationshipTraversalCursor( this::accept, storageReader.allocateRelationshipTraversalCursor( cursorTracer ),\n-                    cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return relationshipTraversalCursor;\n-        }\n-        finally\n-        {\n-            relationshipTraversalCursor = null;\n-        }\n-    }\n-\n-    void accept( DefaultRelationshipTraversalCursor cursor )\n-    {\n-        if ( relationshipTraversalCursor != null )\n-        {\n-            relationshipTraversalCursor.release();\n-        }\n-        cursor.removeTracer();\n-        relationshipTraversalCursor = cursor;\n-    }\n-\n-    @Override\n-    public DefaultPropertyCursor allocatePropertyCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( propertyCursor == null )\n-        {\n-            return trace( new DefaultPropertyCursor( this::accept, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return propertyCursor;\n-        }\n-        finally\n-        {\n-            propertyCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultPropertyCursor cursor )\n-    {\n-        if ( propertyCursor != null )\n-        {\n-            propertyCursor.release();\n-        }\n-        cursor.removeTracer();\n-        propertyCursor = cursor;\n-    }\n-\n-    @Override\n-    public FullAccessPropertyCursor allocateFullAccessPropertyCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( fullAccessPropertyCursor == null )\n-        {\n-            return trace( new FullAccessPropertyCursor( this::acceptFullAccess, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return fullAccessPropertyCursor;\n-        }\n-        finally\n-        {\n-            fullAccessPropertyCursor = null;\n-        }\n-    }\n-\n-    private void acceptFullAccess( DefaultPropertyCursor cursor )\n-    {\n-        if ( fullAccessPropertyCursor != null )\n-        {\n-            fullAccessPropertyCursor.release();\n-        }\n-        cursor.removeTracer();\n-        fullAccessPropertyCursor = (FullAccessPropertyCursor) cursor;\n-    }\n-\n-    @Override\n-    public DefaultRelationshipGroupCursor allocateRelationshipGroupCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( relationshipGroupCursor == null )\n-        {\n-            return trace( new DefaultRelationshipGroupCursor( this::accept, storageReader.allocateRelationshipGroupCursor( cursorTracer ) ) );\n-        }\n-\n-        try\n-        {\n-            return relationshipGroupCursor;\n-        }\n-        finally\n-        {\n-            relationshipGroupCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultRelationshipGroupCursor cursor )\n-    {\n-        if ( relationshipGroupCursor != null )\n-        {\n-            relationshipGroupCursor.release();\n-        }\n-        cursor.removeTracer();\n-        relationshipGroupCursor = cursor;\n-    }\n-\n-    @Override\n-    public DefaultNodeValueIndexCursor allocateNodeValueIndexCursor()\n-    {\n-        if ( nodeValueIndexCursor == null )\n-        {\n-            return trace( new DefaultNodeValueIndexCursor( this::accept ) );\n-        }\n-\n-        try\n-        {\n-            return nodeValueIndexCursor;\n-        }\n-        finally\n-        {\n-            nodeValueIndexCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultNodeValueIndexCursor cursor )\n-    {\n-        if ( nodeValueIndexCursor != null )\n-        {\n-            nodeValueIndexCursor.release();\n-        }\n-        cursor.removeTracer();\n-        nodeValueIndexCursor = cursor;\n-    }\n-\n-    @Override\n-    public DefaultNodeLabelIndexCursor allocateNodeLabelIndexCursor()\n-    {\n-        if ( nodeLabelIndexCursor == null )\n-        {\n-            return trace( new DefaultNodeLabelIndexCursor( this::accept ) );\n-        }\n-\n-        try\n-        {\n-            return nodeLabelIndexCursor;\n-        }\n-        finally\n-        {\n-            nodeLabelIndexCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultNodeLabelIndexCursor cursor )\n-    {\n-        if ( nodeLabelIndexCursor != null )\n-        {\n-            nodeLabelIndexCursor.release();\n-        }\n-        cursor.removeTracer();\n-        nodeLabelIndexCursor = cursor;\n-    }\n-\n-    @Override\n-    public RelationshipIndexCursor allocateRelationshipIndexCursor()\n-    {\n-        if ( relationshipIndexCursor == null )\n-        {\n-            return trace( new DefaultRelationshipIndexCursor( this::accept ) );\n-        }\n-\n-        try\n-        {\n-            return relationshipIndexCursor;\n-        }\n-        finally\n-        {\n-            relationshipIndexCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultRelationshipIndexCursor cursor )\n-    {\n-        if ( relationshipIndexCursor != null )\n-        {\n-            relationshipIndexCursor.release();\n-        }\n-        cursor.removeTracer();\n-        relationshipIndexCursor = cursor;\n-    }\n-\n-    public void release()\n-    {\n-        if ( nodeCursor != null )\n-        {\n-            nodeCursor.release();\n-            nodeCursor = null;\n-        }\n-        if ( fullAccessNodeCursor != null )\n-        {\n-            fullAccessNodeCursor.release();\n-            fullAccessNodeCursor = null;\n-        }\n-        if ( relationshipScanCursor != null )\n-        {\n-            relationshipScanCursor.release();\n-            relationshipScanCursor = null;\n-        }\n-        if ( fullAccessRelationshipScanCursor != null )\n-        {\n-            fullAccessRelationshipScanCursor.release();\n-            fullAccessRelationshipScanCursor = null;\n-        }\n-        if ( relationshipTraversalCursor != null )\n-        {\n-            relationshipTraversalCursor.release();\n-            relationshipTraversalCursor = null;\n-        }\n-        if ( propertyCursor != null )\n-        {\n-            propertyCursor.release();\n-            propertyCursor = null;\n-        }\n-        if ( fullAccessPropertyCursor != null )\n-        {\n-            fullAccessPropertyCursor.release();\n-            fullAccessPropertyCursor = null;\n-        }\n-        if ( relationshipGroupCursor != null )\n-        {\n-            relationshipGroupCursor.release();\n-            relationshipGroupCursor = null;\n-        }\n-        if ( nodeValueIndexCursor != null )\n-        {\n-            nodeValueIndexCursor.release();\n-            nodeValueIndexCursor = null;\n-        }\n-        if ( nodeLabelIndexCursor != null )\n-        {\n-            nodeLabelIndexCursor.release();\n-            nodeLabelIndexCursor = null;\n-        }\n-        if ( relationshipIndexCursor != null )\n-        {\n-            relationshipIndexCursor.release();\n-            relationshipIndexCursor = null;\n-        }\n-    }\n+        { returntrace(newFullAccessRelationshipScanCursor(this::acceptFullAccess\n+\n+        ,\n+        storageReader .allocateRelationshipScanCursor( cursorTracer ), cursorTracer ) );\n+     }\n+\n+     try\n+     {\n+         return fullAccessRelationshipScanCursor;\n+     }\n+     finally\n+     {\n+         fullAccessRelationshipScanCursor = null;\n+     }\n+ }\n+\n+ private void acceptFullAccess( DefaultRelationshipScanCursor cursor )\n+ {\n+     if ( fullAccessRelationshipScanCursor != null )\n+     {\n+         fullAccessRelationshipScanCursor.release();\n+     }\n+     cursor.removeTracer();\n+     fullAccessRelationshipScanCursor = (FullAccessRelationshipScanCursor) cursor;\n+ }\n+\n+ @Override\n+ public DefaultRelationshipTraversalCursor allocateRelationshipTraversalCursor( PageCursorTracer cursorTracer )\n+ {\n+     if ( relationshipTraversalCursor == null )\n+     {\n+         return trace( new DefaultRelationshipTraversalCursor( this::accept, storageReader.allocateRelationshipTraversalCursor( cursorTracer ),\n+                 cursorTracer ) );\n+     }\n+\n+     try\n+     {\n+         return relationshipTraversalCursor;\n+     }\n+     finally\n+     {\n+         relationshipTraversalCursor = null;\n+     }\n+ }\n+\n+ void accept( DefaultRelationshipTraversalCursor cursor )\n+ {\n+     if ( relationshipTraversalCursor != null )\n+     {\n+         relationshipTraversalCursor.release();\n+     }\n+     cursor.removeTracer();\n+     relationshipTraversalCursor = cursor;\n+ }\n+\n+ @Override\n+ public DefaultPropertyCursor allocatePropertyCursor( PageCursorTracer cursorTracer )\n+ {\n+     if ( propertyCursor == null )\n+     {\n+         return trace( new DefaultPropertyCursor( this::accept, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n+     }\n+\n+     try\n+     {\n+         return propertyCursor;\n+     }\n+     finally\n+     {\n+         propertyCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultPropertyCursor cursor )\n+ {\n+     if ( propertyCursor != null )\n+     {\n+         propertyCursor.release();\n+     }\n+     cursor.removeTracer();\n+     propertyCursor = cursor;\n+ }\n+\n+ @Override\n+ public FullAccessPropertyCursor allocateFullAccessPropertyCursor( PageCursorTracer cursorTracer )\n+ {\n+     if ( fullAccessPropertyCursor == null )\n+     {\n+         return trace( new FullAccessPropertyCursor( this::acceptFullAccess, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n+     }\n+\n+     try\n+     {\n+         return fullAccessPropertyCursor;\n+     }\n+     finally\n+     {\n+         fullAccessPropertyCursor = null;\n+     }\n+ }\n+\n+ private void acceptFullAccess( DefaultPropertyCursor cursor )\n+ {\n+     if ( fullAccessPropertyCursor != null )\n+     {\n+         fullAccessPropertyCursor.release();\n+     }\n+     cursor.removeTracer();\n+     fullAccessPropertyCursor = (FullAccessPropertyCursor) cursor;\n+ }\n+\n+ @Override\n+ public DefaultRelationshipGroupCursor allocateRelationshipGroupCursor( PageCursorTracer cursorTracer )\n+ {\n+     if ( relationshipGroupCursor == null )\n+     {\n+         return trace( new DefaultRelationshipGroupCursor( this::accept, storageReader.allocateRelationshipGroupCursor( cursorTracer ) ) );\n+     }\n+\n+     try\n+     {\n+         return relationshipGroupCursor;\n+     }\n+     finally\n+     {\n+         relationshipGroupCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultRelationshipGroupCursor cursor )\n+ {\n+     if ( relationshipGroupCursor != null )\n+     {\n+         relationshipGroupCursor.release();\n+     }\n+     cursor.removeTracer();\n+     relationshipGroupCursor = cursor;\n+ }\n+\n+ @Override\n+ public DefaultNodeValueIndexCursor allocateNodeValueIndexCursor()\n+ {\n+     if ( nodeValueIndexCursor == null )\n+     {\n+         return trace( new DefaultNodeValueIndexCursor( this::accept ) );\n+     }\n+\n+     try\n+     {\n+         return nodeValueIndexCursor;\n+     }\n+     finally\n+     {\n+         nodeValueIndexCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultNodeValueIndexCursor cursor )\n+ {\n+     if ( nodeValueIndexCursor != null )\n+     {\n+         nodeValueIndexCursor.release();\n+     }\n+     cursor.removeTracer();\n+     nodeValueIndexCursor = cursor;\n+ }\n+\n+ @Override\n+ public DefaultNodeLabelIndexCursor allocateNodeLabelIndexCursor()\n+ {\n+     if ( nodeLabelIndexCursor == null )\n+     {\n+         return trace( new DefaultNodeLabelIndexCursor( this::accept ) );\n+     }\n+\n+     try\n+     {\n+         return nodeLabelIndexCursor;\n+     }\n+     finally\n+     {\n+         nodeLabelIndexCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultNodeLabelIndexCursor cursor )\n+ {\n+     if ( nodeLabelIndexCursor != null )\n+     {\n+         nodeLabelIndexCursor.release();\n+     }\n+     cursor.removeTracer();\n+     nodeLabelIndexCursor = cursor;\n+ }\n+\n+ @Override\n+ public RelationshipIndexCursor allocateRelationshipIndexCursor()\n+ {\n+     if ( relationshipIndexCursor == null )\n+     {\n+         return trace( new DefaultRelationshipIndexCursor( this::accept ) );\n+     }\n+\n+     try\n+     {\n+         return relationshipIndexCursor;\n+     }\n+     finally\n+     {\n+         relationshipIndexCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultRelationshipIndexCursor cursor )\n+ {\n+     if ( relationshipIndexCursor != null )\n+     {\n+         relationshipIndexCursor.release();\n+     }\n+     cursor.removeTracer();\n+     relationshipIndexCursor = cursor;\n+ }\n+\n+ public void release()\n+ {\n+     if ( nodeCursor != null )\n+     {\n+         nodeCursor.release();\n+         nodeCursor = null;\n+     }\n+     if ( fullAccessNodeCursor != null )\n+     {\n+         fullAccessNodeCursor.release();\n+         fullAccessNodeCursor = null;\n+     }\n+     if ( relationshipScanCursor != null )\n+     {\n+         relationshipScanCursor.release();\n+         relationshipScanCursor = null;\n+     }\n+     if ( fullAccessRelationshipScanCursor != null )\n+     {\n+         fullAccessRelationshipScanCursor.release();\n+         fullAccessRelationshipScanCursor = null;\n+     }\n+     if ( relationshipTraversalCursor != null )\n+     {\n+         relationshipTraversalCursor.release();\n+         relationshipTraversalCursor = null;\n+     }\n+     if ( propertyCursor != null )\n+     {\n+         propertyCursor.release();\n+         propertyCursor = null;\n+     }\n+     if ( fullAccessPropertyCursor != null )\n+     {\n+         fullAccessPropertyCursor.release();\n+         fullAccessPropertyCursor = null;\n+     }\n+     if ( relationshipGroupCursor != null )\n+     {\n+         relationshipGroupCursor.release();\n+         relationshipGroupCursor = null;\n+     }\n+     if ( nodeValueIndexCursor != null )\n+     {\n+         nodeValueIndexCursor.release();\n+         nodeValueIndexCursor = null;\n+     }\n+     if ( nodeLabelIndexCursor != null )\n+     {\n+         nodeLabelIndexCursor.release();\n+         nodeLabelIndexCursor = null;\n+     }\n+     if ( relationshipIndexCursor != null )\n+     {\n+         relationshipIndexCursor.release();\n+         relationshipIndexCursor = null;\n+     }\n+ }\n }\n",
+            "diff_size": 281
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "49",
+                    "column": "32",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "60",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "51",
+                    "column": "14",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "51",
+                    "column": "32",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "56",
+                    "column": "48",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "56",
+                    "column": "78",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "58",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "58",
+                    "column": "31",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "60",
+                    "column": "47",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "60",
+                    "column": "108",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "66",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "72",
+                    "column": "24",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "72",
+                    "column": "49",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "74",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "74",
+                    "column": "31",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "83",
+                    "column": "61",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "83",
+                    "column": "91",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "85",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "85",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "87",
+                    "column": "50",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "87",
+                    "column": "121",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "93",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "99",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "99",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "101",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "101",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "110",
+                    "column": "72",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "110",
+                    "column": "102",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "112",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "112",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "114",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "114",
+                    "column": "146",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "120",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "126",
+                    "column": "24",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "126",
+                    "column": "61",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "128",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "128",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "137",
+                    "column": "75",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "137",
+                    "column": "105",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "139",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "139",
+                    "column": "53",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "142",
+                    "column": "53",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "142",
+                    "column": "150",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "148",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "154",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "154",
+                    "column": "71",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "156",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "156",
+                    "column": "53",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "165",
+                    "column": "82",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "165",
+                    "column": "112",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "167",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "167",
+                    "column": "48",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "169",
+                    "column": "64",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "170",
+                    "column": "29",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "176",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "182",
+                    "column": "16",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "182",
+                    "column": "58",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "184",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "184",
+                    "column": "48",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "193",
+                    "column": "56",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "193",
+                    "column": "86",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "195",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "195",
+                    "column": "35",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "197",
+                    "column": "51",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "197",
+                    "column": "130",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "203",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "209",
+                    "column": "24",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "209",
+                    "column": "53",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "211",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "211",
+                    "column": "35",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "220",
+                    "column": "69",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "220",
+                    "column": "99",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "222",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "222",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "224",
+                    "column": "54",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "224",
+                    "column": "143",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "230",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "236",
+                    "column": "34",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "236",
+                    "column": "63",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "238",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "238",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "247",
+                    "column": "74",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "247",
+                    "column": "104",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "249",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "249",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "251",
+                    "column": "60",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "251",
+                    "column": "134",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "257",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "263",
+                    "column": "24",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "263",
+                    "column": "62",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "265",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "265",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "276",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "276",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "278",
+                    "column": "57",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "278",
+                    "column": "70",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "284",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "290",
+                    "column": "24",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "290",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "292",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "292",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "303",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "303",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "305",
+                    "column": "57",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "305",
+                    "column": "70",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "311",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "317",
+                    "column": "24",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "317",
+                    "column": "59",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "319",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "319",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "330",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "330",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "332",
+                    "column": "60",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "332",
+                    "column": "73",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "338",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "344",
+                    "column": "24",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "344",
+                    "column": "62",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "346",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "346",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "356",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "356",
+                    "column": "31",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "361",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "361",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "366",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "366",
+                    "column": "43",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "371",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "371",
+                    "column": "53",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "376",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "376",
+                    "column": "48",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "381",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "381",
+                    "column": "35",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "386",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "386",
+                    "column": "45",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "391",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "391",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "396",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "396",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "401",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "401",
+                    "column": "41",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "406",
+                    "column": "12",
+                    "severity": "error",
+                    "message": "'(' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                },
+                {
+                    "line": "406",
+                    "column": "44",
+                    "severity": "error",
+                    "message": "')' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/intellij/19/DefaultPooledCursors.java\nindex ed7076ad32..b2fc60b909 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/intellij/19/DefaultPooledCursors.java\n@@ -17,6 +17,7 @@\n  * You should have received a copy of the GNU General Public License\n  * along with this program.  If not, see <http://www.gnu.org/licenses/>.\n  */\n+\n package org.neo4j.kernel.impl.newapi;\n \n import java.util.ArrayList;\n@@ -45,33 +46,32 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     private DefaultNodeLabelIndexCursor nodeLabelIndexCursor;\n     private DefaultRelationshipIndexCursor relationshipIndexCursor;\n \n-    public DefaultPooledCursors( StorageReader storageReader )\n+    public DefaultPooledCursors(StorageReader storageReader)\n     {\n-        super( new ArrayList<>() );\n+        super(new ArrayList<>());\n         this.storageReader = storageReader;\n     }\n \n     @Override\n-    public DefaultNodeCursor allocateNodeCursor( PageCursorTracer cursorTracer )\n+    public DefaultNodeCursor allocateNodeCursor(PageCursorTracer cursorTracer)\n     {\n-        if ( nodeCursor == null )\n+        if (nodeCursor == null)\n         {\n-            return trace( new DefaultNodeCursor( this::accept, storageReader.allocateNodeCursor( cursorTracer ) ) );\n+            return trace(new DefaultNodeCursor(this::accept, storageReader.allocateNodeCursor(cursorTracer)));\n         }\n \n         try\n         {\n             return nodeCursor;\n-        }\n-        finally\n+        } finally\n         {\n             nodeCursor = null;\n         }\n     }\n \n-    private void accept( DefaultNodeCursor cursor )\n+    private void accept(DefaultNodeCursor cursor)\n     {\n-        if ( nodeCursor != null )\n+        if (nodeCursor != null)\n         {\n             nodeCursor.release();\n         }\n@@ -80,26 +80,25 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     }\n \n     @Override\n-    public FullAccessNodeCursor allocateFullAccessNodeCursor( PageCursorTracer cursorTracer )\n+    public FullAccessNodeCursor allocateFullAccessNodeCursor(PageCursorTracer cursorTracer)\n     {\n-        if ( fullAccessNodeCursor == null )\n+        if (fullAccessNodeCursor == null)\n         {\n-            return trace( new FullAccessNodeCursor( this::acceptFullAccess, storageReader.allocateNodeCursor( cursorTracer ) ) );\n+            return trace(new FullAccessNodeCursor(this::acceptFullAccess, storageReader.allocateNodeCursor(cursorTracer)));\n         }\n \n         try\n         {\n             return fullAccessNodeCursor;\n-        }\n-        finally\n+        } finally\n         {\n             fullAccessNodeCursor = null;\n         }\n     }\n \n-    private void acceptFullAccess( DefaultNodeCursor cursor )\n+    private void acceptFullAccess(DefaultNodeCursor cursor)\n     {\n-        if ( fullAccessNodeCursor != null )\n+        if (fullAccessNodeCursor != null)\n         {\n             fullAccessNodeCursor.release();\n         }\n@@ -108,26 +107,25 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     }\n \n     @Override\n-    public DefaultRelationshipScanCursor allocateRelationshipScanCursor( PageCursorTracer cursorTracer )\n+    public DefaultRelationshipScanCursor allocateRelationshipScanCursor(PageCursorTracer cursorTracer)\n     {\n-        if ( relationshipScanCursor == null )\n+        if (relationshipScanCursor == null)\n         {\n-            return trace( new DefaultRelationshipScanCursor( this::accept, storageReader.allocateRelationshipScanCursor( cursorTracer ), cursorTracer ) );\n+            return trace(new DefaultRelationshipScanCursor(this::accept, storageReader.allocateRelationshipScanCursor(cursorTracer), cursorTracer));\n         }\n \n         try\n         {\n             return relationshipScanCursor;\n-        }\n-        finally\n+        } finally\n         {\n             relationshipScanCursor = null;\n         }\n     }\n \n-    private void accept( DefaultRelationshipScanCursor cursor )\n+    private void accept(DefaultRelationshipScanCursor cursor)\n     {\n-        if ( relationshipScanCursor != null )\n+        if (relationshipScanCursor != null)\n         {\n             relationshipScanCursor.release();\n         }\n@@ -136,26 +134,26 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     }\n \n     @Override\n-    public RelationshipScanCursor allocateFullAccessRelationshipScanCursor( PageCursorTracer cursorTracer )\n+    public RelationshipScanCursor allocateFullAccessRelationshipScanCursor(PageCursorTracer cursorTracer)\n     {\n-        if ( fullAccessRelationshipScanCursor == null )\n+        if (fullAccessRelationshipScanCursor == null)\n         {\n-            return trace( new FullAccessRelationshipScanCursor( this::acceptFullAccess, storageReader.allocateRelationshipScanCursor( cursorTracer ), cursorTracer ) );\n+            return trace(\n+                new FullAccessRelationshipScanCursor(this::acceptFullAccess, storageReader.allocateRelationshipScanCursor(cursorTracer), cursorTracer));\n         }\n \n         try\n         {\n             return fullAccessRelationshipScanCursor;\n-        }\n-        finally\n+        } finally\n         {\n             fullAccessRelationshipScanCursor = null;\n         }\n     }\n \n-    private void acceptFullAccess( DefaultRelationshipScanCursor cursor )\n+    private void acceptFullAccess(DefaultRelationshipScanCursor cursor)\n     {\n-        if ( fullAccessRelationshipScanCursor != null )\n+        if (fullAccessRelationshipScanCursor != null)\n         {\n             fullAccessRelationshipScanCursor.release();\n         }\n@@ -164,27 +162,26 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     }\n \n     @Override\n-    public DefaultRelationshipTraversalCursor allocateRelationshipTraversalCursor( PageCursorTracer cursorTracer )\n+    public DefaultRelationshipTraversalCursor allocateRelationshipTraversalCursor(PageCursorTracer cursorTracer)\n     {\n-        if ( relationshipTraversalCursor == null )\n+        if (relationshipTraversalCursor == null)\n         {\n-            return trace( new DefaultRelationshipTraversalCursor( this::accept, storageReader.allocateRelationshipTraversalCursor( cursorTracer ),\n-                    cursorTracer ) );\n+            return trace(new DefaultRelationshipTraversalCursor(this::accept, storageReader.allocateRelationshipTraversalCursor(cursorTracer),\n+                cursorTracer));\n         }\n \n         try\n         {\n             return relationshipTraversalCursor;\n-        }\n-        finally\n+        } finally\n         {\n             relationshipTraversalCursor = null;\n         }\n     }\n \n-    void accept( DefaultRelationshipTraversalCursor cursor )\n+    void accept(DefaultRelationshipTraversalCursor cursor)\n     {\n-        if ( relationshipTraversalCursor != null )\n+        if (relationshipTraversalCursor != null)\n         {\n             relationshipTraversalCursor.release();\n         }\n@@ -193,26 +190,25 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     }\n \n     @Override\n-    public DefaultPropertyCursor allocatePropertyCursor( PageCursorTracer cursorTracer )\n+    public DefaultPropertyCursor allocatePropertyCursor(PageCursorTracer cursorTracer)\n     {\n-        if ( propertyCursor == null )\n+        if (propertyCursor == null)\n         {\n-            return trace( new DefaultPropertyCursor( this::accept, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n+            return trace(new DefaultPropertyCursor(this::accept, storageReader.allocatePropertyCursor(cursorTracer), cursorTracer));\n         }\n \n         try\n         {\n             return propertyCursor;\n-        }\n-        finally\n+        } finally\n         {\n             propertyCursor = null;\n         }\n     }\n \n-    private void accept( DefaultPropertyCursor cursor )\n+    private void accept(DefaultPropertyCursor cursor)\n     {\n-        if ( propertyCursor != null )\n+        if (propertyCursor != null)\n         {\n             propertyCursor.release();\n         }\n@@ -221,26 +217,25 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     }\n \n     @Override\n-    public FullAccessPropertyCursor allocateFullAccessPropertyCursor( PageCursorTracer cursorTracer )\n+    public FullAccessPropertyCursor allocateFullAccessPropertyCursor(PageCursorTracer cursorTracer)\n     {\n-        if ( fullAccessPropertyCursor == null )\n+        if (fullAccessPropertyCursor == null)\n         {\n-            return trace( new FullAccessPropertyCursor( this::acceptFullAccess, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n+            return trace(new FullAccessPropertyCursor(this::acceptFullAccess, storageReader.allocatePropertyCursor(cursorTracer), cursorTracer));\n         }\n \n         try\n         {\n             return fullAccessPropertyCursor;\n-        }\n-        finally\n+        } finally\n         {\n             fullAccessPropertyCursor = null;\n         }\n     }\n \n-    private void acceptFullAccess( DefaultPropertyCursor cursor )\n+    private void acceptFullAccess(DefaultPropertyCursor cursor)\n     {\n-        if ( fullAccessPropertyCursor != null )\n+        if (fullAccessPropertyCursor != null)\n         {\n             fullAccessPropertyCursor.release();\n         }\n@@ -249,26 +244,25 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     }\n \n     @Override\n-    public DefaultRelationshipGroupCursor allocateRelationshipGroupCursor( PageCursorTracer cursorTracer )\n+    public DefaultRelationshipGroupCursor allocateRelationshipGroupCursor(PageCursorTracer cursorTracer)\n     {\n-        if ( relationshipGroupCursor == null )\n+        if (relationshipGroupCursor == null)\n         {\n-            return trace( new DefaultRelationshipGroupCursor( this::accept, storageReader.allocateRelationshipGroupCursor( cursorTracer ) ) );\n+            return trace(new DefaultRelationshipGroupCursor(this::accept, storageReader.allocateRelationshipGroupCursor(cursorTracer)));\n         }\n \n         try\n         {\n             return relationshipGroupCursor;\n-        }\n-        finally\n+        } finally\n         {\n             relationshipGroupCursor = null;\n         }\n     }\n \n-    private void accept( DefaultRelationshipGroupCursor cursor )\n+    private void accept(DefaultRelationshipGroupCursor cursor)\n     {\n-        if ( relationshipGroupCursor != null )\n+        if (relationshipGroupCursor != null)\n         {\n             relationshipGroupCursor.release();\n         }\n@@ -279,24 +273,23 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     @Override\n     public DefaultNodeValueIndexCursor allocateNodeValueIndexCursor()\n     {\n-        if ( nodeValueIndexCursor == null )\n+        if (nodeValueIndexCursor == null)\n         {\n-            return trace( new DefaultNodeValueIndexCursor( this::accept ) );\n+            return trace(new DefaultNodeValueIndexCursor(this::accept));\n         }\n \n         try\n         {\n             return nodeValueIndexCursor;\n-        }\n-        finally\n+        } finally\n         {\n             nodeValueIndexCursor = null;\n         }\n     }\n \n-    private void accept( DefaultNodeValueIndexCursor cursor )\n+    private void accept(DefaultNodeValueIndexCursor cursor)\n     {\n-        if ( nodeValueIndexCursor != null )\n+        if (nodeValueIndexCursor != null)\n         {\n             nodeValueIndexCursor.release();\n         }\n@@ -307,24 +300,23 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     @Override\n     public DefaultNodeLabelIndexCursor allocateNodeLabelIndexCursor()\n     {\n-        if ( nodeLabelIndexCursor == null )\n+        if (nodeLabelIndexCursor == null)\n         {\n-            return trace( new DefaultNodeLabelIndexCursor( this::accept ) );\n+            return trace(new DefaultNodeLabelIndexCursor(this::accept));\n         }\n \n         try\n         {\n             return nodeLabelIndexCursor;\n-        }\n-        finally\n+        } finally\n         {\n             nodeLabelIndexCursor = null;\n         }\n     }\n \n-    private void accept( DefaultNodeLabelIndexCursor cursor )\n+    private void accept(DefaultNodeLabelIndexCursor cursor)\n     {\n-        if ( nodeLabelIndexCursor != null )\n+        if (nodeLabelIndexCursor != null)\n         {\n             nodeLabelIndexCursor.release();\n         }\n@@ -335,24 +327,23 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     @Override\n     public RelationshipIndexCursor allocateRelationshipIndexCursor()\n     {\n-        if ( relationshipIndexCursor == null )\n+        if (relationshipIndexCursor == null)\n         {\n-            return trace( new DefaultRelationshipIndexCursor( this::accept ) );\n+            return trace(new DefaultRelationshipIndexCursor(this::accept));\n         }\n \n         try\n         {\n             return relationshipIndexCursor;\n-        }\n-        finally\n+        } finally\n         {\n             relationshipIndexCursor = null;\n         }\n     }\n \n-    private void accept( DefaultRelationshipIndexCursor cursor )\n+    private void accept(DefaultRelationshipIndexCursor cursor)\n     {\n-        if ( relationshipIndexCursor != null )\n+        if (relationshipIndexCursor != null)\n         {\n             relationshipIndexCursor.release();\n         }\n@@ -362,57 +353,57 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n \n     public void release()\n     {\n-        if ( nodeCursor != null )\n+        if (nodeCursor != null)\n         {\n             nodeCursor.release();\n             nodeCursor = null;\n         }\n-        if ( fullAccessNodeCursor != null )\n+        if (fullAccessNodeCursor != null)\n         {\n             fullAccessNodeCursor.release();\n             fullAccessNodeCursor = null;\n         }\n-        if ( relationshipScanCursor != null )\n+        if (relationshipScanCursor != null)\n         {\n             relationshipScanCursor.release();\n             relationshipScanCursor = null;\n         }\n-        if ( fullAccessRelationshipScanCursor != null )\n+        if (fullAccessRelationshipScanCursor != null)\n         {\n             fullAccessRelationshipScanCursor.release();\n             fullAccessRelationshipScanCursor = null;\n         }\n-        if ( relationshipTraversalCursor != null )\n+        if (relationshipTraversalCursor != null)\n         {\n             relationshipTraversalCursor.release();\n             relationshipTraversalCursor = null;\n         }\n-        if ( propertyCursor != null )\n+        if (propertyCursor != null)\n         {\n             propertyCursor.release();\n             propertyCursor = null;\n         }\n-        if ( fullAccessPropertyCursor != null )\n+        if (fullAccessPropertyCursor != null)\n         {\n             fullAccessPropertyCursor.release();\n             fullAccessPropertyCursor = null;\n         }\n-        if ( relationshipGroupCursor != null )\n+        if (relationshipGroupCursor != null)\n         {\n             relationshipGroupCursor.release();\n             relationshipGroupCursor = null;\n         }\n-        if ( nodeValueIndexCursor != null )\n+        if (nodeValueIndexCursor != null)\n         {\n             nodeValueIndexCursor.release();\n             nodeValueIndexCursor = null;\n         }\n-        if ( nodeLabelIndexCursor != null )\n+        if (nodeLabelIndexCursor != null)\n         {\n             nodeLabelIndexCursor.release();\n             nodeLabelIndexCursor = null;\n         }\n-        if ( relationshipIndexCursor != null )\n+        if (relationshipIndexCursor != null)\n         {\n             relationshipIndexCursor.release();\n             relationshipIndexCursor = null;\n",
+            "diff_size": 90
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "143",
+                    "severity": "error",
+                    "message": "Line is longer than 160 characters (found 167).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/naturalize/19/DefaultPooledCursors.java\nindex ed7076ad32..a016f3722d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/naturalize/19/DefaultPooledCursors.java\n@@ -418,4 +418,4 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n             relationshipIndexCursor = null;\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "143",
+                    "severity": "error",
+                    "message": "Line is longer than 160 characters (found 163).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "424",
+                    "severity": "error",
+                    "message": "Line has trailing spaces.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/styler_random/19/DefaultPooledCursors.java\nindex ed7076ad32..97518dc46a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/styler_random/19/DefaultPooledCursors.java\n@@ -140,282 +140,285 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     {\n         if ( fullAccessRelationshipScanCursor == null )\n         {\n-            return trace( new FullAccessRelationshipScanCursor( this::acceptFullAccess, storageReader.allocateRelationshipScanCursor( cursorTracer ), cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return fullAccessRelationshipScanCursor;\n-        }\n-        finally\n-        {\n-            fullAccessRelationshipScanCursor = null;\n-        }\n-    }\n-\n-    private void acceptFullAccess( DefaultRelationshipScanCursor cursor )\n-    {\n-        if ( fullAccessRelationshipScanCursor != null )\n-        {\n-            fullAccessRelationshipScanCursor.release();\n-        }\n-        cursor.removeTracer();\n-        fullAccessRelationshipScanCursor = (FullAccessRelationshipScanCursor) cursor;\n-    }\n-\n-    @Override\n-    public DefaultRelationshipTraversalCursor allocateRelationshipTraversalCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( relationshipTraversalCursor == null )\n-        {\n-            return trace( new DefaultRelationshipTraversalCursor( this::accept, storageReader.allocateRelationshipTraversalCursor( cursorTracer ),\n-                    cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return relationshipTraversalCursor;\n-        }\n-        finally\n-        {\n-            relationshipTraversalCursor = null;\n-        }\n-    }\n-\n-    void accept( DefaultRelationshipTraversalCursor cursor )\n-    {\n-        if ( relationshipTraversalCursor != null )\n-        {\n-            relationshipTraversalCursor.release();\n-        }\n-        cursor.removeTracer();\n-        relationshipTraversalCursor = cursor;\n-    }\n-\n-    @Override\n-    public DefaultPropertyCursor allocatePropertyCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( propertyCursor == null )\n-        {\n-            return trace( new DefaultPropertyCursor( this::accept, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return propertyCursor;\n-        }\n-        finally\n-        {\n-            propertyCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultPropertyCursor cursor )\n-    {\n-        if ( propertyCursor != null )\n-        {\n-            propertyCursor.release();\n-        }\n-        cursor.removeTracer();\n-        propertyCursor = cursor;\n-    }\n-\n-    @Override\n-    public FullAccessPropertyCursor allocateFullAccessPropertyCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( fullAccessPropertyCursor == null )\n-        {\n-            return trace( new FullAccessPropertyCursor( this::acceptFullAccess, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return fullAccessPropertyCursor;\n-        }\n-        finally\n-        {\n-            fullAccessPropertyCursor = null;\n-        }\n-    }\n-\n-    private void acceptFullAccess( DefaultPropertyCursor cursor )\n-    {\n-        if ( fullAccessPropertyCursor != null )\n-        {\n-            fullAccessPropertyCursor.release();\n-        }\n-        cursor.removeTracer();\n-        fullAccessPropertyCursor = (FullAccessPropertyCursor) cursor;\n-    }\n-\n-    @Override\n-    public DefaultRelationshipGroupCursor allocateRelationshipGroupCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( relationshipGroupCursor == null )\n-        {\n-            return trace( new DefaultRelationshipGroupCursor( this::accept, storageReader.allocateRelationshipGroupCursor( cursorTracer ) ) );\n-        }\n-\n-        try\n-        {\n-            return relationshipGroupCursor;\n-        }\n-        finally\n-        {\n-            relationshipGroupCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultRelationshipGroupCursor cursor )\n-    {\n-        if ( relationshipGroupCursor != null )\n-        {\n-            relationshipGroupCursor.release();\n-        }\n-        cursor.removeTracer();\n-        relationshipGroupCursor = cursor;\n-    }\n-\n-    @Override\n-    public DefaultNodeValueIndexCursor allocateNodeValueIndexCursor()\n-    {\n-        if ( nodeValueIndexCursor == null )\n-        {\n-            return trace( new DefaultNodeValueIndexCursor( this::accept ) );\n-        }\n-\n-        try\n-        {\n-            return nodeValueIndexCursor;\n-        }\n-        finally\n-        {\n-            nodeValueIndexCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultNodeValueIndexCursor cursor )\n-    {\n-        if ( nodeValueIndexCursor != null )\n-        {\n-            nodeValueIndexCursor.release();\n-        }\n-        cursor.removeTracer();\n-        nodeValueIndexCursor = cursor;\n-    }\n-\n-    @Override\n-    public DefaultNodeLabelIndexCursor allocateNodeLabelIndexCursor()\n-    {\n-        if ( nodeLabelIndexCursor == null )\n-        {\n-            return trace( new DefaultNodeLabelIndexCursor( this::accept ) );\n-        }\n-\n-        try\n-        {\n-            return nodeLabelIndexCursor;\n-        }\n-        finally\n-        {\n-            nodeLabelIndexCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultNodeLabelIndexCursor cursor )\n-    {\n-        if ( nodeLabelIndexCursor != null )\n-        {\n-            nodeLabelIndexCursor.release();\n-        }\n-        cursor.removeTracer();\n-        nodeLabelIndexCursor = cursor;\n-    }\n-\n-    @Override\n-    public RelationshipIndexCursor allocateRelationshipIndexCursor()\n-    {\n-        if ( relationshipIndexCursor == null )\n-        {\n-            return trace( new DefaultRelationshipIndexCursor( this::accept ) );\n-        }\n-\n-        try\n-        {\n-            return relationshipIndexCursor;\n-        }\n-        finally\n-        {\n-            relationshipIndexCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultRelationshipIndexCursor cursor )\n-    {\n-        if ( relationshipIndexCursor != null )\n-        {\n-            relationshipIndexCursor.release();\n-        }\n-        cursor.removeTracer();\n-        relationshipIndexCursor = cursor;\n-    }\n-\n-    public void release()\n-    {\n-        if ( nodeCursor != null )\n-        {\n-            nodeCursor.release();\n-            nodeCursor = null;\n-        }\n-        if ( fullAccessNodeCursor != null )\n-        {\n-            fullAccessNodeCursor.release();\n-            fullAccessNodeCursor = null;\n-        }\n-        if ( relationshipScanCursor != null )\n-        {\n-            relationshipScanCursor.release();\n-            relationshipScanCursor = null;\n-        }\n-        if ( fullAccessRelationshipScanCursor != null )\n-        {\n-            fullAccessRelationshipScanCursor.release();\n-            fullAccessRelationshipScanCursor = null;\n-        }\n-        if ( relationshipTraversalCursor != null )\n-        {\n-            relationshipTraversalCursor.release();\n-            relationshipTraversalCursor = null;\n-        }\n-        if ( propertyCursor != null )\n-        {\n-            propertyCursor.release();\n-            propertyCursor = null;\n-        }\n-        if ( fullAccessPropertyCursor != null )\n-        {\n-            fullAccessPropertyCursor.release();\n-            fullAccessPropertyCursor = null;\n-        }\n-        if ( relationshipGroupCursor != null )\n-        {\n-            relationshipGroupCursor.release();\n-            relationshipGroupCursor = null;\n-        }\n-        if ( nodeValueIndexCursor != null )\n-        {\n-            nodeValueIndexCursor.release();\n-            nodeValueIndexCursor = null;\n-        }\n-        if ( nodeLabelIndexCursor != null )\n-        {\n-            nodeLabelIndexCursor.release();\n-            nodeLabelIndexCursor = null;\n-        }\n-        if ( relationshipIndexCursor != null )\n-        {\n-            relationshipIndexCursor.release();\n-            relationshipIndexCursor = null;\n-        }\n-    }\n-}\n+            return trace( new FullAccessRelationshipScanCursor( this::acceptFullAccess, storageReader. allocateRelationshipScanCursor( cursorTracer ) ,cursorTracer\n+        )\n+        );\n+          }\n+\n+          try\n+          {\n+              return fullAccessRelationshipScanCursor;\n+          }\n+          finally\n+          {\n+              fullAccessRelationshipScanCursor = null;\n+          }\n+      }\n+\n+      private void acceptFullAccess( DefaultRelationshipScanCursor cursor )\n+      {\n+          if ( fullAccessRelationshipScanCursor != null )\n+          {\n+              fullAccessRelationshipScanCursor.release();\n+          }\n+          cursor.removeTracer();\n+          fullAccessRelationshipScanCursor = (FullAccessRelationshipScanCursor) cursor;\n+      }\n+\n+      @Override\n+      public DefaultRelationshipTraversalCursor allocateRelationshipTraversalCursor( PageCursorTracer cursorTracer )\n+      {\n+          if ( relationshipTraversalCursor == null )\n+          {\n+              return trace( new DefaultRelationshipTraversalCursor( this::accept, storageReader.allocateRelationshipTraversalCursor( cursorTracer ),\n+                      cursorTracer ) );\n+          }\n+\n+          try\n+          {\n+              return relationshipTraversalCursor;\n+          }\n+          finally\n+          {\n+              relationshipTraversalCursor = null;\n+          }\n+      }\n+\n+      void accept( DefaultRelationshipTraversalCursor cursor )\n+      {\n+          if ( relationshipTraversalCursor != null )\n+          {\n+              relationshipTraversalCursor.release();\n+          }\n+          cursor.removeTracer();\n+          relationshipTraversalCursor = cursor;\n+      }\n+\n+      @Override\n+      public DefaultPropertyCursor allocatePropertyCursor( PageCursorTracer cursorTracer )\n+      {\n+          if ( propertyCursor == null )\n+          {\n+              return trace( new DefaultPropertyCursor( this::accept, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n+          }\n+\n+          try\n+          {\n+              return propertyCursor;\n+          }\n+          finally\n+          {\n+              propertyCursor = null;\n+          }\n+      }\n+\n+      private void accept( DefaultPropertyCursor cursor )\n+      {\n+          if ( propertyCursor != null )\n+          {\n+              propertyCursor.release();\n+          }\n+          cursor.removeTracer();\n+          propertyCursor = cursor;\n+      }\n+\n+      @Override\n+      public FullAccessPropertyCursor allocateFullAccessPropertyCursor( PageCursorTracer cursorTracer )\n+      {\n+          if ( fullAccessPropertyCursor == null )\n+          {\n+              return trace( new FullAccessPropertyCursor( this::acceptFullAccess, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n+          }\n+\n+          try\n+          {\n+              return fullAccessPropertyCursor;\n+          }\n+          finally\n+          {\n+              fullAccessPropertyCursor = null;\n+          }\n+      }\n+\n+      private void acceptFullAccess( DefaultPropertyCursor cursor )\n+      {\n+          if ( fullAccessPropertyCursor != null )\n+          {\n+              fullAccessPropertyCursor.release();\n+          }\n+          cursor.removeTracer();\n+          fullAccessPropertyCursor = (FullAccessPropertyCursor) cursor;\n+      }\n+\n+      @Override\n+      public DefaultRelationshipGroupCursor allocateRelationshipGroupCursor( PageCursorTracer cursorTracer )\n+      {\n+          if ( relationshipGroupCursor == null )\n+          {\n+              return trace( new DefaultRelationshipGroupCursor( this::accept, storageReader.allocateRelationshipGroupCursor( cursorTracer ) ) );\n+          }\n+\n+          try\n+          {\n+              return relationshipGroupCursor;\n+          }\n+          finally\n+          {\n+              relationshipGroupCursor = null;\n+          }\n+      }\n+\n+      private void accept( DefaultRelationshipGroupCursor cursor )\n+      {\n+          if ( relationshipGroupCursor != null )\n+          {\n+              relationshipGroupCursor.release();\n+          }\n+          cursor.removeTracer();\n+          relationshipGroupCursor = cursor;\n+      }\n+\n+      @Override\n+      public DefaultNodeValueIndexCursor allocateNodeValueIndexCursor()\n+      {\n+          if ( nodeValueIndexCursor == null )\n+          {\n+              return trace( new DefaultNodeValueIndexCursor( this::accept ) );\n+          }\n+\n+          try\n+          {\n+              return nodeValueIndexCursor;\n+          }\n+          finally\n+          {\n+              nodeValueIndexCursor = null;\n+          }\n+      }\n+\n+      private void accept( DefaultNodeValueIndexCursor cursor )\n+      {\n+          if ( nodeValueIndexCursor != null )\n+          {\n+              nodeValueIndexCursor.release();\n+          }\n+          cursor.removeTracer();\n+          nodeValueIndexCursor = cursor;\n+      }\n+\n+      @Override\n+      public DefaultNodeLabelIndexCursor allocateNodeLabelIndexCursor()\n+      {\n+          if ( nodeLabelIndexCursor == null )\n+          {\n+              return trace( new DefaultNodeLabelIndexCursor( this::accept ) );\n+          }\n+\n+          try\n+          {\n+              return nodeLabelIndexCursor;\n+          }\n+          finally\n+          {\n+              nodeLabelIndexCursor = null;\n+          }\n+      }\n+\n+      private void accept( DefaultNodeLabelIndexCursor cursor )\n+      {\n+          if ( nodeLabelIndexCursor != null )\n+          {\n+              nodeLabelIndexCursor.release();\n+          }\n+          cursor.removeTracer();\n+          nodeLabelIndexCursor = cursor;\n+      }\n+\n+      @Override\n+      public RelationshipIndexCursor allocateRelationshipIndexCursor()\n+      {\n+          if ( relationshipIndexCursor == null )\n+          {\n+              return trace( new DefaultRelationshipIndexCursor( this::accept ) );\n+          }\n+\n+          try\n+          {\n+              return relationshipIndexCursor;\n+          }\n+          finally\n+          {\n+              relationshipIndexCursor = null;\n+          }\n+      }\n+\n+      private void accept( DefaultRelationshipIndexCursor cursor )\n+      {\n+          if ( relationshipIndexCursor != null )\n+          {\n+              relationshipIndexCursor.release();\n+          }\n+          cursor.removeTracer();\n+          relationshipIndexCursor = cursor;\n+      }\n+\n+      public void release()\n+      {\n+          if ( nodeCursor != null )\n+          {\n+              nodeCursor.release();\n+              nodeCursor = null;\n+          }\n+          if ( fullAccessNodeCursor != null )\n+          {\n+              fullAccessNodeCursor.release();\n+              fullAccessNodeCursor = null;\n+          }\n+          if ( relationshipScanCursor != null )\n+          {\n+              relationshipScanCursor.release();\n+              relationshipScanCursor = null;\n+          }\n+          if ( fullAccessRelationshipScanCursor != null )\n+          {\n+              fullAccessRelationshipScanCursor.release();\n+              fullAccessRelationshipScanCursor = null;\n+          }\n+          if ( relationshipTraversalCursor != null )\n+          {\n+              relationshipTraversalCursor.release();\n+              relationshipTraversalCursor = null;\n+          }\n+          if ( propertyCursor != null )\n+          {\n+              propertyCursor.release();\n+              propertyCursor = null;\n+          }\n+          if ( fullAccessPropertyCursor != null )\n+          {\n+              fullAccessPropertyCursor.release();\n+              fullAccessPropertyCursor = null;\n+          }\n+          if ( relationshipGroupCursor != null )\n+          {\n+              relationshipGroupCursor.release();\n+              relationshipGroupCursor = null;\n+          }\n+          if ( nodeValueIndexCursor != null )\n+          {\n+              nodeValueIndexCursor.release();\n+              nodeValueIndexCursor = null;\n+          }\n+          if ( nodeLabelIndexCursor != null )\n+          {\n+              nodeLabelIndexCursor.release();\n+              nodeLabelIndexCursor = null;\n+          }\n+          if ( relationshipIndexCursor != null )\n+          {\n+              relationshipIndexCursor.release();\n+              relationshipIndexCursor = null;\n+          }\n+      }\n+  }\n+  \n\\ No newline at end of file\n",
+            "diff_size": 282
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/styler_three_grams/19/DefaultPooledCursors.java\nindex ed7076ad32..156d7f3c21 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/errored/1/19/DefaultPooledCursors.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/neo4j-neo4j/styler_three_grams/19/DefaultPooledCursors.java\n@@ -139,283 +139,285 @@ public class DefaultPooledCursors extends DefaultCursors implements CursorFactor\n     public RelationshipScanCursor allocateFullAccessRelationshipScanCursor( PageCursorTracer cursorTracer )\n     {\n         if ( fullAccessRelationshipScanCursor == null )\n-        {\n-            return trace( new FullAccessRelationshipScanCursor( this::acceptFullAccess, storageReader.allocateRelationshipScanCursor( cursorTracer ), cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return fullAccessRelationshipScanCursor;\n-        }\n-        finally\n-        {\n-            fullAccessRelationshipScanCursor = null;\n-        }\n-    }\n-\n-    private void acceptFullAccess( DefaultRelationshipScanCursor cursor )\n-    {\n-        if ( fullAccessRelationshipScanCursor != null )\n-        {\n-            fullAccessRelationshipScanCursor.release();\n-        }\n-        cursor.removeTracer();\n-        fullAccessRelationshipScanCursor = (FullAccessRelationshipScanCursor) cursor;\n-    }\n-\n-    @Override\n-    public DefaultRelationshipTraversalCursor allocateRelationshipTraversalCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( relationshipTraversalCursor == null )\n-        {\n-            return trace( new DefaultRelationshipTraversalCursor( this::accept, storageReader.allocateRelationshipTraversalCursor( cursorTracer ),\n-                    cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return relationshipTraversalCursor;\n-        }\n-        finally\n-        {\n-            relationshipTraversalCursor = null;\n-        }\n-    }\n-\n-    void accept( DefaultRelationshipTraversalCursor cursor )\n-    {\n-        if ( relationshipTraversalCursor != null )\n-        {\n-            relationshipTraversalCursor.release();\n-        }\n-        cursor.removeTracer();\n-        relationshipTraversalCursor = cursor;\n-    }\n-\n-    @Override\n-    public DefaultPropertyCursor allocatePropertyCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( propertyCursor == null )\n-        {\n-            return trace( new DefaultPropertyCursor( this::accept, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return propertyCursor;\n-        }\n-        finally\n-        {\n-            propertyCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultPropertyCursor cursor )\n-    {\n-        if ( propertyCursor != null )\n-        {\n-            propertyCursor.release();\n-        }\n-        cursor.removeTracer();\n-        propertyCursor = cursor;\n-    }\n-\n-    @Override\n-    public FullAccessPropertyCursor allocateFullAccessPropertyCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( fullAccessPropertyCursor == null )\n-        {\n-            return trace( new FullAccessPropertyCursor( this::acceptFullAccess, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n-        }\n-\n-        try\n-        {\n-            return fullAccessPropertyCursor;\n-        }\n-        finally\n-        {\n-            fullAccessPropertyCursor = null;\n-        }\n-    }\n-\n-    private void acceptFullAccess( DefaultPropertyCursor cursor )\n-    {\n-        if ( fullAccessPropertyCursor != null )\n-        {\n-            fullAccessPropertyCursor.release();\n-        }\n-        cursor.removeTracer();\n-        fullAccessPropertyCursor = (FullAccessPropertyCursor) cursor;\n-    }\n-\n-    @Override\n-    public DefaultRelationshipGroupCursor allocateRelationshipGroupCursor( PageCursorTracer cursorTracer )\n-    {\n-        if ( relationshipGroupCursor == null )\n-        {\n-            return trace( new DefaultRelationshipGroupCursor( this::accept, storageReader.allocateRelationshipGroupCursor( cursorTracer ) ) );\n-        }\n-\n-        try\n-        {\n-            return relationshipGroupCursor;\n-        }\n-        finally\n-        {\n-            relationshipGroupCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultRelationshipGroupCursor cursor )\n-    {\n-        if ( relationshipGroupCursor != null )\n-        {\n-            relationshipGroupCursor.release();\n-        }\n-        cursor.removeTracer();\n-        relationshipGroupCursor = cursor;\n-    }\n-\n-    @Override\n-    public DefaultNodeValueIndexCursor allocateNodeValueIndexCursor()\n-    {\n-        if ( nodeValueIndexCursor == null )\n-        {\n-            return trace( new DefaultNodeValueIndexCursor( this::accept ) );\n-        }\n-\n-        try\n-        {\n-            return nodeValueIndexCursor;\n-        }\n-        finally\n-        {\n-            nodeValueIndexCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultNodeValueIndexCursor cursor )\n-    {\n-        if ( nodeValueIndexCursor != null )\n-        {\n-            nodeValueIndexCursor.release();\n-        }\n-        cursor.removeTracer();\n-        nodeValueIndexCursor = cursor;\n-    }\n-\n-    @Override\n-    public DefaultNodeLabelIndexCursor allocateNodeLabelIndexCursor()\n-    {\n-        if ( nodeLabelIndexCursor == null )\n-        {\n-            return trace( new DefaultNodeLabelIndexCursor( this::accept ) );\n-        }\n-\n-        try\n-        {\n-            return nodeLabelIndexCursor;\n-        }\n-        finally\n-        {\n-            nodeLabelIndexCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultNodeLabelIndexCursor cursor )\n-    {\n-        if ( nodeLabelIndexCursor != null )\n-        {\n-            nodeLabelIndexCursor.release();\n-        }\n-        cursor.removeTracer();\n-        nodeLabelIndexCursor = cursor;\n-    }\n-\n-    @Override\n-    public RelationshipIndexCursor allocateRelationshipIndexCursor()\n-    {\n-        if ( relationshipIndexCursor == null )\n-        {\n-            return trace( new DefaultRelationshipIndexCursor( this::accept ) );\n-        }\n-\n-        try\n-        {\n-            return relationshipIndexCursor;\n-        }\n-        finally\n-        {\n-            relationshipIndexCursor = null;\n-        }\n-    }\n-\n-    private void accept( DefaultRelationshipIndexCursor cursor )\n-    {\n-        if ( relationshipIndexCursor != null )\n-        {\n-            relationshipIndexCursor.release();\n-        }\n-        cursor.removeTracer();\n-        relationshipIndexCursor = cursor;\n-    }\n-\n-    public void release()\n-    {\n-        if ( nodeCursor != null )\n-        {\n-            nodeCursor.release();\n-            nodeCursor = null;\n-        }\n-        if ( fullAccessNodeCursor != null )\n-        {\n-            fullAccessNodeCursor.release();\n-            fullAccessNodeCursor = null;\n-        }\n-        if ( relationshipScanCursor != null )\n-        {\n-            relationshipScanCursor.release();\n-            relationshipScanCursor = null;\n-        }\n-        if ( fullAccessRelationshipScanCursor != null )\n-        {\n-            fullAccessRelationshipScanCursor.release();\n-            fullAccessRelationshipScanCursor = null;\n-        }\n-        if ( relationshipTraversalCursor != null )\n-        {\n-            relationshipTraversalCursor.release();\n-            relationshipTraversalCursor = null;\n-        }\n-        if ( propertyCursor != null )\n-        {\n-            propertyCursor.release();\n-            propertyCursor = null;\n-        }\n-        if ( fullAccessPropertyCursor != null )\n-        {\n-            fullAccessPropertyCursor.release();\n-            fullAccessPropertyCursor = null;\n-        }\n-        if ( relationshipGroupCursor != null )\n-        {\n-            relationshipGroupCursor.release();\n-            relationshipGroupCursor = null;\n-        }\n-        if ( nodeValueIndexCursor != null )\n-        {\n-            nodeValueIndexCursor.release();\n-            nodeValueIndexCursor = null;\n-        }\n-        if ( nodeLabelIndexCursor != null )\n-        {\n-            nodeLabelIndexCursor.release();\n-            nodeLabelIndexCursor = null;\n-        }\n-        if ( relationshipIndexCursor != null )\n-        {\n-            relationshipIndexCursor.release();\n-            relationshipIndexCursor = null;\n-        }\n-    }\n+        { returntrace(newFullAccessRelationshipScanCursor(this::acceptFullAccess\n+\n+        ,\n+        storageReader .allocateRelationshipScanCursor( cursorTracer ), cursorTracer ) );\n+     }\n+\n+     try\n+     {\n+         return fullAccessRelationshipScanCursor;\n+     }\n+     finally\n+     {\n+         fullAccessRelationshipScanCursor = null;\n+     }\n+ }\n+\n+ private void acceptFullAccess( DefaultRelationshipScanCursor cursor )\n+ {\n+     if ( fullAccessRelationshipScanCursor != null )\n+     {\n+         fullAccessRelationshipScanCursor.release();\n+     }\n+     cursor.removeTracer();\n+     fullAccessRelationshipScanCursor = (FullAccessRelationshipScanCursor) cursor;\n+ }\n+\n+ @Override\n+ public DefaultRelationshipTraversalCursor allocateRelationshipTraversalCursor( PageCursorTracer cursorTracer )\n+ {\n+     if ( relationshipTraversalCursor == null )\n+     {\n+         return trace( new DefaultRelationshipTraversalCursor( this::accept, storageReader.allocateRelationshipTraversalCursor( cursorTracer ),\n+                 cursorTracer ) );\n+     }\n+\n+     try\n+     {\n+         return relationshipTraversalCursor;\n+     }\n+     finally\n+     {\n+         relationshipTraversalCursor = null;\n+     }\n+ }\n+\n+ void accept( DefaultRelationshipTraversalCursor cursor )\n+ {\n+     if ( relationshipTraversalCursor != null )\n+     {\n+         relationshipTraversalCursor.release();\n+     }\n+     cursor.removeTracer();\n+     relationshipTraversalCursor = cursor;\n+ }\n+\n+ @Override\n+ public DefaultPropertyCursor allocatePropertyCursor( PageCursorTracer cursorTracer )\n+ {\n+     if ( propertyCursor == null )\n+     {\n+         return trace( new DefaultPropertyCursor( this::accept, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n+     }\n+\n+     try\n+     {\n+         return propertyCursor;\n+     }\n+     finally\n+     {\n+         propertyCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultPropertyCursor cursor )\n+ {\n+     if ( propertyCursor != null )\n+     {\n+         propertyCursor.release();\n+     }\n+     cursor.removeTracer();\n+     propertyCursor = cursor;\n+ }\n+\n+ @Override\n+ public FullAccessPropertyCursor allocateFullAccessPropertyCursor( PageCursorTracer cursorTracer )\n+ {\n+     if ( fullAccessPropertyCursor == null )\n+     {\n+         return trace( new FullAccessPropertyCursor( this::acceptFullAccess, storageReader.allocatePropertyCursor( cursorTracer ), cursorTracer ) );\n+     }\n+\n+     try\n+     {\n+         return fullAccessPropertyCursor;\n+     }\n+     finally\n+     {\n+         fullAccessPropertyCursor = null;\n+     }\n+ }\n+\n+ private void acceptFullAccess( DefaultPropertyCursor cursor )\n+ {\n+     if ( fullAccessPropertyCursor != null )\n+     {\n+         fullAccessPropertyCursor.release();\n+     }\n+     cursor.removeTracer();\n+     fullAccessPropertyCursor = (FullAccessPropertyCursor) cursor;\n+ }\n+\n+ @Override\n+ public DefaultRelationshipGroupCursor allocateRelationshipGroupCursor( PageCursorTracer cursorTracer )\n+ {\n+     if ( relationshipGroupCursor == null )\n+     {\n+         return trace( new DefaultRelationshipGroupCursor( this::accept, storageReader.allocateRelationshipGroupCursor( cursorTracer ) ) );\n+     }\n+\n+     try\n+     {\n+         return relationshipGroupCursor;\n+     }\n+     finally\n+     {\n+         relationshipGroupCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultRelationshipGroupCursor cursor )\n+ {\n+     if ( relationshipGroupCursor != null )\n+     {\n+         relationshipGroupCursor.release();\n+     }\n+     cursor.removeTracer();\n+     relationshipGroupCursor = cursor;\n+ }\n+\n+ @Override\n+ public DefaultNodeValueIndexCursor allocateNodeValueIndexCursor()\n+ {\n+     if ( nodeValueIndexCursor == null )\n+     {\n+         return trace( new DefaultNodeValueIndexCursor( this::accept ) );\n+     }\n+\n+     try\n+     {\n+         return nodeValueIndexCursor;\n+     }\n+     finally\n+     {\n+         nodeValueIndexCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultNodeValueIndexCursor cursor )\n+ {\n+     if ( nodeValueIndexCursor != null )\n+     {\n+         nodeValueIndexCursor.release();\n+     }\n+     cursor.removeTracer();\n+     nodeValueIndexCursor = cursor;\n+ }\n+\n+ @Override\n+ public DefaultNodeLabelIndexCursor allocateNodeLabelIndexCursor()\n+ {\n+     if ( nodeLabelIndexCursor == null )\n+     {\n+         return trace( new DefaultNodeLabelIndexCursor( this::accept ) );\n+     }\n+\n+     try\n+     {\n+         return nodeLabelIndexCursor;\n+     }\n+     finally\n+     {\n+         nodeLabelIndexCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultNodeLabelIndexCursor cursor )\n+ {\n+     if ( nodeLabelIndexCursor != null )\n+     {\n+         nodeLabelIndexCursor.release();\n+     }\n+     cursor.removeTracer();\n+     nodeLabelIndexCursor = cursor;\n+ }\n+\n+ @Override\n+ public RelationshipIndexCursor allocateRelationshipIndexCursor()\n+ {\n+     if ( relationshipIndexCursor == null )\n+     {\n+         return trace( new DefaultRelationshipIndexCursor( this::accept ) );\n+     }\n+\n+     try\n+     {\n+         return relationshipIndexCursor;\n+     }\n+     finally\n+     {\n+         relationshipIndexCursor = null;\n+     }\n+ }\n+\n+ private void accept( DefaultRelationshipIndexCursor cursor )\n+ {\n+     if ( relationshipIndexCursor != null )\n+     {\n+         relationshipIndexCursor.release();\n+     }\n+     cursor.removeTracer();\n+     relationshipIndexCursor = cursor;\n+ }\n+\n+ public void release()\n+ {\n+     if ( nodeCursor != null )\n+     {\n+         nodeCursor.release();\n+         nodeCursor = null;\n+     }\n+     if ( fullAccessNodeCursor != null )\n+     {\n+         fullAccessNodeCursor.release();\n+         fullAccessNodeCursor = null;\n+     }\n+     if ( relationshipScanCursor != null )\n+     {\n+         relationshipScanCursor.release();\n+         relationshipScanCursor = null;\n+     }\n+     if ( fullAccessRelationshipScanCursor != null )\n+     {\n+         fullAccessRelationshipScanCursor.release();\n+         fullAccessRelationshipScanCursor = null;\n+     }\n+     if ( relationshipTraversalCursor != null )\n+     {\n+         relationshipTraversalCursor.release();\n+         relationshipTraversalCursor = null;\n+     }\n+     if ( propertyCursor != null )\n+     {\n+         propertyCursor.release();\n+         propertyCursor = null;\n+     }\n+     if ( fullAccessPropertyCursor != null )\n+     {\n+         fullAccessPropertyCursor.release();\n+         fullAccessPropertyCursor = null;\n+     }\n+     if ( relationshipGroupCursor != null )\n+     {\n+         relationshipGroupCursor.release();\n+         relationshipGroupCursor = null;\n+     }\n+     if ( nodeValueIndexCursor != null )\n+     {\n+         nodeValueIndexCursor.release();\n+         nodeValueIndexCursor = null;\n+     }\n+     if ( nodeLabelIndexCursor != null )\n+     {\n+         nodeLabelIndexCursor.release();\n+         nodeLabelIndexCursor = null;\n+     }\n+     if ( relationshipIndexCursor != null )\n+     {\n+         relationshipIndexCursor.release();\n+         relationshipIndexCursor = null;\n+     }\n+ }\n }\n",
+            "diff_size": 281
+        }
+    ]
+}

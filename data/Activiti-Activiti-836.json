@@ -1,0 +1,76 @@
+{
+    "error_id": "836",
+    "information": {
+        "errors": [
+            {
+                "line": "13",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.engine.impl.cmd;\n\nimport java.io.Serializable;\nimport java.util.Collection;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/836/GetExecutionVariableInstancesCmd.java\nindex e50142c637..4799c4750e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/836/GetExecutionVariableInstancesCmd.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/836/GetExecutionVariableInstancesCmd.java\nindex e50142c637..4799c4750e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/836/GetExecutionVariableInstancesCmd.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 12, expected is 8, indentation should be the same level as line 58.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 12, expected is 10, indentation should be the same level as line 65.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/836/GetExecutionVariableInstancesCmd.java\nindex e50142c637..b7fd963120 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/836/GetExecutionVariableInstancesCmd.java\n@@ -16,7 +16,6 @@ import java.io.Serializable;\n import java.util.Collection;\n import java.util.Map;\n import java.util.Map.Entry;\n-\n import org.activiti.engine.ActivitiIllegalArgumentException;\n import org.activiti.engine.ActivitiObjectNotFoundException;\n import org.activiti.engine.impl.interceptor.Command;\n@@ -25,6 +24,7 @@ import org.activiti.engine.impl.persistence.entity.ExecutionEntity;\n import org.activiti.engine.impl.persistence.entity.VariableInstance;\n import org.activiti.engine.runtime.Execution;\n \n+\n public class GetExecutionVariableInstancesCmd implements Command<Map<String, VariableInstance>>, Serializable {\n \n     private static final long serialVersionUID = 1L;\n@@ -33,9 +33,9 @@ public class GetExecutionVariableInstancesCmd implements Command<Map<String, Var\n     protected boolean isLocal;\n \n     public GetExecutionVariableInstancesCmd(String executionId, Collection<String> variableNames, boolean isLocal) {\n-        this.executionId = executionId;\n-        this.variableNames = variableNames;\n-        this.isLocal = isLocal;\n+    this.executionId = executionId;\n+    this.variableNames = variableNames;\n+    this.isLocal = isLocal;\n     }\n \n     @Override\n@@ -43,42 +43,39 @@ public class GetExecutionVariableInstancesCmd implements Command<Map<String, Var\n \n         // Verify existance of execution\n         if (executionId == null) {\n-            throw new ActivitiIllegalArgumentException(\"executionId is null\");\n+        throw new ActivitiIllegalArgumentException(\"executionId is null\");\n         }\n \n         ExecutionEntity execution = commandContext.getExecutionEntityManager().findById(executionId);\n-\n         if (execution == null) {\n-            throw new ActivitiObjectNotFoundException(\"execution \" + executionId + \" doesn't exist\", Execution.class);\n+        throw new ActivitiObjectNotFoundException(\"execution \" + executionId + \" doesn't exist\",\n+                                                  Execution.class);\n         }\n \n         Map<String, VariableInstance> variables = null;\n-\n         if (variableNames == null || variableNames.isEmpty()) {\n             // Fetch all\n-            if (isLocal) {\n-                variables = execution.getVariableInstancesLocal();\n-            } else {\n-                variables = execution.getVariableInstances();\n-            }\n-\n+        if (isLocal) {\n+                                                                  variables = execution.getVariableInstancesLocal();\n+        } else {\n+            variables = execution.getVariableInstances();\n+        }\n         } else {\n             // Fetch specific collection of variables\n-            if (isLocal) {\n-                variables = execution.getVariableInstancesLocal(variableNames, false);\n-            } else {\n-                variables = execution.getVariableInstances(variableNames, false);\n-            }\n+          if (isLocal) {\n+                   variables = execution.getVariableInstancesLocal(variableNames, false);\n+          } else {\n+              variables = execution.getVariableInstances(variableNames, false);\n+          }\n         }\n \n         if (variables != null) {\n             for (Entry<String, VariableInstance> entry : variables.entrySet()) {\n-                if (entry.getValue() != null) {\n-                    entry.getValue().getValue();\n-                }\n+            if (entry.getValue() != null) {\n+                entry.getValue().getValue();\n+            }\n             }\n         }\n-\n         return variables;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 26
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/836/GetExecutionVariableInstancesCmd.java\nindex e50142c637..4799c4750e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/836/GetExecutionVariableInstancesCmd.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/836/GetExecutionVariableInstancesCmd.java\nindex e50142c637..4799c4750e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/836/GetExecutionVariableInstancesCmd.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/836/GetExecutionVariableInstancesCmd.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.engine.impl.cmd;\n \n import java.io.Serializable;\n",
+            "diff_size": 1
+        }
+    ]
+}

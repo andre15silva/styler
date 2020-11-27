@@ -1,0 +1,262 @@
+{
+    "error_id": "166",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/166/LinearRegTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/166/LinearRegTest.java\nindex 4fc06a19a5..2242666fce 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/166/LinearRegTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/166/LinearRegTest.java\n@@ -33,165 +33,167 @@ import org.junit.Test;\n \n \n public class LinearRegTest {\n-  private static final Log LOG = LogFactory.getLog(LinearRegTest.class);\n-  private static String LOCAL_FS = FileSystem.DEFAULT_FS;\n-  private static String CLASSBASE = \"com.tencent.angel.ml.regression.\";\n-  private static String TMP_PATH = System.getProperty(\"java.io.tmpdir\", \"/tmp\");\n-\n-  static {\n-    PropertyConfigurator.configure(\"../conf/log4j.properties\");\n-  }\n-\n-  private Configuration conf = new Configuration();\n-\n-  @Before public void setConf() throws Exception {\n-    try {\n-      // Feature number of train data\n-      int featureNum = 8;\n-      // Total iteration number\n-      int epochNum = 5;\n-      // Validation sample Ratio\n-      double vRatio = 0.3;\n-      // Data format, libsvm or dummy\n-      String dataFmt = \"libsvm\";\n-      //Data is classification\n-      boolean dataIsClassification = false;\n-      String modelType = String.valueOf(RowType.T_FLOAT_SPARSE);\n-      //Model is classification\n-      boolean isClassification = false;\n-      // Train batch number per epoch.\n-      double spRatio = 1;\n-\n-      // Learning rate\n-      double learnRate = 0.25;\n-      // Decay of learning rate\n-      double decay = 2;\n-      // Regularization coefficient\n-      double reg = 0.0001;\n-\n-      // Set local deploy mode\n-      conf.set(AngelConf.ANGEL_DEPLOY_MODE, \"LOCAL\");\n-\n-      // Set basic configuration keys\n-      conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n-      conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n-      conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n-      conf.setBoolean(\"mapred.mapper.new-api\", true);\n-      conf.set(AngelConf.ANGEL_INPUTFORMAT_CLASS, CombineTextInputFormat.class.getName());\n-      conf.setBoolean(AngelConf.ANGEL_JOB_OUTPUT_PATH_DELETEONEXIST, true);\n-      conf.setInt(AngelConf.ANGEL_PSAGENT_CACHE_SYNC_TIMEINTERVAL_MS, 10);\n-      conf.setInt(AngelConf.ANGEL_WORKER_HEARTBEAT_INTERVAL_MS, 1000);\n-      conf.setInt(AngelConf.ANGEL_PS_HEARTBEAT_INTERVAL_MS, 1000);\n-\n-      // Set data format\n-      conf.set(MLConf.ML_DATA_INPUT_FORMAT(), dataFmt);\n-      conf.set(MLConf.ML_MODEL_TYPE(), modelType);\n-      conf.setBoolean(MLConf.ML_MODEL_IS_CLASSIFICATION(), isClassification);\n-\n-      // set angel resource parameters #worker, #task, #PS\n-      conf.setInt(AngelConf.ANGEL_WORKERGROUP_NUMBER, 1);\n-      conf.setInt(AngelConf.ANGEL_WORKER_TASK_NUMBER, 1);\n-      conf.setInt(AngelConf.ANGEL_PS_NUMBER, 1);\n-\n-      // set sgd LR algorithm parameters #feature #epoch\n-      conf.set(MLConf.ML_FEATURE_INDEX_RANGE(), String.valueOf(featureNum));\n-      conf.set(MLConf.ML_EPOCH_NUM(), String.valueOf(epochNum));\n-      conf.set(MLConf.ML_BATCH_SAMPLE_RATIO(), String.valueOf(spRatio));\n-      conf.set(MLConf.ML_VALIDATE_RATIO(), String.valueOf(vRatio));\n-      conf.set(MLConf.ML_LEARN_RATE(), String.valueOf(learnRate));\n-      conf.set(MLConf.ML_OPT_DECAY_ALPHA(), String.valueOf(decay));\n-      conf.set(MLConf.ML_REG_L2(), String.valueOf(reg));\n-      conf.setLong(MLConf.ML_MODEL_SIZE(), 124L);\n-      conf.setLong(MLConf.ML_MINIBATCH_SIZE(), 1024);\n-      conf.set(MLConf.ML_MODEL_CLASS_NAME(), CLASSBASE + \"LinearRegression\");\n-    } catch (Exception e) {\n-      LOG.error(\"setup failed \", e);\n-      throw e;\n+    private static final Log LOG = LogFactory.getLog(LinearRegTest.class);\n+    private static String LOCAL_FS = FileSystem.DEFAULT_FS;\n+    private static String CLASSBASE = \"com.tencent.angel.ml.regression.\";\n+    private static String TMP_PATH = System.getProperty(\"java.io.tmpdir\", \"/tmp\");\n+\n+    static {\n+        PropertyConfigurator.configure(\"../conf/log4j.properties\");\n+    }\n+\n+    private Configuration conf = new Configuration();\n+\n+    @Before\n+    public void setConf() throws Exception {\n+        try {\n+            // Feature number of train data\n+            int featureNum = 8;\n+            // Total iteration number\n+            int epochNum = 5;\n+            // Validation sample Ratio\n+            double vRatio = 0.3;\n+            // Data format, libsvm or dummy\n+            String dataFmt = \"libsvm\";\n+            //Data is classification\n+            boolean dataIsClassification = false;\n+            String modelType = String.valueOf(RowType.T_FLOAT_SPARSE);\n+            //Model is classification\n+            boolean isClassification = false;\n+            // Train batch number per epoch.\n+            double spRatio = 1;\n+\n+            // Learning rate\n+            double learnRate = 0.25;\n+            // Decay of learning rate\n+            double decay = 2;\n+            // Regularization coefficient\n+            double reg = 0.0001;\n+\n+            // Set local deploy mode\n+            conf.set(AngelConf.ANGEL_DEPLOY_MODE, \"LOCAL\");\n+\n+            // Set basic configuration keys\n+            conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n+            conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n+            conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n+            conf.setBoolean(\"mapred.mapper.new-api\", true);\n+            conf.set(AngelConf.ANGEL_INPUTFORMAT_CLASS, CombineTextInputFormat.class.getName());\n+            conf.setBoolean(AngelConf.ANGEL_JOB_OUTPUT_PATH_DELETEONEXIST, true);\n+            conf.setInt(AngelConf.ANGEL_PSAGENT_CACHE_SYNC_TIMEINTERVAL_MS, 10);\n+            conf.setInt(AngelConf.ANGEL_WORKER_HEARTBEAT_INTERVAL_MS, 1000);\n+            conf.setInt(AngelConf.ANGEL_PS_HEARTBEAT_INTERVAL_MS, 1000);\n+\n+            // Set data format\n+            conf.set(MLConf.ML_DATA_INPUT_FORMAT(), dataFmt);\n+            conf.set(MLConf.ML_MODEL_TYPE(), modelType);\n+            conf.setBoolean(MLConf.ML_MODEL_IS_CLASSIFICATION(), isClassification);\n+\n+            // set angel resource parameters #worker, #task, #PS\n+            conf.setInt(AngelConf.ANGEL_WORKERGROUP_NUMBER, 1);\n+            conf.setInt(AngelConf.ANGEL_WORKER_TASK_NUMBER, 1);\n+            conf.setInt(AngelConf.ANGEL_PS_NUMBER, 1);\n+\n+            // set sgd LR algorithm parameters #feature #epoch\n+            conf.set(MLConf.ML_FEATURE_INDEX_RANGE(), String.valueOf(featureNum));\n+            conf.set(MLConf.ML_EPOCH_NUM(), String.valueOf(epochNum));\n+            conf.set(MLConf.ML_BATCH_SAMPLE_RATIO(), String.valueOf(spRatio));\n+            conf.set(MLConf.ML_VALIDATE_RATIO(), String.valueOf(vRatio));\n+            conf.set(MLConf.ML_LEARN_RATE(), String.valueOf(learnRate));\n+            conf.set(MLConf.ML_OPT_DECAY_ALPHA(), String.valueOf(decay));\n+            conf.set(MLConf.ML_REG_L2(), String.valueOf(reg));\n+            conf.setLong(MLConf.ML_MODEL_SIZE(), 124L);\n+            conf.setLong(MLConf.ML_MINIBATCH_SIZE(), 1024);\n+            conf.set(MLConf.ML_MODEL_CLASS_NAME(), CLASSBASE + \"LinearRegression\");\n+        } catch (Exception e) {\n+            LOG.error(\"setup failed \", e);\n+            throw e;\n+        }\n+    }\n+\n+    private void trainTest() {\n+        try {\n+            String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n+            String savePath = LOCAL_FS + TMP_PATH + \"/model/LinearReg\";\n+            String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/trainLog\";\n+\n+            // Set trainning data path\n+            conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, inputPath);\n+            // Set save model path\n+            conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, savePath);\n+            // Set log path\n+            conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n+            // Set actionType train\n+            conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_TRAIN());\n+\n+            GraphRunner runner = new GraphRunner();\n+            runner.train(conf);\n+        } catch (Exception e) {\n+            LOG.error(\"run trainTest failed\", e);\n+            throw e;\n+        }\n     }\n-  }\n-\n-  private void trainTest() {\n-    try {\n-      String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n-      String savePath = LOCAL_FS + TMP_PATH + \"/model/LinearReg\";\n-      String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/trainLog\";\n-\n-      // Set trainning data path\n-      conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, inputPath);\n-      // Set save model path\n-      conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, savePath);\n-      // Set log path\n-      conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n-      // Set actionType train\n-      conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_TRAIN());\n-\n-      GraphRunner runner = new GraphRunner();\n-      runner.train(conf);\n-    } catch (Exception e) {\n-      LOG.error(\"run trainTest failed\", e);\n-      throw e;\n+\n+\n+    private void incTrain() {\n+        try {\n+            String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n+            String savePath = LOCAL_FS + TMP_PATH + \"/model/LinearReg\";\n+            String newPath = LOCAL_FS + TMP_PATH + \"/model/NewLinearReg\";\n+            String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/trainLog\";\n+\n+            // Set trainning data path\n+            conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, inputPath);\n+            // Set load model path\n+            conf.set(AngelConf.ANGEL_LOAD_MODEL_PATH, savePath);\n+            // Set save model path\n+            conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, newPath);\n+            // Set actionType incremental train\n+            conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_INC_TRAIN());\n+            // Set log path\n+            conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n+\n+\n+            GraphRunner runner = new GraphRunner();\n+            runner.train(conf);\n+        } catch (Exception e) {\n+            LOG.error(\"run incTrainTest failed\", e);\n+            throw e;\n+        }\n     }\n-  }\n-\n-\n-  private void incTrain() {\n-    try {\n-      String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n-      String savePath = LOCAL_FS + TMP_PATH + \"/model/LinearReg\";\n-      String newPath = LOCAL_FS + TMP_PATH + \"/model/NewLinearReg\";\n-      String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/trainLog\";\n-\n-      // Set trainning data path\n-      conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, inputPath);\n-      // Set load model path\n-      conf.set(AngelConf.ANGEL_LOAD_MODEL_PATH, savePath);\n-      // Set save model path\n-      conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, newPath);\n-      // Set actionType incremental train\n-      conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_INC_TRAIN());\n-      // Set log path\n-      conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n-\n-\n-      GraphRunner runner = new GraphRunner();\n-      runner.train(conf);\n-    } catch (Exception e) {\n-      LOG.error(\"run incTrainTest failed\", e);\n-      throw e;\n+\n+\n+    private void predictTest() {\n+        try {\n+            String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n+            String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/predictLog\";\n+            String predictPath = LOCAL_FS + TMP_PATH + \"/predict/LinearReg\";\n+\n+            // Set trainning data path\n+            conf.set(AngelConf.ANGEL_PREDICT_DATA_PATH, inputPath);\n+            // Set load model path\n+            conf.set(AngelConf.ANGEL_LOAD_MODEL_PATH, LOCAL_FS + TMP_PATH + \"/model/LinearReg\");\n+            // Set predict result path\n+            conf.set(AngelConf.ANGEL_PREDICT_PATH, predictPath);\n+\n+            conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n+            // Set actionType prediction\n+            conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_INC_TRAIN());\n+            conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_PREDICT());\n+\n+            GraphRunner runner = new GraphRunner();\n+            runner.predict(conf);\n+        } catch (Exception e) {\n+            LOG.error(\"predict failed\", e);\n+            throw e;\n+        }\n     }\n-  }\n-\n-\n-  private void predictTest() {\n-    try {\n-      String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n-      String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/predictLog\";\n-      String predictPath = LOCAL_FS + TMP_PATH + \"/predict/LinearReg\";\n-\n-      // Set trainning data path\n-      conf.set(AngelConf.ANGEL_PREDICT_DATA_PATH, inputPath);\n-      // Set load model path\n-      conf.set(AngelConf.ANGEL_LOAD_MODEL_PATH, LOCAL_FS + TMP_PATH + \"/model/LinearReg\");\n-      // Set predict result path\n-      conf.set(AngelConf.ANGEL_PREDICT_PATH, predictPath);\n-\n-      conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n-      // Set actionType prediction\n-      conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_INC_TRAIN());\n-      conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_PREDICT());\n-\n-      GraphRunner runner = new GraphRunner();\n-      runner.predict(conf);\n-    } catch (Exception e) {\n-      LOG.error(\"predict failed\", e);\n-      throw e;\n+\n+    @Test\n+    public void testLR() throws Exception {\n+        setConf();\n+        trainTest();\n+        incTrain();\n+        predictTest();\n     }\n-  }\n-\n-  @Test public void testLR() throws Exception {\n-    setConf();\n-    trainTest();\n-    incTrain();\n-    predictTest();\n-  }\n }\n",
+            "diff_size": 187
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/166/LinearRegTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/166/LinearRegTest.java\nindex 4fc06a19a5..8c0c7860bb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/166/LinearRegTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/166/LinearRegTest.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.regression;\n \n import com.tencent.angel.conf.AngelConf;\n@@ -44,7 +43,8 @@ public class LinearRegTest {\n \n   private Configuration conf = new Configuration();\n \n-  @Before public void setConf() throws Exception {\n+  @Before\n+public void setConf() throws Exception {\n     try {\n       // Feature number of train data\n       int featureNum = 8;\n@@ -188,10 +188,11 @@ public class LinearRegTest {\n     }\n   }\n \n-  @Test public void testLR() throws Exception {\n+  @Test\n+public void testLR() throws Exception {\n     setConf();\n     trainTest();\n     incTrain();\n     predictTest();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 50.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 52.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 54.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 56.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 58.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 61.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 63.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 66.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 68.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 70.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 73.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 76.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "86",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 87.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 92.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 97.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "119",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 120.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "121",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 122.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "123",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 124.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "125",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 126.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "142",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 143.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "144",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 145.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "146",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 147.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "148",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 149.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "150",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 151.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "166",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 167.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "168",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 169.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "170",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 171.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 174.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/166/LinearRegTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/166/LinearRegTest.java\nindex 4fc06a19a5..cbbac7b8a2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/166/LinearRegTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/166/LinearRegTest.java\n@@ -31,167 +31,162 @@ import org.apache.log4j.PropertyConfigurator;\n import org.junit.Before;\n import org.junit.Test;\n \n-\n public class LinearRegTest {\n-  private static final Log LOG = LogFactory.getLog(LinearRegTest.class);\n-  private static String LOCAL_FS = FileSystem.DEFAULT_FS;\n-  private static String CLASSBASE = \"com.tencent.angel.ml.regression.\";\n-  private static String TMP_PATH = System.getProperty(\"java.io.tmpdir\", \"/tmp\");\n+    private static final Log LOG = LogFactory.getLog(LinearRegTest.class);\n+    private static String LOCAL_FS = FileSystem.DEFAULT_FS;\n+    private static String CLASSBASE = \"com.tencent.angel.ml.regression.\";\n+    private static String TMP_PATH = System.getProperty(\"java.io.tmpdir\", \"/tmp\");\n \n-  static {\n+    static {\n     PropertyConfigurator.configure(\"../conf/log4j.properties\");\n-  }\n+    }\n \n-  private Configuration conf = new Configuration();\n+    private Configuration conf = new Configuration();\n \n-  @Before public void setConf() throws Exception {\n+    @Before\n+    public void setConf() throws Exception {\n     try {\n       // Feature number of train data\n-      int featureNum = 8;\n+        int featureNum = 8;\n       // Total iteration number\n-      int epochNum = 5;\n+        int epochNum = 5;\n       // Validation sample Ratio\n-      double vRatio = 0.3;\n+        double vRatio = 0.3;\n       // Data format, libsvm or dummy\n-      String dataFmt = \"libsvm\";\n+        String dataFmt = \"libsvm\";\n       //Data is classification\n-      boolean dataIsClassification = false;\n-      String modelType = String.valueOf(RowType.T_FLOAT_SPARSE);\n+        boolean dataIsClassification = false;\n+        String modelType = String.valueOf(RowType.T_FLOAT_SPARSE);\n       //Model is classification\n-      boolean isClassification = false;\n+        boolean isClassification = false;\n       // Train batch number per epoch.\n-      double spRatio = 1;\n+        double spRatio = 1;\n \n       // Learning rate\n-      double learnRate = 0.25;\n+        double learnRate = 0.25;\n       // Decay of learning rate\n-      double decay = 2;\n+        double decay = 2;\n       // Regularization coefficient\n-      double reg = 0.0001;\n+        double reg = 0.0001;\n \n       // Set local deploy mode\n-      conf.set(AngelConf.ANGEL_DEPLOY_MODE, \"LOCAL\");\n+        conf.set(AngelConf.ANGEL_DEPLOY_MODE, \"LOCAL\");\n \n       // Set basic configuration keys\n-      conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n-      conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n-      conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n-      conf.setBoolean(\"mapred.mapper.new-api\", true);\n-      conf.set(AngelConf.ANGEL_INPUTFORMAT_CLASS, CombineTextInputFormat.class.getName());\n-      conf.setBoolean(AngelConf.ANGEL_JOB_OUTPUT_PATH_DELETEONEXIST, true);\n-      conf.setInt(AngelConf.ANGEL_PSAGENT_CACHE_SYNC_TIMEINTERVAL_MS, 10);\n-      conf.setInt(AngelConf.ANGEL_WORKER_HEARTBEAT_INTERVAL_MS, 1000);\n-      conf.setInt(AngelConf.ANGEL_PS_HEARTBEAT_INTERVAL_MS, 1000);\n+        conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n+        conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n+        conf.set(AngelConf.ANGEL_WORKER_LOG_LEVEL, \"INFO\");\n+        conf.setBoolean(\"mapred.mapper.new-api\", true);\n+        conf.set(AngelConf.ANGEL_INPUTFORMAT_CLASS, CombineTextInputFormat.class.getName());\n+        conf.setBoolean(AngelConf.ANGEL_JOB_OUTPUT_PATH_DELETEONEXIST, true);\n+        conf.setInt(AngelConf.ANGEL_PSAGENT_CACHE_SYNC_TIMEINTERVAL_MS, 10);\n+        conf.setInt(AngelConf.ANGEL_WORKER_HEARTBEAT_INTERVAL_MS, 1000);\n+        conf.setInt(AngelConf.ANGEL_PS_HEARTBEAT_INTERVAL_MS, 1000);\n \n       // Set data format\n-      conf.set(MLConf.ML_DATA_INPUT_FORMAT(), dataFmt);\n-      conf.set(MLConf.ML_MODEL_TYPE(), modelType);\n-      conf.setBoolean(MLConf.ML_MODEL_IS_CLASSIFICATION(), isClassification);\n+        conf.set(MLConf.ML_DATA_INPUT_FORMAT(), dataFmt);\n+        conf.set(MLConf.ML_MODEL_TYPE(), modelType);\n+        conf.setBoolean(MLConf.ML_MODEL_IS_CLASSIFICATION(), isClassification);\n \n       // set angel resource parameters #worker, #task, #PS\n-      conf.setInt(AngelConf.ANGEL_WORKERGROUP_NUMBER, 1);\n-      conf.setInt(AngelConf.ANGEL_WORKER_TASK_NUMBER, 1);\n-      conf.setInt(AngelConf.ANGEL_PS_NUMBER, 1);\n+        conf.setInt(AngelConf.ANGEL_WORKERGROUP_NUMBER, 1);\n+        conf.setInt(AngelConf.ANGEL_WORKER_TASK_NUMBER, 1);\n+        conf.setInt(AngelConf.ANGEL_PS_NUMBER, 1);\n \n       // set sgd LR algorithm parameters #feature #epoch\n-      conf.set(MLConf.ML_FEATURE_INDEX_RANGE(), String.valueOf(featureNum));\n-      conf.set(MLConf.ML_EPOCH_NUM(), String.valueOf(epochNum));\n-      conf.set(MLConf.ML_BATCH_SAMPLE_RATIO(), String.valueOf(spRatio));\n-      conf.set(MLConf.ML_VALIDATE_RATIO(), String.valueOf(vRatio));\n-      conf.set(MLConf.ML_LEARN_RATE(), String.valueOf(learnRate));\n-      conf.set(MLConf.ML_OPT_DECAY_ALPHA(), String.valueOf(decay));\n-      conf.set(MLConf.ML_REG_L2(), String.valueOf(reg));\n-      conf.setLong(MLConf.ML_MODEL_SIZE(), 124L);\n-      conf.setLong(MLConf.ML_MINIBATCH_SIZE(), 1024);\n-      conf.set(MLConf.ML_MODEL_CLASS_NAME(), CLASSBASE + \"LinearRegression\");\n+        conf.set(MLConf.ML_FEATURE_INDEX_RANGE(), String.valueOf(featureNum));\n+        conf.set(MLConf.ML_EPOCH_NUM(), String.valueOf(epochNum));\n+        conf.set(MLConf.ML_BATCH_SAMPLE_RATIO(), String.valueOf(spRatio));\n+        conf.set(MLConf.ML_VALIDATE_RATIO(), String.valueOf(vRatio));\n+        conf.set(MLConf.ML_LEARN_RATE(), String.valueOf(learnRate));\n+        conf.set(MLConf.ML_OPT_DECAY_ALPHA(), String.valueOf(decay));\n+        conf.set(MLConf.ML_REG_L2(), String.valueOf(reg));\n+        conf.setLong(MLConf.ML_MODEL_SIZE(), 124L);\n+        conf.setLong(MLConf.ML_MINIBATCH_SIZE(), 1024);\n+        conf.set(MLConf.ML_MODEL_CLASS_NAME(), CLASSBASE + \"LinearRegression\");\n     } catch (Exception e) {\n       LOG.error(\"setup failed \", e);\n       throw e;\n     }\n-  }\n+    }\n \n-  private void trainTest() {\n+    private void trainTest() {\n     try {\n-      String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n-      String savePath = LOCAL_FS + TMP_PATH + \"/model/LinearReg\";\n-      String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/trainLog\";\n+        String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n+        String savePath = LOCAL_FS + TMP_PATH + \"/model/LinearReg\";\n+        String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/trainLog\";\n \n       // Set trainning data path\n-      conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, inputPath);\n+        conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, inputPath);\n       // Set save model path\n-      conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, savePath);\n+        conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, savePath);\n       // Set log path\n-      conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n+        conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n       // Set actionType train\n-      conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_TRAIN());\n-\n-      GraphRunner runner = new GraphRunner();\n-      runner.train(conf);\n+        conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_TRAIN());\n+        GraphRunner runner = new GraphRunner();\n+        runner.train(conf);\n     } catch (Exception e) {\n       LOG.error(\"run trainTest failed\", e);\n       throw e;\n     }\n-  }\n-\n+    }\n \n-  private void incTrain() {\n+    private void incTrain() {\n     try {\n-      String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n-      String savePath = LOCAL_FS + TMP_PATH + \"/model/LinearReg\";\n-      String newPath = LOCAL_FS + TMP_PATH + \"/model/NewLinearReg\";\n-      String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/trainLog\";\n+        String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n+        String savePath = LOCAL_FS + TMP_PATH + \"/model/LinearReg\";\n+        String newPath = LOCAL_FS + TMP_PATH + \"/model/NewLinearReg\";\n+        String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/trainLog\";\n \n       // Set trainning data path\n-      conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, inputPath);\n+        conf.set(AngelConf.ANGEL_TRAIN_DATA_PATH, inputPath);\n       // Set load model path\n-      conf.set(AngelConf.ANGEL_LOAD_MODEL_PATH, savePath);\n+        conf.set(AngelConf.ANGEL_LOAD_MODEL_PATH, savePath);\n       // Set save model path\n-      conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, newPath);\n+        conf.set(AngelConf.ANGEL_SAVE_MODEL_PATH, newPath);\n       // Set actionType incremental train\n-      conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_INC_TRAIN());\n+        conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_INC_TRAIN());\n       // Set log path\n-      conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n-\n-\n-      GraphRunner runner = new GraphRunner();\n-      runner.train(conf);\n+        conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n+        GraphRunner runner = new GraphRunner();\n+        runner.train(conf);\n     } catch (Exception e) {\n       LOG.error(\"run incTrainTest failed\", e);\n       throw e;\n     }\n-  }\n-\n+    }\n \n-  private void predictTest() {\n+    private void predictTest() {\n     try {\n-      String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n-      String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/predictLog\";\n-      String predictPath = LOCAL_FS + TMP_PATH + \"/predict/LinearReg\";\n+        String inputPath = \"../../data/abalone/abalone_8d_train.libsvm\";\n+        String logPath = LOCAL_FS + TMP_PATH + \"/log/LinearReg/predictLog\";\n+        String predictPath = LOCAL_FS + TMP_PATH + \"/predict/LinearReg\";\n \n       // Set trainning data path\n-      conf.set(AngelConf.ANGEL_PREDICT_DATA_PATH, inputPath);\n+        conf.set(AngelConf.ANGEL_PREDICT_DATA_PATH, inputPath);\n       // Set load model path\n-      conf.set(AngelConf.ANGEL_LOAD_MODEL_PATH, LOCAL_FS + TMP_PATH + \"/model/LinearReg\");\n+        conf.set(AngelConf.ANGEL_LOAD_MODEL_PATH, LOCAL_FS + TMP_PATH + \"/model/LinearReg\");\n       // Set predict result path\n-      conf.set(AngelConf.ANGEL_PREDICT_PATH, predictPath);\n-\n-      conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n+        conf.set(AngelConf.ANGEL_PREDICT_PATH, predictPath);\n+        conf.set(AngelConf.ANGEL_LOG_PATH, logPath);\n       // Set actionType prediction\n-      conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_INC_TRAIN());\n-      conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_PREDICT());\n-\n-      GraphRunner runner = new GraphRunner();\n-      runner.predict(conf);\n+        conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_INC_TRAIN());\n+        conf.set(AngelConf.ANGEL_ACTION_TYPE, MLConf.ANGEL_ML_PREDICT());\n+        GraphRunner runner = new GraphRunner();\n+        runner.predict(conf);\n     } catch (Exception e) {\n       LOG.error(\"predict failed\", e);\n       throw e;\n     }\n-  }\n+    }\n \n-  @Test public void testLR() throws Exception {\n+    @Test\n+    public void testLR() throws Exception {\n     setConf();\n     trainTest();\n     incTrain();\n     predictTest();\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 97
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/166/LinearRegTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/166/LinearRegTest.java\nindex 4fc06a19a5..58b9f54671 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/166/LinearRegTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/166/LinearRegTest.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.regression;\n \n import com.tencent.angel.conf.AngelConf;\n",
+            "diff_size": 1
+        }
+    ]
+}

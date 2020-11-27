@@ -1,0 +1,112 @@
+{
+    "error_id": "27",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/27/SplitEntry.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/27/SplitEntry.java\nindex c8a3d1e8b8..d2580115df 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/27/SplitEntry.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/27/SplitEntry.java\n@@ -23,77 +23,77 @@ import org.apache.spark.ml.linalg.Vector;\n \n public abstract class SplitEntry implements Serializable {\n \n-  protected int fid;\n-  protected float gain;\n-\n-  public SplitEntry() {\n-    this(-1, 0.0f);\n-  }\n-\n-  public SplitEntry(int fid, float gain) {\n-    this.fid = fid;\n-    this.gain = gain;\n-  }\n-\n-  public boolean isEmpty() {\n-    return fid == -1;\n-  }\n-\n-  public abstract int flowTo(float x);\n-\n-  public abstract int flowTo(Vector x);\n-\n-  public abstract int defaultTo();\n-\n-  public boolean needReplace(float newGain) {\n-    return gain < newGain;\n-  }\n-\n-  public boolean needReplace(@NotNull SplitEntry e) {\n-    return !compareTo(this, e);\n-  }\n-\n-  /**\n-   * Comparison two split entries, returns true if e1 is better than e2\n-   */\n-  private static boolean compareTo(SplitEntry e1, SplitEntry e2) {\n-    if (e1.gain < e2.gain) {\n-      return false;\n-    } else if (e1.gain > e2.gain) {\n-      return true;\n-    } else {\n-      SplitType t1 = e1.splitType(), t2 = e2.splitType();\n-      if (t1 != t2) {\n-        // in order to reduce model size, we give priority to split point\n-        return t1.compareTo(t2) <= 0;\n-      } else if (t1 == SplitType.SPLIT_POINT) {\n-        // comparison between two split points, we give priority to lower feature index\n-        return e1.fid <= e2.fid;\n-      } else {\n-        // TODO: comparison between two split sets\n-        return true;\n-      }\n+    protected int fid;\n+    protected float gain;\n+\n+    public SplitEntry() {\n+        this(-1, 0.0f);\n+    }\n+\n+    public SplitEntry(int fid, float gain) {\n+        this.fid = fid;\n+        this.gain = gain;\n+    }\n+\n+    public boolean isEmpty() {\n+        return fid == -1;\n+    }\n+\n+    public abstract int flowTo(float x);\n+\n+    public abstract int flowTo(Vector x);\n+\n+    public abstract int defaultTo();\n+\n+    public boolean needReplace(float newGain) {\n+        return gain < newGain;\n     }\n-  }\n \n-  public int getFid() {\n-    return fid;\n-  }\n+    public boolean needReplace(@NotNull SplitEntry e) {\n+        return !compareTo(this, e);\n+    }\n \n-  public void setFid(int fid) {\n-    this.fid = fid;\n-  }\n+    /**\n+     * Comparison two split entries, returns true if e1 is better than e2\n+     */\n+    private static boolean compareTo(SplitEntry e1, SplitEntry e2) {\n+        if (e1.gain < e2.gain) {\n+            return false;\n+        } else if (e1.gain > e2.gain) {\n+            return true;\n+        } else {\n+            SplitType t1 = e1.splitType(), t2 = e2.splitType();\n+            if (t1 != t2) {\n+                // in order to reduce model size, we give priority to split point\n+                return t1.compareTo(t2) <= 0;\n+            } else if (t1 == SplitType.SPLIT_POINT) {\n+                // comparison between two split points, we give priority to lower feature index\n+                return e1.fid <= e2.fid;\n+            } else {\n+                // TODO: comparison between two split sets\n+                return true;\n+            }\n+        }\n+    }\n \n-  public float getGain() {\n-    return gain;\n-  }\n+    public int getFid() {\n+        return fid;\n+    }\n \n-  public void setGain(float gain) {\n-    this.gain = gain;\n-  }\n+    public void setFid(int fid) {\n+        this.fid = fid;\n+    }\n+\n+    public float getGain() {\n+        return gain;\n+    }\n+\n+    public void setGain(float gain) {\n+        this.gain = gain;\n+    }\n \n-  public abstract SplitType splitType();\n+    public abstract SplitType splitType();\n \n-  @Override\n-  public abstract String toString();\n+    @Override\n+    public abstract String toString();\n }\n",
+            "diff_size": 93
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/27/SplitEntry.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/27/SplitEntry.java\nindex c8a3d1e8b8..7d64747a3b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/27/SplitEntry.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/27/SplitEntry.java\n@@ -96,4 +96,4 @@ public abstract class SplitEntry implements Serializable {\n \n   @Override\n   public abstract String toString();\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 60.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 8, expected is 15, indentation should be the same level as line 69.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 8, expected is 15, indentation should be the same level as line 72.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/27/SplitEntry.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/27/SplitEntry.java\nindex c8a3d1e8b8..1f3a170374 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/27/SplitEntry.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/27/SplitEntry.java\n@@ -23,77 +23,79 @@ import org.apache.spark.ml.linalg.Vector;\n \n public abstract class SplitEntry implements Serializable {\n \n-  protected int fid;\n-  protected float gain;\n+    protected int fid;\n+    protected float gain;\n \n-  public SplitEntry() {\n+    public SplitEntry() {\n     this(-1, 0.0f);\n-  }\n+    }\n \n-  public SplitEntry(int fid, float gain) {\n+    public SplitEntry(int fid, float gain) {\n     this.fid = fid;\n     this.gain = gain;\n-  }\n+    }\n \n-  public boolean isEmpty() {\n+    public boolean isEmpty() {\n     return fid == -1;\n-  }\n+    }\n \n-  public abstract int flowTo(float x);\n+    public abstract int flowTo(float x);\n \n-  public abstract int flowTo(Vector x);\n+    public abstract int flowTo(Vector x);\n \n-  public abstract int defaultTo();\n+    public abstract int defaultTo();\n \n-  public boolean needReplace(float newGain) {\n+    public boolean needReplace(float newGain) {\n     return gain < newGain;\n-  }\n+    }\n \n-  public boolean needReplace(@NotNull SplitEntry e) {\n+    public boolean needReplace(@NotNull SplitEntry e) {\n     return !compareTo(this, e);\n-  }\n+    }\n \n   /**\n    * Comparison two split entries, returns true if e1 is better than e2\n    */\n-  private static boolean compareTo(SplitEntry e1, SplitEntry e2) {\n+\n+    private static boolean compareTo(SplitEntry e1, SplitEntry e2) {\n     if (e1.gain < e2.gain) {\n-      return false;\n+        return false;\n     } else if (e1.gain > e2.gain) {\n-      return true;\n+                                                                       return true;\n     } else {\n       SplitType t1 = e1.splitType(), t2 = e2.splitType();\n       if (t1 != t2) {\n         // in order to reduce model size, we give priority to split point\n-        return t1.compareTo(t2) <= 0;\n+               return t1.compareTo(t2) <= 0;\n       } else if (t1 == SplitType.SPLIT_POINT) {\n         // comparison between two split points, we give priority to lower feature index\n-        return e1.fid <= e2.fid;\n+               return e1.fid <= e2.fid;\n       } else {\n         // TODO: comparison between two split sets\n         return true;\n       }\n     }\n-  }\n+    }\n \n-  public int getFid() {\n+    public int getFid() {\n     return fid;\n-  }\n+    }\n \n-  public void setFid(int fid) {\n+    public void setFid(int fid) {\n     this.fid = fid;\n-  }\n+    }\n \n-  public float getGain() {\n+    public float getGain() {\n     return gain;\n-  }\n+    }\n \n-  public void setGain(float gain) {\n+    public void setGain(float gain) {\n     this.gain = gain;\n-  }\n+    }\n+\n+    public abstract SplitType splitType();\n \n-  public abstract SplitType splitType();\n+    @Override\n+    public abstract String toString();\n \n-  @Override\n-  public abstract String toString();\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 37
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

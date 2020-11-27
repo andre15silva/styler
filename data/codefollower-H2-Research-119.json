@@ -1,0 +1,86 @@
+{
+    "error_id": "119",
+    "information": {
+        "errors": [
+            {
+                "line": "75",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "     * @return the last record\n     */\n    public UndoLogRecord getLast() { //\u901a\u5e38\u5728rollback\u65f6\u8c03\u7528\n        int i = records.size() - 1;\n        if (i < 0 && storedEntries > 0) {\n            int last = storedEntriesPos.size() - 1;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/119/UndoLog.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/119/UndoLog.java\nindex 604514102e..926d4caee9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/119/UndoLog.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/119/UndoLog.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (https://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.engine;\n \n import java.util.ArrayList;\n@@ -199,8 +200,8 @@ public class UndoLog {\n //=======\n         memoryUndo++;\n         if (memoryUndo > database.getMaxMemoryUndo() &&\n-                database.isPersistent() &&\n-                !database.isMVStore()) {\n+            database.isPersistent() &&\n+            !database.isMVStore()) {\n             if (file == null) {\n                 String fileName = database.createTempFile();\n                 file = database.openFile(fileName, \"rw\", false);\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "83",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/119/UndoLog.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/119/UndoLog.java\nindex 604514102e..a2fb31d950 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/119/UndoLog.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/119/UndoLog.java\n@@ -7,7 +7,6 @@ package org.h2.engine;\n \n import java.util.ArrayList;\n import java.util.HashMap;\n-\n import org.h2.store.Data;\n import org.h2.store.FileStore;\n import org.h2.table.Table;\n@@ -16,6 +15,8 @@ import org.h2.util.Utils;\n /**\n  * Each session keeps a undo log if rollback is required.\n  */\n+\n+\n public class UndoLog {\n \n     private final Database database;\n@@ -38,6 +39,7 @@ public class UndoLog {\n //        //\u9ed8\u8ba4\u662ftrue\uff0c\u901a\u8fc7prop.setProperty(\"LARGE_TRANSACTIONS\", \"false\")\u8bbe\u4e3afalse\n //        largeTransactions = database.getSettings().largeTransactions;\n //=======\n+\n     UndoLog(Database database) {\n         this.database = database;\n     }\n@@ -47,6 +49,8 @@ public class UndoLog {\n      *\n      * @return the number of rows\n      */\n+\n+\n     int size() {\n         return storedEntries + records.size();\n     }\n@@ -55,6 +59,8 @@ public class UndoLog {\n      * Clear the undo log. This method is called after the transaction is\n      * committed.\n      */\n+\n+\n     void clear() {\n         records.clear();\n         storedEntries = 0;\n@@ -72,6 +78,8 @@ public class UndoLog {\n      *\n      * @return the last record\n      */\n+\n+\n     public UndoLogRecord getLast() { //\u901a\u5e38\u5728rollback\u65f6\u8c03\u7528\n         int i = records.size() - 1;\n         if (i < 0 && storedEntries > 0) {\n@@ -120,6 +128,8 @@ public class UndoLog {\n      *\n      * @param filePos the position in the file\n      */\n+\n+\n     void seek(long filePos) {\n         file.seek(filePos * Constants.FILE_BLOCK_SIZE);\n     }\n@@ -130,6 +140,8 @@ public class UndoLog {\n //<<<<<<< HEAD\n //    void removeLast(boolean trimToSize) { //\u901a\u5e38\u5728rollback\u65f6\u8c03\u7528\n //=======\n+\n+\n     void removeLast() {\n         int i = records.size() - 1;\n         UndoLogRecord r = records.remove(i);\n@@ -143,6 +155,8 @@ public class UndoLog {\n      *\n      * @param entry the entry\n      */\n+\n+\n     void add(UndoLogRecord entry) {\n         records.add(entry);\n //<<<<<<< HEAD\n@@ -198,9 +212,7 @@ public class UndoLog {\n //                    saveIfPossible(entry, rowBuff);\n //=======\n         memoryUndo++;\n-        if (memoryUndo > database.getMaxMemoryUndo() &&\n-                database.isPersistent() &&\n-                !database.isMVStore()) {\n+        if (memoryUndo > database.getMaxMemoryUndo() && database.isPersistent() && !database.isMVStore()) {\n             if (file == null) {\n                 String fileName = database.createTempFile();\n                 file = database.openFile(fileName, \"rw\", false);\n@@ -232,10 +244,11 @@ public class UndoLog {\n      * @param table the table\n      * @return the id\n      */\n+\n     int getTableId(Table table) {\n         int id = table.getId();\n         if (tables == null) {\n-            tables = new HashMap<>();\n+            tables = new HashMap< >();\n         }\n         // need to overwrite the old entry, because the old object\n         // might be deleted in the meantime\n@@ -250,8 +263,10 @@ public class UndoLog {\n      * @param id the table id\n      * @return the table object\n      */\n+\n+\n     Table getTable(int id) {\n         return tables.get(id);\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 24
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/119/UndoLog.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/119/UndoLog.java\nindex 604514102e..018ca8f26d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/119/UndoLog.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/119/UndoLog.java\n@@ -72,7 +72,7 @@ public class UndoLog {\n      *\n      * @return the last record\n      */\n-    public UndoLogRecord getLast() { //\u901a\u5e38\u5728rollback\u65f6\u8c03\u7528\n+public UndoLogRecord getLast() { //\u901a\u5e38\u5728rollback\u65f6\u8c03\u7528\n         int i = records.size() - 1;\n         if (i < 0 && storedEntries > 0) {\n             int last = storedEntriesPos.size() - 1;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

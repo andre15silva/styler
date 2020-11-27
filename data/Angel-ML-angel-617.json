@@ -1,0 +1,124 @@
+{
+    "error_id": "617",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/617/NettyUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/617/NettyUtils.java\nindex f8940341ef..c1126a209f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/617/NettyUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/617/NettyUtils.java\n@@ -22,27 +22,30 @@ import io.netty.util.internal.PlatformDependent;\n import java.lang.reflect.Field;\n \n public class NettyUtils {\n-  public static PooledByteBufAllocator createPooledByteBufAllocator(boolean allowDirectBufs,\n-      boolean allowCache, int numCores) {\n-    if (numCores == 0) {\n-      numCores = Runtime.getRuntime().availableProcessors();\n+    public static PooledByteBufAllocator createPooledByteBufAllocator(boolean allowDirectBufs,\n+                                                                      boolean allowCache,\n+                                                                      int numCores) {\n+        if (numCores == 0) {\n+            numCores = Runtime.getRuntime().availableProcessors();\n+        }\n+        return new PooledByteBufAllocator(\n+                allowDirectBufs && PlatformDependent.directBufferPreferred(),\n+                Math.min(getPrivateStaticField(\"DEFAULT_NUM_HEAP_ARENA\"), numCores), Math.min(\n+                getPrivateStaticField(\"DEFAULT_NUM_DIRECT_ARENA\"), allowDirectBufs ? numCores : 0),\n+                getPrivateStaticField(\"DEFAULT_PAGE_SIZE\"),\n+                getPrivateStaticField(\"DEFAULT_MAX_ORDER\"),\n+                allowCache ? getPrivateStaticField(\"DEFAULT_TINY_CACHE_SIZE\") : 0,\n+                allowCache ? getPrivateStaticField(\"DEFAULT_SMALL_CACHE_SIZE\") : 0,\n+                allowCache ? getPrivateStaticField(\"DEFAULT_NORMAL_CACHE_SIZE\") : 0);\n     }\n-    return new PooledByteBufAllocator(allowDirectBufs && PlatformDependent.directBufferPreferred(),\n-        Math.min(getPrivateStaticField(\"DEFAULT_NUM_HEAP_ARENA\"), numCores), Math.min(\n-            getPrivateStaticField(\"DEFAULT_NUM_DIRECT_ARENA\"), allowDirectBufs ? numCores : 0),\n-        getPrivateStaticField(\"DEFAULT_PAGE_SIZE\"), getPrivateStaticField(\"DEFAULT_MAX_ORDER\"),\n-        allowCache ? getPrivateStaticField(\"DEFAULT_TINY_CACHE_SIZE\") : 0,\n-        allowCache ? getPrivateStaticField(\"DEFAULT_SMALL_CACHE_SIZE\") : 0,\n-        allowCache ? getPrivateStaticField(\"DEFAULT_NORMAL_CACHE_SIZE\") : 0);\n-  }\n \n-  private static int getPrivateStaticField(String name) {\n-    try {\n-      Field f = PooledByteBufAllocator.DEFAULT.getClass().getDeclaredField(name);\n-      f.setAccessible(true);\n-      return f.getInt(null);\n-    } catch (Exception e) {\n-      throw new RuntimeException(e);\n+    private static int getPrivateStaticField(String name) {\n+        try {\n+            Field f = PooledByteBufAllocator.DEFAULT.getClass().getDeclaredField(name);\n+            f.setAccessible(true);\n+            return f.getInt(null);\n+        } catch (Exception e) {\n+            throw new RuntimeException(e);\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 32
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 128).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 257).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 212).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/617/NettyUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/617/NettyUtils.java\nindex f8940341ef..db4048cea9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/617/NettyUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/617/NettyUtils.java\n@@ -22,18 +22,13 @@ import io.netty.util.internal.PlatformDependent;\n import java.lang.reflect.Field;\n \n public class NettyUtils {\n-  public static PooledByteBufAllocator createPooledByteBufAllocator(boolean allowDirectBufs,\n-      boolean allowCache, int numCores) {\n-    if (numCores == 0) {\n+  public static PooledByteBufAllocator createPooledByteBufAllocator(boolean allowDirectBufs, boolean allowCache, int numCores) {\n+  if (numCores == 0) {\n       numCores = Runtime.getRuntime().availableProcessors();\n     }\n     return new PooledByteBufAllocator(allowDirectBufs && PlatformDependent.directBufferPreferred(),\n-        Math.min(getPrivateStaticField(\"DEFAULT_NUM_HEAP_ARENA\"), numCores), Math.min(\n-            getPrivateStaticField(\"DEFAULT_NUM_DIRECT_ARENA\"), allowDirectBufs ? numCores : 0),\n-        getPrivateStaticField(\"DEFAULT_PAGE_SIZE\"), getPrivateStaticField(\"DEFAULT_MAX_ORDER\"),\n-        allowCache ? getPrivateStaticField(\"DEFAULT_TINY_CACHE_SIZE\") : 0,\n-        allowCache ? getPrivateStaticField(\"DEFAULT_SMALL_CACHE_SIZE\") : 0,\n-        allowCache ? getPrivateStaticField(\"DEFAULT_NORMAL_CACHE_SIZE\") : 0);\n+        Math.min(getPrivateStaticField(\"DEFAULT_NUM_HEAP_ARENA\"), numCores), Math.min(getPrivateStaticField(\"DEFAULT_NUM_DIRECT_ARENA\"), allowDirectBufs ? numCores : 0), getPrivateStaticField(\"DEFAULT_PAGE_SIZE\"), getPrivateStaticField(\"DEFAULT_MAX_ORDER\"),\n+        allowCache ? getPrivateStaticField(\"DEFAULT_TINY_CACHE_SIZE\") : 0, allowCache ? getPrivateStaticField(\"DEFAULT_SMALL_CACHE_SIZE\") : 0, allowCache ? getPrivateStaticField(\"DEFAULT_NORMAL_CACHE_SIZE\") : 0);\n   }\n \n   private static int getPrivateStaticField(String name) {\n@@ -45,4 +40,4 @@ public class NettyUtils {\n       throw new RuntimeException(e);\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "25",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 554).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/617/NettyUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/617/NettyUtils.java\nindex f8940341ef..b436cf5885 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/617/NettyUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/617/NettyUtils.java\n@@ -18,31 +18,24 @@ package com.tencent.angel.utils;\n \n import io.netty.buffer.PooledByteBufAllocator;\n import io.netty.util.internal.PlatformDependent;\n-\n import java.lang.reflect.Field;\n \n public class NettyUtils {\n-  public static PooledByteBufAllocator createPooledByteBufAllocator(boolean allowDirectBufs,\n-      boolean allowCache, int numCores) {\n+\n+    public static PooledByteBufAllocator createPooledByteBufAllocator(boolean allowDirectBufs, boolean allowCache, int numCores) {\n     if (numCores == 0) {\n-      numCores = Runtime.getRuntime().availableProcessors();\n+        numCores = Runtime.getRuntime().availableProcessors();\n+    }\n+    return new PooledByteBufAllocator(allowDirectBufs && PlatformDependent.directBufferPreferred(), Math.min(getPrivateStaticField(\"DEFAULT_NUM_HEAP_ARENA\"), numCores), Math.min(getPrivateStaticField(\"DEFAULT_NUM_DIRECT_ARENA\"), allowDirectBufs ? numCores : 0), getPrivateStaticField(\"DEFAULT_PAGE_SIZE\"), getPrivateStaticField(\"DEFAULT_MAX_ORDER\"), allowCache ? getPrivateStaticField(\"DEFAULT_TINY_CACHE_SIZE\") : 0, allowCache ? getPrivateStaticField(\"DEFAULT_SMALL_CACHE_SIZE\") : 0, allowCache ? getPrivateStaticField(\"DEFAULT_NORMAL_CACHE_SIZE\") : 0);\n     }\n-    return new PooledByteBufAllocator(allowDirectBufs && PlatformDependent.directBufferPreferred(),\n-        Math.min(getPrivateStaticField(\"DEFAULT_NUM_HEAP_ARENA\"), numCores), Math.min(\n-            getPrivateStaticField(\"DEFAULT_NUM_DIRECT_ARENA\"), allowDirectBufs ? numCores : 0),\n-        getPrivateStaticField(\"DEFAULT_PAGE_SIZE\"), getPrivateStaticField(\"DEFAULT_MAX_ORDER\"),\n-        allowCache ? getPrivateStaticField(\"DEFAULT_TINY_CACHE_SIZE\") : 0,\n-        allowCache ? getPrivateStaticField(\"DEFAULT_SMALL_CACHE_SIZE\") : 0,\n-        allowCache ? getPrivateStaticField(\"DEFAULT_NORMAL_CACHE_SIZE\") : 0);\n-  }\n \n-  private static int getPrivateStaticField(String name) {\n+    private static int getPrivateStaticField(String name) {\n     try {\n-      Field f = PooledByteBufAllocator.DEFAULT.getClass().getDeclaredField(name);\n-      f.setAccessible(true);\n-      return f.getInt(null);\n+        Field f = PooledByteBufAllocator.DEFAULT.getClass().getDeclaredField(name);\n+        f.setAccessible(true);\n+        return f.getInt(null);\n     } catch (Exception e) {\n       throw new RuntimeException(e);\n     }\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 20
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

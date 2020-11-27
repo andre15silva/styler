@@ -1,0 +1,130 @@
+{
+    "error_id": "864",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/864/CSRIntMat.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/864/CSRIntMat.java\nindex ffb0e4597c..0de8f704e9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/864/CSRIntMat.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/864/CSRIntMat.java\n@@ -23,108 +23,115 @@ import com.tencent.angel.ml.math.TMatrix;\n  */\n public class CSRIntMat extends TMatrix {\n \n-  public int[] rs;\n-  public int[] cols;\n-  public int[] vals;\n-\n-  /**\n-   * Create a new empty matrix.\n-   *\n-   * @param row the row\n-   * @param col the col\n-   */\n-  public CSRIntMat(int row, int col) {\n-    super(row, col);\n-  }\n-\n-  /**\n-   * Create a new matrix with <code>vals</code>.\n-   *\n-   * @param row  the row\n-   * @param col  the col\n-   * @param rs   the rs\n-   * @param cols the cols\n-   * @param vals the vals\n-   */\n-  public CSRIntMat(int row, int col, int[] rs, int[] cols, int[] vals) {\n-    this(row, col);\n-    this.rs = rs;\n-    this.cols = cols;\n-    this.vals = vals;\n-  }\n-\n-  @Override public double sparsity() {\n-    return 0;\n-  }\n-\n-  @Override public long size() {\n-    return 0;\n-  }\n-\n-  @Override public void clear() {\n-    throw new UnsupportedOperationException(\"Unsupport operation\");\n-  }\n-\n-  @Override public void clear(int rowIndex) {\n-    throw new UnsupportedOperationException(\"Unsupport operation\");\n-  }\n-\n-  @Override public long nonZeroNum() {\n-    return 0;\n-  }\n-\n-  @Override public TMatrix plusBy(TMatrix other) {\n-    throw new UnsupportedOperationException(\"Unsupport operation\");\n-  }\n-\n-  /**\n-   * convert to COOIntMatrix\n-   *\n-   * @return\n-   */\n-  public COOIntMatrix toCoo() {\n-    int len = cols.length;\n-    int[] rr = new int[len];\n-    int[] cc = new int[len];\n-    int[] vv = new int[len];\n-\n-    for (int r = 0; r < rs.length - 1; r++) {\n-      for (int j = rs[r]; j < rs[r + 1]; j++) {\n-        rr[j] = r;\n-        cc[j] = cols[j];\n-        vv[j] = vals[j];\n-      }\n+    public int[] rs;\n+    public int[] cols;\n+    public int[] vals;\n+\n+    /**\n+     * Create a new empty matrix.\n+     *\n+     * @param row the row\n+     * @param col the col\n+     */\n+    public CSRIntMat(int row, int col) {\n+        super(row, col);\n     }\n \n-    return new COOIntMatrix(row, col, rr, cc, vv);\n-  }\n-\n-  /**\n-   * information about the matrix\n-   *\n-   * @return String\n-   */\n-  @Override public String toString() {\n-    StringBuilder builder = new StringBuilder();\n-    for (int r = 0; r < rs.length - 1; r++) {\n-      for (int j = rs[r]; j < rs[r + 1]; j++) {\n-        builder.append(String.format(\"%d %d %d\\n\", r, cols[j], vals[j]));\n-      }\n+    /**\n+     * Create a new matrix with <code>vals</code>.\n+     *\n+     * @param row  the row\n+     * @param col  the col\n+     * @param rs   the rs\n+     * @param cols the cols\n+     * @param vals the vals\n+     */\n+    public CSRIntMat(int row, int col, int[] rs, int[] cols, int[] vals) {\n+        this(row, col);\n+        this.rs = rs;\n+        this.cols = cols;\n+        this.vals = vals;\n     }\n-    return builder.toString();\n-  }\n-\n-  /**\n-   * information about the matrix by r index\n-   *\n-   * @param r\n-   * @return\n-   */\n-  public String str(int r) {\n-    StringBuilder builder = new StringBuilder();\n-    for (int j = rs[r]; j < rs[r + 1]; j++) {\n-      builder.append(String.format(\"%d %d %d\\n\", r, cols[j], vals[j]));\n+\n+    @Override\n+    public double sparsity() {\n+        return 0;\n+    }\n+\n+    @Override\n+    public long size() {\n+        return 0;\n+    }\n+\n+    @Override\n+    public void clear() {\n+        throw new UnsupportedOperationException(\"Unsupport operation\");\n+    }\n+\n+    @Override\n+    public void clear(int rowIndex) {\n+        throw new UnsupportedOperationException(\"Unsupport operation\");\n+    }\n+\n+    @Override\n+    public long nonZeroNum() {\n+        return 0;\n+    }\n+\n+    @Override\n+    public TMatrix plusBy(TMatrix other) {\n+        throw new UnsupportedOperationException(\"Unsupport operation\");\n+    }\n+\n+    /**\n+     * convert to COOIntMatrix\n+     *\n+     * @return\n+     */\n+    public COOIntMatrix toCoo() {\n+        int len = cols.length;\n+        int[] rr = new int[len];\n+        int[] cc = new int[len];\n+        int[] vv = new int[len];\n+\n+        for (int r = 0; r < rs.length - 1; r++) {\n+            for (int j = rs[r]; j < rs[r + 1]; j++) {\n+                rr[j] = r;\n+                cc[j] = cols[j];\n+                vv[j] = vals[j];\n+            }\n+        }\n+\n+        return new COOIntMatrix(row, col, rr, cc, vv);\n+    }\n+\n+    /**\n+     * information about the matrix\n+     *\n+     * @return String\n+     */\n+    @Override\n+    public String toString() {\n+        StringBuilder builder = new StringBuilder();\n+        for (int r = 0; r < rs.length - 1; r++) {\n+            for (int j = rs[r]; j < rs[r + 1]; j++) {\n+                builder.append(String.format(\"%d %d %d\\n\", r, cols[j], vals[j]));\n+            }\n+        }\n+        return builder.toString();\n+    }\n+\n+    /**\n+     * information about the matrix by r index\n+     *\n+     * @param r\n+     * @return\n+     */\n+    public String str(int r) {\n+        StringBuilder builder = new StringBuilder();\n+        for (int j = rs[r]; j < rs[r + 1]; j++) {\n+            builder.append(String.format(\"%d %d %d\\n\", r, cols[j], vals[j]));\n+        }\n+        return builder.toString();\n     }\n-    return builder.toString();\n-  }\n }\n",
+            "diff_size": 168
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/864/CSRIntMat.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/864/CSRIntMat.java\nindex ffb0e4597c..3653b446d2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/864/CSRIntMat.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/864/CSRIntMat.java\n@@ -53,27 +53,33 @@ public class CSRIntMat extends TMatrix {\n     this.vals = vals;\n   }\n \n-  @Override public double sparsity() {\n+  @Override\n+public double sparsity() {\n     return 0;\n   }\n \n-  @Override public long size() {\n+  @Override\n+public long size() {\n     return 0;\n   }\n \n-  @Override public void clear() {\n+  @Override\n+public void clear() {\n     throw new UnsupportedOperationException(\"Unsupport operation\");\n   }\n \n-  @Override public void clear(int rowIndex) {\n+  @Override\n+public void clear(int rowIndex) {\n     throw new UnsupportedOperationException(\"Unsupport operation\");\n   }\n \n-  @Override public long nonZeroNum() {\n+  @Override\n+public long nonZeroNum() {\n     return 0;\n   }\n \n-  @Override public TMatrix plusBy(TMatrix other) {\n+  @Override\n+public TMatrix plusBy(TMatrix other) {\n     throw new UnsupportedOperationException(\"Unsupport operation\");\n   }\n \n@@ -104,7 +110,8 @@ public class CSRIntMat extends TMatrix {\n    *\n    * @return String\n    */\n-  @Override public String toString() {\n+  @Override\n+public String toString() {\n     StringBuilder builder = new StringBuilder();\n     for (int r = 0; r < rs.length - 1; r++) {\n       for (int j = rs[r]; j < rs[r + 1]; j++) {\n@@ -127,4 +134,4 @@ public class CSRIntMat extends TMatrix {\n     }\n     return builder.toString();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "33",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 40.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 54.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 97.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "112",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 118.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "123",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 113).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "129",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 136.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/864/CSRIntMat.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/864/CSRIntMat.java\nindex ffb0e4597c..46740989fb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/864/CSRIntMat.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/864/CSRIntMat.java\n@@ -21,11 +21,14 @@ import com.tencent.angel.ml.math.TMatrix;\n /**\n  * The compressed sparse row of matrix.\n  */\n+\n public class CSRIntMat extends TMatrix {\n \n-  public int[] rs;\n-  public int[] cols;\n-  public int[] vals;\n+    public int[] rs;\n+\n+    public int[] cols;\n+\n+    public int[] vals;\n \n   /**\n    * Create a new empty matrix.\n@@ -33,9 +36,10 @@ public class CSRIntMat extends TMatrix {\n    * @param row the row\n    * @param col the col\n    */\n-  public CSRIntMat(int row, int col) {\n+\n+    public CSRIntMat(int row, int col) {\n     super(row, col);\n-  }\n+    }\n \n   /**\n    * Create a new matrix with <code>vals</code>.\n@@ -46,73 +50,81 @@ public class CSRIntMat extends TMatrix {\n    * @param cols the cols\n    * @param vals the vals\n    */\n-  public CSRIntMat(int row, int col, int[] rs, int[] cols, int[] vals) {\n+\n+    public CSRIntMat(int row, int col, int[] rs, int[] cols, int[] vals) {\n     this(row, col);\n     this.rs = rs;\n     this.cols = cols;\n     this.vals = vals;\n-  }\n+    }\n \n-  @Override public double sparsity() {\n+    @Override\n+    public double sparsity() {\n     return 0;\n-  }\n+    }\n \n-  @Override public long size() {\n+    @Override\n+    public long size() {\n     return 0;\n-  }\n+    }\n \n-  @Override public void clear() {\n+    @Override\n+    public void clear() {\n     throw new UnsupportedOperationException(\"Unsupport operation\");\n-  }\n+    }\n \n-  @Override public void clear(int rowIndex) {\n+    @Override\n+    public void clear(int rowIndex) {\n     throw new UnsupportedOperationException(\"Unsupport operation\");\n-  }\n+    }\n \n-  @Override public long nonZeroNum() {\n+    @Override\n+    public long nonZeroNum() {\n     return 0;\n-  }\n+    }\n \n-  @Override public TMatrix plusBy(TMatrix other) {\n+    @Override\n+    public TMatrix plusBy(TMatrix other) {\n     throw new UnsupportedOperationException(\"Unsupport operation\");\n-  }\n+    }\n \n   /**\n    * convert to COOIntMatrix\n    *\n    * @return\n    */\n-  public COOIntMatrix toCoo() {\n+\n+    public COOIntMatrix toCoo() {\n     int len = cols.length;\n     int[] rr = new int[len];\n     int[] cc = new int[len];\n     int[] vv = new int[len];\n-\n     for (int r = 0; r < rs.length - 1; r++) {\n-      for (int j = rs[r]; j < rs[r + 1]; j++) {\n-        rr[j] = r;\n-        cc[j] = cols[j];\n-        vv[j] = vals[j];\n-      }\n+        for (int j = rs[r]; j < rs[r + 1]; j++) {\n+                                                rr[j] = r;\n+                                                cc[j] = cols[j];\n+                                                vv[j] = vals[j];\n+        }\n     }\n-\n     return new COOIntMatrix(row, col, rr, cc, vv);\n-  }\n+    }\n \n   /**\n    * information about the matrix\n    *\n    * @return String\n    */\n-  @Override public String toString() {\n+\n+    @Override\n+    public String toString() {\n     StringBuilder builder = new StringBuilder();\n     for (int r = 0; r < rs.length - 1; r++) {\n-      for (int j = rs[r]; j < rs[r + 1]; j++) {\n-        builder.append(String.format(\"%d %d %d\\n\", r, cols[j], vals[j]));\n-      }\n+        for (int j = rs[r]; j < rs[r + 1]; j++) {\n+                                                builder.append(String.format(\"%d %d %d\\n\", r, cols[j], vals[j]));\n+        }\n     }\n     return builder.toString();\n-  }\n+    }\n \n   /**\n    * information about the matrix by r index\n@@ -120,11 +132,12 @@ public class CSRIntMat extends TMatrix {\n    * @param r\n    * @return\n    */\n-  public String str(int r) {\n+\n+    public String str(int r) {\n     StringBuilder builder = new StringBuilder();\n     for (int j = rs[r]; j < rs[r + 1]; j++) {\n-      builder.append(String.format(\"%d %d %d\\n\", r, cols[j], vals[j]));\n+        builder.append(String.format(\"%d %d %d\\n\", r, cols[j], vals[j]));\n     }\n     return builder.toString();\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 52
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

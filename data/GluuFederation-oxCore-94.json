@@ -1,0 +1,53 @@
+{
+    "error_id": "94",
+    "information": {
+        "errors": [
+            {
+                "line": "39",
+                "column": "13",
+                "severity": "error",
+                "message": "File contains tab characters (this is the first instance).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"
+            }
+        ]
+    },
+    "source_code": "            String name = token.substring(0, pos);\n            if (attributeName == null) {\n            \tattributeName = name;\n            }\n            String value = token.substring(pos + 1, token.length());\n            if (StringHelper.equalsIgnoreCase(name, \"o\")) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/94/GenericKeyConverter.java\nindex 4e3b2c08d6..71b55dde38 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler/94/GenericKeyConverter.java\n@@ -36,7 +36,7 @@ public class GenericKeyConverter {\n \n             String name = token.substring(0, pos);\n             if (attributeName == null) {\n-            \tattributeName = name;\n+            attributeName = name;\n             }\n             String value = token.substring(pos + 1, token.length());\n             if (StringHelper.equalsIgnoreCase(name, \"o\")) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/94/GenericKeyConverter.java\nindex 4e3b2c08d6..19c35feb4b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/intellij/94/GenericKeyConverter.java\n@@ -36,7 +36,7 @@ public class GenericKeyConverter {\n \n             String name = token.substring(0, pos);\n             if (attributeName == null) {\n-            \tattributeName = name;\n+                attributeName = name;\n             }\n             String value = token.substring(pos + 1, token.length());\n             if (StringHelper.equalsIgnoreCase(name, \"o\")) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/94/GenericKeyConverter.java\nindex 4e3b2c08d6..d6512588be 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/naturalize/94/GenericKeyConverter.java\n@@ -36,8 +36,8 @@ public class GenericKeyConverter {\n \n             String name = token.substring(0, pos);\n             if (attributeName == null) {\n-            \tattributeName = name;\n-            }\n+    attributeName = name;\n+    }\n             String value = token.substring(pos + 1, token.length());\n             if (StringHelper.equalsIgnoreCase(name, \"o\")) {\n                 if (!StringHelper.equalsIgnoreCase(value, \"gluu\")) {\n@@ -59,4 +59,4 @@ public class GenericKeyConverter {\n         return new ParsedKey(key, attributeName, orgInum);\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/codebuff/94/GenericKeyConverter.java\nindex 4e3b2c08d6..c8bbac8268 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/codebuff/94/GenericKeyConverter.java\n@@ -16,6 +16,8 @@ import org.gluu.util.StringHelper;\n  *\n  * @author Yuriy Movchan Date: 05/30/2018\n  */\n+\n+\n public class GenericKeyConverter {\n \n     public ParsedKey convertToKey(String dn) {\n@@ -25,7 +27,6 @@ public class GenericKeyConverter {\n \n         StringBuilder result = new StringBuilder();\n         String[] tokens = dn.split(\",\");\n-\n         String orgInum = null;\n         String attributeName = null;\n         for (String token : tokens) {\n@@ -36,16 +37,17 @@ public class GenericKeyConverter {\n \n             String name = token.substring(0, pos);\n             if (attributeName == null) {\n-            \tattributeName = name;\n+                attributeName = name;\n             }\n+\n             String value = token.substring(pos + 1, token.length());\n             if (StringHelper.equalsIgnoreCase(name, \"o\")) {\n                 if (!StringHelper.equalsIgnoreCase(value, \"gluu\")) {\n                     orgInum = value;\n                 }\n+\n                 continue;\n             }\n-\n             result.insert(0, \"_\" + value);\n         }\n \n@@ -59,4 +61,4 @@ public class GenericKeyConverter {\n         return new ParsedKey(key, attributeName, orgInum);\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/94/GenericKeyConverter.java\nindex 4e3b2c08d6..71b55dde38 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_random/94/GenericKeyConverter.java\n@@ -36,7 +36,7 @@ public class GenericKeyConverter {\n \n             String name = token.substring(0, pos);\n             if (attributeName == null) {\n-            \tattributeName = name;\n+            attributeName = name;\n             }\n             String value = token.substring(pos + 1, token.length());\n             if (StringHelper.equalsIgnoreCase(name, \"o\")) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/94/GenericKeyConverter.java\nindex 4e3b2c08d6..71b55dde38 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/errored/1/94/GenericKeyConverter.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/GluuFederation-oxCore/styler_three_grams/94/GenericKeyConverter.java\n@@ -36,7 +36,7 @@ public class GenericKeyConverter {\n \n             String name = token.substring(0, pos);\n             if (attributeName == null) {\n-            \tattributeName = name;\n+            attributeName = name;\n             }\n             String value = token.substring(pos + 1, token.length());\n             if (StringHelper.equalsIgnoreCase(name, \"o\")) {\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,111 @@
+{
+    "error_id": "168",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.internal.assembler;\n\nimport static org.seedstack.business.internal.utils.BusinessUtils.streamClasses;\nimport static org.seedstack.business.internal.utils.PluginUtils.associateInterfaceToImplementations;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "9",
+                    "column": "13",
+                    "severity": "warning",
+                    "message": "'.' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/168/AssemblerPlugin.java\nindex 2920837fd2..d7cda8c252 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/168/AssemblerPlugin.java\n@@ -5,7 +5,8 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n-package org.seedstack.business.internal.assembler;\n+\n+package org .seedstack.business.internal.assembler;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.streamClasses;\n import static org.seedstack.business.internal.utils.PluginUtils.associateInterfaceToImplementations;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/168/AssemblerPlugin.java\nindex 2920837fd2..590941ad29 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/168/AssemblerPlugin.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.internal.assembler;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.streamClasses;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "63",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 132).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "66",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "72",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/168/AssemblerPlugin.java\nindex 2920837fd2..ac5414ceae 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/168/AssemblerPlugin.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.internal.assembler;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.streamClasses;\n@@ -59,19 +60,16 @@ public class AssemblerPlugin extends AbstractSeedPlugin {\n     public InitState initialize(InitContext initContext) {\n         Map<Specification, Collection<Class<?>>> classesBySpec = initContext.scannedTypesBySpecification();\n \n-        streamClasses(classesBySpec.get(BusinessSpecifications.EXPLICIT_ASSEMBLER), Assembler.class).forEach(\n-                assemblerClasses::add);\n+        streamClasses(classesBySpec.get(BusinessSpecifications.EXPLICIT_ASSEMBLER), Assembler.class).forEach(assemblerClasses::add);\n         LOGGER.debug(\"Assemblers => {}\", assemblerClasses);\n \n-        streamClasses(classesBySpec.get(BusinessSpecifications.DEFAULT_ASSEMBLER), Assembler.class).forEach(\n-                defaultAssemblerClasses::add);\n+        streamClasses(classesBySpec.get(BusinessSpecifications.DEFAULT_ASSEMBLER), Assembler.class).forEach(defaultAssemblerClasses::add);\n         LOGGER.debug(\"Default assemblers => {}\", defaultAssemblerClasses);\n \n         streamClasses(classesBySpec.get(BusinessSpecifications.DTO_OF), Object.class).forEach(dtoOfClasses::add);\n         LOGGER.debug(\"DTO classes mappable with default assemblers => {}\", dtoOfClasses);\n \n-        streamClasses(classesBySpec.get(BusinessSpecifications.DTO_INFO_RESOLVER), DtoInfoResolver.class).forEach(\n-                dtoInfoResolverClasses::add);\n+        streamClasses(classesBySpec.get(BusinessSpecifications.DTO_INFO_RESOLVER), DtoInfoResolver.class).forEach(dtoInfoResolverClasses::add);\n         sortByPriority(dtoInfoResolverClasses);\n         LOGGER.debug(\"DTO info resolvers => {}\", dtoInfoResolverClasses);\n \n@@ -81,8 +79,7 @@ public class AssemblerPlugin extends AbstractSeedPlugin {\n \n         // Then add bindings for default assemblers\n         bindingStrategies.addAll(new DefaultAssemblerCollector(getApplication(), bindings, defaultAssemblerClasses)\n-                .collect(dtoOfClasses)\n-        );\n+                .collect(dtoOfClasses));\n \n         return InitState.INITIALIZED;\n     }\n@@ -96,4 +93,4 @@ public class AssemblerPlugin extends AbstractSeedPlugin {\n     public Object nativeOverridingUnitModule() {\n         return new AssemblerOverridingModule(overridingBindings);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "65",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 139).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/168/AssemblerPlugin.java\nindex 2920837fd2..a5472c3e18 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/168/AssemblerPlugin.java\n@@ -8,9 +8,10 @@\n package org.seedstack.business.internal.assembler;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.streamClasses;\n+\n import static org.seedstack.business.internal.utils.PluginUtils.associateInterfaceToImplementations;\n-import static org.seedstack.shed.misc.PriorityUtils.sortByPriority;\n \n+import static org.seedstack.shed.misc.PriorityUtils.sortByPriority;\n import com.google.inject.Key;\n import io.nuun.kernel.api.plugin.InitState;\n import io.nuun.kernel.api.plugin.context.InitContext;\n@@ -30,7 +31,9 @@ import org.seedstack.seed.core.internal.guice.BindingStrategy;\n import org.slf4j.Logger;\n import org.slf4j.LoggerFactory;\n \n+\n public class AssemblerPlugin extends AbstractSeedPlugin {\n+\n     private static final Logger LOGGER = LoggerFactory.getLogger(AssemblerPlugin.class);\n     private final Collection<Class<? extends Assembler>> assemblerClasses = new HashSet<>();\n     private final Collection<Class<? extends Assembler>> defaultAssemblerClasses = new HashSet<>();\n@@ -39,7 +42,6 @@ public class AssemblerPlugin extends AbstractSeedPlugin {\n     private final Map<Key<?>, Class<?>> bindings = new HashMap<>();\n     private final Map<Key<?>, Class<?>> overridingBindings = new HashMap<>();\n     private final Collection<BindingStrategy> bindingStrategies = new ArrayList<>();\n-\n     @Override\n     public String name() {\n         return \"business-assemblers\";\n@@ -48,30 +50,24 @@ public class AssemblerPlugin extends AbstractSeedPlugin {\n     @Override\n     public Collection<ClasspathScanRequest> classpathScanRequests() {\n         return classpathScanRequestBuilder().specification(BusinessSpecifications.EXPLICIT_ASSEMBLER)\n-                .specification(BusinessSpecifications.DEFAULT_ASSEMBLER)\n-                .specification(BusinessSpecifications.DTO_INFO_RESOLVER)\n-                .specification(BusinessSpecifications.DTO_OF)\n-                .build();\n+.specification(BusinessSpecifications.DEFAULT_ASSEMBLER)\n+.specification(BusinessSpecifications.DTO_INFO_RESOLVER)\n+.specification(BusinessSpecifications.DTO_OF)\n+.build();\n     }\n \n-    @SuppressWarnings({\"rawtypes\", \"unchecked\"})\n-    @Override\n+    @SuppressWarnings({\"rawtypes\", \"unchecked\"}) @Override\n     public InitState initialize(InitContext initContext) {\n         Map<Specification, Collection<Class<?>>> classesBySpec = initContext.scannedTypesBySpecification();\n-\n-        streamClasses(classesBySpec.get(BusinessSpecifications.EXPLICIT_ASSEMBLER), Assembler.class).forEach(\n-                assemblerClasses::add);\n+        streamClasses(classesBySpec.get(BusinessSpecifications.EXPLICIT_ASSEMBLER),\n+            Assembler.class).forEach(assemblerClasses::add);\n         LOGGER.debug(\"Assemblers => {}\", assemblerClasses);\n-\n-        streamClasses(classesBySpec.get(BusinessSpecifications.DEFAULT_ASSEMBLER), Assembler.class).forEach(\n-                defaultAssemblerClasses::add);\n+        streamClasses(classesBySpec.get(BusinessSpecifications.DEFAULT_ASSEMBLER), Assembler.class).forEach(defaultAssemblerClasses::add);\n         LOGGER.debug(\"Default assemblers => {}\", defaultAssemblerClasses);\n-\n         streamClasses(classesBySpec.get(BusinessSpecifications.DTO_OF), Object.class).forEach(dtoOfClasses::add);\n         LOGGER.debug(\"DTO classes mappable with default assemblers => {}\", dtoOfClasses);\n-\n-        streamClasses(classesBySpec.get(BusinessSpecifications.DTO_INFO_RESOLVER), DtoInfoResolver.class).forEach(\n-                dtoInfoResolverClasses::add);\n+        streamClasses(classesBySpec.get(BusinessSpecifications.DTO_INFO_RESOLVER),\n+            DtoInfoResolver.class).forEach(dtoInfoResolverClasses::add);\n         sortByPriority(dtoInfoResolverClasses);\n         LOGGER.debug(\"DTO info resolvers => {}\", dtoInfoResolverClasses);\n \n@@ -80,10 +76,7 @@ public class AssemblerPlugin extends AbstractSeedPlugin {\n         overridingBindings.putAll(associateInterfaceToImplementations(Assembler.class, assemblerClasses, true));\n \n         // Then add bindings for default assemblers\n-        bindingStrategies.addAll(new DefaultAssemblerCollector(getApplication(), bindings, defaultAssemblerClasses)\n-                .collect(dtoOfClasses)\n-        );\n-\n+        bindingStrategies.addAll(new DefaultAssemblerCollector(getApplication(), bindings, defaultAssemblerClasses).collect(dtoOfClasses));\n         return InitState.INITIALIZED;\n     }\n \n@@ -96,4 +89,4 @@ public class AssemblerPlugin extends AbstractSeedPlugin {\n     public Object nativeOverridingUnitModule() {\n         return new AssemblerOverridingModule(overridingBindings);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "9",
+                    "column": "13",
+                    "severity": "warning",
+                    "message": "'.' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/168/AssemblerPlugin.java\nindex 2920837fd2..d7cda8c252 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/168/AssemblerPlugin.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/168/AssemblerPlugin.java\n@@ -5,7 +5,8 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n-package org.seedstack.business.internal.assembler;\n+\n+package org .seedstack.business.internal.assembler;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.streamClasses;\n import static org.seedstack.business.internal.utils.PluginUtils.associateInterfaceToImplementations;\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

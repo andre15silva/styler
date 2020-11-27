@@ -1,0 +1,185 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en" ng-app="styler-experiments" ng-controller="mainController">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{pageTitle}}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/diff2html/2.3.1/diff2html.min.css">
+    <link rel="stylesheet" href="style/style.css">
+
+
+    <!-- JS -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-touch.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/angu-fixed-header-table@1.2.1/angu-fixed-header-table.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script
+        src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/diff2html/2.3.1/diff2html.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/diff2html/2.3.1/diff2html-ui.min.js"></script>
+
+    <script src="js/app.js"></script>
+</head>
+
+<body keypress-events>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <h2>Styler experiments (showing {{filteredError.length}})
+                    <a href="http://bears-bugs.github.io/bears-benchmark/charts.html"><i class="fa fa-bar-chart"
+                            aria-hidden="true"></i></a>
+                    <a href="https://github.com/bears-bugs/bears-benchmark">
+                        <i class="fa fa-github" aria-hidden="true"></i></a></h2>
+            </div>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="menu" class="nav navbar-nav side-nav">
+                    <li>
+                        <h3>Filters</h3>
+                    </li>
+                    <li>
+                        <div>
+                            Match
+                            <label><input type="radio" name="match" value="any" ng-model="match"> Any</label>
+                            <label><input type="radio" name="match" value="all" ng-model="match"> All</label>
+                            filters
+                        </div>
+                    </li>
+                    <li ng-repeat="(topFilter, filters) in classifications">
+                        <h4>> {{ topFilter }}</h4>
+                        <ul class="nav">
+                            <li ng-repeat="(key,values) in filters">
+                                <a href="#" ng-click="submenu1 = !submenu1">
+                                    <h5> {{ key }}</h5><i class="fa fa-fw fa-angle-down pull-right"
+                                        style="margin-top:-16px;"></i>
+                                </a>
+                                <ul class="collapse" uib-collapse="!submenu1">
+                                    <li ng-repeat="(vKey,value) in values">
+                                        <label for="{{ vKey }}" ng-class="{'actived': filter[vKey]}"><input
+                                                type="checkbox" id="{{ vKey }}" ng-model="filter[vKey]"
+                                                ng-click="clickFilter(vKey)">{{value.name}}
+                                            ({{ countErrors(vKey, value) }})</label>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row" id="main">
+                    <section class="filters" ng-show="filteredError.length != errors.length">
+                        Match {{match}} of these filter(s):
+                        <span class="filter" ng-repeat="(k,v) in filter" ng-if="v"
+                            ng-click="filter[k]=false">{{filterName(k)}} <i class="fa fa-fw fa-times"></i></span>
+                    </section>
+                    <table fixed-header id="mainTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 200px;">
+                                    <a href="#" ng-click="sort('error.project_name')">
+                                        Project
+                                        <span ng-show="sortType == 'error.project_name' && sortReverse"
+                                            class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'error.project_name' && !sortReverse"
+                                            class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="#" ng-click="sort('error.error_id')">
+                                        Bug ID
+                                        <span ng-show="sortType == 'error.error_id' && sortReverse"
+                                            class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'error.error_id' && !sortReverse"
+                                            class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th style="text-align:left;">
+                                    <a href="#" ng-click="sort('error.error_type')">
+                                        Checkstyle rule
+                                        <span ng-show="sortType == 'error.error_type' && sortReverse"
+                                            class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'error.error_type' && !sortReverse"
+                                            class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th style="text-align:left;">
+                                    <a href="#" ng-click="sort('error.error_message')">
+                                        Message
+                                        <span ng-show="sortType == 'error.error_message' && sortReverse"
+                                            class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'error.error_message' && !sortReverse"
+                                            class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="error in errors| orderBy:sortType:sortReverse| filter:errorsFilter as filteredError"
+                                ng-click="openError(error)">
+                                <td><a href="{{ error.project_name }}">{{ error.project_name }}</a></td>
+                                <td><a href="{{ error.error_id }}">{{ error.error_id }}</a></td>
+                                <td style="text-align:left;">{{ error.error_type }}</td>
+                                <td style="text-align:left;">{{ error.error_message }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div><!-- /#wrapper -->
+    <span ng-controller="errorController"></span>
+</body>
+<script type="text/ng-template" id="modelError.html">
+    <div class="modal-header">
+        <a ng-click="$ctrl.previousError()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous Bug</a> | <a
+            ng-click="$ctrl.nextError()">Next Bug <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <h3>Error</h3>
+        <section ng-repeat="error in $ctrl.info.information.errors">
+            <h3>{{[error.severity]}} {{error.source}}:{{error.line}}:{{error.column}}</h3>
+            <h3>{{error.message}}</h3><br>
+        </section>
+        <div error="$ctrl.info"></div>
+
+        <div ng-repeat="tool in $ctrl.info.results">
+            <h3 ng-class="{'valid':$ctrl.error[tool.tool]}">{{tool.tool}} (diff: {{tool.diff_size}})</h3>
+            <div diff="tool.diff" ng-if="tool.diff"></div>
+            <div ng-repeat="error in tool.errors">
+                [{{error.severity}}] {{error.source}}:{{error.line}}:{{error.column}}
+                {{error.message}}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+    </div>
+</script>
+
+</html>

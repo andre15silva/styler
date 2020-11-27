@@ -1,0 +1,72 @@
+{
+    "error_id": "101",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.finder;\n\nimport java.util.List;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/101/BaseRangeFinder.java\nindex 9965b3d1da..ca24bff1ff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/101/BaseRangeFinder.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.finder;\n \n import java.util.List;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/101/BaseRangeFinder.java\nindex 9965b3d1da..ca24bff1ff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/101/BaseRangeFinder.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.finder;\n \n import java.util.List;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "warning",
+                    "message": "'class def rcurly' has incorrect indentation level 12, expected level should be 0.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/101/BaseRangeFinder.java\nindex 9965b3d1da..9b828585cb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/101/BaseRangeFinder.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.finder;\n \n import java.util.List;\n@@ -41,5 +42,4 @@ public abstract class BaseRangeFinder<T, C> implements RangeFinder<T, C> {\n      * @return the total number of item\n      */\n     protected abstract long computeFullRequestSize(C criteria);\n-\n-}\n+            }\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "21",
+                    "column": "39",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/101/BaseRangeFinder.java\nindex 9965b3d1da..2030acb2d9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/101/BaseRangeFinder.java\n@@ -15,12 +15,15 @@ import java.util.List;\n  * @param <T> the type of the items to return\n  * @param <C> the type of criteria used to filter\n  */\n+\n+\n @Deprecated\n-public abstract class BaseRangeFinder<T, C> implements RangeFinder<T, C> {\n+public abstract class BaseRangeFinder <T, C> implements RangeFinder<T, C> {\n \n     @Override\n     public Result<T> find(Range range, C criteria) {\n         long resultSize = computeFullRequestSize(criteria);\n+\n         List<T> list = computeResultList(range, criteria);\n         return new Result<>(list, range.getOffset(), resultSize);\n     }\n@@ -32,6 +35,8 @@ public abstract class BaseRangeFinder<T, C> implements RangeFinder<T, C> {\n      * @param criteria the criteria\n      * @return the sub list of item\n      */\n+\n+\n     protected abstract List<T> computeResultList(Range range, C criteria);\n \n     /**\n@@ -41,5 +46,4 @@ public abstract class BaseRangeFinder<T, C> implements RangeFinder<T, C> {\n      * @return the total number of item\n      */\n     protected abstract long computeFullRequestSize(C criteria);\n-\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/101/BaseRangeFinder.java\nindex 9965b3d1da..ca24bff1ff 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/101/BaseRangeFinder.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/101/BaseRangeFinder.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.finder;\n \n import java.util.List;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

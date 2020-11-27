@@ -1,0 +1,124 @@
+{
+    "error_id": "904",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/904/MomentumUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/904/MomentumUpdateFunc.java\nindex ebe1fd5fff..401ffdd6d2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/904/MomentumUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/904/MomentumUpdateFunc.java\n@@ -27,56 +27,56 @@ import org.apache.commons.logging.LogFactory;\n \n public class MomentumUpdateFunc extends OptMMUpdateFunc {\n \n-  private static final Log LOG = LogFactory.getLog(MomentumUpdateFunc.class);\n-\n-  public MomentumUpdateFunc() {\n-    super();\n-  }\n-\n-  public MomentumUpdateFunc(int matId, int factor, double momentum, double lr) {\n-    this(matId, factor, momentum, lr, 0.0, 1);\n-  }\n-\n-  public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam) {\n-    this(matId, offset, momentum, lr, regParam, 1);\n-  }\n-\n-  public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam,\n-      int batchSize) {\n-    super(matId, new int[]{offset}, new double[]{momentum, lr, regParam, batchSize});\n-  }\n-\n-  @Override\n-  public void update(RowBasedPartition partition, int factor, double[] scalars) {\n-    double momentum = scalars[0];\n-    double lr = scalars[1];\n-    double regParam = scalars[2];\n-    double batchSize = scalars[3];\n-\n-    for (int f = 0; f < factor; f++) {\n-      ServerRow gradientServerRow = partition.getRow(f + 2 * factor);\n-      try {\n-        gradientServerRow.startWrite();\n-        Vector weight = ServerRowUtils.getVector(partition.getRow(f));\n-        Vector velocity = ServerRowUtils.getVector(partition.getRow(f + factor));\n-        Vector gradient = ServerRowUtils.getVector(gradientServerRow);\n-\n-        if (batchSize > 1) {\n-          gradient.idiv(batchSize);\n-        }\n+    private static final Log LOG = LogFactory.getLog(MomentumUpdateFunc.class);\n \n-        if (regParam != 0.0) {\n-          gradient.iaxpy(weight, regParam);\n-        }\n+    public MomentumUpdateFunc() {\n+        super();\n+    }\n \n-        velocity.imul(momentum).iadd(gradient);\n-        weight.isub(velocity.mul(lr));\n+    public MomentumUpdateFunc(int matId, int factor, double momentum, double lr) {\n+        this(matId, factor, momentum, lr, 0.0, 1);\n+    }\n \n-        gradient.clear();\n-      } finally {\n-        gradientServerRow.endWrite();\n-      }\n+    public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam) {\n+        this(matId, offset, momentum, lr, regParam, 1);\n+    }\n+\n+    public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam,\n+                              int batchSize) {\n+        super(matId, new int[] {offset}, new double[] {momentum, lr, regParam, batchSize});\n+    }\n+\n+    @Override\n+    public void update(RowBasedPartition partition, int factor, double[] scalars) {\n+        double momentum = scalars[0];\n+        double lr = scalars[1];\n+        double regParam = scalars[2];\n+        double batchSize = scalars[3];\n+\n+        for (int f = 0; f < factor; f++) {\n+            ServerRow gradientServerRow = partition.getRow(f + 2 * factor);\n+            try {\n+                gradientServerRow.startWrite();\n+                Vector weight = ServerRowUtils.getVector(partition.getRow(f));\n+                Vector velocity = ServerRowUtils.getVector(partition.getRow(f + factor));\n+                Vector gradient = ServerRowUtils.getVector(gradientServerRow);\n+\n+                if (batchSize > 1) {\n+                    gradient.idiv(batchSize);\n+                }\n+\n+                if (regParam != 0.0) {\n+                    gradient.iaxpy(weight, regParam);\n+                }\n+\n+                velocity.imul(momentum).iadd(gradient);\n+                weight.isub(velocity.mul(lr));\n+\n+                gradient.clear();\n+            } finally {\n+                gradientServerRow.endWrite();\n+            }\n+        }\n     }\n-  }\n \n }\n",
+            "diff_size": 84
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 112).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/904/MomentumUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/904/MomentumUpdateFunc.java\nindex ebe1fd5fff..c39cf977a9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/904/MomentumUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/904/MomentumUpdateFunc.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.psf.optimizer;\n \n import com.tencent.angel.ml.math2.vector.Vector;\n@@ -41,8 +40,7 @@ public class MomentumUpdateFunc extends OptMMUpdateFunc {\n     this(matId, offset, momentum, lr, regParam, 1);\n   }\n \n-  public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam,\n-      int batchSize) {\n+  public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam, int batchSize) {\n     super(matId, new int[]{offset}, new double[]{momentum, lr, regParam, batchSize});\n   }\n \n@@ -79,4 +77,4 @@ public class MomentumUpdateFunc extends OptMMUpdateFunc {\n     }\n   }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "58",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 114).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/904/MomentumUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/904/MomentumUpdateFunc.java\nindex ebe1fd5fff..ea8c9fc264 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/904/MomentumUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/904/MomentumUpdateFunc.java\n@@ -26,57 +26,51 @@ import org.apache.commons.logging.Log;\n import org.apache.commons.logging.LogFactory;\n \n public class MomentumUpdateFunc extends OptMMUpdateFunc {\n+    private static final Log LOG = LogFactory.getLog(MomentumUpdateFunc.class);\n \n-  private static final Log LOG = LogFactory.getLog(MomentumUpdateFunc.class);\n-\n-  public MomentumUpdateFunc() {\n+    public MomentumUpdateFunc() {\n     super();\n-  }\n+    }\n \n-  public MomentumUpdateFunc(int matId, int factor, double momentum, double lr) {\n+    public MomentumUpdateFunc(int matId, int factor, double momentum, double lr) {\n     this(matId, factor, momentum, lr, 0.0, 1);\n-  }\n+    }\n \n-  public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam) {\n+    public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam) {\n     this(matId, offset, momentum, lr, regParam, 1);\n-  }\n+    }\n \n-  public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam,\n-      int batchSize) {\n+    public MomentumUpdateFunc(int matId, int offset, double momentum, double lr, double regParam, int batchSize) {\n     super(matId, new int[]{offset}, new double[]{momentum, lr, regParam, batchSize});\n-  }\n+    }\n \n-  @Override\n-  public void update(RowBasedPartition partition, int factor, double[] scalars) {\n+    @Override\n+    public void update(RowBasedPartition partition, int factor, double[] scalars) {\n     double momentum = scalars[0];\n     double lr = scalars[1];\n     double regParam = scalars[2];\n     double batchSize = scalars[3];\n-\n     for (int f = 0; f < factor; f++) {\n-      ServerRow gradientServerRow = partition.getRow(f + 2 * factor);\n-      try {\n-        gradientServerRow.startWrite();\n-        Vector weight = ServerRowUtils.getVector(partition.getRow(f));\n-        Vector velocity = ServerRowUtils.getVector(partition.getRow(f + factor));\n-        Vector gradient = ServerRowUtils.getVector(gradientServerRow);\n-\n-        if (batchSize > 1) {\n-          gradient.idiv(batchSize);\n-        }\n-\n-        if (regParam != 0.0) {\n-          gradient.iaxpy(weight, regParam);\n+        ServerRow gradientServerRow = partition.getRow(f + 2 * factor);\n+        try {\n+                                         gradientServerRow.startWrite();\n+                                         Vector weight = ServerRowUtils.getVector(partition.getRow(f));\n+                                         Vector velocity = ServerRowUtils.getVector(partition.getRow(f + factor));\n+                                         Vector gradient = ServerRowUtils.getVector(gradientServerRow);\n+                                         if (batchSize > 1) {\n+            gradient.idiv(batchSize);\n+                                         }\n+\n+                                         if (regParam != 0.0) {\n+            gradient.iaxpy(weight, regParam);\n+                                         }\n+                                         velocity.imul(momentum).iadd(gradient);\n+                                         weight.isub(velocity.mul(lr));\n+                                         gradient.clear();\n+        } finally {\n+          gradientServerRow.endWrite();\n         }\n-\n-        velocity.imul(momentum).iadd(gradient);\n-        weight.isub(velocity.mul(lr));\n-\n-        gradient.clear();\n-      } finally {\n-        gradientServerRow.endWrite();\n-      }\n     }\n-  }\n+    }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 43
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/904/MomentumUpdateFunc.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/904/MomentumUpdateFunc.java\nindex ebe1fd5fff..f10137e93c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/904/MomentumUpdateFunc.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/styler_three_grams/904/MomentumUpdateFunc.java\n@@ -15,7 +15,6 @@\n  *\n  */\n \n-\n package com.tencent.angel.ml.psf.optimizer;\n \n import com.tencent.angel.ml.math2.vector.Vector;\n",
+            "diff_size": 1
+        }
+    ]
+}

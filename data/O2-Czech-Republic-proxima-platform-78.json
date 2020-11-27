@@ -1,0 +1,133 @@
+{
+    "error_id": "78",
+    "information": {
+        "errors": [
+            {
+                "line": "42",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 91).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "      }\n    }\n    throw new IllegalStateException(\"Cannot find appropriate doCall method of \" + closure);\n  }\n\n  private Types() {}",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/78/Types.java\nindex a43c0d8381..035562d7bf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/78/Types.java\n@@ -39,7 +39,7 @@ public class Types {\n         return (Class) m.getReturnType();\n       }\n     }\n-    throw new IllegalStateException(\"Cannot find appropriate doCall method of \" + closure);\n+    throw newIllegalStateException(\"Cannot find appropriate doCall method of \" + closure);\n   }\n \n   private Types() {}\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/78/Types.java\nindex a43c0d8381..5dff43c298 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/78/Types.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.tools.groovy.util;\n \n import groovy.lang.Closure;\n@@ -39,8 +40,10 @@ public class Types {\n         return (Class) m.getReturnType();\n       }\n     }\n-    throw new IllegalStateException(\"Cannot find appropriate doCall method of \" + closure);\n+    throw new IllegalStateException(\n+        \"Cannot find appropriate doCall method of \" + closure);\n   }\n \n-  private Types() {}\n+  private Types() {\n+  }\n }\n",
+            "diff_size": 9
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 105).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 2, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/78/Types.java\nindex a43c0d8381..d9f011052f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/78/Types.java\n@@ -34,13 +34,12 @@ public class Types {\n   public static <T> Class<T> returnClass(Closure<T> closure) {\n     CachedClass cachedClass = ReflectionCache.getCachedClass(closure.getClass());\n     for (CachedMethod m : cachedClass.getMethods()) {\n-      if (\"doCall\".equals(m.getName())\n-          && closure.getMaximumNumberOfParameters() == m.getParamsCount()) {\n-        return (Class) m.getReturnType();\n+      if (\"doCall\".equals(m.getName()) && closure.getMaximumNumberOfParameters() == m.getParamsCount()) {\n+  return (Class) m.getReturnType();\n       }\n     }\n     throw new IllegalStateException(\"Cannot find appropriate doCall method of \" + closure);\n   }\n \n   private Types() {}\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 36.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 107).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "41",
+                    "severity": "error",
+                    "message": "'if' child has incorrect indentation level 56, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/78/Types.java\nindex a43c0d8381..71ded058da 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/78/Types.java\n@@ -21,6 +21,8 @@ import org.codehaus.groovy.reflection.CachedMethod;\n import org.codehaus.groovy.reflection.ReflectionCache;\n \n /** Various type-related utilities. */\n+\n+\n public class Types {\n \n   /**\n@@ -30,17 +32,17 @@ public class Types {\n    * @param closure the closure\n    * @return {@link Class} object of given closure return type.\n    */\n-  @SuppressWarnings(\"unchecked\")\n-  public static <T> Class<T> returnClass(Closure<T> closure) {\n+\n+    @SuppressWarnings(\"unchecked\")\n+    public static <T> Class<T> returnClass(Closure<T> closure) {\n     CachedClass cachedClass = ReflectionCache.getCachedClass(closure.getClass());\n     for (CachedMethod m : cachedClass.getMethods()) {\n-      if (\"doCall\".equals(m.getName())\n-          && closure.getMaximumNumberOfParameters() == m.getParamsCount()) {\n-        return (Class) m.getReturnType();\n-      }\n+        if (\"doCall\".equals(m.getName()) && closure.getMaximumNumberOfParameters() == m.getParamsCount()) {\n+                                                        return (Class) m.getReturnType();\n+        }\n     }\n     throw new IllegalStateException(\"Cannot find appropriate doCall method of \" + closure);\n-  }\n+    }\n \n-  private Types() {}\n-}\n+    private Types() {}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/78/Types.java\nindex a43c0d8381..035562d7bf 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/78/Types.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/78/Types.java\n@@ -39,7 +39,7 @@ public class Types {\n         return (Class) m.getReturnType();\n       }\n     }\n-    throw new IllegalStateException(\"Cannot find appropriate doCall method of \" + closure);\n+    throw newIllegalStateException(\"Cannot find appropriate doCall method of \" + closure);\n   }\n \n   private Types() {}\n",
+            "diff_size": 1
+        }
+    ]
+}

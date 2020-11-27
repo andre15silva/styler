@@ -1,0 +1,91 @@
+{
+    "error_id": "104",
+    "information": {
+        "errors": [
+            {
+                "line": "28",
+                "column": "38",
+                "severity": "error",
+                "message": "'}' at column 38 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "final class StatusCodeConversions {\n\n    private StatusCodeConversions() {}\n\n    @Nonnull\n    static Short statusCodeToInt16(@Nonnull StatusCode s) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "28",
+                    "column": "38",
+                    "severity": "error",
+                    "message": "'}' at column 38 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/104/StatusCodeConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/104/StatusCodeConversions.java\nindex 5457ebdc39..54508eb530 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/104/StatusCodeConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/104/StatusCodeConversions.java\n@@ -25,7 +25,8 @@ import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.\n \n final class StatusCodeConversions {\n \n-    private StatusCodeConversions() {}\n+    private StatusCodeConversions() {\n+    }\n \n     @Nonnull\n     static Short statusCodeToInt16(@Nonnull StatusCode s) {\n@@ -74,9 +75,12 @@ final class StatusCodeConversions {\n     static Object explicitConversion(@Nonnull StatusCode s, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case Int16:     return statusCodeToInt16(s);\n-            case UInt16:    return statusCodeToUInt16(s);\n-            default:        return implicitConversion(s, targetType);\n+            case Int16:\n+                return statusCodeToInt16(s);\n+            case UInt16:\n+                return statusCodeToUInt16(s);\n+            default:\n+                return implicitConversion(s, targetType);\n         }\n         //@formatter:on\n     }\n@@ -85,11 +89,16 @@ final class StatusCodeConversions {\n     static Object implicitConversion(@Nonnull StatusCode s, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case Int32:     return statusCodeToInt32(s);\n-            case Int64:     return statusCodeToInt64(s);\n-            case UInt32:    return statusCodeToUInt32(s);\n-            case UInt64:    return statusCodeToUInt64(s);\n-            default:        return null;\n+            case Int32:\n+                return statusCodeToInt32(s);\n+            case Int64:\n+                return statusCodeToInt64(s);\n+            case UInt32:\n+                return statusCodeToUInt32(s);\n+            case UInt64:\n+                return statusCodeToUInt64(s);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n",
+            "diff_size": 18
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "28",
+                    "column": "38",
+                    "severity": "error",
+                    "message": "'}' at column 38 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/104/StatusCodeConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/104/StatusCodeConversions.java\nindex 5457ebdc39..b2124a79ca 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/104/StatusCodeConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/104/StatusCodeConversions.java\n@@ -76,7 +76,8 @@ final class StatusCodeConversions {\n         switch (targetType) {\n             case Int16:     return statusCodeToInt16(s);\n             case UInt16:    return statusCodeToUInt16(s);\n-            default:        return implicitConversion(s, targetType);\n+            default:\n+    return implicitConversion(s, targetType);\n         }\n         //@formatter:on\n     }\n@@ -89,9 +90,10 @@ final class StatusCodeConversions {\n             case Int64:     return statusCodeToInt64(s);\n             case UInt32:    return statusCodeToUInt32(s);\n             case UInt64:    return statusCodeToUInt64(s);\n-            default:        return null;\n+            default:\n+    return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/104/StatusCodeConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/104/StatusCodeConversions.java\nindex 5457ebdc39..996d35a7e7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/104/StatusCodeConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/104/StatusCodeConversions.java\n@@ -12,7 +12,6 @@ package org.eclipse.milo.opcua.sdk.server.events.conversions;\n \n import javax.annotation.Nonnull;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.stack.core.BuiltinDataType;\n import org.eclipse.milo.opcua.stack.core.types.builtin.StatusCode;\n import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;\n@@ -25,7 +24,8 @@ import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.\n \n final class StatusCodeConversions {\n \n-    private StatusCodeConversions() {}\n+    private StatusCodeConversions() {\n+    }\n \n     @Nonnull\n     static Short statusCodeToInt16(@Nonnull StatusCode s) {\n@@ -58,13 +58,12 @@ final class StatusCodeConversions {\n     }\n \n     @Nullable\n-    static Object convert(@Nonnull Object o, BuiltinDataType targetType, boolean implicit) {\n+    static Object convert(@Nonnull Object o, BuiltinDataType targetType,\n+                          boolean implicit) {\n         if (o instanceof StatusCode) {\n             StatusCode s = (StatusCode) o;\n \n-            return implicit ?\n-                implicitConversion(s, targetType) :\n-                explicitConversion(s, targetType);\n+            return implicit ? implicitConversion(s, targetType) : explicitConversion(s, targetType);\n         } else {\n             return null;\n         }\n@@ -74,9 +73,12 @@ final class StatusCodeConversions {\n     static Object explicitConversion(@Nonnull StatusCode s, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case Int16:     return statusCodeToInt16(s);\n-            case UInt16:    return statusCodeToUInt16(s);\n-            default:        return implicitConversion(s, targetType);\n+            case Int16:\n+                return statusCodeToInt16(s);\n+            case UInt16:\n+                return statusCodeToUInt16(s);\n+            default:\n+                return implicitConversion(s, targetType);\n         }\n         //@formatter:on\n     }\n@@ -85,13 +87,18 @@ final class StatusCodeConversions {\n     static Object implicitConversion(@Nonnull StatusCode s, BuiltinDataType targetType) {\n         //@formatter:off\n         switch (targetType) {\n-            case Int32:     return statusCodeToInt32(s);\n-            case Int64:     return statusCodeToInt64(s);\n-            case UInt32:    return statusCodeToUInt32(s);\n-            case UInt64:    return statusCodeToUInt64(s);\n-            default:        return null;\n+            case Int32:\n+                return statusCodeToInt32(s);\n+            case Int64:\n+                return statusCodeToInt64(s);\n+            case UInt32:\n+                return statusCodeToUInt32(s);\n+            case UInt64:\n+                return statusCodeToUInt64(s);\n+            default:\n+                return null;\n         }\n         //@formatter:on\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 25
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "28",
+                    "column": "38",
+                    "severity": "error",
+                    "message": "'}' at column 38 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "28",
+                    "column": "38",
+                    "severity": "error",
+                    "message": "'}' at column 38 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/104/StatusCodeConversions.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/104/StatusCodeConversions.java\nindex 5457ebdc39..3dccde1882 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/104/StatusCodeConversions.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/104/StatusCodeConversions.java\n@@ -25,9 +25,7 @@ import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.\n \n final class StatusCodeConversions {\n \n-    private StatusCodeConversions() {}\n-\n-    @Nonnull\n+    private StatusCodeConversions() {} @Nonnull\n     static Short statusCodeToInt16(@Nonnull StatusCode s) {\n         return (short) ((s.getValue() >>> 16) & 0xFFFF);\n     }\n",
+            "diff_size": 3
+        }
+    ]
+}

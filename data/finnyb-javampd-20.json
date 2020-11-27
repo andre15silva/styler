@@ -1,0 +1,71 @@
+{
+    "error_id": "20",
+    "information": {
+        "errors": [
+            {
+                "line": "73",
+                "severity": "error",
+                "message": "System.out.println and System.err.println are not allowed. Use a logger instead.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+            }
+        ]
+    },
+    "source_code": "            boolean found = false;\n            for (MPDFile mpdF : files) {\n                System.out.println(mpdF.getPath() + \" --> \" + mpdF.getLastModified());\n                assertEquals(LocalDateTime.parse(\"2016-03-25T12:43:50Z\", DateTimeFormatter.ISO_DATE_TIME),\n                        mpdF.getLastModified());\n                if (f.getName().equals(mpdF.getPath().replaceFirst(file.getPath() + \"/\", \"\"))) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler/20/MPDFileDatabaseIT.java\nindex 80b18fac84..2ff8337062 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler/20/MPDFileDatabaseIT.java\n@@ -70,7 +70,7 @@ public class MPDFileDatabaseIT extends BaseTest {\n         for (File f : testFiles) {\n             boolean found = false;\n             for (MPDFile mpdF : files) {\n-                System.out.println(mpdF.getPath() + \" --> \" + mpdF.getLastModified());\n+        System .out.println(mpdF.getPath() + \" --> \" + mpdF.getLastModified());\n                 assertEquals(LocalDateTime.parse(\"2016-03-25T12:43:50Z\", DateTimeFormatter.ISO_DATE_TIME),\n                         mpdF.getLastModified());\n                 if (f.getName().equals(mpdF.getPath().replaceFirst(file.getPath() + \"/\", \"\"))) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "System.out.println and System.err.println are not allowed. Use a logger instead.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/intellij/20/MPDFileDatabaseIT.java\nindex 80b18fac84..8285ca91ab 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/intellij/20/MPDFileDatabaseIT.java\n@@ -72,7 +72,7 @@ public class MPDFileDatabaseIT extends BaseTest {\n             for (MPDFile mpdF : files) {\n                 System.out.println(mpdF.getPath() + \" --> \" + mpdF.getLastModified());\n                 assertEquals(LocalDateTime.parse(\"2016-03-25T12:43:50Z\", DateTimeFormatter.ISO_DATE_TIME),\n-                        mpdF.getLastModified());\n+                    mpdF.getLastModified());\n                 if (f.getName().equals(mpdF.getPath().replaceFirst(file.getPath() + \"/\", \"\"))) {\n                     found = true;\n                     assertEquals(f.isDirectory(), mpdF.isDirectory());\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "System.out.println and System.err.println are not allowed. Use a logger instead.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "error",
+                    "message": "Line is longer than 130 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/codebuff/20/MPDFileDatabaseIT.java\nindex 80b18fac84..65858c4c0c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/codebuff/20/MPDFileDatabaseIT.java\n@@ -5,7 +5,6 @@ import org.bff.javampd.TestProperties;\n import org.bff.javampd.integrationdata.TestFiles;\n import org.junit.Before;\n import org.junit.Test;\n-\n import java.io.File;\n import java.time.LocalDateTime;\n import java.time.format.DateTimeFormatter;\n@@ -16,6 +15,7 @@ import static org.junit.Assert.assertEquals;\n import static org.junit.Assert.assertTrue;\n \n public class MPDFileDatabaseIT extends BaseTest {\n+\n     private FileDatabase fileDatabase;\n     private TestProperties testProperties;\n \n@@ -28,12 +28,14 @@ public class MPDFileDatabaseIT extends BaseTest {\n     @Test\n     public void testListRootDirectory() {\n         List<File> testFiles = new ArrayList<>(TestFiles.getRootTestFiles(testProperties.getPath()));\n+\n         List<MPDFile> files = new ArrayList<>(fileDatabase.listRootDirectory());\n \n         assertEquals(testFiles.size(), files.size());\n \n         for (File f : testFiles) {\n             boolean found = false;\n+\n             for (MPDFile mpdF : fileDatabase.listRootDirectory()) {\n                 if (f.getName().equals(mpdF.getPath())) {\n                     found = true;\n@@ -51,31 +53,36 @@ public class MPDFileDatabaseIT extends BaseTest {\n \n         for (File f : testFiles) {\n             boolean found = false;\n+\n             for (MPDFile mpdF : fileDatabase.listRootDirectory()) {\n                 if (f.getName().equals(mpdF.getPath()) && f.isDirectory()) {\n                     found = true;\n                     compareDirs(f, mpdF);\n                 }\n             }\n+\n             assertTrue(found);\n         }\n     }\n \n     private void compareDirs(File testFile, MPDFile file) {\n         List<File> testFiles = new ArrayList<>(TestFiles.getTestFiles(testFile));\n+\n         List<MPDFile> files = new ArrayList<>(fileDatabase.listDirectory(file));\n \n         assertEquals(testFiles.size(), files.size());\n \n         for (File f : testFiles) {\n             boolean found = false;\n+\n             for (MPDFile mpdF : files) {\n                 System.out.println(mpdF.getPath() + \" --> \" + mpdF.getLastModified());\n-                assertEquals(LocalDateTime.parse(\"2016-03-25T12:43:50Z\", DateTimeFormatter.ISO_DATE_TIME),\n-                        mpdF.getLastModified());\n+                assertEquals(LocalDateTime.parse(\"2016-03-25T12:43:50Z\", DateTimeFormatter.ISO_DATE_TIME), mpdF.getLastModified());\n+\n                 if (f.getName().equals(mpdF.getPath().replaceFirst(file.getPath() + \"/\", \"\"))) {\n                     found = true;\n                     assertEquals(f.isDirectory(), mpdF.isDirectory());\n+\n                     if (f.isDirectory()) {\n                         compareDirs(f, mpdF);\n                     }\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_random/20/MPDFileDatabaseIT.java\nindex 80b18fac84..9607581df4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_random/20/MPDFileDatabaseIT.java\n@@ -70,19 +70,19 @@ public class MPDFileDatabaseIT extends BaseTest {\n         for (File f : testFiles) {\n             boolean found = false;\n             for (MPDFile mpdF : files) {\n-                System.out.println(mpdF.getPath() + \" --> \" + mpdF.getLastModified());\n-                assertEquals(LocalDateTime.parse(\"2016-03-25T12:43:50Z\", DateTimeFormatter.ISO_DATE_TIME),\n-                        mpdF.getLastModified());\n-                if (f.getName().equals(mpdF.getPath().replaceFirst(file.getPath() + \"/\", \"\"))) {\n-                    found = true;\n-                    assertEquals(f.isDirectory(), mpdF.isDirectory());\n-                    if (f.isDirectory()) {\n-                        compareDirs(f, mpdF);\n-                    }\n-                }\n-            }\n+                System .out.println(mpdF.getPath() +\" --> \"+\n+                mpdF.getLastModified());assertEquals(LocalDateTime.parse(\"2016-03-25T12:43:50Z\", DateTimeFormatter.ISO_DATE_TIME),\n+                         mpdF.getLastModified());\n+                 if (f.getName().equals(mpdF.getPath().replaceFirst(file.getPath() + \"/\", \"\"))) {\n+                     found = true;\n+                     assertEquals(f.isDirectory(), mpdF.isDirectory());\n+                     if (f.isDirectory()) {\n+                         compareDirs(f, mpdF);\n+                     }\n+                 }\n+             }\n \n-            assertTrue(found);\n-        }\n-    }\n-}\n\\ No newline at end of file\n+             assertTrue(found);\n+         }\n+     }\n+ }\n\\ No newline at end of file\n",
+            "diff_size": 19
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_three_grams/20/MPDFileDatabaseIT.java\nindex 80b18fac84..2ff8337062 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/errored/1/20/MPDFileDatabaseIT.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/finnyb-javampd/styler_three_grams/20/MPDFileDatabaseIT.java\n@@ -70,7 +70,7 @@ public class MPDFileDatabaseIT extends BaseTest {\n         for (File f : testFiles) {\n             boolean found = false;\n             for (MPDFile mpdF : files) {\n-                System.out.println(mpdF.getPath() + \" --> \" + mpdF.getLastModified());\n+        System .out.println(mpdF.getPath() + \" --> \" + mpdF.getLastModified());\n                 assertEquals(LocalDateTime.parse(\"2016-03-25T12:43:50Z\", DateTimeFormatter.ISO_DATE_TIME),\n                         mpdF.getLastModified());\n                 if (f.getName().equals(mpdF.getPath().replaceFirst(file.getPath() + \"/\", \"\"))) {\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "error_id": "78",
+    "information": {
+        "errors": [
+            {
+                "line": "60",
+                "column": "17",
+                "severity": "warning",
+                "message": "'if' is not followed by whitespace.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+            }
+        ]
+    },
+    "source_code": "\n                Optional<String> streamError = STREAM_VALIDATOR.validate(stream);\n                if(streamError.isPresent()) {\n                    ResponseUtil.badRequest(exch);\n                    return;\n                }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/styler/78/CreateStreamHandler.java\nindex 267e3448a9..87d4b19b9e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/styler/78/CreateStreamHandler.java\n@@ -57,7 +57,7 @@ public class CreateStreamHandler implements HttpHandler {\n                 Stream stream = deserializer.readValue(bytes);\n \n                 Optional<String> streamError = STREAM_VALIDATOR.validate(stream);\n-                if(streamError.isPresent()) {\n+                if (streamError.isPresent()) {\n                     ResponseUtil.badRequest(exch);\n                     return;\n                 }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/intellij/78/CreateStreamHandler.java\nindex 267e3448a9..87d4b19b9e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/intellij/78/CreateStreamHandler.java\n@@ -57,7 +57,7 @@ public class CreateStreamHandler implements HttpHandler {\n                 Stream stream = deserializer.readValue(bytes);\n \n                 Optional<String> streamError = STREAM_VALIDATOR.validate(stream);\n-                if(streamError.isPresent()) {\n+                if (streamError.isPresent()) {\n                     ResponseUtil.badRequest(exch);\n                     return;\n                 }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/naturalize/78/CreateStreamHandler.java\nindex 267e3448a9..c5f9511b8a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/naturalize/78/CreateStreamHandler.java\n@@ -57,7 +57,7 @@ public class CreateStreamHandler implements HttpHandler {\n                 Stream stream = deserializer.readValue(bytes);\n \n                 Optional<String> streamError = STREAM_VALIDATOR.validate(stream);\n-                if(streamError.isPresent()) {\n+                if (streamError.isPresent()) {\n                     ResponseUtil.badRequest(exch);\n                     return;\n                 }\n@@ -99,4 +99,4 @@ public class CreateStreamHandler implements HttpHandler {\n             return;\n         });\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/codebuff/78/CreateStreamHandler.java\nindex 267e3448a9..0038d5482b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/codebuff/78/CreateStreamHandler.java\n@@ -16,20 +16,23 @@ import ru.kontur.vostok.hercules.meta.stream.validation.StreamValidators;\n import ru.kontur.vostok.hercules.undertow.util.ExchangeUtil;\n import ru.kontur.vostok.hercules.undertow.util.ResponseUtil;\n import ru.kontur.vostok.hercules.util.validation.Validator;\n-\n import java.io.IOException;\n import java.util.Optional;\n \n /**\n  * @author Gregory Koshelev\n  */\n-public class CreateStreamHandler implements HttpHandler {\n \n+\n+public class CreateStreamHandler implements HttpHandler {\n     private static final Logger LOGGER = LoggerFactory.getLogger(CreateStreamHandler.class);\n+\n     private static final Validator<Stream> STREAM_VALIDATOR = StreamValidators.streamValidatorForHandler();\n \n     private final AuthManager authManager;\n+\n     private final StreamRepository repository;\n+\n     private final KafkaTaskQueue kafkaTaskQueue;\n \n     private final ObjectReader deserializer;\n@@ -40,6 +43,7 @@ public class CreateStreamHandler implements HttpHandler {\n         this.kafkaTaskQueue = kafkaTaskQueue;\n \n         ObjectMapper objectMapper = new ObjectMapper();\n+\n         this.deserializer = objectMapper.readerFor(Stream.class);\n     }\n \n@@ -55,9 +59,8 @@ public class CreateStreamHandler implements HttpHandler {\n         exchange.getRequestReceiver().receiveFullBytes((exch, bytes) -> {\n             try {\n                 Stream stream = deserializer.readValue(bytes);\n-\n                 Optional<String> streamError = STREAM_VALIDATOR.validate(stream);\n-                if(streamError.isPresent()) {\n+                if (streamError.isPresent()) {\n                     ResponseUtil.badRequest(exch);\n                     return;\n                 }\n@@ -68,6 +71,7 @@ public class CreateStreamHandler implements HttpHandler {\n                         ResponseUtil.unauthorized(exch);\n                         return;\n                     }\n+\n                     ResponseUtil.forbidden(exch);\n                     return;\n                 }\n@@ -84,6 +88,7 @@ public class CreateStreamHandler implements HttpHandler {\n                 }\n \n                 //TODO: Topic creation may fail after successful meta creation (no atomicity at all).\n+\n                 kafkaTaskQueue.createTopic(stream.getName(), stream.getPartitions(), stream.getTtl());\n             } catch (IOException e) {\n                 LOGGER.error(\"Error on processing request\", e);\n@@ -99,4 +104,4 @@ public class CreateStreamHandler implements HttpHandler {\n             return;\n         });\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/styler_random/78/CreateStreamHandler.java\nindex 267e3448a9..87d4b19b9e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/styler_random/78/CreateStreamHandler.java\n@@ -57,7 +57,7 @@ public class CreateStreamHandler implements HttpHandler {\n                 Stream stream = deserializer.readValue(bytes);\n \n                 Optional<String> streamError = STREAM_VALIDATOR.validate(stream);\n-                if(streamError.isPresent()) {\n+                if (streamError.isPresent()) {\n                     ResponseUtil.badRequest(exch);\n                     return;\n                 }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/styler_three_grams/78/CreateStreamHandler.java\nindex 267e3448a9..87d4b19b9e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/errored/1/78/CreateStreamHandler.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/vostok-hercules/styler_three_grams/78/CreateStreamHandler.java\n@@ -57,7 +57,7 @@ public class CreateStreamHandler implements HttpHandler {\n                 Stream stream = deserializer.readValue(bytes);\n \n                 Optional<String> streamError = STREAM_VALIDATOR.validate(stream);\n-                if(streamError.isPresent()) {\n+                if (streamError.isPresent()) {\n                     ResponseUtil.badRequest(exch);\n                     return;\n                 }\n",
+            "diff_size": 1
+        }
+    ]
+}

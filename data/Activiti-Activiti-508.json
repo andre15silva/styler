@@ -1,0 +1,64 @@
+{
+    "error_id": "508",
+    "information": {
+        "errors": [
+            {
+                "line": "16",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.runtime.api.event.internal;\n\nimport org.activiti.api.task.runtime.events.TaskCandidateUserAddedEvent;\nimport org.activiti.api.task.runtime.events.listener.TaskRuntimeEventListener;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/508/TaskCandidateUserAddedListenerDelegate.java\nindex 0dabeac70f..ad162e564a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/508/TaskCandidateUserAddedListenerDelegate.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.event.internal;\n \n import org.activiti.api.task.runtime.events.TaskCandidateUserAddedEvent;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/508/TaskCandidateUserAddedListenerDelegate.java\nindex 0dabeac70f..ad162e564a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/508/TaskCandidateUserAddedListenerDelegate.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.event.internal;\n \n import org.activiti.api.task.runtime.events.TaskCandidateUserAddedEvent;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "16",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "27",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/508/TaskCandidateUserAddedListenerDelegate.java\nindex 0dabeac70f..db5abdcfb6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/508/TaskCandidateUserAddedListenerDelegate.java\n@@ -21,31 +21,28 @@ import org.activiti.engine.delegate.event.ActivitiEntityEvent;\n import org.activiti.engine.delegate.event.ActivitiEvent;\n import org.activiti.engine.delegate.event.ActivitiEventListener;\n import org.activiti.runtime.api.event.impl.ToAPITaskCandidateUserAddedEventConverter;\n-\n import java.util.List;\n \n+\n public class TaskCandidateUserAddedListenerDelegate implements ActivitiEventListener {\n \n     private final List<TaskRuntimeEventListener<TaskCandidateUserAddedEvent>> listeners;\n \n     private final ToAPITaskCandidateUserAddedEventConverter converter;\n \n-    public TaskCandidateUserAddedListenerDelegate(List<TaskRuntimeEventListener<TaskCandidateUserAddedEvent>> listeners,\n-                                                  ToAPITaskCandidateUserAddedEventConverter converter) {\n-        this.listeners = listeners;\n-        this.converter = converter;\n+    public TaskCandidateUserAddedListenerDelegate(List<TaskRuntimeEventListener<TaskCandidateUserAddedEvent>> listeners, ToAPITaskCandidateUserAddedEventConverter converter) {\n+    this.listeners = listeners;\n+    this.converter = converter;\n     }\n \n     @Override\n     public void onEvent(ActivitiEvent event) {\n         if (event instanceof ActivitiEntityEvent) {\n-            converter.from((ActivitiEntityEvent) event).ifPresent(\n-                    convertedEvent -> {\n-                        for (TaskRuntimeEventListener<TaskCandidateUserAddedEvent> listener : listeners) {\n-                            listener.onEvent(convertedEvent);\n-                        }\n-                    }\n-            );\n+            converter.from((ActivitiEntityEvent) event).ifPresent(convertedEvent -> {\n+                                                           for (TaskRuntimeEventListener<TaskCandidateUserAddedEvent> listener : listeners) {\n+                                                               listener.onEvent(convertedEvent);\n+                                                           }\n+                                                       });\n         }\n     }\n \n@@ -53,4 +50,4 @@ public class TaskCandidateUserAddedListenerDelegate implements ActivitiEventList\n     public boolean isFailOnException() {\n         return false;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 14
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/508/TaskCandidateUserAddedListenerDelegate.java\nindex 0dabeac70f..ad162e564a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/508/TaskCandidateUserAddedListenerDelegate.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.event.internal;\n \n import org.activiti.api.task.runtime.events.TaskCandidateUserAddedEvent;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/508/TaskCandidateUserAddedListenerDelegate.java\nindex 0dabeac70f..ad162e564a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/508/TaskCandidateUserAddedListenerDelegate.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/508/TaskCandidateUserAddedListenerDelegate.java\n@@ -13,6 +13,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.runtime.api.event.internal;\n \n import org.activiti.api.task.runtime.events.TaskCandidateUserAddedEvent;\n",
+            "diff_size": 1
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{
+    "error_id": "918",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/918/BinaryCSRFormat.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/918/BinaryCSRFormat.java\nindex 8672a615a8..74ece19438 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/918/BinaryCSRFormat.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/918/BinaryCSRFormat.java\n@@ -14,6 +14,7 @@\n  * the License.\n  *\n  */\n+\n package com.tencent.angel.model.output.format;\n \n import com.tencent.angel.ml.math2.matrix.Matrix;\n@@ -32,75 +33,75 @@ import org.apache.hadoop.fs.FSDataInputStream;\n \n public class BinaryCSRFormat extends MatrixFormatImpl {\n \n-  public BinaryCSRFormat(Configuration conf) {\n-    super(conf);\n-  }\n+    public BinaryCSRFormat(Configuration conf) {\n+        super(conf);\n+    }\n \n-  @Override\n-  public void save(ServerPartition part, MatrixPartitionMeta partMeta,\n-      PSMatrixSaveContext saveContext, DataOutputStream output) throws IOException {\n-    CSRPartition csrPart = (CSRPartition) part;\n-    CSRStorage storage = csrPart.getStorage();\n+    @Override\n+    public void save(ServerPartition part, MatrixPartitionMeta partMeta,\n+                     PSMatrixSaveContext saveContext, DataOutputStream output) throws IOException {\n+        CSRPartition csrPart = (CSRPartition) part;\n+        CSRStorage storage = csrPart.getStorage();\n \n-    if(storage instanceof IntCSRStorage) {\n-      save((IntCSRStorage) storage, output);\n+        if (storage instanceof IntCSRStorage) {\n+            save((IntCSRStorage) storage, output);\n+        }\n     }\n-  }\n \n-  public void save(IntCSRStorage storage, DataOutputStream output) throws IOException {\n-    int [] rowOffset = storage.getRowOffsets();\n-    int [] columnIndices = storage.getColumnIndices();\n-    int [] values = storage.getValues();\n-    output.writeInt(rowOffset.length);\n-    for(int i = 0; i < rowOffset.length; i++) {\n-      output.writeInt(rowOffset[i]);\n-    }\n+    public void save(IntCSRStorage storage, DataOutputStream output) throws IOException {\n+        int[] rowOffset = storage.getRowOffsets();\n+        int[] columnIndices = storage.getColumnIndices();\n+        int[] values = storage.getValues();\n+        output.writeInt(rowOffset.length);\n+        for (int i = 0; i < rowOffset.length; i++) {\n+            output.writeInt(rowOffset[i]);\n+        }\n \n-    output.writeInt(columnIndices.length);\n-    for(int i = 0; i < columnIndices.length; i++) {\n-      output.writeInt(columnIndices[i]);\n-    }\n+        output.writeInt(columnIndices.length);\n+        for (int i = 0; i < columnIndices.length; i++) {\n+            output.writeInt(columnIndices[i]);\n+        }\n \n-    if(values != null) {\n-      output.writeInt(values.length);\n-      for(int i = 0; i < values.length; i++) {\n-        output.writeInt(values[i]);\n-      }\n-    } else {\n-      output.writeInt(0);\n+        if (values != null) {\n+            output.writeInt(values.length);\n+            for (int i = 0; i < values.length; i++) {\n+                output.writeInt(values[i]);\n+            }\n+        } else {\n+            output.writeInt(0);\n+        }\n     }\n-  }\n \n-  @Override\n-  public void load(ServerPartition part, MatrixPartitionMeta partMeta,\n-      PSMatrixLoadContext loadContext, DataInputStream input) throws IOException {\n-    CSRPartition csrPart = (CSRPartition) part;\n-    CSRStorage storage = csrPart.getStorage();\n-    if(storage instanceof IntCSRStorage) {\n-      load((IntCSRStorage) storage, input);\n+    @Override\n+    public void load(ServerPartition part, MatrixPartitionMeta partMeta,\n+                     PSMatrixLoadContext loadContext, DataInputStream input) throws IOException {\n+        CSRPartition csrPart = (CSRPartition) part;\n+        CSRStorage storage = csrPart.getStorage();\n+        if (storage instanceof IntCSRStorage) {\n+            load((IntCSRStorage) storage, input);\n+        }\n     }\n-  }\n \n-  private void load(IntCSRStorage storage, DataInputStream input) throws IOException {\n-    int [] rowOffsets = new int[input.readInt()];\n-    for(int i = 0; i < rowOffsets.length; i++) {\n-      rowOffsets[i] = input.readInt();\n-    }\n+    private void load(IntCSRStorage storage, DataInputStream input) throws IOException {\n+        int[] rowOffsets = new int[input.readInt()];\n+        for (int i = 0; i < rowOffsets.length; i++) {\n+            rowOffsets[i] = input.readInt();\n+        }\n \n-    int [] columnIndices = new int[input.readInt()];\n-    for(int i = 0; i < columnIndices.length; i++) {\n-      columnIndices[i] = input.readInt();\n-    }\n+        int[] columnIndices = new int[input.readInt()];\n+        for (int i = 0; i < columnIndices.length; i++) {\n+            columnIndices[i] = input.readInt();\n+        }\n \n-    int [] values = new int[input.readInt()];\n-    for(int i = 0; i < values.length; i++) {\n-      values[i] = input.readInt();\n+        int[] values = new int[input.readInt()];\n+        for (int i = 0; i < values.length; i++) {\n+            values[i] = input.readInt();\n+        }\n     }\n-  }\n \n-  @Override\n-  public void load(Matrix matrix, MatrixPartitionMeta partMeta, MatrixLoadContext loadContext,\n-      FSDataInputStream in) throws IOException {\n-    throw new UnsupportedOperationException(\"Does not support load CSR format local now\");\n-  }\n+    @Override\n+    public void load(Matrix matrix, MatrixPartitionMeta partMeta, MatrixLoadContext loadContext,\n+                     FSDataInputStream in) throws IOException {\n+        throw new UnsupportedOperationException(\"Does not support load CSR format local now\");\n+    }\n }\n",
+            "diff_size": 62
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/918/BinaryCSRFormat.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/918/BinaryCSRFormat.java\nindex 8672a615a8..a42648f292 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/918/BinaryCSRFormat.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/918/BinaryCSRFormat.java\n@@ -42,28 +42,28 @@ public class BinaryCSRFormat extends MatrixFormatImpl {\n     CSRPartition csrPart = (CSRPartition) part;\n     CSRStorage storage = csrPart.getStorage();\n \n-    if(storage instanceof IntCSRStorage) {\n+    if (storage instanceof IntCSRStorage) {\n       save((IntCSRStorage) storage, output);\n     }\n   }\n \n   public void save(IntCSRStorage storage, DataOutputStream output) throws IOException {\n-    int [] rowOffset = storage.getRowOffsets();\n-    int [] columnIndices = storage.getColumnIndices();\n-    int [] values = storage.getValues();\n+    int[] rowOffset = storage.getRowOffsets();\n+    int[] columnIndices = storage.getColumnIndices();\n+    int[] values = storage.getValues();\n     output.writeInt(rowOffset.length);\n-    for(int i = 0; i < rowOffset.length; i++) {\n+    for (int i = 0; i < rowOffset.length; i++) {\n       output.writeInt(rowOffset[i]);\n     }\n \n     output.writeInt(columnIndices.length);\n-    for(int i = 0; i < columnIndices.length; i++) {\n+    for (int i = 0; i < columnIndices.length; i++) {\n       output.writeInt(columnIndices[i]);\n     }\n \n-    if(values != null) {\n+    if (values != null) {\n       output.writeInt(values.length);\n-      for(int i = 0; i < values.length; i++) {\n+      for (int i = 0; i < values.length; i++) {\n         output.writeInt(values[i]);\n       }\n     } else {\n@@ -76,24 +76,24 @@ public class BinaryCSRFormat extends MatrixFormatImpl {\n       PSMatrixLoadContext loadContext, DataInputStream input) throws IOException {\n     CSRPartition csrPart = (CSRPartition) part;\n     CSRStorage storage = csrPart.getStorage();\n-    if(storage instanceof IntCSRStorage) {\n+    if (storage instanceof IntCSRStorage) {\n       load((IntCSRStorage) storage, input);\n     }\n   }\n \n   private void load(IntCSRStorage storage, DataInputStream input) throws IOException {\n-    int [] rowOffsets = new int[input.readInt()];\n-    for(int i = 0; i < rowOffsets.length; i++) {\n+    int[] rowOffsets = new int[input.readInt()];\n+    for (int i = 0; i < rowOffsets.length; i++) {\n       rowOffsets[i] = input.readInt();\n     }\n \n-    int [] columnIndices = new int[input.readInt()];\n-    for(int i = 0; i < columnIndices.length; i++) {\n+    int[] columnIndices = new int[input.readInt()];\n+    for (int i = 0; i < columnIndices.length; i++) {\n       columnIndices[i] = input.readInt();\n     }\n \n-    int [] values = new int[input.readInt()];\n-    for(int i = 0; i < values.length; i++) {\n+    int[] values = new int[input.readInt()];\n+    for (int i = 0; i < values.length; i++) {\n       values[i] = input.readInt();\n     }\n   }\n@@ -103,4 +103,4 @@ public class BinaryCSRFormat extends MatrixFormatImpl {\n       FSDataInputStream in) throws IOException {\n     throw new UnsupportedOperationException(\"Does not support load CSR format local now\");\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 16
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 139).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/918/BinaryCSRFormat.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/918/BinaryCSRFormat.java\nindex 8672a615a8..c0137c1093 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/918/BinaryCSRFormat.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/918/BinaryCSRFormat.java\n@@ -32,75 +32,75 @@ import org.apache.hadoop.fs.FSDataInputStream;\n \n public class BinaryCSRFormat extends MatrixFormatImpl {\n \n-  public BinaryCSRFormat(Configuration conf) {\n+    public BinaryCSRFormat(Configuration conf) {\n     super(conf);\n-  }\n+    }\n \n-  @Override\n-  public void save(ServerPartition part, MatrixPartitionMeta partMeta,\n-      PSMatrixSaveContext saveContext, DataOutputStream output) throws IOException {\n+    @Override\n+    public void save(ServerPartition part,\n+                     MatrixPartitionMeta partMeta,\n+                     PSMatrixSaveContext saveContext, DataOutputStream output) throws IOException {\n     CSRPartition csrPart = (CSRPartition) part;\n     CSRStorage storage = csrPart.getStorage();\n-\n-    if(storage instanceof IntCSRStorage) {\n-      save((IntCSRStorage) storage, output);\n+    if (storage instanceof IntCSRStorage) {\n+        save((IntCSRStorage) storage, output);\n+    }\n     }\n-  }\n \n-  public void save(IntCSRStorage storage, DataOutputStream output) throws IOException {\n-    int [] rowOffset = storage.getRowOffsets();\n-    int [] columnIndices = storage.getColumnIndices();\n-    int [] values = storage.getValues();\n+    public void save(IntCSRStorage storage, DataOutputStream output) throws IOException {\n+    int[] rowOffset = storage.getRowOffsets();\n+    int[] columnIndices = storage.getColumnIndices();\n+    int[] values = storage.getValues();\n     output.writeInt(rowOffset.length);\n-    for(int i = 0; i < rowOffset.length; i++) {\n-      output.writeInt(rowOffset[i]);\n+    for (int i = 0; i < rowOffset.length; i++) {\n+        output.writeInt(rowOffset[i]);\n     }\n-\n     output.writeInt(columnIndices.length);\n-    for(int i = 0; i < columnIndices.length; i++) {\n-      output.writeInt(columnIndices[i]);\n+    for (int i = 0; i < columnIndices.length; i++) {\n+        output.writeInt(columnIndices[i]);\n     }\n \n-    if(values != null) {\n-      output.writeInt(values.length);\n-      for(int i = 0; i < values.length; i++) {\n-        output.writeInt(values[i]);\n-      }\n+    if (values != null) {\n+        output.writeInt(values.length);\n+        for (int i = 0; i < values.length; i++) {\n+                            output.writeInt(values[i]);\n+        }\n     } else {\n       output.writeInt(0);\n     }\n-  }\n+    }\n \n-  @Override\n-  public void load(ServerPartition part, MatrixPartitionMeta partMeta,\n-      PSMatrixLoadContext loadContext, DataInputStream input) throws IOException {\n+    @Override\n+    public void load(ServerPartition part,\n+                     MatrixPartitionMeta partMeta,\n+                     PSMatrixLoadContext loadContext, DataInputStream input) throws IOException {\n     CSRPartition csrPart = (CSRPartition) part;\n     CSRStorage storage = csrPart.getStorage();\n-    if(storage instanceof IntCSRStorage) {\n-      load((IntCSRStorage) storage, input);\n+    if (storage instanceof IntCSRStorage) {\n+        load((IntCSRStorage) storage, input);\n+    }\n     }\n-  }\n \n-  private void load(IntCSRStorage storage, DataInputStream input) throws IOException {\n-    int [] rowOffsets = new int[input.readInt()];\n-    for(int i = 0; i < rowOffsets.length; i++) {\n-      rowOffsets[i] = input.readInt();\n+    private void load(IntCSRStorage storage, DataInputStream input) throws IOException {\n+    int[] rowOffsets = new int[input.readInt()];\n+    for (int i = 0; i < rowOffsets.length; i++) {\n+        rowOffsets[i] = input.readInt();\n     }\n \n-    int [] columnIndices = new int[input.readInt()];\n-    for(int i = 0; i < columnIndices.length; i++) {\n-      columnIndices[i] = input.readInt();\n+    int[] columnIndices = new int[input.readInt()];\n+    for (int i = 0; i < columnIndices.length; i++) {\n+        columnIndices[i] = input.readInt();\n     }\n \n-    int [] values = new int[input.readInt()];\n-    for(int i = 0; i < values.length; i++) {\n-      values[i] = input.readInt();\n+    int[] values = new int[input.readInt()];\n+    for (int i = 0; i < values.length; i++) {\n+        values[i] = input.readInt();\n+    }\n     }\n-  }\n \n-  @Override\n-  public void load(Matrix matrix, MatrixPartitionMeta partMeta, MatrixLoadContext loadContext,\n-      FSDataInputStream in) throws IOException {\n+    @Override\n+    public void load(Matrix matrix, MatrixPartitionMeta partMeta, MatrixLoadContext loadContext, FSDataInputStream in) throws IOException {\n     throw new UnsupportedOperationException(\"Does not support load CSR format local now\");\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 51
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

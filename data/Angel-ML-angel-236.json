@@ -1,0 +1,136 @@
+{
+    "error_id": "236",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/236/PSAgentManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/236/PSAgentManager.java\nindex a947cb536c..0e1cc6973a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/236/PSAgentManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/236/PSAgentManager.java\n@@ -13,6 +13,7 @@\n  * either express or implied. See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package com.tencent.angel.master.psagent;\n \n import com.tencent.angel.common.location.Location;\n@@ -30,71 +31,80 @@ import java.util.concurrent.atomic.AtomicInteger;\n  * PSAgent heartbeat monitor\n  */\n public class PSAgentManager {\n-  private static final Log LOG = LogFactory.getLog(PSAgentManager.class);\n-  private final AMContext context;\n+    private static final Log LOG = LogFactory.getLog(PSAgentManager.class);\n+    private final AMContext context;\n \n-  /**psagent attempt id to last heartbeat timestamp map*/\n-  private final ConcurrentHashMap<Integer, Long> psAgentLastHeartbeatTS;\n+    /**\n+     * psagent attempt id to last heartbeat timestamp map\n+     */\n+    private final ConcurrentHashMap<Integer, Long> psAgentLastHeartbeatTS;\n \n-  /**psagent attempt id to location map*/\n-  private final ConcurrentHashMap<Integer, Location> psAgentToLocTS;\n+    /**\n+     * psagent attempt id to location map\n+     */\n+    private final ConcurrentHashMap<Integer, Location> psAgentToLocTS;\n \n-  /**psagent heartbeat timeout value in millisecond*/\n-  private final long psAgentTimeOutMS;\n+    /**\n+     * psagent heartbeat timeout value in millisecond\n+     */\n+    private final long psAgentTimeOutMS;\n \n-  private final AtomicInteger idGen = new AtomicInteger(0);\n+    private final AtomicInteger idGen = new AtomicInteger(0);\n \n-  public PSAgentManager(AMContext context) {\n-    this.context = context;\n-    psAgentLastHeartbeatTS = new ConcurrentHashMap<>();\n-    psAgentToLocTS = new ConcurrentHashMap<>();\n-    psAgentTimeOutMS =\n-      context.getConf().getLong(AngelConf.ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS,\n-        AngelConf.DEFAULT_ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS);\n-  }\n+    public PSAgentManager(AMContext context) {\n+        this.context = context;\n+        psAgentLastHeartbeatTS = new ConcurrentHashMap<>();\n+        psAgentToLocTS = new ConcurrentHashMap<>();\n+        psAgentTimeOutMS =\n+                context.getConf().getLong(AngelConf.ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS,\n+                        AngelConf.DEFAULT_ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS);\n+    }\n \n-  /**\n-   * PSAgent register\n-   * @param psAgentId psAgent id\n-   * @param loc PSAgent location\n-   */\n-  public void register(int psAgentId, Location loc) {\n-    LOG.info(\"PSAgent \" + psAgentId + \" is registered in monitor!\");\n-    psAgentLastHeartbeatTS.put(psAgentId, System.currentTimeMillis());\n-    psAgentToLocTS.put(psAgentId, loc);\n-  }\n+    /**\n+     * PSAgent register\n+     *\n+     * @param psAgentId psAgent id\n+     * @param loc       PSAgent location\n+     */\n+    public void register(int psAgentId, Location loc) {\n+        LOG.info(\"PSAgent \" + psAgentId + \" is registered in monitor!\");\n+        psAgentLastHeartbeatTS.put(psAgentId, System.currentTimeMillis());\n+        psAgentToLocTS.put(psAgentId, loc);\n+    }\n \n-  /**\n-   * PSAgent unregister\n-   * @param psAgentId psagent id\n-   */\n-  public void unRegister(int psAgentId) {\n-    LOG.info(\"PSAgent \" + psAgentId + \" is unregistered in monitor!\");\n-    psAgentLastHeartbeatTS.remove(psAgentId);\n-  }\n+    /**\n+     * PSAgent unregister\n+     *\n+     * @param psAgentId psagent id\n+     */\n+    public void unRegister(int psAgentId) {\n+        LOG.info(\"PSAgent \" + psAgentId + \" is unregistered in monitor!\");\n+        psAgentLastHeartbeatTS.remove(psAgentId);\n+    }\n \n-  /**\n-   * Check PSAgent heartbeat timeout or not\n-   */\n-  public void checkHBTimeOut() {\n-    //check whether psagent heartbeat timeout\n-    Iterator<Map.Entry<Integer, Long>> psAgentIt = psAgentLastHeartbeatTS.entrySet().iterator();\n-    Map.Entry<Integer, Long> psAgentEntry;\n-    long currentTs = System.currentTimeMillis();\n-    while (psAgentIt.hasNext()) {\n-      psAgentEntry = psAgentIt.next();\n-      if (currentTs - psAgentEntry.getValue() > psAgentTimeOutMS) {\n-        LOG.info(\"removing psagent: \" + psAgentEntry.getKey());\n-        psAgentIt.remove();\n-      }\n+    /**\n+     * Check PSAgent heartbeat timeout or not\n+     */\n+    public void checkHBTimeOut() {\n+        //check whether psagent heartbeat timeout\n+        Iterator<Map.Entry<Integer, Long>> psAgentIt = psAgentLastHeartbeatTS.entrySet().iterator();\n+        Map.Entry<Integer, Long> psAgentEntry;\n+        long currentTs = System.currentTimeMillis();\n+        while (psAgentIt.hasNext()) {\n+            psAgentEntry = psAgentIt.next();\n+            if (currentTs - psAgentEntry.getValue() > psAgentTimeOutMS) {\n+                LOG.info(\"removing psagent: \" + psAgentEntry.getKey());\n+                psAgentIt.remove();\n+            }\n+        }\n     }\n-  }\n \n-  /**\n-   * Generate a new psagent id\n-   * @return a new psagent id\n-   */\n-  public int getId() {\n-    return idGen.incrementAndGet();\n-  }\n+    /**\n+     * Generate a new psagent id\n+     *\n+     * @return a new psagent id\n+     */\n+    public int getId() {\n+        return idGen.incrementAndGet();\n+    }\n }\n",
+            "diff_size": 68
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/236/PSAgentManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/236/PSAgentManager.java\nindex a947cb536c..854b286fa2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/236/PSAgentManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/236/PSAgentManager.java\n@@ -48,8 +48,7 @@ public class PSAgentManager {\n     this.context = context;\n     psAgentLastHeartbeatTS = new ConcurrentHashMap<>();\n     psAgentToLocTS = new ConcurrentHashMap<>();\n-    psAgentTimeOutMS =\n-      context.getConf().getLong(AngelConf.ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS,\n+    psAgentTimeOutMS = context.getConf().getLong(AngelConf.ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS,\n         AngelConf.DEFAULT_ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS);\n   }\n \n@@ -97,4 +96,4 @@ public class PSAgentManager {\n   public int getId() {\n     return idGen.incrementAndGet();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "36",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 37.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 40.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 43.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 61.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 72.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "77",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 81.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 100.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/236/PSAgentManager.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/236/PSAgentManager.java\nindex a947cb536c..59060eac7a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/236/PSAgentManager.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/236/PSAgentManager.java\n@@ -20,7 +20,6 @@ import com.tencent.angel.conf.AngelConf;\n import com.tencent.angel.master.app.AMContext;\n import org.apache.commons.logging.Log;\n import org.apache.commons.logging.LogFactory;\n-\n import java.util.Iterator;\n import java.util.Map;\n import java.util.concurrent.ConcurrentHashMap;\n@@ -29,72 +28,77 @@ import java.util.concurrent.atomic.AtomicInteger;\n /**\n  * PSAgent heartbeat monitor\n  */\n+\n public class PSAgentManager {\n-  private static final Log LOG = LogFactory.getLog(PSAgentManager.class);\n-  private final AMContext context;\n+    private static final Log LOG = LogFactory.getLog(PSAgentManager.class);\n+    private final AMContext context;\n \n   /**psagent attempt id to last heartbeat timestamp map*/\n-  private final ConcurrentHashMap<Integer, Long> psAgentLastHeartbeatTS;\n+    private final ConcurrentHashMap<Integer, Long> psAgentLastHeartbeatTS;\n \n   /**psagent attempt id to location map*/\n-  private final ConcurrentHashMap<Integer, Location> psAgentToLocTS;\n+    private final ConcurrentHashMap<Integer, Location> psAgentToLocTS;\n \n   /**psagent heartbeat timeout value in millisecond*/\n-  private final long psAgentTimeOutMS;\n+    private final long psAgentTimeOutMS;\n+    private final AtomicInteger idGen = new AtomicInteger(0);\n \n-  private final AtomicInteger idGen = new AtomicInteger(0);\n-\n-  public PSAgentManager(AMContext context) {\n+    public PSAgentManager(AMContext context) {\n     this.context = context;\n     psAgentLastHeartbeatTS = new ConcurrentHashMap<>();\n     psAgentToLocTS = new ConcurrentHashMap<>();\n-    psAgentTimeOutMS =\n-      context.getConf().getLong(AngelConf.ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS,\n-        AngelConf.DEFAULT_ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS);\n-  }\n+    psAgentTimeOutMS = context.getConf().getLong(\n+                                            AngelConf.ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS,\n+                                            AngelConf.DEFAULT_ANGEL_PSAGENT_HEARTBEAT_TIMEOUT_MS);\n+    }\n \n   /**\n    * PSAgent register\n    * @param psAgentId psAgent id\n    * @param loc PSAgent location\n    */\n-  public void register(int psAgentId, Location loc) {\n+\n+    public void register(int psAgentId, Location loc) {\n     LOG.info(\"PSAgent \" + psAgentId + \" is registered in monitor!\");\n     psAgentLastHeartbeatTS.put(psAgentId, System.currentTimeMillis());\n     psAgentToLocTS.put(psAgentId, loc);\n-  }\n+    }\n \n   /**\n    * PSAgent unregister\n    * @param psAgentId psagent id\n    */\n-  public void unRegister(int psAgentId) {\n+\n+    public void unRegister(int psAgentId) {\n     LOG.info(\"PSAgent \" + psAgentId + \" is unregistered in monitor!\");\n     psAgentLastHeartbeatTS.remove(psAgentId);\n-  }\n+    }\n \n   /**\n    * Check PSAgent heartbeat timeout or not\n    */\n-  public void checkHBTimeOut() {\n+\n+    public void checkHBTimeOut() {\n     //check whether psagent heartbeat timeout\n     Iterator<Map.Entry<Integer, Long>> psAgentIt = psAgentLastHeartbeatTS.entrySet().iterator();\n     Map.Entry<Integer, Long> psAgentEntry;\n     long currentTs = System.currentTimeMillis();\n     while (psAgentIt.hasNext()) {\n-      psAgentEntry = psAgentIt.next();\n-      if (currentTs - psAgentEntry.getValue() > psAgentTimeOutMS) {\n+        psAgentEntry = psAgentIt.next();\n+        if (currentTs - psAgentEntry.getValue() > psAgentTimeOutMS) {\n         LOG.info(\"removing psagent: \" + psAgentEntry.getKey());\n         psAgentIt.remove();\n-      }\n+        }\n+    }\n     }\n-  }\n \n   /**\n    * Generate a new psagent id\n    * @return a new psagent id\n    */\n-  public int getId() {\n+\n+    public int getId() {\n     return idGen.incrementAndGet();\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

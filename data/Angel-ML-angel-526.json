@@ -1,0 +1,172 @@
+{
+    "error_id": "526",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/526/ServerPartitionFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/526/ServerPartitionFactory.java\nindex 7c8cea9bf1..b586199e8b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/526/ServerPartitionFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/526/ServerPartitionFactory.java\n@@ -31,58 +31,61 @@ import com.tencent.angel.ps.storage.vector.element.IElement;\n  */\n public class ServerPartitionFactory {\n \n-  /**\n-   * Create a new server partition\n-   *\n-   * @param partKey partition key\n-   * @param partClass partition class\n-   * @param storageClass storage class\n-   * @param rowType row type\n-   * @param valueClass value class\n-   * @param estSparsity estimate sparsity\n-   * @return server partition\n-   */\n-  public static ServerPartition getPartition(PartitionKey partKey,\n-      Class<? extends IServerPartition> partClass,\n-      Class<? extends IServerPartitionStorage> storageClass,\n-      RowType rowType, Class<? extends IElement> valueClass, double estSparsity) {\n-    // Row base partition\n-    if (partClass == RowBasedPartition.class) {\n-      // If storage class is not set, use default DenseServerRowsStorage\n-      if (storageClass == null) {\n-        storageClass = DenseServerRowsStorage.class;\n-      }\n+    /**\n+     * Create a new server partition\n+     *\n+     * @param partKey      partition key\n+     * @param partClass    partition class\n+     * @param storageClass storage class\n+     * @param rowType      row type\n+     * @param valueClass   value class\n+     * @param estSparsity  estimate sparsity\n+     * @return server partition\n+     */\n+    public static ServerPartition getPartition(PartitionKey partKey,\n+                                               Class<? extends IServerPartition> partClass,\n+                                               Class<? extends IServerPartitionStorage> storageClass,\n+                                               RowType rowType,\n+                                               Class<? extends IElement> valueClass,\n+                                               double estSparsity) {\n+        // Row base partition\n+        if (partClass == RowBasedPartition.class) {\n+            // If storage class is not set, use default DenseServerRowsStorage\n+            if (storageClass == null) {\n+                storageClass = DenseServerRowsStorage.class;\n+            }\n \n-      try {\n-        ServerRowsStorage storage = ServerPartitionStorageFactory\n-            .getRowBasedStorage(storageClass, partKey, rowType);\n-        return new RowBasedPartition(partKey, estSparsity, storage, rowType, valueClass);\n-      } catch (Throwable e) {\n-        throw new RuntimeException(e);\n-      }\n-    } else if (partClass == CSRPartition.class) {\n-      CSRStorage storage = ServerPartitionStorageFactory\n-          .getCSRStorage(storageClass, partKey, rowType);\n-      return new CSRPartition(partKey, estSparsity, storage, rowType);\n-    } else {\n-      throw new UnsupportedOperationException(\"not support partition class \" + partClass + \" now \");\n+            try {\n+                ServerRowsStorage storage = ServerPartitionStorageFactory\n+                        .getRowBasedStorage(storageClass, partKey, rowType);\n+                return new RowBasedPartition(partKey, estSparsity, storage, rowType, valueClass);\n+            } catch (Throwable e) {\n+                throw new RuntimeException(e);\n+            }\n+        } else if (partClass == CSRPartition.class) {\n+            CSRStorage storage = ServerPartitionStorageFactory\n+                    .getCSRStorage(storageClass, partKey, rowType);\n+            return new CSRPartition(partKey, estSparsity, storage, rowType);\n+        } else {\n+            throw new UnsupportedOperationException(\n+                    \"not support partition class \" + partClass + \" now \");\n+        }\n     }\n-  }\n \n-  /**\n-   * Create a new empty server partition\n-   *\n-   * @param partClassName partition class\n-   * @return server partition\n-   */\n-  public static ServerPartition getPartition(String partClassName) {\n-    if (RowBasedPartition.class.getName().equals(partClassName)) {\n-      return new RowBasedPartition();\n-    } else if (CSRPartition.class.getName().equals(partClassName)) {\n-      return new CSRPartition();\n-    } else {\n-      throw new UnsupportedOperationException(\n-          \"not support partition class \" + partClassName + \" now \");\n+    /**\n+     * Create a new empty server partition\n+     *\n+     * @param partClassName partition class\n+     * @return server partition\n+     */\n+    public static ServerPartition getPartition(String partClassName) {\n+        if (RowBasedPartition.class.getName().equals(partClassName)) {\n+            return new RowBasedPartition();\n+        } else if (CSRPartition.class.getName().equals(partClassName)) {\n+            return new CSRPartition();\n+        } else {\n+            throw new UnsupportedOperationException(\n+                    \"not support partition class \" + partClassName + \" now \");\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 55
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 117).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "63",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/526/ServerPartitionFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/526/ServerPartitionFactory.java\nindex 7c8cea9bf1..b31ad020ee 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/526/ServerPartitionFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/526/ServerPartitionFactory.java\n@@ -54,15 +54,13 @@ public class ServerPartitionFactory {\n       }\n \n       try {\n-        ServerRowsStorage storage = ServerPartitionStorageFactory\n-            .getRowBasedStorage(storageClass, partKey, rowType);\n+        ServerRowsStorage storage = ServerPartitionStorageFactory.getRowBasedStorage(storageClass, partKey, rowType);\n         return new RowBasedPartition(partKey, estSparsity, storage, rowType, valueClass);\n       } catch (Throwable e) {\n         throw new RuntimeException(e);\n       }\n     } else if (partClass == CSRPartition.class) {\n-      CSRStorage storage = ServerPartitionStorageFactory\n-          .getCSRStorage(storageClass, partKey, rowType);\n+      CSRStorage storage = ServerPartitionStorageFactory.getCSRStorage(storageClass, partKey, rowType);\n       return new CSRPartition(partKey, estSparsity, storage, rowType);\n     } else {\n       throw new UnsupportedOperationException(\"not support partition class \" + partClass + \" now \");\n@@ -81,8 +79,7 @@ public class ServerPartitionFactory {\n     } else if (CSRPartition.class.getName().equals(partClassName)) {\n       return new CSRPartition();\n     } else {\n-      throw new UnsupportedOperationException(\n-          \"not support partition class \" + partClassName + \" now \");\n+      throw new UnsupportedOperationException(\"not support partition class \" + partClassName + \" now \");\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 47.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "47",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 245).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 51.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 159).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 131).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 345).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 312).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 75.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 104).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/526/ServerPartitionFactory.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/526/ServerPartitionFactory.java\nindex 7c8cea9bf1..ba3a06a7d4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/526/ServerPartitionFactory.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/526/ServerPartitionFactory.java\n@@ -29,6 +29,7 @@ import com.tencent.angel.ps.storage.vector.element.IElement;\n /**\n  * Server Partition factory\n  */\n+\n public class ServerPartitionFactory {\n \n   /**\n@@ -42,32 +43,27 @@ public class ServerPartitionFactory {\n    * @param estSparsity estimate sparsity\n    * @return server partition\n    */\n-  public static ServerPartition getPartition(PartitionKey partKey,\n-      Class<? extends IServerPartition> partClass,\n-      Class<? extends IServerPartitionStorage> storageClass,\n-      RowType rowType, Class<? extends IElement> valueClass, double estSparsity) {\n+\n+    public static ServerPartition getPartition(PartitionKey partKey, Class<? extends IServerPartition> partClass, Class<? extends IServerPartitionStorage> storageClass, RowType rowType, Class<? extends IElement> valueClass, double estSparsity) {\n     // Row base partition\n     if (partClass == RowBasedPartition.class) {\n       // If storage class is not set, use default DenseServerRowsStorage\n-      if (storageClass == null) {\n+        if (storageClass == null) {\n         storageClass = DenseServerRowsStorage.class;\n-      }\n-\n-      try {\n-        ServerRowsStorage storage = ServerPartitionStorageFactory\n-            .getRowBasedStorage(storageClass, partKey, rowType);\n-        return new RowBasedPartition(partKey, estSparsity, storage, rowType, valueClass);\n-      } catch (Throwable e) {\n-        throw new RuntimeException(e);\n-      }\n+        }\n+        try {\n+                                                  ServerRowsStorage storage = ServerPartitionStorageFactory.getRowBasedStorage(storageClass, partKey, rowType);\n+                                                  return new RowBasedPartition(partKey, estSparsity, storage, rowType, valueClass);\n+        } catch (Throwable e) {\n+          throw new RuntimeException(e);\n+        }\n     } else if (partClass == CSRPartition.class) {\n-      CSRStorage storage = ServerPartitionStorageFactory\n-          .getCSRStorage(storageClass, partKey, rowType);\n-      return new CSRPartition(partKey, estSparsity, storage, rowType);\n+                                                                                                                                                                                                                                                        CSRStorage storage = ServerPartitionStorageFactory.getCSRStorage(storageClass, partKey, rowType);\n+                                                                                                                                                                                                                                                        return new CSRPartition(partKey, estSparsity, storage, rowType);\n     } else {\n       throw new UnsupportedOperationException(\"not support partition class \" + partClass + \" now \");\n     }\n-  }\n+    }\n \n   /**\n    * Create a new empty server partition\n@@ -75,14 +71,14 @@ public class ServerPartitionFactory {\n    * @param partClassName partition class\n    * @return server partition\n    */\n-  public static ServerPartition getPartition(String partClassName) {\n+\n+    public static ServerPartition getPartition(String partClassName) {\n     if (RowBasedPartition.class.getName().equals(partClassName)) {\n-      return new RowBasedPartition();\n+        return new RowBasedPartition();\n     } else if (CSRPartition.class.getName().equals(partClassName)) {\n-      return new CSRPartition();\n+                                                                         return new CSRPartition();\n     } else {\n-      throw new UnsupportedOperationException(\n-          \"not support partition class \" + partClassName + \" now \");\n+      throw new UnsupportedOperationException(\"not support partition class \" + partClassName + \" now \");\n+    }\n     }\n-  }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 27
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

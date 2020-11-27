@@ -1,0 +1,76 @@
+{
+    "error_id": "672",
+    "information": {
+        "errors": [
+            {
+                "line": "13",
+                "severity": "error",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * limitations under the License.\n */\npackage org.activiti.bpmn.model;\n\nimport java.util.ArrayList;\nimport java.util.List;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/672/FlowElement.java\nindex 4859522117..7349d6bd23 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler/672/FlowElement.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.bpmn.model;\n \n import java.util.ArrayList;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/672/FlowElement.java\nindex 4859522117..08d2166be1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/intellij/672/FlowElement.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.bpmn.model;\n \n import java.util.ArrayList;\n@@ -19,66 +20,66 @@ import com.fasterxml.jackson.annotation.JsonIgnore;\n \n public abstract class FlowElement extends BaseElement implements HasExecutionListeners, AcceptUpdates {\n \n-  protected String name;\n-  protected String documentation;\n-  protected List<ActivitiListener> executionListeners = new ArrayList<ActivitiListener>();\n-  protected FlowElementsContainer parentContainer;\n-\n-  public String getName() {\n-    return name;\n-  }\n-\n-  public void setName(String name) {\n-    this.name = name;\n-  }\n-\n-  public String getDocumentation() {\n-    return documentation;\n-  }\n-\n-  public void setDocumentation(String documentation) {\n-    this.documentation = documentation;\n-  }\n-\n-  public List<ActivitiListener> getExecutionListeners() {\n-    return executionListeners;\n-  }\n-\n-  public void setExecutionListeners(List<ActivitiListener> executionListeners) {\n-    this.executionListeners = executionListeners;\n-  }\n-\n-  @JsonIgnore\n-  public FlowElementsContainer getParentContainer() {\n-    return parentContainer;\n-  }\n-\n-  @JsonIgnore\n-  public SubProcess getSubProcess() {\n-    SubProcess subProcess = null;\n-    if (parentContainer instanceof SubProcess) {\n-      subProcess = (SubProcess) parentContainer;\n+    protected String name;\n+    protected String documentation;\n+    protected List<ActivitiListener> executionListeners = new ArrayList<ActivitiListener>();\n+    protected FlowElementsContainer parentContainer;\n+\n+    public String getName() {\n+        return name;\n     }\n \n-    return subProcess;\n-  }\n+    public void setName(String name) {\n+        this.name = name;\n+    }\n+\n+    public String getDocumentation() {\n+        return documentation;\n+    }\n+\n+    public void setDocumentation(String documentation) {\n+        this.documentation = documentation;\n+    }\n+\n+    public List<ActivitiListener> getExecutionListeners() {\n+        return executionListeners;\n+    }\n \n-  public void setParentContainer(FlowElementsContainer parentContainer) {\n-    this.parentContainer = parentContainer;\n-  }\n+    public void setExecutionListeners(List<ActivitiListener> executionListeners) {\n+        this.executionListeners = executionListeners;\n+    }\n+\n+    @JsonIgnore\n+    public FlowElementsContainer getParentContainer() {\n+        return parentContainer;\n+    }\n+\n+    @JsonIgnore\n+    public SubProcess getSubProcess() {\n+        SubProcess subProcess = null;\n+        if (parentContainer instanceof SubProcess) {\n+            subProcess = (SubProcess) parentContainer;\n+        }\n+\n+        return subProcess;\n+    }\n+\n+    public void setParentContainer(FlowElementsContainer parentContainer) {\n+        this.parentContainer = parentContainer;\n+    }\n \n-  public abstract FlowElement clone();\n+    public abstract FlowElement clone();\n \n-  public void setValues(FlowElement otherElement) {\n-    super.setValues(otherElement);\n-    setName(otherElement.getName());\n-    setDocumentation(otherElement.getDocumentation());\n+    public void setValues(FlowElement otherElement) {\n+        super.setValues(otherElement);\n+        setName(otherElement.getName());\n+        setDocumentation(otherElement.getDocumentation());\n \n-    executionListeners = new ArrayList<ActivitiListener>();\n-    if (otherElement.getExecutionListeners() != null && !otherElement.getExecutionListeners().isEmpty()) {\n-      for (ActivitiListener listener : otherElement.getExecutionListeners()) {\n-        executionListeners.add(listener.clone());\n-      }\n+        executionListeners = new ArrayList<ActivitiListener>();\n+        if (otherElement.getExecutionListeners() != null && !otherElement.getExecutionListeners().isEmpty()) {\n+            for (ActivitiListener listener : otherElement.getExecutionListeners()) {\n+                executionListeners.add(listener.clone());\n+            }\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 89
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "13",
+                    "severity": "error",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "20",
+                    "severity": "error",
+                    "message": "'CLASS_DEF' has more than 1 empty lines before.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "26",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "'METHOD_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/672/FlowElement.java\nindex 4859522117..ce8df5ae68 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/codebuff/672/FlowElement.java\n@@ -14,71 +14,68 @@ package org.activiti.bpmn.model;\n \n import java.util.ArrayList;\n import java.util.List;\n-\n import com.fasterxml.jackson.annotation.JsonIgnore;\n \n-public abstract class FlowElement extends BaseElement implements HasExecutionListeners, AcceptUpdates {\n \n-  protected String name;\n-  protected String documentation;\n-  protected List<ActivitiListener> executionListeners = new ArrayList<ActivitiListener>();\n-  protected FlowElementsContainer parentContainer;\n+public abstract class FlowElement extends BaseElement implements HasExecutionListeners, AcceptUpdates {\n \n-  public String getName() {\n+    protected String name;\n+    protected String documentation;\n+    protected List<ActivitiListener> executionListeners = new ArrayList<ActivitiListener>();\n+    protected FlowElementsContainer parentContainer;\n+    public String getName() {\n     return name;\n-  }\n+    }\n \n-  public void setName(String name) {\n+    public void setName(String name) {\n     this.name = name;\n-  }\n+    }\n \n-  public String getDocumentation() {\n+    public String getDocumentation() {\n     return documentation;\n-  }\n+    }\n \n-  public void setDocumentation(String documentation) {\n+    public void setDocumentation(String documentation) {\n     this.documentation = documentation;\n-  }\n+    }\n \n-  public List<ActivitiListener> getExecutionListeners() {\n+    public List<ActivitiListener> getExecutionListeners() {\n     return executionListeners;\n-  }\n+    }\n \n-  public void setExecutionListeners(List<ActivitiListener> executionListeners) {\n+    public void setExecutionListeners(List<ActivitiListener> executionListeners) {\n     this.executionListeners = executionListeners;\n-  }\n+    }\n \n-  @JsonIgnore\n-  public FlowElementsContainer getParentContainer() {\n-    return parentContainer;\n-  }\n+    @JsonIgnore\n+    public FlowElementsContainer getParentContainer() {\n+        return parentContainer;\n+    }\n \n-  @JsonIgnore\n-  public SubProcess getSubProcess() {\n+    @JsonIgnore\n+    public SubProcess getSubProcess() {\n     SubProcess subProcess = null;\n     if (parentContainer instanceof SubProcess) {\n-      subProcess = (SubProcess) parentContainer;\n+        subProcess = (SubProcess) parentContainer;\n     }\n-\n     return subProcess;\n-  }\n+    }\n \n-  public void setParentContainer(FlowElementsContainer parentContainer) {\n+    public void setParentContainer(FlowElementsContainer parentContainer) {\n     this.parentContainer = parentContainer;\n-  }\n-\n-  public abstract FlowElement clone();\n+    }\n \n-  public void setValues(FlowElement otherElement) {\n+    public abstract FlowElement clone();\n+    public void setValues(FlowElement otherElement) {\n     super.setValues(otherElement);\n     setName(otherElement.getName());\n     setDocumentation(otherElement.getDocumentation());\n-\n     executionListeners = new ArrayList<ActivitiListener>();\n     if (otherElement.getExecutionListeners() != null && !otherElement.getExecutionListeners().isEmpty()) {\n-      for (ActivitiListener listener : otherElement.getExecutionListeners()) {\n-        executionListeners.add(listener.clone());\n-      }\n+        for (ActivitiListener listener : otherElement.getExecutionListeners()) {\n+            executionListeners.add(listener.clone());\n+        }\n     }\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 44
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/672/FlowElement.java\nindex 4859522117..7349d6bd23 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_random/672/FlowElement.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.bpmn.model;\n \n import java.util.ArrayList;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/672/FlowElement.java\nindex 4859522117..7349d6bd23 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/errored/1/672/FlowElement.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Activiti-Activiti/styler_three_grams/672/FlowElement.java\n@@ -10,6 +10,7 @@\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package org.activiti.bpmn.model;\n \n import java.util.ArrayList;\n",
+            "diff_size": 1
+        }
+    ]
+}

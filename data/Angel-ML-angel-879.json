@@ -1,0 +1,106 @@
+{
+    "error_id": "879",
+    "information": {
+        "errors": [
+            {
+                "line": "6",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 102).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in\n * compliance with the License. You may obtain a copy of the License at\n *\n * https://opensource.org/licenses/Apache-2.0",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/879/InitNeighbor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/879/InitNeighbor.java\nindex e663c7c013..1f27ad232a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/879/InitNeighbor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/879/InitNeighbor.java\n@@ -30,50 +30,50 @@ import java.util.List;\n  */\n public class InitNeighbor extends UpdateFunc {\n \n-  public InitNeighbor(InitNeighborParam param) {\n-    super(param);\n-  }\n+    public InitNeighbor(InitNeighborParam param) {\n+        super(param);\n+    }\n \n-  public InitNeighbor() {\n-    this(null);\n-  }\n+    public InitNeighbor() {\n+        this(null);\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n-    PartInitNeighborParam param = (PartInitNeighborParam) partParam;\n-    int[] nodeIds = param.getNodeIds();\n-    int[] neighborNums = param.getNeighborNums();\n-    int[] neighbors = param.getNeighbors();\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n+        PartInitNeighborParam param = (PartInitNeighborParam) partParam;\n+        int[] nodeIds = param.getNodeIds();\n+        int[] neighborNums = param.getNeighborNums();\n+        int[] neighbors = param.getNeighbors();\n \n-    ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(param.getMatrixId());\n-    CSRPartition part = (CSRPartition) matrix.getPartition(param.getPartKey().getPartitionId());\n-    IntCSRStorage storage = (IntCSRStorage) part.getStorage();\n+        ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(param.getMatrixId());\n+        CSRPartition part = (CSRPartition) matrix.getPartition(param.getPartKey().getPartitionId());\n+        IntCSRStorage storage = (IntCSRStorage) part.getStorage();\n \n-    synchronized (storage) {\n-      int startOffset = (int) param.getPartKey().getStartCol();\n+        synchronized (storage) {\n+            int startOffset = (int) param.getPartKey().getStartCol();\n \n-      // Store the total neighbor number of all nodes in rowOffsets\n-      int[] rowOffsets = storage.getRowOffsets();\n-      for (int i = 0; i < nodeIds.length; i++) {\n-        rowOffsets[nodeIds[i] - startOffset] += neighborNums[i];\n-      }\n+            // Store the total neighbor number of all nodes in rowOffsets\n+            int[] rowOffsets = storage.getRowOffsets();\n+            for (int i = 0; i < nodeIds.length; i++) {\n+                rowOffsets[nodeIds[i] - startOffset] += neighborNums[i];\n+            }\n \n-      // Put the node ids, node neighbor number, node neighbors to the cache\n-      List<int[]> tempRowIds = storage.getTempRowIds();\n-      List<int[]> tempRowLens = storage.getTempRowLens();\n-      List<int[]> tempColumnOffsets = storage.getTempColumnIndices();\n-      if (tempRowIds == null) {\n-        tempRowIds = new ArrayList<>();\n-        tempRowLens = new ArrayList<>();\n-        tempColumnOffsets = new ArrayList<>();\n-        storage.setTempRowIds(tempRowIds);\n-        storage.setTempRowLens(tempRowLens);\n-        storage.setTempColumnIndices(tempColumnOffsets);\n-      }\n+            // Put the node ids, node neighbor number, node neighbors to the cache\n+            List<int[]> tempRowIds = storage.getTempRowIds();\n+            List<int[]> tempRowLens = storage.getTempRowLens();\n+            List<int[]> tempColumnOffsets = storage.getTempColumnIndices();\n+            if (tempRowIds == null) {\n+                tempRowIds = new ArrayList<>();\n+                tempRowLens = new ArrayList<>();\n+                tempColumnOffsets = new ArrayList<>();\n+                storage.setTempRowIds(tempRowIds);\n+                storage.setTempRowLens(tempRowLens);\n+                storage.setTempColumnIndices(tempColumnOffsets);\n+            }\n \n-      tempRowIds.add(param.getNodeIds());\n-      tempRowLens.add(neighborNums);\n-      tempColumnOffsets.add(neighbors);\n+            tempRowIds.add(param.getNodeIds());\n+            tempRowLens.add(neighborNums);\n+            tempColumnOffsets.add(neighbors);\n+        }\n     }\n-  }\n }\n",
+            "diff_size": 39
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/879/InitNeighbor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/879/InitNeighbor.java\nindex e663c7c013..7db446c48c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/879/InitNeighbor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/879/InitNeighbor.java\n@@ -76,4 +76,4 @@ public class InitNeighbor extends UpdateFunc {\n       tempColumnOffsets.add(neighbors);\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 55.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 6, expected is 8, indentation should be the same level as line 62.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/879/InitNeighbor.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/879/InitNeighbor.java\nindex e663c7c013..49820c948c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/879/InitNeighbor.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/879/InitNeighbor.java\n@@ -28,52 +28,52 @@ import java.util.List;\n /**\n  * Init node neighbors\n  */\n+\n public class InitNeighbor extends UpdateFunc {\n \n-  public InitNeighbor(InitNeighborParam param) {\n+    public InitNeighbor(InitNeighborParam param) {\n     super(param);\n-  }\n+    }\n \n-  public InitNeighbor() {\n+    public InitNeighbor() {\n     this(null);\n-  }\n+    }\n \n-  @Override\n-  public void partitionUpdate(PartitionUpdateParam partParam) {\n+    @Override\n+    public void partitionUpdate(PartitionUpdateParam partParam) {\n     PartInitNeighborParam param = (PartInitNeighborParam) partParam;\n     int[] nodeIds = param.getNodeIds();\n     int[] neighborNums = param.getNeighborNums();\n     int[] neighbors = param.getNeighbors();\n-\n     ServerMatrix matrix = psContext.getMatrixStorageManager().getMatrix(param.getMatrixId());\n     CSRPartition part = (CSRPartition) matrix.getPartition(param.getPartKey().getPartitionId());\n     IntCSRStorage storage = (IntCSRStorage) part.getStorage();\n-\n     synchronized (storage) {\n-      int startOffset = (int) param.getPartKey().getStartCol();\n+        int startOffset = (int) param.getPartKey().getStartCol();\n \n       // Store the total neighbor number of all nodes in rowOffsets\n-      int[] rowOffsets = storage.getRowOffsets();\n-      for (int i = 0; i < nodeIds.length; i++) {\n+        int[] rowOffsets = storage.getRowOffsets();\n+        for (int i = 0; i < nodeIds.length; i++) {\n         rowOffsets[nodeIds[i] - startOffset] += neighborNums[i];\n-      }\n+        }\n \n       // Put the node ids, node neighbor number, node neighbors to the cache\n-      List<int[]> tempRowIds = storage.getTempRowIds();\n-      List<int[]> tempRowLens = storage.getTempRowLens();\n-      List<int[]> tempColumnOffsets = storage.getTempColumnIndices();\n-      if (tempRowIds == null) {\n+\n+        List<int[]> tempRowIds = storage.getTempRowIds();\n+        List<int[]> tempRowLens = storage.getTempRowLens();\n+        List<int[]> tempColumnOffsets = storage.getTempColumnIndices();\n+        if (tempRowIds == null) {\n         tempRowIds = new ArrayList<>();\n         tempRowLens = new ArrayList<>();\n         tempColumnOffsets = new ArrayList<>();\n         storage.setTempRowIds(tempRowIds);\n         storage.setTempRowLens(tempRowLens);\n         storage.setTempColumnIndices(tempColumnOffsets);\n-      }\n-\n-      tempRowIds.add(param.getNodeIds());\n-      tempRowLens.add(neighborNums);\n-      tempColumnOffsets.add(neighbors);\n+        }\n+        tempRowIds.add(param.getNodeIds());\n+        tempRowLens.add(neighborNums);\n+        tempColumnOffsets.add(neighbors);\n     }\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 26
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "6",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,226 @@
+{
+    "error_id": "262",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/262/PSContext.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/262/PSContext.java\nindex a1eaec6bb3..3e9a9971ca 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/262/PSContext.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/262/PSContext.java\n@@ -33,163 +33,185 @@ import org.apache.hadoop.conf.Configuration;\n  * Context of parameter server.\n  */\n public class PSContext {\n-  /**\n-   * PS\n-   */\n-  private final ParameterServer ps;\n-\n-  /**\n-   * Create a PSContext\n-   * @param ps PS\n-   */\n-  public PSContext(ParameterServer ps ) {\n-    this.ps = ps;\n-  }\n-\n-  /**\n-   * Get application total task number\n-   * @return application total task number\n-   */\n-  public int getTaskNum() {\n-    return getConf().getInt(AngelConf.ANGEL_TASK_ACTUAL_NUM, 1);\n-  }\n-\n-  /**\n-   * Get application configuration\n-   * @return application configuration\n-   */\n-  public Configuration getConf() {\n-    return ps.getConf();\n-  }\n-\n-  /**\n-   * Get PS\n-   * @return PS\n-   */\n-  public ParameterServer getPs() {\n-    return ps;\n-  }\n-\n-  /**\n-   * Get application deploy mode\n-   * @return application deploy mode\n-   */\n-  public AngelDeployMode getDeployMode() {\n-    String mode =\n-        ps.getConf().get(AngelConf.ANGEL_DEPLOY_MODE,\n-            AngelConf.DEFAULT_ANGEL_DEPLOY_MODE);\n-\n-    if (mode.equals(AngelDeployMode.LOCAL.toString())) {\n-      return AngelDeployMode.LOCAL;\n-    } else {\n-      return AngelDeployMode.YARN;\n-    }\n-  }\n-\n-  /**\n-   * Get the RPC client to Master\n-   * @return the RPC client to Master\n-   */\n-  public MasterClient getMaster() {\n-    return ps.getMaster();\n-  }\n-\n-  /**\n-   * Get Matrix meta manager\n-   * @return Matrix meta manager\n-   */\n-  public PSMatrixMetaManager getMatrixMetaManager() {\n-    return ps.getMatrixMetaManager();\n-  }\n-\n-  /**\n-   * Get clock vector manager\n-   * @return clock vector manager\n-   */\n-  public ClockVectorManager getClockVectorManager() {\n-    return ps.getClockVectorManager();\n-  }\n-\n-  /**\n-   * Get matrix storage manager\n-   * @return matrix storage manager\n-   */\n-  public MatrixStorageManager getMatrixStorageManager() {\n-    return ps.getMatrixStorageManager();\n-  }\n-\n-  /**\n-   * Get location manager\n-   * @return location manager\n-   */\n-  public PSLocationManager getLocationManager() {\n-    return ps.getLocationManager();\n-  }\n-\n-  /**\n-   * Get ps attempt id\n-   * @return ps attempt id\n-   */\n-  public PSAttemptId getPSAttemptId() {\n-    return ps.getPSAttemptId();\n-  }\n-\n-  /**\n-   * Get the RPC server for control message\n-   * @return\n-   */\n-  public ParameterServerService getPsService() {\n-    return ps.getPsService();\n-  }\n-\n-  /**\n-   * Get ps to ps pusher\n-   * @return ps to ps pusher\n-   */\n-  public PS2PSPusherImpl getPS2PSPusher() {\n-    return ps.getPs2PSPusher();\n-  }\n-\n-  /**\n-   * Get RPC worker pool for matrix transformation\n-   * @return RPC worker pool for matrix transformation\n-   */\n-  public WorkerPool getWorkerPool() { return ps.getWorkerPool();}\n-\n-  /**\n-   * Get matrices load/save worker pool\n-   * @return matrices load/save worker pool\n-   */\n-  public IOExecutors getIOExecutors() {\n-    return ps.getIOExecutors();\n-  }\n-\n-  /**\n-   * Get snapshot dumper\n-   * @return snapshot dumper\n-   */\n-  public SnapshotDumper getSnapshotDumper() { return ps.getSnapshotDumper(); }\n-\n-  /**\n-   * Get the replication number for a matrix partition\n-   * @return the replication number for a matrix partition\n-   */\n-  public int getPartReplication() {\n-    return getConf().getInt(AngelConf.ANGEL_PS_HA_REPLICATION_NUMBER,\n-      AngelConf.DEFAULT_ANGEL_PS_HA_REPLICATION_NUMBER);\n-  }\n-\n-  /**\n-   * Get the application running mode\n-   * @return the application running mode\n-   */\n-  public RunningMode getRunningMode() {\n-    String modeStr = getConf().get(AngelConf.ANGEL_RUNNING_MODE,\n-      AngelConf.DEFAULT_ANGEL_RUNNING_MODE);\n-    return RunningMode.valueOf(modeStr);\n-  }\n-\n-  public PSFailedReport getPSFailedReport() {\n-    return ps.getPSFailedReport();\n-  }\n+    /**\n+     * PS\n+     */\n+    private final ParameterServer ps;\n+\n+    /**\n+     * Create a PSContext\n+     *\n+     * @param ps PS\n+     */\n+    public PSContext(ParameterServer ps) {\n+        this.ps = ps;\n+    }\n+\n+    /**\n+     * Get application total task number\n+     *\n+     * @return application total task number\n+     */\n+    public int getTaskNum() {\n+        return getConf().getInt(AngelConf.ANGEL_TASK_ACTUAL_NUM, 1);\n+    }\n+\n+    /**\n+     * Get application configuration\n+     *\n+     * @return application configuration\n+     */\n+    public Configuration getConf() {\n+        return ps.getConf();\n+    }\n+\n+    /**\n+     * Get PS\n+     *\n+     * @return PS\n+     */\n+    public ParameterServer getPs() {\n+        return ps;\n+    }\n+\n+    /**\n+     * Get application deploy mode\n+     *\n+     * @return application deploy mode\n+     */\n+    public AngelDeployMode getDeployMode() {\n+        String mode =\n+                ps.getConf().get(AngelConf.ANGEL_DEPLOY_MODE,\n+                        AngelConf.DEFAULT_ANGEL_DEPLOY_MODE);\n+\n+        if (mode.equals(AngelDeployMode.LOCAL.toString())) {\n+            return AngelDeployMode.LOCAL;\n+        } else {\n+            return AngelDeployMode.YARN;\n+        }\n+    }\n+\n+    /**\n+     * Get the RPC client to Master\n+     *\n+     * @return the RPC client to Master\n+     */\n+    public MasterClient getMaster() {\n+        return ps.getMaster();\n+    }\n+\n+    /**\n+     * Get Matrix meta manager\n+     *\n+     * @return Matrix meta manager\n+     */\n+    public PSMatrixMetaManager getMatrixMetaManager() {\n+        return ps.getMatrixMetaManager();\n+    }\n+\n+    /**\n+     * Get clock vector manager\n+     *\n+     * @return clock vector manager\n+     */\n+    public ClockVectorManager getClockVectorManager() {\n+        return ps.getClockVectorManager();\n+    }\n+\n+    /**\n+     * Get matrix storage manager\n+     *\n+     * @return matrix storage manager\n+     */\n+    public MatrixStorageManager getMatrixStorageManager() {\n+        return ps.getMatrixStorageManager();\n+    }\n+\n+    /**\n+     * Get location manager\n+     *\n+     * @return location manager\n+     */\n+    public PSLocationManager getLocationManager() {\n+        return ps.getLocationManager();\n+    }\n+\n+    /**\n+     * Get ps attempt id\n+     *\n+     * @return ps attempt id\n+     */\n+    public PSAttemptId getPSAttemptId() {\n+        return ps.getPSAttemptId();\n+    }\n+\n+    /**\n+     * Get the RPC server for control message\n+     *\n+     * @return\n+     */\n+    public ParameterServerService getPsService() {\n+        return ps.getPsService();\n+    }\n+\n+    /**\n+     * Get ps to ps pusher\n+     *\n+     * @return ps to ps pusher\n+     */\n+    public PS2PSPusherImpl getPS2PSPusher() {\n+        return ps.getPs2PSPusher();\n+    }\n+\n+    /**\n+     * Get RPC worker pool for matrix transformation\n+     *\n+     * @return RPC worker pool for matrix transformation\n+     */\n+    public WorkerPool getWorkerPool() {\n+        return ps.getWorkerPool();\n+    }\n+\n+    /**\n+     * Get matrices load/save worker pool\n+     *\n+     * @return matrices load/save worker pool\n+     */\n+    public IOExecutors getIOExecutors() {\n+        return ps.getIOExecutors();\n+    }\n+\n+    /**\n+     * Get snapshot dumper\n+     *\n+     * @return snapshot dumper\n+     */\n+    public SnapshotDumper getSnapshotDumper() {\n+        return ps.getSnapshotDumper();\n+    }\n+\n+    /**\n+     * Get the replication number for a matrix partition\n+     *\n+     * @return the replication number for a matrix partition\n+     */\n+    public int getPartReplication() {\n+        return getConf().getInt(AngelConf.ANGEL_PS_HA_REPLICATION_NUMBER,\n+                AngelConf.DEFAULT_ANGEL_PS_HA_REPLICATION_NUMBER);\n+    }\n+\n+    /**\n+     * Get the application running mode\n+     *\n+     * @return the application running mode\n+     */\n+    public RunningMode getRunningMode() {\n+        String modeStr = getConf().get(AngelConf.ANGEL_RUNNING_MODE,\n+                AngelConf.DEFAULT_ANGEL_RUNNING_MODE);\n+        return RunningMode.valueOf(modeStr);\n+    }\n+\n+    public PSFailedReport getPSFailedReport() {\n+        return ps.getPSFailedReport();\n+    }\n }\n",
+            "diff_size": 181
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/262/PSContext.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/262/PSContext.java\nindex a1eaec6bb3..6f0c99a0c7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/262/PSContext.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/262/PSContext.java\n@@ -42,7 +42,7 @@ public class PSContext {\n    * Create a PSContext\n    * @param ps PS\n    */\n-  public PSContext(ParameterServer ps ) {\n+  public PSContext(ParameterServer ps) {\n     this.ps = ps;\n   }\n \n@@ -154,7 +154,9 @@ public class PSContext {\n    * Get RPC worker pool for matrix transformation\n    * @return RPC worker pool for matrix transformation\n    */\n-  public WorkerPool getWorkerPool() { return ps.getWorkerPool();}\n+  public WorkerPool getWorkerPool() {\n+  return ps.getWorkerPool();\n+  }\n \n   /**\n    * Get matrices load/save worker pool\n@@ -168,7 +170,9 @@ public class PSContext {\n    * Get snapshot dumper\n    * @return snapshot dumper\n    */\n-  public SnapshotDumper getSnapshotDumper() { return ps.getSnapshotDumper(); }\n+  public SnapshotDumper getSnapshotDumper() {\n+  return ps.getSnapshotDumper();\n+  }\n \n   /**\n    * Get the replication number for a matrix partition\n@@ -192,4 +196,4 @@ public class PSContext {\n   public PSFailedReport getPSFailedReport() {\n     return ps.getPSFailedReport();\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 40.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "42",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 47.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 56.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "60",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 65.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "69",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 74.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 83.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "84",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 101).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 97.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 106.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "110",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 115.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "119",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 124.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "128",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 133.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "137",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 142.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "146",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 151.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "155",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 160.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "164",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 169.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 178.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "182",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 187.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "191",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 196.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "197",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 120).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "200",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 205.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "206",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/262/PSContext.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/262/PSContext.java\nindex a1eaec6bb3..752f31a69a 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/262/PSContext.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/262/PSContext.java\n@@ -32,164 +32,183 @@ import org.apache.hadoop.conf.Configuration;\n /**\n  * Context of parameter server.\n  */\n+\n public class PSContext {\n   /**\n    * PS\n    */\n-  private final ParameterServer ps;\n+    private final ParameterServer ps;\n \n   /**\n    * Create a PSContext\n    * @param ps PS\n    */\n-  public PSContext(ParameterServer ps ) {\n+\n+    public PSContext(ParameterServer ps) {\n     this.ps = ps;\n-  }\n+    }\n \n   /**\n    * Get application total task number\n    * @return application total task number\n    */\n-  public int getTaskNum() {\n+\n+    public int getTaskNum() {\n     return getConf().getInt(AngelConf.ANGEL_TASK_ACTUAL_NUM, 1);\n-  }\n+    }\n \n   /**\n    * Get application configuration\n    * @return application configuration\n    */\n-  public Configuration getConf() {\n+\n+    public Configuration getConf() {\n     return ps.getConf();\n-  }\n+    }\n \n   /**\n    * Get PS\n    * @return PS\n    */\n-  public ParameterServer getPs() {\n+\n+    public ParameterServer getPs() {\n     return ps;\n-  }\n+    }\n \n   /**\n    * Get application deploy mode\n    * @return application deploy mode\n    */\n-  public AngelDeployMode getDeployMode() {\n-    String mode =\n-        ps.getConf().get(AngelConf.ANGEL_DEPLOY_MODE,\n-            AngelConf.DEFAULT_ANGEL_DEPLOY_MODE);\n \n+    public AngelDeployMode getDeployMode() {\n+    String mode = ps.getConf().get(AngelConf.ANGEL_DEPLOY_MODE, AngelConf.DEFAULT_ANGEL_DEPLOY_MODE);\n     if (mode.equals(AngelDeployMode.LOCAL.toString())) {\n-      return AngelDeployMode.LOCAL;\n+        return AngelDeployMode.LOCAL;\n     } else {\n       return AngelDeployMode.YARN;\n     }\n-  }\n+    }\n \n   /**\n    * Get the RPC client to Master\n    * @return the RPC client to Master\n    */\n-  public MasterClient getMaster() {\n+\n+    public MasterClient getMaster() {\n     return ps.getMaster();\n-  }\n+    }\n \n   /**\n    * Get Matrix meta manager\n    * @return Matrix meta manager\n    */\n-  public PSMatrixMetaManager getMatrixMetaManager() {\n+\n+    public PSMatrixMetaManager getMatrixMetaManager() {\n     return ps.getMatrixMetaManager();\n-  }\n+    }\n \n   /**\n    * Get clock vector manager\n    * @return clock vector manager\n    */\n-  public ClockVectorManager getClockVectorManager() {\n+\n+    public ClockVectorManager getClockVectorManager() {\n     return ps.getClockVectorManager();\n-  }\n+    }\n \n   /**\n    * Get matrix storage manager\n    * @return matrix storage manager\n    */\n-  public MatrixStorageManager getMatrixStorageManager() {\n+\n+    public MatrixStorageManager getMatrixStorageManager() {\n     return ps.getMatrixStorageManager();\n-  }\n+    }\n \n   /**\n    * Get location manager\n    * @return location manager\n    */\n-  public PSLocationManager getLocationManager() {\n+\n+    public PSLocationManager getLocationManager() {\n     return ps.getLocationManager();\n-  }\n+    }\n \n   /**\n    * Get ps attempt id\n    * @return ps attempt id\n    */\n-  public PSAttemptId getPSAttemptId() {\n+\n+    public PSAttemptId getPSAttemptId() {\n     return ps.getPSAttemptId();\n-  }\n+    }\n \n   /**\n    * Get the RPC server for control message\n    * @return\n    */\n-  public ParameterServerService getPsService() {\n+\n+    public ParameterServerService getPsService() {\n     return ps.getPsService();\n-  }\n+    }\n \n   /**\n    * Get ps to ps pusher\n    * @return ps to ps pusher\n    */\n-  public PS2PSPusherImpl getPS2PSPusher() {\n+\n+    public PS2PSPusherImpl getPS2PSPusher() {\n     return ps.getPs2PSPusher();\n-  }\n+    }\n \n   /**\n    * Get RPC worker pool for matrix transformation\n    * @return RPC worker pool for matrix transformation\n    */\n-  public WorkerPool getWorkerPool() { return ps.getWorkerPool();}\n+\n+    public WorkerPool getWorkerPool() {\n+    return ps.getWorkerPool();\n+    }\n \n   /**\n    * Get matrices load/save worker pool\n    * @return matrices load/save worker pool\n    */\n-  public IOExecutors getIOExecutors() {\n+\n+    public IOExecutors getIOExecutors() {\n     return ps.getIOExecutors();\n-  }\n+    }\n \n   /**\n    * Get snapshot dumper\n    * @return snapshot dumper\n    */\n-  public SnapshotDumper getSnapshotDumper() { return ps.getSnapshotDumper(); }\n+\n+    public SnapshotDumper getSnapshotDumper() {\n+    return ps.getSnapshotDumper();\n+    }\n \n   /**\n    * Get the replication number for a matrix partition\n    * @return the replication number for a matrix partition\n    */\n-  public int getPartReplication() {\n-    return getConf().getInt(AngelConf.ANGEL_PS_HA_REPLICATION_NUMBER,\n-      AngelConf.DEFAULT_ANGEL_PS_HA_REPLICATION_NUMBER);\n-  }\n+\n+    public int getPartReplication() {\n+    return getConf().getInt(AngelConf.ANGEL_PS_HA_REPLICATION_NUMBER, AngelConf.DEFAULT_ANGEL_PS_HA_REPLICATION_NUMBER);\n+    }\n \n   /**\n    * Get the application running mode\n    * @return the application running mode\n    */\n-  public RunningMode getRunningMode() {\n-    String modeStr = getConf().get(AngelConf.ANGEL_RUNNING_MODE,\n-      AngelConf.DEFAULT_ANGEL_RUNNING_MODE);\n+\n+    public RunningMode getRunningMode() {\n+    String modeStr = getConf().get(AngelConf.ANGEL_RUNNING_MODE, AngelConf.DEFAULT_ANGEL_RUNNING_MODE);\n     return RunningMode.valueOf(modeStr);\n-  }\n+    }\n \n-  public PSFailedReport getPSFailedReport() {\n+    public PSFailedReport getPSFailedReport() {\n     return ps.getPSFailedReport();\n-  }\n-}\n+    }\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 69
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

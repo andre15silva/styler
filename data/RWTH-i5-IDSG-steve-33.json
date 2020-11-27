@@ -1,0 +1,119 @@
+{
+    "error_id": "33",
+    "information": {
+        "errors": [
+            {
+                "line": "88",
+                "column": "90",
+                "severity": "error",
+                "message": "'+' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "\n        if (sql != java) {\n            throw new SteveException(\"MySQL and Java are not using the same time zone. \" +\n                    \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n        }\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "88",
+                    "column": "89",
+                    "severity": "error",
+                    "message": "'+' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "88",
+                    "column": "89",
+                    "severity": "error",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/33/DateTimeUtils.java\nindex 3942cdfb4d..77d4d99b30 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler/33/DateTimeUtils.java\n@@ -85,7 +85,7 @@ public final class DateTimeUtils {\n         long java = DateTimeUtils.getOffsetFromUtcInSeconds();\n \n         if (sql != java) {\n-            throw new SteveException(\"MySQL and Java are not using the same time zone. \" +\n+            throw new SteveException(\"MySQL and Java are not using the same time zone. \"+\n                     \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n         }\n     }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "89",
+                    "column": "90",
+                    "severity": "error",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/33/DateTimeUtils.java\nindex 3942cdfb4d..ca005ce4f9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/intellij/33/DateTimeUtils.java\n@@ -17,18 +17,19 @@ import java.util.concurrent.TimeUnit;\n  * @author Sevket Goekay <goekay@dbis.rwth-aachen.de>\n  */\n public final class DateTimeUtils {\n-    private DateTimeUtils() { }\n+    private DateTimeUtils() {\n+    }\n \n     private static final DateTimeFormatter HUMAN_FORMATTER = DateTimeFormat.forPattern(\"yyyy-MM-dd 'at' HH:mm\");\n     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormat.forPattern(\"HH:mm\");\n \n     private static final PeriodFormatter PERIOD_FORMATTER = new PeriodFormatterBuilder()\n-            .printZeroNever()\n-            .appendDays().appendSuffix(\" day\", \" days\").appendSeparator(\" \")\n-            .appendHours().appendSuffix(\" hour\", \" hours\").appendSeparator(\" \")\n-            .appendMinutes().appendSuffix(\" minute\", \" minutes\").appendSeparator(\" \")\n-            .appendSeconds().appendSuffix(\" second\", \" seconds\")\n-            .toFormatter();\n+        .printZeroNever()\n+        .appendDays().appendSuffix(\" day\", \" days\").appendSeparator(\" \")\n+        .appendHours().appendSuffix(\" hour\", \" hours\").appendSeparator(\" \")\n+        .appendMinutes().appendSuffix(\" minute\", \" minutes\").appendSeparator(\" \")\n+        .appendSeconds().appendSuffix(\" second\", \" seconds\")\n+        .toFormatter();\n \n     public static DateTime toDateTime(LocalDateTime ldt) {\n         if (ldt == null) {\n@@ -62,15 +63,15 @@ public final class DateTimeUtils {\n         if (inputAtMidnight.equals(todayAtMidnight)) {\n             return \"Today at \" + TIME_FORMATTER.print(dt);\n \n-        // Is it yesterday?\n+            // Is it yesterday?\n         } else if (inputAtMidnight.equals(todayAtMidnight.minusDays(1))) {\n             return \"Yesterday at \" + TIME_FORMATTER.print(dt);\n \n-        // Is it tomorrow?\n+            // Is it tomorrow?\n         } else if (inputAtMidnight.equals(todayAtMidnight.plusDays(1))) {\n             return \"Tomorrow at \" + TIME_FORMATTER.print(dt);\n \n-        // So long ago OR in the future...\n+            // So long ago OR in the future...\n         } else {\n             return HUMAN_FORMATTER.print(dt);\n         }\n@@ -86,7 +87,7 @@ public final class DateTimeUtils {\n \n         if (sql != java) {\n             throw new SteveException(\"MySQL and Java are not using the same time zone. \" +\n-                    \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n+                \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n         }\n     }\n \n",
+            "diff_size": 12
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 165).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/33/DateTimeUtils.java\nindex 3942cdfb4d..cb3d43af7f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/naturalize/33/DateTimeUtils.java\n@@ -85,8 +85,7 @@ public final class DateTimeUtils {\n         long java = DateTimeUtils.getOffsetFromUtcInSeconds();\n \n         if (sql != java) {\n-            throw new SteveException(\"MySQL and Java are not using the same time zone. \" +\n-                    \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n+            throw new SteveException(\"MySQL and Java are not using the same time zone. \" + \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n         }\n     }\n \n@@ -96,4 +95,4 @@ public final class DateTimeUtils {\n         long offsetInMilliseconds = timeZone.getOffset(now.getMillis());\n         return TimeUnit.MILLISECONDS.toSeconds(offsetInMilliseconds);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 153).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/33/DateTimeUtils.java\nindex 3942cdfb4d..c658e1fc64 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/codebuff/33/DateTimeUtils.java\n@@ -10,25 +10,32 @@ import org.joda.time.format.DateTimeFormatter;\n import org.joda.time.format.PeriodFormatter;\n import org.joda.time.format.PeriodFormatterBuilder;\n import org.jooq.DSLContext;\n-\n import java.util.concurrent.TimeUnit;\n \n /**\n  * @author Sevket Goekay <goekay@dbis.rwth-aachen.de>\n  */\n+\n+\n public final class DateTimeUtils {\n     private DateTimeUtils() { }\n \n     private static final DateTimeFormatter HUMAN_FORMATTER = DateTimeFormat.forPattern(\"yyyy-MM-dd 'at' HH:mm\");\n     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormat.forPattern(\"HH:mm\");\n-\n     private static final PeriodFormatter PERIOD_FORMATTER = new PeriodFormatterBuilder()\n-            .printZeroNever()\n-            .appendDays().appendSuffix(\" day\", \" days\").appendSeparator(\" \")\n-            .appendHours().appendSuffix(\" hour\", \" hours\").appendSeparator(\" \")\n-            .appendMinutes().appendSuffix(\" minute\", \" minutes\").appendSeparator(\" \")\n-            .appendSeconds().appendSuffix(\" second\", \" seconds\")\n-            .toFormatter();\n+           .printZeroNever()\n+           .appendDays()\n+           .appendSuffix(\" day\", \" days\")\n+           .appendSeparator(\" \")\n+           .appendHours()\n+           .appendSuffix(\" hour\", \" hours\")\n+           .appendSeparator(\" \")\n+           .appendMinutes()\n+           .appendSuffix(\" minute\", \" minutes\")\n+           .appendSeparator(\" \")\n+           .appendSeconds()\n+           .appendSuffix(\" second\", \" seconds\")\n+           .toFormatter();\n \n     public static DateTime toDateTime(LocalDateTime ldt) {\n         if (ldt == null) {\n@@ -49,12 +56,14 @@ public final class DateTimeUtils {\n     /**\n      * Print the date/time nicer, if it's from today, yesterday or tomorrow.\n      */\n+\n     public static String humanize(DateTime dt) {\n         if (dt == null) {\n             return \"\";\n         }\n \n         // Equalize time fields before comparing date fields\n+\n         DateTime inputAtMidnight = dt.withTimeAtStartOfDay();\n         DateTime todayAtMidnight = DateTime.now().withTimeAtStartOfDay();\n \n@@ -68,11 +77,11 @@ public final class DateTimeUtils {\n \n         // Is it tomorrow?\n         } else if (inputAtMidnight.equals(todayAtMidnight.plusDays(1))) {\n-            return \"Tomorrow at \" + TIME_FORMATTER.print(dt);\n+                   return \"Tomorrow at \" + TIME_FORMATTER.print(dt);\n \n         // So long ago OR in the future...\n         } else {\n-            return HUMAN_FORMATTER.print(dt);\n+                   return HUMAN_FORMATTER.print(dt);\n         }\n     }\n \n@@ -83,10 +92,10 @@ public final class DateTimeUtils {\n     public static void checkJavaAndMySQLOffsets(DSLContext ctx) {\n         long sql = CustomDSL.selectOffsetFromUtcInSeconds(ctx);\n         long java = DateTimeUtils.getOffsetFromUtcInSeconds();\n-\n         if (sql != java) {\n-            throw new SteveException(\"MySQL and Java are not using the same time zone. \" +\n-                    \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n+            throw new SteveException(\"MySQL and Java are not using the same time zone. \" + \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\",\n+                                     java,\n+                                     sql);\n         }\n     }\n \n@@ -96,4 +105,4 @@ public final class DateTimeUtils {\n         long offsetInMilliseconds = timeZone.getOffset(now.getMillis());\n         return TimeUnit.MILLISECONDS.toSeconds(offsetInMilliseconds);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 26
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "88",
+                    "column": "89",
+                    "severity": "error",
+                    "message": "'+' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "88",
+                    "column": "89",
+                    "severity": "error",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/33/DateTimeUtils.java\nindex 3942cdfb4d..77d4d99b30 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_random/33/DateTimeUtils.java\n@@ -85,7 +85,7 @@ public final class DateTimeUtils {\n         long java = DateTimeUtils.getOffsetFromUtcInSeconds();\n \n         if (sql != java) {\n-            throw new SteveException(\"MySQL and Java are not using the same time zone. \" +\n+            throw new SteveException(\"MySQL and Java are not using the same time zone. \"+\n                     \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n         }\n     }\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 164).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "88",
+                    "column": "90",
+                    "severity": "error",
+                    "message": "'+' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/33/DateTimeUtils.java\nindex 3942cdfb4d..69e0b7599f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/errored/1/33/DateTimeUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/RWTH-i5-IDSG-steve/styler_three_grams/33/DateTimeUtils.java\n@@ -85,15 +85,14 @@ public final class DateTimeUtils {\n         long java = DateTimeUtils.getOffsetFromUtcInSeconds();\n \n         if (sql != java) {\n-            throw new SteveException(\"MySQL and Java are not using the same time zone. \" +\n-                    \"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n-        }\n-    }\n+            throw new SteveException(\"MySQL and Java are not using the same time zone. \" +\"Java offset in seconds (%s) != MySQL offset in seconds (%s)\", java, sql);\n+}\n+}\n \n-    private static long getOffsetFromUtcInSeconds() {\n-        DateTimeZone timeZone = DateTimeZone.getDefault();\n-        DateTime now = DateTime.now();\n-        long offsetInMilliseconds = timeZone.getOffset(now.getMillis());\n-        return TimeUnit.MILLISECONDS.toSeconds(offsetInMilliseconds);\n-    }\n+private static long getOffsetFromUtcInSeconds() {\n+    DateTimeZone timeZone = DateTimeZone.getDefault();\n+    DateTime now = DateTime.now();\n+    long offsetInMilliseconds = timeZone.getOffset(now.getMillis());\n+    return TimeUnit.MILLISECONDS.toSeconds(offsetInMilliseconds);\n+}\n }\n",
+            "diff_size": 10
+        }
+    ]
+}

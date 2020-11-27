@@ -1,0 +1,140 @@
+{
+    "error_id": "72",
+    "information": {
+        "errors": [
+            {
+                "line": "8",
+                "severity": "warning",
+                "message": "'package' should be separated from previous statement.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+            }
+        ]
+    },
+    "source_code": " * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n */\npackage org.seedstack.business.spi;\n\nimport static org.seedstack.business.internal.utils.BusinessUtils.getQualifier;\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/72/BaseSpecificationTranslator.java\nindex 33b50a1800..2232200644 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler/72/BaseSpecificationTranslator.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.spi;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.getQualifier;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/72/BaseSpecificationTranslator.java\nindex 33b50a1800..2232200644 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/intellij/72/BaseSpecificationTranslator.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.spi;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.getQualifier;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "93",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 139).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 207).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 196).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/72/BaseSpecificationTranslator.java\nindex 33b50a1800..02240323f1 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/naturalize/72/BaseSpecificationTranslator.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.spi;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.getQualifier;\n@@ -89,16 +90,11 @@ public abstract class BaseSpecificationTranslator<C, T> implements Specification\n     }\n \n     @SuppressWarnings(\"unchecked\")\n-    private <S extends Specification<?>> Key<SpecificationConverter<S, C, T>> buildKey(\n-            Class<? extends Specification> specificationClass) {\n-        if (qualifier != null) {\n-            return Key.get((TypeLiteral<SpecificationConverter<S, C, T>>) TypeLiteral.get(\n-                    Types.newParameterizedType(SpecificationConverter.class, specificationClass, contextClass,\n-                            targetClass)), qualifier);\n-        } else {\n-            return Key.get((TypeLiteral<SpecificationConverter<S, C, T>>) TypeLiteral.get(\n-                    Types.newParameterizedType(SpecificationConverter.class, specificationClass, contextClass,\n-                            targetClass)));\n-        }\n+    private <S extends Specification<?>> Key<SpecificationConverter<S, C, T>> buildKey(Class<? extends Specification> specificationClass) {\n+    if (qualifier != null) {\n+            return Key.get((TypeLiteral<SpecificationConverter<S, C, T>>) TypeLiteral.get(Types.newParameterizedType(SpecificationConverter.class, specificationClass, contextClass, targetClass)), qualifier);\n+    } else {\n+            return Key.get((TypeLiteral<SpecificationConverter<S, C, T>>) TypeLiteral.get(Types.newParameterizedType(SpecificationConverter.class, specificationClass, contextClass, targetClass)));\n+    }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 13
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "8",
+                    "severity": "warning",
+                    "message": "'package' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                },
+                {
+                    "line": "35",
+                    "column": "51",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "76",
+                    "severity": "warning",
+                    "message": "'catch' has incorrect indentation level 0, expected level should be 12.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "76",
+                    "column": "1",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: 'catch' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 169).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "95",
+                    "column": "43",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 207).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 196).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/72/BaseSpecificationTranslator.java\nindex 33b50a1800..758fb4c70f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/codebuff/72/BaseSpecificationTranslator.java\n@@ -8,7 +8,6 @@\n package org.seedstack.business.spi;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.getQualifier;\n-\n import com.google.inject.ConfigurationException;\n import com.google.inject.Injector;\n import com.google.inject.Key;\n@@ -31,7 +30,9 @@ import org.seedstack.business.specification.SubstitutableSpecification;\n  * @param <C> the type of the translation context.\n  * @param <T> the type of the target object.\n  */\n-public abstract class BaseSpecificationTranslator<C, T> implements SpecificationTranslator<C, T> {\n+\n+\n+public abstract class BaseSpecificationTranslator <C, T> implements SpecificationTranslator<C, T> {\n \n     private final Class<C> contextClass;\n     private final Class<T> targetClass;\n@@ -43,8 +44,8 @@ public abstract class BaseSpecificationTranslator<C, T> implements Specification\n      * Creates a base specification translator. Actual classes used for translation are determined by\n      * reflection.\n      */\n-    @SuppressWarnings(\"unchecked\")\n-    protected BaseSpecificationTranslator() {\n+\n+    @SuppressWarnings(\"unchecked\") protected BaseSpecificationTranslator() {\n         Type[] generics = BusinessUtils.resolveGenerics(BaseSpecificationTranslator.class, getClass());\n         this.contextClass = (Class<C>) generics[0];\n         this.targetClass = (Class<T>) generics[1];\n@@ -60,19 +61,22 @@ public abstract class BaseSpecificationTranslator<C, T> implements Specification\n      * @param <S>           the type of the specification to convert.\n      * @return the converted target object representing the given specification.\n      */\n+\n     protected <S extends Specification<?>> T convert(S specification, C context) {\n         if (specification instanceof SubstitutableSpecification) {\n             return convert(((SubstitutableSpecification<?>) specification).getSubstitute(), context);\n         } else {\n             SpecificationConverter<S, C, T> converter;\n+\n             Class<? extends Specification> specificationClass = specification.getClass();\n             try {\n                 converter = injector.getInstance(buildKey(specificationClass));\n-            } catch (ConfigurationException e) {\n-                throw BusinessException.wrap(e, BusinessErrorCode.NO_CONVERTER_FOUND)\n-                        .put(\"contextClass\", contextClass)\n-                        .put(\"targetClass\", targetClass)\n-                        .put(\"specificationClass\", specificationClass);\n+            }\n+\n+catch(ConfigurationException e) {\n+                throw BusinessException.wrap(e, BusinessErrorCode.NO_CONVERTER_FOUND).put(\"contextClass\", contextClass)\n+.put(\"targetClass\", targetClass)\n+.put(\"specificationClass\", specificationClass);\n             }\n             return converter.convert(specification, context, this);\n         }\n@@ -88,17 +92,11 @@ public abstract class BaseSpecificationTranslator<C, T> implements Specification\n         return targetClass;\n     }\n \n-    @SuppressWarnings(\"unchecked\")\n-    private <S extends Specification<?>> Key<SpecificationConverter<S, C, T>> buildKey(\n-            Class<? extends Specification> specificationClass) {\n+    @SuppressWarnings(\"unchecked\") private<S extends Specification<?>> Key<SpecificationConverter<S, C, T>> buildKey(Class<? extends Specification> specificationClass) {\n         if (qualifier != null) {\n-            return Key.get((TypeLiteral<SpecificationConverter<S, C, T>>) TypeLiteral.get(\n-                    Types.newParameterizedType(SpecificationConverter.class, specificationClass, contextClass,\n-                            targetClass)), qualifier);\n+            return Key.get((TypeLiteral<SpecificationConverter<S, C, T>>) TypeLiteral.get(Types.newParameterizedType(SpecificationConverter.class, specificationClass, contextClass, targetClass)), qualifier);\n         } else {\n-            return Key.get((TypeLiteral<SpecificationConverter<S, C, T>>) TypeLiteral.get(\n-                    Types.newParameterizedType(SpecificationConverter.class, specificationClass, contextClass,\n-                            targetClass)));\n+            return Key.get((TypeLiteral<SpecificationConverter<S, C, T>>) TypeLiteral.get(Types.newParameterizedType(SpecificationConverter.class, specificationClass, contextClass, targetClass)));\n         }\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 24
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/72/BaseSpecificationTranslator.java\nindex 33b50a1800..2232200644 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/errored/1/72/BaseSpecificationTranslator.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/seedstack-business/styler_random/72/BaseSpecificationTranslator.java\n@@ -5,6 +5,7 @@\n  * License, v. 2.0. If a copy of the MPL was not distributed with this\n  * file, You can obtain one at http://mozilla.org/MPL/2.0/.\n  */\n+\n package org.seedstack.business.spi;\n \n import static org.seedstack.business.internal.utils.BusinessUtils.getQualifier;\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": null,
+            "diff": null
+        }
+    ]
+}

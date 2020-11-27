@@ -1,0 +1,150 @@
+{
+    "error_id": "286",
+    "information": {
+        "errors": [
+            {
+                "line": "45",
+                "severity": "error",
+                "message": "Line is longer than 150 characters (found 262).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "        }\n\n        List<InspectionRoutePointRelDto> inspectionRoutePointRels = BeanConvertUtil.covertBeanList(inspectionRoutePointRelServiceDaoImpl.getInspectionRoutePointRelInfo(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto)), InspectionRoutePointRelDto.class);\n\n        return inspectionRoutePointRels;\n    }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "67",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "67",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 186).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/286/InspectionRoutePointRelInnerServiceSMOImpl.java\nindex 8bac71d3d9..3b5eff40eb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class InspectionRoutePointRelInnerServiceSMOImpl extends BaseServiceSMO i\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             inspectionRoutePointRelDto.setPage((page - 1) * inspectionRoutePointRelDto.getRow());\n-        }\n+        } List<InspectionRoutePointRelDto>inspectionRoutePointRels=BeanConvertUtil.\n \n-        List<InspectionRoutePointRelDto> inspectionRoutePointRels = BeanConvertUtil.covertBeanList(inspectionRoutePointRelServiceDaoImpl.getInspectionRoutePointRelInfo(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto)), InspectionRoutePointRelDto.class);\n+        covertBeanList(inspectionRoutePointRelServiceDaoImpl.getInspectionRoutePointRelInfo(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto)), InspectionRoutePointRelDto.class);\n \n         return inspectionRoutePointRels;\n     }\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/286/InspectionRoutePointRelInnerServiceSMOImpl.java\nindex 8bac71d3d9..4a80ec18c2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n@@ -25,47 +25,49 @@ import java.util.List;\n @RestController\n public class InspectionRoutePointRelInnerServiceSMOImpl extends BaseServiceSMO implements IInspectionRoutePointRelInnerServiceSMO {\n \n-    @Autowired\n-    private IInspectionRoutePointRelServiceDao inspectionRoutePointRelServiceDaoImpl;\n+  @Autowired\n+  private IInspectionRoutePointRelServiceDao inspectionRoutePointRelServiceDaoImpl;\n \n-    @Autowired\n-    private IUserInnerServiceSMO userInnerServiceSMOImpl;\n+  @Autowired\n+  private IUserInnerServiceSMO userInnerServiceSMOImpl;\n \n-    @Override\n-    public List<InspectionRoutePointRelDto> queryInspectionRoutePointRels(@RequestBody InspectionRoutePointRelDto inspectionRoutePointRelDto) {\n+  @Override\n+  public List<InspectionRoutePointRelDto> queryInspectionRoutePointRels(@RequestBody InspectionRoutePointRelDto inspectionRoutePointRelDto) {\n \n-        //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n+    //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n \n-        int page = inspectionRoutePointRelDto.getPage();\n+    int page = inspectionRoutePointRelDto.getPage();\n \n-        if (page != PageDto.DEFAULT_PAGE) {\n-            inspectionRoutePointRelDto.setPage((page - 1) * inspectionRoutePointRelDto.getRow());\n-        }\n+    if (page != PageDto.DEFAULT_PAGE) {\n+      inspectionRoutePointRelDto.setPage((page - 1) * inspectionRoutePointRelDto.getRow());\n+    }\n \n-        List<InspectionRoutePointRelDto> inspectionRoutePointRels = BeanConvertUtil.covertBeanList(inspectionRoutePointRelServiceDaoImpl.getInspectionRoutePointRelInfo(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto)), InspectionRoutePointRelDto.class);\n+    List<InspectionRoutePointRelDto> inspectionRoutePointRels = BeanConvertUtil\n+      .covertBeanList(inspectionRoutePointRelServiceDaoImpl.getInspectionRoutePointRelInfo(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto)),\n+        InspectionRoutePointRelDto.class);\n \n-        return inspectionRoutePointRels;\n-    }\n+    return inspectionRoutePointRels;\n+  }\n \n \n-    @Override\n-    public int queryInspectionRoutePointRelsCount(@RequestBody InspectionRoutePointRelDto inspectionRoutePointRelDto) {\n-        return inspectionRoutePointRelServiceDaoImpl.queryInspectionRoutePointRelsCount(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto));\n-    }\n+  @Override\n+  public int queryInspectionRoutePointRelsCount(@RequestBody InspectionRoutePointRelDto inspectionRoutePointRelDto) {\n+    return inspectionRoutePointRelServiceDaoImpl.queryInspectionRoutePointRelsCount(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto));\n+  }\n \n-    public IInspectionRoutePointRelServiceDao getInspectionRoutePointRelServiceDaoImpl() {\n-        return inspectionRoutePointRelServiceDaoImpl;\n-    }\n+  public IInspectionRoutePointRelServiceDao getInspectionRoutePointRelServiceDaoImpl() {\n+    return inspectionRoutePointRelServiceDaoImpl;\n+  }\n \n-    public void setInspectionRoutePointRelServiceDaoImpl(IInspectionRoutePointRelServiceDao inspectionRoutePointRelServiceDaoImpl) {\n-        this.inspectionRoutePointRelServiceDaoImpl = inspectionRoutePointRelServiceDaoImpl;\n-    }\n+  public void setInspectionRoutePointRelServiceDaoImpl(IInspectionRoutePointRelServiceDao inspectionRoutePointRelServiceDaoImpl) {\n+    this.inspectionRoutePointRelServiceDaoImpl = inspectionRoutePointRelServiceDaoImpl;\n+  }\n \n-    public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n-        return userInnerServiceSMOImpl;\n-    }\n+  public IUserInnerServiceSMO getUserInnerServiceSMOImpl() {\n+    return userInnerServiceSMOImpl;\n+  }\n \n-    public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n-        this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n-    }\n+  public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n+    this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n+  }\n }\n",
+            "diff_size": 32
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 262).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/286/InspectionRoutePointRelInnerServiceSMOImpl.java\nindex 8bac71d3d9..b56ad3283f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n@@ -68,4 +68,4 @@ public class InspectionRoutePointRelInnerServiceSMOImpl extends BaseServiceSMO i\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 262).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/286/InspectionRoutePointRelInnerServiceSMOImpl.java\nindex 8bac71d3d9..1622be8f33 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n@@ -1,6 +1,5 @@\n package com.java110.community.smo.impl;\n \n-\n import com.java110.community.dao.IInspectionRoutePointRelServiceDao;\n import com.java110.core.base.smo.BaseServiceSMO;\n import com.java110.core.smo.inspectionRoute.IInspectionRoutePointRelInnerServiceSMO;\n@@ -11,7 +10,6 @@ import com.java110.utils.util.BeanConvertUtil;\n import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n-\n import java.util.List;\n \n /**\n@@ -22,6 +20,8 @@ import java.util.List;\n  * @Version 1.0\n  * add by wuxw 2019/4/24\n  **/\n+\n+\n @RestController\n public class InspectionRoutePointRelInnerServiceSMOImpl extends BaseServiceSMO implements IInspectionRoutePointRelInnerServiceSMO {\n \n@@ -35,9 +35,7 @@ public class InspectionRoutePointRelInnerServiceSMOImpl extends BaseServiceSMO i\n     public List<InspectionRoutePointRelDto> queryInspectionRoutePointRels(@RequestBody InspectionRoutePointRelDto inspectionRoutePointRelDto) {\n \n         //\u6821\u9a8c\u662f\u5426\u4f20\u4e86 \u5206\u9875\u4fe1\u606f\n-\n         int page = inspectionRoutePointRelDto.getPage();\n-\n         if (page != PageDto.DEFAULT_PAGE) {\n             inspectionRoutePointRelDto.setPage((page - 1) * inspectionRoutePointRelDto.getRow());\n         }\n@@ -68,4 +66,4 @@ public class InspectionRoutePointRelInnerServiceSMOImpl extends BaseServiceSMO i\n     public void setUserInnerServiceSMOImpl(IUserInnerServiceSMO userInnerServiceSMOImpl) {\n         this.userInnerServiceSMOImpl = userInnerServiceSMOImpl;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 7
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "44",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 183).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "65",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "44",
+                    "column": "167",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                },
+                {
+                    "line": "45",
+                    "column": "51",
+                    "severity": "error",
+                    "message": "',' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/286/InspectionRoutePointRelInnerServiceSMOImpl.java\nindex 8bac71d3d9..763574f0b6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_random/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n@@ -41,10 +41,8 @@ public class InspectionRoutePointRelInnerServiceSMOImpl extends BaseServiceSMO i\n         if (page != PageDto.DEFAULT_PAGE) {\n             inspectionRoutePointRelDto.setPage((page - 1) * inspectionRoutePointRelDto.getRow());\n         }\n-\n-        List<InspectionRoutePointRelDto> inspectionRoutePointRels = BeanConvertUtil.covertBeanList(inspectionRoutePointRelServiceDaoImpl.getInspectionRoutePointRelInfo(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto)), InspectionRoutePointRelDto.class);\n-\n-        return inspectionRoutePointRels;\n+        List<InspectionRoutePointRelDto>inspectionRoutePointRels= BeanConvertUtil.covertBeanList(inspectionRoutePointRelServiceDaoImpl.getInspectionRoutePointRelInfo (BeanConvertUtil.\n+        beanCovertMap(inspectionRoutePointRelDto)),InspectionRoutePointRelDto.class); returninspectionRoutePointRels;\n     }\n \n \n",
+            "diff_size": 4
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "43",
+                    "column": "9",
+                    "severity": "error",
+                    "message": "'}' at column 9 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "67",
+                    "severity": "error",
+                    "message": "'=' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "43",
+                    "column": "67",
+                    "severity": "error",
+                    "message": "'=' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 186).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/286/InspectionRoutePointRelInnerServiceSMOImpl.java\nindex 8bac71d3d9..3b5eff40eb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/286/InspectionRoutePointRelInnerServiceSMOImpl.java\n@@ -40,9 +40,9 @@ public class InspectionRoutePointRelInnerServiceSMOImpl extends BaseServiceSMO i\n \n         if (page != PageDto.DEFAULT_PAGE) {\n             inspectionRoutePointRelDto.setPage((page - 1) * inspectionRoutePointRelDto.getRow());\n-        }\n+        } List<InspectionRoutePointRelDto>inspectionRoutePointRels=BeanConvertUtil.\n \n-        List<InspectionRoutePointRelDto> inspectionRoutePointRels = BeanConvertUtil.covertBeanList(inspectionRoutePointRelServiceDaoImpl.getInspectionRoutePointRelInfo(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto)), InspectionRoutePointRelDto.class);\n+        covertBeanList(inspectionRoutePointRelServiceDaoImpl.getInspectionRoutePointRelInfo(BeanConvertUtil.beanCovertMap(inspectionRoutePointRelDto)), InspectionRoutePointRelDto.class);\n \n         return inspectionRoutePointRels;\n     }\n",
+            "diff_size": 2
+        }
+    ]
+}

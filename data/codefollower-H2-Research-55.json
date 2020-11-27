@@ -1,0 +1,86 @@
+{
+    "error_id": "55",
+    "information": {
+        "errors": [
+            {
+                "line": "93",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "     */\n    @Override\n    public int compareTo(MetaRecord other) { //createOrder\u8d8a\u5c0f\u8868\u793a\u4f18\u5148\u7ea7\u8d8a\u9ad8\uff0c\u540c\u7b49\u4f18\u5148\u7ea7\u7684\u6309id\u5148\u540e\u987a\u5e8f\n        int c1 = getCreateOrder();\n        int c2 = other.getCreateOrder();\n        if (c1 != c2) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "94",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/55/MetaRecord.java\nindex 30b725e26b..411933dcc3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/55/MetaRecord.java\n@@ -35,7 +35,7 @@ public class MetaRecord implements Comparable<MetaRecord> {\n         objectType = obj.getType();\n         sql = obj.getCreateSQL();\n     }\n-    \n+\n     //\u5206\u522b\u5bf9\u5e94ID\u3001HEAD\u3001TYPE\u3001SQL\u8fd94\u4e2a\u5b57\u6bb5\n     void setRecord(SearchRow r) {\n         r.setValue(0, ValueInt.get(id));\n@@ -90,6 +90,7 @@ public class MetaRecord implements Comparable<MetaRecord> {\n      * @return -1, 0, or 1\n      */\n     @Override\n+\n     public int compareTo(MetaRecord other) { //createOrder\u8d8a\u5c0f\u8868\u793a\u4f18\u5148\u7ea7\u8d8a\u9ad8\uff0c\u540c\u7b49\u4f18\u5148\u7ea7\u7684\u6309id\u5148\u540e\u987a\u5e8f\n         int c1 = getCreateOrder();\n         int c2 = other.getCreateOrder();\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "94",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/55/MetaRecord.java\nindex 30b725e26b..3b5dcb5870 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/55/MetaRecord.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (http://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.engine;\n \n import java.sql.SQLException;\n@@ -35,7 +36,7 @@ public class MetaRecord implements Comparable<MetaRecord> {\n         objectType = obj.getType();\n         sql = obj.getCreateSQL();\n     }\n-    \n+\n     //\u5206\u522b\u5bf9\u5e94ID\u3001HEAD\u3001TYPE\u3001SQL\u8fd94\u4e2a\u5b57\u6bb5\n     void setRecord(SearchRow r) {\n         r.setValue(0, ValueInt.get(id));\n@@ -47,12 +48,12 @@ public class MetaRecord implements Comparable<MetaRecord> {\n     /**\n      * Execute the meta data statement.\n      *\n-     * @param db the database\n+     * @param db            the database\n      * @param systemSession the system session\n-     * @param listener the database event listener\n+     * @param listener      the database event listener\n      */\n     void execute(Database db, Session systemSession,\n-            DatabaseEventListener listener) {\n+                 DatabaseEventListener listener) {\n         try {\n             Prepared command = systemSession.prepare(sql);\n             //System.out.println(sql);\n@@ -107,47 +108,47 @@ public class MetaRecord implements Comparable<MetaRecord> {\n      */\n     private int getCreateOrder() {\n         switch (objectType) {\n-        case DbObject.SETTING:\n-            return 0;\n-        case DbObject.USER:\n-            return 1;\n-        case DbObject.SCHEMA:\n-            return 2;\n-        case DbObject.FUNCTION_ALIAS:\n-            return 3;\n-        case DbObject.USER_DATATYPE:\n-            return 4;\n-        case DbObject.SEQUENCE:\n-            return 5;\n-        case DbObject.CONSTANT:\n-            return 6;\n-        case DbObject.TABLE_OR_VIEW:\n-            return 7;\n-        case DbObject.INDEX:\n-            return 8;\n-        case DbObject.CONSTRAINT:\n-            return 9;\n-        case DbObject.TRIGGER:\n-            return 10;\n-        case DbObject.SYNONYM:\n-            return 11;\n-        case DbObject.ROLE:\n-            return 12;\n-        case DbObject.RIGHT:\n-            return 13;\n-        case DbObject.AGGREGATE:\n-            return 14;\n-        case DbObject.COMMENT:\n-            return 15;\n-        default:\n-            throw DbException.throwInternalError(\"type=\"+objectType);\n+            case DbObject.SETTING:\n+                return 0;\n+            case DbObject.USER:\n+                return 1;\n+            case DbObject.SCHEMA:\n+                return 2;\n+            case DbObject.FUNCTION_ALIAS:\n+                return 3;\n+            case DbObject.USER_DATATYPE:\n+                return 4;\n+            case DbObject.SEQUENCE:\n+                return 5;\n+            case DbObject.CONSTANT:\n+                return 6;\n+            case DbObject.TABLE_OR_VIEW:\n+                return 7;\n+            case DbObject.INDEX:\n+                return 8;\n+            case DbObject.CONSTRAINT:\n+                return 9;\n+            case DbObject.TRIGGER:\n+                return 10;\n+            case DbObject.SYNONYM:\n+                return 11;\n+            case DbObject.ROLE:\n+                return 12;\n+            case DbObject.RIGHT:\n+                return 13;\n+            case DbObject.AGGREGATE:\n+                return 14;\n+            case DbObject.COMMENT:\n+                return 15;\n+            default:\n+                throw DbException.throwInternalError(\"type=\" + objectType);\n         }\n     }\n \n     @Override\n     public String toString() {\n         return \"MetaRecord [id=\" + id + \", objectType=\" + objectType +\n-                \", sql=\" + sql + \"]\";\n+            \", sql=\" + sql + \"]\";\n     }\n \n }\n",
+            "diff_size": 40
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "102",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/55/MetaRecord.java\nindex 30b725e26b..98e516669e 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/55/MetaRecord.java\n@@ -18,6 +18,8 @@ import org.h2.value.ValueString;\n  * A record in the system table of the database.\n  * It contains the SQL statement to create the database object.\n  */\n+\n+\n public class MetaRecord implements Comparable<MetaRecord> {\n \n     private final int id;\n@@ -37,6 +39,8 @@ public class MetaRecord implements Comparable<MetaRecord> {\n     }\n     \n     //\u5206\u522b\u5bf9\u5e94ID\u3001HEAD\u3001TYPE\u3001SQL\u8fd94\u4e2a\u5b57\u6bb5\n+\n+\n     void setRecord(SearchRow r) {\n         r.setValue(0, ValueInt.get(id));\n         r.setValue(1, ValueInt.get(0));\n@@ -51,8 +55,9 @@ public class MetaRecord implements Comparable<MetaRecord> {\n      * @param systemSession the system session\n      * @param listener the database event listener\n      */\n-    void execute(Database db, Session systemSession,\n-            DatabaseEventListener listener) {\n+\n+\n+    void execute(Database db, Session systemSession, DatabaseEventListener listener) {\n         try {\n             Prepared command = systemSession.prepare(sql);\n             //System.out.println(sql);\n@@ -71,14 +76,17 @@ public class MetaRecord implements Comparable<MetaRecord> {\n         }\n     }\n \n+\n     public int getId() {\n         return id;\n     }\n \n+\n     public int getObjectType() {\n         return objectType;\n     }\n \n+\n     public String getSQL() {\n         return sql;\n     }\n@@ -89,6 +97,7 @@ public class MetaRecord implements Comparable<MetaRecord> {\n      * @param other the other record\n      * @return -1, 0, or 1\n      */\n+\n     @Override\n     public int compareTo(MetaRecord other) { //createOrder\u8d8a\u5c0f\u8868\u793a\u4f18\u5148\u7ea7\u8d8a\u9ad8\uff0c\u540c\u7b49\u4f18\u5148\u7ea7\u7684\u6309id\u5148\u540e\u987a\u5e8f\n         int c1 = getCreateOrder();\n@@ -105,6 +114,7 @@ public class MetaRecord implements Comparable<MetaRecord> {\n      *\n      * @return the sort index\n      */\n+\n     private int getCreateOrder() {\n         switch (objectType) {\n         case DbObject.SETTING:\n@@ -140,14 +150,15 @@ public class MetaRecord implements Comparable<MetaRecord> {\n         case DbObject.COMMENT:\n             return 15;\n         default:\n-            throw DbException.throwInternalError(\"type=\"+objectType);\n+            throw DbException.throwInternalError(\"type=\" + objectType);\n         }\n     }\n \n     @Override\n     public String toString() {\n-        return \"MetaRecord [id=\" + id + \", objectType=\" + objectType +\n-                \", sql=\" + sql + \"]\";\n+        return \"MetaRecord [id=\" + id + \", objectType=\"\n+        + objectType + \", sql=\"\n+        + sql + \"]\";\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 17
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "94",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/55/MetaRecord.java\nindex 30b725e26b..411933dcc3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/55/MetaRecord.java\n@@ -35,7 +35,7 @@ public class MetaRecord implements Comparable<MetaRecord> {\n         objectType = obj.getType();\n         sql = obj.getCreateSQL();\n     }\n-    \n+\n     //\u5206\u522b\u5bf9\u5e94ID\u3001HEAD\u3001TYPE\u3001SQL\u8fd94\u4e2a\u5b57\u6bb5\n     void setRecord(SearchRow r) {\n         r.setValue(0, ValueInt.get(id));\n@@ -90,6 +90,7 @@ public class MetaRecord implements Comparable<MetaRecord> {\n      * @return -1, 0, or 1\n      */\n     @Override\n+\n     public int compareTo(MetaRecord other) { //createOrder\u8d8a\u5c0f\u8868\u793a\u4f18\u5148\u7ea7\u8d8a\u9ad8\uff0c\u540c\u7b49\u4f18\u5148\u7ea7\u7684\u6309id\u5148\u540e\u987a\u5e8f\n         int c1 = getCreateOrder();\n         int c2 = other.getCreateOrder();\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "92",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/55/MetaRecord.java\nindex 30b725e26b..3bbfbc02c4 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/55/MetaRecord.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/55/MetaRecord.java\n@@ -35,7 +35,7 @@ public class MetaRecord implements Comparable<MetaRecord> {\n         objectType = obj.getType();\n         sql = obj.getCreateSQL();\n     }\n-    \n+\n     //\u5206\u522b\u5bf9\u5e94ID\u3001HEAD\u3001TYPE\u3001SQL\u8fd94\u4e2a\u5b57\u6bb5\n     void setRecord(SearchRow r) {\n         r.setValue(0, ValueInt.get(id));\n@@ -89,8 +89,7 @@ public class MetaRecord implements Comparable<MetaRecord> {\n      * @param other the other record\n      * @return -1, 0, or 1\n      */\n-    @Override\n-    public int compareTo(MetaRecord other) { //createOrder\u8d8a\u5c0f\u8868\u793a\u4f18\u5148\u7ea7\u8d8a\u9ad8\uff0c\u540c\u7b49\u4f18\u5148\u7ea7\u7684\u6309id\u5148\u540e\u987a\u5e8f\n+    @Overridepublicint compareTo(MetaRecord other) { //createOrder\u8d8a\u5c0f\u8868\u793a\u4f18\u5148\u7ea7\u8d8a\u9ad8\uff0c\u540c\u7b49\u4f18\u5148\u7ea7\u7684\u6309id\u5148\u540e\u987a\u5e8f\n         int c1 = getCreateOrder();\n         int c2 = other.getCreateOrder();\n         if (c1 != c2) {\n",
+            "diff_size": 3
+        }
+    ]
+}

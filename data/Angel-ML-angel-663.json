@@ -1,0 +1,124 @@
+{
+    "error_id": "663",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 116).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/663/NativeUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/663/NativeUtils.java\nindex d647f060dc..4ee4f94174 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/663/NativeUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/663/NativeUtils.java\n@@ -13,6 +13,7 @@\n  * either express or implied. See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package com.tencent.angel.utils;\n \n import java.io.*;\n@@ -21,86 +22,87 @@ import java.io.*;\n  * A simple library class which helps with loading dynamic libraries stored in the JAR archive.\n  * These libraries usualy contain implementation of some methods in native code (using JNI - Java\n  * Native Interface).\n- *\n  */\n public class NativeUtils {\n \n-  /**\n-   * Private constructor - this class will never be instanced\n-   */\n-  private NativeUtils() {}\n+    /**\n+     * Private constructor - this class will never be instanced\n+     */\n+    private NativeUtils() {\n+    }\n \n-  /**\n-   * Loads library from current JAR archive\n-   *\n-   * The file from JAR is copied into system temporary directory and then loaded. The temporary file\n-   * is deleted after exiting. Method uses String as filename because the pathname is \"abstract\",\n-   * not system-dependent.\n-   *\n-   * @param path The path of file inside JAR as absolute path (beginning with '/'), e.g.\n-   *        /package/File.ext\n-   * @throws IOException If temporary file creation or read/write operation fails\n-   * @throws IllegalArgumentException If source file (param path) does not exist\n-   * @throws IllegalArgumentException If the path is not absolute or if the filename is shorter than\n-   *         three characters (restriction of {@see File#createTempFile(java.lang.String,\n-   *         java.lang.String)}).\n-   */\n-  public static void loadLibraryFromJar(String path) throws IOException {\n+    /**\n+     * Loads library from current JAR archive\n+     * <p>\n+     * The file from JAR is copied into system temporary directory and then loaded. The temporary file\n+     * is deleted after exiting. Method uses String as filename because the pathname is \"abstract\",\n+     * not system-dependent.\n+     *\n+     * @param path The path of file inside JAR as absolute path (beginning with '/'), e.g.\n+     *             /package/File.ext\n+     * @throws IOException              If temporary file creation or read/write operation fails\n+     * @throws IllegalArgumentException If source file (param path) does not exist\n+     * @throws IllegalArgumentException If the path is not absolute or if the filename is shorter than\n+     *                                  three characters (restriction of {@see File#createTempFile(java.lang.String,\n+     *java.lang.String)}).\n+     */\n+    public static void loadLibraryFromJar(String path) throws IOException {\n \n-    if (!path.startsWith(\"/\")) {\n-      throw new IllegalArgumentException(\"The path has to be absolute (start with '/').\");\n-    }\n+        if (!path.startsWith(\"/\")) {\n+            throw new IllegalArgumentException(\"The path has to be absolute (start with '/').\");\n+        }\n \n-    // Obtain filename from path\n-    String[] parts = path.split(\"/\");\n-    String filename = (parts.length > 1) ? parts[parts.length - 1] : null;\n+        // Obtain filename from path\n+        String[] parts = path.split(\"/\");\n+        String filename = (parts.length > 1) ? parts[parts.length - 1] : null;\n \n-    // Split filename to prexif and suffix (extension)\n-    String prefix = \"\";\n-    String suffix = null;\n-    if (filename != null) {\n-      parts = filename.split(\"\\\\.\", 2);\n-      prefix = parts[0];\n-      suffix = (parts.length > 1) ? \".\" + parts[parts.length - 1] : null; // Thanks, davs! :-)\n-    }\n+        // Split filename to prexif and suffix (extension)\n+        String prefix = \"\";\n+        String suffix = null;\n+        if (filename != null) {\n+            parts = filename.split(\"\\\\.\", 2);\n+            prefix = parts[0];\n+            suffix = (parts.length > 1) ? \".\" + parts[parts.length - 1] : null; // Thanks, davs! :-)\n+        }\n \n-    // Check if the filename is okay\n-    if (filename == null || prefix.length() < 3) {\n-      throw new IllegalArgumentException(\"The filename has to be at least 3 characters long.\");\n-    }\n+        // Check if the filename is okay\n+        if (filename == null || prefix.length() < 3) {\n+            throw new IllegalArgumentException(\n+                    \"The filename has to be at least 3 characters long.\");\n+        }\n \n-    // Prepare temporary file\n-    File temp = File.createTempFile(prefix, suffix);\n-    temp.deleteOnExit();\n-    System.out.println(\"Temp file for native so file is \" + temp.getAbsolutePath());\n+        // Prepare temporary file\n+        File temp = File.createTempFile(prefix, suffix);\n+        temp.deleteOnExit();\n+        System.out.println(\"Temp file for native so file is \" + temp.getAbsolutePath());\n \n-    if (!temp.exists()) {\n-      throw new FileNotFoundException(\"File \" + temp.getAbsolutePath() + \" does not exist.\");\n-    }\n+        if (!temp.exists()) {\n+            throw new FileNotFoundException(\"File \" + temp.getAbsolutePath() + \" does not exist.\");\n+        }\n \n-    // Prepare buffer for data copying\n-    byte[] buffer = new byte[1024];\n-    int readBytes;\n+        // Prepare buffer for data copying\n+        byte[] buffer = new byte[1024];\n+        int readBytes;\n \n-    // Open and check input stream\n-    InputStream is = NativeUtils.class.getResourceAsStream(path);\n-    if (is == null) {\n-      throw new FileNotFoundException(\"File \" + path + \" was not found inside JAR.\");\n-    }\n+        // Open and check input stream\n+        InputStream is = NativeUtils.class.getResourceAsStream(path);\n+        if (is == null) {\n+            throw new FileNotFoundException(\"File \" + path + \" was not found inside JAR.\");\n+        }\n \n-    // Open output stream and copy data between source file in JAR and the temporary file\n-    OutputStream os = new FileOutputStream(temp);\n-    try {\n-      while ((readBytes = is.read(buffer)) != -1) {\n-        os.write(buffer, 0, readBytes);\n-      }\n-    } finally {\n-      // If read/write fails, close streams safely before throwing an exception\n-      os.close();\n-      is.close();\n-    }\n+        // Open output stream and copy data between source file in JAR and the temporary file\n+        OutputStream os = new FileOutputStream(temp);\n+        try {\n+            while ((readBytes = is.read(buffer)) != -1) {\n+                os.write(buffer, 0, readBytes);\n+            }\n+        } finally {\n+            // If read/write fails, close streams safely before throwing an exception\n+            os.close();\n+            is.close();\n+        }\n \n-    // Finally, load the library\n-    System.load(temp.getAbsolutePath());\n-  }\n+        // Finally, load the library\n+        System.load(temp.getAbsolutePath());\n+    }\n }\n",
+            "diff_size": 71
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/663/NativeUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/663/NativeUtils.java\nindex d647f060dc..4dfcf00ff5 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/663/NativeUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/663/NativeUtils.java\n@@ -46,8 +46,7 @@ public class NativeUtils {\n    *         java.lang.String)}).\n    */\n   public static void loadLibraryFromJar(String path) throws IOException {\n-\n-    if (!path.startsWith(\"/\")) {\n+  if(!path.startsWith(\"/\")) {\n       throw new IllegalArgumentException(\"The path has to be absolute (start with '/').\");\n     }\n \n@@ -103,4 +102,4 @@ public class NativeUtils {\n     // Finally, load the library\n     System.load(temp.getAbsolutePath());\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "29",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 33.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "35",
+                    "severity": "error",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 51.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/663/NativeUtils.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/663/NativeUtils.java\nindex d647f060dc..1c559feba6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/663/NativeUtils.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/663/NativeUtils.java\n@@ -23,12 +23,14 @@ import java.io.*;\n  * Native Interface).\n  *\n  */\n+\n public class NativeUtils {\n \n   /**\n    * Private constructor - this class will never be instanced\n    */\n-  private NativeUtils() {}\n+\n+    private NativeUtils() {}\n \n   /**\n    * Loads library from current JAR archive\n@@ -45,13 +47,14 @@ public class NativeUtils {\n    *         three characters (restriction of {@see File#createTempFile(java.lang.String,\n    *         java.lang.String)}).\n    */\n-  public static void loadLibraryFromJar(String path) throws IOException {\n \n+    public static void loadLibraryFromJar(String path) throws IOException {\n     if (!path.startsWith(\"/\")) {\n-      throw new IllegalArgumentException(\"The path has to be absolute (start with '/').\");\n+        throw new IllegalArgumentException(\"The path has to be absolute (start with '/').\");\n     }\n \n     // Obtain filename from path\n+\n     String[] parts = path.split(\"/\");\n     String filename = (parts.length > 1) ? parts[parts.length - 1] : null;\n \n@@ -59,41 +62,44 @@ public class NativeUtils {\n     String prefix = \"\";\n     String suffix = null;\n     if (filename != null) {\n-      parts = filename.split(\"\\\\.\", 2);\n-      prefix = parts[0];\n-      suffix = (parts.length > 1) ? \".\" + parts[parts.length - 1] : null; // Thanks, davs! :-)\n+        parts = filename.split(\"\\\\.\", 2);\n+        prefix = parts[0];\n+        suffix = (parts.length > 1) ? \".\" + parts[parts.length - 1] : null; // Thanks, davs! :-)\n     }\n \n     // Check if the filename is okay\n+\n     if (filename == null || prefix.length() < 3) {\n-      throw new IllegalArgumentException(\"The filename has to be at least 3 characters long.\");\n+        throw new IllegalArgumentException(\"The filename has to be at least 3 characters long.\");\n     }\n \n     // Prepare temporary file\n+\n     File temp = File.createTempFile(prefix, suffix);\n     temp.deleteOnExit();\n     System.out.println(\"Temp file for native so file is \" + temp.getAbsolutePath());\n-\n     if (!temp.exists()) {\n-      throw new FileNotFoundException(\"File \" + temp.getAbsolutePath() + \" does not exist.\");\n+        throw new FileNotFoundException(\"File \" + temp.getAbsolutePath() + \" does not exist.\");\n     }\n \n     // Prepare buffer for data copying\n+\n     byte[] buffer = new byte[1024];\n     int readBytes;\n \n     // Open and check input stream\n     InputStream is = NativeUtils.class.getResourceAsStream(path);\n     if (is == null) {\n-      throw new FileNotFoundException(\"File \" + path + \" was not found inside JAR.\");\n+        throw new FileNotFoundException(\"File \" + path + \" was not found inside JAR.\");\n     }\n \n     // Open output stream and copy data between source file in JAR and the temporary file\n+\n     OutputStream os = new FileOutputStream(temp);\n     try {\n-      while ((readBytes = is.read(buffer)) != -1) {\n+        while ((readBytes = is.read(buffer)) != -1) {\n         os.write(buffer, 0, readBytes);\n-      }\n+        }\n     } finally {\n       // If read/write fails, close streams safely before throwing an exception\n       os.close();\n@@ -102,5 +108,5 @@ public class NativeUtils {\n \n     // Finally, load the library\n     System.load(temp.getAbsolutePath());\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 22
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

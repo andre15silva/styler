@@ -1,0 +1,108 @@
+{
+    "error_id": "69",
+    "information": {
+        "errors": [
+            {
+                "line": "49",
+                "severity": "warning",
+                "message": "Don't use trailing comments.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+            }
+        ]
+    },
+    "source_code": "            }\n        } else {\n            if (!schema.canDrop()) { //\u6bd4\u5982public\u6a21\u5f0f\u4e0d\u80fddrop\n                throw DbException.get(ErrorCode.SCHEMA_CAN_NOT_BE_DROPPED_1, schemaName);\n            }\n            if (dropAction == ConstraintActionType.RESTRICT && !schema.isEmpty()) {",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "17",
+                    "severity": "warning",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/69/DropSchema.java\nindex ac8655064b..d5abf0530b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler/69/DropSchema.java\n@@ -46,7 +46,7 @@ public class DropSchema extends DefineCommand {\n                 throw DbException.get(ErrorCode.SCHEMA_NOT_FOUND_1, schemaName);\n             }\n         } else {\n-            if (!schema.canDrop()) { //\u6bd4\u5982public\u6a21\u5f0f\u4e0d\u80fddrop\n+                if(!schema.canDrop()) { //\u6bd4\u5982public\u6a21\u5f0f\u4e0d\u80fddrop\n                 throw DbException.get(ErrorCode.SCHEMA_CAN_NOT_BE_DROPPED_1, schemaName);\n             }\n             if (dropAction == ConstraintActionType.RESTRICT && !schema.isEmpty()) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "50",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/69/DropSchema.java\nindex ac8655064b..1bc58fa622 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/intellij/69/DropSchema.java\n@@ -3,6 +3,7 @@\n  * and the EPL 1.0 (http://h2database.com/html/license.html).\n  * Initial Developer: H2 Group\n  */\n+\n package org.h2.command.ddl;\n \n import org.h2.api.ErrorCode;\n@@ -28,7 +29,7 @@ public class DropSchema extends DefineCommand {\n     public DropSchema(Session session) {\n         super(session);\n         dropAction = session.getDatabase().getSettings().dropRestrict ?\n-                ConstraintActionType.RESTRICT : ConstraintActionType.CASCADE;\n+            ConstraintActionType.RESTRICT : ConstraintActionType.CASCADE;\n     }\n \n     public void setSchemaName(String name) {\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/naturalize/69/DropSchema.java\nindex ac8655064b..97126a139c 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/naturalize/69/DropSchema.java\n@@ -46,7 +46,8 @@ public class DropSchema extends DefineCommand {\n                 throw DbException.get(ErrorCode.SCHEMA_NOT_FOUND_1, schemaName);\n             }\n         } else {\n-            if (!schema.canDrop()) { //\u6bd4\u5982public\u6a21\u5f0f\u4e0d\u80fddrop\n+            if (!schema.canDrop()) {\n+    //\u6bd4\u5982public\u6a21\u5f0f\u4e0d\u80fddrop\n                 throw DbException.get(ErrorCode.SCHEMA_CAN_NOT_BE_DROPPED_1, schemaName);\n             }\n             if (dropAction == ConstraintActionType.RESTRICT && !schema.isEmpty()) {\n@@ -77,4 +78,4 @@ public class DropSchema extends DefineCommand {\n         return CommandInterface.DROP_SCHEMA;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "51",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/69/DropSchema.java\nindex ac8655064b..3fe6a6f00f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/codebuff/69/DropSchema.java\n@@ -19,6 +19,8 @@ import org.h2.util.StatementBuilder;\n  * This class represents the statement\n  * DROP SCHEMA\n  */\n+\n+\n public class DropSchema extends DefineCommand {\n \n     private String schemaName;\n@@ -27,10 +29,10 @@ public class DropSchema extends DefineCommand {\n \n     public DropSchema(Session session) {\n         super(session);\n-        dropAction = session.getDatabase().getSettings().dropRestrict ?\n-                ConstraintActionType.RESTRICT : ConstraintActionType.CASCADE;\n+        dropAction = session.getDatabase().getSettings().dropRestrict ? ConstraintActionType.RESTRICT : ConstraintActionType.CASCADE;\n     }\n \n+\n     public void setSchemaName(String name) {\n         this.schemaName = name;\n     }\n@@ -64,10 +66,12 @@ public class DropSchema extends DefineCommand {\n         return 0;\n     }\n \n+\n     public void setIfExists(boolean ifExists) {\n         this.ifExists = ifExists;\n     }\n \n+\n     public void setDropAction(ConstraintActionType dropAction) {\n         this.dropAction = dropAction;\n     }\n@@ -77,4 +81,4 @@ public class DropSchema extends DefineCommand {\n         return CommandInterface.DROP_SCHEMA;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 8
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "17",
+                    "severity": "warning",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/69/DropSchema.java\nindex ac8655064b..d5abf0530b 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_random/69/DropSchema.java\n@@ -46,7 +46,7 @@ public class DropSchema extends DefineCommand {\n                 throw DbException.get(ErrorCode.SCHEMA_NOT_FOUND_1, schemaName);\n             }\n         } else {\n-            if (!schema.canDrop()) { //\u6bd4\u5982public\u6a21\u5f0f\u4e0d\u80fddrop\n+                if(!schema.canDrop()) { //\u6bd4\u5982public\u6a21\u5f0f\u4e0d\u80fddrop\n                 throw DbException.get(ErrorCode.SCHEMA_CAN_NOT_BE_DROPPED_1, schemaName);\n             }\n             if (dropAction == ConstraintActionType.RESTRICT && !schema.isEmpty()) {\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "Don't use trailing comments.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"
+                },
+                {
+                    "line": "49",
+                    "column": "13",
+                    "severity": "warning",
+                    "message": "'if' is not followed by whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/69/DropSchema.java\nindex ac8655064b..349c838529 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/errored/1/69/DropSchema.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/codefollower-H2-Research/styler_three_grams/69/DropSchema.java\n@@ -46,7 +46,7 @@ public class DropSchema extends DefineCommand {\n                 throw DbException.get(ErrorCode.SCHEMA_NOT_FOUND_1, schemaName);\n             }\n         } else {\n-            if (!schema.canDrop()) { //\u6bd4\u5982public\u6a21\u5f0f\u4e0d\u80fddrop\n+            if(!schema.canDrop()) { //\u6bd4\u5982public\u6a21\u5f0f\u4e0d\u80fddrop\n                 throw DbException.get(ErrorCode.SCHEMA_CAN_NOT_BE_DROPPED_1, schemaName);\n             }\n             if (dropAction == ConstraintActionType.RESTRICT && !schema.isEmpty()) {\n",
+            "diff_size": 1
+        }
+    ]
+}

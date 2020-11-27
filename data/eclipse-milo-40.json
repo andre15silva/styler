@@ -1,0 +1,84 @@
+{
+    "error_id": "40",
+    "information": {
+        "errors": [
+            {
+                "line": "32",
+                "column": "36",
+                "severity": "error",
+                "message": "'}' at column 36 should be alone on a line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+            }
+        ]
+    },
+    "source_code": "     * Create an empty {@link AttributeFilterChain}.\n     */\n    public AttributeFilterChain() {}\n\n    /**\n     * Create an {@link AttributeFilterChain} with {@code filter} added to it.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "32",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/40/AttributeFilterChain.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/40/AttributeFilterChain.java\nindex 82fbb7d701..d543ca9309 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/40/AttributeFilterChain.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/40/AttributeFilterChain.java\n@@ -29,7 +29,8 @@ public class AttributeFilterChain {\n     /**\n      * Create an empty {@link AttributeFilterChain}.\n      */\n-    public AttributeFilterChain() {}\n+    public AttributeFilterChain() {\n+    }\n \n     /**\n      * Create an {@link AttributeFilterChain} with {@code filter} added to it.\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "32",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/40/AttributeFilterChain.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/40/AttributeFilterChain.java\nindex 82fbb7d701..82a6fbafdb 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/40/AttributeFilterChain.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/40/AttributeFilterChain.java\n@@ -165,4 +165,4 @@ public class AttributeFilterChain {\n         return this;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/40/AttributeFilterChain.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/40/AttributeFilterChain.java\nindex 82fbb7d701..b27ae15245 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/40/AttributeFilterChain.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/40/AttributeFilterChain.java\n@@ -15,7 +15,6 @@ import java.util.Iterator;\n import java.util.List;\n import java.util.concurrent.ConcurrentLinkedDeque;\n import javax.annotation.Nullable;\n-\n import org.eclipse.milo.opcua.sdk.server.Session;\n import org.eclipse.milo.opcua.sdk.server.nodes.UaNode;\n import org.eclipse.milo.opcua.sdk.server.nodes.filters.AttributeFilterContext.GetAttributeContext;\n@@ -29,13 +28,16 @@ public class AttributeFilterChain {\n     /**\n      * Create an empty {@link AttributeFilterChain}.\n      */\n-    public AttributeFilterChain() {}\n+\n+    public AttributeFilterChain() {\n+    }\n \n     /**\n      * Create an {@link AttributeFilterChain} with {@code filter} added to it.\n      *\n      * @param filter the filter to add.\n      */\n+\n     public AttributeFilterChain(AttributeFilter filter) {\n         filters.add(filter);\n     }\n@@ -45,6 +47,7 @@ public class AttributeFilterChain {\n      *\n      * @param filters the filters to add.\n      */\n+\n     public AttributeFilterChain(List<AttributeFilter> filters) {\n         this.filters.addAll(filters);\n     }\n@@ -56,6 +59,7 @@ public class AttributeFilterChain {\n      * @param attributeId the {@link AttributeId} of the attribute to get the value of.\n      * @return the value for the attribute identified by {@code attributeId} from {@code node}.\n      */\n+\n     public Object getAttribute(UaNode node, AttributeId attributeId) {\n         return getAttribute(null, node, attributeId);\n     }\n@@ -68,15 +72,11 @@ public class AttributeFilterChain {\n      * @param attributeId the {@link AttributeId} of the attribute to get the value of.\n      * @return the value for the attribute identified by {@code attributeId} from {@code node}.\n      */\n+\n     public Object getAttribute(@Nullable Session session, UaNode node, AttributeId attributeId) {\n         Iterator<AttributeFilter> filterIterator = filters.iterator();\n-\n-        AttributeFilter filter = filterIterator.hasNext() ?\n-            filterIterator.next() :\n-            AttributeFilter.DEFAULT_INSTANCE;\n-\n+        AttributeFilter filter = filterIterator.hasNext() ? filterIterator.next() : AttributeFilter.DEFAULT_INSTANCE;\n         GetAttributeContext ctx = new GetAttributeContext(session, node, filterIterator);\n-\n         Object value = filter.getAttribute(ctx, attributeId);\n \n         if (ctx.isObservable()) {\n@@ -93,6 +93,7 @@ public class AttributeFilterChain {\n      * @param attributeId the {@link AttributeId} of the attribute to set the value of.\n      * @param value       the value to set.\n      */\n+\n     public void setAttribute(UaNode node, AttributeId attributeId, Object value) {\n         setAttribute(null, node, attributeId, value);\n     }\n@@ -105,13 +106,14 @@ public class AttributeFilterChain {\n      * @param attributeId the {@link AttributeId} of the attribute to set the value of.\n      * @param value       the value to set.\n      */\n-    public void setAttribute(@Nullable Session session, UaNode node, AttributeId attributeId, Object value) {\n-        Iterator<AttributeFilter> filterIterator = filters.iterator();\n-\n-        AttributeFilter filter = filterIterator.hasNext() ?\n-            filterIterator.next() :\n-            AttributeFilter.DEFAULT_INSTANCE;\n \n+    public void setAttribute(\n+        @Nullable Session session,\n+        UaNode node,\n+        AttributeId attributeId, Object value\n+    ) {\n+        Iterator<AttributeFilter> filterIterator = filters.iterator();\n+        AttributeFilter filter = filterIterator.hasNext() ? filterIterator.next() : AttributeFilter.DEFAULT_INSTANCE;\n         SetAttributeContext ctx = new SetAttributeContext(session, node, filterIterator);\n \n         filter.setAttribute(ctx, attributeId, value);\n@@ -123,6 +125,7 @@ public class AttributeFilterChain {\n      * @param attributeFilter the {@link AttributeFilter} to add.\n      * @return this {@link AttributeFilterChain}.\n      */\n+\n     public AttributeFilterChain addFirst(AttributeFilter attributeFilter) {\n         filters.addFirst(attributeFilter);\n \n@@ -135,6 +138,7 @@ public class AttributeFilterChain {\n      * @param attributeFilters the {@link AttributeFilter}s to add.\n      * @return this {@link AttributeFilterChain}.\n      */\n+\n     public AttributeFilterChain addFirst(AttributeFilter... attributeFilters) {\n         Arrays.stream(attributeFilters).forEach(this::addFirst);\n \n@@ -147,6 +151,7 @@ public class AttributeFilterChain {\n      * @param attributeFilter the {@link AttributeFilter} to add.\n      * @return this {@link AttributeFilterChain}.\n      */\n+\n     public AttributeFilterChain addLast(AttributeFilter attributeFilter) {\n         filters.addLast(attributeFilter);\n \n@@ -159,10 +164,11 @@ public class AttributeFilterChain {\n      * @param attributeFilters the {@link AttributeFilter}s to add.\n      * @return this {@link AttributeFilterChain}.\n      */\n+\n     public AttributeFilterChain addLast(AttributeFilter... attributeFilters) {\n         Arrays.stream(attributeFilters).forEach(this::addLast);\n \n         return this;\n     }\n \n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "32",
+                    "column": "36",
+                    "severity": "error",
+                    "message": "'}' at column 36 should be alone on a line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "40",
+                    "severity": "error",
+                    "message": "'CTOR_DEF' should be separated from previous statement.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/40/AttributeFilterChain.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/40/AttributeFilterChain.java\nindex 82fbb7d701..8cdb2d03d2 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/40/AttributeFilterChain.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/40/AttributeFilterChain.java\n@@ -29,8 +29,9 @@ public class AttributeFilterChain {\n     /**\n      * Create an empty {@link AttributeFilterChain}.\n      */\n-    public AttributeFilterChain() {}\n+    public AttributeFilterChain() {\n \n+    }\n     /**\n      * Create an {@link AttributeFilterChain} with {@code filter} added to it.\n      *\n",
+            "diff_size": 2
+        }
+    ]
+}

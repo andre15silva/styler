@@ -1,0 +1,92 @@
+{
+    "error_id": "194",
+    "information": {
+        "errors": [
+            {
+                "line": "77",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 121).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "  public <T> T convertValue(Object fromValue, JavaType toValueType) throws IllegalArgumentException {\n    // After jackson 2.10.*, will by pass the following check when convert value. But this is useful\n    // for java chassis applications and do not need to convert to keep performance. So add the check here.(conversion is\n    // not necessary and will cause some trouble in some user applications that depend on this)\n    if (fromValue == null) {\n      return null;",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "77",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "77",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "77",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/194/RestObjectMapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/194/RestObjectMapper.java\nindex 4fd41fcb94..0220e9d681 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/194/RestObjectMapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/194/RestObjectMapper.java\n@@ -82,11 +82,11 @@ public class RestObjectMapper extends AbstractRestObjectMapper {\n       Class<?> targetType = toValueType.getRawClass();\n       if (targetType != Object.class\n           && !toValueType.hasGenericTypes()\n-          && targetType.isAssignableFrom(fromValue.getClass())) {\n-        return (T) fromValue;\n+    && targetType.isAssignableFrom(fromValue.getClass())) {\n+  return (T) fromValue;\n       }\n     }\n \n     return super.convertValue(fromValue, toValueType);\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "74",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 126).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/194/RestObjectMapper.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/codebuff/194/RestObjectMapper.java\nindex 4fd41fcb94..e3e7030796 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/194/RestObjectMapper.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/codebuff/194/RestObjectMapper.java\n@@ -18,7 +18,6 @@\n package org.apache.servicecomb.foundation.common.utils;\n \n import java.io.IOException;\n-\n import com.fasterxml.jackson.core.JsonGenerator;\n import com.fasterxml.jackson.core.JsonParser.Feature;\n import com.fasterxml.jackson.databind.DeserializationFeature;\n@@ -30,23 +29,21 @@ import com.fasterxml.jackson.databind.SerializerProvider;\n import com.fasterxml.jackson.databind.module.SimpleModule;\n import com.fasterxml.jackson.databind.type.TypeFactory;\n import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;\n-\n import io.vertx.core.json.JsonObject;\n \n public class RestObjectMapper extends AbstractRestObjectMapper {\n-\n-  private static class JsonObjectSerializer extends JsonSerializer<JsonObject> {\n+    private static class JsonObjectSerializer extends JsonSerializer<JsonObject> {\n     @Override\n     public void serialize(JsonObject value, JsonGenerator jgen, SerializerProvider provider) throws IOException {\n-      jgen.writeObject(value.getMap());\n+        jgen.writeObject(value.getMap());\n+    }\n     }\n-  }\n \n-  private static final long serialVersionUID = -8158869347066287575L;\n+    private static final long serialVersionUID = -8158869347066287575L;\n \n-  private static final JavaType STRING_JAVA_TYPE = TypeFactory.defaultInstance().constructType(String.class);\n+    private static final JavaType STRING_JAVA_TYPE = TypeFactory.defaultInstance().constructType(String.class);\n \n-  public RestObjectMapper() {\n+    public RestObjectMapper() {\n     getFactory().disable(Feature.AUTO_CLOSE_SOURCE);\n     // Enable features that can tolerance errors and not enable those make more constraints for compatible reasons.\n     // Developers can use validation api to do more checks.\n@@ -63,30 +60,28 @@ public class RestObjectMapper extends AbstractRestObjectMapper {\n     module.addSerializer(JsonObject.class, new JsonObjectSerializer());\n     registerModule(module);\n     registerModule(new JavaTimeModule());\n-  }\n+    }\n \n-  @Override\n-  public String convertToString(Object value) throws Exception {\n+    @Override\n+    public String convertToString(Object value) throws Exception {\n     return convertValue(value, STRING_JAVA_TYPE);\n-  }\n+    }\n \n-  @Override\n-  @SuppressWarnings(\"unchecked\")\n-  public <T> T convertValue(Object fromValue, JavaType toValueType) throws IllegalArgumentException {\n+    @Override\n+    @SuppressWarnings(\"unchecked\")\n+    public <T> T convertValue(Object fromValue, JavaType toValueType) throws IllegalArgumentException {\n     // After jackson 2.10.*, will by pass the following check when convert value. But this is useful\n     // for java chassis applications and do not need to convert to keep performance. So add the check here.(conversion is\n     // not necessary and will cause some trouble in some user applications that depend on this)\n     if (fromValue == null) {\n-      return null;\n+        return null;\n     } else {\n       Class<?> targetType = toValueType.getRawClass();\n-      if (targetType != Object.class\n-          && !toValueType.hasGenericTypes()\n-          && targetType.isAssignableFrom(fromValue.getClass())) {\n-        return (T) fromValue;\n+      if (targetType != Object.class && !toValueType.hasGenericTypes() && targetType.isAssignableFrom(fromValue.getClass())) {\n+               return (T) fromValue;\n       }\n     }\n \n     return super.convertValue(fromValue, toValueType);\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 24
+        },
+        {
+            "tool": "styler_random",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "77",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 121).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

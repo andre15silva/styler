@@ -1,0 +1,100 @@
+{
+    "error_id": "198",
+    "information": {
+        "errors": [
+            {
+                "line": "55",
+                "severity": "error",
+                "message": "Line is longer than 120 characters (found 138).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    @Override\n    public void setActiveState(LocalizedText value) {\n        getVariableComponent(\"http://opcfoundation.org/UA/\", \"ActiveState\").ifPresent(n -> n.setValue(new DataValue(new Variant(value))));\n    }\n\n    @Override",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/198/ExclusiveLimitAlarmTypeNode.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/198/ExclusiveLimitAlarmTypeNode.java\nindex 4af1a905eb..09282d9b1d 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/198/ExclusiveLimitAlarmTypeNode.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/intellij/198/ExclusiveLimitAlarmTypeNode.java\n@@ -52,7 +52,8 @@ public class ExclusiveLimitAlarmTypeNode extends LimitAlarmTypeNode implements E\n \n     @Override\n     public void setActiveState(LocalizedText value) {\n-        getVariableComponent(\"http://opcfoundation.org/UA/\", \"ActiveState\").ifPresent(n -> n.setValue(new DataValue(new Variant(value))));\n+        getVariableComponent(\"http://opcfoundation.org/UA/\", \"ActiveState\")\n+            .ifPresent(n -> n.setValue(new DataValue(new Variant(value))));\n     }\n \n     @Override\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/198/ExclusiveLimitAlarmTypeNode.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/198/ExclusiveLimitAlarmTypeNode.java\nindex 4af1a905eb..976d9b7a06 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/198/ExclusiveLimitAlarmTypeNode.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/naturalize/198/ExclusiveLimitAlarmTypeNode.java\n@@ -60,4 +60,4 @@ public class ExclusiveLimitAlarmTypeNode extends LimitAlarmTypeNode implements E\n         Optional<ObjectNode> component = getObjectComponent(\"http://opcfoundation.org/UA/\", \"LimitState\");\n         return (ExclusiveLimitStateMachineTypeNode) component.orElse(null);\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 1
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "66",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/198/ExclusiveLimitAlarmTypeNode.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/198/ExclusiveLimitAlarmTypeNode.java\nindex 4af1a905eb..d785395683 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/198/ExclusiveLimitAlarmTypeNode.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/codebuff/198/ExclusiveLimitAlarmTypeNode.java\n@@ -11,7 +11,6 @@\n package org.eclipse.milo.opcua.sdk.server.model.nodes.objects;\n \n import java.util.Optional;\n-\n import org.eclipse.milo.opcua.sdk.server.api.nodes.ObjectNode;\n import org.eclipse.milo.opcua.sdk.server.api.nodes.VariableNode;\n import org.eclipse.milo.opcua.sdk.server.model.nodes.variables.TwoStateVariableTypeNode;\n@@ -26,28 +25,40 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UByte;\n import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;\n \n public class ExclusiveLimitAlarmTypeNode extends LimitAlarmTypeNode implements ExclusiveLimitAlarmType {\n-    public ExclusiveLimitAlarmTypeNode(UaNodeContext context, NodeId nodeId, QualifiedName browseName,\n-                                       LocalizedText displayName, LocalizedText description, UInteger writeMask,\n-                                       UInteger userWriteMask) {\n+    public ExclusiveLimitAlarmTypeNode(\n+        UaNodeContext context,\n+        NodeId nodeId,\n+        QualifiedName browseName,\n+        LocalizedText displayName,\n+        LocalizedText description,\n+        UInteger writeMask, UInteger userWriteMask) {\n         super(context, nodeId, browseName, displayName, description, writeMask, userWriteMask);\n     }\n \n-    public ExclusiveLimitAlarmTypeNode(UaNodeContext context, NodeId nodeId, QualifiedName browseName,\n-                                       LocalizedText displayName, LocalizedText description, UInteger writeMask,\n-                                       UInteger userWriteMask, UByte eventNotifier) {\n+    public ExclusiveLimitAlarmTypeNode(\n+        UaNodeContext context,\n+        NodeId nodeId,\n+        QualifiedName browseName,\n+        LocalizedText displayName,\n+        LocalizedText description,\n+        UInteger writeMask,\n+        UInteger userWriteMask, UByte eventNotifier) {\n         super(context, nodeId, browseName, displayName, description, writeMask, userWriteMask, eventNotifier);\n     }\n \n     @Override\n     public TwoStateVariableTypeNode getActiveStateNode() {\n         Optional<VariableNode> component = getVariableComponent(\"http://opcfoundation.org/UA/\", \"ActiveState\");\n+\n         return (TwoStateVariableTypeNode) component.orElse(null);\n     }\n \n     @Override\n     public LocalizedText getActiveState() {\n         Optional<VariableNode> component = getVariableComponent(\"http://opcfoundation.org/UA/\", \"ActiveState\");\n-        return component.map(node -> (LocalizedText) node.getValue().getValue().getValue()).orElse(null);\n+\n+        return component.map(node -> (LocalizedText) node.getValue().getValue()\n+                                                                    .getValue()).orElse(null);\n     }\n \n     @Override\n@@ -58,6 +69,8 @@ public class ExclusiveLimitAlarmTypeNode extends LimitAlarmTypeNode implements E\n     @Override\n     public ExclusiveLimitStateMachineTypeNode getLimitStateNode() {\n         Optional<ObjectNode> component = getObjectComponent(\"http://opcfoundation.org/UA/\", \"LimitState\");\n+\n         return (ExclusiveLimitStateMachineTypeNode) component.orElse(null);\n     }\n-}\n+\n+}\n\\ No newline at end of file\n",
+            "diff_size": 23
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 138).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "Line is longer than 120 characters (found 135).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "55",
+                    "column": "26",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/198/ExclusiveLimitAlarmTypeNode.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/198/ExclusiveLimitAlarmTypeNode.java\nindex 4af1a905eb..0f247ab1c7 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/errored/1/198/ExclusiveLimitAlarmTypeNode.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/eclipse-milo/styler_three_grams/198/ExclusiveLimitAlarmTypeNode.java\n@@ -52,7 +52,7 @@ public class ExclusiveLimitAlarmTypeNode extends LimitAlarmTypeNode implements E\n \n     @Override\n     public void setActiveState(LocalizedText value) {\n-        getVariableComponent(\"http://opcfoundation.org/UA/\", \"ActiveState\").ifPresent(n -> n.setValue(new DataValue(new Variant(value))));\n+    getVariableComponent (\"http://opcfoundation.org/UA/\", \"ActiveState\").ifPresent(n -> n.setValue(new DataValue(new Variant(value))));\n     }\n \n     @Override\n",
+            "diff_size": 1
+        }
+    ]
+}

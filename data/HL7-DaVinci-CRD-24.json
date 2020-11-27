@@ -1,0 +1,840 @@
+{
+    "error_id": "24",
+    "information": {
+        "errors": [
+            {
+                "line": "263",
+                "severity": "warning",
+                "message": "Line is longer than 120 characters (found 125).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "    try {\n      if (evaluateStatement(\"RESULT_QuestionnaireProgressNoteUri\", context) != null) {\n        results.setQuestionnaireProgressNoteUri(evaluateStatement(\"RESULT_QuestionnaireProgressNoteUri\", context).toString())\n            .setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser()\n                .encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n      }",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "263",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/24/CdsService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/24/CdsService.java\nindex 60347265ac..e46efc5f87 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/24/CdsService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/intellij/24/CdsService.java\n@@ -91,7 +91,7 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n    * @param fhirComponents   Fhir components to use\n    */\n   public CdsService(String id, Hook hook, String title, String description,\n-      List<PrefetchTemplateElement> prefetchElements, FhirComponentsT fhirComponents) {\n+                    List<PrefetchTemplateElement> prefetchElements, FhirComponentsT fhirComponents) {\n \n     if (id == null) {\n       throw new NullPointerException(\"CDSService id cannot be null\");\n@@ -120,7 +120,7 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n \n   /**\n    * Performs generic operations for incoming requests of any type.\n-   * \n+   *\n    * @param request the generically typed incoming request\n    * @return The response from the server\n    */\n@@ -163,9 +163,9 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n         foundApplicableRule = true;\n         if ((results.getDocumentationRequired() || results.getPriorAuthRequired())\n             && (StringUtils.isNotEmpty(results.getQuestionnaireOrderUri())\n-                || StringUtils.isNotEmpty(results.getQuestionnaireFaceToFaceUri())\n-                || StringUtils.isNotEmpty(results.getQuestionnaireLabUri())\n-                || StringUtils.isNotEmpty(results.getQuestionnaireProgressNoteUri()))) {\n+            || StringUtils.isNotEmpty(results.getQuestionnaireFaceToFaceUri())\n+            || StringUtils.isNotEmpty(results.getQuestionnaireLabUri())\n+            || StringUtils.isNotEmpty(results.getQuestionnaireProgressNoteUri()))) {\n           List<Link> smartAppLinks = createQuestionnaireLinks(request, applicationBaseUrl, lookupResult, results);\n           response.addCard(CardBuilder.transform(results, smartAppLinks));\n         } else {\n@@ -190,7 +190,7 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n   }\n \n   private List<Link> createQuestionnaireLinks(requestTypeT request, URL applicationBaseUrl,\n-      CoverageRequirementRuleResult lookupResult, CqlResultsForCard results) {\n+                                              CoverageRequirementRuleResult lookupResult, CqlResultsForCard results) {\n     List<Link> listOfLinks = new ArrayList<>();\n     if (StringUtils.isNotEmpty(results.getQuestionnaireOrderUri())) {\n       listOfLinks.add(smartLinkBuilder(request.getContext().getPatientId(), request.getFhirServer(), applicationBaseUrl,\n@@ -260,7 +260,8 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n \n     try {\n       if (evaluateStatement(\"RESULT_QuestionnaireProgressNoteUri\", context) != null) {\n-        results.setQuestionnaireProgressNoteUri(evaluateStatement(\"RESULT_QuestionnaireProgressNoteUri\", context).toString())\n+        results.setQuestionnaireProgressNoteUri(\n+            evaluateStatement(\"RESULT_QuestionnaireProgressNoteUri\", context).toString())\n             .setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser()\n                 .encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n       }\n@@ -282,7 +283,8 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n   }\n \n   private Link smartLinkBuilder(String patientId, String fhirBase, URL applicationBaseUrl, String questionnaireUri,\n-      String reqResourceId, CoverageRequirementRuleCriteria criteria, boolean priorAuthRequired, String label) {\n+                                String reqResourceId, CoverageRequirementRuleCriteria criteria,\n+                                boolean priorAuthRequired, String label) {\n     URI configLaunchUri = myConfig.getLaunchUrl();\n     String launchUrl;\n     if (myConfig.getLaunchUrl().isAbsolute()) {\n@@ -350,6 +352,7 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n \n   // Implement this in child class\n   public abstract List<CoverageRequirementRuleResult> createCqlExecutionContexts(requestTypeT request,\n-      FileStore fileStore, String baseUrl) throws RequestIncompleteException;\n+                                                                                 FileStore fileStore, String baseUrl)\n+      throws RequestIncompleteException;\n \n }\n",
+            "diff_size": 12
+        },
+        {
+            "tool": "naturalize",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "37",
+                    "column": "34",
+                    "severity": "warning",
+                    "message": "GenericWhitespace '<' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"
+                },
+                {
+                    "line": "38",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "40",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 44.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "44",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "46",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 49.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "49",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 54.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 59.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "61",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 67.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "67",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "68",
+                    "severity": "warning",
+                    "message": "'member def type' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "71",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "80",
+                    "severity": "warning",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "82",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 94.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "warning",
+                    "message": "'ctor def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "95",
+                    "severity": "warning",
+                    "message": "'String' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "warning",
+                    "message": "'Hook' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "warning",
+                    "message": "'String' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "warning",
+                    "message": "'String' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "99",
+                    "severity": "warning",
+                    "message": "'List' has incorrect indentation level 4, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "107",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "116",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "119",
+                    "severity": "warning",
+                    "message": "'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "122",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "124",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "126",
+                    "severity": "warning",
+                    "message": "Block comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 133.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "133",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "136",
+                    "severity": "warning",
+                    "message": "'new' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "137",
+                    "severity": "warning",
+                    "message": "'this' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "138",
+                    "severity": "warning",
+                    "message": "'this' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "140",
+                    "severity": "warning",
+                    "message": "'5' has incorrect indentation level 0, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 107, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "156",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 212).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 107, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "157",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 150).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "169",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "170",
+                    "severity": "warning",
+                    "message": "'for' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "171",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "172",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 73, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "173",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 73, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "174",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 174).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "174",
+                    "column": "113",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '&&' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "175",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 182).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "176",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 175).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "177",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 188).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "178",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 39, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "178",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 143).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "179",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 39, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "180",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 73, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "181",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 75, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "181",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 149).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "182",
+                    "severity": "warning",
+                    "message": "'else' child has incorrect indentation level 75, expected level should be 10.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "182",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 124).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "183",
+                    "severity": "warning",
+                    "message": "'else rcurly' has incorrect indentation level 73, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "184",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "190",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "191",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "192",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "196",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "198",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "204",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "204",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 258).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "207",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "207",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 280).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "210",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "210",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 254).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "213",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "213",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 268).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "216",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "218",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "222",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "229",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 371).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "231",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "231",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 280).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "234",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 97, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "234",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 175).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "235",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 290).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "236",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 97, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "241",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 97, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "241",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 168).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "242",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 276).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "243",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 97, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "248",
+                    "severity": "warning",
+                    "message": "'if' has incorrect indentation level 97, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "248",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 177).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "249",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 294).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "250",
+                    "severity": "warning",
+                    "message": "'if rcurly' has incorrect indentation level 97, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "255",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "257",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "259",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 76, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "259",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 141).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "260",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 6, expected is 76, 4, indentation should be the same level as line 259, 261.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "265",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "267",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "278",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "281",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 15, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "281",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 205).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "288",
+                    "column": "25",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '&&' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "288",
+                    "column": "25",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '&&' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "289",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "291",
+                    "column": "26",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '&&' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "291",
+                    "column": "26",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '&&' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "292",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "310",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "311",
+                    "severity": "warning",
+                    "message": "'method def' child has incorrect indentation level 4, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "311",
+                    "column": "25",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '?' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "311",
+                    "column": "25",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: '?' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "311",
+                    "column": "32",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: ':' is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "311",
+                    "column": "32",
+                    "severity": "warning",
+                    "message": "WhitespaceAround: ':' is not preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"
+                },
+                {
+                    "line": "314",
+                    "severity": "warning",
+                    "message": "'try' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "315",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 47, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "316",
+                    "severity": "warning",
+                    "message": "'try' child has incorrect indentation level 47, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "317",
+                    "severity": "warning",
+                    "message": "'try rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "318",
+                    "severity": "warning",
+                    "message": "'catch' child has incorrect indentation level 10, expected level should be 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "319",
+                    "severity": "warning",
+                    "message": "'catch rcurly' has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "324",
+                    "severity": "warning",
+                    "message": "'if' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "345",
+                    "severity": "warning",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "347",
+                    "severity": "warning",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 349.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "349",
+                    "severity": "warning",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "350",
+                    "column": "102",
+                    "severity": "warning",
+                    "message": "';' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/24/CdsService.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/24/CdsService.java\nindex 60347265ac..8d2862d780 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/errored/1/24/CdsService.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/HL7-DaVinci-CRD/codebuff/24/CdsService.java\n@@ -9,7 +9,6 @@ import java.util.List;\n import java.util.ArrayList;\n import java.util.Date;\n import javax.validation.Valid;\n-\n import org.apache.commons.lang.StringUtils;\n import org.cdshooks.*;\n import org.hl7.davinci.FhirComponentsT;\n@@ -33,30 +32,31 @@ import org.springframework.beans.factory.annotation.Autowired;\n import org.springframework.stereotype.Component;\n import org.springframework.web.bind.annotation.RequestBody;\n \n+\n @Component\n-public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n-  static final Logger logger = LoggerFactory.getLogger(CdsService.class);\n+public abstract class CdsService <requestTypeT extends CdsRequest<?, ?>> {\n+    static final Logger logger = LoggerFactory.getLogger(CdsService.class);\n \n   /**\n    * The {id} portion of the URL to this service which is available at\n    * {baseUrl}/cds-services/{id}. REQUIRED\n    */\n-  public String id = null;\n+    public String id = null;\n \n   /**\n    * The hook this service should be invoked on. REQUIRED\n    */\n-  public Hook hook = null;\n+    public Hook hook = null;\n \n   /**\n    * The human-friendly name of this service. RECOMMENDED\n    */\n-  public String title = null;\n+    public String title = null;\n \n   /**\n    * The description of this service. REQUIRED\n    */\n-  public String description = null;\n+    public String description = null;\n \n   /**\n    * An object containing key/value pairs of FHIR queries that this service is\n@@ -64,20 +64,20 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n    * a string that describes the type of data being requested and the value is a\n    * string representing the FHIR query. OPTIONAL\n    */\n-  public Prefetch prefetch = null;\n-  Class<?> requestClass = null;\n+    public Prefetch prefetch = null;\n+    Class<?> requestClass = null;\n+\n \n-  @Autowired\n-  private YamlConfig myConfig;\n+    @Autowired\n+    private YamlConfig myConfig;\n \n-  @Autowired\n-  RequestService requestService;\n \n-  @Autowired\n-  FileStore fileStore;\n+    @Autowired RequestService requestService;\n \n-  private List<PrefetchTemplateElement> prefetchElements = null;\n-  private FhirComponentsT fhirComponents;\n+\n+    @Autowired FileStore fileStore;\n+    private List<PrefetchTemplateElement> prefetchElements = null;\n+    private FhirComponentsT fhirComponents;\n \n   /**\n    * Create a new cdsservice.\n@@ -90,17 +90,21 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n    *                         template.\n    * @param fhirComponents   Fhir components to use\n    */\n-  public CdsService(String id, Hook hook, String title, String description,\n-      List<PrefetchTemplateElement> prefetchElements, FhirComponentsT fhirComponents) {\n \n+    public CdsService(\n+    String id,\n+    Hook hook,\n+    String title,\n+    String description,\n+    List<PrefetchTemplateElement> prefetchElements, FhirComponentsT fhirComponents) {\n     if (id == null) {\n-      throw new NullPointerException(\"CDSService id cannot be null\");\n+        throw new NullPointerException(\"CDSService id cannot be null\");\n     }\n     if (hook == null) {\n-      throw new NullPointerException(\"CDSService hook cannot be null\");\n+        throw new NullPointerException(\"CDSService hook cannot be null\");\n     }\n     if (description == null) {\n-      throw new NullPointerException(\"CDSService description cannot be null\");\n+        throw new NullPointerException(\"CDSService description cannot be null\");\n     }\n     this.id = id;\n     this.hook = hook;\n@@ -109,14 +113,15 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n     this.prefetchElements = prefetchElements;\n     prefetch = new Prefetch();\n     for (PrefetchTemplateElement prefetchElement : prefetchElements) {\n-      this.prefetch.put(prefetchElement.getKey(), prefetchElement.getQuery());\n+        this.prefetch.put(prefetchElement.getKey(), prefetchElement.getQuery());\n     }\n     this.fhirComponents = fhirComponents;\n-  }\n+    }\n+\n \n-  public List<PrefetchTemplateElement> getPrefetchElements() {\n+    public List<PrefetchTemplateElement> getPrefetchElements() {\n     return prefetchElements;\n-  }\n+    }\n \n   /**\n    * Performs generic operations for incoming requests of any type.\n@@ -124,14 +129,18 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n    * @param request the generically typed incoming request\n    * @return The response from the server\n    */\n-  public CdsResponse handleRequest(@Valid @RequestBody requestTypeT request, URL applicationBaseUrl) {\n+\n+    public CdsResponse handleRequest(@Valid @RequestBody requestTypeT request, URL applicationBaseUrl) {\n     // create the RequestLog\n-    RequestLog requestLog = new RequestLog(request, new Date().getTime(),\n-        this.fhirComponents.getFhirVersion().toString(), this.id, requestService, 5);\n+    RequestLog requestLog = new RequestLog(request,\n+new Date().getTime(),\n+this.fhirComponents.getFhirVersion().toString(),\n+this.id,\n+        requestService,\n+5);\n \n     // Parsed request\n     requestLog.advanceTimeline(requestService);\n-\n     PrefetchHydrator prefetchHydrator = new PrefetchHydrator(this, request, this.fhirComponents);\n     prefetchHydrator.hydrate();\n \n@@ -139,14 +148,13 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n     requestLog.advanceTimeline(requestService);\n \n     // logger.info(\"***** ***** request from requestLog: \"+requestLog.toString() );\n-\n     CdsResponse response = new CdsResponse();\n \n     // CQL Fetched\n     List<CoverageRequirementRuleResult> lookupResults;\n     try {\n-      lookupResults = this.createCqlExecutionContexts(request, fileStore, applicationBaseUrl.toString() + \"/\");\n-      requestLog.advanceTimeline(requestService);\n+                                                                                                           lookupResults = this.createCqlExecutionContexts(request, fileStore, applicationBaseUrl.toString() + \"/\");\n+                                                                                                           requestLog.advanceTimeline(requestService);\n     } catch (RequestIncompleteException e) {\n       logger.warn(e.getMessage() + \"; summary card sent to client\");\n       response.addCard(CardBuilder.summaryCard(e.getMessage()));\n@@ -155,154 +163,133 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n       return response;\n     }\n \n+\n     boolean foundApplicableRule = false;\n     for (CoverageRequirementRuleResult lookupResult : lookupResults) {\n-      requestLog.addTopic(requestService, lookupResult.getTopic());\n-      CqlResultsForCard results = executeCqlAndGetRelevantResults(lookupResult.getContext(), lookupResult.getTopic());\n-      if (results.ruleApplies()) {\n-        foundApplicableRule = true;\n-        if ((results.getDocumentationRequired() || results.getPriorAuthRequired())\n-            && (StringUtils.isNotEmpty(results.getQuestionnaireOrderUri())\n-                || StringUtils.isNotEmpty(results.getQuestionnaireFaceToFaceUri())\n-                || StringUtils.isNotEmpty(results.getQuestionnaireLabUri())\n-                || StringUtils.isNotEmpty(results.getQuestionnaireProgressNoteUri()))) {\n-          List<Link> smartAppLinks = createQuestionnaireLinks(request, applicationBaseUrl, lookupResult, results);\n-          response.addCard(CardBuilder.transform(results, smartAppLinks));\n-        } else {\n-          logger.warn(\"Unspecified Questionnaire URI; summary card sent to client\");\n-          response.addCard(CardBuilder.transform(results));\n+        requestLog.addTopic(requestService, lookupResult.getTopic());\n+        CqlResultsForCard results = executeCqlAndGetRelevantResults(lookupResult.getContext(), lookupResult.getTopic());\n+        if (results.ruleApplies()) {\n+                                                                         foundApplicableRule = true;\n+                                                                         if ((results.getDocumentationRequired()\n+                                                                              || results.getPriorAuthRequired())&& (StringUtils.isNotEmpty(results.getQuestionnaireOrderUri())\n+                                                                                                                    || StringUtils.isNotEmpty(results.getQuestionnaireFaceToFaceUri())\n+                                                                                                                    || StringUtils.isNotEmpty(results.getQuestionnaireLabUri())\n+                                                                                                                    || StringUtils.isNotEmpty(results.getQuestionnaireProgressNoteUri()))) {\n+                                       List<Link> smartAppLinks = createQuestionnaireLinks(request, applicationBaseUrl, lookupResult, results);\n+                                       response.addCard(CardBuilder.transform(results, smartAppLinks));\n+                                                                         } else {\n+                                                                           logger.warn(\"Unspecified Questionnaire URI; summary card sent to client\");\n+                                                                           response.addCard(CardBuilder.transform(results));\n+                                                                         }\n         }\n-      }\n     }\n \n     // CQL Executed\n     requestLog.advanceTimeline(requestService);\n-\n     if (!foundApplicableRule) {\n-      String msg = \"No documentation rules found\";\n-      logger.warn(msg + \"; summary card sent to client\");\n-      response.addCard(CardBuilder.summaryCard(msg));\n+        String msg = \"No documentation rules found\";\n+        logger.warn(msg + \"; summary card sent to client\");\n+        response.addCard(CardBuilder.summaryCard(msg));\n     }\n-\n     CardBuilder.errorCardIfNonePresent(response);\n-\n     return response;\n-  }\n+    }\n \n-  private List<Link> createQuestionnaireLinks(requestTypeT request, URL applicationBaseUrl,\n-      CoverageRequirementRuleResult lookupResult, CqlResultsForCard results) {\n+    private List<Link> createQuestionnaireLinks(\n+        requestTypeT request,\n+        URL applicationBaseUrl,\n+        CoverageRequirementRuleResult lookupResult, CqlResultsForCard results) {\n     List<Link> listOfLinks = new ArrayList<>();\n     if (StringUtils.isNotEmpty(results.getQuestionnaireOrderUri())) {\n-      listOfLinks.add(smartLinkBuilder(request.getContext().getPatientId(), request.getFhirServer(), applicationBaseUrl,\n-          results.getQuestionnaireOrderUri(), results.getRequestId(), lookupResult.getCriteria(),\n-          results.getPriorAuthRequired(), \"Order Form\"));\n+        listOfLinks.add(smartLinkBuilder(request.getContext().getPatientId(), request.getFhirServer(), applicationBaseUrl, results.getQuestionnaireOrderUri(), results.getRequestId(), lookupResult.getCriteria(), results.getPriorAuthRequired(), \"Order Form\"));\n     }\n     if (StringUtils.isNotEmpty(results.getQuestionnaireFaceToFaceUri())) {\n-      listOfLinks.add(smartLinkBuilder(request.getContext().getPatientId(), request.getFhirServer(), applicationBaseUrl,\n-          results.getQuestionnaireFaceToFaceUri(), results.getRequestId(), lookupResult.getCriteria(),\n-          results.getPriorAuthRequired(), \"Face to Face Encounter Form\"));\n+        listOfLinks.add(smartLinkBuilder(request.getContext().getPatientId(), request.getFhirServer(), applicationBaseUrl, results.getQuestionnaireFaceToFaceUri(), results.getRequestId(), lookupResult.getCriteria(), results.getPriorAuthRequired(), \"Face to Face Encounter Form\"));\n     }\n     if (StringUtils.isNotEmpty(results.getQuestionnaireLabUri())) {\n-      listOfLinks.add(smartLinkBuilder(request.getContext().getPatientId(), request.getFhirServer(), applicationBaseUrl,\n-          results.getQuestionnaireLabUri(), results.getRequestId(), lookupResult.getCriteria(),\n-          results.getPriorAuthRequired(), \"Lab Form\"));\n+        listOfLinks.add(smartLinkBuilder(request.getContext().getPatientId(), request.getFhirServer(), applicationBaseUrl, results.getQuestionnaireLabUri(), results.getRequestId(), lookupResult.getCriteria(), results.getPriorAuthRequired(), \"Lab Form\"));\n     }\n     if (StringUtils.isNotEmpty(results.getQuestionnaireProgressNoteUri())) {\n-      listOfLinks.add(smartLinkBuilder(request.getContext().getPatientId(), request.getFhirServer(), applicationBaseUrl,\n-          results.getQuestionnaireProgressNoteUri(), results.getRequestId(), lookupResult.getCriteria(),\n-          results.getPriorAuthRequired(), \"Progress Note\"));\n+        listOfLinks.add(smartLinkBuilder(request.getContext().getPatientId(), request.getFhirServer(), applicationBaseUrl, results.getQuestionnaireProgressNoteUri(), results.getRequestId(), lookupResult.getCriteria(), results.getPriorAuthRequired(), \"Progress Note\"));\n     }\n     return listOfLinks;\n-  }\n+    }\n \n-  private CqlResultsForCard executeCqlAndGetRelevantResults(Context context, String topic) {\n+    private CqlResultsForCard executeCqlAndGetRelevantResults(Context context, String topic) {\n     CqlResultsForCard results = new CqlResultsForCard();\n-\n     results.setRuleApplies((Boolean) evaluateStatement(\"RULE_APPLIES\", context));\n     if (!results.ruleApplies()) {\n-      return results;\n+        return results;\n     }\n \n-    String humanReadableTopic = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(topic), ' ');\n-\n-    results.setSummary(humanReadableTopic + \": \" + evaluateStatement(\"RESULT_Summary\", context).toString())\n-        .setDetails(evaluateStatement(\"RESULT_Details\", context).toString())\n-        .setInfoLink(evaluateStatement(\"RESULT_InfoLink\", context).toString())\n-        .setPriorAuthRequired((Boolean) evaluateStatement(\"PRIORAUTH_REQUIRED\", context))\n-        .setDocumentationRequired((Boolean) evaluateStatement(\"DOCUMENTATION_REQUIRED\", context));\n \n+    String humanReadableTopic = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(topic), ' ');\n+    results.setSummary(humanReadableTopic\n+    + \": \"\n+    + evaluateStatement(\"RESULT_Summary\", context).toString()).setDetails(evaluateStatement(\"RESULT_Details\", context).toString()).setInfoLink(evaluateStatement(\"RESULT_InfoLink\", context).toString()).setPriorAuthRequired((Boolean) evaluateStatement(\"PRIORAUTH_REQUIRED\", context)).setDocumentationRequired((Boolean) evaluateStatement(\"DOCUMENTATION_REQUIRED\", context));\n     if (evaluateStatement(\"RESULT_QuestionnaireOrderUri\", context) != null) {\n-      results.setQuestionnaireOrderUri(evaluateStatement(\"RESULT_QuestionnaireOrderUri\", context).toString())\n-          .setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser()\n-              .encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n+        results.setQuestionnaireOrderUri(evaluateStatement(\"RESULT_QuestionnaireOrderUri\", context).toString()).setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser().encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n     }\n-\n     try {\n-      if (evaluateStatement(\"RESULT_QuestionnaireFaceToFaceUri\", context) != null) {\n-        results\n-            .setQuestionnaireFaceToFaceUri(evaluateStatement(\"RESULT_QuestionnaireFaceToFaceUri\", context).toString())\n-            .setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser()\n-                .encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n-      }\n+                                                                                                 if (evaluateStatement(\"RESULT_QuestionnaireFaceToFaceUri\", context) != null) {\n+        results.setQuestionnaireFaceToFaceUri(evaluateStatement(\"RESULT_QuestionnaireFaceToFaceUri\", context).toString()).setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser().encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n+                                                                                                 }\n     } catch (Exception e) {\n       logger.info(\"-- No face to face questionnaire defined\");\n     }\n-\n     try {\n-      if (evaluateStatement(\"RESULT_QuestionnaireLabUri\", context) != null) {\n-        results.setQuestionnaireLabUri(evaluateStatement(\"RESULT_QuestionnaireLabUri\", context).toString())\n-            .setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser()\n-                .encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n-      }\n+                                                                                                 if (evaluateStatement(\"RESULT_QuestionnaireLabUri\", context) != null) {\n+        results.setQuestionnaireLabUri(evaluateStatement(\"RESULT_QuestionnaireLabUri\", context).toString()).setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser().encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n+                                                                                                 }\n     } catch (Exception e) {\n       logger.info(\"-- No Lab questionnaire defined\");\n     }\n-\n     try {\n-      if (evaluateStatement(\"RESULT_QuestionnaireProgressNoteUri\", context) != null) {\n-        results.setQuestionnaireProgressNoteUri(evaluateStatement(\"RESULT_QuestionnaireProgressNoteUri\", context).toString())\n-            .setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser()\n-                .encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n-      }\n+                                                                                                 if (evaluateStatement(\"RESULT_QuestionnaireProgressNoteUri\", context) != null) {\n+        results.setQuestionnaireProgressNoteUri(evaluateStatement(\"RESULT_QuestionnaireProgressNoteUri\", context).toString()).setRequestId(JSONObject.escape(fhirComponents.getFhirContext().newJsonParser().encodeResourceToString((IBaseResource) evaluateStatement(\"RESULT_requestId\", context))));\n+                                                                                                 }\n     } catch (Exception e) {\n       logger.info(\"-- No Lab questionnaire defined\");\n     }\n-\n     return results;\n-  }\n+    }\n \n-  private Object evaluateStatement(String statement, Context context) {\n+    private Object evaluateStatement(String statement, Context context) {\n     try {\n-      return context.resolveExpressionRef(statement).evaluate(context);\n+                                                                            return context.resolveExpressionRef(statement).evaluate(context);\n       // can be thrown if statement is not defined in the cql\n     } catch (IllegalArgumentException e) {\n       logger.error(e.toString());\n       return null;\n     }\n-  }\n+    }\n \n-  private Link smartLinkBuilder(String patientId, String fhirBase, URL applicationBaseUrl, String questionnaireUri,\n-      String reqResourceId, CoverageRequirementRuleCriteria criteria, boolean priorAuthRequired, String label) {\n+    private Link smartLinkBuilder(\n+        String patientId,\n+        String fhirBase,\n+        URL applicationBaseUrl,\n+        String questionnaireUri,\n+        String reqResourceId,\n+        CoverageRequirementRuleCriteria criteria,\n+        boolean priorAuthRequired, String label) {\n     URI configLaunchUri = myConfig.getLaunchUrl();\n     String launchUrl;\n     if (myConfig.getLaunchUrl().isAbsolute()) {\n-      launchUrl = myConfig.getLaunchUrl().toString();\n+        launchUrl = myConfig.getLaunchUrl().toString();\n     } else {\n       try {\n-        launchUrl = new URL(applicationBaseUrl.getProtocol(), applicationBaseUrl.getHost(),\n-            applicationBaseUrl.getPort(), applicationBaseUrl.getFile() + configLaunchUri.toString(), null).toString();\n+               launchUrl = new URL(applicationBaseUrl.getProtocol(), applicationBaseUrl.getHost(), applicationBaseUrl.getPort(), applicationBaseUrl.getFile() + configLaunchUri.toString(), null).toString();\n       } catch (MalformedURLException e) {\n         String msg = \"Error creating smart launch URL\";\n         logger.error(msg);\n         throw new RuntimeException(msg);\n       }\n     }\n-\n-    if (fhirBase != null && fhirBase.endsWith(\"/\")) {\n-      fhirBase = fhirBase.substring(0, fhirBase.length() - 1);\n+    if (fhirBase != null&&fhirBase.endsWith(\"/\")) {\n+        fhirBase = fhirBase.substring(0, fhirBase.length() - 1);\n     }\n-    if (patientId != null && patientId.startsWith(\"Patient/\")) {\n-      patientId = patientId.substring(8, patientId.length());\n+    if (patientId != null&&patientId.startsWith(\"Patient/\")) {\n+        patientId = patientId.substring(8, patientId.length());\n     }\n \n     // PARAMS:\n@@ -312,44 +299,53 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {\n     // HashMap<String,String> appContextMap = new HashMap<>();\n     // appContextMap.put(\"template\", questionnaireUri);\n     // appContextMap.put(\"request\", reqResourceId);\n-    String filepath = \"../../getfile/\" + criteria.getQueryString();\n \n-    String appContext = \"template=\" + questionnaireUri + \"&request=\" + reqResourceId;\n \n-    appContext = appContext + \"&priorauth=\" + (priorAuthRequired ? \"true\" : \"false\");\n+    String filepath = \"../../getfile/\" + criteria.getQueryString();\n+    String appContext = \"template=\"\n+               + questionnaireUri\n+               + \"&request=\"\n+               + reqResourceId;\n+    appContext = appContext\n+    + \"&priorauth=\"\n+    + (priorAuthRequired?\"true\":\"false\");\n     appContext = appContext + \"&filepath=\";\n     if (myConfig.getUrlEncodeAppContext()) {\n-      try {\n-        logger.info(\"CdsService::smartLinkBuilder: URL encoding appcontext\");\n-        appContext = URLEncoder.encode(appContext, \"UTF-8\").toString();\n-      } catch (UnsupportedEncodingException e) {\n-        e.printStackTrace();\n-      }\n+        try {\n+                                               logger.info(\"CdsService::smartLinkBuilder: URL encoding appcontext\");\n+                                               appContext = URLEncoder.encode(appContext, \"UTF-8\").toString();\n+        } catch (UnsupportedEncodingException e) {\n+          e.printStackTrace();\n+        }\n     }\n-\n     appContext = appContext + \"_\";\n     logger.info(\"smarLinkBuilder: appContext: \" + appContext);\n-\n     if (myConfig.isAppendParamsToSmartLaunchUrl()) {\n-      launchUrl = launchUrl + \"?iss=\" + fhirBase + \"&patientId=\" + patientId + \"&template=\" + questionnaireUri\n-          + \"&request=\" + reqResourceId;\n+        launchUrl = launchUrl\n+        + \"?iss=\"\n+        + fhirBase\n+        + \"&patientId=\"\n+        + patientId\n+        + \"&template=\"\n+        + questionnaireUri\n+        + \"&request=\"\n+        + reqResourceId;\n     } else {\n       // TODO: The iss should be set by the EHR?\n       launchUrl = launchUrl;\n     }\n \n+\n     Link link = new Link();\n     link.setType(\"smart\");\n     link.setLabel(label);\n     link.setUrl(launchUrl);\n-\n     link.setAppContext(appContext);\n-\n     return link;\n-  }\n+    }\n \n   // Implement this in child class\n-  public abstract List<CoverageRequirementRuleResult> createCqlExecutionContexts(requestTypeT request,\n-      FileStore fileStore, String baseUrl) throws RequestIncompleteException;\n \n-}\n+    public abstract List<CoverageRequirementRuleResult> createCqlExecutionContexts(\n+        requestTypeT request, FileStore fileStore, String baseUrl) throws RequestIncompleteException ;\n+}\n\\ No newline at end of file\n",
+            "diff_size": 183
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "263",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "263",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 125).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

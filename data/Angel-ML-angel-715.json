@@ -1,0 +1,124 @@
+{
+    "error_id": "715",
+    "information": {
+        "errors": [
+            {
+                "line": "11",
+                "severity": "error",
+                "message": "Line is longer than 100 characters (found 103).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": " * https://opensource.org/licenses/BSD-3-Clause\n *\n * Unless required by applicable law or agreed to in writing, software distributed under the License is\n * distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n * either express or implied. See the License for the specific language governing permissions and\n * limitations under the License.",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/715/RowUpdateInfo.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/715/RowUpdateInfo.java\nindex f7a0808cd9..cc324d4664 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/715/RowUpdateInfo.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/intellij/715/RowUpdateInfo.java\n@@ -27,81 +27,81 @@ import java.util.Arrays;\n  */\n public class RowUpdateInfo {\n \n-  private static final Log LOG = LogFactory.getLog(RowUpdateInfo.class);\n-\n-  // array stores clock for each row and clock\n-  private short[] info;\n-  private int rowNum;\n-  // local task num\n-  private int taskNum;\n-\n-  // mapping from task index to taskId\n-  private short[] taskIndexToId;\n-  // mapping from taskId to task index\n-  private Int2IntOpenHashMap taskIdToIndex;\n-\n-  public RowUpdateInfo(int rowNum) {\n-    this.taskNum = -1;\n-    this.rowNum = rowNum;\n-  }\n-\n-  public void init() {\n-    this.taskNum = 0;// MLContext.get().getLocalTaskNum();\n-    this.info = new short[this.rowNum * taskNum];\n-    this.taskIndexToId = new short[taskNum];\n-    this.taskIdToIndex = new Int2IntOpenHashMap();\n-\n-    LOG.info(\"local task num=\" + taskNum);\n-\n-    int[] taskIds = new int[0];\n-    Arrays.sort(taskIds);\n-\n-    for (int i = 0; i < taskIds.length; i++) {\n-      taskIndexToId[i] = (short) taskIds[i];\n-      taskIdToIndex.put(taskIds[i], i);\n+    private static final Log LOG = LogFactory.getLog(RowUpdateInfo.class);\n+\n+    // array stores clock for each row and clock\n+    private short[] info;\n+    private int rowNum;\n+    // local task num\n+    private int taskNum;\n+\n+    // mapping from task index to taskId\n+    private short[] taskIndexToId;\n+    // mapping from taskId to task index\n+    private Int2IntOpenHashMap taskIdToIndex;\n+\n+    public RowUpdateInfo(int rowNum) {\n+        this.taskNum = -1;\n+        this.rowNum = rowNum;\n     }\n-  }\n \n-  public void startIfNeed() {\n-    if (taskNum == -1) {\n-      init();\n+    public void init() {\n+        this.taskNum = 0;// MLContext.get().getLocalTaskNum();\n+        this.info = new short[this.rowNum * taskNum];\n+        this.taskIndexToId = new short[taskNum];\n+        this.taskIdToIndex = new Int2IntOpenHashMap();\n+\n+        LOG.info(\"local task num=\" + taskNum);\n+\n+        int[] taskIds = new int[0];\n+        Arrays.sort(taskIds);\n+\n+        for (int i = 0; i < taskIds.length; i++) {\n+            taskIndexToId[i] = (short) taskIds[i];\n+            taskIdToIndex.put(taskIds[i], i);\n+        }\n+    }\n+\n+    public void startIfNeed() {\n+        if (taskNum == -1) {\n+            init();\n+        }\n+    }\n+\n+    public int getRowClockWithTaskId(int rowId, int taskId) {\n+        int taskIndex = getTaskIndex(taskId);\n+        return getRowClockWithIndex(rowId, taskIndex);\n+    }\n+\n+    public int getRowClockWithIndex(int rowId, int taskIndex) {\n+        int arrayIndex = getArrayIndex(rowId, taskIndex);\n+        return info[arrayIndex];\n+    }\n+\n+    public int getTaskId(int taskIndex) {\n+        return taskIndexToId[taskIndex];\n+    }\n+\n+    public int getTaskIndex(int taskId) {\n+        return taskIdToIndex.get(taskId);\n+    }\n+\n+    public void setRowClockWithTaskId(int rowId, int clock, int taskId) {\n+        startIfNeed();\n+        setRowClockWithIndex(rowId, clock, getTaskIndex(taskId));\n+    }\n+\n+    public void setRowClockWithIndex(int rowId, int clock, int taskIndex) {\n+        startIfNeed();\n+        int arrayIndex = getArrayIndex(rowId, taskIndex);\n+        info[arrayIndex] = (short) clock;\n+    }\n+\n+    private int getArrayIndex(int rowId, int taskIndex) {\n+        return rowId / taskNum + taskIndex;\n+    }\n+\n+    public int getTaskNum() {\n+        return taskNum;\n     }\n-  }\n-\n-  public int getRowClockWithTaskId(int rowId, int taskId) {\n-    int taskIndex = getTaskIndex(taskId);\n-    return getRowClockWithIndex(rowId, taskIndex);\n-  }\n-\n-  public int getRowClockWithIndex(int rowId, int taskIndex) {\n-    int arrayIndex = getArrayIndex(rowId, taskIndex);\n-    return info[arrayIndex];\n-  }\n-\n-  public int getTaskId(int taskIndex) {\n-    return taskIndexToId[taskIndex];\n-  }\n-\n-  public int getTaskIndex(int taskId) {\n-    return taskIdToIndex.get(taskId);\n-  }\n-\n-  public void setRowClockWithTaskId(int rowId, int clock, int taskId) {\n-    startIfNeed();\n-    setRowClockWithIndex(rowId, clock, getTaskIndex(taskId));\n-  }\n-\n-  public void setRowClockWithIndex(int rowId, int clock, int taskIndex) {\n-    startIfNeed();\n-    int arrayIndex = getArrayIndex(rowId, taskIndex);\n-    info[arrayIndex] = (short) clock;\n-  }\n-\n-  private int getArrayIndex(int rowId, int taskIndex) {\n-    return rowId / taskNum + taskIndex;\n-  }\n-\n-  public int getTaskNum() {\n-    return taskNum;\n-  }\n }\n",
+            "diff_size": 129
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 51.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/715/RowUpdateInfo.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/715/RowUpdateInfo.java\nindex f7a0808cd9..4ac695f929 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/715/RowUpdateInfo.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/naturalize/715/RowUpdateInfo.java\n@@ -46,7 +46,8 @@ public class RowUpdateInfo {\n   }\n \n   public void init() {\n-    this.taskNum = 0;// MLContext.get().getLocalTaskNum();\n+    this.taskNum = 0;\n+// MLContext.get().getLocalTaskNum();\n     this.info = new short[this.rowNum * taskNum];\n     this.taskIndexToId = new short[taskNum];\n     this.taskIdToIndex = new Int2IntOpenHashMap();\n@@ -104,4 +105,4 @@ public class RowUpdateInfo {\n   public int getTaskNum() {\n     return taskNum;\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 3
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "31",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 32.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "34",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 35.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "37",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 38.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                },
+                {
+                    "line": "39",
+                    "severity": "error",
+                    "message": "Comment has incorrect indentation level 2, expected is 4, indentation should be the same level as line 40.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/715/RowUpdateInfo.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/715/RowUpdateInfo.java\nindex f7a0808cd9..82370ffec3 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/errored/1/715/RowUpdateInfo.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/Angel-ML-angel/codebuff/715/RowUpdateInfo.java\n@@ -19,89 +19,87 @@ package com.tencent.angel.psagent.matrix.index;\n import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;\n import org.apache.commons.logging.Log;\n import org.apache.commons.logging.LogFactory;\n-\n import java.util.Arrays;\n \n /**\n  * This class store the update clock info of every row and task at matrix oplog\n  */\n-public class RowUpdateInfo {\n \n-  private static final Log LOG = LogFactory.getLog(RowUpdateInfo.class);\n+public class RowUpdateInfo {\n+    private static final Log LOG = LogFactory.getLog(RowUpdateInfo.class);\n \n   // array stores clock for each row and clock\n-  private short[] info;\n-  private int rowNum;\n+    private short[] info;\n+    private int rowNum;\n   // local task num\n-  private int taskNum;\n+    private int taskNum;\n \n   // mapping from task index to taskId\n-  private short[] taskIndexToId;\n+    private short[] taskIndexToId;\n   // mapping from taskId to task index\n-  private Int2IntOpenHashMap taskIdToIndex;\n+    private Int2IntOpenHashMap taskIdToIndex;\n \n-  public RowUpdateInfo(int rowNum) {\n+    public RowUpdateInfo(int rowNum) {\n     this.taskNum = -1;\n     this.rowNum = rowNum;\n-  }\n+    }\n \n-  public void init() {\n+    public void init() {\n     this.taskNum = 0;// MLContext.get().getLocalTaskNum();\n     this.info = new short[this.rowNum * taskNum];\n     this.taskIndexToId = new short[taskNum];\n     this.taskIdToIndex = new Int2IntOpenHashMap();\n-\n     LOG.info(\"local task num=\" + taskNum);\n \n     int[] taskIds = new int[0];\n     Arrays.sort(taskIds);\n-\n     for (int i = 0; i < taskIds.length; i++) {\n-      taskIndexToId[i] = (short) taskIds[i];\n-      taskIdToIndex.put(taskIds[i], i);\n+        taskIndexToId[i] = (short) taskIds[i];\n+        taskIdToIndex.put(taskIds[i], i);\n+    }\n     }\n-  }\n \n-  public void startIfNeed() {\n+    public void startIfNeed() {\n     if (taskNum == -1) {\n-      init();\n+        init();\n+    }\n     }\n-  }\n \n-  public int getRowClockWithTaskId(int rowId, int taskId) {\n+    public int getRowClockWithTaskId(int rowId, int taskId) {\n     int taskIndex = getTaskIndex(taskId);\n     return getRowClockWithIndex(rowId, taskIndex);\n-  }\n+    }\n \n-  public int getRowClockWithIndex(int rowId, int taskIndex) {\n+    public int getRowClockWithIndex(int rowId, int taskIndex) {\n     int arrayIndex = getArrayIndex(rowId, taskIndex);\n     return info[arrayIndex];\n-  }\n+    }\n \n-  public int getTaskId(int taskIndex) {\n+    public int getTaskId(int taskIndex) {\n     return taskIndexToId[taskIndex];\n-  }\n+    }\n \n-  public int getTaskIndex(int taskId) {\n+    public int getTaskIndex(int taskId) {\n     return taskIdToIndex.get(taskId);\n-  }\n+    }\n \n-  public void setRowClockWithTaskId(int rowId, int clock, int taskId) {\n+    public void setRowClockWithTaskId(int rowId, int clock, int taskId) {\n     startIfNeed();\n     setRowClockWithIndex(rowId, clock, getTaskIndex(taskId));\n-  }\n+    }\n \n-  public void setRowClockWithIndex(int rowId, int clock, int taskIndex) {\n+    public void setRowClockWithIndex(int rowId, int clock, int taskIndex) {\n     startIfNeed();\n+\n     int arrayIndex = getArrayIndex(rowId, taskIndex);\n     info[arrayIndex] = (short) clock;\n-  }\n+    }\n \n-  private int getArrayIndex(int rowId, int taskIndex) {\n+    private int getArrayIndex(int rowId, int taskIndex) {\n     return rowId / taskNum + taskIndex;\n-  }\n+    }\n \n-  public int getTaskNum() {\n+    public int getTaskNum() {\n     return taskNum;\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 40
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "11",
+                    "severity": "error",
+                    "message": "Line is longer than 100 characters (found 103).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

@@ -1,0 +1,101 @@
+{
+    "error_id": "183",
+    "information": {
+        "errors": [
+            {
+                "line": "28",
+                "severity": "error",
+                "message": "Line matches the illegal pattern 'System\\.out\\.println'.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck"
+            }
+        ]
+    },
+    "source_code": "    @Override\n    protected void validate(IPageData pd, JSONObject paramIn) {\n        System.out.println(paramIn);\n\n        //super.validatePageInfo(pd);\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Line matches the illegal pattern 'System\\.out\\.println'.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Line matches the illegal pattern 'System\\.out\\.println'.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/183/AddVisitSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/183/AddVisitSMOImpl.java\nindex 144475e411..385d797a69 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/183/AddVisitSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/intellij/183/AddVisitSMOImpl.java\n@@ -20,48 +20,48 @@ import org.springframework.http.ResponseEntity;\n @Service(\"addVisitSMOImpl\")\n public class AddVisitSMOImpl extends AbstractComponentSMO implements IAddVisitSMO {\n \n-    @Autowired\n-    private RestTemplate restTemplate;\n+  @Autowired\n+  private RestTemplate restTemplate;\n \n-    @Override\n-    protected void validate(IPageData pd, JSONObject paramIn) {\n-        System.out.println(paramIn);\n+  @Override\n+  protected void validate(IPageData pd, JSONObject paramIn) {\n+    System.out.println(paramIn);\n \n-        //super.validatePageInfo(pd);\n+    //super.validatePageInfo(pd);\n \n-        //Assert.hasKeyAndValue(paramIn, \"xxx\", \"xxx\");\n-        Assert.hasKeyAndValue(paramIn, \"name\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u59d3\u540d\");\n-        Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u5c0f\u533aID\");\n-        Assert.hasKeyAndValue(paramIn, \"ownerId\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u76ee\u6807\u4e1a\u4e3bID\");\n-        Assert.hasKeyAndValue(paramIn, \"phoneNumber\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u8054\u7cfb\u65b9\u5f0f\");\n-        Assert.hasKeyAndValue(paramIn, \"visitTime\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u62dc\u8bbf\u65f6\u95f4\");\n+    //Assert.hasKeyAndValue(paramIn, \"xxx\", \"xxx\");\n+    Assert.hasKeyAndValue(paramIn, \"name\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u59d3\u540d\");\n+    Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u5c0f\u533aID\");\n+    Assert.hasKeyAndValue(paramIn, \"ownerId\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u76ee\u6807\u4e1a\u4e3bID\");\n+    Assert.hasKeyAndValue(paramIn, \"phoneNumber\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u8054\u7cfb\u65b9\u5f0f\");\n+    Assert.hasKeyAndValue(paramIn, \"visitTime\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u62dc\u8bbf\u65f6\u95f4\");\n \n \n-        super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_VISIT);\n+    super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_VISIT);\n \n-    }\n+  }\n \n-    @Override\n-    protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n-        ResponseEntity<String> responseEntity = null;\n-        super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n+  @Override\n+  protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n+    ResponseEntity<String> responseEntity = null;\n+    super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n \n-        responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n-                ServiceConstant.SERVICE_API_URL + \"/api/visit.saveVisit\",\n-                HttpMethod.POST);\n-        return responseEntity;\n-    }\n+    responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n+      ServiceConstant.SERVICE_API_URL + \"/api/visit.saveVisit\",\n+      HttpMethod.POST);\n+    return responseEntity;\n+  }\n \n-    @Override\n-    public ResponseEntity<String> saveVisit(IPageData pd) {\n-        return super.businessProcess(pd);\n-    }\n+  @Override\n+  public ResponseEntity<String> saveVisit(IPageData pd) {\n+    return super.businessProcess(pd);\n+  }\n \n-    public RestTemplate getRestTemplate() {\n-        return restTemplate;\n-    }\n+  public RestTemplate getRestTemplate() {\n+    return restTemplate;\n+  }\n \n-    public void setRestTemplate(RestTemplate restTemplate) {\n-        this.restTemplate = restTemplate;\n-    }\n+  public void setRestTemplate(RestTemplate restTemplate) {\n+    this.restTemplate = restTemplate;\n+  }\n }\n",
+            "diff_size": 33
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Line matches the illegal pattern 'System\\.out\\.println'.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/183/AddVisitSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/183/AddVisitSMOImpl.java\nindex 144475e411..888991a0cd 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/183/AddVisitSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/naturalize/183/AddVisitSMOImpl.java\n@@ -35,9 +35,7 @@ public class AddVisitSMOImpl extends AbstractComponentSMO implements IAddVisitSM\n         Assert.hasKeyAndValue(paramIn, \"ownerId\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u76ee\u6807\u4e1a\u4e3bID\");\n         Assert.hasKeyAndValue(paramIn, \"phoneNumber\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u8054\u7cfb\u65b9\u5f0f\");\n         Assert.hasKeyAndValue(paramIn, \"visitTime\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u62dc\u8bbf\u65f6\u95f4\");\n-\n-\n-        super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_VISIT);\n+super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_VISIT);\n \n     }\n \n@@ -64,4 +62,4 @@ public class AddVisitSMOImpl extends AbstractComponentSMO implements IAddVisitSM\n     public void setRestTemplate(RestTemplate restTemplate) {\n         this.restTemplate = restTemplate;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 4
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "30",
+                    "severity": "error",
+                    "message": "Line matches the illegal pattern 'System\\.out\\.println'.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck"
+                },
+                {
+                    "line": "51",
+                    "severity": "error",
+                    "message": "Line is longer than 150 characters (found 165).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/183/AddVisitSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/183/AddVisitSMOImpl.java\nindex 144475e411..64f033796f 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/183/AddVisitSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/codebuff/183/AddVisitSMOImpl.java\n@@ -17,6 +17,8 @@ import org.springframework.http.ResponseEntity;\n  * \u6dfb\u52a0\u5c0f\u533a\u670d\u52a1\u5b9e\u73b0\u7c7b\n  * add by wuxw 2019-06-30\n  */\n+\n+\n @Service(\"addVisitSMOImpl\")\n public class AddVisitSMOImpl extends AbstractComponentSMO implements IAddVisitSMO {\n \n@@ -38,20 +40,19 @@ public class AddVisitSMOImpl extends AbstractComponentSMO implements IAddVisitSM\n \n \n         super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_VISIT);\n-\n     }\n \n+\n     @Override\n     protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n         ResponseEntity<String> responseEntity = null;\n-        super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n \n-        responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n-                ServiceConstant.SERVICE_API_URL + \"/api/visit.saveVisit\",\n-                HttpMethod.POST);\n+        super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n+        responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(), ServiceConstant.SERVICE_API_URL + \"/api/visit.saveVisit\", HttpMethod.POST);\n         return responseEntity;\n     }\n \n+\n     @Override\n     public ResponseEntity<String> saveVisit(IPageData pd) {\n         return super.businessProcess(pd);\n@@ -64,4 +65,4 @@ public class AddVisitSMOImpl extends AbstractComponentSMO implements IAddVisitSM\n     public void setRestTemplate(RestTemplate restTemplate) {\n         this.restTemplate = restTemplate;\n     }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 10
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "28",
+                    "severity": "error",
+                    "message": "Line matches the illegal pattern 'System\\.out\\.println'.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "32",
+                    "column": "13",
+                    "severity": "error",
+                    "message": "'(' is preceded with whitespace.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/183/AddVisitSMOImpl.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/183/AddVisitSMOImpl.java\nindex 144475e411..b2fea37ec8 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/errored/1/183/AddVisitSMOImpl.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/java110-MicroCommunity/styler_three_grams/183/AddVisitSMOImpl.java\n@@ -24,44 +24,48 @@ public class AddVisitSMOImpl extends AbstractComponentSMO implements IAddVisitSM\n     private RestTemplate restTemplate;\n \n     @Override\n-    protected void validate(IPageData pd, JSONObject paramIn) {\n-        System.out.println(paramIn);\n+    protected void validate(IPageData pd, JSONObject paramIn) { System.out.\n \n-        //super.validatePageInfo(pd);\n \n-        //Assert.hasKeyAndValue(paramIn, \"xxx\", \"xxx\");\n-        Assert.hasKeyAndValue(paramIn, \"name\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u59d3\u540d\");\n-        Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u5c0f\u533aID\");\n-        Assert.hasKeyAndValue(paramIn, \"ownerId\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u76ee\u6807\u4e1a\u4e3bID\");\n-        Assert.hasKeyAndValue(paramIn, \"phoneNumber\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u8054\u7cfb\u65b9\u5f0f\");\n-        Assert.hasKeyAndValue(paramIn, \"visitTime\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u62dc\u8bbf\u65f6\u95f4\");\n \n \n-        super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_VISIT);\n+    println (paramIn);\n \n-    }\n+    //super.validatePageInfo(pd);\n \n-    @Override\n-    protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n-        ResponseEntity<String> responseEntity = null;\n-        super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n+    //Assert.hasKeyAndValue(paramIn, \"xxx\", \"xxx\");\n+    Assert.hasKeyAndValue(paramIn, \"name\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u59d3\u540d\");\n+    Assert.hasKeyAndValue(paramIn, \"communityId\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u5c0f\u533aID\");\n+    Assert.hasKeyAndValue(paramIn, \"ownerId\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u76ee\u6807\u4e1a\u4e3bID\");\n+    Assert.hasKeyAndValue(paramIn, \"phoneNumber\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u8054\u7cfb\u65b9\u5f0f\");\n+    Assert.hasKeyAndValue(paramIn, \"visitTime\", \"\u5fc5\u586b\uff0c\u8bf7\u586b\u5199\u8bbf\u5ba2\u62dc\u8bbf\u65f6\u95f4\");\n \n-        responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n-                ServiceConstant.SERVICE_API_URL + \"/api/visit.saveVisit\",\n-                HttpMethod.POST);\n-        return responseEntity;\n-    }\n \n-    @Override\n-    public ResponseEntity<String> saveVisit(IPageData pd) {\n-        return super.businessProcess(pd);\n-    }\n+    super.checkUserHasPrivilege(pd, restTemplate, PrivilegeCodeConstant.AGENT_HAS_LIST_VISIT);\n+\n+}\n+\n+@Override\n+protected ResponseEntity<String> doBusinessProcess(IPageData pd, JSONObject paramIn) {\n+    ResponseEntity<String> responseEntity = null;\n+    super.validateStoreStaffCommunityRelationship(pd, restTemplate);\n \n-    public RestTemplate getRestTemplate() {\n-        return restTemplate;\n-    }\n+    responseEntity = this.callCenterService(restTemplate, pd, paramIn.toJSONString(),\n+            ServiceConstant.SERVICE_API_URL + \"/api/visit.saveVisit\",\n+            HttpMethod.POST);\n+    return responseEntity;\n+}\n \n-    public void setRestTemplate(RestTemplate restTemplate) {\n-        this.restTemplate = restTemplate;\n-    }\n+@Override\n+public ResponseEntity<String> saveVisit(IPageData pd) {\n+    return super.businessProcess(pd);\n+}\n+\n+public RestTemplate getRestTemplate() {\n+    return restTemplate;\n+}\n+\n+public void setRestTemplate(RestTemplate restTemplate) {\n+    this.restTemplate = restTemplate;\n+}\n }\n",
+            "diff_size": 47
+        }
+    ]
+}

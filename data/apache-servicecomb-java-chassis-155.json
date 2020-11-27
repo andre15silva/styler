@@ -1,0 +1,75 @@
+{
+    "error_id": "155",
+    "information": {
+        "errors": [
+            {
+                "line": "44",
+                "column": "102",
+                "severity": "warning",
+                "message": "'+' should be on a new line.",
+                "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+            }
+        ]
+    },
+    "source_code": "      return new DoubleMetricValue(this.getKey(), this.getValue() + value.getValue(), this.getDimensions());\n    }\n    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() +\n        \" target key :\" + this.getKey());\n  }\n",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/155/DoubleMetricValue.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/155/DoubleMetricValue.java\nindex c1165625b5..471f53c737 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/155/DoubleMetricValue.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler/155/DoubleMetricValue.java\n@@ -41,20 +41,20 @@ public class DoubleMetricValue extends MetricValue<Double> {\n     if (this.getKey().equals(value.getKey())) {\n       return new DoubleMetricValue(this.getKey(), this.getValue() + value.getValue(), this.getDimensions());\n     }\n-    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() +\n-        \" target key :\" + this.getKey());\n-  }\n+    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey()\n+        + \" target key :\" + this.getKey());\n+}\n \n-  public static List<DoubleMetricValue> merge(List<DoubleMetricValue> source, List<DoubleMetricValue> target) {\n-    Map<String, DoubleMetricValue> finalValues = new HashMap<>();\n-    for (DoubleMetricValue t : target) {\n-      finalValues.put(t.getKey(), t);\n-    }\n-    for (DoubleMetricValue s : source) {\n-      if (finalValues.containsKey(s.getKey())) {\n-        finalValues.put(s.getKey(), finalValues.get(s.getKey()).merge(s));\n-      }\n+public static List<DoubleMetricValue> merge(List<DoubleMetricValue> source, List<DoubleMetricValue> target) {\n+  Map<String, DoubleMetricValue> finalValues = new HashMap<>();\n+  for (DoubleMetricValue t : target) {\n+    finalValues.put(t.getKey(), t);\n+  }\n+  for (DoubleMetricValue s : source) {\n+    if (finalValues.containsKey(s.getKey())) {\n+      finalValues.put(s.getKey(), finalValues.get(s.getKey()).merge(s));\n     }\n-    return new ArrayList<>(finalValues.values());\n   }\n+  return new ArrayList<>(finalValues.values());\n+}\n }\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "intellij",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "102",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/155/DoubleMetricValue.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/155/DoubleMetricValue.java\nindex c1165625b5..ada4967c11 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/155/DoubleMetricValue.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/intellij/155/DoubleMetricValue.java\n@@ -32,8 +32,8 @@ public class DoubleMetricValue extends MetricValue<Double> {\n   }\n \n   public DoubleMetricValue(@JsonProperty(\"key\") String key,\n-      @JsonProperty(\"value\") Double value,\n-      @JsonProperty(\"dimensions\") Map<String, String> dimensions) {\n+                           @JsonProperty(\"value\") Double value,\n+                           @JsonProperty(\"dimensions\") Map<String, String> dimensions) {\n     super(key, value, dimensions);\n   }\n \n",
+            "diff_size": 2
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "43",
+                    "severity": "warning",
+                    "message": "Line is longer than 120 characters (found 136).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/155/DoubleMetricValue.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/155/DoubleMetricValue.java\nindex c1165625b5..5019502ac9 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/155/DoubleMetricValue.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/naturalize/155/DoubleMetricValue.java\n@@ -32,8 +32,7 @@ public class DoubleMetricValue extends MetricValue<Double> {\n   }\n \n   public DoubleMetricValue(@JsonProperty(\"key\") String key,\n-      @JsonProperty(\"value\") Double value,\n-      @JsonProperty(\"dimensions\") Map<String, String> dimensions) {\n+      @JsonProperty(\"value\") Double value, @JsonProperty(\"dimensions\") Map<String, String> dimensions) {\n     super(key, value, dimensions);\n   }\n \n@@ -41,8 +40,7 @@ public class DoubleMetricValue extends MetricValue<Double> {\n     if (this.getKey().equals(value.getKey())) {\n       return new DoubleMetricValue(this.getKey(), this.getValue() + value.getValue(), this.getDimensions());\n     }\n-    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() +\n-        \" target key :\" + this.getKey());\n+    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() + \" target key :\" + this.getKey());\n   }\n \n   public static List<DoubleMetricValue> merge(List<DoubleMetricValue> source, List<DoubleMetricValue> target) {\n@@ -57,4 +55,4 @@ public class DoubleMetricValue extends MetricValue<Double> {\n     }\n     return new ArrayList<>(finalValues.values());\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 5
+        },
+        {
+            "tool": "codebuff",
+            "errors": null,
+            "diff": null
+        },
+        {
+            "tool": "styler_random",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/155/DoubleMetricValue.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/155/DoubleMetricValue.java\nindex c1165625b5..471f53c737 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/errored/1/155/DoubleMetricValue.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/apache-servicecomb-java-chassis/styler_random/155/DoubleMetricValue.java\n@@ -41,20 +41,20 @@ public class DoubleMetricValue extends MetricValue<Double> {\n     if (this.getKey().equals(value.getKey())) {\n       return new DoubleMetricValue(this.getKey(), this.getValue() + value.getValue(), this.getDimensions());\n     }\n-    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey() +\n-        \" target key :\" + this.getKey());\n-  }\n+    throw new ServiceCombException(\"unable merge different key values,source key :\" + value.getKey()\n+        + \" target key :\" + this.getKey());\n+}\n \n-  public static List<DoubleMetricValue> merge(List<DoubleMetricValue> source, List<DoubleMetricValue> target) {\n-    Map<String, DoubleMetricValue> finalValues = new HashMap<>();\n-    for (DoubleMetricValue t : target) {\n-      finalValues.put(t.getKey(), t);\n-    }\n-    for (DoubleMetricValue s : source) {\n-      if (finalValues.containsKey(s.getKey())) {\n-        finalValues.put(s.getKey(), finalValues.get(s.getKey()).merge(s));\n-      }\n+public static List<DoubleMetricValue> merge(List<DoubleMetricValue> source, List<DoubleMetricValue> target) {\n+  Map<String, DoubleMetricValue> finalValues = new HashMap<>();\n+  for (DoubleMetricValue t : target) {\n+    finalValues.put(t.getKey(), t);\n+  }\n+  for (DoubleMetricValue s : source) {\n+    if (finalValues.containsKey(s.getKey())) {\n+      finalValues.put(s.getKey(), finalValues.get(s.getKey()).merge(s));\n     }\n-    return new ArrayList<>(finalValues.values());\n   }\n+  return new ArrayList<>(finalValues.values());\n+}\n }\n",
+            "diff_size": 15
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [
+                {
+                    "line": "44",
+                    "column": "102",
+                    "severity": "warning",
+                    "message": "'+' should be on a new line.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        }
+    ]
+}

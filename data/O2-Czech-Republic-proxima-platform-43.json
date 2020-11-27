@@ -1,0 +1,289 @@
+{
+    "error_id": "43",
+    "information": {
+        "errors": [
+            {
+                "line": "118",
+                "severity": "error",
+                "message": "Line is longer than 90 characters (found 91).",
+                "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+            }
+        ]
+    },
+    "source_code": "\n  private void checkSerialization(StreamElement elem) {\n    assertEquals(elem, JsonFormat.toStreamElement(JsonFormat.toJsonElement(elem), entity));\n  }\n}",
+    "results": [
+        {
+            "tool": "styler",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/43/JsonFormatTest.java\nindex e206013a57..e935138b13 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler/43/JsonFormatTest.java\n@@ -115,6 +115,7 @@ public class JsonFormatTest {\n   }\n \n   private void checkSerialization(StreamElement elem) {\n-    assertEquals(elem, JsonFormat.toStreamElement(JsonFormat.toJsonElement(elem), entity));\n+    assertEquals(elem, JsonFormat.toStreamElement(JsonFormat.toJsonElement(elem),entity));\n   }\n }\n+\n",
+            "diff_size": 2
+        },
+        {
+            "tool": "intellij",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/43/JsonFormatTest.java\nindex e206013a57..4841e30960 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/intellij/43/JsonFormatTest.java\n@@ -1,18 +1,19 @@\n /**\n  * Copyright 2017-2020 O2 Czech Republic, a.s.\n- *\n+ * <p>\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n  * You may obtain a copy of the License at\n- *\n- *    http://www.apache.org/licenses/LICENSE-2.0\n- *\n+ * <p>\n+ * http://www.apache.org/licenses/LICENSE-2.0\n+ * <p>\n  * Unless required by applicable law or agreed to in writing, software\n  * distributed under the License is distributed on an \"AS IS\" BASIS,\n  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  * See the License for the specific language governing permissions and\n  * limitations under the License.\n  */\n+\n package cz.o2.proxima.direct.bulk;\n \n import static org.junit.Assert.*;\n@@ -46,9 +47,11 @@ public class JsonFormatTest {\n     return Arrays.asList(true, false);\n   }\n \n-  @Parameterized.Parameter public boolean gzip;\n+  @Parameterized.Parameter\n+  public boolean gzip;\n \n-  @Rule public final TemporaryFolder folder = new TemporaryFolder();\n+  @Rule\n+  public final TemporaryFolder folder = new TemporaryFolder();\n   private final Repository repo =\n       Repository.of(() -> ConfigFactory.load(\"test-reference.conf\").resolve());\n   private final EntityDescriptor entity = repo.getEntity(\"gateway\");\n@@ -115,6 +118,7 @@ public class JsonFormatTest {\n   }\n \n   private void checkSerialization(StreamElement elem) {\n-    assertEquals(elem, JsonFormat.toStreamElement(JsonFormat.toJsonElement(elem), entity));\n+    assertEquals(elem,\n+        JsonFormat.toStreamElement(JsonFormat.toJsonElement(elem), entity));\n   }\n }\n",
+            "diff_size": 11
+        },
+        {
+            "tool": "naturalize",
+            "errors": [
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 0, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "120",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/43/JsonFormatTest.java\nindex e206013a57..644d8988c6 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/naturalize/43/JsonFormatTest.java\n@@ -46,12 +46,14 @@ public class JsonFormatTest {\n     return Arrays.asList(true, false);\n   }\n \n-  @Parameterized.Parameter public boolean gzip;\n+  @Parameterized.Parameter\n+public boolean gzip;\n \n-  @Rule public final TemporaryFolder folder = new TemporaryFolder();\n+  @Rule\n+public final TemporaryFolder folder = new TemporaryFolder();\n   private final Repository repo =\n       Repository.of(() -> ConfigFactory.load(\"test-reference.conf\").resolve());\n-  private final EntityDescriptor entity = repo.getEntity(\"gateway\");\n+private final EntityDescriptor entity = repo.getEntity(\"gateway\");\n   private final AttributeDescriptor<Object> wildcard = entity.getAttribute(\"device.*\");\n   private final long stamp = System.currentTimeMillis();\n \n@@ -117,4 +119,4 @@ public class JsonFormatTest {\n   private void checkSerialization(StreamElement elem) {\n     assertEquals(elem, JsonFormat.toStreamElement(JsonFormat.toJsonElement(elem), entity));\n   }\n-}\n+}\n\\ No newline at end of file\n",
+            "diff_size": 6
+        },
+        {
+            "tool": "codebuff",
+            "errors": [
+                {
+                    "line": "45",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "48",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "50",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "52",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "53",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 109).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "54",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "55",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "56",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "57",
+                    "severity": "error",
+                    "message": "'member def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "59",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "62",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "64",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "73",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "74",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "75",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "78",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "79",
+                    "severity": "error",
+                    "message": "'try' child has incorrect indentation level 8, expected level should be 6.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "81",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "83",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "88",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "90",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "91",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 142).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "92",
+                    "severity": "error",
+                    "message": "'array initialization' child has incorrect indentation level 32, expected level should be one of the following: 6, 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "93",
+                    "severity": "error",
+                    "message": "'array initialization rcurly' has incorrect indentation level 0, expected level should be one of the following: 4, 8.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "94",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "96",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "97",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 130).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "98",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "100",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "101",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 102).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "102",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "104",
+                    "severity": "error",
+                    "message": "'method def modifier' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                },
+                {
+                    "line": "105",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                },
+                {
+                    "line": "106",
+                    "severity": "error",
+                    "message": "'method def rcurly' has incorrect indentation level 4, expected level should be 2.",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"
+                }
+            ],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/43/JsonFormatTest.java\nindex e206013a57..29e9832117 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/codebuff/43/JsonFormatTest.java\n@@ -16,7 +16,6 @@\n package cz.o2.proxima.direct.bulk;\n \n import static org.junit.Assert.*;\n-\n import com.google.common.collect.Streams;\n import com.typesafe.config.ConfigFactory;\n import cz.o2.proxima.repository.AttributeDescriptor;\n@@ -38,32 +37,32 @@ import org.junit.runner.RunWith;\n import org.junit.runners.Parameterized;\n \n /** Test {@link JsonFormat}. */\n+\n+\n @RunWith(Parameterized.class)\n public class JsonFormatTest {\n \n-  @Parameterized.Parameters\n-  public static Collection<Boolean> parameters() {\n+    @Parameterized.Parameters\n+    public static Collection<Boolean> parameters() {\n     return Arrays.asList(true, false);\n-  }\n-\n-  @Parameterized.Parameter public boolean gzip;\n+    }\n \n-  @Rule public final TemporaryFolder folder = new TemporaryFolder();\n-  private final Repository repo =\n-      Repository.of(() -> ConfigFactory.load(\"test-reference.conf\").resolve());\n-  private final EntityDescriptor entity = repo.getEntity(\"gateway\");\n-  private final AttributeDescriptor<Object> wildcard = entity.getAttribute(\"device.*\");\n-  private final long stamp = System.currentTimeMillis();\n+    @Parameterized.Parameter public boolean gzip;\n \n-  private JsonFormat format;\n+    @Rule public final TemporaryFolder folder = new TemporaryFolder();\n+    private final Repository repo = Repository.of(() -> ConfigFactory.load(\"test-reference.conf\").resolve());\n+    private final EntityDescriptor entity = repo.getEntity(\"gateway\");\n+    private final AttributeDescriptor<Object> wildcard = entity.getAttribute(\"device.*\");\n+    private final long stamp = System.currentTimeMillis();\n+    private JsonFormat format;\n \n-  @Before\n-  public void setUp() {\n+    @Before\n+    public void setUp() {\n     this.format = new JsonFormat(gzip);\n-  }\n+    }\n \n-  @Test\n-  public void testReadWrite() throws IOException {\n+    @Test\n+    public void testReadWrite() throws IOException {\n     folder.create();\n     File file = folder.newFile();\n     AttributeDescriptor<Object> wildcard = entity.getAttribute(\"device.*\");\n@@ -71,50 +70,38 @@ public class JsonFormatTest {\n     StreamElement delete = delete();\n     StreamElement upsert = upsert();\n     try (Writer writer = format.openWriter(Path.local(file), entity)) {\n-      writer.write(deleteWildcard);\n-      writer.write(delete);\n-      writer.write(upsert);\n+        writer.write(deleteWildcard);\n+        writer.write(delete);\n+        writer.write(upsert);\n     }\n     try (Reader reader = format.openReader(Path.local(file), entity)) {\n-      List<StreamElement> elements = Streams.stream(reader).collect(Collectors.toList());\n-      assertEquals(Arrays.asList(deleteWildcard, delete, upsert), elements);\n+        List<StreamElement> elements = Streams.stream(reader).collect(Collectors.toList());\n+        assertEquals(Arrays.asList(deleteWildcard, delete, upsert), elements);\n+    }\n     }\n-  }\n \n-  @Test\n-  public void testToAndFromStreamElement() {\n+    @Test\n+    public void testToAndFromStreamElement() {\n     checkSerialization(deleteWildcard());\n     checkSerialization(delete());\n     checkSerialization(upsert());\n-  }\n+    }\n \n-  StreamElement upsert() {\n-    return StreamElement.upsert(\n-        entity,\n-        wildcard,\n-        UUID.randomUUID().toString(),\n-        \"key\",\n-        wildcard.toAttributePrefix() + \"1\",\n-        stamp,\n-        new byte[] {1});\n-  }\n+    StreamElement upsert() {\n+    return StreamElement.upsert(entity, wildcard, UUID.randomUUID().toString(), \"key\", wildcard.toAttributePrefix() + \"1\", stamp, new byte[] {\n+                                1\n+});\n+    }\n \n-  StreamElement delete() {\n-    return StreamElement.delete(\n-        entity,\n-        wildcard,\n-        UUID.randomUUID().toString(),\n-        \"key\",\n-        wildcard.toAttributePrefix() + \"1\",\n-        stamp);\n-  }\n+    StreamElement delete() {\n+    return StreamElement.delete(entity, wildcard, UUID.randomUUID().toString(), \"key\", wildcard.toAttributePrefix() + \"1\", stamp);\n+    }\n \n-  StreamElement deleteWildcard() {\n-    return StreamElement.deleteWildcard(\n-        entity, wildcard, UUID.randomUUID().toString(), \"key\", stamp);\n-  }\n+    StreamElement deleteWildcard() {\n+    return StreamElement.deleteWildcard(entity, wildcard, UUID.randomUUID().toString(), \"key\", stamp);\n+    }\n \n-  private void checkSerialization(StreamElement elem) {\n+    private void checkSerialization(StreamElement elem) {\n     assertEquals(elem, JsonFormat.toStreamElement(JsonFormat.toJsonElement(elem), entity));\n-  }\n-}\n+    }\n+}\n\\ No newline at end of file\n",
+            "diff_size": 61
+        },
+        {
+            "tool": "styler_random",
+            "errors": [
+                {
+                    "line": "118",
+                    "severity": "error",
+                    "message": "Line is longer than 90 characters (found 91).",
+                    "source": "com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"
+                }
+            ],
+            "diff": "",
+            "diff_size": 0
+        },
+        {
+            "tool": "styler_three_grams",
+            "errors": [],
+            "diff": "diff --git a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/43/JsonFormatTest.java\nindex e206013a57..e935138b13 100644\n--- a/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/errored/1/43/JsonFormatTest.java\n+++ b/home/thomas/mnt/fernanda/styler-test2/python/./experiments/projects/../results/O2-Czech-Republic-proxima-platform/styler_three_grams/43/JsonFormatTest.java\n@@ -115,6 +115,7 @@ public class JsonFormatTest {\n   }\n \n   private void checkSerialization(StreamElement elem) {\n-    assertEquals(elem, JsonFormat.toStreamElement(JsonFormat.toJsonElement(elem), entity));\n+    assertEquals(elem, JsonFormat.toStreamElement(JsonFormat.toJsonElement(elem),entity));\n   }\n }\n+\n",
+            "diff_size": 2
+        }
+    ]
+}
