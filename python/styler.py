@@ -340,7 +340,7 @@ def main(args):
     if args[1] == 'repair':
         start_time = datetime.now()
         
-        download = args[2] == True
+        download = args[2] == "True"
 
         datasets = args[3:]
         protocol_choice_count = {
@@ -433,8 +433,8 @@ def main(args):
         layers = args[5]
         rnn_size = args[6]
         word_vec_size = args[7]
-        gpu = args[8] == True
-        upload = args[9] == True
+        gpu = args[8] == "True"
+        upload = args[9] == "True"
         run_train(project_name, protocol, global_attention, layers, rnn_size, word_vec_size, gpu, upload)
 
         time_elapsed = datetime.now() - start_time
