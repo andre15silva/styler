@@ -8,6 +8,8 @@ def clone_repo(user, repo_name, https=False):
     Clone the repo into the repo_dir location
     """
     dir = get_repo_dir(user, repo_name)
+    if os.path.exists(dir):
+        return (Repo(dir), dir)
     logger.debug(f'Cloning {user}/{repo_name}')
     if https:
         return (Repo.clone_from(f'https://github.com/{user}/{repo_name}.git', dir), dir)

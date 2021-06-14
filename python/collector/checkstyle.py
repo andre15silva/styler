@@ -14,7 +14,7 @@ from utils import *
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-_CHECKSTYLE_JARS_DIR = os.path.join(dir_path, "checkstyle_jars")
+_CHECKSTYLE_JARS_DIR = os.path.join(dir_path, "../jars/")
 _CHECKSTYLE_JARS = [
     'checkstyle-8.43-all.jar',
     'checkstyle-8.42-all.jar',

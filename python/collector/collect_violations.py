@@ -40,7 +40,8 @@ checkstyle_file_names = [
 ]
 
 def get_workspace_storage_dir_for_repo(repo):
-    return os.path.join(__workspace_storage_dir, repo)
+    path = os.path.join(__workspace_storage_dir, repo, f'real_error_dataset')
+    return path
 
 def get_workspace_storage_dir_for_repo_and_commit(repo, commit):
     return get_workspace_storage_dir_for_repo(repo)
@@ -173,7 +174,7 @@ def get_changed_files_in_commit(repo, commit):
         return None
     return ' '.join(files_to_checkstyle)
 
-def find_files_with_violations(repo, commit, checkstyle_file_path, checkstyle_jar, use_maven=False, check_only_changed_files=True):
+def find_files_with_violations(repo, commit, checkstyle_file_path, checkstyle_jar, use_maven=False, check_only_changed_files=False):
     dir = repo.working_dir
 
     clean_checkstyle_results(dir)
@@ -206,11 +207,10 @@ def find_files_with_violations(repo, commit, checkstyle_file_path, checkstyle_ja
         for report_dir, results in reports_with_violations.items():
             for file, violations in results.items():
                 my_print(f'{file} has {len(violations)} violation(s).')
-                commit_and_file_dir = os.path.join(commit_dir, str(violation_count))
+                commit_and_file_dir = os.path.join(commit_dir, f'1/', str(violation_count))
                 create_dir(commit_and_file_dir)
                 file_name = file.split('/')[-1]
                 shutil.copyfile(file, os.path.join(commit_and_file_dir, file_name))
-#                save_json(commit_and_file_dir, 'violations.json', violations)
                 save_json(commit_and_file_dir, 'metadata.json', get_metadata_json(commit, file, violations))
                 violation_count += 1
 
@@ -232,32 +232,6 @@ def create_new_branch_and_push_results(repo_info, collection_info):
         shutil.copyfile(os.path.join(repo.working_dir, repo_info['checkstyle_absolute_path']), os.path.join(repo_to_push_dir, 'checkstyle.xml'))
 
         save_json(repo_to_push_dir, 'info.json', collection_info)
-
-#        cmd = "cd %s; git init;" % repo_to_push_dir
-#        subprocess.call(cmd, shell=True)
-#
-#        cmd = "cd %s; git config user.name '%s';" % (repo_to_push_dir, config['DEFAULT']['github_user_name'])
-#        subprocess.call(cmd, shell=True)
-#
-#        cmd = "cd %s; git config user.email '%s';" % (repo_to_push_dir, config['DEFAULT']['github_user_email'])
-#        subprocess.call(cmd, shell=True)
-#
-#        cmd = "cd %s; git checkout --orphan %s;" % (repo_to_push_dir, branch_name)
-#        subprocess.call(cmd, shell=True)
-#
-#        cmd = "cd %s; echo '# %s' > README.md;" % (repo_to_push_dir, repo_info['repo_slug'])
-#        subprocess.call(cmd, shell=True)
-#
-#        cmd = "cd %s; git add .;" % repo_to_push_dir
-#        subprocess.call(cmd, shell=True)
-#
-#        cmd = "cd %s; git commit -m '[Automatic commit] Checkstyle violations from %s';" % (repo_to_push_dir, repo_slug)
-#        subprocess.call(cmd, shell=True)
-#
-#        cmd = "cd %s; git push https://%s:%s@github.com/%s %s;" % (repo_to_push_dir, config['DEFAULT']['github_user_name'], config['DEFAULT']['github_user_token'], config['DEFAULT']['github_repo_slug'], branch_name)
-#        subprocess.call(cmd, shell=True)
-#        
-#        my_print(f'[PROCESS FINISHED] New branch created.')
     else:
         my_print(f'[PROCESS FINISHED] No violation was found in the project.')
 
@@ -265,19 +239,20 @@ def cleanup(repo_info):
     delete_dir(git_helper.get_repo_dir(repo_info['user'], repo_info['repo_name'])) # workspace_analyses_dir
     delete_dir(get_workspace_storage_dir_for_repo(repo_info['user'] + "-" + repo_info['repo_name'])) # workspace_storage_dir
 
-repo_slugs = []
-if len(sys.argv) > 1:
-    repo_slugs.append(sys.argv[1])
-else:
-    with open(__input_projects_path) as temp_file:
-        repo_slugs = [line.rstrip('\n') for line in temp_file]
+def main():
+    if len(sys.argv) != 4:
+        my_print(f'Bad number of arguments. Usage:\n$ collect_violations.py $PROJECT $WORKING_BRANCH $COMMIT_ID')
+        return
+        
+    repo_slug = sys.argv[1]
+    working_branch = sys.argv[2]
+    commit_id = sys.argv[3]
 
-my_print(f'# Repos: {len(repo_slugs)}')
-for repo_slug in repo_slugs:
+    # Clone repo
     my_print(f'## Repo {repo_slug} ##')
     repo_info = {}
-    default_branch = None
-    commits = []
+    default_branch = working_branch
+    commits = [commit_id]
     checkstyle_last_modification_commit = None
     checkstyle_jar = None
     repo_cloned_at = datetime.now(pytz.utc).strftime("%Y-%m-%d %H:%M:%S %z")
@@ -288,81 +263,78 @@ for repo_slug in repo_slugs:
             my_print(f'Something wrong happened when cloning the repo {repo_slug}.')
             cleanup(repo_info)
             my_print(f'[PROCESS FINISHED] Repository not cloned.')
-            continue
+            return
         
+        cmd = "cd %s; git reset --hard HEAD; git clean -xdf;" % git_helper.get_repo_dir(user, repo_name)
+        subprocess.call(cmd, shell=True)
+        my_print(f'Checking out {working_branch}...')
+        repo.git.checkout(working_branch)
+        my_print(f'Checking out {commit_id}...')
+        repo.git.checkout(commit_id)
         repo_info = get_repo_info(repo_slug, repo)
+
         if 'checkstyle_ok' in repo_info and not repo_info['checkstyle_ok']:
             my_print(f'Repo {repo_slug} did not pass the first sanity checks.')
             cleanup(repo_info)
             my_print(f'[PROCESS FINISHED] Checkstyle.xml contains variables.')
-            continue
+            return
         my_print(f'Repo {repo_slug} has passed the first sanity checks.')
         
         checkstyle_file_path = repo_info['checkstyle_absolute_path']
-        default_branch, commits, checkstyle_last_modification_commit = get_commit_until_last_modification(repo, checkstyle_file_path)
-        my_print(f'The last modification in the Checkstyle configuration file was made in the commit {checkstyle_last_modification_commit}.')
-        if len(commits) == 0:
-            my_print(f'There is no commit to be analyzed.')
-            cleanup(repo_info)
-            my_print(f'[PROCESS FINISHED] No commit to be analyzed.')
-            continue
-        my_print(f'There is/are {len(commits)} commit(s) since the last modification in the Checkstyle configuration file.')
 
         my_print('')
         my_print('Testing the execution of Checkstyle on the project...')
-        checkstyle_jar = test_checkstyle_execution(repo, repo_info, checkstyle_last_modification_commit)
+        checkstyle_jar = test_checkstyle_execution(repo, repo_info, commit_id)
         if checkstyle_jar is None:
             my_print(f'The test failed.')
             cleanup(repo_info)
             my_print(f'[PROCESS FINISHED] Failure in executing Checkstyle on the project.')
-            continue
+            return
         checkstyle_jar_simple_name = checkstyle_jar.split('/')[-1]
         my_print(f'The test passed.')
     except Exception as err:
         my_print(f'[ERROR] The violation collection of {repo_slug} did not complete. The error happened before starting to reproduce Checkstyle violations. Detail: {err}')
         cleanup(repo_info)
         my_print(f'[PROCESS FINISHED] Error before starting to reproduce Checkstyle violations.')
-        continue
+        return
     
     my_print('')
     my_print('The reproduction of Checkstyle violations is starting...')
     
     repo = repo_info['repo']
-    number_of_commits_found = len(commits)
+    number_of_commits_found = 1
     number_of_commits_analyzed = 0
     number_of_commits_with_violations = 0
 
-    commit_index = 0
-    for commit in reversed(commits[::-1]):
-        commit_index += 1
-        my_print(f'Commit {commit_index}/{number_of_commits_found}: {repo_slug}/{commit}')
-        try:
-            cmd = "cd %s; git reset --hard HEAD; git clean -xdf;" % git_helper.get_repo_dir(user, repo_name)
-            subprocess.call(cmd, shell=True)
-            my_print(f'Checking out {commit}...')
-            repo.git.checkout(commit)
-            time.sleep(1)
-            if not is_there_suppressions_location_in_pom(repo):
-                check_only_changed_files = None
-                if commit == checkstyle_last_modification_commit:
-                    check_only_changed_files = False
-                else:
-                    check_only_changed_files = True
-                violation_count = find_files_with_violations(
-                    repo, commit, repo_info['checkstyle_absolute_path'], checkstyle_jar, use_maven=False, check_only_changed_files=check_only_changed_files)
-                number_of_commits_analyzed += 1
-                if violation_count > 0:
-                    number_of_commits_with_violations += 1
-            else:
-                my_print('The pom.xml file contains \'suppressionsLocation\'. Skip commit.')
+    # Clean storage
+    path = get_workspace_storage_dir_for_repo(repo_info['user'] + "-" + repo_info['repo_name'])
+    if os.path.exists(path):
+        shutil.rmtree(path)
+    os.makedirs(path)
 
-        except Exception as err:
-            my_print(f'[ERROR] The violation collection of {repo_slug} failed in commit {commit}. Detail: {err}')
-            delete_dir(get_workspace_storage_dir_for_repo_and_commit(user + "-" + repo_name, commit))
+    try:
+        cmd = "cd %s; git reset --hard HEAD; git clean -xdf;" % git_helper.get_repo_dir(user, repo_name)
+        subprocess.call(cmd, shell=True)
+        my_print(f'Checking out {commit_id}...')
+        repo.git.checkout(commit_id)
+        time.sleep(1)
+        if not is_there_suppressions_location_in_pom(repo):
+            violation_count = find_files_with_violations(
+                repo, commit_id, repo_info['checkstyle_absolute_path'], checkstyle_jar, use_maven=False, check_only_changed_files=False)
+            number_of_commits_analyzed += 1 
+            if violation_count > 0:
+                number_of_commits_with_violations += 1
+        else:
+            my_print('The pom.xml file contains \'suppressionsLocation\'. Skip commit.')
 
-        break
+    except Exception as err:
+        my_print(f'[ERROR] The violation collection of {repo_slug} failed in commit {commit_id}. Detail: {err}')
+        delete_dir(get_workspace_storage_dir_for_repo_and_commit(user + "-" + repo_name, commit))
 
     analysis_finished_at = datetime.now(pytz.utc).strftime("%Y-%m-%d %H:%M:%S %z")
+
+    # Get information
+    _, _, checkstyle_last_modification_commit = get_commit_until_last_modification(repo, checkstyle_file_path)
 
     collection_info = {
         'repo_url': f'https://github.com/{repo_slug}',
@@ -377,6 +349,14 @@ for repo_slug in repo_slugs:
         'commits': commits,
         'checkstyle_jar': checkstyle_jar.split('/')[-1]
     }
-    create_new_branch_and_push_results(repo_info, collection_info)
-#
-#    cleanup(repo_info)
+
+    storage_dir = get_workspace_storage_dir_for_repo(repo_info['user'] + "-" + repo_info['repo_name'])
+    if os.path.exists(storage_dir) and len(os.listdir(storage_dir)) > 0:
+        shutil.copyfile(os.path.join(repo.working_dir, repo_info['checkstyle_absolute_path']), os.path.join(storage_dir, 'checkstyle.xml'))
+
+        save_json(storage_dir, 'info.json', collection_info)
+    else:
+        my_print(f'[PROCESS FINISHED] No violation was found in the project.')
+
+if __name__ == "__main__":
+    main()

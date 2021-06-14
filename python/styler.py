@@ -341,6 +341,7 @@ def main(args):
         start_time = datetime.now()
         
         download = args[2] == "True"
+        print(download)
 
         datasets = args[3:]
         protocol_choice_count = {

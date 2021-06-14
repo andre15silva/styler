@@ -69,14 +69,14 @@ def get_model(name, protocol, checkstyle_xml):
     # Connect via SSH
     with SSHClient() as ssh:
         ssh.load_system_host_keys()
-        host = core_config['MODELS']['snic_host']
-        username = core_config['MODELS']['snic_username']
-        password = core_config['MODELS']['snic_password']
+        host = os.getenv('SNIC_HOST')
+        username = os.getenv('SNIC_USERNAME')
+        password = os.getenv('SNIC_PASSWORD')
         ssh.connect(host, username=username, password=password)
 
         with ssh.open_sftp() as sftp:
             # Get models for the project
-            store_path = core_config['MODELS']['snic_path']
+            store_path = os.getenv('SNIC_PATH')
             user = name.split("-")[0]
             project = name.split("-")[1]
 
@@ -105,11 +105,11 @@ def get_model(name, protocol, checkstyle_xml):
                                         release_path = f'{store_path}/{user}/{project}/{release}'
                                         download_and_cache_release(ssh, sftp, release, release_path, name)
                                         return cached(name, protocol, checkstyle_xml)
+                            sftp.chdir(f'../')
                         except FileNotFoundError:
+                            sftp.chdir(f'../')
                             continue
 
-
-            
     # If we get here it means we didn't find a model that fits
     logger.debug(f'There are no stored models that match all criteria for project {name}')
     return None
@@ -122,31 +122,28 @@ def upload_model(model_path, checkstyle_path, name):
     # Connect via SSH
     with SSHClient() as ssh:
         ssh.load_system_host_keys()
-        host = core_config['MODELS']['snic_host']
-        username = core_config['MODELS']['snic_username']
-        password = core_config['MODELS']['snic_password']
+        host = os.getenv('SNIC_HOST')
+        username = os.getenv('SNIC_USERNAME')
+        password = os.getenv('SNIC_PASSWORD')
         ssh.connect(host, username=username, password=password)
 
         # Upload via SCP
         with SCPClient(ssh.get_transport()) as scp:
             # Compute path
-            store_path = core_config['MODELS']['snic_path']
+            store_path = os.getenv('SNIC_PATH')
             uid = str(int(time.time()))
             user = name.split("-")[0]
             repo_name = name.split("-")[1]
             proj_path = store_path + f'/{user}/{repo_name}/{uid}/'
+            remote_model_path = proj_path + model_path.split("/")[-1]
+            remote_checkstyle_path = proj_path + "checkstyle.xml"
 
             # Create dir
             logger.debug(f'Creating {proj_path} in {host}')
             ssh.exec_command(f'mkdir -p {proj_path}')
 
             # Upload
-            logger.debug(f'Uploading {model_path} to {host}:{proj_path}')
-            scp.put(model_path, remote_path=proj_path)
-            logger.debug(f'Uploading {checkstyle_path} to {host}:{proj_path}')
-            scp.put(checkstyle_path, remote_path=proj_path)
-
-
-if __name__ == "__main__":
-    upload_model('./experiments/projects/Activiti-Activiti/04_models/random-general-2-512-512-model_step_20000.pt', "./experiments/projects/Activiti-Activiti/real_error_dataset/checkstyle.xml", "Activiti-Activiti")
-    get_model("Activiti-Activiti", "random", "./experiments/projects/Activiti-Activiti/real_error_dataset/checkstyle.xml")
+            logger.debug(f'Uploading {model_path} to {host}:{remote_model_path}')
+            scp.put(model_path, remote_path=remote_model_path)
+            logger.debug(f'Uploading {checkstyle_path} to {host}:{remote_checkstyle_path}')
+            scp.put(checkstyle_path, remote_path=remote_checkstyle_path)
